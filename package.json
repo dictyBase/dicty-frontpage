@@ -5,6 +5,7 @@
   "dependencies": {
     "dicty-components-header": "file:///C:\\Users\\Rudy\\Desktop\\dictybase\\dicty-components-header",
     "dicty-components-navbar": "github:dictybase/dicty-components-navbar",
+    "grid-styled": "^2.0.0-5",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "styled-components": "^2.1.0"
