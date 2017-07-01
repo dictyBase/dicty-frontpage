@@ -17,6 +17,11 @@ const Container = styled.div`
     display: flex;
     flex-direction: row;
     row-wrap: wrap;
+    height: 50%;
+    width: 100%;
+`
+const Item = styled.div`
+    width: 50%;
 `
 
 class App extends Component {
@@ -26,9 +31,14 @@ class App extends Component {
               <Header downloads="" cite="" info="" />
               <Navbar items={ navItems } theme={ {} }/>
               <Flex>
-                  <Box width={ 1/2 }>
-                      <Slideshow images={ images } />
-                  </Box>
+                  <Container>
+                      <Item>
+                          <Slideshow images={ images } />
+                      </Item>
+                      <Item>
+                          <div />
+                      </Item>
+                  </Container>
               </Flex>
           </div>
         );
