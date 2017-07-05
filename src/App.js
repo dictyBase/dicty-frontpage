@@ -22,6 +22,7 @@ const Container = styled.div`
 `
 const Item = styled.div`
     width: 50%;
+    height: 400px;
 `
 
 class App extends Component {
