@@ -6,23 +6,27 @@ const Container = styled.div`
     overflow: hidden;
     width: 100%;
     height: 100%;
+    background: black;
 `
 const Carousel = styled.div`
     display: flex;
     flex-direction: row;
+    align-items: center;
     position: absolute;
     transform: translate3d(${ props => props.activeIndex * (-100) }%, 0, 0);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s linear;
     width: 100%;
     height: 100%;
 `
 const ImageContainer = styled.div`
-    max-height: 100%;
-    width: 100%;
+    ${'' /* min-height: 100%; */}
+    min-width: 100%;
 `
 const Slide = styled.img`
     ${'' /* width: 100%; */}
-    height: 100%;
+    object-fit: contain;
+    max-width: 100%;
+    max-height: 100%;
 `
 const Button = styled.i`
     cursor: pointer;
@@ -57,6 +61,7 @@ const Dots = styled.div`
 const Dot = styled.i`
     color: white;
     opacity: ${ props => props.active ? 1 : 0.7 };
+    transition: opacity 0.15s ease;
     z-index: 100;
     width: 20px;
 `
