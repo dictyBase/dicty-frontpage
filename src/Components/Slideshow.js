@@ -6,7 +6,8 @@ const Container = styled.div`
     overflow: hidden;
     width: 100%;
     height: 100%;
-    background: black;
+    background: ${ props => props.theme.background ? props.theme.background : 'black' };
+    margin: ${ props => props.theme.margin ? props.theme.margin : '20px' };
 `
 const Carousel = styled.div`
     display: flex;
@@ -19,11 +20,9 @@ const Carousel = styled.div`
     height: 100%;
 `
 const ImageContainer = styled.div`
-    ${'' /* min-height: 100%; */}
     min-width: 100%;
 `
 const Slide = styled.img`
-    ${'' /* width: 100%; */}
     object-fit: contain;
     max-width: 100%;
     max-height: 100%;
@@ -72,6 +71,9 @@ export default class Slideshow extends Component {
             activeIndex: 0
         }
     }
+    componentDidMount() {
+        this.start()
+    }
     next = () => {
         const { images } = this.props
         const { activeIndex } = this.state
@@ -101,9 +103,15 @@ export default class Slideshow extends Component {
         const { activeIndex } = this.state
         return images.map((image, i) => {
             return (
-                <Dot className="fa fa-circle" aria-hidden="true" active={ activeIndex === i && true } />
+                <Dot key={ i } className={ `fa fa-circle${ i !== activeIndex ? '-thin' : '' }` } aria-hidden="true" active={ activeIndex === i && true } />
             )
         })
+    }
+    start = () => {
+        const { time } = this.props
+        setInterval(() => {
+            this.next()
+        }, this.props.time ? this.props.time : 20000)
     }
     render() {
         const { images } = this.props
