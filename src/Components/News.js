@@ -27,7 +27,6 @@ const Img = styled.img`
 `
 
 const newsBox = styled.div`
-	//padding: 0px 30px 8px 30px;
 	padding: 0px 25px 10px 35px;
 	font-size: 8px;
 `
@@ -52,9 +51,9 @@ const News = (props) => {
 			 const text = props.posts.map((post)=>
 					<ul key= {post.id}>
 						<li>
-								{post.date}
-								{post.source}
-								{post.content}
+							{post.date}
+							{post.source}
+							{post.content}
 						</li>
 					</ul>
 				);
