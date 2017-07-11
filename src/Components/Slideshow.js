@@ -15,17 +15,19 @@ const Carousel = styled.div`
     align-items: center;
     position: absolute;
     transform: translate3d(${ props => props.activeIndex * (-100) }%, 0, 0);
-    transition: transform 0.3s linear;
+    transition: transform 0.4s ease;
     width: 100%;
     height: 100%;
 `
 const ImageContainer = styled.div`
-    min-width: 100%;
+    width: 100%;
+    height: 100%;
 `
 const Slide = styled.img`
-    object-fit: contain;
-    max-width: 100%;
-    max-height: 100%;
+    ${'' /* object-fit: contain;
+    max-width: 100%; */}
+    height: 100%;
+    ${'' /* width: ${ props => (props.length + 1) * 100 }%; */}
 `
 const Button = styled.i`
     cursor: pointer;
@@ -34,13 +36,13 @@ const Button = styled.i`
     color: white;
     opacity: 0.7;
     position: absolute;
-    ${ props => props.side === 'left' && 'left: 10px;' }
-    ${ props => props.side === 'right' && 'right: 10px;' }
+    ${ props => props.side === 'left' && 'left: 15px;' }
+    ${ props => props.side === 'right' && 'right: 15px;' }
     margin: auto 0;
     z-index: 100;
     top: 0;
     bottom: 0;
-    transition: opacity .2s ease;
+    transition: opacity .15s ease;
 
     &:hover {
         opacity: 1;
@@ -55,7 +57,7 @@ const Dots = styled.div`
     flex-direction: row;
     justify-content: center;
     height: 20px;
-
+    cursor: pointer;
 `
 const Dot = styled.i`
     color: white;
@@ -68,7 +70,8 @@ export default class Slideshow extends Component {
     constructor() {
         super()
         this.state = {
-            activeIndex: 0
+            activeIndex: 0,
+            intervalId: null
         }
     }
     componentDidMount() {
@@ -93,7 +96,7 @@ export default class Slideshow extends Component {
         return images.map((image, i) => {
             return (
                 <ImageContainer key={ i }>
-                    <Slide src={ image } />
+                    <Slide length={ images.length } src={ image } />
                 </ImageContainer>
             )
         })
@@ -103,15 +106,32 @@ export default class Slideshow extends Component {
         const { activeIndex } = this.state
         return images.map((image, i) => {
             return (
-                <Dot key={ i } className={ `fa fa-circle${ i !== activeIndex ? '-thin' : '' }` } aria-hidden="true" active={ activeIndex === i && true } />
+                <Dot key={ i }
+                    className={ `fa fa-circle${ i !== activeIndex ? '-thin' : '' }` }
+                    aria-hidden="true" active={ activeIndex === i && true }
+                    onClick={ () => { this.setSlide(i) } }
+                />
             )
         })
     }
     start = () => {
         const { time } = this.props
-        setInterval(() => {
+        const intervalId = setInterval(() => {
             this.next()
         }, this.props.time ? this.props.time : 20000)
+        this.setState({
+            intervalId
+        })
+    }
+    stop = () => {
+        clearInterval(this.state.intervalId)
+    }
+    setSlide = (i) => {
+        this.stop()
+        this.setState({
+            activeIndex: i
+        })
+        this.start()
     }
     render() {
         const { images } = this.props

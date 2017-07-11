@@ -8,10 +8,10 @@ import { navItems } from './constants/navbar'
 import './App.css'
 
 const images = [
-    'https://i.ytimg.com/vi/uXdzuz5Q-hs/maxresdefault.jpg',
-    'https://i.ytimg.com/vi/uXdzuz5Q-hs/maxresdefault.jpg',
-    'https://i.ytimg.com/vi/uXdzuz5Q-hs/maxresdefault.jpg',
-    'https://i.ytimg.com/vi/uXdzuz5Q-hs/maxresdefault.jpg'
+    'http://betatest.dictybase.org/images/dictyFront01.jpg',
+    'http://betatest.dictybase.org/images/dictyFront01.jpg',
+    'http://betatest.dictybase.org/images/dictyFront01.jpg',
+    'http://betatest.dictybase.org/images/dictyFront01.jpg'
 ]
 const Container = styled.div`
     display: flex;
@@ -34,7 +34,7 @@ class App extends Component {
               <Flex>
                   <Container>
                       <Item>
-                          <Slideshow images={ images } />
+                          <Slideshow images={ images } time={ 2000 }/>
                       </Item>
                       <Item>
                           <div />
