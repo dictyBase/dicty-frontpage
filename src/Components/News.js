@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { Flex, Box } from 'grid-styled';
 import twitterLogo from './images/twitterLogo.png';
 
+
 const Container = styled.div`
   text-align: left;
   padding-left: 10px;
@@ -22,7 +23,13 @@ const Header = styled.div`
 
 const Img = styled.img`width: 25px;`;
 
-const NewsBox = styled.li`
+const NewsBox = styled.ul`
+  padding: 0px 25px 10px 35px;
+  font-size: 12px;
+  margin-bottom: 5px;
+`;
+
+const ListItems = styled.li`
   padding: 0px 25px 10px 35px;
   font-size: 12px;
   list-style-type: none;
@@ -46,20 +53,21 @@ const NewsDate = styled.div`
 `;
 
 const NewsContent = styled.div`padding-right: 10px;`;
-
 const NewsSource = styled.div`color: #0b3861;`;
+const NewsTitle= "DICTY NEWS";
 
 const News = props => {
-  const text = props.posts.map(post =>
-    <ul key={post.id}>
-      <li>
-        <NewsDate>{post.date}</NewsDate>}
-        <NewsSource>{post.source}</NewsSource>
-        <NewsContent>{post.content}</NewsContent>
-      </li>
-    </ul>
-  );
-  return (
+    const text = props.posts.map(post =>
+      <ListItems>
+        <li key={post.id}>
+          <NewsDate>{post.date}</NewsDate>
+          <NewsSource>{post.source}</NewsSource>
+          <NewsContent>{post.content}</NewsContent>
+        </li>
+      </ListItems>
+    );
+
+return (
     <Container>
       <Header>
         <Flex wrap>
@@ -73,12 +81,14 @@ const News = props => {
             </a>
           </Box>
           <Box px={2} py={1} width={9 / 10}>
-            DICTY NEWS
+            {NewsTitle}
           </Box>
         </Flex>
       </Header>
       <NewsBox>
-        {text}
+        <ul>
+            {text}
+        </ul>
       </NewsBox>
       <NewsMore>
         <a href="" alt="more news">
@@ -89,4 +99,4 @@ const News = props => {
   );
 };
 
-export default News;
+export default News
