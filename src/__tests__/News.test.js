@@ -32,12 +32,11 @@ describe ('<News posts = {posts} />', () => {
   });
 
   it('contains 2 <li> items', () => {
-    const ListItems = styled.li``
     const container = shallow(<News posts={posts} />);
     expect(container.find('li').length).toEqual(2);
   });
 
-  it('contatins text', () => {
+  it('contatins 2 <a> tags', () => {
     const container = shallow(<News posts={posts} />);
     expect(container.find('a').length).toEqual(2);
   });
