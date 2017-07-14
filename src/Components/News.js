@@ -23,6 +23,13 @@ const Header = styled.div`
 
 const Img = styled.img`width: 25px;`;
 
+const GlobeImg = styled.div`
+  width: 25px;
+  background-color: yellow;
+  text-align: right;
+`;
+
+
 const NewsBox = styled.ul`
   padding: 0px 25px 10px 35px;
   font-size: 12px;
@@ -30,8 +37,6 @@ const NewsBox = styled.ul`
 `;
 
 const ListItems = styled.li`
-  padding: 0px 25px 10px 35px;
-  font-size: 12px;
   list-style-type: none;
   margin-bottom: 5px;
 `;
@@ -58,12 +63,10 @@ const NewsTitle= "DICTY NEWS";
 
 const News = props => {
     const text = props.posts.map(post =>
-      <ListItems>
-        <li key={post.id}>
+      <ListItems key={post.id}>
           <NewsDate>{post.date}</NewsDate>
           <NewsSource>{post.source}</NewsSource>
           <NewsContent>{post.content}</NewsContent>
-        </li>
       </ListItems>
     );
 
@@ -91,6 +94,7 @@ return (
         </ul>
       </NewsBox>
       <NewsMore>
+        <span class="glyphicons glyphicons-plus"></span>
         <a href="" alt="more news">
           {' '}more news{' '}
         </a>
