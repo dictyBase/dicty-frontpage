@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`News snapshot test 1`] = `
+<div
+  className="sc-bxivhb cAoBMP"
+>
+  <div
+    className="sc-ifAKCX gnZHCx"
+  >
+    <div
+      className="sc-htpNat hLJahE sc-bdVaJa iHZvIS"
+      wrap={true}
+    >
+      <div
+        className="sc-bdVaJa hZXWJA"
+      >
+        <a
+          alt="Dicty News at Twitter"
+          href="https://twitter.com/dictybase"
+          target="new"
+        >
+          <img
+            className="sc-EHOje bThSEj"
+            src="twitterLogo.png"
+          />
+        </a>
+      </div>
+      <div
+        className="sc-bdVaJa iFPAFX"
+      >
+        DICTY NEWS
+      </div>
+    </div>
+  </div>
+  <ul
+    className="sc-gzVnrw dPAoYG"
+  >
+    <ul>
+      <li
+        className="sc-htoDjs ikXCMu"
+      >
+        <div
+          className="sc-iwsKbI fSYNJk"
+        >
+          2015.08.19
+        </div>
+        <div
+          className="sc-gqjmRU cBdDLr"
+        >
+          Dicty Stock Center
+        </div>
+        <div
+          className="sc-gZMcBi ciewAv"
+        >
+          <type>
+            &lt;strong&gt;Why axenic strains grow by fluid uptake&lt;/strong&gt;: We have added the &lt;a href='http://dictybase.org/gene/DDB_G0350652' target='new'&gt; axeB gene &lt;/a&gt; to Chromosome 3 at the locus which is largely deleted in axenic strains and thus responsible for their ability to grow axenically. Only an axeB 3' fragment could be generated on the AX4 genome assembly. The full length gene in non-axenic strains such as DdB codes for the conserved neurofibromin 1, a RasGAP, which has been shown to be involved in macropinocytosis and phagocytosis. For more information, see &lt;a href='http://dictybase.org/publication/pubmed/25815683' target='new'&gt;Bloomfield et al&lt;/a&gt;.
+          </type>
+        </div>
+      </li>
+      <li
+        className="sc-htoDjs ikXCMu"
+      >
+        <div
+          className="sc-iwsKbI fSYNJk"
+        >
+          2015.08.12
+        </div>
+        <div
+          className="sc-gqjmRU cBdDLr"
+        >
+          National Geographics
+        </div>
+        <div
+          className="sc-gZMcBi ciewAv"
+        >
+          <type>
+            Dicty in the News: The National Geographics series a &lt;a href='http://phenomena.nationalgeographic.com/2015/08/24/the-bacteria-that-turn-amoebas-into-farmers/?sf12476278=1' target='new'&gt;Not Exactly Rocket Science&lt;/a&gt; has published a nice piece about the latest results reporting how Burkholderia turns Dicty amooeba into farmers, &lt;a href='http://www.pnas.org/content/early/2015/08/18/1511878112' target='new'&gt;published&lt;/a&gt; by Suzanne di Salvo and colleagues from the Strassmann/Queller lab.
+          </type>
+        </div>
+      </li>
+    </ul>
+  </ul>
+  <div
+    className="sc-dnqmqq hwhtnP"
+  >
+    <a
+      alt="more news"
+      href=""
+    >
+       
+      more news
+       
+    </a>
+  </div>
+</div>
+`;
