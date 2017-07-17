@@ -1,9 +1,8 @@
 // @flow
-import React from 'react';
-import styled from 'styled-components';
-import { Flex, Box } from 'grid-styled';
-import twitterLogo from './images/twitterLogo.png';
-
+import React from "react"
+import styled from "styled-components"
+import { Flex, Box } from "grid-styled"
+import twitterLogo from "./images/twitterLogo.png"
 
 const Container = styled.div`
   text-align: left;
@@ -11,7 +10,7 @@ const Container = styled.div`
   padding-right: 10px;
   min-height: 600px;
   background-color: #f2f2f2;
-`;
+`
 
 const Header = styled.div`
   color: black;
@@ -19,27 +18,26 @@ const Header = styled.div`
   padding: 15px 30px 10px 30px;
   vertical-align: top;
   text-align: right;
-`;
+`
 
-const Img = styled.img`width: 25px;`;
+const Img = styled.img`width: 25px;`
 
 const GlobeImg = styled.div`
   width: 25px;
   background-color: yellow;
   text-align: right;
-`;
-
+`
 
 const NewsBox = styled.ul`
   padding: 0px 25px 10px 35px;
   font-size: 12px;
   margin-bottom: 5px;
-`;
+`
 
 const ListItems = styled.li`
   list-style-type: none;
   margin-bottom: 5px;
-`;
+`
 
 const NewsMore = styled.div`
   color: #0b3861;
@@ -49,28 +47,36 @@ const NewsMore = styled.div`
   text-align: center;
   padding-top: 5px;
   padding-bottom: 15px;
-`;
+`
 
 const NewsDate = styled.div`
   color: #0b3861;
   padding-right: 10px;
   margin-bottom: 5px;
-`;
+`
 
-const NewsContent = styled.div`padding-right: 10px;`;
-const NewsSource = styled.div`color: #0b3861;`;
-const NewsTitle= "DICTY NEWS";
+const NewsContent = styled.div`padding-right: 10px;`
+const NewsSource = styled.div`color: #0b3861;`
+const NewsTitle = "DICTY NEWS"
 
 const News = props => {
-    const text = props.posts.map(post =>
-      <ListItems key={post.id}>
-          <NewsDate>{post.date}</NewsDate>
-          <NewsSource>{post.source}</NewsSource>
-          <NewsContent>{post.content}</NewsContent>
-      </ListItems>
-    );
+  const text = props.posts.map(post =>
+    <ListItems key={post.id}>
+      <NewsDate>
+        {post.date}
+      </NewsDate>
+      <NewsSource>
+        {post.source}
+      </NewsSource>
+      <NewsContent>
+        <type>
+          {post.content}
+        </type>
+      </NewsContent>
+    </ListItems>,
+  )
 
-return (
+  return (
     <Container>
       <Header>
         <Flex wrap>
@@ -78,8 +84,7 @@ return (
             <a
               href="https://twitter.com/dictybase"
               alt="Dicty News at Twitter"
-              target="new"
-            >
+              target="new">
               <Img src={twitterLogo} />
             </a>
           </Box>
@@ -90,17 +95,16 @@ return (
       </Header>
       <NewsBox>
         <ul>
-            {text}
+          {text}
         </ul>
       </NewsBox>
       <NewsMore>
-        <span class="glyphicons glyphicons-plus"></span>
         <a href="" alt="more news">
-          {' '}more news{' '}
+          {" "}more news{" "}
         </a>
       </NewsMore>
     </Container>
-  );
-};
+  )
+}
 
 export default News
