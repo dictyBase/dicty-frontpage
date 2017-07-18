@@ -3,13 +3,18 @@ import React from "react"
 import styled from "styled-components"
 import { Flex, Box } from "grid-styled"
 import twitterLogo from "./images/twitterLogo.png"
+import Octicon from "react-octicon"
+import renderHTML from "react-render-html"
 
 const Container = styled.div`
   text-align: left;
   padding-left: 10px;
   padding-right: 10px;
-  min-height: 600px;
   background-color: #f2f2f2;
+  border-radius: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 1px;
 `
 
 const Header = styled.div`
@@ -18,20 +23,27 @@ const Header = styled.div`
   padding: 15px 30px 10px 30px;
   vertical-align: top;
   text-align: right;
+
+  @media (max-width: 767px) {
+    font-size: 24px;
+    text-align: right;
+    padding: 20px 5px 20px 15px;
+  }
 `
 
-const Img = styled.img`width: 25px;`
-
-const GlobeImg = styled.div`
-  width: 25px;
-  background-color: yellow;
-  text-align: right;
-`
+const Img = styled.img`width: 30px;`
 
 const NewsBox = styled.ul`
-  padding: 0px 25px 10px 35px;
+  padding: 0px 25px 10px 0px;
   font-size: 12px;
   margin-bottom: 5px;
+
+  @media (max-width: 992px) and (min-width: 767px) {
+    font-size: 10px;
+  }
+  @media (max-width: 767px) {
+    font-size: 16px;
+  }
 `
 
 const ListItems = styled.li`
@@ -49,30 +61,28 @@ const NewsMore = styled.div`
   padding-bottom: 15px;
 `
 
-const NewsDate = styled.div`
+const NewsDate = styled.span`
   color: #0b3861;
   padding-right: 10px;
-  margin-bottom: 5px;
 `
 
-const NewsContent = styled.div`padding-right: 10px;`
-const NewsSource = styled.div`color: #0b3861;`
-const NewsTitle = "DICTY NEWS"
+const NewsContent = styled.span`padding-right: 10px;`
+const NewsSource = styled.span`color: #0b3861;`
+const NewsTitle = styled.span`padding-left: 5px;`
 
-const News = props => {
+const News = (props: { posts: Array<any> }) => {
   const text = props.posts.map(post =>
     <ListItems key={post.id}>
       <NewsDate>
         {post.date}
       </NewsDate>
+      <NewsContent>
+        {renderHTML(post.content)}
+      </NewsContent>
       <NewsSource>
+        <strong>Source:</strong>&nbsp;
         {post.source}
       </NewsSource>
-      <NewsContent>
-        <type>
-          {post.content}
-        </type>
-      </NewsContent>
     </ListItems>,
   )
 
@@ -89,7 +99,8 @@ const News = props => {
             </a>
           </Box>
           <Box px={2} py={1} width={9 / 10}>
-            {NewsTitle}
+            <Octicon name="globe" mega />
+            <NewsTitle>DICTY NEWS</NewsTitle>
           </Box>
         </Flex>
       </Header>
@@ -99,8 +110,9 @@ const News = props => {
         </ul>
       </NewsBox>
       <NewsMore>
+        <Octicon name="plus" /> &nbsp;
         <a href="" alt="more news">
-          {" "}more news{" "}
+          more news{" "}
         </a>
       </NewsMore>
     </Container>
