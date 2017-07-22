@@ -3,7 +3,7 @@ import React from "react"
 import { Flex, Box } from "grid-styled"
 import twitterLogo from "./images/twitterLogo.png"
 import FontAwsome from "react-fontawesome"
-import renderHTML from "react-render-html"
+
 import {
   Container,
   Header,
@@ -34,11 +34,11 @@ const News = (props: {
         {post.date}
       </NewsDate>
       <NewsContent>
-        {renderHTML(post.content)}
+        <Danger dangerouslySetInnerHTML={{ __html: post.content }} />
       </NewsContent>
       <NewsSource>
         <SourceTitle>Source:</SourceTitle>
-        <Danger dangerouslySetInnerHTML={{ __html: post.source }} />
+        {post.source}
       </NewsSource>
     </ListItems>,
   )
