@@ -11,17 +11,17 @@
     "lint-staged": "^4.0.1",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
+    "react-fontawesome": "^1.6.1",
+    "react-icons": "^2.2.5",
     "react-styleguidist": "^5.5.4",
+    "react-test-renderer": "^15.6.1",
     "styled-components": "^2.1.0"
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,json,css}": [
-      "prettier --single-quote --write",
-      "git add"
-    ]
+    "src/**/*.{js,jsx,json,css}": ["prettier --single-quote --write", "git add"]
   },
   "devDependencies": {
-    "enzyme": "^2.8.2",
+    "enzyme": "^2.9.1",
     "eslint-config-prettier": "^2.3.0",
     "eslint-plugin-prettier": "^2.1.2",
     "prettier": "^1.5.2",
@@ -29,6 +29,7 @@
     "react-scripts": "1.0.8"
   },
   "scripts": {
+    "prettier": "prettier --version",
     "precommit": "lint-staged",
     "flow": "flow",
     "styleguide": "styleguidist server",
