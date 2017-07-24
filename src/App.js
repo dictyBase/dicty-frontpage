@@ -8,7 +8,7 @@ import Slideshow from "./Components/Slideshow"
 import News from "./Components/News"
 //import { navItems } from "./constants/navbar"
 import "./App.css"
-import data from "././Components/News.json"
+import data from "./Components/News.json"
 
 const images = [
   "https://i.ytimg.com/vi/uXdzuz5Q-hs/maxresdefault.jpg",
