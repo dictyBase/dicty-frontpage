@@ -7,7 +7,7 @@ import styled from "styled-components"
 import Slideshow from "./Components/Slideshow"
 import News from "./Components/News"
 import { navItems } from "./constants/navbar"
-import news from "./data/news.js"
+import news from "./data/news"
 
 const images = [
   "https://i.ytimg.com/vi/uXdzuz5Q-hs/maxresdefault.jpg",
@@ -40,7 +40,7 @@ class App extends Component {
               <Slideshow images={images} />
             </Item>
             <Item>
-              <News posts={news["news"].slice(0, 3)} />
+              <News posts={news.slice(0, 3)} />
             </Item>
           </Container>
         </Flex>
