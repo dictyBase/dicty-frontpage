@@ -20,7 +20,13 @@ import {
   Danger,
 } from "./styles"
 
+/**
+ * The News component that will be displayed on the right in every
+ * react web application of [dictyBase](http://dictybase.org).
+ */
+
 const News = (props: {
+  /** List of news items */
   posts: Array<{
     "id": number,
     "date": number,
