@@ -3,12 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "dicty-components-header-footer": "github:dictybase/dicty-components-header-footer",
-    "dicty-components-navbar": "github:dictybase/dicty-components-navbar",
+    "dicty-components-header-footer": "github:dictyBase/dicty-components-header-footer",
+    "dicty-components-navbar": "github:dictyBase/dicty-components-navbar",
     "flow-bin": "^0.49.1",
     "grid-styled": "^2.0.0-7",
     "husky": "^0.14.3",
     "lint-staged": "^4.0.1",
+    "raw-loader": "^0.5.1",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-fontawesome": "^1.6.1",
@@ -18,7 +19,10 @@
     "styled-components": "^2.1.0"
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,json,css}": ["prettier --single-quote --write", "git add"]
+    "src/**/*.{js,jsx,json,css}": [
+      "prettier --single-quote --write",
+      "git add"
+    ]
   },
   "devDependencies": {
     "enzyme": "^2.9.1",
