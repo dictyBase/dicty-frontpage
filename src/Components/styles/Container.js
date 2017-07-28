@@ -11,7 +11,7 @@ const ContainerStyle = styled.div`
   border-radius: 15px;
   margin-top: 10px;
   margin-bottom: 10px;
-  margin-left: 1px;
+  margin-left: 15px;
 `
 
 const Container = ({ children, ...props }) =>
