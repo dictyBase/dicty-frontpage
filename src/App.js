@@ -1,13 +1,14 @@
 // @flow
 import React, { Component } from "react"
 import { Flex } from "grid-styled"
-import { Header } from "dicty-components-header-footer"
+import { Header, Footer } from "dicty-components-header-footer"
 import { Navbar } from "dicty-components-navbar"
 import styled from "styled-components"
 import Slideshow from "./Components/Slideshow"
 import News from "./Components/News"
 import { navItems } from "./constants/navbar"
 import news from "./data/news"
+import items from "./data/footer"
 
 const images = [
   "https://i.ytimg.com/vi/uXdzuz5Q-hs/maxresdefault.jpg",
@@ -21,7 +22,8 @@ const Container = styled.div`
   flex-direction: row;
   row-wrap: wrap;
   height: 50%;
-  width: 100%;
+  width: 90%;
+  margin: auto;
 `
 const Item = styled.div`
   width: 50%;
@@ -44,6 +46,7 @@ class App extends Component {
             </Item>
           </Container>
         </Flex>
+        <Footer items={items} />
       </div>
     )
   }
