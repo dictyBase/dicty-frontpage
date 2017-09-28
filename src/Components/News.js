@@ -34,8 +34,8 @@ const News = (props: {
     "source": string,
   }>,
 }) => {
-  const text = props.posts.map(post =>
-    <ListItems key={post.id}>
+  const text = props.posts.map((post, index) =>
+    <ListItems key={index}>
       <NewsDate>
         {post.date}
       </NewsDate>
