@@ -5,7 +5,7 @@ const Container = styled.div`
   position: relative;
   overflow: hidden;
   width: 100%;
-  height: 100%;
+  height: 85%;
   background: ${props =>
     props.theme.background ? props.theme.background : "black"};
   margin-top: 10px;
