@@ -110,7 +110,6 @@ export default class Slideshow extends Component {
     })
   }
   start = () => {
-    const { time } = this.props
     setInterval(() => {
       this.next()
     }, this.props.time ? this.props.time : 20000)
