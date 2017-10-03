@@ -20,7 +20,10 @@ const Carousel = styled.div`
   width: 100%;
   height: 100%;
 `
-const ImageContainer = styled.div`min-width: 100%;`
+const ImageContainer = styled.div`
+min-width: 100%;
+max-width: 100%
+`
 const Slide = styled.img`
   object-fit: contain;
   max-width: 100%;

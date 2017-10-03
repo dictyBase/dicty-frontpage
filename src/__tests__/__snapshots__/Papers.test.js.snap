@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`News snapshot test 1`] = `
+exports[`Papers snapshot test 1`] = `
 <div
   className="sc-ifAKCX fDGiVY"
 >
   <div
-    className="sc-gzVnrw dHhgkN"
+    className="sc-htoDjs jZuqdH"
   >
     <div
       className="sc-htpNat jtWIOA sc-bdVaJa iHZvIS"
@@ -27,21 +27,21 @@ exports[`News snapshot test 1`] = `
     </div>
   </div>
   <ul
-    className="sc-htoDjs jFTgGb"
+    className="sc-iwsKbI ZIKrF"
   >
     <li
-      className="sc-dnqmqq jMUBvU"
+      className="sc-gqjmRU bimEIq"
     >
       <span
-        className="sc-gZMcBi epTArD"
+        className="sc-jTzLTM iFsAid"
       >
         Xie X, Gutierrez A, Trofimov V, Szilágyi I, Soldati T, Bakker E.
       </span>
       <span
-        className="sc-VigVT huEEAN"
+        className="sc-jzJRlG gcDScp"
       >
         <span
-          className="sc-cSHVUG jwveCJ"
+          className="sc-kGXeez lcKMhk"
           dangerouslySetInnerHTML={
             Object {
               "__html": "<strong><em>Charged Solvatochromic Dyes as Signal Transducers in pH Independent Fluorescent and Colorimetric Ion Selective Nanosensors.</em></strong>",
@@ -50,15 +50,15 @@ exports[`News snapshot test 1`] = `
         />
       </span>
       <span
-        className="sc-gqjmRU cBdDLr"
+        className="sc-fjdhpX iwGYHP"
       >
         <span
-          className="sc-jTzLTM ksGKBz"
+          className="sc-cSHVUG gUqckI"
         >
           Journal:
         </span>
         <span
-          className="sc-cSHVUG jwveCJ"
+          className="sc-kGXeez lcKMhk"
           dangerouslySetInnerHTML={
             Object {
               "__html": "Anal Chem. 2015 Sep 9.[Epub ahead of print] <a href='https://www.ncbi.nlm.nih.gov/pubmed/26352133' target='new'>Pubmed</a>",
@@ -68,18 +68,18 @@ exports[`News snapshot test 1`] = `
       </span>
     </li>
     <li
-      className="sc-dnqmqq jMUBvU"
+      className="sc-gqjmRU bimEIq"
     >
       <span
-        className="sc-gZMcBi epTArD"
+        className="sc-jTzLTM iFsAid"
       >
         Schmith A, Spaller T, Gaube F, Fransson Å, Boesler B, Ojha S, Nellen W, Hammann C, Söderbom F, Winckler T.
       </span>
       <span
-        className="sc-VigVT huEEAN"
+        className="sc-jzJRlG gcDScp"
       >
         <span
-          className="sc-cSHVUG jwveCJ"
+          className="sc-kGXeez lcKMhk"
           dangerouslySetInnerHTML={
             Object {
               "__html": "<strong><em>A host factor supports retrotransposition of the TRE5-A population in Dictyostelium cells by suppressing an Argonaute protein.</em></strong>",
@@ -88,15 +88,15 @@ exports[`News snapshot test 1`] = `
         />
       </span>
       <span
-        className="sc-gqjmRU cBdDLr"
+        className="sc-fjdhpX iwGYHP"
       >
         <span
-          className="sc-jTzLTM ksGKBz"
+          className="sc-cSHVUG gUqckI"
         >
           Journal:
         </span>
         <span
-          className="sc-cSHVUG jwveCJ"
+          className="sc-kGXeez lcKMhk"
           dangerouslySetInnerHTML={
             Object {
               "__html": "Mob DNA. 2015;6:14. doi: 10.1186/s13100-015-0045-5. <a href='https://www.ncbi.nlm.nih.gov/pubmed/26339297' target='new'>Pubmed</a> ",
@@ -106,18 +106,18 @@ exports[`News snapshot test 1`] = `
       </span>
     </li>
     <li
-      className="sc-dnqmqq jMUBvU"
+      className="sc-gqjmRU bimEIq"
     >
       <span
-        className="sc-gZMcBi epTArD"
+        className="sc-jTzLTM iFsAid"
       >
         Von Bülow J, Beitz E.
       </span>
       <span
-        className="sc-VigVT huEEAN"
+        className="sc-jzJRlG gcDScp"
       >
         <span
-          className="sc-cSHVUG jwveCJ"
+          className="sc-kGXeez lcKMhk"
           dangerouslySetInnerHTML={
             Object {
               "__html": "<strong><em>Number and Regulation of Protozoan Aquaporins Reflect Environmental Complexity.</em></strong>",
@@ -126,15 +126,15 @@ exports[`News snapshot test 1`] = `
         />
       </span>
       <span
-        className="sc-gqjmRU cBdDLr"
+        className="sc-fjdhpX iwGYHP"
       >
         <span
-          className="sc-jTzLTM ksGKBz"
+          className="sc-cSHVUG gUqckI"
         >
           Journal:
         </span>
         <span
-          className="sc-cSHVUG jwveCJ"
+          className="sc-kGXeez lcKMhk"
           dangerouslySetInnerHTML={
             Object {
               "__html": "Biol Bull. 2015 Aug;229(1):38-46. <a href='https://www.ncbi.nlm.nih.gov/pubmed/26338868' target='new'>Pubmed</a> ",
@@ -144,18 +144,18 @@ exports[`News snapshot test 1`] = `
       </span>
     </li>
     <li
-      className="sc-dnqmqq jMUBvU"
+      className="sc-gqjmRU bimEIq"
     >
       <span
-        className="sc-gZMcBi epTArD"
+        className="sc-jTzLTM iFsAid"
       >
         Santarriaga S, Petersen A, Ndukwe K, Brandt A, Gerges N, Scaglione JB, Scaglione KM.
       </span>
       <span
-        className="sc-VigVT huEEAN"
+        className="sc-jzJRlG gcDScp"
       >
         <span
-          className="sc-cSHVUG jwveCJ"
+          className="sc-kGXeez lcKMhk"
           dangerouslySetInnerHTML={
             Object {
               "__html": "<strong><em>The Social Amoeba Dictyostelium discoideum is Highly Resistant to Polyglutamine Aggregation.</em></strong>",
@@ -164,15 +164,15 @@ exports[`News snapshot test 1`] = `
         />
       </span>
       <span
-        className="sc-gqjmRU cBdDLr"
+        className="sc-fjdhpX iwGYHP"
       >
         <span
-          className="sc-jTzLTM ksGKBz"
+          className="sc-cSHVUG gUqckI"
         >
           Journal:
         </span>
         <span
-          className="sc-cSHVUG jwveCJ"
+          className="sc-kGXeez lcKMhk"
           dangerouslySetInnerHTML={
             Object {
               "__html": "J Biol Chem. 2015 Sep 1. doi:pii: jbc.M115.676247. [Epub ahead of print]<a href='https://www.ncbi.nlm.nih.gov/pubmed/26338868' target='new'>Pubmed</a> ",
@@ -182,18 +182,18 @@ exports[`News snapshot test 1`] = `
       </span>
     </li>
     <li
-      className="sc-dnqmqq jMUBvU"
+      className="sc-gqjmRU bimEIq"
     >
       <span
-        className="sc-gZMcBi epTArD"
+        className="sc-jTzLTM iFsAid"
       >
         Kim MK, Kim JH, Kim JS, Kang SO.
       </span>
       <span
-        className="sc-VigVT huEEAN"
+        className="sc-jzJRlG gcDScp"
       >
         <span
-          className="sc-cSHVUG jwveCJ"
+          className="sc-kGXeez lcKMhk"
           dangerouslySetInnerHTML={
             Object {
               "__html": "<strong><em>Structure of the 34 kDa F-actin-bundling protein ABP34 from Dictyostelium discoideum.</em></strong>",
@@ -202,15 +202,15 @@ exports[`News snapshot test 1`] = `
         />
       </span>
       <span
-        className="sc-gqjmRU cBdDLr"
+        className="sc-fjdhpX iwGYHP"
       >
         <span
-          className="sc-jTzLTM ksGKBz"
+          className="sc-cSHVUG gUqckI"
         >
           Journal:
         </span>
         <span
-          className="sc-cSHVUG jwveCJ"
+          className="sc-kGXeez lcKMhk"
           dangerouslySetInnerHTML={
             Object {
               "__html": "Acta Crystallogr D Biol Crystallogr. 2015 Sep 1;71(Pt 9):1835-49. doi: 10.1107/S139900471501264X. Epub 2015 Aug 25. <a href='https://www.ncbi.nlm.nih.gov/pubmed/26338868' target='new'>Pubmed</a> ",
@@ -221,7 +221,7 @@ exports[`News snapshot test 1`] = `
     </li>
   </ul>
   <div
-    className="sc-iwsKbI cricEg"
+    className="sc-VigVT cGFCFH"
   >
     <span
       aria-hidden={true}

@@ -1,0 +1,102 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Popular snapshot test 1`] = `
+<div
+  className="sc-htpNat jtWIOA sc-bdVaJa iHZvIS"
+  is={null}
+>
+  <div
+    className="sc-dnqmqq dHUrSx"
+  >
+    Most popular tools and sections
+  </div>
+  <ul
+    className="sc-gZMcBi fkJMFZ"
+  >
+    <li
+      className="sc-gqjmRU bimEIq"
+    >
+      <a
+        alt="techniques"
+        className="sc-gzVnrw gtQbCF"
+        href="#"
+      >
+        <img
+          className="sc-kgoBCf cwdGbW"
+          src="widgetTECHNIQUES.png"
+        />
+      </a>
+    </li>
+    <li
+      className="sc-gqjmRU bimEIq"
+    >
+      <a
+        alt="genome browser"
+        className="sc-gzVnrw gtQbCF"
+        href="#"
+      >
+        <img
+          className="sc-kgoBCf cwdGbW"
+          src="widgetGBROWSER.png"
+        />
+      </a>
+    </li>
+    <li
+      className="sc-gqjmRU bimEIq"
+    >
+      <a
+        alt="learn dicty"
+        className="sc-gzVnrw gtQbCF"
+        href="#"
+      >
+        <img
+          className="sc-kgoBCf cwdGbW"
+          src="widgetLEARNDICTY.png"
+        />
+      </a>
+    </li>
+    <li
+      className="sc-gqjmRU bimEIq"
+    >
+      <a
+        alt="dicty stats"
+        className="sc-gzVnrw gtQbCF"
+        href="#"
+      >
+        <img
+          className="sc-kgoBCf cwdGbW"
+          src="widgetSTATS.png"
+        />
+      </a>
+    </li>
+    <li
+      className="sc-gqjmRU bimEIq"
+    >
+      <a
+        alt="jobs @ dicty"
+        className="sc-gzVnrw gtQbCF"
+        href="#"
+      >
+        <img
+          className="sc-kgoBCf cwdGbW"
+          src="widgetJOBS.png"
+        />
+      </a>
+    </li>
+    <li
+      className="sc-gqjmRU bimEIq"
+    >
+      <a
+        alt="dicty express"
+        className="sc-gzVnrw gtQbCF"
+        href="#"
+      >
+        <img
+          className="sc-kgoBCf cwdGbW"
+          src="widgetDICTYEXPRESS.png"
+        />
+      </a>
+    </li>
+  </ul>
+</div>
+`;

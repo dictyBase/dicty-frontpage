@@ -21,7 +21,7 @@ module.exports = [
     author: "Santarriaga S, Petersen A, Ndukwe K, Brandt A, Gerges N, Scaglione JB, Scaglione KM.",
     title:
     "<strong><em>The Social Amoeba Dictyostelium discoideum is Highly Resistant to Polyglutamine Aggregation.</em></strong>",
-    journal: "J Biol Chem. 2015 Sep 1. doi:pii: jbc.M115.676247. [Epub ahead of print]<a href='https://www.ncbi.nlm.nih.gov/pubmed/26338868' target='new'>Pubmed</a> ",
+    journal: "J Biol Chem. 2015 Sep 1. doi:pii: jbc.M115.676247. [Epub ahead of print] <a href='https://www.ncbi.nlm.nih.gov/pubmed/26338868' target='new'>Pubmed</a> ",
   },
   {
     author: "Kim MK, Kim JH, Kim JS, Kang SO.",

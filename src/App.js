@@ -1,15 +1,17 @@
 // @flow
 import React, { Component } from "react"
-import { Flex } from "grid-styled"
+import { Flex, Box } from "grid-styled"
 import { Header, Footer } from "dicty-components-header-footer"
 import { Navbar } from "dicty-components-navbar"
 import styled from "styled-components"
 import Slideshow from "./Components/Slideshow"
 import News from "./Components/News"
 import Papers from "./Components/Papers"
+import Popular from "./Components/Popular"
 import { navItems } from "./constants/navbar"
 import news from "./data/news"
 import papers from "./data/papers"
+import widgets from "./data/widgets"
 import items from "./data/footer"
 
 
@@ -55,9 +57,15 @@ class App extends Component {
         </Flex>
         <Flex>
           <Container>
-            <Item>
-              <Papers papers={papers.slice(0, 5)} />
-            </Item>
+            <Box px={2} py={1} width={10 / 20}>
+                <Papers papers={papers.slice(0, 5)} />
+            </Box> 
+            <Box px={2} py={1} width={5 / 20}>
+                <Popular widgets={widgets}/>
+            </Box> 
+            <Box px={2} py={1} width={5 / 20}>
+
+            </Box> 
           </Container>            
         </Flex>
         <Footer items={items} />
@@ -67,3 +75,4 @@ class App extends Component {
 }
 
 export default App
+
