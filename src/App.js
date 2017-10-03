@@ -56,7 +56,7 @@ class App extends Component {
         <Flex>
           <Container>
             <Item>
-              <Papers papers={papers.slice(0, 3)} />
+              <Papers papers={papers.slice(0, 5)} />
             </Item>
           </Container>            
         </Flex>

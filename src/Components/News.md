@@ -85,7 +85,7 @@
       }
     ]
   },
-  "src/Components/styles/Container.js": {
+  "src/Components/styles/NewsContainer.js": {
     "description": "",
     "methods": []
   },

@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 
-const NewsBoxStyle = styled.ul`
+const ListBoxStyle = styled.ul`
   padding: 0px 25px 10px 35px;
   font-size: 12px;
   margin-bottom: 5px;
@@ -13,9 +13,9 @@ const NewsBoxStyle = styled.ul`
   }
 `
 
-const NewsBox = ({ children, ...props }) =>
-  <NewsBoxStyle {...props}>
+const ListBox = ({ children, ...props }) =>
+  <ListBoxStyle {...props}>
     {children}
-  </NewsBoxStyle>
+  </ListBoxStyle>
 
-export default NewsBox
+export default ListBox
