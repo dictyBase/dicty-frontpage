@@ -1,22 +1,20 @@
 import React from "react"
 import styled from "styled-components"
 
-const ContainerStyle = styled.div`
+const PaperContainerStyle = styled.div`
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   line-height: 1.428;
   text-align: left;
   padding-left: 10px;
   padding-right: 10px;
-  background-color: #f2f2f2;
+  background-color: #eff8fb;
   border-radius: 15px;
-  margin-top: 10px;
   margin-bottom: 10px;
-  margin-left: 15px;
-`
+  `
 
-const Container = ({ children, ...props }) =>
-  <ContainerStyle {...props}>
+const PaperContainer = ({ children, ...props }) =>
+  <PaperContainerStyle {...props}>
     {children}
-  </ContainerStyle>
+  </PaperContainerStyle>
 
-export default Container
+export default PaperContainer

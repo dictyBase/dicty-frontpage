@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 
-const NewsMoreStyle = styled.div`
+const MoreLinkStyle = styled.div`
   color: #0b3861;
   font-size: 11px;
   font-style: italic;
@@ -11,9 +11,9 @@ const NewsMoreStyle = styled.div`
   padding-bottom: 15px;
 `
 
-const NewsMore = ({ children, ...props }) =>
-  <NewsMoreStyle {...props}>
+const MoreLink = ({ children, ...props }) =>
+  <MoreLinkStyle {...props}>
     {children}
-  </NewsMoreStyle>
+  </MoreLinkStyle>
 
-export default NewsMore
+export default MoreLink

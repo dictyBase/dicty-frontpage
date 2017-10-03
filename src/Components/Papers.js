@@ -1,55 +1,54 @@
 // @flow
 import React from "react"
-import { Flex, Box } from "grid-styled"
+import { Flex } from "grid-styled"
 import FontAwsome from "react-fontawesome"
 
 import {
-  Container,
+  PaperContainer,
+  PaperTitle,
   Header,
-  NewsBox,
+  ListBox,
   ListItems,
-  NewsDate,
-  NewsContent,
-  NewsSource,
+  LeadText,
+  MainContent,
+  SourceContent,
   SourceTitle,
   Link,
-  NewsMore,
+  MoreLink,
   Danger,
 } from "./styles"
 
-import PaperTitle from "./styles/PaperTitle"
-
 /**
- * The News component that will be displayed on the right in every
+ * The Papers component that will be displayed on the right in every
  * react web application of [dictyBase](http://dictybase.org).
  */
 
 const Papers = (props: {
-  /** List of news items */
-  posts: Array<{
+  /** List of paper items */
+  papers: Array<{
     "id": number,
-    "date": number,
-    "content": string,
-    "source": string,
+    "author": string,
+    "title": string,
+    "journal": string,
   }>,
 }) => {
   const text = props.papers.map((paper, index) =>
     <ListItems key={index}>
-      <NewsDate>
+      <LeadText>
         {paper.author}
-      </NewsDate>
-      <NewsContent>
+      </LeadText>
+      <MainContent>
         <Danger dangerouslySetInnerHTML={{ __html: paper.title }} />
-      </NewsContent>
-      <NewsSource>
+      </MainContent>
+      <SourceContent>
         <SourceTitle>Journal:</SourceTitle>
         <Danger dangerouslySetInnerHTML={{ __html: paper.journal }} />
-      </NewsSource>
+      </SourceContent>
     </ListItems>,
   )
 
   return (
-    <Container>
+    <PaperContainer>
       <Header>
         <Flex wrap>
             <PaperTitle>
@@ -60,16 +59,16 @@ const Papers = (props: {
             </PaperTitle>
         </Flex>
       </Header>
-      <NewsBox>
+      <ListBox>
         {text}
-      </NewsBox>
-      <NewsMore>
+      </ListBox>
+      <MoreLink>
         <FontAwsome name="plus" />
-        <Link href="" alt="more news">
+        <Link href="" alt="more papers">
           {" "}more papers{" "}
         </Link>
-      </NewsMore>
-    </Container>
+      </MoreLink>
+    </PaperContainer>
   )
 }
 

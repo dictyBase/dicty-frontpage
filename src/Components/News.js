@@ -6,16 +6,16 @@ import FontAwsome from "react-fontawesome"
 
 
 import {
-  Container,
+  NewsContainer,
   Header,
-  NewsBox,
+  ListBox,
   ListItems,
-  NewsDate,
-  NewsContent,
-  NewsSource,
+  LeadText,
+  MainContent,
+  SourceContent,
   SourceTitle,
   Link,
-  NewsMore,
+  MoreLink,
   NewsTitle,
   Img,
   Danger,
@@ -37,21 +37,21 @@ const News = (props: {
 }) => {
   const text = props.posts.map((post, index) =>
     <ListItems key={index}>
-      <NewsDate>
+      <LeadText>
         {post.date}
-      </NewsDate>
-      <NewsContent>
+      </LeadText>
+      <MainContent>
         <Danger dangerouslySetInnerHTML={{ __html: post.content }} />
-      </NewsContent>
-      <NewsSource>
+      </MainContent>
+      <SourceContent>
         <SourceTitle>Source:</SourceTitle>
         {post.source}
-      </NewsSource>
+      </SourceContent>
     </ListItems>,
   )
 
   return (
-    <Container>
+    <NewsContainer>
       <Header>
         <Flex wrap>
           <Box px={2} py={1} width={1 / 10}>
@@ -68,16 +68,16 @@ const News = (props: {
           </Box>
         </Flex>
       </Header>
-      <NewsBox>
+      <ListBox>
         {text}
-      </NewsBox>
-      <NewsMore>
+      </ListBox>
+      <MoreLink>
         <FontAwsome name="plus" />
         <Link href="" alt="more news">
           {" "}more news{" "}
         </Link>
-      </NewsMore>
-    </Container>
+      </MoreLink>
+    </NewsContainer>
   )
 }
 
