@@ -4,6 +4,7 @@ import { Flex, Box } from "grid-styled"
 import twitterLogo from "./images/twitterLogo.png"
 import FontAwsome from "react-fontawesome"
 
+
 import {
   Container,
   Header,

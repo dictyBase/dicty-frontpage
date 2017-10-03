@@ -6,9 +6,12 @@ import { Navbar } from "dicty-components-navbar"
 import styled from "styled-components"
 import Slideshow from "./Components/Slideshow"
 import News from "./Components/News"
+import Papers from "./Components/Papers"
 import { navItems } from "./constants/navbar"
 import news from "./data/news"
+import papers from "./data/papers"
 import items from "./data/footer"
+
 
 const images = [
   "https://i.ytimg.com/vi/uXdzuz5Q-hs/maxresdefault.jpg",
@@ -34,8 +37,12 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header downloads="" cite="" info="" />
-        <Navbar items={navItems} theme={{}} />
+        <Container>
+          <Header downloads="" cite="" info="" />
+        </Container>
+        <Container>          
+          <Navbar items={navItems} theme={{}} />
+        </Container>
         <Flex>
           <Container>
             <Item>
@@ -45,6 +52,13 @@ class App extends Component {
               <News posts={news.slice(0, 3)} />
             </Item>
           </Container>
+        </Flex>
+        <Flex>
+          <Container>
+            <Item>
+              <Papers papers={papers.slice(0, 3)} />
+            </Item>
+          </Container>            
         </Flex>
         <Footer items={items} />
       </div>
