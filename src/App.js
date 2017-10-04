@@ -8,10 +8,12 @@ import Slideshow from "./Components/Slideshow"
 import News from "./Components/News"
 import Papers from "./Components/Papers"
 import Popular from "./Components/Popular"
+import Annotations from "./Components/Annotations"
 import { navItems } from "./constants/navbar"
 import news from "./data/news"
 import papers from "./data/papers"
 import widgets from "./data/widgets"
+import annotations from "./data/annotations"
 import items from "./data/footer"
 
 
@@ -57,13 +59,15 @@ class App extends Component {
         </Flex>
         <Flex>
           <Container>
-            <Box px={2} py={1} width={10 / 20}>
+            <Box px={2} py={1} mt={-2} width={10 / 20}>
                 <Papers papers={papers.slice(0, 5)} />
             </Box> 
-            <Box px={2} py={1} width={5 / 20}>
-                <Popular widgets={widgets}/>
+            <Box px={2} py={1} mt={-2} width={5 / 20}>
+                  <Popular widgets={widgets}/>
             </Box> 
-            <Box px={2} py={1} width={5 / 20}>
+            <Box px={2} py={1} mt={-2} ml={-2} width={5 / 20}>
+                  <Annotations annotations={annotations}/> 
+                  <Annotations annotations={annotations}/>  
 
             </Box> 
           </Container>            

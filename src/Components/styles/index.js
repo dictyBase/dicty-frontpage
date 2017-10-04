@@ -1,5 +1,8 @@
 export { default as NewsContainer } from "./NewsContainer"
 export { default as PaperContainer } from "./PaperContainer"
+export { default as AnnotationContainer } from "./AnnotationContainer"
+export { default as AnnotationHeader } from "./AnnotationHeader"
+export { default as AnnotationTitle } from "./AnnotationTitle"
 export { default as PaperTitle } from "./PaperTitle"
 export { default as Link } from "./Link"
 export { default as WidgetLink } from "./WidgetLink"
