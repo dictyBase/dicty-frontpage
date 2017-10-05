@@ -1,17 +1,17 @@
 // @flow
 import React from "react"
-import { Flex , Box} from "grid-styled"
+import { Box} from "grid-styled"
 import FontAwsome from "react-fontawesome"
 import styled from "styled-components"
 
 import {
   AnnotationTitle,
+  AnnotationSubTitle,
   AnnotationHeader,
-  WidgetListBox,
-  ListItems,
-  WidgetLink,
-  WidgetImg,
-  AnnotationContainer
+  ListBox,
+  AnnotationListItems,
+  AnnotationContainer,
+  MoreLink
 } from "./styles"
 
 
@@ -25,10 +25,16 @@ margin: auto;
 
 
 const Annotations = (props) => {
-  const annotationlist = props.annotations.genes.map((gene, index) =>
-    <ListItems key={index}>
+  const genelist = props.annotations.genes.map((gene, index) =>
+    <AnnotationListItems key={index}>
         {gene}
-    </ListItems>,
+    </AnnotationListItems>,
+  )
+
+  const paperlist = props.annotations.papers.map((paper, index) =>
+    <AnnotationListItems key={index}>
+        {paper}
+    </AnnotationListItems>,
   )
 
   return (
@@ -41,14 +47,26 @@ const Annotations = (props) => {
             </AnnotationHeader>
             <Container>
                 <Box px={2} py={1} mt={-2} width={1 / 2}>
-                    <WidgetListBox>
-                      {annotationlist}
-                    </WidgetListBox>                      
+                    <AnnotationSubTitle>
+                      Genes
+                    </AnnotationSubTitle>
+                    <ListBox margintop="0px" padbottom="0px">
+                      {genelist}
+                    </ListBox>  
+                    <MoreLink padbottom="0px" padleft="10px">
+                      <FontAwsome name="plus fa-xs" />
+                    </MoreLink>         
                 </Box> 
                 <Box px={2} py={1} mt={-2} width={1 / 2}>
-                    <WidgetListBox>
-                      {annotationlist}
-                    </WidgetListBox> 
+                    <AnnotationSubTitle>
+                      Papers
+                    </AnnotationSubTitle>                
+                    <ListBox margintop="0px" padbottom="0px">
+                      {paperlist}
+                    </ListBox> 
+                    <MoreLink padbottom="0px" padleft="10px">
+                      <FontAwsome name="plus fa-xs" />
+                    </MoreLink>                     
                 </Box> 
             </Container>
       </AnnotationContainer>

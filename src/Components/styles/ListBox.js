@@ -5,6 +5,8 @@ const ListBoxStyle = styled.ul`
   padding: 0px 25px 10px 35px;
   font-size: 12px;
   margin-bottom: 5px;
+  padding-bottom: ${props => (props.padbottom ? props.padbottom : "10px")};
+  margin-top: ${props => (props.margintop ? props.margintop : "12px")};
   @media (max-width: 992px) and (min-width: 767px) {
     font-size: 10px;
   }

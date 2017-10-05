@@ -7,8 +7,8 @@ const MoreLinkStyle = styled.div`
   font-style: italic;
   font-weight: normal;
   text-align: center;
-  padding-top: 5px;
-  padding-bottom: 15px;
+  padding-left: ${props => (props.padleft ? props.padleft : "0px")};
+  padding-bottom: ${props => (props.padbottom ? props.padbottom : "15px")};
 `
 
 const MoreLink = ({ children, ...props }) =>
