@@ -2,8 +2,9 @@ import React from "react"
 import styled from "styled-components"
 
 const SourceTitleStyle = styled.span`
-  padding-right: 5px;
+  padding-top: 7px;
   font-weight: bold;
+  text-align: center;
 `
 
 const SourceTitle = ({ children, ...props }) =>

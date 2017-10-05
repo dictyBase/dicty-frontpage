@@ -53,7 +53,7 @@ const Annotations = (props) => {
                     <ListBox margintop="0px" padbottom="0px">
                       {genelist}
                     </ListBox>  
-                    <MoreLink padbottom="0px" padleft="10px">
+                    <MoreLink padbottom="0px">
                       <FontAwsome name="plus fa-xs" />
                     </MoreLink>         
                 </Box> 
@@ -64,7 +64,7 @@ const Annotations = (props) => {
                     <ListBox margintop="0px" padbottom="0px">
                       {paperlist}
                     </ListBox> 
-                    <MoreLink padbottom="0px" padleft="10px">
+                    <MoreLink padbottom="0px">
                       <FontAwsome name="plus fa-xs" />
                     </MoreLink>                     
                 </Box> 

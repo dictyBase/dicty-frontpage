@@ -6,93 +6,93 @@ exports[`Popular snapshot test 1`] = `
   is={null}
 >
   <div
-    className="sc-dnqmqq dHUrSx"
+    className="sc-kAzzGY jkKYPj"
   >
     Most popular tools and sections
   </div>
   <ul
-    className="sc-gZMcBi fkJMFZ"
+    className="sc-kGXeez zXHmw"
   >
     <li
-      className="sc-gqjmRU bimEIq"
+      className="sc-kpOJdX ePgMLh"
     >
       <a
         alt="techniques"
-        className="sc-gzVnrw gtQbCF"
+        className="sc-jzJRlG dgnxMl"
         href="#"
       >
         <img
-          className="sc-kgoBCf cwdGbW"
+          className="sc-iAyFgw cisTwt"
           src="widgetTECHNIQUES.png"
         />
       </a>
     </li>
     <li
-      className="sc-gqjmRU bimEIq"
+      className="sc-kpOJdX ePgMLh"
     >
       <a
         alt="genome browser"
-        className="sc-gzVnrw gtQbCF"
+        className="sc-jzJRlG dgnxMl"
         href="#"
       >
         <img
-          className="sc-kgoBCf cwdGbW"
+          className="sc-iAyFgw cisTwt"
           src="widgetGBROWSER.png"
         />
       </a>
     </li>
     <li
-      className="sc-gqjmRU bimEIq"
+      className="sc-kpOJdX ePgMLh"
     >
       <a
         alt="learn dicty"
-        className="sc-gzVnrw gtQbCF"
+        className="sc-jzJRlG dgnxMl"
         href="#"
       >
         <img
-          className="sc-kgoBCf cwdGbW"
+          className="sc-iAyFgw cisTwt"
           src="widgetLEARNDICTY.png"
         />
       </a>
     </li>
     <li
-      className="sc-gqjmRU bimEIq"
+      className="sc-kpOJdX ePgMLh"
     >
       <a
         alt="dicty stats"
-        className="sc-gzVnrw gtQbCF"
+        className="sc-jzJRlG dgnxMl"
         href="#"
       >
         <img
-          className="sc-kgoBCf cwdGbW"
+          className="sc-iAyFgw cisTwt"
           src="widgetSTATS.png"
         />
       </a>
     </li>
     <li
-      className="sc-gqjmRU bimEIq"
+      className="sc-kpOJdX ePgMLh"
     >
       <a
         alt="jobs @ dicty"
-        className="sc-gzVnrw gtQbCF"
+        className="sc-jzJRlG dgnxMl"
         href="#"
       >
         <img
-          className="sc-kgoBCf cwdGbW"
+          className="sc-iAyFgw cisTwt"
           src="widgetJOBS.png"
         />
       </a>
     </li>
     <li
-      className="sc-gqjmRU bimEIq"
+      className="sc-kpOJdX ePgMLh"
     >
       <a
         alt="dicty express"
-        className="sc-gzVnrw gtQbCF"
+        className="sc-jzJRlG dgnxMl"
         href="#"
       >
         <img
-          className="sc-kgoBCf cwdGbW"
+          className="sc-iAyFgw cisTwt"
           src="widgetDICTYEXPRESS.png"
         />
       </a>

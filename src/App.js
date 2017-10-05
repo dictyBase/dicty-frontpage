@@ -9,11 +9,13 @@ import News from "./Components/News"
 import Papers from "./Components/Papers"
 import Popular from "./Components/Popular"
 import Annotations from "./Components/Annotations"
+import StockCenter from "./Components/StockCenter"
 import { navItems } from "./constants/navbar"
 import news from "./data/news"
 import papers from "./data/papers"
 import widgets from "./data/widgets"
 import annotations from "./data/annotations"
+import stockcenter from "./data/stockcenter"
 import items from "./data/footer"
 
 
@@ -35,6 +37,7 @@ const Container = styled.div`
 const Item = styled.div`
   width: 50%;
   height: 400px;
+  padding: 8px 16px 8px 16px;
 `
 
 class App extends Component {
@@ -59,16 +62,15 @@ class App extends Component {
         </Flex>
         <Flex>
           <Container>
-            <Box px={2} py={1} mt={-2} width={10 / 20}>
+            <Box px={2} py={1} mt={-3} width={10 / 20}>
                 <Papers papers={papers.slice(0, 5)} />
             </Box> 
-            <Box px={2} py={1} mt={-2} width={5 / 20}>
+            <Box px={2} py={1} mt={-3} width={5 / 20}>
                   <Popular widgets={widgets}/>
             </Box> 
-            <Box px={2} py={1} mt={-2} ml={-2} width={5 / 20}>
-                  <Annotations annotations={annotations}/> 
+            <Box px={2} py={1} mt={-3} ml={-2} width={5 / 20}>
+                  <StockCenter stockcenter={stockcenter}/> 
                   <Annotations annotations={annotations}/>  
-
             </Box> 
           </Container>            
         </Flex>

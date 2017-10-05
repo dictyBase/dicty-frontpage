@@ -1,0 +1,104 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StockCenter snapshot test 1`] = `
+<div
+  className="sc-bxivhb dKDGug"
+>
+  <div
+    className="sc-EHOje glvWVV"
+  >
+    <span
+      aria-hidden={true}
+      className="fa fa-shopping-cart fa-md"
+    />
+    <span
+      className="sc-jKJlTe ddVBtl"
+    >
+      DICTY STOCK CENTER
+    </span>
+  </div>
+  <div
+    className="sc-bZQynM leuWTL"
+  >
+    New items
+  </div>
+  <div
+    className="sc-cSHVUG kmYtrK"
+  >
+    <div
+      className="sc-gzVnrw lfEvdn"
+    >
+      PLASMIDS
+    </div>
+    <ul
+      className="sc-jzJRlG bSWWzu"
+    >
+      <li
+        className="sc-iwsKbI dukjNo"
+      >
+        DBS0304455
+      </li>
+      <li
+        className="sc-iwsKbI dukjNo"
+      >
+        DSB0350408
+      </li>
+      <li
+        className="sc-iwsKbI dukjNo"
+      >
+        DBS0350326
+      </li>
+    </ul>
+    <div
+      className="sc-kgoBCf fagbkO"
+    >
+      <span
+        aria-hidden={true}
+        className="fa fa-plus fa-xs"
+      />
+    </div>
+  </div>
+  <div
+    className="sc-cSHVUG WqFJo"
+    color="white"
+  >
+    <div
+      className="sc-gzVnrw lfEvdn"
+    >
+      STRAINS
+    </div>
+    <ul
+      className="sc-jzJRlG bSWWzu"
+    >
+      <li
+        className="sc-iwsKbI dukjNo"
+      >
+        DBS0304455
+      </li>
+      <li
+        className="sc-iwsKbI dukjNo"
+      >
+        DSB0350408
+      </li>
+      <li
+        className="sc-iwsKbI dukjNo"
+      >
+        DBS0350326
+      </li>
+      <li
+        className="sc-iwsKbI dukjNo"
+      >
+        DBS0350435
+      </li>
+    </ul>
+    <div
+      className="sc-kgoBCf fagbkO"
+    >
+      <span
+        aria-hidden={true}
+        className="fa fa-plus fa-xs"
+      />
+    </div>
+  </div>
+</div>
+`;

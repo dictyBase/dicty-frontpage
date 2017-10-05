@@ -16,7 +16,7 @@ import {
   SourceTitle,
   Link,
   MoreLink,
-  NewsTitle,
+  NewsStockTitle,
   Img,
   Danger,
 } from "./styles"
@@ -64,7 +64,7 @@ const News = (props: {
           </Box>
           <Box px={2} py={1} width={9 / 10}>
             <FontAwsome name="globe fa-lg" />
-            <NewsTitle>DICTY NEWS</NewsTitle>
+            <NewsStockTitle>DICTY NEWS</NewsStockTitle>
           </Box>
         </Flex>
       </Header>

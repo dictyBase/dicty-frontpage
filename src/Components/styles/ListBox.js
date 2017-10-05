@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 
 const ListBoxStyle = styled.ul`
-  padding: 0px 25px 10px 35px;
+  padding: 0px 25px 10px 25px;
   font-size: 12px;
   margin-bottom: 5px;
   padding-bottom: ${props => (props.padbottom ? props.padbottom : "10px")};

@@ -3,7 +3,6 @@ import styled from "styled-components"
 
 const AnnotationSubTitleStyle = styled.span`
     padding-top: 5px;
-    padding-left: 12px;
     font-size: 14px;
     font-weight: bold;`
 

@@ -3,7 +3,7 @@ import styled from "styled-components"
 
 const ListItemsStyle = styled.li`
   list-style-type: none;
-  margin-bottom: 10px;
+  margin-bottom: 10px;  
 `
 
 const ListItems = ({ children, ...props }) =>

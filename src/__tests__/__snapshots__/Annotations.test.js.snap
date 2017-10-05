@@ -1,0 +1,109 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Annotations snapshot test 1`] = `
+<div
+  className="sc-EHOje xSJHZ"
+>
+  <div
+    className="sc-gzVnrw jpgNjc"
+  >
+    <span
+      aria-hidden={true}
+      className="fa fa-pencil fa-md"
+    />
+    <span
+      className="sc-gZMcBi hHybFI"
+    >
+      RECENT ANNOTATIONS
+    </span>
+  </div>
+  <div
+    className="sc-eHgmQL bZMwIP"
+  >
+    <div
+      className="sc-bdVaJa hSYntd"
+      is={null}
+    >
+      <span
+        className="sc-gqjmRU kFqTtj"
+      >
+        Genes
+      </span>
+      <ul
+        className="sc-chPdSV kzTFgS"
+      >
+        <li
+          className="sc-VigVT kgNfpP"
+        >
+          abprtA
+        </li>
+        <li
+          className="sc-VigVT kgNfpP"
+        >
+          trgrB1
+        </li>
+        <li
+          className="sc-VigVT kgNfpP"
+        >
+          tgrC1
+        </li>
+        <li
+          className="sc-VigVT kgNfpP"
+        >
+          tacA
+        </li>
+      </ul>
+      <div
+        className="sc-dxgOiQ htdTod"
+      >
+        <span
+          aria-hidden={true}
+          className="fa fa-plus fa-xs"
+        />
+      </div>
+    </div>
+    <div
+      className="sc-bdVaJa hSYntd"
+      is={null}
+    >
+      <span
+        className="sc-gqjmRU kFqTtj"
+      >
+        Papers
+      </span>
+      <ul
+        className="sc-chPdSV kzTFgS"
+      >
+        <li
+          className="sc-VigVT kgNfpP"
+        >
+          25609090
+        </li>
+        <li
+          className="sc-VigVT kgNfpP"
+        >
+          25546705
+        </li>
+        <li
+          className="sc-VigVT kgNfpP"
+        >
+          25540127
+        </li>
+        <li
+          className="sc-VigVT kgNfpP"
+        >
+          25596489
+        </li>
+      </ul>
+      <div
+        className="sc-dxgOiQ htdTod"
+      >
+        <span
+          aria-hidden={true}
+          className="fa fa-plus fa-xs"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
