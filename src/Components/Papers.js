@@ -15,7 +15,6 @@ import {
   SourceTitle,
   Link,
   MoreLink,
-  Danger,
 } from "./styles"
 
 /**
@@ -38,11 +37,12 @@ const Papers = (props: {
         {paper.author}
       </LeadText>
       <MainContent>
-        <Danger dangerouslySetInnerHTML={{ __html: paper.title }} />
+        <strong><em>{paper.title}</em></strong>
       </MainContent>
       <SourceContent>
-        <SourceTitle>Journal:</SourceTitle>
-        <Danger dangerouslySetInnerHTML={{ __html: paper.journal }} />
+        <SourceTitle>Journal: </SourceTitle>
+          {paper.journal}
+        <Link href={paper.link} target="new"> Pubmed</Link>
       </SourceContent>
     </ListItems>,
   )

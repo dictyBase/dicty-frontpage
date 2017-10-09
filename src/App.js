@@ -27,7 +27,7 @@ class App extends Component {
             <Header downloads="" cite="" info="" home="/"/>
           </Container>
        
-            <Navbar items={navItems} theme={{}} />
+            <Navbar items={navItems} theme={{}}/>
 
           <Router>
             <Switch>
