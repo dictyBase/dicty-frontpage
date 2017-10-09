@@ -25,16 +25,23 @@ const images = [
 const Container = styled.div`
   display: flex;
   flex-direction: row;
-  row-wrap: wrap;
   height: 50%;
   width: 90%;
   margin: auto;
+
+  @media (max-width: 767px){
+    flex-wrap: wrap;
+  }
 `
 const Item = styled.div`
-  width: 50%;
   height: 400px;
-  padding: 8px 16px 8px 16px;
+  padding: 8px 16px 8px 16px;  
 `
+
+// width: 50%;
+// @media (max-width: 767px){
+//   width: 100%;
+// }
 
 class Front extends Component {
   render() {
@@ -42,23 +49,23 @@ class Front extends Component {
       <div>
         <Flex>
           <Container>
-            <Item>
-              <Slideshow images={images} />
-            </Item>
-            <Item>
-              <News posts={news.slice(0, 3)} />
-            </Item>
+              <Box px={16} py={8} width={[1/2]}>
+                <Slideshow images={images} />
+              </Box>
+              <Box px={16} py={8} width={[1/2]}>
+                <News posts={news.slice(0, 3)} />
+              </Box>
           </Container>
         </Flex>
         <Flex>
           <Container>
-            <Box px={2} py={1} mt={-3} width={10 / 20}>
+            <Box px={2} py={1} width={[1/2]}>
                 <Papers papers={papers.slice(0, 5)} />
             </Box> 
-            <Box px={2} py={1} mt={-3} width={5 / 20}>
+            <Box px={2} py={1} width={[1/4]}>
                   <Popular widgets={widgets}/>
             </Box> 
-            <Box px={2} py={1} mt={-3} ml={-2} width={5 / 20}>
+            <Box px={2} py={1} width={[1/4]}>
                   <StockCenter stockcenter={stockcenter}/> 
                   <Annotations annotations={annotations}/>  
             </Box> 

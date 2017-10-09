@@ -8,6 +8,7 @@ import { navItems } from "./constants/navbar"
 import items from "./data/footer"
 import Front from "./pages/Front"
 import Learn from "./pages/Learn"
+import About from "./pages/About"
 
 
 const Container = styled.div`
@@ -24,7 +25,7 @@ class App extends Component {
     return (
         <div>  
           <Container>
-            <Header downloads="" cite="" info="" home="/"/>
+            <Header downloads="" cite="" info="/about" home="/"/>
           </Container>
        
             <Navbar items={navItems} theme={{}}/>
@@ -33,6 +34,7 @@ class App extends Component {
             <Switch>
               <Route exact path="/" component={Front}/>
               <Route exact path="/explore/learn" component={Learn}/>
+              <Route exact path="/about" component={About}/>              
               <Route component={Front}/>
             </Switch>
           </Router>
