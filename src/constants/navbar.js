@@ -49,7 +49,7 @@ export const navItems = [
             },
             {
               name: 'Learn About Dicty',
-              href: 'http://wwww.google.com'
+              href: '/explore/learn'
             },
             {
                 name: 'Teaching Protocols',

@@ -17,7 +17,7 @@ export default [
     alt: "genome browser"
   },
   {
-    link: "#",
+    link: "/explore/learn",
     image: widgetLEARNDICTY,
     alt: "learn dicty"
   },
