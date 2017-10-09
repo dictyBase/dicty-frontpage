@@ -18,7 +18,6 @@ import {
   MoreLink,
   NewsStockTitle,
   Img,
-  Danger,
 } from "./styles"
 
 /**
@@ -41,7 +40,7 @@ const News = (props: {
         {post.date}
       </LeadText>
       <MainContent>
-        <Danger dangerouslySetInnerHTML={{ __html: post.content }} />
+        {post.content}
       </MainContent>
       <SourceContent>
         <SourceTitle>Source:</SourceTitle>
