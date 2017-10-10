@@ -12,7 +12,7 @@ import {
   StockContainer,
   MoreLink,
   NewsStockTitle
-} from './styles';
+} from '../styles';
 
 const StockCenter = props => {
   const plasmidlist = props.stockcenter.plasmids.map((plasmid, index) =>

@@ -1,7 +1,7 @@
 // @flow
 import React from "react"
 import { Flex, Box } from "grid-styled"
-import twitterLogo from "./images/twitterLogo.png"
+import twitterLogo from "../images/twitterLogo.png"
 import FontAwsome from "react-fontawesome"
 
 
@@ -18,7 +18,7 @@ import {
   MoreLink,
   NewsStockTitle,
   Img,
-} from "./styles"
+} from "../styles"
 
 /**
  * The News component that will be displayed on the right in every

@@ -15,7 +15,7 @@ import {
   SourceTitle,
   Link,
   MoreLink,
-} from "./styles"
+} from "../styles"
 
 /**
  * The Papers component that will be displayed on the right in every
