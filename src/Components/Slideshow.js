@@ -9,7 +9,7 @@ const Container = styled.div`
   background: ${props =>
     props.theme.background ? props.theme.background : "black"};
   margin-top: 10px;
-  min-height: 400px;
+  min-height: 350px;
 `
 const Carousel = styled.div`
   display: flex;
@@ -29,6 +29,7 @@ const Slide = styled.img`
   object-fit: contain;
   max-width: 100%;
   max-height: 100%;
+  min-width: 100%;
 `
 const Button = styled.i`
   cursor: pointer;
