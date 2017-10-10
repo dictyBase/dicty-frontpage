@@ -1,6 +1,6 @@
 // @flow
 import React from "react"
-import { Flex } from "grid-styled"
+import { Flex, Box } from "grid-styled"
 
 import {
   PopularHeader,
@@ -29,13 +29,15 @@ const Popular = (props: {
   )
 
   return (
-    <Flex wrap>
+    <Flex justify={"center"}>
+    <Box>
       <PopularHeader>
             Most popular tools and sections
       </PopularHeader>
       <WidgetListBox>
         {widgetlist}
       </WidgetListBox>
+    </Box>
     </Flex>
   )
 }

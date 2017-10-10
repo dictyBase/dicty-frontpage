@@ -3,6 +3,7 @@ import styled from "styled-components"
 
 const WidgetImgStyle = styled.img`
 width: 300px;
+max-width: 100%;
 border-radius: 5px;
 &:hover {
   opacity: 0.5;
