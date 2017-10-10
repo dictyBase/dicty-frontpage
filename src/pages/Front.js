@@ -12,20 +12,15 @@ import papers from "../data/papers"
 import widgets from "../data/widgets"
 import annotations from "../data/annotations"
 import stockcenter from "../data/stockcenter"
+import images from "../data/carouselimages"
 
 
-const images = [
-  "https://i.ytimg.com/vi/uXdzuz5Q-hs/maxresdefault.jpg",
-  "https://i.ytimg.com/vi/uXdzuz5Q-hs/maxresdefault.jpg",
-  "https://i.ytimg.com/vi/uXdzuz5Q-hs/maxresdefault.jpg",
-  "https://i.ytimg.com/vi/uXdzuz5Q-hs/maxresdefault.jpg",
-]
 
 class Front extends Component {
   render() {
     return (
       <div>
-        <Flex wrap>
+        <Flex wrap mx={30}>
         <Flex wrap>
 
               <Box px={16} py={8} width={[1, 1, 1, 1/2]}>
