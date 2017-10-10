@@ -9,6 +9,7 @@ import items from "./data/footer"
 import Front from "./pages/Front"
 import Learn from "./pages/Learn"
 import About from "./pages/About"
+import Teach from "./pages/Teach"
 
 
 const Container = styled.div`
@@ -34,6 +35,7 @@ class App extends Component {
             <Switch>
               <Route exact path="/" component={Front}/>
               <Route exact path="/explore/learn" component={Learn}/>
+              <Route exact path="/explore/teach" component={Teach}/>              
               <Route exact path="/about" component={About}/>              
               <Route component={Front}/>
             </Switch>
