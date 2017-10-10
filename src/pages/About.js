@@ -1,5 +1,5 @@
 // @flow
-import React, { Component } from "react"
+import React from "react"
 import styled from "styled-components"
 import FontAwsome from "react-fontawesome"
 
@@ -59,8 +59,7 @@ const SectionContent = styled.p`
     font-size: 16px;
 `
 
-class About extends Component {
-    render(){
+const About = () => {
        return( 
             <div>
                 <Banner>
@@ -96,7 +95,6 @@ class About extends Component {
                 </Container>
             </div>
         )
-    }
 }
 
 export default About
