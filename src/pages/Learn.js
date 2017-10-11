@@ -1,8 +1,7 @@
 // @flow
 import React from "react"
 import { Flex, Box } from "grid-styled"
-import styled from "styled-components"
-import logoLearn from "../Components/images/logoLearn.png"
+import logoLearn from "../Components/images/learn/logoLearn.png"
 import learndicty from "../data/learndicty"
 import communityimg from "../Components/images/learn/rpL11-gfpBS.jpg"
 import focusimg from "../Components/images/learn/gerisch4.png"
@@ -17,84 +16,9 @@ import {
   Link
 } from "../Components/styles"
 
-const Banner = styled.div`
-    font-family: inherit;
-    min-height: 150px;
-    text-align: center;
-    padding: 48px 30px 48px 30px;
-    width: 100%;
-    font-size: 12px;
-    color: #333;
-`
-
-const Header = styled.h1`
-    @media (min-width: 768px) {
-        font-size: 63px;
-        padding: 2px;
-        margin: 2px;
-        font-weight: 500;
-    }
-`
-const Container = styled.div`
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    line-height: 1.428;
-    color: #333;
-    padding: 0 15px 0 15px;
-    margin: 0 auto;
-
-    @media (min-width: 768px){
-        width: 750px;
-    }
-
-    @media (min-width: 992px){
-        width: 970px;
-    } 
-    
-    @media (min-width: 1200px){
-        width: 1170px;
-    }    
-`
-const LearnList = styled.p`
-    padding: 10px 15px;
-    border: 1px solid #ddd;
-    font-size: 18px;
-    line-height: 1.1;
-    text-align: center;
-`
-
-const LearnLink = styled.a`
-    text-decoration: none;
-    color: inherit;
-`
-
-const SectionBox = styled(Box)`
-    border-top: 1px solid #ddd;
-`
-
-const TopLink = styled.p`
-    font-size: small;
-    text-align: center;
-`
-
-const SectionImgLeft = styled.img`
-    float: left;
-    width: 120px;
-    height: auto;
-    margin: 5px 20px 5px 0;
-    border: 3px solid #000;
-`
-
-const SectionImgRight = styled.img`
-    float: Right;
-    width: 120px;
-    height: auto;
-    margin: 5px 0px 5px 20px;
-    border: 3px solid #000;
-`
-
-const LastUpdated = styled.p`
-    text-align: center;
-`
+import{
+    Banner, Header, Container, LearnList, SectionBox, TopLink, SectionImgLeft, SectionImgRight, LastUpdated, LearnLink,
+} from "../Components/styles/learn_teach_styles"
 
 const Learn = () => {
     const list = learndicty.map((section, index) =>

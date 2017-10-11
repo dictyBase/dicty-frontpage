@@ -1,9 +1,9 @@
-import widgetTECHNIQUES from "../Components/images/widgetTECHNIQUES.png"
-import widgetGBROWSER from "../Components/images/widgetGBROWSER.png"
-import widgetLEARNDICTY from "../Components/images/widgetLEARNDICTY.png"
-import widgetSTATS from "../Components/images/widgetSTATS.png"
-import widgetJOBS from "../Components/images/widgetJOBS.png"
-import widgetDICTYEXPRESS from "../Components/images/widgetDICTYEXPRESS.png"
+import widgetTECHNIQUES from "../Components/images/frontWidgets/widgetTECHNIQUES.png"
+import widgetGBROWSER from "../Components/images/frontWidgets/widgetGBROWSER.png"
+import widgetLEARNDICTY from "../Components/images/frontWidgets/widgetLEARNDICTY.png"
+import widgetSTATS from "../Components/images/frontWidgets/widgetSTATS.png"
+import widgetJOBS from "../Components/images/frontWidgets/widgetJOBS.png"
+import widgetDICTYEXPRESS from "../Components/images/frontWidgets/widgetDICTYEXPRESS.png"
 
 export default [
   {
