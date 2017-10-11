@@ -46,7 +46,7 @@ export const LearnList = styled.p`
     text-align: center;
 `
 
-export const LearnLink = styled.a`
+export const ContentLink = styled.a`
     text-decoration: none;
     color: inherit;
 `
@@ -100,4 +100,17 @@ export const SectionSubText = styled.p`
     line-height: 1.1;
     margin-top: 0;
     margin-bottom: 0;
+`
+
+export const DownldBtn = styled.a`
+    text-decoration: none;
+    color: #fff;
+    background-color: #5cb85c;
+    border-color: #5cb85c;
+    padding: 5px 5px;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 3px;
+    text-align: center;
+    margin-left: 5px;
 `

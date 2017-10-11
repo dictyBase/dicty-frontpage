@@ -17,16 +17,16 @@ import {
 } from "../Components/styles"
 
 import{
-    Banner, Header, Container, LearnList, SectionBox, TopLink, SectionImgLeft, SectionImgRight, LastUpdated, LearnLink,
+    Banner, Header, Container, LearnList, SectionBox, TopLink, SectionImgLeft, SectionImgRight, LastUpdated, ContentLink,
 } from "../Components/styles/learn_teach_styles"
 
 const Learn = () => {
     const list = learndicty.map((section, index) =>
-                <LearnLink key={index} href={section.href}>
+                <ContentLink key={index} href={section.href}>
                     <ListItems key={index}>
                         <LearnList>{section.title}</LearnList>
                     </ListItems>
-                </LearnLink>   
+                </ContentLink>   
             )
 
     return( 

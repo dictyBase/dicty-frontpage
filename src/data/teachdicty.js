@@ -80,3 +80,61 @@ export const davidk = [
     },
 ]
 
+export const derrickb = [
+    {
+        title: "Observing the Dictyostelium life cycle:",
+        href: "../documents/teach/word_docs/Dicty_life_cycle-Brazill.doc",
+        doctitle: "Dicty_life_cycle-Brazill.doc"
+    },
+    {
+        title: "Staining the actin cytoskeleton of Dictyostelium:",
+        href: "../documents/teach/word_docs/Actin_lab-Brazill.doc",
+        doctitle: "Actin_lab-Brazill.doc"        
+    },
+    {
+        title: "Measuring endocytosis and exocytosis in Dictyostelium:",
+        href: "../documents/teach/word_docs/Endo-exo_lab-Brazill.doc",
+        doctitle: "Endo-exo_lab-Brazill.doc"        
+    },
+]
+
+export const johnb = {
+    href: "../documents/teach/pdfs/BonnerPaper.pdf",
+    doctitle: "BonnerPaper.pdf"
+}
+
+export const thierrys =[
+    {
+        title: "Chemotaxis Protocol (Jeff Hadwiger)",
+        href:  "../documents/research/techniques/pdfs/Hadwiger_Protocol.pdf",
+        doctitle: "Hadwiger_Protocol.pdf"  
+    },
+    {
+        title: "Under agar assay (David Knecht)",
+        href:  "../documents/research/techniques/pdfs/Knecht_UnderagarAssay.pdf",
+        linktxt: "Chemotaxis Under Agar from Dave Knecht",
+        linkref: "#",
+        doctitle: "Knecht_UnderagarAssay.pdf"
+    },
+    {
+        title: "ChemoLab (Margaret Nelson)",
+        href:  "../documents/research/techniques/pdfs/Nelson_ChemoLab.pdf",
+        doctitle: "Nelson_ChemoLab.pdf"
+    },
+    {
+        title: "Chemotaxis Preparation (Thierry Soldati)",
+        href:  "../documents/research/techniques/pdfs/Chemotaxis_Preparation.pdf",
+        doctitle: "Chemotaxis_Preparation.pdf"
+    },
+    {
+        title: "Chemotaxis Protocol (Thierry Soldati)",
+        href:  "../documents/research/techniques/pdfs/Soldati-Chemotaxis_Protocol.pdf",
+        doctitle: "Soldati-Chemotaxis_Protocol.pdf"
+    },
+    {
+        title: "Chemotaxis Answers (Thierry Soldati)",
+        href:  "../documents/research/techniques/pdfs/Soldati-Chemotaxis_Answers.pdf",
+        doctitle: "Soldati-Chemotaxis_Answers.pdf"
+    },
+]
+
