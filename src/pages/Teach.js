@@ -24,7 +24,7 @@ const Teach = () => {
                         <LearnList>{section.title}</LearnList>
                     </ListItems>
                 </ContentLink>   
-            )
+    )
 
     const davidklist = davidk.map((item, index) =>
             <CourseItems key={index}>
@@ -126,6 +126,9 @@ const Teach = () => {
                         <SectionSubText>
                             University of Geneva
                         </SectionSubText>
+                        <p><small>
+                            Includes a compilation of comments and suggestions received by Thierry Soldati (pdf files):
+                        </small></p>
                         <ListBox>
                             {thierryslist}
                         </ListBox>
