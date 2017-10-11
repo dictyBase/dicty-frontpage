@@ -4,11 +4,11 @@ import { Flex, Box } from "grid-styled"
 import styled from "styled-components"
 import logoLearn from "../Components/images/logoLearn.png"
 import learndicty from "../data/learndicty"
-import communityimg from "../Components/images/teach/rpL11-gfpBS.jpg"
-import focusimg from "../Components/images/teach/gerisch4.png"
-import techniqueimg1 from "../Components/images/teach/pst0fingersS.jpg"
-import techniqueimg2 from "../Components/images/teach/HTP_princeton.png"
-import techniqueimg3 from "../Components/images/teach/nullatt.png"
+import communityimg from "../Components/images/learn/rpL11-gfpBS.jpg"
+import focusimg from "../Components/images/learn/gerisch4.png"
+import techniqueimg1 from "../Components/images/learn/pst0fingersS.jpg"
+import techniqueimg2 from "../Components/images/learn/HTP_princeton.png"
+import techniqueimg3 from "../Components/images/learn/nullatt.png"
 
 
 import {
