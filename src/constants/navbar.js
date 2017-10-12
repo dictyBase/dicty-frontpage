@@ -53,7 +53,7 @@ export const navItems = [
             },
             {
                 name: 'Teaching Protocols',
-                href: 'http://www.google.com'
+                href: '/explore/teach'
             },
             {
               name: 'Useful Links',
