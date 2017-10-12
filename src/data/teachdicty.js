@@ -138,3 +138,47 @@ export const thierrys =[
     },
 ]
 
+export const references = [
+    {
+        text: "Edelstein-Keshet, L (1988) Mathematical Models in Biology, McGraw Hill, (originally published by Random House/Birkhauser). ISBN 394-35507-5"
+    },
+    {
+        text: "Finney R, Varnum B, Soll DR. 1979.  \"Erasure\" in Dictyostelium: a dedifferentiation involving the programmed loss of chemotactic functions. Dev Biol. 73(2):290-303." ,
+        linktxt: "PMID: 499669",
+        href: "https://www.ncbi.nlm.nih.gov/pubmed/499669?dopt=Abstract"
+    },
+    {
+        text: "Gauthier ML, O'Day DH, 2001. Detection of calmodulin-binding proteins and calmodulin-dependent phosphorylation linked to calmodulin-dependent chemotaxis to folic and cAMP in Dictyostelium. Cell Signal 13(8):575-84.",
+        linktxt: "PMID: 11483410",
+        href: "https://www.ncbi.nlm.nih.gov/pubmed/11483410?dopt=Abstract"
+    },
+    {
+        text: "Hadwiger,J.A.,and J.Srinivasan, 1999. Folic acid stimulation of the Ga 4 G protein-mediated signal transduction pathway inhibits anterior prestalk cell development in Dictyostelium. Differentiation 64:195-204.",
+        linktxt: "PMID: 10408952",
+        href: "https://www.ncbi.nlm.nih.gov/pubmed/10408952?dopt=Abstract"
+    },
+    {
+        text: "Konijn TM, Van Haastert PJ. 1987.  Measurement of chemotaxis in Dictyostelium. Methods Cell Biol. 1987; 28:283-98.",
+        linktxt: "PMID: 3600409",
+        href: "https://www.ncbi.nlm.nih.gov/pubmed/3600409?dopt=Abstract"
+    },
+    {
+        text: "Kuwayama H, Ishida S, Van Haastert PJ. 1993. Non-chemotactic Dictyostelium discoideum mutants with altered cGMP signal transduction. J Cell Biol. 1993 Dec;123(6 Pt 1):1453-62.",
+        linktxt: "PMID: 7902839",
+        href: "https://www.ncbi.nlm.nih.gov/pubmed/7902839?dopt=Abstract"
+    },
+    {
+        text: "O'Day, D.H., 1979. Aggregation during sexual development in Dictyostelium discoideum. Can. J. Microbiol. 25: 1416-1426.",
+        linktxt: "PMID: 231480",
+        href: "https://www.ncbi.nlm.nih.gov/pubmed/231480?dopt=Abstract"
+    },
+    {
+        text: "Parent C.A. 2000. Dictyostelium cell dynamics, Current Protocols in Cell Biology (J.S. Bonifacino, M. Dasso, J. Lippincott-Schwartz, J.B. Harford, K.M. Yamada; Eds. John Wiley & Sons Press), Vol. 1, Unit 12.5"
+    },
+    {
+        text: "Rifkin JL. 2002. Quantitative analysis of the behavior of Dictyostelium discoideum amoebae: stringency of pteridine reception. Cell Motil Cytoskeleton. 51(1):39-48.",
+        linktxt: "PMID 11810695",
+        href: "https://www.ncbi.nlm.nih.gov/pubmed/11810695?dopt=Abstract"
+    },
+]
+

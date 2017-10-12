@@ -2,7 +2,7 @@
 import React from "react"
 import { Flex, Box } from "grid-styled"
 import logoTeaching from "../Components/images/logoTeaching.png"
-import {teachdicty, davidk, derrickb, johnb, thierrys} from "../data/teachdicty"
+import {teachdicty, davidk, derrickb, johnb, thierrys, references} from "../data/teachdicty"
 
 
 import {
@@ -13,7 +13,7 @@ import {
 
 import{
     Banner, Header, Container, LearnList, SectionBox, TopLink, ContentLink, CourseItems, BannerText, BannerSubText, SectionSubText, DownldBtn
-} from "../Components/styles/learn_teach_styles"
+} from "../Components/styles/learn_teach/learn_teach_styles"
 
 
 
@@ -29,7 +29,7 @@ const Teach = () => {
     const davidklist = davidk.map((item, index) =>
             <CourseItems key={index}>
                 {item.title}
-                <Link key={index} href={item.href}>{item.linktxt}</Link>   
+                <Link key={index} target="_new" href={item.href}>{item.linktxt}</Link>   
             </CourseItems>
     )    
     
@@ -45,7 +45,14 @@ const Teach = () => {
                 {item.title}
                 <DownldBtn key={index} href={item.href} target="_self" download={item.doctitle}>Download</DownldBtn> {item.linktxt ? <span> - <Link href="linkref">{item.linktxt}</Link> </span> : ""} 
             </CourseItems>
-    )    
+    )  
+    
+    const referencelist = references.map((item, index) =>
+        <CourseItems key={index}>
+            <small>{item.text}
+            {item.linktxt ? <span> <Link target="_new" key={index} href={item.href}>{item.linktxt}</Link> </span> : ""} </small>
+        </CourseItems>
+    )  
 
     return( 
         <Flex wrap>
@@ -145,7 +152,7 @@ const Teach = () => {
                     <SectionBox id="references" width={2/3}>
                         <h4>References suggested by contributors</h4>
                         <ListBox>
-                            {}
+                            {referencelist}
                         </ListBox>
                         <Link href="#"><TopLink>Top</TopLink></Link>
                     </SectionBox>

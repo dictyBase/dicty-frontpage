@@ -18,7 +18,7 @@ import {
 
 import{
     Banner, Header, Container, LearnList, SectionBox, TopLink, SectionImgLeft, SectionImgRight, LastUpdated, ContentLink,
-} from "../Components/styles/learn_teach_styles"
+} from "../Components/styles/learn_teach/learn_teach_styles"
 
 const Learn = () => {
     const list = learndicty.map((section, index) =>
