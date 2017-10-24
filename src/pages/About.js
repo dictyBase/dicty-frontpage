@@ -1,7 +1,8 @@
 // @flow
-import React from "react"
+import React, { Component } from "react"
 import styled from "styled-components"
 import FontAwsome from "react-fontawesome"
+import CustomEditor from '../Components/aboutpage/CustomEditor'
 
 const Container = styled.div`
   display: flex;
@@ -13,7 +14,7 @@ const Container = styled.div`
 
   @media (max-width: 767px) {
     flex-wrap: wrap;
-  }  
+  }
 `
 
 const Item = styled.div`
@@ -27,7 +28,7 @@ const Item = styled.div`
         padding-bottom: 5px;
         padding-right: 50px;
         width: 100%;
-    }    
+    }
 `
 
 const Banner = styled.div`
@@ -48,19 +49,53 @@ const Header = styled.h1`
 const Hdrtxt = styled.p`
     font-size: 21px;
 `
-const SectionHeader = styled.p`
-    font-size: 30px;
-    margin-top: 20px;
-    margin-bottom: 10px;
+// const SectionHeader = styled.p`
+//     font-size: 30px;
+//     margin-top: 20px;
+//     margin-bottom: 10px;
+// `
+
+// const SectionContent = styled.p`
+//     margin: 0 0 10px;
+//     font-size: 16px;
+// `
+
+const Button = styled.button`
+    color: #fff;
+    background: #15317e;
+    border: none;
+    font-size: 12px;
+    border-radius: 3px;
+    display: block;
+    padding: 5px 10px;
+    text-align: center;
+    margin-top: 10px;
 `
 
-const SectionContent = styled.p`
-    margin: 0 0 10px;
-    font-size: 16px;
-`
+export default class About extends Component {
+    constructor(props) {
+        super(props);
 
-const About = () => {
-       return( 
+        const leftContent = window.localStorage.getItem('leftContent')
+        const rightContent = window.localStorage.getItem('rightContent')
+
+        this.state = {
+          leftContent: leftContent || null,
+          rightContent: rightContent || null,
+          leftReadOnly: true,
+          rightReadOnly: true
+        }
+
+        this.onEditClick = this.onEditClick.bind(this)
+    }
+
+    onEditClick(editorSide) {
+        const side = `${editorSide}ReadOnly`
+        this.setState({ [side]: !this.state[side] })
+    }
+
+    render() {
+       return(
             <div>
                 <Banner>
                     <Header>About Us</Header>
@@ -72,29 +107,23 @@ const About = () => {
                 </Banner>
                 <Container>
                     <Item>
-                        <SectionHeader>Technical Summary</SectionHeader>
-                        <SectionContent>
-                            This beta version of dictyBase was built using React, with the lastest markup (HTML5) and style (CSS3) language versions.
-                        </SectionContent>
-                        <SectionContent>
-                            The architecture is hosted entirely on a cloud system. The applications are built and run on docker containers.
-                        </SectionContent>                                                
+                        <Button onClick={() => this.onEditClick('left')}>Edit</Button>
+                        <CustomEditor
+                            content={this.state.leftContent}
+                            contentLocation="leftContent"
+                            readOnly={this.state.leftReadOnly}
+                        />
                     </Item>
                     <Item>
-                        <SectionHeader>Special Thanks</SectionHeader>
-                        <SectionContent>
-                            National Institutes of Health (NIH) for their funding of this project.
-                        </SectionContent>
-                        <SectionContent>
-                            International consortium of the Dictyostelium Genome Project from which we received the complete set of chromosomes and predicted gene models.
-                        </SectionContent>
-                        <SectionContent>
-                            Japanese cDNA project where another particularly large set of data came from, namely, the ESTs. All researchers who have made their data/results publicly available in GenBank.
-                        </SectionContent>                                         
-                    </Item>                    
+                        <Button onClick={() => this.onEditClick('right')}>Edit</Button>
+                        <CustomEditor
+                            content={this.state.rightContent}
+                            contentLocation="rightContent"
+                            readOnly={this.state.rightReadOnly}
+                        />
+                    </Item>
                 </Container>
             </div>
         )
+    }
 }
-
-export default About
