@@ -5,6 +5,7 @@
   "dependencies": {
     "dicty-components-header-footer": "github:dictyBase/dicty-components-header-footer",
     "dicty-components-navbar": "github:dictyBase/dicty-components-navbar",
+    "draft-js": "^0.10.3",
     "flow-bin": "^0.49.1",
     "grid-styled": "^2.0.0-7",
     "husky": "^0.14.3",
