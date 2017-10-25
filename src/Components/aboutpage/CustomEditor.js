@@ -8,16 +8,28 @@ export default class CustomEditor extends Component {
         const content = this.props.content
 
         this.state = {
-          editorState: content ? EditorState.createWithContent(convertFromRaw(JSON.parse(content))) : EditorState.createEmpty(),
+          editorState: content ? EditorState.createWithContent(convertFromRaw(JSON.parse(content))) : EditorState.createEmpty()
         }
 
         this.onChange = this.onChange.bind(this)
         this.saveContent = this.saveContent.bind(this)
     }
 
+    componentWillReceiveProps(nextProps) {
+      if (!this.props.saveBool && nextProps.saveBool) {
+        this.saveContent(this.state.editorState.getCurrentContent(), this.props.contentLocation)
+        this.props.postSave()
+      }
+
+      if (!this.props.cancelBool && nextProps.cancelBool) {
+        this.setState({
+          editorState: this.props.content ? EditorState.createWithContent(convertFromRaw(JSON.parse(this.props.content))) : EditorState.createEmpty()
+        })
+        this.props.postCancel()
+      }
+    }
+
     onChange(editorState) {
-        const contentState = editorState.getCurrentContent();
-        this.saveContent(contentState, this.props.contentLocation)
         this.setState({ editorState })
     }
 
