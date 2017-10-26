@@ -2,6 +2,7 @@
 import React, { Component } from "react"
 import styled from "styled-components"
 import FontAwsome from "react-fontawesome"
+import axios from 'axios'
 import CustomEditor from '../Components/aboutpage/CustomEditor'
 
 const Container = styled.div`
@@ -82,12 +83,9 @@ export default class About extends Component {
     constructor(props) {
         super(props);
 
-        const leftContent = window.localStorage.getItem('leftContent')
-        const rightContent = window.localStorage.getItem('rightContent')
-
         this.state = {
-          leftContent: leftContent || null,
-          rightContent: rightContent || null,
+          leftContent: null,
+          rightContent: null,
           leftReadOnly: true,
           rightReadOnly: true,
           leftSave: false,
@@ -101,6 +99,18 @@ export default class About extends Component {
         this.postSave = this.postSave.bind(this)
         this.onCancelClick = this.onCancelClick.bind(this)
         this.postCancel = this.postCancel.bind(this)
+    }
+
+    componentDidMount() {
+        axios.get('/pages/frontpage/leftContent')
+        .then(content => {
+            this.setState({ leftContent: content.data })
+        })
+
+        axios.get('/pages/frontpage/rightContent')
+        .then(content => {
+            this.setState({ rightContent: content.data })
+        })
     }
 
     onEditClick(editorName) {

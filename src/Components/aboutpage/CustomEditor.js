@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import { Editor, EditorState, convertToRaw, convertFromRaw } from 'draft-js'
+import axios from 'axios'
 
 export default class CustomEditor extends Component {
     constructor(props) {
@@ -16,6 +17,12 @@ export default class CustomEditor extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
+      if (!this.props.content && nextProps.content) {
+        this.setState({
+          editorState: nextProps.content ? EditorState.createWithContent(convertFromRaw(JSON.parse(nextProps.content))) : EditorState.createEmpty()
+        })
+      }
+
       if (!this.props.saveBool && nextProps.saveBool) {
         this.saveContent(this.state.editorState.getCurrentContent(), this.props.contentLocation)
         this.props.postSave()
@@ -34,7 +41,10 @@ export default class CustomEditor extends Component {
     }
 
     saveContent(content, location) {
-        window.localStorage.setItem(location, JSON.stringify(convertToRaw(content)))
+        axios.post('/pages/frontpage', {
+          content: JSON.stringify(convertToRaw(content)),
+          name: location
+        })
     }
 
     render() {
@@ -43,6 +53,7 @@ export default class CustomEditor extends Component {
                 editorState={this.state.editorState}
                 onChange={this.onChange}
                 readOnly={this.props.readOnly}
+                placeholder="Type here..."
             />
         )
     }
