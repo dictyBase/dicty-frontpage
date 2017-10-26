@@ -2,7 +2,6 @@
 import React, { Component } from "react"
 import styled from "styled-components"
 import FontAwsome from "react-fontawesome"
-import axios from 'axios'
 import CustomEditor from '../Components/aboutpage/CustomEditor'
 
 const Container = styled.div`
@@ -102,15 +101,13 @@ export default class About extends Component {
     }
 
     componentDidMount() {
-        axios.get('/pages/frontpage/leftContent')
-        .then(content => {
-            this.setState({ leftContent: content.data })
-        })
+        fetch('/pages/frontpage/leftContent')
+        .then(response => response.json())
+        .then(content => this.setState({ leftContent: content }))
 
-        axios.get('/pages/frontpage/rightContent')
-        .then(content => {
-            this.setState({ rightContent: content.data })
-        })
+        fetch('/pages/frontpage/rightContent')
+        .then(response => response.json())
+        .then(content => this.setState({ rightContent: content }))
     }
 
     onEditClick(editorName) {

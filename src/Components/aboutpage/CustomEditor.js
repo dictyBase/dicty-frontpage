@@ -1,6 +1,5 @@
 import React, { Component } from "react"
 import { Editor, EditorState, convertToRaw, convertFromRaw } from 'draft-js'
-import axios from 'axios'
 
 export default class CustomEditor extends Component {
     constructor(props) {
@@ -9,7 +8,7 @@ export default class CustomEditor extends Component {
         const content = this.props.content
 
         this.state = {
-          editorState: content ? EditorState.createWithContent(convertFromRaw(JSON.parse(content))) : EditorState.createEmpty()
+          editorState: content ? EditorState.createWithContent(convertFromRaw(content)) : EditorState.createEmpty()
         }
 
         this.onChange = this.onChange.bind(this)
@@ -18,8 +17,16 @@ export default class CustomEditor extends Component {
 
     componentWillReceiveProps(nextProps) {
       if (!this.props.content && nextProps.content) {
+        let content
+
+        try {
+          content = JSON.parse(nextProps.content)
+        } catch(e) {
+          content = nextProps.content
+        }
+
         this.setState({
-          editorState: nextProps.content ? EditorState.createWithContent(convertFromRaw(JSON.parse(nextProps.content))) : EditorState.createEmpty()
+          editorState: nextProps.content ? EditorState.createWithContent(convertFromRaw(content)) : EditorState.createEmpty()
         })
       }
 
@@ -29,8 +36,16 @@ export default class CustomEditor extends Component {
       }
 
       if (!this.props.cancelBool && nextProps.cancelBool) {
+        let content
+
+        try {
+          content = JSON.parse(this.props.content)
+        } catch(e) {
+          content = this.props.content
+        }
+
         this.setState({
-          editorState: this.props.content ? EditorState.createWithContent(convertFromRaw(JSON.parse(this.props.content))) : EditorState.createEmpty()
+          editorState: this.props.content ? EditorState.createWithContent(convertFromRaw(content)) : EditorState.createEmpty()
         })
         this.props.postCancel()
       }
@@ -41,9 +56,15 @@ export default class CustomEditor extends Component {
     }
 
     saveContent(content, location) {
-        axios.post('/pages/frontpage', {
-          content: JSON.stringify(convertToRaw(content)),
+        const data = {
+          content: convertToRaw(content),
           name: location
+        }
+
+        fetch('/pages/frontpage', {
+          method: 'POST',
+          body: JSON.stringify(data),
+          headers: { 'Content-Type': 'application/json' }
         })
     }
 
