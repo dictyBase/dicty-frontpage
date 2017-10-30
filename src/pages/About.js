@@ -3,6 +3,7 @@ import React, { Component } from "react"
 import styled from "styled-components"
 import FontAwsome from "react-fontawesome"
 import CustomEditor from '../Components/aboutpage/CustomEditor'
+import Toolbar from '../Components/aboutpage/Toolbar'
 
 const Container = styled.div`
   display: flex;
@@ -62,20 +63,19 @@ const Hdrtxt = styled.p`
 
 const Button = styled.button`
     color: #fff;
-    background: #15317e;
+    background: #337ab7;
     border: none;
     font-size: 12px;
     border-radius: 3px;
     display: block;
     padding: 5px 10px;
     text-align: center;
-    margin-top: 10px;
+    margin: 10px 20px 10px 0px;
     width: 60px;
 `
 
 const ButtonContainer = styled.div`
     display: flex;
-    justify-content: space-between;
 `
 
 export default class About extends Component {
@@ -91,6 +91,8 @@ export default class About extends Component {
           rightSave: false,
           leftCancel: false,
           rightCancel: false,
+          leftOnChange: null,
+          rightOnChange: null,
         }
 
         this.onEditClick = this.onEditClick.bind(this)
@@ -98,6 +100,8 @@ export default class About extends Component {
         this.postSave = this.postSave.bind(this)
         this.onCancelClick = this.onCancelClick.bind(this)
         this.postCancel = this.postCancel.bind(this)
+        this.getEditorState = this.getEditorState.bind(this)
+        this.getOnChange = this.getOnChange.bind(this)
     }
 
     componentDidMount() {
@@ -139,8 +143,53 @@ export default class About extends Component {
         this.setState({ [cancelName]: false })
     }
 
+    getEditorState(editorState, contentLocation) {
+        let editorName
+        if (contentLocation[0] === 'l') {
+            editorName = 'left'
+        } else {
+            editorName = 'right'
+        }
+
+        this.setState({ [`${editorName}EditorState`]: editorState })
+    }
+
+    getOnChange(onChangeFunc, contentLocation) {
+        let editorName
+        if (contentLocation[0] === 'l') {
+            editorName = 'left'
+        } else {
+            editorName = 'right'
+        }
+
+        this.setState({ [`${editorName}OnChange`]: onChangeFunc })
+    }
+
     render() {
-       return(
+        const iconList = [
+            { name: 'header', style:'header-three', type: 'block' },
+            { name: 'header', style: 'header-two', type: 'block', size: 'lg' },
+            { name: 'header', style: 'header-one', type: 'block', size: '2x' },
+            { name: 'list-ul', style: 'unordered-list-item', type: 'block' },
+            { name: 'list-ol', style: 'ordered-list-item', type: 'block' },
+            { name: 'quote-left', style: 'blockquote', type: 'block' },
+            { name: 'code', style: 'code-block', type: 'block' },
+            { name: 'terminal', style: 'CODE', type: 'inline' },
+            { name: 'bold', style: 'BOLD', type: 'inline' },
+            { name: 'italic', style: 'ITALIC', type: 'inline' },
+            { name: 'underline', style: 'UNDERLINE', type: 'inline' },
+            { name: 'strikethrough', style: 'Strikethrough', type: 'inline' },
+            { name: 'link', style: 'Add Link', type: 'inline' },
+            { name: 'chain-broken', style: 'Remove Link', type: 'inline' }
+        ]
+
+        const itemStyle = {
+            border: '1px solid #ccc',
+            paddingTop: '20px',
+            marginTop: '10px'
+        }
+
+        return(
             <div>
                 <Banner>
                     <Header>About Us</Header>
@@ -151,10 +200,14 @@ export default class About extends Component {
                     </Hdrtxt>
                 </Banner>
                 <Container>
-                    <Item>
+                    <Item style={!this.state.leftReadOnly ? itemStyle : null}>
                         {this.state.leftReadOnly ?
                         <Button onClick={() => this.onEditClick('left')}>Edit</Button> :
-                        <p>Insert Toolbar</p>}
+                        <Toolbar
+                            iconList={iconList}
+                            editorState={this.state.leftEditorState}
+                            handleChange={this.state.leftOnChange}
+                        />}
                         <CustomEditor
                             content={this.state.leftContent}
                             contentLocation="leftContent"
@@ -163,6 +216,8 @@ export default class About extends Component {
                             postSave={() => this.postSave('left')}
                             cancelBool={this.state.leftCancel}
                             postCancel={() => this.postCancel('left')}
+                            getEditorState={this.getEditorState}
+                            getOnChange={this.getOnChange}
                         />
                         {!this.state.leftReadOnly &&
                         <ButtonContainer>
@@ -170,10 +225,14 @@ export default class About extends Component {
                             <Button onClick={() => this.onSaveClick('left')}>Save</Button>
                         </ButtonContainer>}
                     </Item>
-                    <Item>
+                    <Item style={!this.state.rightReadOnly ? itemStyle : null}>
                         {this.state.rightReadOnly ?
                         <Button onClick={() => this.onEditClick('right')}>Edit</Button> :
-                        <p>Insert Toolbar</p>}
+                        <Toolbar
+                            iconList={iconList}
+                            editorState={this.state.rightEditorState}
+                            handleChange={this.state.rightOnChange}
+                        />}
                         <CustomEditor
                             content={this.state.rightContent}
                             contentLocation="rightContent"
@@ -182,6 +241,8 @@ export default class About extends Component {
                             postSave={() => this.postSave('right')}
                             cancelBool={this.state.rightCancel}
                             postCancel={() => this.postCancel('right')}
+                            getEditorState={this.getEditorState}
+                            getOnChange={this.getOnChange}
                         />
                         {!this.state.rightReadOnly &&
                         <ButtonContainer>

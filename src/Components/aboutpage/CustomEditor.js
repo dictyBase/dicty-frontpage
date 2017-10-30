@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { Editor, EditorState, convertToRaw, convertFromRaw } from 'draft-js'
+import { Editor, EditorState, convertToRaw, convertFromRaw, RichUtils } from 'draft-js'
 
 export default class CustomEditor extends Component {
     constructor(props) {
@@ -13,6 +13,11 @@ export default class CustomEditor extends Component {
 
         this.onChange = this.onChange.bind(this)
         this.saveContent = this.saveContent.bind(this)
+        this.handleKeyCommand = this.handleKeyCommand.bind(this)
+    }
+
+    componentDidMount() {
+      this.props.getOnChange(this.onChange, this.props.contentLocation)
     }
 
     componentWillReceiveProps(nextProps) {
@@ -53,6 +58,7 @@ export default class CustomEditor extends Component {
 
     onChange(editorState) {
         this.setState({ editorState })
+        this.props.getEditorState(editorState, this.props.contentLocation)
     }
 
     saveContent(content, location) {
@@ -68,11 +74,21 @@ export default class CustomEditor extends Component {
         })
     }
 
+    handleKeyCommand(command, editorState) {
+      const newState = RichUtils.handleKeyCommand(editorState, command);
+        if (newState) {
+          this.onChange(newState);
+          return 'handled';
+        }
+      return 'not-handled';
+    }
+
     render() {
         return (
             <Editor
                 editorState={this.state.editorState}
                 onChange={this.onChange}
+                handleKeyCommand={this.handleKeyCommand}
                 readOnly={this.props.readOnly}
                 placeholder="Type here..."
             />
