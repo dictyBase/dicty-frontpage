@@ -94,14 +94,6 @@ export default class About extends Component {
           leftOnChange: null,
           rightOnChange: null,
         }
-
-        this.onEditClick = this.onEditClick.bind(this)
-        this.onSaveClick = this.onSaveClick.bind(this)
-        this.postSave = this.postSave.bind(this)
-        this.onCancelClick = this.onCancelClick.bind(this)
-        this.postCancel = this.postCancel.bind(this)
-        this.getEditorState = this.getEditorState.bind(this)
-        this.getOnChange = this.getOnChange.bind(this)
     }
 
     componentDidMount() {
@@ -114,36 +106,36 @@ export default class About extends Component {
         .then(content => this.setState({ rightContent: content }))
     }
 
-    onEditClick(editorName) {
+    onEditClick = editorName => {
         const side = `${editorName}ReadOnly`
         this.setState({ [side]: false })
     }
 
-    onSaveClick(editorName) {
+    onSaveClick = editorName => {
         const side = `${editorName}Save`
         this.setState({ [side]: true })
     }
 
-    postSave(editorName) {
+    postSave = editorName => {
         const saveName = `${editorName}Save`
         const readOnlyName = `${editorName}ReadOnly`
         this.setState({ [readOnlyName]: true })
         this.setState({ [saveName]: false })
     }
 
-    onCancelClick(editorName) {
+    onCancelClick = editorName => {
         const side = `${editorName}Cancel`
         this.setState({ [side]: true })
     }
 
-    postCancel(editorName) {
+    postCancel = editorName => {
         const cancelName = `${editorName}Cancel`
         const readOnlyName = `${editorName}ReadOnly`
         this.setState({ [readOnlyName]: true })
         this.setState({ [cancelName]: false })
     }
 
-    getEditorState(editorState, contentLocation) {
+    getEditorState = (editorState, contentLocation) => {
         let editorName
         if (contentLocation[0] === 'l') {
             editorName = 'left'
@@ -154,7 +146,7 @@ export default class About extends Component {
         this.setState({ [`${editorName}EditorState`]: editorState })
     }
 
-    getOnChange(onChangeFunc, contentLocation) {
+    getOnChange = (onChangeFunc, contentLocation) => {
         let editorName
         if (contentLocation[0] === 'l') {
             editorName = 'left'

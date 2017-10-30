@@ -10,10 +10,6 @@ export default class CustomEditor extends Component {
         this.state = {
           editorState: content ? EditorState.createWithContent(convertFromRaw(content)) : EditorState.createEmpty()
         }
-
-        this.onChange = this.onChange.bind(this)
-        this.saveContent = this.saveContent.bind(this)
-        this.handleKeyCommand = this.handleKeyCommand.bind(this)
     }
 
     componentDidMount() {
@@ -56,12 +52,12 @@ export default class CustomEditor extends Component {
       }
     }
 
-    onChange(editorState) {
+    onChange = editorState => {
         this.setState({ editorState })
         this.props.getEditorState(editorState, this.props.contentLocation)
     }
 
-    saveContent(content, location) {
+    saveContent = (content, location) => {
         const data = {
           content: convertToRaw(content),
           name: location
@@ -74,7 +70,7 @@ export default class CustomEditor extends Component {
         })
     }
 
-    handleKeyCommand(command, editorState) {
+    handleKeyCommand = (command, editorState) => {
       const newState = RichUtils.handleKeyCommand(editorState, command);
         if (newState) {
           this.onChange(newState);
