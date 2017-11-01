@@ -1,5 +1,10 @@
 import React, { Component } from "react"
-import { Editor, EditorState, convertToRaw, convertFromRaw, RichUtils } from 'draft-js'
+import Editor from 'draft-js-plugins-editor'
+import { EditorState, convertToRaw, convertFromRaw, RichUtils } from 'draft-js'
+import createToolbarPlugin from 'draft-js-static-toolbar-plugin'
+// import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin'
+import createRichButtonsPlugin from 'draft-js-richbuttons-plugin'
+import ToolButtonSmall from './ToolButtonSmall'
 
 export default class CustomEditor extends Component {
     constructor(props) {
@@ -80,14 +85,44 @@ export default class CustomEditor extends Component {
     }
 
     render() {
+        const richButtonsPlugin = createRichButtonsPlugin()
+
+        const {
+          // inline buttons
+          ItalicButton, BoldButton, MonospaceButton, UnderlineButton,
+          // block buttons
+          ParagraphButton, BlockquoteButton, CodeButton, OLButton, ULButton, H1Button, H2Button, H3Button, H4Button, H5Button, H6Button
+        } = richButtonsPlugin
+
+        const toolbarPlugin = createToolbarPlugin({
+          structure: [
+            BoldButton
+          ]
+        })
+
+        const { Toolbar } = toolbarPlugin
+
+        const plugins = [
+          toolbarPlugin,
+          richButtonsPlugin
+        ]
+
         return (
-            <Editor
-                editorState={this.state.editorState}
-                onChange={this.onChange}
-                handleKeyCommand={this.handleKeyCommand}
-                readOnly={this.props.readOnly}
-                placeholder="Type here..."
-            />
+            <div>
+              {!this.props.readOnly &&
+              <Toolbar>
+                <BoldButton><ToolButtonSmall iconName='bold' /></BoldButton>
+              </Toolbar>
+              }
+              <Editor
+                  editorState={this.state.editorState}
+                  onChange={this.onChange}
+                  plugins={plugins}
+                  handleKeyCommand={this.handleKeyCommand}
+                  readOnly={this.props.readOnly}
+                  placeholder="Type here..."
+              />
+            </div>
         )
     }
 }

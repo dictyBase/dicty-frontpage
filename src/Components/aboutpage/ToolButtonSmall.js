@@ -22,18 +22,23 @@ const ToolButtonSmall = styled.button`
   white-space: nowrap;
 `
 
-export default props => {
-  const handleClick = (style, type) => {
-    if (type === 'inline') {
-      props.handleChange(RichUtils.toggleInlineStyle(props.editorState, style.toUpperCase()))
-    } else {
-      props.handleChange(RichUtils.toggleBlockType(props.editorState, style.toLowerCase()))
-    }
-  }
+export default ({iconName, toggleInlineStyle, isActive, label, inlineStyle, onMouseDown, title, toggleBlockType, blockType}) => {
+  // const handleClick = (style, type) => {
+  //   if (type === 'inline') {
+  //     props.handleChange(RichUtils.toggleInlineStyle(props.editorState, style.toUpperCase()))
+  //   } else {
+  //     props.handleChange(RichUtils.toggleBlockType(props.editorState, style.toLowerCase()))
+  //   }
+  // }
 
   return (
-    <ToolButtonSmall onClick={() => handleClick(props.style, props.type)}>
-      <FontAwesome name={props.icon} size={props.size} />
+    <ToolButtonSmall
+      onClick={toggleInlineStyle}
+      onMouseDown={onMouseDown}
+      title={title ? title : label}
+      style={{ color: isActive ? '#000' : '#777' }}
+    >
+      {/*<FontAwesome name={iconName}/>*/}
     </ToolButtonSmall>
   )
 }
