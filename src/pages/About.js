@@ -3,7 +3,6 @@ import React, { Component } from "react"
 import styled from "styled-components"
 import FontAwsome from "react-fontawesome"
 import CustomEditor from '../Components/aboutpage/CustomEditor'
-import Toolbar from '../Components/aboutpage/Toolbar'
 
 const Container = styled.div`
   display: flex;
@@ -158,23 +157,6 @@ export default class About extends Component {
     }
 
     render() {
-        const iconList = [
-            { name: 'header', style:'header-three', type: 'block' },
-            { name: 'header', style: 'header-two', type: 'block', size: 'lg' },
-            { name: 'header', style: 'header-one', type: 'block', size: '2x' },
-            { name: 'list-ul', style: 'unordered-list-item', type: 'block' },
-            { name: 'list-ol', style: 'ordered-list-item', type: 'block' },
-            { name: 'quote-left', style: 'blockquote', type: 'block' },
-            { name: 'code', style: 'code-block', type: 'block' },
-            { name: 'terminal', style: 'CODE', type: 'inline' },
-            { name: 'bold', style: 'BOLD', type: 'inline' },
-            { name: 'italic', style: 'ITALIC', type: 'inline' },
-            { name: 'underline', style: 'UNDERLINE', type: 'inline' },
-            { name: 'strikethrough', style: 'Strikethrough', type: 'inline' },
-            { name: 'link', style: 'Add Link', type: 'inline' },
-            { name: 'chain-broken', style: 'Remove Link', type: 'inline' }
-        ]
-
         const itemStyle = {
             border: '1px solid #ccc',
             paddingTop: '20px',

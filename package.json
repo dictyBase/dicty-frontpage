@@ -6,8 +6,6 @@
     "dicty-components-header-footer": "github:dictyBase/dicty-components-header-footer",
     "dicty-components-navbar": "github:dictyBase/dicty-components-navbar",
     "draft-js": "^0.10.3",
-    "draft-js-buttons": "^2.0.0-beta6",
-    "draft-js-inline-toolbar-plugin": "^2.0.0-beta6",
     "draft-js-plugins-editor": "^2.0.0-beta1",
     "draft-js-richbuttons-plugin": "^2.1.0",
     "draft-js-static-toolbar-plugin": "^2.0.0-rc4",

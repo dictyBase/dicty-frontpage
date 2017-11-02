@@ -2,9 +2,7 @@ import React, { Component } from "react"
 import Editor from 'draft-js-plugins-editor'
 import { EditorState, convertToRaw, convertFromRaw, RichUtils } from 'draft-js'
 import createToolbarPlugin from 'draft-js-static-toolbar-plugin'
-// import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin'
 import createRichButtonsPlugin from 'draft-js-richbuttons-plugin'
-// import ToolButtonSmall from './ToolButtonSmall'
 
 export default class CustomEditor extends Component {
     constructor(props) {
@@ -104,6 +102,8 @@ export default class CustomEditor extends Component {
             ParagraphButton,
             BlockquoteButton,
             CodeButton,
+            OLButton,
+            ULButton,
             H1Button,
             H2Button,
             H3Button
@@ -128,6 +128,8 @@ export default class CustomEditor extends Component {
                 <ParagraphButton />
                 <BlockquoteButton />
                 <CodeButton />
+                <OLButton />
+                <ULButton />
                 <H1Button />
                 <H2Button />
                 <H3Button />
