@@ -4,7 +4,7 @@ import { EditorState, convertToRaw, convertFromRaw, RichUtils } from 'draft-js'
 import createToolbarPlugin from 'draft-js-static-toolbar-plugin'
 // import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin'
 import createRichButtonsPlugin from 'draft-js-richbuttons-plugin'
-import ToolButtonSmall from './ToolButtonSmall'
+// import ToolButtonSmall from './ToolButtonSmall'
 
 export default class CustomEditor extends Component {
     constructor(props) {
@@ -15,6 +15,8 @@ export default class CustomEditor extends Component {
         this.state = {
           editorState: content ? EditorState.createWithContent(convertFromRaw(content)) : EditorState.createEmpty()
         }
+
+        this.richButtonsPlugin = createRichButtonsPlugin()
     }
 
     componentDidMount() {
@@ -58,8 +60,9 @@ export default class CustomEditor extends Component {
     }
 
     onChange = editorState => {
-        this.setState({ editorState })
-        this.props.getEditorState(editorState, this.props.contentLocation)
+        this.setState({ editorState }, () => {
+          this.props.getEditorState(editorState, this.props.contentLocation)
+        })
     }
 
     saveContent = (content, location) => {
@@ -85,18 +88,25 @@ export default class CustomEditor extends Component {
     }
 
     render() {
-        const richButtonsPlugin = createRichButtonsPlugin()
-
         const {
           // inline buttons
           ItalicButton, BoldButton, MonospaceButton, UnderlineButton,
           // block buttons
-          ParagraphButton, BlockquoteButton, CodeButton, OLButton, ULButton, H1Button, H2Button, H3Button, H4Button, H5Button, H6Button
-        } = richButtonsPlugin
+          ParagraphButton, BlockquoteButton, CodeButton, OLButton, ULButton, H1Button, H2Button, H3Button
+        } = this.richButtonsPlugin
 
         const toolbarPlugin = createToolbarPlugin({
           structure: [
-            BoldButton
+            BoldButton,
+            ItalicButton,
+            UnderlineButton,
+            MonospaceButton,
+            ParagraphButton,
+            BlockquoteButton,
+            CodeButton,
+            H1Button,
+            H2Button,
+            H3Button
           ]
         })
 
@@ -104,14 +114,23 @@ export default class CustomEditor extends Component {
 
         const plugins = [
           toolbarPlugin,
-          richButtonsPlugin
+          this.richButtonsPlugin
         ]
 
         return (
             <div>
               {!this.props.readOnly &&
               <Toolbar>
-                <BoldButton><ToolButtonSmall iconName='bold' /></BoldButton>
+                <BoldButton />
+                <ItalicButton />
+                <UnderlineButton />
+                <MonospaceButton />
+                <ParagraphButton />
+                <BlockquoteButton />
+                <CodeButton />
+                <H1Button />
+                <H2Button />
+                <H3Button />
               </Toolbar>
               }
               <Editor

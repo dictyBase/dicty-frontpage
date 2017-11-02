@@ -193,14 +193,8 @@ export default class About extends Component {
                 </Banner>
                 <Container>
                     <Item style={!this.state.leftReadOnly ? itemStyle : null}>
-                        {this.state.leftReadOnly ?
-                        <Button onClick={() => this.onEditClick('left')}>Edit</Button> :
-                        <p>Toolbar</p>
-                        /*<Toolbar
-                            iconList={iconList}
-                            editorState={this.state.leftEditorState}
-                            handleChange={this.state.leftOnChange}
-                        />*/}
+                        {this.state.leftReadOnly &&
+                        <Button onClick={() => this.onEditClick('left')}>Edit</Button>}
                         <CustomEditor
                             content={this.state.leftContent}
                             contentLocation="leftContent"
@@ -219,14 +213,8 @@ export default class About extends Component {
                         </ButtonContainer>}
                     </Item>
                     <Item style={!this.state.rightReadOnly ? itemStyle : null}>
-                        {this.state.rightReadOnly ?
-                        <Button onClick={() => this.onEditClick('right')}>Edit</Button> :
-                        <p>Toolbar</p>
-                        /*<Toolbar
-                            iconList={iconList}
-                            editorState={this.state.rightEditorState}
-                            handleChange={this.state.rightOnChange}
-                        />*/}
+                        {this.state.rightReadOnly &&
+                        <Button onClick={() => this.onEditClick('right')}>Edit</Button>}
                         <CustomEditor
                             content={this.state.rightContent}
                             contentLocation="rightContent"
