@@ -49,16 +49,6 @@ const Header = styled.h1`
 const Hdrtxt = styled.p`
     font-size: 21px;
 `
-// const SectionHeader = styled.p`
-//     font-size: 30px;
-//     margin-top: 20px;
-//     margin-bottom: 10px;
-// `
-
-// const SectionContent = styled.p`
-//     margin: 0 0 10px;
-//     font-size: 16px;
-// `
 
 const Button = styled.button`
     color: #fff;
@@ -70,11 +60,13 @@ const Button = styled.button`
     padding: 5px 10px;
     text-align: center;
     margin: 10px 20px 10px 0px;
-    width: 60px;
+    width: 100px;
 `
 
 const ButtonContainer = styled.div`
     display: flex;
+    justify-content: space-around;
+    margin-top: 5px;
 `
 
 export default class About extends Component {
@@ -92,6 +84,8 @@ export default class About extends Component {
           rightCancel: false,
           leftOnChange: null,
           rightOnChange: null,
+          leftInputHtml: false,
+          rightInputHtml: false
         }
     }
 
@@ -134,31 +128,18 @@ export default class About extends Component {
         this.setState({ [cancelName]: false })
     }
 
-    getEditorState = (editorState, contentLocation) => {
-        let editorName
-        if (contentLocation[0] === 'l') {
-            editorName = 'left'
-        } else {
-            editorName = 'right'
-        }
-
-        this.setState({ [`${editorName}EditorState`]: editorState })
+    onInputHtml = editorName => {
+        const side = `${editorName}InputHtml`
+        this.setState({ [side]: true })
     }
 
-    getOnChange = (onChangeFunc, contentLocation) => {
-        let editorName
-        if (contentLocation[0] === 'l') {
-            editorName = 'left'
-        } else {
-            editorName = 'right'
-        }
-
-        this.setState({ [`${editorName}OnChange`]: onChangeFunc })
+    postInputHtml = editorName => {
+        const inputHtmlName = `${editorName}InputHtml`
+        this.setState({ [inputHtmlName]: false })
     }
 
     render() {
         const itemStyle = {
-            border: '1px solid #ccc',
             paddingTop: '20px',
             marginTop: '10px'
         }
@@ -185,13 +166,14 @@ export default class About extends Component {
                             postSave={() => this.postSave('left')}
                             cancelBool={this.state.leftCancel}
                             postCancel={() => this.postCancel('left')}
-                            getEditorState={this.getEditorState}
-                            getOnChange={this.getOnChange}
+                            inputHtmlBool={this.state.leftInputHtml}
+                            postInputHtml={() => this.postInputHtml('left')}
                         />
-                        {!this.state.leftReadOnly &&
+                        {!this.state.leftReadOnly && !this.state.leftInputHtml &&
                         <ButtonContainer>
                             <Button onClick={() => this.onCancelClick('left')}>Cancel</Button>
                             <Button onClick={() => this.onSaveClick('left')}>Save</Button>
+                            <Button onClick={() => this.onInputHtml('left')}>Input HTML</Button>
                         </ButtonContainer>}
                     </Item>
                     <Item style={!this.state.rightReadOnly ? itemStyle : null}>
@@ -205,13 +187,14 @@ export default class About extends Component {
                             postSave={() => this.postSave('right')}
                             cancelBool={this.state.rightCancel}
                             postCancel={() => this.postCancel('right')}
-                            getEditorState={this.getEditorState}
-                            getOnChange={this.getOnChange}
+                            inputHtmlBool={this.state.rightInputHtml}
+                            postInputHtml={() => this.postInputHtml('right')}
                         />
-                        {!this.state.rightReadOnly &&
+                        {!this.state.rightReadOnly && !this.state.rightInputHtml &&
                         <ButtonContainer>
                             <Button onClick={() => this.onCancelClick('right')}>Cancel</Button>
                             <Button onClick={() => this.onSaveClick('right')}>Save</Button>
+                            <Button onClick={() => this.onInputHtml('right')}>Input HTML</Button>
                         </ButtonContainer>}
                     </Item>
                 </Container>

@@ -1,8 +1,25 @@
 import React, { Component } from "react"
-import Editor from 'draft-js-plugins-editor'
-import { EditorState, convertToRaw, convertFromRaw, RichUtils } from 'draft-js'
-import createToolbarPlugin from 'draft-js-static-toolbar-plugin'
-import createRichButtonsPlugin from 'draft-js-richbuttons-plugin'
+import styled from "styled-components"
+import RichTextEditor, { createEmptyValue, createValueFromString } from 'react-rte'
+
+const Button = styled.button`
+    color: #fff;
+    background: #337ab7;
+    border: none;
+    font-size: 12px;
+    border-radius: 3px;
+    display: block;
+    padding: 5px 10px;
+    text-align: center;
+    margin: 10px 20px 10px 0px;
+    width: 110px;
+`
+
+const ButtonContainer = styled.div`
+    display: flex;
+    justify-content: space-around;
+    margin-top: 5px;
+`
 
 export default class CustomEditor extends Component {
     constructor(props) {
@@ -11,61 +28,38 @@ export default class CustomEditor extends Component {
         const content = this.props.content
 
         this.state = {
-          editorState: content ? EditorState.createWithContent(convertFromRaw(content)) : EditorState.createEmpty()
+          editorValue: content ? createValueFromString(content, 'html') : createEmptyValue(),
+          textarea: 'Please paste in HTML...'
         }
-
-        this.richButtonsPlugin = createRichButtonsPlugin()
-    }
-
-    componentDidMount() {
-      this.props.getOnChange(this.onChange, this.props.contentLocation)
     }
 
     componentWillReceiveProps(nextProps) {
       if (!this.props.content && nextProps.content) {
-        let content
-
-        try {
-          content = JSON.parse(nextProps.content)
-        } catch(e) {
-          content = nextProps.content
-        }
-
         this.setState({
-          editorState: nextProps.content ? EditorState.createWithContent(convertFromRaw(content)) : EditorState.createEmpty()
+          editorValue: nextProps.content ? createValueFromString(nextProps.content, 'html') : createEmptyValue()
         })
       }
 
       if (!this.props.saveBool && nextProps.saveBool) {
-        this.saveContent(this.state.editorState.getCurrentContent(), this.props.contentLocation)
+        this.saveContent(this.state.editorValue.toString('html'), this.props.contentLocation)
         this.props.postSave()
       }
 
       if (!this.props.cancelBool && nextProps.cancelBool) {
-        let content
-
-        try {
-          content = JSON.parse(this.props.content)
-        } catch(e) {
-          content = this.props.content
-        }
-
         this.setState({
-          editorState: this.props.content ? EditorState.createWithContent(convertFromRaw(content)) : EditorState.createEmpty()
+          editorValue: this.props.content ? createValueFromString(this.props.content, 'html') : createEmptyValue()
         })
         this.props.postCancel()
       }
     }
 
-    onChange = editorState => {
-        this.setState({ editorState }, () => {
-          this.props.getEditorState(editorState, this.props.contentLocation)
-        })
+    onChange = editorValue => {
+        this.setState({ editorValue })
     }
 
     saveContent = (content, location) => {
         const data = {
-          content: convertToRaw(content),
+          content,
           name: location
         }
 
@@ -76,73 +70,50 @@ export default class CustomEditor extends Component {
         })
     }
 
-    handleKeyCommand = (command, editorState) => {
-      const newState = RichUtils.handleKeyCommand(editorState, command);
-        if (newState) {
-          this.onChange(newState);
-          return 'handled';
-        }
-      return 'not-handled';
+    convertHtml = htmlString => {
+      let html = `${htmlString}`
+      let newValue = createValueFromString(html, 'html')
+      this.onChange(newValue)
+      this.props.postInputHtml()
+      this.setState({ textarea: 'Please paste in HTML...' })
+    }
+
+    onCancelTextarea = () => {
+      this.setState({
+          editorValue: this.props.content ? createValueFromString(this.props.content, 'html') : createEmptyValue(),
+          textarea: 'Please paste in HTML...'
+        })
+      this.props.postInputHtml()
+    }
+
+    handleChange = (evt) => {
+      this.setState({ [ evt.target.name ]: evt.target.value })
     }
 
     render() {
-        const {
-          // inline buttons
-          ItalicButton, BoldButton, MonospaceButton, UnderlineButton,
-          // block buttons
-          ParagraphButton, BlockquoteButton, CodeButton, OLButton, ULButton, H1Button, H2Button, H3Button
-        } = this.richButtonsPlugin
-
-        const toolbarPlugin = createToolbarPlugin({
-          structure: [
-            BoldButton,
-            ItalicButton,
-            UnderlineButton,
-            MonospaceButton,
-            ParagraphButton,
-            BlockquoteButton,
-            CodeButton,
-            OLButton,
-            ULButton,
-            H1Button,
-            H2Button,
-            H3Button
-          ]
-        })
-
-        const { Toolbar } = toolbarPlugin
-
-        const plugins = [
-          toolbarPlugin,
-          this.richButtonsPlugin
-        ]
-
         return (
             <div>
-              {!this.props.readOnly &&
-              <Toolbar>
-                <BoldButton />
-                <ItalicButton />
-                <UnderlineButton />
-                <MonospaceButton />
-                <ParagraphButton />
-                <BlockquoteButton />
-                <CodeButton />
-                <OLButton />
-                <ULButton />
-                <H1Button />
-                <H2Button />
-                <H3Button />
-              </Toolbar>
-              }
-              <Editor
-                  editorState={this.state.editorState}
+              {this.props.inputHtmlBool ?
+              <div>
+                <textarea
+                  name='textarea'
+                  value={this.state.textarea}
+                  onChange={this.handleChange}
+                  rows='10'
+                  cols='60'
+                />
+                <ButtonContainer>
+                  <Button onClick={() => this.onCancelTextarea()}>Cancel</Button>
+                  <Button onClick={() => this.convertHtml(this.state.textarea)}>Convert HTML</Button>
+                </ButtonContainer>
+              </div> :
+              <RichTextEditor
+                  value={this.state.editorValue}
                   onChange={this.onChange}
-                  plugins={plugins}
-                  handleKeyCommand={this.handleKeyCommand}
                   readOnly={this.props.readOnly}
                   placeholder="Type here..."
-              />
+                  autoFocus={!this.props.readOnly}
+              />}
             </div>
         )
     }
