@@ -4,6 +4,9 @@ import styled from "styled-components"
 import FontAwsome from "react-fontawesome"
 import CustomEditor from '../Components/aboutpage/CustomEditor'
 
+import { Editor } from "slate-react"
+import { Value } from "slate"
+
 const Container = styled.div`
   display: flex;
   flex-direction: row;
@@ -69,6 +72,29 @@ const ButtonContainer = styled.div`
     margin-top: 5px;
 `
 
+// Create our initial value...
+const initialValue = Value.fromJSON({
+  document: {
+    nodes: [
+      {
+        object: 'block',
+        type: 'paragraph',
+        nodes: [
+          {
+            object: 'text',
+            leaves: [
+              {
+                text: 'This beta version of dictyBase was built using AngularJS, with the lastest markup (HTML5) and style (CSS3) language versions. Bootstrap is the framework used to develop the responsive features. The architecture is hosted entirely on a cloud system. The applications are built and run on docker containers.'
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+})
+
+
 export default class About extends Component {
     constructor(props) {
         super(props);
@@ -85,7 +111,8 @@ export default class About extends Component {
           leftOnChange: null,
           rightOnChange: null,
           leftInputHtml: false,
-          rightInputHtml: false
+          rightInputHtml: false,
+          value: initialValue // Initial value of editor
         }
     }
 
@@ -139,6 +166,13 @@ export default class About extends Component {
         this.setState({ [inputHtmlName]: false })
     }
 
+
+    /* New helper functions for slate editor */
+
+    onChange = ({ value }) => {
+      this.setState({ value })
+    }
+
     render() {
         const itemStyle = {
             paddingTop: '20px',
@@ -155,6 +189,16 @@ export default class About extends Component {
                         {"  "}dictyBase
                     </Hdrtxt>
                 </Banner>
+
+                <Container>
+                  <Item>
+                    <Editor
+                      value={this.state.value}
+                      onChange={this.onChange}
+                    />
+                  </Item>
+                </Container>
+
                 <Container>
                     <Item style={!this.state.leftReadOnly ? itemStyle : null}>
                         {this.state.leftReadOnly &&
