@@ -95,8 +95,14 @@ const initialValue = Value.fromJSON({
 })
 
 
+/* Functions for text formatting */
+
 function BoldText(props) {
   return <strong>{props.children}</strong>
+}
+
+function ItalicText(props) {
+  return <i>{props.children}</i>
 }
 
 
@@ -181,6 +187,8 @@ export default class About extends Component {
       console.log("User pressed: ", event.key) // logs keyboard key
       if (!event.metaKey) return
 
+      const isCode = change.value.blocks.some(block => block.type == 'code')
+
       switch (event.key) {
         // if user pressed "b", add "bold" mark to text
         case 'b': {
@@ -189,9 +197,14 @@ export default class About extends Component {
           return true
         }
 
+        case 'i': {
+          event.preventDefault()
+          change.addMark('italic')
+          return true
+        }
+
         // if the user presses " " then don't change text format
         case ' ': {
-          const isCode = change.value.blocks.some(block => block.type == 'code')
           event.preventDefault()
           change.setBlock(isCode ? 'paragraph' : 'code')
           return true
@@ -203,6 +216,7 @@ export default class About extends Component {
     renderMark = (props) => {
       switch (props.mark.type) {
         case 'bold': return <BoldText {...props} />
+        case 'italic': return <ItalicText {...props} />
       }
     }
 
