@@ -95,6 +95,10 @@ const initialValue = Value.fromJSON({
 })
 
 
+function BoldText(props) {
+  return <strong>{props.children}</strong>
+}
+
 
 export default class About extends Component {
     constructor(props) {
@@ -174,7 +178,32 @@ export default class About extends Component {
     }
 
     onKeyDown = (event, change) => {
-      console.log("User pressed: ", event.key) // logs the keyboard key pressed by user
+      console.log("User pressed: ", event.key) // logs keyboard key
+      if (!event.metaKey) return
+
+      switch (event.key) {
+        // if user pressed "b", add "bold" mark to text
+        case 'b': {
+          event.preventDefault()
+          change.addMark('bold')
+          return true
+        }
+
+        // if the user presses " " then don't change text format
+        case ' ': {
+          const isCode = change.value.blocks.some(block => block.type == 'code')
+          event.preventDefault()
+          change.setBlock(isCode ? 'paragraph' : 'code')
+          return true
+        }
+
+      }
+    }
+
+    renderMark = (props) => {
+      switch (props.mark.type) {
+        case 'bold': return <BoldText {...props} />
+      }
     }
 
     render() {
@@ -200,6 +229,7 @@ export default class About extends Component {
                       value={this.state.value}
                       onChange={this.onChange}
                       onKeyDown={this.onKeyDown}
+                      renderMark={this.renderMark}
                     />
                   </Item>
                 </Container>
