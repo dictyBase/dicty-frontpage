@@ -96,13 +96,16 @@ const initialValue = Value.fromJSON({
 
 
 /* Functions for text formatting */
-
 function BoldText(props) {
   return <strong>{props.children}</strong>
 }
 
 function ItalicText(props) {
   return <i>{props.children}</i>
+}
+
+function UnderlineText(props) {
+  return <u>{props.children}</u>
 }
 
 
@@ -203,6 +206,12 @@ export default class About extends Component {
           return true
         }
 
+        case 'u': {
+          event.preventDefault()
+          change.addMark('underline')
+          return true
+        }
+
         // if the user presses " " then don't change text format
         case ' ': {
           event.preventDefault()
@@ -217,6 +226,7 @@ export default class About extends Component {
       switch (props.mark.type) {
         case 'bold': return <BoldText {...props} />
         case 'italic': return <ItalicText {...props} />
+        case 'underline': return <UnderlineText {...props} />
       }
     }
 
