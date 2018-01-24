@@ -84,7 +84,7 @@ const initialValue = Value.fromJSON({
             object: 'text',
             leaves: [
               {
-                text: 'This beta version of dictyBase was built using AngularJS, with the lastest markup (HTML5) and style (CSS3) language versions. Bootstrap is the framework used to develop the responsive features. The architecture is hosted entirely on a cloud system. The applications are built and run on docker containers.'
+                text: '\n\nThis beta version of dictyBase was built using AngularJS, with the lastest markup (HTML5) and style (CSS3) language versions. \n\nBootstrap is the framework used to develop the responsive features. \n\nThe architecture is hosted entirely on a cloud system. The applications are built and run on docker containers.'
               }
             ]
           }
@@ -93,6 +93,7 @@ const initialValue = Value.fromJSON({
     ]
   }
 })
+
 
 
 export default class About extends Component {
@@ -127,50 +128,53 @@ export default class About extends Component {
         .then(content => this.setState({ rightContent: content }))
     }
 
-    onEditClick = editorName => {
-        const side = `${editorName}ReadOnly`
-        this.setState({ [side]: false })
-    }
+    // onEditClick = editorName => {
+    //     const side = `${editorName}ReadOnly`
+    //     this.setState({ [side]: false })
+    // }
+    //
+    // onSaveClick = editorName => {
+    //     const side = `${editorName}Save`
+    //     this.setState({ [side]: true })
+    // }
+    //
+    // postSave = editorName => {
+    //     const saveName = `${editorName}Save`
+    //     const readOnlyName = `${editorName}ReadOnly`
+    //     this.setState({ [readOnlyName]: true })
+    //     this.setState({ [saveName]: false })
+    // }
+    //
+    // onCancelClick = editorName => {
+    //     const side = `${editorName}Cancel`
+    //     this.setState({ [side]: true })
+    // }
+    //
+    // postCancel = editorName => {
+    //     const cancelName = `${editorName}Cancel`
+    //     const readOnlyName = `${editorName}ReadOnly`
+    //     this.setState({ [readOnlyName]: true })
+    //     this.setState({ [cancelName]: false })
+    // }
+    //
+    // onInputHtml = editorName => {
+    //     const side = `${editorName}InputHtml`
+    //     this.setState({ [side]: true })
+    // }
+    //
+    // postInputHtml = editorName => {
+    //     const inputHtmlName = `${editorName}InputHtml`
+    //     this.setState({ [inputHtmlName]: false })
+    // }
 
-    onSaveClick = editorName => {
-        const side = `${editorName}Save`
-        this.setState({ [side]: true })
-    }
 
-    postSave = editorName => {
-        const saveName = `${editorName}Save`
-        const readOnlyName = `${editorName}ReadOnly`
-        this.setState({ [readOnlyName]: true })
-        this.setState({ [saveName]: false })
-    }
-
-    onCancelClick = editorName => {
-        const side = `${editorName}Cancel`
-        this.setState({ [side]: true })
-    }
-
-    postCancel = editorName => {
-        const cancelName = `${editorName}Cancel`
-        const readOnlyName = `${editorName}ReadOnly`
-        this.setState({ [readOnlyName]: true })
-        this.setState({ [cancelName]: false })
-    }
-
-    onInputHtml = editorName => {
-        const side = `${editorName}InputHtml`
-        this.setState({ [side]: true })
-    }
-
-    postInputHtml = editorName => {
-        const inputHtmlName = `${editorName}InputHtml`
-        this.setState({ [inputHtmlName]: false })
-    }
-
-
-    /* New helper functions for slate editor */
-
+    /* Helper functions for new slate editor */
     onChange = ({ value }) => {
-      this.setState({ value })
+      this.setState({ value }) //
+    }
+
+    onKeyDown = (event, change) => {
+      console.log("User pressed: ", event.key) // logs the keyboard key pressed by user
     }
 
     render() {
@@ -195,11 +199,12 @@ export default class About extends Component {
                     <Editor
                       value={this.state.value}
                       onChange={this.onChange}
+                      onKeyDown={this.onKeyDown}
                     />
                   </Item>
                 </Container>
 
-                <Container>
+                {/* <Container>
                     <Item style={!this.state.leftReadOnly ? itemStyle : null}>
                         {this.state.leftReadOnly &&
                         <Button onClick={() => this.onEditClick('left')}>Edit</Button>}
@@ -242,7 +247,7 @@ export default class About extends Component {
                             <Button onClick={() => this.onInputHtml('right')}>Input HTML</Button>
                         </ButtonContainer>}
                     </Item>
-                </Container>
+                </Container> */}
             </div>
         )
     }
