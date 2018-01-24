@@ -91,11 +91,12 @@ export default class About extends Component {
 
     componentDidMount() {
         fetch('/pages/frontpage/leftContent')
-        .then(response => response.json())
+        /* BUG: Unhandled rejection (SyntaxError): Unexpected token P in JSON at position 0 */
+        // .then(response => response.json())
         .then(content => this.setState({ leftContent: content }))
 
         fetch('/pages/frontpage/rightContent')
-        .then(response => response.json())
+        // .then(response => response.json())
         .then(content => this.setState({ rightContent: content }))
     }
 
