@@ -9,7 +9,9 @@ import {
   Header,
   Hdrtxt,
   Container,
-  Item
+  Item,
+  Button,
+  ToolBar
 } from './EditablePageStyles'
 
 import { Editor } from "slate-react"
@@ -47,11 +49,12 @@ export default class About extends Component {
         }
     }
 
-    /* Helper functions for new slate editor */
     onChange = ({ value }) => {
       this.setState({ value }) //
     }
 
+    /* Keyboard Hotkeys */
+    
     onKeyDown = (event, change) => {
       console.log("User pressed: ", event.key) // logs keyboard key
       if (!event.metaKey) return // if there is no metaKey, quit
@@ -84,6 +87,7 @@ export default class About extends Component {
         }
 
       }
+
     }
 
     renderMark = (props) => {
@@ -106,6 +110,32 @@ export default class About extends Component {
       }
     }
 
+    /* HTML Toolbar */
+
+    hasMark = (type) => {
+      const { value } = this.state
+      return value.activeMarks.some(mark => mark.type == type)
+    }
+
+    onClickMark = (event, type) => {
+      event.preventDefault()
+      const { value } = this.state
+      const change = value.change().toggleMark(type)
+      this.onChange(change)
+    }
+
+    renderMarkButton = (type) => {
+      const isActive = this.hasMark(type)
+      const onMouseDown = event => this.onClickMark(event, type)
+
+      return (
+        <Button onMouseDown={onMouseDown} data-active={isActive}>
+          {type}
+        </Button>
+      )
+
+    }
+
     render() {
         const itemStyle = {
             paddingTop: '20px',
@@ -125,6 +155,13 @@ export default class About extends Component {
 
                 <Container>
                   <Item>
+                    <ToolBar>
+                      {this.renderMarkButton('bold')}
+                      {this.renderMarkButton('italic')}
+                      {this.renderMarkButton('underline')}
+
+                    </ToolBar>
+
                     <Editor
                       value={this.state.value}
                       onChange={this.onChange}

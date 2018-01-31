@@ -46,21 +46,17 @@ export const Hdrtxt = styled.p`
     font-size: 21px;
 `
 
-export const Button = styled.button`
-    color: #fff;
-    background: #337ab7;
-    border: none;
-    font-size: 12px;
-    border-radius: 3px;
-    display: block;
-    padding: 5px 10px;
-    text-align: center;
-    margin: 10px 20px 10px 0px;
-    width: 100px;
+export const ToolBar = styled.div`
+    position: relative;
+    padding: 1px 18px 17px;
+    margin: 0 -20px;
+    border-bottom: 2px solid #eee;
+    margin-bottom: 20px;
 `
 
-export const ButtonContainer = styled.div`
-    display: flex;
-    justify-content: space-around;
-    margin-top: 5px;
+export const Button = styled.span`
+    color: #000;
+    cursor: pointer;
+    padding: 10px;
+
 `
