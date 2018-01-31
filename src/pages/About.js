@@ -54,7 +54,7 @@ export default class About extends Component {
     }
 
     /* Keyboard Hotkeys */
-    
+
     onKeyDown = (event, change) => {
       console.log("User pressed: ", event.key) // logs keyboard key
       if (!event.metaKey) return // if there is no metaKey, quit
@@ -130,7 +130,7 @@ export default class About extends Component {
 
       return (
         <Button onMouseDown={onMouseDown} data-active={isActive}>
-          {type}
+          <FontAwsome name= {type}/>
         </Button>
       )
 
