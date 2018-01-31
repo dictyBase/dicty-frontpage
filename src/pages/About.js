@@ -60,19 +60,19 @@ export default class About extends Component {
         // if user pressed "b", add "bold" mark to text
         case 'b': {
           event.preventDefault()
-          change.addMark('bold')
+          change.toggleMark('bold')
           return true
         }
 
         case 'i': {
           event.preventDefault()
-          change.addMark('italic')
+          change.toggleMark('italic')
           return true
         }
 
         case 'u': {
           event.preventDefault()
-          change.addMark('underline')
+          change.toggleMark('underline')
           return true
         }
 
@@ -88,9 +88,21 @@ export default class About extends Component {
 
     renderMark = (props) => {
       switch (props.mark.type) {
-        case 'bold': return <strong>{props.children}</strong>;
-        case 'italic': return <i>{props.children}</i>;
-        case 'underline': return <u>{props.children}</u>;
+
+        case 'bold': return (
+          console.log("Mark type: ", props.mark.type),
+          <strong>{props.children}</strong>
+        );
+
+        case 'italic': return (
+          console.log("Mark type: ", props.mark.type),
+          <i>{props.children}</i>
+        );
+
+        case 'underline': return (
+          console.log("Mark type: ", props.mark.type),
+          <u>{props.children}</u>
+        );
       }
     }
 
