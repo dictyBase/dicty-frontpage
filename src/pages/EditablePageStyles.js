@@ -50,13 +50,18 @@ export const ToolBar = styled.div`
     position: relative;
     padding: 20px 18px 17px;
     margin: 0 -20px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 2px solid #eee;
     margin-bottom: 20px;
 `
 
 export const Button = styled.span`
-    color: #000;
+    color: #d3d3d3;
+    width: 50px;
     cursor: pointer;
     padding: 10px;
+
+    &:hover {
+      color: #000
+    }
 
 `
