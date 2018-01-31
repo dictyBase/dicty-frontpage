@@ -13,7 +13,7 @@ import {
 } from './EditablePageStyles'
 
 import { Editor } from "slate-react"
-import { Value } from "slate"
+import { Value, withToolBar } from "slate"
 
 // Create our initial value...
 const initialValue = Value.fromJSON({
@@ -36,21 +36,6 @@ const initialValue = Value.fromJSON({
     ]
   }
 })
-
-
-/* Functions for text formatting */
-/* Use ES6 syntax: the constant style (like the ones above) */
-function BoldText(props) {
-  return <strong>{props.children}</strong>
-}
-
-function ItalicText(props) {
-  return <i>{props.children}</i>
-}
-
-function UnderlineText(props) {
-  return <u>{props.children}</u>
-}
 
 
 export default class About extends Component {
@@ -103,9 +88,9 @@ export default class About extends Component {
 
     renderMark = (props) => {
       switch (props.mark.type) {
-        case 'bold': return <BoldText {...props} />
-        case 'italic': return <ItalicText {...props} />
-        case 'underline': return <UnderlineText {...props} />
+        case 'bold': return <strong>{props.children}</strong>;
+        case 'italic': return <i>{props.children}</i>;
+        case 'underline': return <u>{props.children}</u>;
       }
     }
 
