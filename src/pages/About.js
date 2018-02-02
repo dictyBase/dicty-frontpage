@@ -40,6 +40,7 @@ const initialValue = Value.fromJSON({
   }
 });
 
+/* The default mode for text */
 const DEFAULT_NODE = "paragraph";
 
 export default class About extends Component {
@@ -114,19 +115,22 @@ export default class About extends Component {
     const { attributes, children, node } = props;
     switch (node.type) {
       case "bulleted-list":
-        return (
-          <ul {...attributes}>{children}</ul>
-        );
-      case "block-quote":
-        return <blockquote {...attributes}>{children}</blockquote>;
-      case "heading-one":
-        return <h1 {...attributes}>{children}</h1>;
-      case "heading-two":
-        return <h2 {...attributes}>{children}</h2>;
-      case "list-item":
-        return <li {...attributes}>{children}</li>;
+        return <ul {...attributes}>{children}</ul>;
+
       case "numbered-list":
         return <ol {...attributes}>{children}</ol>;
+
+      case "list-item":
+        return <li {...attributes}>{children}</li>;
+
+      case "heading-one":
+        return <h1 {...attributes}>{children}</h1>;
+
+      case "heading-two":
+        return <h2 {...attributes}>{children}</h2>;
+
+      // case "block-quote":
+      //   return <blockquote {...attributes}>{children}</blockquote>;
     }
   };
 
@@ -169,7 +173,7 @@ export default class About extends Component {
     const change = value.change();
     const { document } = value;
 
-    // Handle everything but list buttons.
+    // Handle anything that aren't lists
     if (type != "bulleted-list" && type != "numbered-list") {
       const isActive = this.hasBlock(type);
       const isList = this.hasBlock("list-item");
@@ -225,8 +229,19 @@ export default class About extends Component {
             <FontAwsome name="list-ol" />
           </Button>
         );
+      case "heading-one":
+        return (
+          <Button onMouseDown={onMouseDown} data-active={isActive}>
+            <FontAwsome name="heart" />
+          </Button>
+        );
+      case "heading-two":
+        return (
+          <Button onMouseDown={onMouseDown} data-active={isActive}>
+            <FontAwsome name="heart" />
+          </Button>
+        );
     }
-
   };
 
   render() {
@@ -254,7 +269,8 @@ export default class About extends Component {
               {this.renderMarkButton("underline")}
               {this.renderBlockButton("bulleted-list")}
               {this.renderBlockButton("numbered-list")}
-
+              {this.renderBlockButton("heading-one")}
+              {this.renderBlockButton("heading-two")}
             </ToolBar>
 
             <Editor
