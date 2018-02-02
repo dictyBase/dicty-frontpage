@@ -166,8 +166,8 @@ export default class About extends Component {
       case "heading-two":
         return <h2 {...attributes}>{children}</h2>;
 
-      // case "block-quote":
-      //   return <blockquote {...attributes}>{children}</blockquote>;
+      case "block-quote":
+        return <blockquote {...attributes}>{children}</blockquote>;
     }
   };
 
@@ -278,6 +278,12 @@ export default class About extends Component {
       //       <FontAwsome name="heart" />
       //     </Button>
       //   );
+      case "block-quote":
+        return (
+          <Button onMouseDown={onMouseDown} data-active={isActive}>
+            <FontAwsome name="indent" />
+          </Button>
+        );
     }
   };
 
@@ -308,6 +314,8 @@ export default class About extends Component {
               {this.renderBlockButton("numbered-list")}
               {this.renderBlockButton("heading-one")}
               {/* {this.renderBlockButton("heading-two")} */}
+              {this.renderBlockButton("block-quote")}
+
             </ToolBar>
 
             <Editor
