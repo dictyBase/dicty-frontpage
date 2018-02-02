@@ -269,15 +269,15 @@ export default class About extends Component {
       case "heading-one":
         return (
           <Button onMouseDown={onMouseDown} data-active={isActive}>
-            <FontAwsome name="heart" />
+            <FontAwsome name="header" />
           </Button>
         );
-      case "heading-two":
-        return (
-          <Button onMouseDown={onMouseDown} data-active={isActive}>
-            <FontAwsome name="heart" />
-          </Button>
-        );
+      // case "heading-two":
+      //   return (
+      //     <Button onMouseDown={onMouseDown} data-active={isActive}>
+      //       <FontAwsome name="heart" />
+      //     </Button>
+      //   );
     }
   };
 
@@ -307,7 +307,7 @@ export default class About extends Component {
               {this.renderBlockButton("bulleted-list")}
               {this.renderBlockButton("numbered-list")}
               {this.renderBlockButton("heading-one")}
-              {this.renderBlockButton("heading-two")}
+              {/* {this.renderBlockButton("heading-two")} */}
             </ToolBar>
 
             <Editor
