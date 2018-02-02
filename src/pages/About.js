@@ -30,12 +30,49 @@ const initialValue = Value.fromJSON({
             leaves: [
               {
                 text:
-                  "This beta version of dictyBase was built using AngularJS, with the latest markup (HTML5) and style (CSS3) language versions. \n\nBootstrap is the framework used to develop the responsive features. \n\nThe architecture is hosted entirely on a cloud system. The applications are built and run on docker containers."
+                  "This beta version of dictyBase was built using AngularJS, with the latest markup (HTML5) and style (CSS3) language versions.\n"
               }
             ]
           }
+
+        ]
+      },
+
+      {
+        object: "block",
+        type: "paragraph",
+        nodes: [
+          {
+            object: "text",
+            leaves: [
+              {
+                text:
+                  "Bootstrap is the framework used to develop the responsive features.\n"
+              }
+            ]
+          }
+
+        ]
+      },
+
+      {
+        object: "block",
+        type: "paragraph",
+        nodes: [
+          {
+            object: "text",
+            leaves: [
+              {
+                text:
+                  "The architecture is hosted entirely on a cloud system. The applications are built and run on docker containers."
+              }
+            ]
+          }
+
         ]
       }
+
+
     ]
   }
 });
