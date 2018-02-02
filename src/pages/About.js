@@ -212,11 +212,21 @@ export default class About extends Component {
     const isActive = this.hasBlock(type);
     const onMouseDown = event => this.onClickBlock(event, type);
 
-    return (
-      <Button onMouseDown={onMouseDown} data-active={isActive}>
-        <FontAwsome name="list" />
-      </Button>
-    );
+    switch (type) {
+      case "bulleted-list":
+        return (
+          <Button onMouseDown={onMouseDown} data-active={isActive}>
+            <FontAwsome name="list-ul" />
+          </Button>
+        );
+      case "numbered-list":
+        return (
+          <Button onMouseDown={onMouseDown} data-active={isActive}>
+            <FontAwsome name="list-ol" />
+          </Button>
+        );
+    }
+
   };
 
   render() {
@@ -231,7 +241,7 @@ export default class About extends Component {
           <Header>About Us</Header>
           <Hdrtxt>
             We{"  "}
-            <FontAwsome name="heart fa-3x" />
+            <FontAwsome name="heart fa-2x" />
             {"  "}dictyBase
           </Hdrtxt>
         </Banner>
@@ -243,6 +253,8 @@ export default class About extends Component {
               {this.renderMarkButton("italic")}
               {this.renderMarkButton("underline")}
               {this.renderBlockButton("bulleted-list")}
+              {this.renderBlockButton("numbered-list")}
+
             </ToolBar>
 
             <Editor
