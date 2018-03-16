@@ -1,0 +1,11 @@
+[include]
+<PROJECT_ROOT>/src/components/*
+
+[ignore]
+<PROJECT_ROOT>/node_modules/.*
+
+[options]
+module.name_mapper='^app/\([-a-zA-Z0-9$_/]+\)$' -> '<PROJECT_ROOT>/src/\1'
+
+[libs]
+flow-typed
