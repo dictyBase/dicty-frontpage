@@ -12,13 +12,13 @@ import {
 } from "./EditablePageStyles"
 import { Editor } from "slate-react"
 import { Value } from "slate"
-import initalValue from "../data/aboutPageInitialValue.json"
+import initialAboutContent from "../data/aboutPageInitialValue.json"
 
 // Update the initial content to be pulled from Local Storage if it exists.
 const existingValue = JSON.parse(localStorage.getItem("content"))
 
 // Create our initial value
-const initialValue = Value.fromJSON(existingValue || initialValue)
+const initialValue = Value.fromJSON(existingValue || initialAboutContent)
 
 /* The default mode for text */
 const DEFAULT_NODE = "paragraph"
