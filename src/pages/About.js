@@ -1,7 +1,6 @@
 // @flow
 import React, { Component } from "react"
 import FontAwesome from "react-fontawesome"
-
 import {
   Banner,
   Header,
@@ -11,86 +10,89 @@ import {
   Button,
   ToolBar,
 } from "./EditablePageStyles"
-
 import { Editor } from "slate-react"
 import { Value } from "slate"
 
-// Create our initial value...
-const initialValue = Value.fromJSON({
-  document: {
-    nodes: [
-      {
-        object: "block",
-        type: "paragraph",
-        nodes: [
-          {
-            object: "text",
-            leaves: [
-              {
-                text:
-                  "This beta version of dictyBase was built using AngularJS, with the latest markup (HTML5) and style (CSS3) language versions.\n",
-              },
-            ],
-          },
-        ],
-      },
+// Update the initial content to be pulled from Local Storage if it exists.
+const existingValue = JSON.parse(localStorage.getItem("content"))
 
-      {
-        object: "block",
-        type: "paragraph",
-        nodes: [
-          {
-            object: "text",
-            leaves: [
-              {
-                text:
-                  "Bootstrap is the framework used to develop the responsive features.\n",
-              },
-            ],
-          },
-        ],
-      },
+// Create our initial value
+const initialValue = Value.fromJSON(
+  existingValue || {
+    document: {
+      nodes: [
+        {
+          object: "block",
+          type: "paragraph",
+          nodes: [
+            {
+              object: "text",
+              leaves: [
+                {
+                  text:
+                    "This beta version of dictyBase was built using React, with the latest markup (HTML5) and style (CSS3) language versions.\n",
+                },
+              ],
+            },
+          ],
+        },
 
-      {
-        object: "block",
-        type: "paragraph",
-        nodes: [
-          {
-            object: "text",
-            leaves: [
-              {
-                text:
-                  "The architecture is hosted entirely on a cloud system. The applications are built and run on docker containers.",
-              },
-            ],
-          },
-        ],
-      },
-    ],
+        {
+          object: "block",
+          type: "paragraph",
+          nodes: [
+            {
+              object: "text",
+              leaves: [
+                {
+                  text:
+                    "Bootstrap is the framework used to develop the responsive features.\n",
+                },
+              ],
+            },
+          ],
+        },
+
+        {
+          object: "block",
+          type: "paragraph",
+          nodes: [
+            {
+              object: "text",
+              leaves: [
+                {
+                  text:
+                    "The architecture is hosted entirely on a cloud system. The applications are built and run on Docker containers.",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
   },
-})
+)
 
 /* The default mode for text */
 const DEFAULT_NODE = "paragraph"
 
 export default class About extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      value: initialValue, // Initial value of editor
-    }
+  state = {
+    value: initialValue, // Initial value of editor
   }
 
   onChange = ({ value }) => {
-    this.setState({ value }) //
+    // Save the value to Local Storage.
+    const content = JSON.stringify(value.toJSON())
+    localStorage.setItem("content", content)
+    this.setState({ value }) // on change, update state with new editor value
   }
 
   /* Keyboard Hotkeys */
 
   onKeyDown = (event, change) => {
-    console.log("User pressed: ", event.key) // logs keyboard key
-    if (!event.metaKey) return // if there is no metaKey, quit
+    // if there is no metaKey, quit
+    if (!event.metaKey) return
 
     switch (event.key) {
       // if user pressed "b", add "bold" mark to text
@@ -127,20 +129,13 @@ export default class About extends Component {
   renderMark = props => {
     switch (props.mark.type) {
       case "bold":
-        return (
-          console.log("Mark type: ", props.mark.type),
-          <strong>{props.children}</strong>
-        )
+        return <strong>{props.children}</strong>
 
       case "italic":
-        return (
-          console.log("Mark type: ", props.mark.type), <i>{props.children}</i>
-        )
+        return <i>{props.children}</i>
 
       case "underline":
-        return (
-          console.log("Mark type: ", props.mark.type), <u>{props.children}</u>
-        )
+        return <u>{props.children}</u>
       default:
         return
     }
