@@ -12,66 +12,13 @@ import {
 } from "./EditablePageStyles"
 import { Editor } from "slate-react"
 import { Value } from "slate"
+import initalValue from "../data/aboutPageInitialValue.json"
 
 // Update the initial content to be pulled from Local Storage if it exists.
 const existingValue = JSON.parse(localStorage.getItem("content"))
 
 // Create our initial value
-const initialValue = Value.fromJSON(
-  existingValue || {
-    document: {
-      nodes: [
-        {
-          object: "block",
-          type: "paragraph",
-          nodes: [
-            {
-              object: "text",
-              leaves: [
-                {
-                  text:
-                    "This beta version of dictyBase was built using React, with the latest markup (HTML5) and style (CSS3) language versions.\n",
-                },
-              ],
-            },
-          ],
-        },
-
-        {
-          object: "block",
-          type: "paragraph",
-          nodes: [
-            {
-              object: "text",
-              leaves: [
-                {
-                  text:
-                    "Bootstrap is the framework used to develop the responsive features.\n",
-                },
-              ],
-            },
-          ],
-        },
-
-        {
-          object: "block",
-          type: "paragraph",
-          nodes: [
-            {
-              object: "text",
-              leaves: [
-                {
-                  text:
-                    "The architecture is hosted entirely on a cloud system. The applications are built and run on Docker containers.",
-                },
-              ],
-            },
-          ],
-        },
-      ],
-    },
-  },
-)
+const initialValue = Value.fromJSON(existingValue || initialValue)
 
 /* The default mode for text */
 const DEFAULT_NODE = "paragraph"
