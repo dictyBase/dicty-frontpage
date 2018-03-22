@@ -1,7 +1,7 @@
 // @flow
 import React from "react"
 import { Flex } from "grid-styled"
-import FontAwsome from "react-fontawesome"
+import FontAwesome from "react-fontawesome"
 
 import {
   PaperContainer,
@@ -25,47 +25,47 @@ import {
 const Papers = (props: {
   /** List of paper items */
   papers: Array<{
-    "id": number,
-    "author": string,
-    "title": string,
-    "journal": string,
+    id: number,
+    author: string,
+    title: string,
+    journal: string,
   }>,
 }) => {
-  const text = props.papers.map((paper, index) =>
+  const text = props.papers.map((paper, index) => (
     <ListItems key={index}>
-      <LeadText>
-        {paper.author}
-      </LeadText>
+      <LeadText>{paper.author}</LeadText>
       <MainContent>
-        <strong><em>{paper.title}</em></strong>
+        <strong>
+          <em>{paper.title}</em>
+        </strong>
       </MainContent>
       <SourceContent>
         <SourceTitle>Journal: </SourceTitle>
-          {paper.journal}
-        <Link href={paper.link} target="new"> Pubmed</Link>
+        {paper.journal}
+        <Link href={paper.link} target="new">
+          {" "}
+          Pubmed
+        </Link>
       </SourceContent>
-    </ListItems>,
-  )
+    </ListItems>
+  ))
 
   return (
     <PaperContainer>
       <Header>
         <Flex wrap>
-            <PaperTitle>
-                <FontAwsome name="paperclip fa-lg" />
-            </PaperTitle>
-            <PaperTitle>
-                LATEST PAPERS
-            </PaperTitle>
+          <PaperTitle>
+            <FontAwesome name="paperclip fa-lg" />
+          </PaperTitle>
+          <PaperTitle>LATEST PAPERS</PaperTitle>
         </Flex>
       </Header>
-      <ListBox>
-        {text}
-      </ListBox>
+      <ListBox>{text}</ListBox>
       <MoreLink>
-        <FontAwsome name="plus" />
+        <FontAwesome name="plus" />
         <Link href="" alt="more papers">
-          {" "}more papers{" "}
+          {" "}
+          more papers{" "}
         </Link>
       </MoreLink>
     </PaperContainer>

@@ -1,17 +1,17 @@
-import styled from 'styled-components';
+import styled from "styled-components"
 
 export const Container = styled.div`
   display: flex;
   flex-direction: row;
   width: 90%;
   margin: auto;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   line-height: 1.428;
 
   @media (max-width: 767px) {
     flex-wrap: wrap;
   }
-`;
+`
 
 export const Item = styled.div`
   width: 50%;
@@ -25,14 +25,14 @@ export const Item = styled.div`
     padding-right: 50px;
     width: 100%;
   }
-`;
+`
 
 export const Banner = styled.div`
   min-height: 150px;
   text-align: center;
   padding: 48px 30px 48px 30px;
   background-color: #eee;
-`;
+`
 
 export const Header = styled.h1`
   @media (min-width: 768px) {
@@ -40,11 +40,11 @@ export const Header = styled.h1`
     padding: 2px;
     margin: 2px;
   }
-`;
+`
 
 export const Hdrtxt = styled.p`
   font-size: 21px;
-`;
+`
 
 export const ToolBar = styled.div`
   position: relative;
@@ -52,7 +52,7 @@ export const ToolBar = styled.div`
   margin: 0 -20px;
   border-bottom: 2px solid #eee;
   margin-bottom: 20px;
-`;
+`
 
 export const Button = styled.span`
   color: #d3d3d3;
@@ -63,4 +63,4 @@ export const Button = styled.span`
   &:hover {
     color: #000;
   }
-`;
+`

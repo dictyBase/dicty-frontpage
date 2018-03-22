@@ -2,8 +2,7 @@
 import React from "react"
 import { Flex, Box } from "grid-styled"
 import twitterLogo from "../images/twitterLogo.png"
-import FontAwsome from "react-fontawesome"
-
+import FontAwesome from "react-fontawesome"
 
 import {
   NewsContainer,
@@ -28,26 +27,22 @@ import {
 const News = (props: {
   /** List of news items */
   posts: Array<{
-    "id": number,
-    "date": number,
-    "content": string,
-    "source": string,
+    id: number,
+    date: number,
+    content: string,
+    source: string,
   }>,
 }) => {
-  const text = props.posts.map((post, index) =>
+  const text = props.posts.map((post, index) => (
     <ListItems key={index}>
-      <LeadText>
-        {post.date}
-      </LeadText>
-      <MainContent>
-        {post.content}
-      </MainContent>
+      <LeadText>{post.date}</LeadText>
+      <MainContent>{post.content}</MainContent>
       <SourceContent>
         <SourceTitle>Source:</SourceTitle>
         {post.source}
       </SourceContent>
-    </ListItems>,
-  )
+    </ListItems>
+  ))
 
   return (
     <NewsContainer>
@@ -62,18 +57,17 @@ const News = (props: {
             </Link>
           </Box>
           <Box px={2} py={1} width={9 / 10}>
-            <FontAwsome name="globe fa-lg" />
+            <FontAwesome name="globe fa-lg" />
             <NewsStockTitle>DICTY NEWS</NewsStockTitle>
           </Box>
         </Flex>
       </Header>
-      <ListBox>
-        {text}
-      </ListBox>
+      <ListBox>{text}</ListBox>
       <MoreLink>
-        <FontAwsome name="plus" />
+        <FontAwesome name="plus" />
         <Link href="" alt="more news">
-          {" "}more news{" "}
+          {" "}
+          more news{" "}
         </Link>
       </MoreLink>
     </NewsContainer>

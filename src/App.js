@@ -1,15 +1,15 @@
 // @flow
-import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { Header, Footer } from 'dicty-components-header-footer';
-import { Navbar } from 'dicty-components-navbar';
-import { navItems } from './constants/navbar';
-import items from './data/footer';
-import Front from './pages/Front';
-import Learn from './pages/Learn';
-import About from './pages/About';
-import Teach from './pages/Teach';
-import { headerItems, generateLinks } from './utils/headerItems';
+import React from "react"
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
+import { Header, Footer } from "dicty-components-header-footer"
+import { Navbar } from "dicty-components-navbar"
+import { navItems } from "./constants/navbar"
+import items from "./data/footer"
+import Front from "./pages/Front"
+import Learn from "./pages/Learn"
+import About from "./pages/About"
+import Teach from "./pages/Teach"
+import { headerItems, generateLinks } from "./utils/headerItems"
 
 const App = () => {
   return (
@@ -31,7 +31,7 @@ const App = () => {
       </Router>
       <Footer items={items} />
     </div>
-  );
-};
+  )
+}
 
-export default App;
+export default App
