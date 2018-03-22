@@ -43,7 +43,7 @@ export default class About extends Component {
 
   hasLinks = () => {
     const { value } = this.state
-    return value.inlines.some(inline => inline.type == "link")
+    return value.inlines.some(inline => inline.type === "link")
   }
 
   onChange = ({ value }) => {
@@ -81,7 +81,7 @@ export default class About extends Component {
 
     const transfer = getEventTransfer(event)
     const { type, text } = transfer
-    if (type != "text" && type != "html") return
+    if (type !== "text" && type !== "html") return
 
     if (this.hasLinks()) {
       change.call(unwrapLink)
