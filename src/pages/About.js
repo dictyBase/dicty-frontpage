@@ -10,7 +10,7 @@ import {
   Button,
   ToolBar,
 } from "./EditablePageStyles"
-import { Editor } from "slate-react"
+import { Editor, getEventTransfer } from "slate-react"
 import { Value } from "slate"
 import initialAboutContent from "../data/aboutPageInitialValue.json"
 
@@ -23,9 +23,27 @@ const initialValue = Value.fromJSON(existingValue || initialAboutContent)
 /* The default mode for text */
 const DEFAULT_NODE = "paragraph"
 
+const wrapLink = (change, href) => {
+  change.wrapInline({
+    type: "link",
+    data: { href },
+  })
+
+  change.collapseToEnd()
+}
+
+const unwrapLink = change => {
+  change.unwrapInline("link")
+}
+
 export default class About extends Component {
   state = {
     value: initialValue, // Initial value of editor
+  }
+
+  hasLinks = () => {
+    const { value } = this.state
+    return value.inlines.some(inline => inline.type == "link")
   }
 
   onChange = ({ value }) => {
@@ -33,6 +51,44 @@ export default class About extends Component {
     const content = JSON.stringify(value.toJSON())
     localStorage.setItem("content", content)
     this.setState({ value }) // on change, update state with new editor value
+  }
+
+  onClickLink = event => {
+    event.preventDefault()
+    const { value } = this.state
+    const hasLinks = this.hasLinks()
+    const change = value.change()
+
+    if (hasLinks) {
+      change.call(unwrapLink)
+    } else if (value.isExpanded) {
+      const href = window.prompt("Enter the URL of the link:")
+      change.call(wrapLink, href)
+    } else {
+      const href = window.prompt("Enter the URL of the link:")
+      const text = window.prompt("Enter the text for the link:")
+      change
+        .insertText(text)
+        .extend(0 - text.length)
+        .call(wrapLink, href)
+    }
+
+    this.onChange(change)
+  }
+
+  onPaste = (event, change) => {
+    if (change.value.isCollapsed) return
+
+    const transfer = getEventTransfer(event)
+    const { type, text } = transfer
+    if (type != "text" && type != "html") return
+
+    if (this.hasLinks()) {
+      change.call(unwrapLink)
+    }
+
+    change.call(wrapLink, text)
+    return true
   }
 
   /* Keyboard Hotkeys */
@@ -118,6 +174,16 @@ export default class About extends Component {
 
       case "block-quote":
         return <blockquote {...attributes}>{children}</blockquote>
+
+      case "link": {
+        const { data } = node
+        const href = data.get("href")
+        return (
+          <a {...attributes} href={href}>
+            {children}
+          </a>
+        )
+      }
 
       default:
         return
@@ -205,6 +271,7 @@ export default class About extends Component {
   renderBlockButton = type => {
     const isActive = this.hasBlock(type)
     const onMouseDown = event => this.onClickBlock(event, type)
+    const hasLinks = this.hasLinks()
 
     switch (type) {
       case "bulleted-list":
@@ -249,6 +316,12 @@ export default class About extends Component {
             <FontAwesome name="strikethrough" />
           </Button>
         )
+      case "link":
+        return (
+          <Button onMouseDown={this.onClickLink} data-active={hasLinks}>
+            <FontAwesome name="link" />
+          </Button>
+        )
       default:
         return
     }
@@ -285,6 +358,7 @@ export default class About extends Component {
               {this.renderBlockButton("heading-two")}
               {this.renderBlockButton("heading-three")}
               {this.renderBlockButton("block-quote")}
+              {this.renderBlockButton("link")}
             </ToolBar>
 
             <Editor
