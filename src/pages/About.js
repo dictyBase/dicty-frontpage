@@ -83,6 +83,13 @@ export default class About extends Component {
 
       case "underline":
         return <u>{props.children}</u>
+
+      case "code":
+        return <code>{props.children}</code>
+
+      case "strikethrough":
+        return <del>{props.children}</del>
+
       default:
         return
     }
@@ -105,6 +112,9 @@ export default class About extends Component {
 
       case "heading-two":
         return <h2 {...attributes}>{children}</h2>
+
+      case "heading-three":
+        return <h3 {...attributes}>{children}</h3>
 
       case "block-quote":
         return <blockquote {...attributes}>{children}</blockquote>
@@ -212,19 +222,31 @@ export default class About extends Component {
       case "heading-one":
         return (
           <Button onMouseDown={onMouseDown} data-active={isActive}>
-            <FontAwesome name="header" />
+            H1
           </Button>
         )
-      // case "heading-two":
-      //   return (
-      //     <Button onMouseDown={onMouseDown} data-active={isActive}>
-      //       <FontAwesome name="heart" />
-      //     </Button>
-      //   );
+      case "heading-two":
+        return (
+          <Button onMouseDown={onMouseDown} data-active={isActive}>
+            H2
+          </Button>
+        )
+      case "heading-three":
+        return (
+          <Button onMouseDown={onMouseDown} data-active={isActive}>
+            H3
+          </Button>
+        )
       case "block-quote":
         return (
           <Button onMouseDown={onMouseDown} data-active={isActive}>
             <FontAwesome name="indent" />
+          </Button>
+        )
+      case "strikethrough":
+        return (
+          <Button onMouseDown={onMouseDown} data-active={isActive}>
+            <FontAwesome name="strikethrough" />
           </Button>
         )
       default:
@@ -255,10 +277,13 @@ export default class About extends Component {
               {this.renderMarkButton("bold")}
               {this.renderMarkButton("italic")}
               {this.renderMarkButton("underline")}
+              {this.renderMarkButton("code")}
+              {this.renderMarkButton("strikethrough")}
               {this.renderBlockButton("bulleted-list")}
               {this.renderBlockButton("numbered-list")}
               {this.renderBlockButton("heading-one")}
-              {/* {this.renderBlockButton("heading-two")} */}
+              {this.renderBlockButton("heading-two")}
+              {this.renderBlockButton("heading-three")}
               {this.renderBlockButton("block-quote")}
             </ToolBar>
 
