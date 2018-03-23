@@ -1,5 +1,5 @@
 // @flow
-import React, { Component } from "react"
+import React from "react"
 import { Flex, Box } from "rebass"
 import Slideshow from "../Components/frontpage/Slideshow"
 import News from "../Components/frontpage/News"
@@ -14,35 +14,33 @@ import annotations from "../data/annotations"
 import stockcenter from "../data/stockcenter"
 import images from "../data/carouselimages"
 
-class Front extends Component {
-  render() {
-    return (
-      <div>
-        <Flex wrap mx={30}>
-          <Flex wrap>
-            <Box px={16} py={8} width={[1, 1, 1, 1 / 2]}>
-              <Slideshow images={images} />
-            </Box>
-            <Box px={16} py={8} width={[1, 1, 1, 1 / 2]}>
-              <News posts={news.slice(0, 3)} />
-            </Box>
-          </Flex>
-          <Flex wrap>
-            <Box px={2} py={1} width={[1, 1, 1, 1 / 2]}>
-              <Papers papers={papers.slice(0, 5)} />
-            </Box>
-            <Box px={2} py={1} width={[1, 1 / 2, 1 / 2, 1 / 4]}>
-              <Popular widgets={widgets} />
-            </Box>
-            <Box px={2} py={1} width={[1, 1 / 2, 1 / 2, 1 / 4]}>
-              <StockCenter stockcenter={stockcenter} />
-              <Annotations annotations={annotations} />
-            </Box>
-          </Flex>
+const Front = () => {
+  return (
+    <div>
+      <Flex wrap mx={30}>
+        <Flex wrap>
+          <Box px={16} py={8} width={[1, 1, 1, 1 / 2]}>
+            <Slideshow images={images} />
+          </Box>
+          <Box px={16} py={8} width={[1, 1, 1, 1 / 2]}>
+            <News posts={news.slice(0, 3)} />
+          </Box>
         </Flex>
-      </div>
-    )
-  }
+        <Flex wrap>
+          <Box px={2} py={1} width={[1, 1, 1, 1 / 2]}>
+            <Papers papers={papers.slice(0, 5)} />
+          </Box>
+          <Box px={2} py={1} width={[1, 1 / 2, 1 / 2, 1 / 4]}>
+            <Popular widgets={widgets} />
+          </Box>
+          <Box px={2} py={1} width={[1, 1 / 2, 1 / 2, 1 / 4]}>
+            <StockCenter stockcenter={stockcenter} />
+            <Annotations annotations={annotations} />
+          </Box>
+        </Flex>
+      </Flex>
+    </div>
+  )
 }
 
 export default Front

@@ -14,7 +14,11 @@ import {
   NewsStockTitle,
 } from "../styles"
 
-const StockCenter = props => {
+type Props = {
+  stockcenter: Object,
+}
+
+const StockCenter = (props: Props) => {
   const plasmidlist = props.stockcenter.plasmids.map((plasmid, index) => (
     <AnnotationListItems key={index}>{plasmid}</AnnotationListItems>
   ))

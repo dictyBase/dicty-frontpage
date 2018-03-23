@@ -1,9 +1,26 @@
+// @flow
 import React, { Component } from "react"
 import { Editor, getEventTransfer } from "slate-react"
-import { Value } from "slate"
+import { Value, type Change } from "slate"
 import FontAwesome from "react-fontawesome"
 import { Flex, Box } from "rebass"
 import { Button, ToolBar, CancelButton, SaveButton } from "./EditablePageStyles"
+
+type Props = {
+  /** This is the value of the editable page content. Can be taken from server or local storage.  */
+  value: Object,
+  /** This is preconfigured JSON that can be used as the value of the editable page content. */
+  json: Object,
+}
+
+type State = {
+  /** This is the initial value of the editable page content. */
+  value: Object,
+}
+
+/**
+ * This is a reusable Slate inline editor component. It accepts two props to set the initial value state.
+ */
 
 /* The default mode for text */
 const DEFAULT_NODE = "paragraph"
@@ -21,8 +38,8 @@ const unwrapLink = change => {
   change.unwrapInline("link")
 }
 
-export default class InlineEditor extends Component {
-  constructor(props) {
+export default class InlineEditor extends Component<Props, State> {
+  constructor(props: Props) {
     super(props)
     this.state = {
       value: Value.fromJSON(props.value || props.json), // Initial value of editor
@@ -34,7 +51,7 @@ export default class InlineEditor extends Component {
     return value.inlines.some(inline => inline.type === "link")
   }
 
-  onChange = ({ value }) => {
+  onChange = ({ value }: Object) => {
     this.setState({ value }) // on change, update state with new editor value
   }
 
@@ -49,7 +66,7 @@ export default class InlineEditor extends Component {
     this.setState(this.state.value)
   }
 
-  onClickLink = event => {
+  onClickLink = (event: SyntheticEvent<>) => {
     event.preventDefault()
     const { value } = this.state
     const hasLinks = this.hasLinks()
@@ -72,7 +89,7 @@ export default class InlineEditor extends Component {
     this.onChange(change)
   }
 
-  onPaste = (event, change) => {
+  onPaste = (event: SyntheticEvent<>, change: Change) => {
     if (change.value.isCollapsed) return
 
     const transfer = getEventTransfer(event)
@@ -89,43 +106,45 @@ export default class InlineEditor extends Component {
 
   /* Keyboard Hotkeys */
 
-  onKeyDown = (event, change) => {
+  onKeyDown = (event: SyntheticEvent<>, change: Change) => {
     // if there is no metaKey, quit
     if (!event.metaKey) return
 
-    switch (event.key) {
-      // if user pressed "b", add "bold" mark to text
-      case "b": {
-        event.preventDefault()
-        change.toggleMark("bold")
-        return true
-      }
+    if (event.key) {
+      switch (event.key) {
+        // if user pressed "b", add "bold" mark to text
+        case "b": {
+          event.preventDefault()
+          change.toggleMark("bold")
+          return true
+        }
 
-      case "i": {
-        event.preventDefault()
-        change.toggleMark("italic")
-        return true
-      }
+        case "i": {
+          event.preventDefault()
+          change.toggleMark("italic")
+          return true
+        }
 
-      case "u": {
-        event.preventDefault()
-        change.toggleMark("underline")
-        return true
-      }
+        case "u": {
+          event.preventDefault()
+          change.toggleMark("underline")
+          return true
+        }
 
-      // if the user presses " " then don't change text format
-      case " ": {
-        event.preventDefault()
-        change.addBlock(" ")
-        return true
-      }
+        // if the user presses " " then don't change text format
+        case " ": {
+          event.preventDefault()
+          change.addBlock(" ")
+          return true
+        }
 
-      default:
-        return
+        default:
+          return
+      }
     }
   }
 
-  renderMark = props => {
+  renderMark = (props: any) => {
     switch (props.mark.type) {
       case "bold":
         return <strong>{props.children}</strong>
@@ -147,7 +166,7 @@ export default class InlineEditor extends Component {
     }
   }
 
-  renderNode = props => {
+  renderNode = (props: any) => {
     const { attributes, children, node } = props
     switch (node.type) {
       case "bulleted-list":
@@ -189,19 +208,19 @@ export default class InlineEditor extends Component {
   /* HTML Toolbar */
 
   /* For bold, underline, and italic text */
-  hasMark = type => {
+  hasMark = (type: string) => {
     const { value } = this.state
     return value.activeMarks.some(mark => mark.type === type)
   }
 
-  onClickMark = (event, type) => {
+  onClickMark = (event: SyntheticEvent<>, type: string) => {
     event.preventDefault()
     const { value } = this.state
     const change = value.change().toggleMark(type)
     this.onChange(change)
   }
 
-  renderMarkButton = type => {
+  renderMarkButton = (type: string) => {
     const isActive = this.hasMark(type)
     const onMouseDown = event => this.onClickMark(event, type)
 
@@ -214,12 +233,12 @@ export default class InlineEditor extends Component {
 
   /* For ordered and unordered bullets */
 
-  hasBlock = type => {
+  hasBlock = (type: string) => {
     const { value } = this.state
     return value.blocks.some(node => node.type === type)
   }
 
-  onClickBlock = (event, type) => {
+  onClickBlock = (event: SyntheticEvent<>, type: string) => {
     event.preventDefault()
     const { value } = this.state
     const change = value.change()
@@ -264,7 +283,7 @@ export default class InlineEditor extends Component {
     this.onChange(change)
   }
 
-  renderBlockButton = type => {
+  renderBlockButton = (type: string) => {
     const isActive = this.hasBlock(type)
     const onMouseDown = event => this.onClickBlock(event, type)
     const hasLinks = this.hasLinks()
@@ -324,11 +343,6 @@ export default class InlineEditor extends Component {
   }
 
   render() {
-    // const itemStyle = {
-    //     paddingTop: "20px",
-    //     marginTop: "10px"
-    // }
-
     return (
       <div>
         <ToolBar>

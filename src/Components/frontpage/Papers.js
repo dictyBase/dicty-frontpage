@@ -29,6 +29,7 @@ const Papers = (props: {
     author: string,
     title: string,
     journal: string,
+    link: string,
   }>,
 }) => {
   const text = props.papers.map((paper, index) => (

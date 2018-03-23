@@ -22,7 +22,11 @@ const Container = styled.div`
   margin: auto;
 `
 
-const Annotations = props => {
+type Props = {
+  annotations: Object,
+}
+
+const Annotations = (props: Props) => {
   const genelist = props.annotations.genes.map((gene, index) => (
     <AnnotationListItems key={index}>{gene}</AnnotationListItems>
   ))
