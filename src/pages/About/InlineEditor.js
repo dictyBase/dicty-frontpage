@@ -1,17 +1,9 @@
-// @flow
 import React, { Component } from "react"
 import { Editor, getEventTransfer } from "slate-react"
 import { Value } from "slate"
 import FontAwesome from "react-fontawesome"
 import { Flex, Box } from "rebass"
-import technicalSummary from "../../data/technicalSummary.json"
 import { Button, ToolBar, CancelButton, SaveButton } from "./EditablePageStyles"
-
-// Update the initial content to be pulled from Local Storage if it exists.
-const existingValue = JSON.parse(localStorage.getItem("contentLeft"))
-
-// Create our initial value
-const initialValue = Value.fromJSON(existingValue || technicalSummary)
 
 /* The default mode for text */
 const DEFAULT_NODE = "paragraph"
@@ -29,9 +21,12 @@ const unwrapLink = change => {
   change.unwrapInline("link")
 }
 
-export default class TechnicalSummaryEditor extends Component {
-  state = {
-    value: initialValue, // Initial value of editor
+export default class InlineEditor extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      value: Value.fromJSON(props.value || props.json), // Initial value of editor
+    }
   }
 
   hasLinks = () => {
@@ -52,7 +47,6 @@ export default class TechnicalSummaryEditor extends Component {
     const content = JSON.stringify(this.state.value.toJSON())
     localStorage.setItem("contentLeft", content)
     this.setState(this.state.value)
-    console.log(this.state.value)
   }
 
   onClickLink = event => {
