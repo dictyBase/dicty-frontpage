@@ -1,6 +1,6 @@
 // @flow
 import React from "react"
-import { Flex, Box } from "grid-styled"
+import { Flex, Box } from "rebass"
 import twitterLogo from "../images/twitterLogo.png"
 import FontAwesome from "react-fontawesome"
 

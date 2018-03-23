@@ -1,6 +1,6 @@
 // @flow
 import React, { Component } from "react"
-import { Flex, Box } from "grid-styled"
+import { Flex, Box } from "rebass"
 import Slideshow from "../Components/frontpage/Slideshow"
 import News from "../Components/frontpage/News"
 import Papers from "../Components/frontpage/Papers"

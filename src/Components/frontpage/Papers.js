@@ -1,6 +1,6 @@
 // @flow
 import React from "react"
-import { Flex } from "grid-styled"
+import { Flex } from "rebass"
 import FontAwesome from "react-fontawesome"
 
 import {

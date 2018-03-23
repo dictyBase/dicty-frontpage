@@ -1,6 +1,6 @@
 // @flow
 import React from "react"
-import { Box } from "grid-styled"
+import { Box } from "rebass"
 import FontAwesome from "react-fontawesome"
 import styled from "styled-components"
 

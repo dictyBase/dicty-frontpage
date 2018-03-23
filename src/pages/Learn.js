@@ -1,6 +1,6 @@
 // @flow
 import React from "react"
-import { Flex, Box } from "grid-styled"
+import { Flex, Box } from "rebass"
 import logoLearn from "../Components/images/learn/logoLearn.png"
 import learndicty from "../data/learndicty"
 import communityimg from "../Components/images/learn/rpL11-gfpBS.jpg"
