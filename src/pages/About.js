@@ -1,6 +1,10 @@
 // @flow
 import React, { Component } from "react"
+import { Editor, getEventTransfer } from "slate-react"
+import { Value } from "slate"
 import FontAwesome from "react-fontawesome"
+import { Flex, Box } from "rebass"
+import initialAboutContent from "../data/aboutPageInitialValue.json"
 import {
   Banner,
   Header,
@@ -12,10 +16,6 @@ import {
   CancelButton,
   SaveButton,
 } from "./EditablePageStyles"
-import { Flex, Box } from "rebass"
-import { Editor, getEventTransfer } from "slate-react"
-import { Value } from "slate"
-import initialAboutContent from "../data/aboutPageInitialValue.json"
 
 // Update the initial content to be pulled from Local Storage if it exists.
 const existingValue = JSON.parse(localStorage.getItem("content"))
