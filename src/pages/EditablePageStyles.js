@@ -64,3 +64,85 @@ export const Button = styled.span`
     color: #000;
   }
 `
+
+export const DefaultButton = styled.button`
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+`
+
+export const CancelButton = DefaultButton.extend`
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;
+  display: block;
+  width: 100%;
+
+  &:focus {
+    color: #333;
+    background-color: #e6e6e6;
+    border-color: #8c8c8c;
+  }
+
+  &:hover {
+    color: #333;
+    background-color: #e6e6e6;
+    border-color: #adadad;
+  }
+
+  &:active {
+    color: #333;
+    background-color: #e6e6e6;
+    border-color: #adadad;
+  }
+`
+
+export const SaveButton = DefaultButton.extend`
+  color: #fff;
+  background-color: #337ab7;
+  border-color: #2e6da4;
+  width: 100%;
+
+  a {
+    color: #fff;
+  }
+
+  a:hover {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  &:focus {
+    color: #fff;
+    background-color: #286090;
+    border-color: #122b40;
+  }
+
+  &:hover {
+    color: #fff;
+    background-color: #286090;
+    border-color: #204d74;
+  }
+
+  &:active {
+    color: #fff;
+    background-color: #286090;
+    border-color: #204d74;
+  }
+`

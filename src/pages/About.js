@@ -9,7 +9,10 @@ import {
   Item,
   Button,
   ToolBar,
+  CancelButton,
+  SaveButton,
 } from "./EditablePageStyles"
+import { Flex, Box } from "rebass"
 import { Editor, getEventTransfer } from "slate-react"
 import { Value } from "slate"
 import initialAboutContent from "../data/aboutPageInitialValue.json"
@@ -47,10 +50,19 @@ export default class About extends Component {
   }
 
   onChange = ({ value }) => {
-    // Save the value to Local Storage.
-    const content = JSON.stringify(value.toJSON())
-    localStorage.setItem("content", content)
     this.setState({ value }) // on change, update state with new editor value
+  }
+
+  onCancel = () => {
+    this.setState(this.state.value)
+  }
+
+  // on save, save the value to local storage
+  onSave = () => {
+    const content = JSON.stringify(this.state.value.toJSON())
+    localStorage.setItem("content", content)
+    this.setState(this.state.value)
+    console.log(this.state.value)
   }
 
   onClickLink = event => {
@@ -368,6 +380,14 @@ export default class About extends Component {
               renderMark={this.renderMark}
               renderNode={this.renderNode}
             />
+            <Flex>
+              <Box width={"40%"} mr={1} mt={1}>
+                <CancelButton onClick={this.onCancel}>Cancel</CancelButton>
+              </Box>
+              <Box width={"40%"} mr={1} mt={1}>
+                <SaveButton onClick={this.onSave}>Save</SaveButton>
+              </Box>
+            </Flex>
           </Item>
         </Container>
       </div>
