@@ -4,24 +4,14 @@ import { Editor, getEventTransfer } from "slate-react"
 import { Value } from "slate"
 import FontAwesome from "react-fontawesome"
 import { Flex, Box } from "rebass"
-import initialAboutContent from "../data/aboutPageInitialValue.json"
-import {
-  Banner,
-  Header,
-  Hdrtxt,
-  Container,
-  Item,
-  Button,
-  ToolBar,
-  CancelButton,
-  SaveButton,
-} from "./EditablePageStyles"
+import technicalSummary from "../../data/technicalSummary.json"
+import { Button, ToolBar, CancelButton, SaveButton } from "./EditablePageStyles"
 
 // Update the initial content to be pulled from Local Storage if it exists.
-const existingValue = JSON.parse(localStorage.getItem("content"))
+const existingValue = JSON.parse(localStorage.getItem("contentLeft"))
 
 // Create our initial value
-const initialValue = Value.fromJSON(existingValue || initialAboutContent)
+const initialValue = Value.fromJSON(existingValue || technicalSummary)
 
 /* The default mode for text */
 const DEFAULT_NODE = "paragraph"
@@ -39,7 +29,7 @@ const unwrapLink = change => {
   change.unwrapInline("link")
 }
 
-export default class About extends Component {
+export default class TechnicalSummaryEditor extends Component {
   state = {
     value: initialValue, // Initial value of editor
   }
@@ -60,7 +50,7 @@ export default class About extends Component {
   // on save, save the value to local storage
   onSave = () => {
     const content = JSON.stringify(this.state.value.toJSON())
-    localStorage.setItem("content", content)
+    localStorage.setItem("contentLeft", content)
     this.setState(this.state.value)
     console.log(this.state.value)
   }
@@ -347,49 +337,36 @@ export default class About extends Component {
 
     return (
       <div>
-        <Banner>
-          <Header>About Us</Header>
-          <Hdrtxt>
-            We{"  "}
-            <FontAwesome name="heart fa-2x" />
-            {"  "}dictyBase
-          </Hdrtxt>
-        </Banner>
+        <ToolBar>
+          {this.renderMarkButton("bold")}
+          {this.renderMarkButton("italic")}
+          {this.renderMarkButton("underline")}
+          {this.renderMarkButton("code")}
+          {this.renderMarkButton("strikethrough")}
+          {this.renderBlockButton("bulleted-list")}
+          {this.renderBlockButton("numbered-list")}
+          {this.renderBlockButton("heading-one")}
+          {this.renderBlockButton("heading-two")}
+          {this.renderBlockButton("heading-three")}
+          {this.renderBlockButton("block-quote")}
+          {this.renderBlockButton("link")}
+        </ToolBar>
 
-        <Container>
-          <Item>
-            <ToolBar>
-              {this.renderMarkButton("bold")}
-              {this.renderMarkButton("italic")}
-              {this.renderMarkButton("underline")}
-              {this.renderMarkButton("code")}
-              {this.renderMarkButton("strikethrough")}
-              {this.renderBlockButton("bulleted-list")}
-              {this.renderBlockButton("numbered-list")}
-              {this.renderBlockButton("heading-one")}
-              {this.renderBlockButton("heading-two")}
-              {this.renderBlockButton("heading-three")}
-              {this.renderBlockButton("block-quote")}
-              {this.renderBlockButton("link")}
-            </ToolBar>
-
-            <Editor
-              value={this.state.value}
-              onChange={this.onChange}
-              onKeyDown={this.onKeyDown}
-              renderMark={this.renderMark}
-              renderNode={this.renderNode}
-            />
-            <Flex>
-              <Box width={"40%"} mr={1} mt={1}>
-                <CancelButton onClick={this.onCancel}>Cancel</CancelButton>
-              </Box>
-              <Box width={"40%"} mr={1} mt={1}>
-                <SaveButton onClick={this.onSave}>Save</SaveButton>
-              </Box>
-            </Flex>
-          </Item>
-        </Container>
+        <Editor
+          value={this.state.value}
+          onChange={this.onChange}
+          onKeyDown={this.onKeyDown}
+          renderMark={this.renderMark}
+          renderNode={this.renderNode}
+        />
+        <Flex>
+          <Box width={"40%"} mr={1} mt={1}>
+            <CancelButton onClick={this.onCancel}>Cancel</CancelButton>
+          </Box>
+          <Box width={"40%"} mr={1} mt={1}>
+            <SaveButton onClick={this.onSave}>Save</SaveButton>
+          </Box>
+        </Flex>
       </div>
     )
   }

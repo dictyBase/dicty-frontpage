@@ -7,7 +7,7 @@ import { navItems } from "./constants/navbar"
 import items from "./data/footer"
 import Front from "./pages/Front"
 import Learn from "./pages/Learn"
-import About from "./pages/About"
+import About from "./pages/About/About"
 import Teach from "./pages/Teach"
 import { headerItems, generateLinks } from "./utils/headerItems"
 
