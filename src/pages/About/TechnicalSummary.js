@@ -1,5 +1,5 @@
 // @flow
-import React, { Component } from "react"
+import React from "react"
 import InlineEditor from "./InlineEditor"
 import technicalSummary from "../../data/technicalSummary.json"
 
@@ -7,10 +7,8 @@ import technicalSummary from "../../data/technicalSummary.json"
  * This is the view component for the Technical Summary section of the About page.
  */
 
-class TechnicalSummary extends Component {
-  render() {
-    return <InlineEditor side="contentLeft" json={technicalSummary} />
-  }
+const TechnicalSummary = () => {
+  return <InlineEditor side="contentLeft" json={technicalSummary} />
 }
 
 export default TechnicalSummary
