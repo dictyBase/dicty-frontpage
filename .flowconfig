@@ -1,11 +1,12 @@
 [include]
-<PROJECT_ROOT>/src/components/*
+<PROJECT_ROOT>/src/*
 
 [ignore]
 <PROJECT_ROOT>/node_modules/.*
 
 [options]
-module.name_mapper='^app/\([-a-zA-Z0-9$_/]+\)$' -> '<PROJECT_ROOT>/src/\1'
+module.name_mapper='^Components\(\/?.*\)$' -> '<PROJECT_ROOT>/src/Components/\1'
+module.name_mapper='^data\(\/?.*\)$' -> '<PROJECT_ROOT>/src/data/\1'
 
 [libs]
 flow-typed
