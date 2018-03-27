@@ -1,4 +1,4 @@
-import { SAVE_PAGE } from "../constants/types"
+import { SAVE_PAGE } from "constants/types"
 
 export const editablePages = (state = [], action) => {
   switch (action.type) {

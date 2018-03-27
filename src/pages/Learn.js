@@ -1,15 +1,15 @@
 // @flow
 import React from "react"
 import { Flex, Box } from "rebass"
-import logoLearn from "../Components/images/learn/logoLearn.png"
-import learndicty from "../data/learndicty"
-import communityimg from "../Components/images/learn/rpL11-gfpBS.jpg"
-import focusimg from "../Components/images/learn/gerisch4.png"
-import techniqueimg1 from "../Components/images/learn/pst0fingersS.jpg"
-import techniqueimg2 from "../Components/images/learn/HTP_princeton.png"
-import techniqueimg3 from "../Components/images/learn/nullatt.png"
+import logoLearn from "Components/images/learn/logoLearn.png"
+import learndicty from "data/learndicty"
+import communityimg from "Components/images/learn/rpL11-gfpBS.jpg"
+import focusimg from "Components/images/learn/gerisch4.png"
+import techniqueimg1 from "Components/images/learn/pst0fingersS.jpg"
+import techniqueimg2 from "Components/images/learn/HTP_princeton.png"
+import techniqueimg3 from "Components/images/learn/nullatt.png"
 
-import { ListBox, ListItems, Link } from "../Components/styles"
+import { ListBox, ListItems, Link } from "Components/styles"
 
 import {
   Banner,
@@ -22,7 +22,7 @@ import {
   SectionImgRight,
   LastUpdated,
   ContentLink,
-} from "../Components/styles/learn_teach/learn_teach_styles"
+} from "Components/styles/learn_teach/learn_teach_styles"
 
 const Learn = () => {
   const list = learndicty.map((section, index) => (

@@ -1,7 +1,7 @@
 // @flow
 import React from "react"
 import { Flex, Box } from "rebass"
-import logoTeaching from "../Components/images/logoTeaching.png"
+import logoTeaching from "Components/images/logoTeaching.png"
 import {
   teachdicty,
   davidk,
@@ -9,9 +9,9 @@ import {
   johnb,
   thierrys,
   references,
-} from "../data/teachdicty"
+} from "data/teachdicty"
 
-import { ListBox, Link, ListItems } from "../Components/styles"
+import { ListBox, Link, ListItems } from "Components/styles"
 
 import {
   Banner,
@@ -26,7 +26,7 @@ import {
   BannerSubText,
   SectionSubText,
   DownldBtn,
-} from "../Components/styles/learn_teach/learn_teach_styles"
+} from "Components/styles/learn_teach/learn_teach_styles"
 
 const Teach = () => {
   const contentlist = teachdicty.map((section, index) => (

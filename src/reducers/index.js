@@ -1,5 +1,5 @@
 import { combineReducers } from "redux"
-import { editablePages } from "./editablePagesReducer"
+import { editablePages } from "reducers/editablePagesReducer"
 
 const rootReducer = combineReducers({
   editablePages,
