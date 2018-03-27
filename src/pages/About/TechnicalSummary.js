@@ -1,5 +1,5 @@
 // @flow
-import React from "react"
+import React, { Component } from "react"
 import InlineEditor from "./InlineEditor"
 import technicalSummary from "../../data/technicalSummary.json"
 
@@ -7,12 +7,10 @@ import technicalSummary from "../../data/technicalSummary.json"
  * This is the view component for the Technical Summary section of the About page.
  */
 
-// Update the initial content to be pulled from Local Storage if it exists.
-// $FlowFixMe
-const existingValue = JSON.parse(localStorage.getItem("contentLeft"))
-
-const TechnicalSummary = () => {
-  return <InlineEditor value={existingValue} json={technicalSummary} />
+class TechnicalSummary extends Component {
+  render() {
+    return <InlineEditor side="contentLeft" json={technicalSummary} />
+  }
 }
 
 export default TechnicalSummary

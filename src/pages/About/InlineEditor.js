@@ -7,10 +7,10 @@ import { Flex, Box } from "rebass"
 import { Button, ToolBar, CancelButton, SaveButton } from "./EditablePageStyles"
 
 type Props = {
-  /** This is the value of the editable page content. Can be taken from server or local storage.  */
-  value: Object,
   /** This is preconfigured JSON that can be used as the value of the editable page content. */
   json: Object,
+  /** This is the side of the page (currently local storage) where the content is placed. */
+  side: string,
 }
 
 type State = {
@@ -41,8 +41,12 @@ const unwrapLink = change => {
 export default class InlineEditor extends Component<Props, State> {
   constructor(props: Props) {
     super(props)
+    // Update the initial content to be pulled from Local Storage if it exists.
+    // $FlowFixMe
+    const existingValue = JSON.parse(localStorage.getItem(props.side))
+
     this.state = {
-      value: Value.fromJSON(props.value || props.json), // Initial value of editor
+      value: Value.fromJSON(existingValue || props.json), // Initial value of editor
     }
   }
 
@@ -62,7 +66,7 @@ export default class InlineEditor extends Component<Props, State> {
   // on save, save the value to local storage
   onSave = () => {
     const content = JSON.stringify(this.state.value.toJSON())
-    localStorage.setItem("contentLeft", content)
+    localStorage.setItem(this.props.side, content)
     this.setState(this.state.value)
   }
 
