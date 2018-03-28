@@ -14,7 +14,6 @@ class TechnicalSummary extends Component {
     this.props.fetchInfoPage("dfp-technicalsummary")
   }
   render() {
-    console.log(this.props)
     return (
       <InlineEditor
         side="contentLeft"
