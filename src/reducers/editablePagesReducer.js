@@ -1,3 +1,4 @@
+// @flow
 import {
   EDIT_PAGE,
   SAVE_PAGE_REQUEST,
@@ -8,9 +9,11 @@ import {
   FETCH_PAGE_FAILURE,
 } from "constants/types"
 
-// copied from DSC, needs to be updated to work with Slate data
+const initialState = {
+  content: null,
+}
 
-export const editablePages = (state = [], action) => {
+export const editablePages = (state: Object = initialState, action: Object) => {
   switch (action.type) {
     case FETCH_PAGE_REQUEST:
       return {
@@ -18,21 +21,22 @@ export const editablePages = (state = [], action) => {
         isFetching: true,
       }
     case FETCH_PAGE_SUCCESS:
+      const slugName = action.payload.data.attributes.slug
       return {
-        // need to get action payload
         ...state,
         isFetching: false,
+        [slugName]: action.payload,
       }
     case FETCH_PAGE_FAILURE:
       return {
         ...state,
         isFetching: false,
-        // error: action.error
+        error: action.error,
       }
     case EDIT_PAGE:
       return {
         ...state,
-        // content: action.payload.content
+        content: action.payload.content,
       }
     case SAVE_PAGE_REQUEST:
       return {
@@ -48,7 +52,7 @@ export const editablePages = (state = [], action) => {
       return {
         ...state,
         isFetching: false,
-        // error: action.error
+        error: action.error,
       }
     default:
       return state

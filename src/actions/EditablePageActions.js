@@ -8,6 +8,7 @@ import {
   FETCH_PAGE_SUCCESS,
   FETCH_PAGE_FAILURE,
 } from "constants/types"
+import { fetchBySlugResource, fetchByIdResource } from "utils/fetchResources"
 
 // copied from DSC, needs to be updated to work with Slate data
 
@@ -60,7 +61,7 @@ export const fetchInfoPage = (slug: string) => {
   return async (dispatch: Function) => {
     try {
       dispatch(fetchPageRequest())
-      const res = await fetch(`/${slug}`)
+      const res = await fetch(`${fetchBySlugResource}/${slug}`)
       const contentType = res.headers.get("content-type")
       if (contentType && contentType.includes("application/vnd.api+json")) {
         const json = await res.json()
@@ -120,7 +121,7 @@ export const saveInlineEditing = (id: string, body: Object) => {
   return async (dispatch: Function, getState: Function) => {
     try {
       dispatch(savePageRequest())
-      const res = await fetch(`/${id}`, {
+      const res = await fetch(`${fetchByIdResource}/${id}`, {
         method: "PATCH",
         body: JSON.stringify(body),
         headers: {
