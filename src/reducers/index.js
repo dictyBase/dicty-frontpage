@@ -1,9 +1,9 @@
 import { combineReducers } from "redux"
 import { routerReducer } from "react-router-redux"
-import { editablePages } from "reducers/editablePagesReducer"
+import { editablePagesReducer } from "reducers/editablePagesReducer"
 
 const rootReducer = combineReducers({
-  editablePages,
+  editablePages: editablePagesReducer,
   router: routerReducer,
 })
 

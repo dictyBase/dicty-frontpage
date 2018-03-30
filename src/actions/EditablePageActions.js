@@ -57,7 +57,7 @@ const savePageFailure = error => {
 
 // fetch page function that fetches data using async/await
 // checks if header is correct, then either grabs data or displays error
-export const fetchInfoPage = (slug: string) => {
+export const fetchPage = (slug: string) => {
   return async (dispatch: Function) => {
     try {
       dispatch(fetchPageRequest())

@@ -11,9 +11,14 @@ import {
 
 const initialState = {
   content: null,
+  isFetching: false,
+  error: null,
 }
 
-export const editablePages = (state: Object = initialState, action: Object) => {
+export const editablePagesReducer = (
+  state: Object = initialState,
+  action: Object,
+) => {
   switch (action.type) {
     case FETCH_PAGE_REQUEST:
       return {

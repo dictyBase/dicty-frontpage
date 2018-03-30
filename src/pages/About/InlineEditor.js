@@ -5,7 +5,7 @@ import { Value, type Change } from "slate"
 import FontAwesome from "react-fontawesome"
 import { Flex, Box } from "rebass"
 import { Button, ToolBar, CancelButton, SaveButton } from "./EditablePageStyles"
-import { editInline, saveInlineEditing } from "actions/EditablePageActions"
+// import { editInline, saveInlineEditing } from "actions/EditablePageActions"
 
 type Props = {
   /** This is preconfigured JSON that can be used as the value of the editable page content. */
@@ -44,6 +44,7 @@ export default class InlineEditor extends Component<Props, State> {
     super(props)
     // Update the initial content to be pulled from Local Storage if it exists.
     // $FlowFixMe
+    console.log(props)
     const existingValue = JSON.parse(localStorage.getItem(props.side))
 
     this.state = {

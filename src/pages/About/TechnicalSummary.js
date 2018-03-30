@@ -3,7 +3,7 @@ import React, { Component } from "react"
 import { connect } from "react-redux"
 import InlineEditor from "./InlineEditor"
 import technicalSummary from "data/technicalSummary.json"
-import { fetchInfoPage } from "actions/EditablePageActions"
+import { fetchPage } from "actions/EditablePageActions"
 
 /**
  * This is the view component for the Technical Summary section of the About page.
@@ -11,7 +11,7 @@ import { fetchInfoPage } from "actions/EditablePageActions"
 
 class TechnicalSummary extends Component {
   componentDidMount() {
-    this.props.fetchInfoPage("dfp-technicalsummary")
+    this.props.fetchPage("dfp-technicalsummary")
   }
   render() {
     return (
@@ -32,4 +32,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { fetchInfoPage })(TechnicalSummary)
+export default connect(mapStateToProps, { fetchPage })(TechnicalSummary)

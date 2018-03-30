@@ -3,7 +3,7 @@ import React, { Component } from "react"
 import { connect } from "react-redux"
 import InlineEditor from "./InlineEditor"
 import specialThanks from "data/specialThanks.json"
-import { fetchInfoPage } from "actions/EditablePageActions"
+import { fetchPage } from "actions/EditablePageActions"
 
 /**
  * This is the view component for the Special Thanks section of the About page.
@@ -11,17 +11,21 @@ import { fetchInfoPage } from "actions/EditablePageActions"
 
 class SpecialThanks extends Component {
   componentDidMount() {
-    this.props.fetchInfoPage("dfp-specialthanks")
+    this.props.fetchPage("dfp-specialthanks")
   }
   render() {
     console.log(this.props)
-    return (
-      <InlineEditor
-        side="contentLeft"
-        json={specialThanks}
-        page={this.props.page}
-      />
-    )
+    const { error, isFetching, page } = this.props
+
+    if (error) {
+      return <div>Error! {error.message}</div>
+    }
+
+    if (isFetching) {
+      return <div>Loading...</div>
+    }
+
+    return <InlineEditor side="contentRight" json={specialThanks} page={page} />
   }
 }
 
@@ -33,4 +37,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { fetchInfoPage })(SpecialThanks)
+export default connect(mapStateToProps, { fetchPage })(SpecialThanks)
