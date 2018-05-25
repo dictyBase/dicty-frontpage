@@ -1,52 +1,58 @@
 {
-    "name": "dicty-frontpage",
-    "version": "0.1.0",
-    "private": true,
-    "dependencies": {
-        "dicty-components-header-footer": "github:dictyBase/dicty-components-header-footer",
-        "dicty-components-navbar": "github:dictyBase/dicty-components-navbar",
-        "flow-bin": "^0.68.0",
-        "immutable": "^3.8.2",
-        "raw-loader": "^0.5.1",
-        "react": "^15.6.2",
-        "react-dom": "^15.6.2",
-        "react-fontawesome": "^1.6.1",
-        "react-icons": "^2.2.5",
-        "react-redux": "^5.0.7",
-        "react-router-dom": "^4.2.2",
-        "react-test-renderer": "^15.6.1",
-        "rebass": "^1.0.7",
-        "redux": "^3.7.2",
-        "slate": "^0.32.1",
-        "slate-react": "^0.11.1",
-        "styled-components": "^3.2.3"
-    },
-    "lint-staged": {
-        "src/**/*.{js,jsx,json,css}": [
-            "prettier --no-semi --trailing-comma all --jsx-bracket-same-line true --write",
-            "git add"
-        ]
-    },
-    "devDependencies": {
-        "eslint-config-prettier": "^2.3.0",
-        "eslint-plugin-prettier": "^2.1.2",
-        "husky": "^0.14.3",
-        "lint-staged": "^7.0.0",
-        "prettier": "^1.5.2",
-        "react-addons-test-utils": "^15.5.1",
-        "react-scripts": "1.1.0",
-        "react-styleguidist": "^6.2.7"
-    },
-    "scripts": {
-        "prettier": "prettier --version",
-        "precommit": "lint-staged",
-        "flow": "flow",
-        "styleguide": "styleguidist server",
-        "styleguide:build": "styleguidist build",
-        "start": "react-scripts start",
-        "build": "react-scripts build",
-        "test": "react-scripts test --env=jsdom",
-        "eject": "react-scripts eject"
-    },
-    "proxy": "http://localhost:3001"
+  "name": "dicty-frontpage",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "dicty-components-header-footer":
+      "github:dictyBase/dicty-components-header-footer",
+    "dicty-components-navbar": "github:dictyBase/dicty-components-navbar",
+    "immutable": "^3.8.2",
+    "raw-loader": "^0.5.1",
+    "react": "^15.6.2",
+    "react-dom": "^15.6.2",
+    "react-fontawesome": "^1.6.1",
+    "react-icons": "^2.2.5",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.2.2",
+    "react-test-renderer": "^15.6.1",
+    "rebass": "^1.0.7",
+    "redux": "^3.7.2",
+    "slate": "^0.32.1",
+    "slate-react": "^0.11.1",
+    "styled-components": "^3.2.3"
+  },
+  "lint-staged": {
+    "*.{js,jsx,json,css}": [
+      "prettier --no-semi --trailing-comma all --jsx-bracket-same-line true --write",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "precommit": "lint-staged"
+    }
+  },
+  "devDependencies": {
+    "eslint-config-prettier": "^2.3.0",
+    "eslint-plugin-prettier": "^2.1.2",
+    "flow-bin": "^0.73.0",
+    "husky": "^0.14.3",
+    "lint-staged": "^7.0.0",
+    "prettier": "^1.5.2",
+    "react-addons-test-utils": "^15.5.1",
+    "react-scripts": "1.1.0",
+    "react-styleguidist": "^6.2.7"
+  },
+  "scripts": {
+    "prettier": "prettier --version",
+    "precommit": "lint-staged",
+    "flow": "flow",
+    "styleguide": "styleguidist server",
+    "styleguide:build": "styleguidist build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "proxy": "http://localhost:3001"
 }
