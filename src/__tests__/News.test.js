@@ -1,5 +1,5 @@
 import React from "react"
-import News from "../Components/News"
+import News from "../Components/frontpage/News"
 import renderer from "react-test-renderer"
 import news from "../././data/news"
 

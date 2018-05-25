@@ -31,7 +31,7 @@ exports[`StockCenter snapshot test 1`] = `
       PLASMIDS
     </div>
     <ul
-      className="sc-jzJRlG bSWWzu"
+      className="sc-jzJRlG eLTqRO"
     >
       <li
         className="sc-iwsKbI dukjNo"
@@ -68,7 +68,7 @@ exports[`StockCenter snapshot test 1`] = `
       STRAINS
     </div>
     <ul
-      className="sc-jzJRlG bSWWzu"
+      className="sc-jzJRlG eLTqRO"
     >
       <li
         className="sc-iwsKbI dukjNo"

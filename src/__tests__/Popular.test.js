@@ -1,5 +1,5 @@
 import React from "react"
-import Popular from "../Components/Popular"
+import Popular from "../Components/frontpage/Popular"
 import renderer from "react-test-renderer"
 import widgets from "../././data/widgets"
 

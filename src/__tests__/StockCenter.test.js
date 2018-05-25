@@ -1,5 +1,5 @@
 import React from "react"
-import StockCenter from "../Components/StockCenter"
+import StockCenter from "../Components/frontpage/StockCenter"
 import renderer from "react-test-renderer"
 import stockcenter from "../././data/stockcenter"
 

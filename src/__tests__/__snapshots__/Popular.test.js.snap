@@ -2,101 +2,106 @@
 
 exports[`Popular snapshot test 1`] = `
 <div
-  className="sc-htpNat jtWIOA sc-bdVaJa iHZvIS"
+  className="sc-bdVaJa bDWFJH sc-htpNat iZBBQa sc-bdVaJa iHZvIS"
   is={null}
 >
   <div
-    className="sc-kAzzGY jkKYPj"
+    className="sc-bwzfXH uTxCW sc-bdVaJa iHZvIS"
+    is={null}
   >
-    Most popular tools and sections
+    <div
+      className="sc-laTMn gzVOzk"
+    >
+      Most popular tools and sections
+    </div>
+    <ul
+      className="sc-TFwJa hUWmAw"
+    >
+      <li
+        className="sc-bHwgHz kykmIY"
+      >
+        <a
+          alt="techniques"
+          className="sc-bMvGRv dnfvUU"
+          href="#"
+        >
+          <img
+            className="sc-kUaPvJ ldhFpT"
+            src="widgetTECHNIQUES.png"
+          />
+        </a>
+      </li>
+      <li
+        className="sc-bHwgHz kykmIY"
+      >
+        <a
+          alt="genome browser"
+          className="sc-bMvGRv dnfvUU"
+          href="#"
+        >
+          <img
+            className="sc-kUaPvJ ldhFpT"
+            src="widgetGBROWSER.png"
+          />
+        </a>
+      </li>
+      <li
+        className="sc-bHwgHz kykmIY"
+      >
+        <a
+          alt="learn dicty"
+          className="sc-bMvGRv dnfvUU"
+          href="/explore/learn"
+        >
+          <img
+            className="sc-kUaPvJ ldhFpT"
+            src="widgetLEARNDICTY.png"
+          />
+        </a>
+      </li>
+      <li
+        className="sc-bHwgHz kykmIY"
+      >
+        <a
+          alt="dicty stats"
+          className="sc-bMvGRv dnfvUU"
+          href="#"
+        >
+          <img
+            className="sc-kUaPvJ ldhFpT"
+            src="widgetSTATS.png"
+          />
+        </a>
+      </li>
+      <li
+        className="sc-bHwgHz kykmIY"
+      >
+        <a
+          alt="jobs @ dicty"
+          className="sc-bMvGRv dnfvUU"
+          href="#"
+        >
+          <img
+            className="sc-kUaPvJ ldhFpT"
+            src="widgetJOBS.png"
+          />
+        </a>
+      </li>
+      <li
+        className="sc-bHwgHz kykmIY"
+      >
+        <a
+          alt="dicty express"
+          className="sc-bMvGRv dnfvUU"
+          href="#"
+        >
+          <img
+            className="sc-kUaPvJ ldhFpT"
+            src="widgetDICTYEXPRESS.png"
+          />
+        </a>
+      </li>
+    </ul>
   </div>
-  <ul
-    className="sc-kGXeez zXHmw"
-  >
-    <li
-      className="sc-kpOJdX ePgMLh"
-    >
-      <a
-        alt="techniques"
-        className="sc-jzJRlG dgnxMl"
-        href="#"
-      >
-        <img
-          className="sc-iAyFgw cisTwt"
-          src="widgetTECHNIQUES.png"
-        />
-      </a>
-    </li>
-    <li
-      className="sc-kpOJdX ePgMLh"
-    >
-      <a
-        alt="genome browser"
-        className="sc-jzJRlG dgnxMl"
-        href="#"
-      >
-        <img
-          className="sc-iAyFgw cisTwt"
-          src="widgetGBROWSER.png"
-        />
-      </a>
-    </li>
-    <li
-      className="sc-kpOJdX ePgMLh"
-    >
-      <a
-        alt="learn dicty"
-        className="sc-jzJRlG dgnxMl"
-        href="#"
-      >
-        <img
-          className="sc-iAyFgw cisTwt"
-          src="widgetLEARNDICTY.png"
-        />
-      </a>
-    </li>
-    <li
-      className="sc-kpOJdX ePgMLh"
-    >
-      <a
-        alt="dicty stats"
-        className="sc-jzJRlG dgnxMl"
-        href="#"
-      >
-        <img
-          className="sc-iAyFgw cisTwt"
-          src="widgetSTATS.png"
-        />
-      </a>
-    </li>
-    <li
-      className="sc-kpOJdX ePgMLh"
-    >
-      <a
-        alt="jobs @ dicty"
-        className="sc-jzJRlG dgnxMl"
-        href="#"
-      >
-        <img
-          className="sc-iAyFgw cisTwt"
-          src="widgetJOBS.png"
-        />
-      </a>
-    </li>
-    <li
-      className="sc-kpOJdX ePgMLh"
-    >
-      <a
-        alt="dicty express"
-        className="sc-jzJRlG dgnxMl"
-        href="#"
-      >
-        <img
-          className="sc-iAyFgw cisTwt"
-          src="widgetDICTYEXPRESS.png"
-        />
-      </a>
-    </li>
-  </ul>
 </div>
 `;

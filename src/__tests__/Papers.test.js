@@ -1,5 +1,5 @@
 import React from "react"
-import Papers from "../Components/Papers"
+import Papers from "../Components/frontpage/Papers"
 import renderer from "react-test-renderer"
 import papers from "../././data/papers"
 
