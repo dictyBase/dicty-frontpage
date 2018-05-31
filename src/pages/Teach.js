@@ -1,7 +1,7 @@
 // @flow
 import React from "react"
 import { Flex, Box } from "rebass"
-import logoTeaching from "Components/images/logoTeaching.png"
+import logoTeaching from "images/logoTeaching.png"
 import {
   teachdicty,
   davidk,

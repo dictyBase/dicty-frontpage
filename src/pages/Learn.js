@@ -1,13 +1,13 @@
 // @flow
 import React from "react"
 import { Flex, Box } from "rebass"
-import logoLearn from "Components/images/learn/logoLearn.png"
+import logoLearn from "images/learn/logoLearn.png"
 import learndicty from "data/learndicty"
-import communityimg from "Components/images/learn/rpL11-gfpBS.jpg"
-import focusimg from "Components/images/learn/gerisch4.png"
-import techniqueimg1 from "Components/images/learn/pst0fingersS.jpg"
-import techniqueimg2 from "Components/images/learn/HTP_princeton.png"
-import techniqueimg3 from "Components/images/learn/nullatt.png"
+import communityimg from "images/learn/rpL11-gfpBS.jpg"
+import focusimg from "images/learn/gerisch4.png"
+import techniqueimg1 from "images/learn/pst0fingersS.jpg"
+import techniqueimg2 from "images/learn/HTP_princeton.png"
+import techniqueimg3 from "images/learn/nullatt.png"
 
 import { ListBox, ListItems, Link } from "Components/styles"
 
