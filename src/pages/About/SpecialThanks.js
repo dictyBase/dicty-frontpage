@@ -1,8 +1,8 @@
 // @flow
 import React, { Component } from "react"
 import { connect } from "react-redux"
+import Skeleton from "react-loading-skeleton"
 import InlineEditor from "./InlineEditor"
-import specialThanks from "data/specialThanks.json"
 import { fetchPage } from "actions/EditablePageActions"
 
 /**
@@ -10,22 +10,31 @@ import { fetchPage } from "actions/EditablePageActions"
  */
 
 class SpecialThanks extends Component {
+  static defaultProps = {
+    page: {
+      data: {
+        attributes: {},
+      },
+    },
+  }
   componentDidMount() {
     this.props.fetchPage("dfp-specialthanks")
   }
   render() {
-    console.log(this.props)
-    const { error, isFetching, page } = this.props
-
-    if (error) {
-      return <div>Error! {error.message}</div>
+    const { isFetching, page } = this.props
+    console.log(page)
+    if (!isFetching && page.data.attributes.content) {
+      return <InlineEditor side="contentLeft" page={this.props.page} />
     }
-
-    if (isFetching) {
-      return <div>Loading...</div>
-    }
-
-    return <InlineEditor side="contentRight" json={specialThanks} page={page} />
+    return (
+      <div>
+        <br />
+        <Skeleton count={5} />
+        <br />
+        <br />
+        <Skeleton count={5} />
+      </div>
+    )
   }
 }
 

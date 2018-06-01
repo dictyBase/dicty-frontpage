@@ -42,13 +42,9 @@ const unwrapLink = change => {
 export default class InlineEditor extends Component<Props, State> {
   constructor(props: Props) {
     super(props)
-    // Update the initial content to be pulled from Local Storage if it exists.
-    // $FlowFixMe
-    console.log(props)
-    const existingValue = JSON.parse(localStorage.getItem(props.side))
 
     this.state = {
-      value: Value.fromJSON(existingValue || props.json), // Initial value of editor
+      value: Value.fromJSON(JSON.parse(props.page.data.attributes.content)), // Initial value of editor
     }
   }
 
