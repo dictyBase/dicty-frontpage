@@ -15,43 +15,55 @@ import { fetchBySlugResource, fetchByIdResource } from "utils/fetchResources"
 const fetchPageRequest = () => {
   return {
     type: FETCH_PAGE_REQUEST,
-    isFetching: true,
+    payload: {
+      isFetching: true,
+    },
   }
 }
 
 const fetchPageSuccess = (json: Object) => {
   return {
     type: FETCH_PAGE_SUCCESS,
-    isFetching: false,
-    payload: json,
+    payload: {
+      isFetching: false,
+      json,
+    },
   }
 }
 
 const fetchPageFailure = error => {
   return {
     type: FETCH_PAGE_FAILURE,
-    error: error,
+    payload: {
+      error,
+    },
   }
 }
 
 const savePageRequest = () => {
   return {
     type: SAVE_PAGE_REQUEST,
-    isFetching: true,
+    payload: {
+      isFetching: true,
+    },
   }
 }
 
 const savePageSuccess = () => {
   return {
     type: SAVE_PAGE_SUCCESS,
-    isFetching: false,
+    payload: {
+      isFetching: false,
+    },
   }
 }
 
 const savePageFailure = error => {
   return {
     type: SAVE_PAGE_FAILURE,
-    error: error,
+    payload: {
+      error,
+    },
   }
 }
 
@@ -106,7 +118,7 @@ const doEdit = (content: Object) => {
   return {
     type: EDIT_PAGE,
     payload: {
-      content: content,
+      content,
     },
   }
 }
