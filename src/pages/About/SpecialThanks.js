@@ -3,7 +3,7 @@ import React, { Component } from "react"
 import { connect } from "react-redux"
 import Skeleton from "react-loading-skeleton"
 import InlineEditor from "./InlineEditor"
-import { fetchPage } from "actions/EditablePageActions"
+import { fetchPage } from "actions/editablePages"
 
 /**
  * This is the view component for the Special Thanks section of the About page.

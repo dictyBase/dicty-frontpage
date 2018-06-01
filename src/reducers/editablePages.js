@@ -15,10 +15,7 @@ const initialState = {
   error: null,
 }
 
-export const editablePagesReducer = (
-  state: Object = initialState,
-  action: Object,
-) => {
+const editablePagesReducer = (state: Object = initialState, action: Object) => {
   switch (action.type) {
     case FETCH_PAGE_REQUEST:
       return {
@@ -63,3 +60,5 @@ export const editablePagesReducer = (
       return state
   }
 }
+
+export default editablePagesReducer
