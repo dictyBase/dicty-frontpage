@@ -17,7 +17,7 @@ import {
   MoreLink,
   NewsStockTitle,
   Img,
-} from "../styles"
+} from "styles"
 
 /**
  * The News component that will be displayed on the right in every

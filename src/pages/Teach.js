@@ -11,7 +11,7 @@ import {
   references,
 } from "data/teachdicty"
 
-import { ListBox, Link, ListItems } from "Components/styles"
+import { ListBox, Link, ListItems } from "styles"
 
 import {
   Banner,
@@ -26,7 +26,7 @@ import {
   BannerSubText,
   SectionSubText,
   DownldBtn,
-} from "Components/styles/learn_teach/learn_teach_styles"
+} from "styles/learn_teach/learn_teach_styles"
 
 const Teach = () => {
   const contentlist = teachdicty.map((section, index) => (

@@ -6,9 +6,8 @@ const DangerStyle = styled.span`
   msTransition: 'all'
 `
 
-const Danger = ({ children, ...props }) =>
-  <DangerStyle {...props}>
-    {children}
-  </DangerStyle>
+const Danger = ({ children, ...props }) => (
+  <DangerStyle {...props}>{children}</DangerStyle>
+)
 
 export default Danger

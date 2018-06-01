@@ -6,9 +6,8 @@ const WidgetListBoxStyle = styled.ul`
   margin-bottom: 5px;
 `
 
-const WidgetListBox = ({ children, ...props }) =>
-  <WidgetListBoxStyle {...props}>
-    {children}
-  </WidgetListBoxStyle>
+const WidgetListBox = ({ children, ...props }) => (
+  <WidgetListBoxStyle {...props}>{children}</WidgetListBoxStyle>
+)
 
 export default WidgetListBox

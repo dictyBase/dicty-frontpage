@@ -7,11 +7,10 @@ const StockContainerStyle = styled.div`
   text-align: center;
   padding: 5px 5px 0 5px;
   margin-bottom: 10px;
-  `
+`
 
-const StockContainer = ({ children, ...props }) =>
-  <StockContainerStyle {...props}>
-    {children}
-  </StockContainerStyle>
+const StockContainer = ({ children, ...props }) => (
+  <StockContainerStyle {...props}>{children}</StockContainerStyle>
+)
 
 export default StockContainer

@@ -12,7 +12,7 @@ import {
   AnnotationListItems,
   AnnotationContainer,
   MoreLink,
-} from "../styles"
+} from "styles"
 
 const Container = styled.div`
   display: flex;

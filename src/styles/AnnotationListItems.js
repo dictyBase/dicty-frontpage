@@ -6,9 +6,8 @@ const AnnotationListItemsStyle = styled.li`
   font-size: 11px;
 `
 
-const AnnotationListItems = ({ children, ...props }) =>
-  <AnnotationListItemsStyle {...props}>
-    {children}
-  </AnnotationListItemsStyle>
+const AnnotationListItems = ({ children, ...props }) => (
+  <AnnotationListItemsStyle {...props}>{children}</AnnotationListItemsStyle>
+)
 
 export default AnnotationListItems

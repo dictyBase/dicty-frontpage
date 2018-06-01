@@ -7,9 +7,8 @@ const SourceTitleStyle = styled.span`
   text-align: center;
 `
 
-const SourceTitle = ({ children, ...props }) =>
-  <SourceTitleStyle {...props}>
-    {children}
-  </SourceTitleStyle>
+const SourceTitle = ({ children, ...props }) => (
+  <SourceTitleStyle {...props}>{children}</SourceTitleStyle>
+)
 
 export default SourceTitle

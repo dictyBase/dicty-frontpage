@@ -11,9 +11,8 @@ const NewsContainerStyle = styled.div`
   margin-bottom: 10px;
 `
 
-const NewsContainer = ({ children, ...props }) =>
-  <NewsContainerStyle {...props}>
-    {children}
-  </NewsContainerStyle>
+const NewsContainer = ({ children, ...props }) => (
+  <NewsContainerStyle {...props}>{children}</NewsContainerStyle>
+)
 
 export default NewsContainer

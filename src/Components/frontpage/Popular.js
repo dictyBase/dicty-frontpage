@@ -8,7 +8,7 @@ import {
   ListItems,
   WidgetLink,
   WidgetImg,
-} from "../styles"
+} from "styles"
 
 const Popular = (props: {
   /** List of widget items */

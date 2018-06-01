@@ -6,9 +6,8 @@ const LinkStyle = styled.a`
   text-decoration: none;
 `
 
-const Link = ({ children, ...props }) =>
-  <LinkStyle {...props}>
-    {children}
-  </LinkStyle>
+const Link = ({ children, ...props }) => (
+  <LinkStyle {...props}>{children}</LinkStyle>
+)
 
 export default Link

@@ -15,9 +15,8 @@ const HeaderStyle = styled.div`
   }
 `
 
-const Header = ({ children, ...props }) =>
-  <HeaderStyle {...props}>
-    {children}
-  </HeaderStyle>
+const Header = ({ children, ...props }) => (
+  <HeaderStyle {...props}>{children}</HeaderStyle>
+)
 
 export default Header

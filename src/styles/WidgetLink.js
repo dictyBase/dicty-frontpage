@@ -8,9 +8,8 @@ const WidgetLinkStyle = styled.a`
   height: auto;
 `
 
-const WidgetLink = ({ children, ...props }) =>
-  <WidgetLinkStyle {...props}>
-    {children}
-  </WidgetLinkStyle>
+const WidgetLink = ({ children, ...props }) => (
+  <WidgetLinkStyle {...props}>{children}</WidgetLinkStyle>
+)
 
 export default WidgetLink

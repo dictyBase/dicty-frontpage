@@ -10,9 +10,8 @@ const MoreLinkStyle = styled.div`
   padding-bottom: ${props => (props.padbottom ? props.padbottom : "15px")};
 `
 
-const MoreLink = ({ children, ...props }) =>
-  <MoreLinkStyle {...props}>
-    {children}
-  </MoreLinkStyle>
+const MoreLink = ({ children, ...props }) => (
+  <MoreLinkStyle {...props}>{children}</MoreLinkStyle>
+)
 
 export default MoreLink

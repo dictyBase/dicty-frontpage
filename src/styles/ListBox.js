@@ -15,9 +15,8 @@ const ListBoxStyle = styled.ul`
   }
 `
 
-const ListBox = ({ children, ...props }) =>
-  <ListBoxStyle {...props}>
-    {children}
-  </ListBoxStyle>
+const ListBox = ({ children, ...props }) => (
+  <ListBoxStyle {...props}>{children}</ListBoxStyle>
+)
 
 export default ListBox

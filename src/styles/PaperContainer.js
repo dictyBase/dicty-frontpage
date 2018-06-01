@@ -10,11 +10,10 @@ const PaperContainerStyle = styled.div`
   background-color: #eff8fb;
   border-radius: 15px;
   margin-bottom: 10px;
-  `
+`
 
-const PaperContainer = ({ children, ...props }) =>
-  <PaperContainerStyle {...props}>
-    {children}
-  </PaperContainerStyle>
+const PaperContainer = ({ children, ...props }) => (
+  <PaperContainerStyle {...props}>{children}</PaperContainerStyle>
+)
 
 export default PaperContainer
