@@ -1,7 +1,7 @@
 // @flow
 import React from "react"
 import { Flex, Box } from "rebass"
-import twitterLogo from "../images/twitterLogo.png"
+import twitterLogo from "images/twitterLogo.png"
 import FontAwesome from "react-fontawesome"
 
 import {
@@ -17,7 +17,7 @@ import {
   MoreLink,
   NewsStockTitle,
   Img,
-} from "../styles"
+} from "styles"
 
 /**
  * The News component that will be displayed on the right in every

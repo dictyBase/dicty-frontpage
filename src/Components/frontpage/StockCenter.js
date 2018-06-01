@@ -12,7 +12,7 @@ import {
   StockContainer,
   MoreLink,
   NewsStockTitle,
-} from "../styles"
+} from "styles"
 
 type Props = {
   stockcenter: Object,
