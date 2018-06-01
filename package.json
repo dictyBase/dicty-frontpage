@@ -21,7 +21,9 @@
   },
   "dependencies": {
     "dicty-components-header-footer": "github:dictyBase/dicty-components-header-footer",
+    "dicty-components-login": "github:dictybase/dicty-components-login",
     "dicty-components-navbar": "github:dictyBase/dicty-components-navbar",
+    "dicty-components-redux": "github:dictybase-playground/dicty-components-redux",
     "history": "^4.7.2",
     "immutable": "^3.8.2",
     "raw-loader": "^0.5.1",
@@ -50,8 +52,7 @@
     "react-addons-test-utils": "^15.5.1",
     "react-scripts": "^1.1.4",
     "react-styleguidist": "^7.0.15",
-    "react-test-renderer": "^15.6.2",
-    "redux-devtools-extension": "^2.13.2"
+    "react-test-renderer": "^15.6.2"
   },
   "proxy": "http://localhost:3001"
 }
