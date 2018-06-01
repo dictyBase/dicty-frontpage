@@ -65,9 +65,9 @@ class Login extends Component<Props> {
     )
   }
   render() {
-    const { auth } = this.props
+    // const { auth } = this.props
     const { state = {} } = this.props.location
-    const { error } = state
+    // const { error } = state
     return (
       <Flex justify="center">
         <Box w={["100%", "60%", "40%"]}>

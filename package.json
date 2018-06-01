@@ -20,7 +20,7 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
-    "dicty-components-header-footer": "github:dictyBase/dicty-components-header-footer",
+    "dicty-components-header-footer": "github:dictybase/dicty-components-header-footer#v4.2.0",
     "dicty-components-login": "github:dictybase/dicty-components-login",
     "dicty-components-navbar": "github:dictyBase/dicty-components-navbar",
     "dicty-components-redux": "github:dictybase-playground/dicty-components-redux",
