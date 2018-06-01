@@ -6,7 +6,7 @@ import OauthSignHandler from "components/authentication/OauthSignHandler"
 import oauthConfig from "utils/oauthConfig"
 // import ErrorNotification from "components/authentication/ErrorNotification"
 import { Flex, Box } from "rebass"
-import { DictyHeader } from "styles"
+// import { DictyHeader } from "styles"
 import type { MapStateToProps } from "react-redux"
 
 // list of buttons to display
@@ -71,9 +71,9 @@ class Login extends Component<Props> {
     return (
       <Flex justify="center">
         <Box w={["100%", "60%", "40%"]}>
-          <DictyHeader>
+          <div>
             <h1>Log in</h1>
-          </DictyHeader>
+          </div>
           {/* {error && <ErrorNotification error={error} />}
           {auth.error && <ErrorNotification error={auth.error} />} */}
           <Flex justify="center">

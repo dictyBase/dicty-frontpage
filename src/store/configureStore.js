@@ -3,6 +3,7 @@ import thunk from "redux-thunk"
 import { routerMiddleware } from "react-router-redux"
 import { manageStateStorage } from "dicty-components-redux"
 import createHistory from "history/createBrowserHistory"
+import callAPI from "middlewares/callAPI"
 import rootReducer from "reducers"
 import { LOGIN_SUCCESS, LOGOUT_SUCCESS } from "constants/types"
 
@@ -21,6 +22,7 @@ const enhancer = composeEnhancers(
   applyMiddleware(
     routerMiddleware(history),
     thunk,
+    callAPI,
     manageStateStorage(authArg),
   ),
 )

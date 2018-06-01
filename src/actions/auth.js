@@ -14,7 +14,20 @@ import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
+  LOGOUT_REQUEST,
   LOGOUT_SUCCESS,
+  FETCH_USER_REQUEST,
+  FETCH_USER_SUCCESS,
+  FETCH_USER_FAILURE,
+  FETCH_ROLE_REQUEST,
+  FETCH_ROLE_SUCCESS,
+  FETCH_ROLE_FAILURE,
+  FETCH_NON_AUTH_ROLE_REQUEST,
+  FETCH_NON_AUTH_ROLE_SUCCESS,
+  FETCH_NON_AUTH_ROLE_FAILURE,
+  FETCH_PERMISSION_REQUEST,
+  FETCH_PERMISSION_SUCCESS,
+  FETCH_PERMISSION_FAILURE,
 } from "constants/types"
 
 type oauthArg = { query: string, provider: string, url: string }
@@ -145,7 +158,7 @@ export const oAuthLogin = ({ query, provider, url }: oauthArg) => {
           const json = await res.json()
           dispatch(receiveLogin(json))
           await dispatch(fetchRoleInfo(json.user.data.id))
-          dispatch(push("/mydsc"))
+          dispatch(push("/"))
           // history.go(-3)
         } else if (res.status === 401) {
           // user has invalid credentials, redirect with notification
