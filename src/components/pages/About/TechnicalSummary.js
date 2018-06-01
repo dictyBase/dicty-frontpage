@@ -4,6 +4,7 @@ import { connect } from "react-redux"
 import Skeleton from "react-loading-skeleton"
 import InlineEditor from "./InlineEditor"
 import { fetchPage } from "actions/editablePages"
+import { NAMESPACE } from "constants/namespace"
 
 /**
  * This is the view component for the Technical Summary section of the About page.
@@ -18,7 +19,7 @@ class TechnicalSummary extends Component {
     },
   }
   componentDidMount() {
-    this.props.fetchPage("dfp-technicalsummary")
+    this.props.fetchPage(`${NAMESPACE}-technicalsummary`)
   }
   render() {
     const { isFetching, page } = this.props
@@ -38,7 +39,7 @@ class TechnicalSummary extends Component {
 }
 
 const mapStateToProps = state => {
-  const slugName = "dfp-technicalsummary"
+  const slugName = `${NAMESPACE}-technicalsummary`
   return {
     isFetching: state.editablePages.isFetching,
     page: state.editablePages[slugName],

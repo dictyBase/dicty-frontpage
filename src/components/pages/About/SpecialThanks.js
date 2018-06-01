@@ -4,6 +4,7 @@ import { connect } from "react-redux"
 import Skeleton from "react-loading-skeleton"
 import InlineEditor from "./InlineEditor"
 import { fetchPage } from "actions/editablePages"
+import { NAMESPACE } from "constants/namespace"
 
 /**
  * This is the view component for the Special Thanks section of the About page.
@@ -18,7 +19,7 @@ class SpecialThanks extends Component {
     },
   }
   componentDidMount() {
-    this.props.fetchPage("dfp-specialthanks")
+    this.props.fetchPage(`${NAMESPACE}-specialthanks`)
   }
   render() {
     const { isFetching, page } = this.props
@@ -39,7 +40,7 @@ class SpecialThanks extends Component {
 }
 
 const mapStateToProps = state => {
-  const slugName = "dfp-specialthanks"
+  const slugName = `${NAMESPACE}-technicalsummary`
   return {
     isFetching: state.editablePages.isFetching,
     page: state.editablePages[slugName],
