@@ -10,7 +10,7 @@ exports[`Popular snapshot test 1`] = `
     is={null}
   >
     <div
-      className="sc-laTMn gzVOzk"
+      className="sc-laTMn dBVuoz"
     >
       Most popular tools and sections
     </div>
@@ -18,7 +18,7 @@ exports[`Popular snapshot test 1`] = `
       className="sc-TFwJa hUWmAw"
     >
       <li
-        className="sc-bHwgHz kykmIY"
+        className="sc-bHwgHz jiapwT"
       >
         <a
           alt="techniques"
@@ -26,13 +26,13 @@ exports[`Popular snapshot test 1`] = `
           href="#"
         >
           <img
-            className="sc-kUaPvJ ldhFpT"
+            className="sc-kUaPvJ HrdCt"
             src="widgetTECHNIQUES.png"
           />
         </a>
       </li>
       <li
-        className="sc-bHwgHz kykmIY"
+        className="sc-bHwgHz jiapwT"
       >
         <a
           alt="genome browser"
@@ -40,13 +40,13 @@ exports[`Popular snapshot test 1`] = `
           href="#"
         >
           <img
-            className="sc-kUaPvJ ldhFpT"
+            className="sc-kUaPvJ HrdCt"
             src="widgetGBROWSER.png"
           />
         </a>
       </li>
       <li
-        className="sc-bHwgHz kykmIY"
+        className="sc-bHwgHz jiapwT"
       >
         <a
           alt="learn dicty"
@@ -54,13 +54,13 @@ exports[`Popular snapshot test 1`] = `
           href="/explore/learn"
         >
           <img
-            className="sc-kUaPvJ ldhFpT"
+            className="sc-kUaPvJ HrdCt"
             src="widgetLEARNDICTY.png"
           />
         </a>
       </li>
       <li
-        className="sc-bHwgHz kykmIY"
+        className="sc-bHwgHz jiapwT"
       >
         <a
           alt="dicty stats"
@@ -68,13 +68,13 @@ exports[`Popular snapshot test 1`] = `
           href="#"
         >
           <img
-            className="sc-kUaPvJ ldhFpT"
+            className="sc-kUaPvJ HrdCt"
             src="widgetSTATS.png"
           />
         </a>
       </li>
       <li
-        className="sc-bHwgHz kykmIY"
+        className="sc-bHwgHz jiapwT"
       >
         <a
           alt="jobs @ dicty"
@@ -82,13 +82,13 @@ exports[`Popular snapshot test 1`] = `
           href="#"
         >
           <img
-            className="sc-kUaPvJ ldhFpT"
+            className="sc-kUaPvJ HrdCt"
             src="widgetJOBS.png"
           />
         </a>
       </li>
       <li
-        className="sc-bHwgHz kykmIY"
+        className="sc-bHwgHz jiapwT"
       >
         <a
           alt="dicty express"
@@ -96,7 +96,7 @@ exports[`Popular snapshot test 1`] = `
           href="#"
         >
           <img
-            className="sc-kUaPvJ ldhFpT"
+            className="sc-kUaPvJ HrdCt"
             src="widgetDICTYEXPRESS.png"
           />
         </a>

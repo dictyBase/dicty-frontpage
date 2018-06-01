@@ -2,7 +2,7 @@
 
 exports[`Papers snapshot test 1`] = `
 <div
-  className="sc-gHboQg fyftte"
+  className="sc-gHboQg fFLpfM"
 >
   <div
     className="sc-CtfFt ksgeeT"
@@ -12,7 +12,7 @@ exports[`Papers snapshot test 1`] = `
       is={null}
     >
       <span
-        className="sc-gJWqzi fFgNPM"
+        className="sc-gJWqzi jpqoRp"
       >
         <span
           aria-hidden={true}
@@ -20,7 +20,7 @@ exports[`Papers snapshot test 1`] = `
         />
       </span>
       <span
-        className="sc-gJWqzi fFgNPM"
+        className="sc-gJWqzi jpqoRp"
       >
         LATEST PAPERS
       </span>
@@ -30,7 +30,7 @@ exports[`Papers snapshot test 1`] = `
     className="sc-hGoxap bpTpFR"
   >
     <li
-      className="sc-bHwgHz kykmIY"
+      className="sc-bHwgHz jiapwT"
     >
       <span
         className="sc-dTdPqK eONKOG"
@@ -38,7 +38,7 @@ exports[`Papers snapshot test 1`] = `
         Xie X, Gutierrez A, Trofimov V, Szilágyi I, Soldati T, Bakker E.
       </span>
       <span
-        className="sc-eMigcr dPjcpm"
+        className="sc-eMigcr bKZfpz"
       >
         <strong>
           <em>
@@ -47,7 +47,7 @@ exports[`Papers snapshot test 1`] = `
         </strong>
       </span>
       <span
-        className="sc-itybZL jaIIDs"
+        className="sc-itybZL gfzDPh"
       >
         <span
           className="sc-fzsDOv dWbQIZ"
@@ -66,7 +66,7 @@ exports[`Papers snapshot test 1`] = `
       </span>
     </li>
     <li
-      className="sc-bHwgHz kykmIY"
+      className="sc-bHwgHz jiapwT"
     >
       <span
         className="sc-dTdPqK eONKOG"
@@ -74,7 +74,7 @@ exports[`Papers snapshot test 1`] = `
         Schmith A, Spaller T, Gaube F, Fransson Å, Boesler B, Ojha S, Nellen W, Hammann C, Söderbom F, Winckler T.
       </span>
       <span
-        className="sc-eMigcr dPjcpm"
+        className="sc-eMigcr bKZfpz"
       >
         <strong>
           <em>
@@ -83,7 +83,7 @@ exports[`Papers snapshot test 1`] = `
         </strong>
       </span>
       <span
-        className="sc-itybZL jaIIDs"
+        className="sc-itybZL gfzDPh"
       >
         <span
           className="sc-fzsDOv dWbQIZ"
@@ -102,7 +102,7 @@ exports[`Papers snapshot test 1`] = `
       </span>
     </li>
     <li
-      className="sc-bHwgHz kykmIY"
+      className="sc-bHwgHz jiapwT"
     >
       <span
         className="sc-dTdPqK eONKOG"
@@ -110,7 +110,7 @@ exports[`Papers snapshot test 1`] = `
         Von Bülow J, Beitz E.
       </span>
       <span
-        className="sc-eMigcr dPjcpm"
+        className="sc-eMigcr bKZfpz"
       >
         <strong>
           <em>
@@ -119,7 +119,7 @@ exports[`Papers snapshot test 1`] = `
         </strong>
       </span>
       <span
-        className="sc-itybZL jaIIDs"
+        className="sc-itybZL gfzDPh"
       >
         <span
           className="sc-fzsDOv dWbQIZ"
@@ -138,7 +138,7 @@ exports[`Papers snapshot test 1`] = `
       </span>
     </li>
     <li
-      className="sc-bHwgHz kykmIY"
+      className="sc-bHwgHz jiapwT"
     >
       <span
         className="sc-dTdPqK eONKOG"
@@ -146,7 +146,7 @@ exports[`Papers snapshot test 1`] = `
         Santarriaga S, Petersen A, Ndukwe K, Brandt A, Gerges N, Scaglione JB, Scaglione KM.
       </span>
       <span
-        className="sc-eMigcr dPjcpm"
+        className="sc-eMigcr bKZfpz"
       >
         <strong>
           <em>
@@ -155,7 +155,7 @@ exports[`Papers snapshot test 1`] = `
         </strong>
       </span>
       <span
-        className="sc-itybZL jaIIDs"
+        className="sc-itybZL gfzDPh"
       >
         <span
           className="sc-fzsDOv dWbQIZ"
@@ -174,7 +174,7 @@ exports[`Papers snapshot test 1`] = `
       </span>
     </li>
     <li
-      className="sc-bHwgHz kykmIY"
+      className="sc-bHwgHz jiapwT"
     >
       <span
         className="sc-dTdPqK eONKOG"
@@ -182,7 +182,7 @@ exports[`Papers snapshot test 1`] = `
         Kim MK, Kim JH, Kim JS, Kang SO.
       </span>
       <span
-        className="sc-eMigcr dPjcpm"
+        className="sc-eMigcr bKZfpz"
       >
         <strong>
           <em>
@@ -191,7 +191,7 @@ exports[`Papers snapshot test 1`] = `
         </strong>
       </span>
       <span
-        className="sc-itybZL jaIIDs"
+        className="sc-itybZL gfzDPh"
       >
         <span
           className="sc-fzsDOv dWbQIZ"

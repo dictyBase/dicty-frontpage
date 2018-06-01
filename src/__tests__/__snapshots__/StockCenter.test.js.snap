@@ -2,31 +2,31 @@
 
 exports[`StockCenter snapshot test 1`] = `
 <div
-  className="sc-bxivhb dKDGug"
+  className="sc-bxivhb izZHTS"
 >
   <div
-    className="sc-EHOje glvWVV"
+    className="sc-EHOje kThsWg"
   >
     <span
       aria-hidden={true}
       className="fa fa-shopping-cart fa-md"
     />
     <span
-      className="sc-jKJlTe ddVBtl"
+      className="sc-jKJlTe gEIyRj"
     >
       DICTY STOCK CENTER
     </span>
   </div>
   <div
-    className="sc-bZQynM leuWTL"
+    className="sc-bZQynM koLzTR"
   >
     New items
   </div>
   <div
-    className="sc-cSHVUG kmYtrK"
+    className="sc-cSHVUG bzwuAG"
   >
     <div
-      className="sc-gzVnrw lfEvdn"
+      className="sc-gzVnrw eXaeXc"
     >
       PLASMIDS
     </div>
@@ -59,11 +59,11 @@ exports[`StockCenter snapshot test 1`] = `
     </div>
   </div>
   <div
-    className="sc-cSHVUG WqFJo"
+    className="sc-cSHVUG ezNXzP"
     color="white"
   >
     <div
-      className="sc-gzVnrw lfEvdn"
+      className="sc-gzVnrw eXaeXc"
     >
       STRAINS
     </div>

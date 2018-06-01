@@ -22,7 +22,7 @@ exports[`News snapshot test 1`] = `
           target="new"
         >
           <img
-            className="sc-jVODtj dMbBMV"
+            className="sc-jVODtj bFzbic"
             src="twitterLogo.png"
           />
         </a>
@@ -36,7 +36,7 @@ exports[`News snapshot test 1`] = `
           className="fa fa-globe fa-lg"
         />
         <span
-          className="sc-gPWkxV ivxeyy"
+          className="sc-gPWkxV ipukNs"
         >
           DICTY NEWS
         </span>
@@ -47,7 +47,7 @@ exports[`News snapshot test 1`] = `
     className="sc-hGoxap bpTpFR"
   >
     <li
-      className="sc-bHwgHz kykmIY"
+      className="sc-bHwgHz jiapwT"
     >
       <span
         className="sc-dTdPqK eONKOG"
@@ -55,12 +55,12 @@ exports[`News snapshot test 1`] = `
         2015.08.19
       </span>
       <span
-        className="sc-eMigcr dPjcpm"
+        className="sc-eMigcr bKZfpz"
       >
         Why axenic strains grow by fluid uptake: We have added the axeB gene to Chromosome 3 at the locus which is largely deleted in axenic strains and thus responsible for their ability to grow axenically. Only an axeB 3' fragment could be generated on the AX4 genome assembly. The full length gene in non-axenic strains such as DdB codes for the conserved neurofibromin 1, a RasGAP, which has been shown to be involved in macropinocytosis and phagocytosis. For more information, see Bloomfield et al.
       </span>
       <span
-        className="sc-itybZL jaIIDs"
+        className="sc-itybZL gfzDPh"
       >
         <span
           className="sc-fzsDOv dWbQIZ"
@@ -71,7 +71,7 @@ exports[`News snapshot test 1`] = `
       </span>
     </li>
     <li
-      className="sc-bHwgHz kykmIY"
+      className="sc-bHwgHz jiapwT"
     >
       <span
         className="sc-dTdPqK eONKOG"
@@ -79,23 +79,23 @@ exports[`News snapshot test 1`] = `
         2015.08.12
       </span>
       <span
-        className="sc-eMigcr dPjcpm"
+        className="sc-eMigcr bKZfpz"
       >
-        Dicty in the News: The National Geographics series a Not Exactly Rocket Science has published a nice piece about the latest results reporting how Burkholderia turns Dicty amooeba into farmers,published by Suzanne di Salvo and colleagues from the Strassmann/Queller lab.
+        Dicty in the News: The National Geographic series a Not Exactly Rocket Science has published a nice piece about the latest results reporting how Burkholderia turns Dicty amooeba into farmers,published by Suzanne di Salvo and colleagues from the Strassmann/Queller lab.
       </span>
       <span
-        className="sc-itybZL jaIIDs"
+        className="sc-itybZL gfzDPh"
       >
         <span
           className="sc-fzsDOv dWbQIZ"
         >
           Source:
         </span>
-        National Geographics
+        National Geographic
       </span>
     </li>
     <li
-      className="sc-bHwgHz kykmIY"
+      className="sc-bHwgHz jiapwT"
     >
       <span
         className="sc-dTdPqK eONKOG"
@@ -103,12 +103,12 @@ exports[`News snapshot test 1`] = `
         2015.08.07
       </span>
       <span
-        className="sc-eMigcr dPjcpm"
+        className="sc-eMigcr bKZfpz"
       >
         Starting for DSC orders placed after Monday August 10, 2015 (12:00 AM CDT), Dicty stocks will incur charges. Please see the complete price and payment information on the Order page
       </span>
       <span
-        className="sc-itybZL jaIIDs"
+        className="sc-itybZL gfzDPh"
       >
         <span
           className="sc-fzsDOv dWbQIZ"
@@ -119,7 +119,7 @@ exports[`News snapshot test 1`] = `
       </span>
     </li>
     <li
-      className="sc-bHwgHz kykmIY"
+      className="sc-bHwgHz jiapwT"
     >
       <span
         className="sc-dTdPqK eONKOG"
@@ -127,12 +127,12 @@ exports[`News snapshot test 1`] = `
         2015.08.06
       </span>
       <span
-        className="sc-eMigcr dPjcpm"
+        className="sc-eMigcr bKZfpz"
       >
         The bug in the DSC ordering system as reported on July 31, has been fixed
       </span>
       <span
-        className="sc-itybZL jaIIDs"
+        className="sc-itybZL gfzDPh"
       >
         <span
           className="sc-fzsDOv dWbQIZ"
@@ -143,7 +143,7 @@ exports[`News snapshot test 1`] = `
       </span>
     </li>
     <li
-      className="sc-bHwgHz kykmIY"
+      className="sc-bHwgHz jiapwT"
     >
       <span
         className="sc-dTdPqK eONKOG"
@@ -151,12 +151,12 @@ exports[`News snapshot test 1`] = `
         2015.07.20
       </span>
       <span
-        className="sc-eMigcr dPjcpm"
+        className="sc-eMigcr bKZfpz"
       >
         Alert Dicty Stock Center: We currently have problems receiving email notifications of Stock Center orders. If you have ordered in recent months and have not received your order within a week to 10 days, please email Kerry Sheppard and forward your order. If you currently place an order, please also forward your automatic confirmation to Kerry. We are working on the problem and will let you know when fixed. Thank you for your patience and help.
       </span>
       <span
-        className="sc-itybZL jaIIDs"
+        className="sc-itybZL gfzDPh"
       >
         <span
           className="sc-fzsDOv dWbQIZ"
@@ -167,7 +167,7 @@ exports[`News snapshot test 1`] = `
       </span>
     </li>
     <li
-      className="sc-bHwgHz kykmIY"
+      className="sc-bHwgHz jiapwT"
     >
       <span
         className="sc-dTdPqK eONKOG"
@@ -175,12 +175,12 @@ exports[`News snapshot test 1`] = `
         2015.07.23
       </span>
       <span
-        className="sc-eMigcr dPjcpm"
+        className="sc-eMigcr bKZfpz"
       >
         Dicty in the News: The recent discovery of the protein Callipygian in Dictyostelium discoideum provides insights into how round, symmetrical cells become polarized: News Medical with comments from Kristen Swaney and Peter Devreotes.
       </span>
       <span
-        className="sc-itybZL jaIIDs"
+        className="sc-itybZL gfzDPh"
       >
         <span
           className="sc-fzsDOv dWbQIZ"
@@ -191,7 +191,7 @@ exports[`News snapshot test 1`] = `
       </span>
     </li>
     <li
-      className="sc-bHwgHz kykmIY"
+      className="sc-bHwgHz jiapwT"
     >
       <span
         className="sc-dTdPqK eONKOG"
@@ -199,12 +199,12 @@ exports[`News snapshot test 1`] = `
         2015.06.12
       </span>
       <span
-        className="sc-eMigcr dPjcpm"
+        className="sc-eMigcr bKZfpz"
       >
         Dicty in the News: Press releases from three recent research publications highlight the use of Dictyostelium: electrotaxis in Futurity by Zhao and Devreotes; kin recognition in Yahoo News by Ho and Shaulsky; cheating in EurekAlert by Ostrowski, Strassmann and Queller.
       </span>
       <span
-        className="sc-itybZL jaIIDs"
+        className="sc-itybZL gfzDPh"
       >
         <span
           className="sc-fzsDOv dWbQIZ"
@@ -215,7 +215,7 @@ exports[`News snapshot test 1`] = `
       </span>
     </li>
     <li
-      className="sc-bHwgHz kykmIY"
+      className="sc-bHwgHz jiapwT"
     >
       <span
         className="sc-dTdPqK eONKOG"
@@ -223,12 +223,12 @@ exports[`News snapshot test 1`] = `
         2015.05.13
       </span>
       <span
-        className="sc-eMigcr dPjcpm"
+        className="sc-eMigcr bKZfpz"
       >
         Bill Loomis has written a memoir called My Life with Dicty and makes it available on dictyBase.
       </span>
       <span
-        className="sc-itybZL jaIIDs"
+        className="sc-itybZL gfzDPh"
       >
         <span
           className="sc-fzsDOv dWbQIZ"
@@ -239,7 +239,7 @@ exports[`News snapshot test 1`] = `
       </span>
     </li>
     <li
-      className="sc-bHwgHz kykmIY"
+      className="sc-bHwgHz jiapwT"
     >
       <span
         className="sc-dTdPqK eONKOG"
@@ -247,12 +247,12 @@ exports[`News snapshot test 1`] = `
         2015.03.11
       </span>
       <span
-        className="sc-eMigcr dPjcpm"
+        className="sc-eMigcr bKZfpz"
       >
         Dicty 2015. Registration is now open for the Annual International Dictyostelium Conference.
       </span>
       <span
-        className="sc-itybZL jaIIDs"
+        className="sc-itybZL gfzDPh"
       >
         <span
           className="sc-fzsDOv dWbQIZ"
@@ -263,7 +263,7 @@ exports[`News snapshot test 1`] = `
       </span>
     </li>
     <li
-      className="sc-bHwgHz kykmIY"
+      className="sc-bHwgHz jiapwT"
     >
       <span
         className="sc-dTdPqK eONKOG"
@@ -271,12 +271,12 @@ exports[`News snapshot test 1`] = `
         2015.03.02
       </span>
       <span
-        className="sc-eMigcr dPjcpm"
+        className="sc-eMigcr bKZfpz"
       >
         Dicty in the News: A recent paper by Falk Hilmann and Thomas Winckler is discussed in DocCheck News in Germany.
       </span>
       <span
-        className="sc-itybZL jaIIDs"
+        className="sc-itybZL gfzDPh"
       >
         <span
           className="sc-fzsDOv dWbQIZ"
@@ -287,7 +287,7 @@ exports[`News snapshot test 1`] = `
       </span>
     </li>
     <li
-      className="sc-bHwgHz kykmIY"
+      className="sc-bHwgHz jiapwT"
     >
       <span
         className="sc-dTdPqK eONKOG"
@@ -295,12 +295,12 @@ exports[`News snapshot test 1`] = `
         2014.11.19
       </span>
       <span
-        className="sc-eMigcr dPjcpm"
+        className="sc-eMigcr bKZfpz"
       >
         The Dicty Stock Center will be closed for Thanksgiving in the week of November 24th - 28th. Please be advised that orders placed from now until November 30 will be shipped in early December. Please do not submit any materials during that week. Thank you for your understanding.
       </span>
       <span
-        className="sc-itybZL jaIIDs"
+        className="sc-itybZL gfzDPh"
       >
         <span
           className="sc-fzsDOv dWbQIZ"
@@ -311,7 +311,7 @@ exports[`News snapshot test 1`] = `
       </span>
     </li>
     <li
-      className="sc-bHwgHz kykmIY"
+      className="sc-bHwgHz jiapwT"
     >
       <span
         className="sc-dTdPqK eONKOG"
@@ -319,12 +319,12 @@ exports[`News snapshot test 1`] = `
         2014.11.06
       </span>
       <span
-        className="sc-eMigcr dPjcpm"
+        className="sc-eMigcr bKZfpz"
       >
         Dicty in the News: Dictyostelium research details how a cell's gradient sensing and cytoskeletal architecture dictate one mode of chemotactic movement: The Scientist with comments from Chuan-Hsiang Huang
       </span>
       <span
-        className="sc-itybZL jaIIDs"
+        className="sc-itybZL gfzDPh"
       >
         <span
           className="sc-fzsDOv dWbQIZ"
@@ -335,7 +335,7 @@ exports[`News snapshot test 1`] = `
       </span>
     </li>
     <li
-      className="sc-bHwgHz kykmIY"
+      className="sc-bHwgHz jiapwT"
     >
       <span
         className="sc-dTdPqK eONKOG"
@@ -343,12 +343,12 @@ exports[`News snapshot test 1`] = `
         2014.10.17
       </span>
       <span
-        className="sc-eMigcr dPjcpm"
+        className="sc-eMigcr bKZfpz"
       >
         Dicty in the News: Research on the Dictyostelium lpten gene potentially leads to a new way to treat cancer: Drug Discovery and Development with comments from David Soll
       </span>
       <span
-        className="sc-itybZL jaIIDs"
+        className="sc-itybZL gfzDPh"
       >
         <span
           className="sc-fzsDOv dWbQIZ"
