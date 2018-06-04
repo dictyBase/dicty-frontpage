@@ -66,7 +66,7 @@ class Login extends Component<Props> {
   }
   render() {
     // const { auth } = this.props
-    const { state = {} } = this.props.location
+    // const { state = {} } = this.props.location
     // const { error } = state
     return (
       <Flex justify="center">
