@@ -17,10 +17,7 @@ import {
   MoreLink,
 } from "styles"
 
-/**
- * The Papers component that will be displayed on the right in every
- * react web application of [dictyBase](http://dictybase.org).
- */
+/** Widget that displays the latest Dicty papers */
 
 const Papers = (props: {
   /** List of paper items */

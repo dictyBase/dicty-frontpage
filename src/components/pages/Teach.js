@@ -28,6 +28,8 @@ import {
   DownldBtn,
 } from "styles/learn_teach/learn_teach_styles"
 
+/** This component handles the "Teaching Protocols" subpage */
+
 const Teach = () => {
   const contentlist = teachdicty.map((section, index) => (
     <ContentLink key={index} href={section.href}>

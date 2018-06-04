@@ -14,6 +14,8 @@ import annotations from "data/annotations"
 import stockcenter from "data/stockcenter"
 import images from "data/carouselimages"
 
+/** This is the frontpage component that appears when the user hits the "/" route. */
+
 const Front = () => {
   return (
     <div>

@@ -19,10 +19,7 @@ import {
   Img,
 } from "styles"
 
-/**
- * The News component that will be displayed on the right in every
- * react web application of [dictyBase](http://dictybase.org).
- */
+/** Widget that displays the most recent Dicty news */
 
 const News = (props: {
   /** List of news items */

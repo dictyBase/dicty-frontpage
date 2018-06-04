@@ -15,8 +15,11 @@ import {
 } from "styles"
 
 type Props = {
+  /** The Stock Center data in object form */
   stockcenter: Object,
 }
+
+/** Widget that displays the most recent plasmids and strains in the Stock Center */
 
 const StockCenter = (props: Props) => {
   const plasmidlist = props.stockcenter.plasmids.map((plasmid, index) => (

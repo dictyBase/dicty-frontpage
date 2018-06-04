@@ -10,6 +10,8 @@ import {
   WidgetImg,
 } from "styles"
 
+/** Widget that displays the most popular tools and sections */
+
 const Popular = (props: {
   /** List of widget items */
   widgets: Array<{

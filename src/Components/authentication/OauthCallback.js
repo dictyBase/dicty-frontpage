@@ -3,7 +3,9 @@ import React, { Component } from "react"
 import { Flex, Box } from "rebass"
 
 type Props = {
+  /** Object passed by React-Router */
   location: Object,
+  /** Object passed by React-Router */
   match: Object,
 }
 

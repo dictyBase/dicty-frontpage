@@ -23,8 +23,11 @@ const Container = styled.div`
 `
 
 type Props = {
+  /** The annotations data in object form */
   annotations: Object,
 }
+
+/** Widget that displays the most recent annotations for genes and papers */
 
 const Annotations = (props: Props) => {
   const genelist = props.annotations.genes.map((gene, index) => (

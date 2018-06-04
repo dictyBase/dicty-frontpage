@@ -22,8 +22,8 @@ const Carousel = styled.div`
   height: 100%;
 `
 const ImageContainer = styled.div`
-min-width: 100%;
-max-width: 100%;
+  min-width: 100%;
+  max-width: 100%;
 `
 const Slide = styled.img`
   object-fit: contain;
@@ -43,7 +43,7 @@ const Button = styled.i`
   z-index: 100;
   top: 0;
   bottom: 0;
-  transition: opacity .2s ease;
+  transition: opacity 0.2s ease;
 
   &:hover {
     opacity: 1;
@@ -66,6 +66,9 @@ const Dot = styled.i`
   z-index: 100;
   width: 20px;
 `
+
+/** Slideshow image carousel */
+
 export default class Slideshow extends Component {
   constructor() {
     super()
@@ -139,9 +142,7 @@ export default class Slideshow extends Component {
           onClick={this.next}
           side="right"
         />
-        <Dots>
-          {this.renderDots()}
-        </Dots>
+        <Dots>{this.renderDots()}</Dots>
       </Container>
     )
   }

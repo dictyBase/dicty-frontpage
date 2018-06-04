@@ -24,6 +24,8 @@ import {
   ContentLink,
 } from "styles/learn_teach/learn_teach_styles"
 
+/** This component handles the "Learn About Dicty" subpage */
+
 const Learn = () => {
   const list = learndicty.map((section, index) => (
     <ContentLink key={index} href={section.href}>

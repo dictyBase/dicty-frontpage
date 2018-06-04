@@ -8,10 +8,7 @@ import { Flex, Box } from "rebass"
 import { Button, ToolBar, CancelButton, SaveButton } from "./EditablePageStyles"
 import { editInline, saveInlineEditing } from "actions/editablePages"
 
-type Props = {
-  /** This is preconfigured JSON that can be used as the value of the editable page content. */
-  json: Object,
-}
+type Props = {}
 
 type State = {
   /** This is the initial value of the editable page content. */
@@ -19,7 +16,7 @@ type State = {
 }
 
 /**
- * This is a reusable Slate inline editor component. It accepts two props to set the initial value state.
+ * This is a reusable Slate inline editor component.
  */
 
 /* The default mode for text */
