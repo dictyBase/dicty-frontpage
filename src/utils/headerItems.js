@@ -33,6 +33,7 @@ const headerItems = [
     url: "/about",
     icon: "info-circle",
     text: "About dictyBase",
+    isRouter: true,
   },
   {
     url: "/login",
@@ -57,6 +58,7 @@ const loggedHeaderItems = [
     url: "/about",
     icon: "info-circle",
     text: "About dictyBase",
+    isRouter: true,
   },
   {
     url: "/logout",

@@ -1,24 +1,36 @@
 // @flow
 import React from "react"
-import { BrowserRouter as Router } from "react-router-dom"
+import { connect } from "react-redux"
+import { withRouter } from "react-router-dom"
 import { Header, Footer } from "dicty-components-header-footer"
 import { Navbar } from "dicty-components-navbar"
 import Routes from "routes/Routes"
 import { navItems } from "constants/navbar"
 import items from "data/footer"
-import { headerItems, generateLinks } from "utils/headerItems"
+import {
+  headerItems,
+  loggedHeaderItems,
+  generateLinks,
+} from "utils/headerItems"
+import type { MapStateToProps } from "react-redux"
 
-const App = () => {
+const App = props => {
   return (
     <div>
-      <Router>
+      {props.auth.isAuthenticated ? (
+        <Header items={loggedHeaderItems}>
+          {items => items.map(generateLinks)}
+        </Header>
+      ) : (
         <Header items={headerItems}>{items => items.map(generateLinks)}</Header>
-      </Router>
+      )}
       <Navbar items={navItems} />
-      <Routes />
+      <Routes {...props} />
       <Footer items={items} />
     </div>
   )
 }
 
-export default App
+const mapStateToProps: MapStateToProps<*, *, *> = ({ auth }) => ({ auth })
+
+export default withRouter(connect(mapStateToProps)(App))
