@@ -1,7 +1,7 @@
 import React from "react"
-import StockCenter from "components/frontpage/StockCenter"
+import StockCenter from "./StockCenter"
 import renderer from "react-test-renderer"
-import stockcenter from "data/stockcenter"
+import stockcenter from "../../data/stockcenter"
 
 test("StockCenter snapshot test", () => {
   const component = renderer.create(<StockCenter stockcenter={stockcenter} />)

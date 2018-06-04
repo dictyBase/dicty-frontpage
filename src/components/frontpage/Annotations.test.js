@@ -1,7 +1,7 @@
 import React from "react"
-import Annotations from "components/frontpage/Annotations"
+import Annotations from "./Annotations"
 import renderer from "react-test-renderer"
-import annotations from "data/annotations"
+import annotations from "../../data/annotations"
 
 test("Annotations snapshot test", () => {
   const component = renderer.create(<Annotations annotations={annotations} />)

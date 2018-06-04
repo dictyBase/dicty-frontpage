@@ -1,7 +1,7 @@
 import React from "react"
-import Papers from "components/frontpage/Papers"
+import Papers from "./Papers"
 import renderer from "react-test-renderer"
-import papers from "data/papers"
+import papers from "../../data/papers"
 
 test("Papers snapshot test", () => {
   const component = renderer.create(<Papers papers={papers} />)
