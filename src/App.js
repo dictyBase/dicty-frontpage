@@ -14,7 +14,7 @@ import {
 } from "utils/headerItems"
 import type { MapStateToProps } from "react-redux"
 
-const App = props => {
+export const App = props => {
   return (
     <div>
       {props.auth.isAuthenticated ? (
