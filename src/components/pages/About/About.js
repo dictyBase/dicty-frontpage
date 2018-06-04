@@ -20,7 +20,7 @@ const About = () => {
           {"  "}dictyBase
         </Hdrtxt>
       </Banner>
-
+      <br />
       <Container>
         <Item>
           <TechnicalSummary />

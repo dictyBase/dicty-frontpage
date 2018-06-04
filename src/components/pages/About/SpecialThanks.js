@@ -23,9 +23,8 @@ class SpecialThanks extends Component {
   }
   render() {
     const { isFetching, page } = this.props
-    console.log(page)
     if (!isFetching && page.data.attributes.content) {
-      return <InlineEditor side="contentLeft" page={this.props.page} />
+      return <InlineEditor page={this.props.page} />
     }
     return (
       <div>
@@ -40,7 +39,7 @@ class SpecialThanks extends Component {
 }
 
 const mapStateToProps = state => {
-  const slugName = `${NAMESPACE}-technicalsummary`
+  const slugName = `${NAMESPACE}-specialthanks`
   return {
     isFetching: state.editablePages.isFetching,
     page: state.editablePages[slugName],

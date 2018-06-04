@@ -24,7 +24,7 @@ class TechnicalSummary extends Component {
   render() {
     const { isFetching, page } = this.props
     if (!isFetching && page.data.attributes.content) {
-      return <InlineEditor side="contentLeft" page={this.props.page} />
+      return <InlineEditor page={this.props.page} />
     }
     return (
       <div>

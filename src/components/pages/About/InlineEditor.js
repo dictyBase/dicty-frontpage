@@ -1,17 +1,16 @@
 // @flow
 import React, { Component } from "react"
+import { connect } from "react-redux"
 import { Editor, getEventTransfer } from "slate-react"
 import { Value, type Change } from "slate"
 import FontAwesome from "react-fontawesome"
 import { Flex, Box } from "rebass"
 import { Button, ToolBar, CancelButton, SaveButton } from "./EditablePageStyles"
-// import { editInline, saveInlineEditing } from "actions/editablePages"
+import { editInline, saveInlineEditing } from "actions/editablePages"
 
 type Props = {
   /** This is preconfigured JSON that can be used as the value of the editable page content. */
   json: Object,
-  /** This is the side of the page (currently local storage) where the content is placed. */
-  side: string,
 }
 
 type State = {
@@ -39,12 +38,14 @@ const unwrapLink = change => {
   change.unwrapInline("link")
 }
 
-export default class InlineEditor extends Component<Props, State> {
+class InlineEditor extends Component<Props, State> {
   constructor(props: Props) {
     super(props)
 
     this.state = {
-      value: Value.fromJSON(JSON.parse(props.page.data.attributes.content)), // Initial value of editor
+      // Initial value of editor
+      value: Value.fromJSON(JSON.parse(props.page.data.attributes.content)),
+      readOnly: true,
     }
   }
 
@@ -57,14 +58,42 @@ export default class InlineEditor extends Component<Props, State> {
     this.setState({ value }) // on change, update state with new editor value
   }
 
-  onCancel = () => {
-    this.setState(this.state.value)
+  onEdit = e => {
+    e.preventDefault()
+    this.setState({
+      readOnly: false,
+    })
+    const { editInline, page } = this.props
+    editInline(page.data.attributes.content)
   }
 
-  // on save, save the value to local storage
+  onCancel = () => {
+    this.setState({
+      value: this.state.value,
+      readOnly: true,
+    })
+  }
+
+  // on save, save the value to the content API server
   onSave = () => {
-    const content = JSON.stringify(this.state.value.toJSON())
-    localStorage.setItem(this.props.side, content)
+    const { value } = this.state
+    const { page, saveInlineEditing } = this.props
+
+    const content = JSON.stringify(value.toJSON())
+
+    const body = {
+      id: page.data.id,
+      data: {
+        id: page.data.id,
+        type: "contents",
+        attributes: {
+          updated_by: page.data.attributes.updated_by,
+          content: content,
+        },
+      },
+    }
+    saveInlineEditing(page.data.id, body)
+
     this.setState(this.state.value)
   }
 
@@ -345,22 +374,25 @@ export default class InlineEditor extends Component<Props, State> {
   }
 
   render() {
+    const { readOnly } = this.state
     return (
       <div>
-        <ToolBar>
-          {this.renderMarkButton("bold")}
-          {this.renderMarkButton("italic")}
-          {this.renderMarkButton("underline")}
-          {this.renderMarkButton("code")}
-          {this.renderMarkButton("strikethrough")}
-          {this.renderBlockButton("bulleted-list")}
-          {this.renderBlockButton("numbered-list")}
-          {this.renderBlockButton("heading-one")}
-          {this.renderBlockButton("heading-two")}
-          {this.renderBlockButton("heading-three")}
-          {this.renderBlockButton("block-quote")}
-          {this.renderBlockButton("link")}
-        </ToolBar>
+        {!readOnly && (
+          <ToolBar>
+            {this.renderMarkButton("bold")}
+            {this.renderMarkButton("italic")}
+            {this.renderMarkButton("underline")}
+            {this.renderMarkButton("code")}
+            {this.renderMarkButton("strikethrough")}
+            {this.renderBlockButton("bulleted-list")}
+            {this.renderBlockButton("numbered-list")}
+            {this.renderBlockButton("heading-one")}
+            {this.renderBlockButton("heading-two")}
+            {this.renderBlockButton("heading-three")}
+            {this.renderBlockButton("block-quote")}
+            {this.renderBlockButton("link")}
+          </ToolBar>
+        )}
 
         <Editor
           value={this.state.value}
@@ -368,16 +400,21 @@ export default class InlineEditor extends Component<Props, State> {
           onKeyDown={this.onKeyDown}
           renderMark={this.renderMark}
           renderNode={this.renderNode}
+          readOnly={readOnly}
         />
         <Flex>
           <Box width={"40%"} mr={1} mt={1}>
-            <CancelButton onClick={this.onCancel}>Cancel</CancelButton>
+            {!readOnly && (
+              <CancelButton onClick={this.onCancel}>Cancel</CancelButton>
+            )}
           </Box>
           <Box width={"40%"} mr={1} mt={1}>
-            <SaveButton onClick={this.onSave}>Save</SaveButton>
+            {!readOnly && <SaveButton onClick={this.onSave}>Save</SaveButton>}
           </Box>
         </Flex>
       </div>
     )
   }
 }
+
+export default connect(null, { editInline, saveInlineEditing })(InlineEditor)

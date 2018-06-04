@@ -10,8 +10,6 @@ import {
 } from "constants/types"
 import { fetchBySlugResource, fetchByIdResource } from "utils/fetchResources"
 
-// copied from DSC, needs to be updated to work with Slate data
-
 const fetchPageRequest = () => {
   return {
     type: FETCH_PAGE_REQUEST,
