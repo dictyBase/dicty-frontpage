@@ -1,7 +1,7 @@
 import React from "react"
-import Popular from "../components/frontpage/Popular"
+import Popular from "./Popular"
 import renderer from "react-test-renderer"
-import widgets from "../././data/widgets"
+import widgets from "data/widgets"
 
 test("Popular snapshot test", () => {
   const component = renderer.create(<Popular widgets={widgets} />)
