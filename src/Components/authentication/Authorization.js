@@ -6,7 +6,7 @@ import {
   AuthenticatedUser,
   AuthAPI,
 } from "utils/apiClasses"
-import { dsccontent } from "constants/resources"
+import { frontpagecontent } from "constants/resources"
 import type { MapStateToProps } from "react-redux"
 
 type Props = {
@@ -27,7 +27,7 @@ type Props = {
 const Authorization = (props: Props) => {
   const { loggedInUser, roles, fetchedUserData, verifiedToken } = props
   return props.render({
-    canEditPages: loggedInUser.verifyPermissions("write", dsccontent),
+    canEditPages: loggedInUser.verifyPermissions("write", frontpagecontent),
     isSuperUser: roles.checkRoles("superuser"),
     fetchedUserData: fetchedUserData,
     verifiedToken: verifiedToken.verifyToken(),

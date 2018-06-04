@@ -20,12 +20,14 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
+    "@material-ui/core": "^1.2.0",
     "dicty-components-header-footer": "github:dictybase/dicty-components-header-footer#v4.2.0",
     "dicty-components-login": "github:dictybase/dicty-components-login",
     "dicty-components-navbar": "github:dictyBase/dicty-components-navbar",
     "dicty-components-redux": "github:dictybase-playground/dicty-components-redux",
     "history": "^4.7.2",
     "immutable": "^3.8.1",
+    "jwt-decode": "^2.2.0",
     "raw-loader": "^0.5.1",
     "react": "^15.6.2",
     "react-dom": "^15.6.2",

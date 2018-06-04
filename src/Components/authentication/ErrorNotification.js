@@ -15,6 +15,8 @@ type Props = {
   error: string,
 }
 
+/** Notification snackbar-style message if user hits some type of error */
+
 const ErrorNotification = (props: Props) => {
   return (
     <center>

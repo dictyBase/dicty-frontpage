@@ -31,9 +31,9 @@ const theme = {
 }
 
 type Props = {
-  // Object passed by React-Router
+  /** Object passed by React-Router */
   location: Object,
-  // Auth part of state
+  /** Auth part of state */
   auth: Object,
 }
 
