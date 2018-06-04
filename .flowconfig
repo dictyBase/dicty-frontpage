@@ -5,7 +5,7 @@
 <PROJECT_ROOT>/node_modules/.*
 
 [options]
-module.name_mapper='^Components\(\/?.*\)$' -> '<PROJECT_ROOT>/src/Components/\1'
+module.name_mapper='^components\(\/?.*\)$' -> '<PROJECT_ROOT>/src/components/\1'
 module.name_mapper='^data\(\/?.*\)$' -> '<PROJECT_ROOT>/src/data/\1'
 module.name_mapper='^constants\(\/?.*\)$' -> '<PROJECT_ROOT>/src/constants/\1'
 
