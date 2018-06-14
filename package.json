@@ -2,6 +2,9 @@
   "name": "dicty-frontpage",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "10.4.0"
+  },
   "lint-staged": {
     "src/**/*.{js,jsx,json,css}": [
       "prettier --no-semi --trailing-comma all --jsx-bracket-same-line true --write",
@@ -21,10 +24,13 @@
   },
   "dependencies": {
     "@material-ui/core": "^1.2.0",
-    "dicty-components-header-footer": "github:dictyBase/dicty-components-header-footer#v5.1.0",
+    "dicty-components-header-footer":
+      "github:dictyBase/dicty-components-header-footer#v5.1.0",
     "dicty-components-login": "github:dictyBase/dicty-components-login#v1.3.0",
-    "dicty-components-navbar": "github:dictyBase/dicty-components-navbar#v0.2.0",
-    "dicty-components-redux": "github:dictybase-playground/dicty-components-redux#v2.1.0",
+    "dicty-components-navbar":
+      "github:dictyBase/dicty-components-navbar#v0.2.0",
+    "dicty-components-redux":
+      "github:dictybase-playground/dicty-components-redux#v2.1.0",
     "history": "^4.7.2",
     "immutable": "^3.8.1",
     "jwt-decode": "^2.2.0",
