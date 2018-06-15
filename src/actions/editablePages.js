@@ -210,3 +210,9 @@ export const addNewsItem = (body: Object) => {
     }
   }
 }
+
+export const cancelEditing = () => {
+  return (dispatch: Function) => {
+    dispatch(push(`/`))
+  }
+}

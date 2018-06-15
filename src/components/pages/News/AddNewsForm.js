@@ -8,14 +8,15 @@ import { Flex, Box } from "rebass"
 import renderMark from "components/editor/tools/renderMark"
 import renderNode from "components/editor/tools/renderNode"
 import { AuthenticatedUser } from "utils/apiClasses"
-import { editInline, addNewsItem } from "actions/editablePages"
+import { editInline, addNewsItem, cancelEditing } from "actions/editablePages"
 import {
   Button,
   ToolBar,
   CancelButton,
   SaveButton,
 } from "styles/EditablePageStyles"
-import { frontpagenews } from "constants/namespace"
+import { frontpagenews } from "constants/resources"
+import editorPlaceholder from "data/editorPlaceholder.json"
 
 type Props = {}
 
@@ -50,26 +51,7 @@ class AddNewsForm extends Component<Props, State> {
 
     this.state = {
       // Initial value of editor
-      value: Value.fromJSON({
-        document: {
-          nodes: [
-            {
-              object: "block",
-              type: "paragraph",
-              nodes: [
-                {
-                  object: "text",
-                  leaves: [
-                    {
-                      text: "Start typing here...",
-                    },
-                  ],
-                },
-              ],
-            },
-          ],
-        },
-      }),
+      value: Value.fromJSON(editorPlaceholder),
       readOnly: false,
     }
   }
@@ -97,6 +79,7 @@ class AddNewsForm extends Component<Props, State> {
       value: this.state.value,
       readOnly: true,
     })
+    this.props.cancelEditing()
   }
 
   // on save, save the value to the content API server
@@ -390,6 +373,8 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { editInline, addNewsItem })(
-  AddNewsForm,
-)
+export default connect(mapStateToProps, {
+  editInline,
+  addNewsItem,
+  cancelEditing,
+})(AddNewsForm)
