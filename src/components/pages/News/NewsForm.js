@@ -12,6 +12,7 @@ import {
   SaveButton,
 } from "components/pages/About/EditablePageStyles"
 import { editInline, saveInlineEditing } from "actions/editablePages"
+import { NAMESPACE } from "constants/namespace"
 
 type Props = {}
 
@@ -46,7 +47,6 @@ class NewsForm extends Component<Props, State> {
 
     this.state = {
       // Initial value of editor
-      // value: Value.fromJSON(JSON.parse(props.page.data.attributes.content)),
       value: Value.fromJSON({
         document: {
           nodes: [
@@ -58,7 +58,7 @@ class NewsForm extends Component<Props, State> {
                   object: "text",
                   leaves: [
                     {
-                      text: "A line of text in a paragraph.",
+                      text: "Start typing here...",
                     },
                   ],
                 },
@@ -98,23 +98,23 @@ class NewsForm extends Component<Props, State> {
 
   // on save, save the value to the content API server
   onSave = () => {
-    // const { value } = this.state
-    // const { page, saveInlineEditing } = this.props
+    const { value } = this.state
+    const { page, saveInlineEditing } = this.props
 
-    // const content = JSON.stringify(value.toJSON())
+    const content = JSON.stringify(value.toJSON())
 
-    // const body = {
-    //   id: page.data.id,
-    //   data: {
-    //     id: page.data.id,
-    //     type: "contents",
-    //     attributes: {
-    //       updated_by: page.data.attributes.updated_by,
-    //       content: content,
-    //     },
-    //   },
-    // }
-    // saveInlineEditing(page.data.id, body)
+    const body = {
+      data: {
+        type: "contents",
+        attributes: {
+          name: "name", // need to create name on save
+          created_by: "loggedinuser", // update reference to be logged in user id
+          content: content,
+          namespace: NAMESPACE,
+        },
+      },
+    }
+    saveInlineEditing(page.data.id, body)
 
     this.setState(this.state.value)
   }
