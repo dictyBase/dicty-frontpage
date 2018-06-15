@@ -5,8 +5,15 @@ import { Editor, getEventTransfer } from "slate-react"
 import { Value, type Change } from "slate"
 import FontAwesome from "react-fontawesome"
 import { Flex, Box } from "rebass"
-import { Button, ToolBar, CancelButton, SaveButton } from "./EditablePageStyles"
+import renderMark from "components/editor/tools/renderMark"
+import renderNode from "components/editor/tools/renderNode"
 import { editInline, saveInlineEditing } from "actions/editablePages"
+import {
+  Button,
+  ToolBar,
+  CancelButton,
+  SaveButton,
+} from "styles/EditablePageStyles"
 
 type Props = {}
 
@@ -42,7 +49,7 @@ class InlineEditor extends Component<Props, State> {
     this.state = {
       // Initial value of editor
       value: Value.fromJSON(JSON.parse(props.page.data.attributes.content)),
-      readOnly: true,
+      readOnly: false, // need to update with auth
     }
   }
 
@@ -169,67 +176,6 @@ class InlineEditor extends Component<Props, State> {
         default:
           return
       }
-    }
-  }
-
-  renderMark = (props: any) => {
-    switch (props.mark.type) {
-      case "bold":
-        return <strong>{props.children}</strong>
-
-      case "italic":
-        return <i>{props.children}</i>
-
-      case "underline":
-        return <u>{props.children}</u>
-
-      case "code":
-        return <code>{props.children}</code>
-
-      case "strikethrough":
-        return <del>{props.children}</del>
-
-      default:
-        return
-    }
-  }
-
-  renderNode = (props: any) => {
-    const { attributes, children, node } = props
-    switch (node.type) {
-      case "bulleted-list":
-        return <ul {...attributes}>{children}</ul>
-
-      case "numbered-list":
-        return <ol {...attributes}>{children}</ol>
-
-      case "list-item":
-        return <li {...attributes}>{children}</li>
-
-      case "heading-one":
-        return <h1 {...attributes}>{children}</h1>
-
-      case "heading-two":
-        return <h2 {...attributes}>{children}</h2>
-
-      case "heading-three":
-        return <h3 {...attributes}>{children}</h3>
-
-      case "block-quote":
-        return <blockquote {...attributes}>{children}</blockquote>
-
-      case "link": {
-        const { data } = node
-        const href = data.get("href")
-        return (
-          <a {...attributes} href={href}>
-            {children}
-          </a>
-        )
-      }
-
-      default:
-        return
     }
   }
 
@@ -395,8 +341,8 @@ class InlineEditor extends Component<Props, State> {
           value={this.state.value}
           onChange={this.onChange}
           onKeyDown={this.onKeyDown}
-          renderMark={this.renderMark}
-          renderNode={this.renderNode}
+          renderMark={renderMark}
+          renderNode={renderNode}
           readOnly={readOnly}
         />
         <Flex>
