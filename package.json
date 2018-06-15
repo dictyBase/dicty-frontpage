@@ -29,8 +29,8 @@
     "immutable": "^3.8.1",
     "jwt-decode": "^2.2.0",
     "raw-loader": "^0.5.1",
-    "react": "^15.6.2",
-    "react-dom": "^15.6.2",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0",
     "react-fontawesome": "^1.6.1",
     "react-loading-skeleton": "^0.5.0",
     "react-redux": "^5.0.7",
@@ -46,11 +46,11 @@
   "devDependencies": {
     "flow-bin": "^0.73.0",
     "husky": "^0.14.3",
-    "lint-staged": "^7.0.0",
+    "lint-staged": "^7.2.0",
     "prettier": "^1.5.2",
     "react-scripts": "^1.1.4",
     "react-styleguidist": "^7.0.15",
-    "react-test-renderer": "^15.6.2"
+    "react-test-renderer": "^16.4.0"
   },
   "proxy": "http://localhost:3001"
 }
