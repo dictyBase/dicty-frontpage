@@ -17,7 +17,7 @@ const AddNews = () => {
         </Banner>
       </Box>
       <br />
-      <Box w={"50%"}>
+      <Box w={"100%"}>
         <AddNewsForm />
       </Box>
     </Flex>

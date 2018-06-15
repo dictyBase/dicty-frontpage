@@ -316,43 +316,46 @@ class AddNewsForm extends Component<Props, State> {
   render() {
     const { readOnly } = this.state
     return (
-      <div>
-        {!readOnly && (
-          <ToolBar>
-            {this.renderMarkButton("bold")}
-            {this.renderMarkButton("italic")}
-            {this.renderMarkButton("underline")}
-            {this.renderMarkButton("code")}
-            {this.renderMarkButton("strikethrough")}
-            {this.renderBlockButton("bulleted-list")}
-            {this.renderBlockButton("numbered-list")}
-            {this.renderBlockButton("heading-one")}
-            {this.renderBlockButton("heading-two")}
-            {this.renderBlockButton("heading-three")}
-            {this.renderBlockButton("block-quote")}
-            {this.renderBlockButton("link")}
-          </ToolBar>
-        )}
+      <Flex justify="center">
+        <Box width={["90%", "80%", "50%", "40%"]}>
+          {!readOnly && (
+            <ToolBar>
+              {this.renderMarkButton("bold")}
+              {this.renderMarkButton("italic")}
+              {this.renderMarkButton("underline")}
+              {this.renderMarkButton("code")}
+              {this.renderMarkButton("strikethrough")}
+              {this.renderBlockButton("bulleted-list")}
+              {this.renderBlockButton("numbered-list")}
+              {this.renderBlockButton("heading-one")}
+              {this.renderBlockButton("heading-two")}
+              {this.renderBlockButton("heading-three")}
+              {this.renderBlockButton("block-quote")}
+              {this.renderBlockButton("link")}
+            </ToolBar>
+          )}
 
-        <Editor
-          value={this.state.value}
-          onChange={this.onChange}
-          onKeyDown={this.onKeyDown}
-          renderMark={renderMark}
-          renderNode={renderNode}
-          readOnly={readOnly}
-        />
-        <Flex>
-          <Box width={["50%", "25%"]} mr={1} mt={1}>
-            {!readOnly && (
-              <CancelButton onClick={this.onCancel}>Cancel</CancelButton>
-            )}
-          </Box>
-          <Box width={["50%", "25%"]} mr={1} mt={1}>
-            {!readOnly && <SaveButton onClick={this.onSave}>Save</SaveButton>}
-          </Box>
-        </Flex>
-      </div>
+          <Editor
+            value={this.state.value}
+            onChange={this.onChange}
+            onKeyDown={this.onKeyDown}
+            renderMark={renderMark}
+            renderNode={renderNode}
+            readOnly={readOnly}
+          />
+          <br />
+          <Flex>
+            <Box width={["30%"]} mr={1} mt={1}>
+              {!readOnly && (
+                <CancelButton onClick={this.onCancel}>Cancel</CancelButton>
+              )}
+            </Box>
+            <Box width={["30%"]} mr={1} mt={1}>
+              {!readOnly && <SaveButton onClick={this.onSave}>Save</SaveButton>}
+            </Box>
+          </Flex>
+        </Box>
+      </Flex>
     )
   }
 }
