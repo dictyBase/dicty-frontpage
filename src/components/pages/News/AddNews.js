@@ -2,7 +2,7 @@
 import React from "react"
 import { Flex, Box } from "rebass"
 import AddNewsForm from "./AddNewsForm"
-import { Banner, Header } from "./NewsStyles"
+import { Banner, Header } from "styles/NewsStyles"
 
 /**
  * This is the About page component. It is set up to accept two Items, both of which are 50% width, below the main Header.
