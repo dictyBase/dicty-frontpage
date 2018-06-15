@@ -133,6 +133,7 @@ export class PermissionAPI extends JsonAPI {
             item.attributes.resource === MAIN_RESOURCE)
         )
       }
+
       return this.json.permissions.filter(validPermissions)
     } else {
       return null

@@ -9,6 +9,7 @@ import {
   FETCH_PAGE_FAILURE,
 } from "constants/types"
 import { fetchBySlugResource, fetchByIdResource } from "utils/fetchResources"
+import { push } from "react-router-redux"
 
 const fetchPageRequest = () => {
   return {
@@ -165,5 +166,53 @@ export const saveInlineEditing = (id: string, body: Object) => {
         console.error(`Network error: ${error.message}`)
       }
     }
+  }
+}
+
+export const addNewsItem = (body: Object) => {
+  return async (dispatch: Function, getState: Function) => {
+    try {
+      dispatch(savePageRequest())
+      const res = await fetch(`${process.env.REACT_APP_API_SERVER}/contents`, {
+        method: "POST",
+        body: JSON.stringify(body),
+        headers: {
+          "Content-Type": "application/json",
+          Application: `Bearer: ${getState().auth.token}`,
+        },
+      })
+      const contentType = res.headers.get("content-type")
+      if (contentType && contentType.includes("application/vnd.api+json")) {
+        const json = await res.json()
+        if (res.ok) {
+          dispatch(savePageSuccess())
+          dispatch(push("/"))
+        } else {
+          if (process.env.NODE_ENV !== "production") {
+            printError(res, json)
+          }
+          dispatch(savePageFailure(res.body))
+          // dispatch(push("/error"))
+        }
+      } else {
+        if (process.env.NODE_ENV !== "production") {
+          console.error("Cannot convert to JSON")
+        }
+        dispatch(savePageFailure(res.body))
+        // dispatch(push("/error"))
+      }
+    } catch (error) {
+      dispatch(savePageFailure(error))
+      // dispatch(push("/error"))
+      if (process.env.NODE_ENV !== "production") {
+        console.error(`Network error: ${error.message}`)
+      }
+    }
+  }
+}
+
+export const cancelEditing = () => {
+  return (dispatch: Function) => {
+    dispatch(push(`/`))
   }
 }

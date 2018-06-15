@@ -5,8 +5,18 @@ import { Editor, getEventTransfer } from "slate-react"
 import { Value, type Change } from "slate"
 import FontAwesome from "react-fontawesome"
 import { Flex, Box } from "rebass"
-import { Button, ToolBar, CancelButton, SaveButton } from "./EditablePageStyles"
-import { editInline, saveInlineEditing } from "actions/editablePages"
+import renderMark from "components/editor/tools/renderMark"
+import renderNode from "components/editor/tools/renderNode"
+import { AuthenticatedUser } from "utils/apiClasses"
+import { addNewsItem, cancelEditing } from "actions/editablePages"
+import {
+  Button,
+  ToolBar,
+  CancelButton,
+  SaveButton,
+} from "styles/EditablePageStyles"
+import { frontpagenews } from "constants/resources"
+import editorPlaceholder from "data/editorPlaceholder.json"
 
 type Props = {}
 
@@ -35,14 +45,14 @@ const unwrapLink = change => {
   change.unwrapInline("link")
 }
 
-class InlineEditor extends Component<Props, State> {
+class AddNewsForm extends Component<Props, State> {
   constructor(props: Props) {
     super(props)
 
     this.state = {
       // Initial value of editor
-      value: Value.fromJSON(JSON.parse(props.page.data.attributes.content)),
-      readOnly: true,
+      value: Value.fromJSON(editorPlaceholder),
+      readOnly: false,
     }
   }
 
@@ -55,41 +65,35 @@ class InlineEditor extends Component<Props, State> {
     this.setState({ value }) // on change, update state with new editor value
   }
 
-  onEdit = e => {
-    e.preventDefault()
-    this.setState({
-      readOnly: false,
-    })
-    const { editInline, page } = this.props
-    editInline(page.data.attributes.content)
-  }
-
   onCancel = () => {
     this.setState({
       value: this.state.value,
       readOnly: true,
     })
+    this.props.cancelEditing()
   }
 
   // on save, save the value to the content API server
   onSave = () => {
     const { value } = this.state
-    const { page, saveInlineEditing } = this.props
+    const { addNewsItem, loggedInUser } = this.props
 
     const content = JSON.stringify(value.toJSON())
+    // get today's current date for use as news item name
+    const date = new Date().toISOString().split("T")[0]
 
     const body = {
-      id: page.data.id,
       data: {
-        id: page.data.id,
         type: "contents",
         attributes: {
-          updated_by: page.data.attributes.updated_by,
+          name: date,
+          created_by: loggedInUser.json.data.id,
           content: content,
+          namespace: frontpagenews,
         },
       },
     }
-    saveInlineEditing(page.data.id, body)
+    addNewsItem(body)
 
     this.setState(this.state.value)
   }
@@ -169,67 +173,6 @@ class InlineEditor extends Component<Props, State> {
         default:
           return
       }
-    }
-  }
-
-  renderMark = (props: any) => {
-    switch (props.mark.type) {
-      case "bold":
-        return <strong>{props.children}</strong>
-
-      case "italic":
-        return <i>{props.children}</i>
-
-      case "underline":
-        return <u>{props.children}</u>
-
-      case "code":
-        return <code>{props.children}</code>
-
-      case "strikethrough":
-        return <del>{props.children}</del>
-
-      default:
-        return
-    }
-  }
-
-  renderNode = (props: any) => {
-    const { attributes, children, node } = props
-    switch (node.type) {
-      case "bulleted-list":
-        return <ul {...attributes}>{children}</ul>
-
-      case "numbered-list":
-        return <ol {...attributes}>{children}</ol>
-
-      case "list-item":
-        return <li {...attributes}>{children}</li>
-
-      case "heading-one":
-        return <h1 {...attributes}>{children}</h1>
-
-      case "heading-two":
-        return <h2 {...attributes}>{children}</h2>
-
-      case "heading-three":
-        return <h3 {...attributes}>{children}</h3>
-
-      case "block-quote":
-        return <blockquote {...attributes}>{children}</blockquote>
-
-      case "link": {
-        const { data } = node
-        const href = data.get("href")
-        return (
-          <a {...attributes} href={href}>
-            {children}
-          </a>
-        )
-      }
-
-      default:
-        return
     }
   }
 
@@ -373,45 +316,58 @@ class InlineEditor extends Component<Props, State> {
   render() {
     const { readOnly } = this.state
     return (
-      <div>
-        {!readOnly && (
-          <ToolBar>
-            {this.renderMarkButton("bold")}
-            {this.renderMarkButton("italic")}
-            {this.renderMarkButton("underline")}
-            {this.renderMarkButton("code")}
-            {this.renderMarkButton("strikethrough")}
-            {this.renderBlockButton("bulleted-list")}
-            {this.renderBlockButton("numbered-list")}
-            {this.renderBlockButton("heading-one")}
-            {this.renderBlockButton("heading-two")}
-            {this.renderBlockButton("heading-three")}
-            {this.renderBlockButton("block-quote")}
-            {this.renderBlockButton("link")}
-          </ToolBar>
-        )}
+      <Flex justify="center">
+        <Box width={["90%", "80%", "50%", "40%"]}>
+          {!readOnly && (
+            <ToolBar>
+              {this.renderMarkButton("bold")}
+              {this.renderMarkButton("italic")}
+              {this.renderMarkButton("underline")}
+              {this.renderMarkButton("code")}
+              {this.renderMarkButton("strikethrough")}
+              {this.renderBlockButton("bulleted-list")}
+              {this.renderBlockButton("numbered-list")}
+              {this.renderBlockButton("heading-one")}
+              {this.renderBlockButton("heading-two")}
+              {this.renderBlockButton("heading-three")}
+              {this.renderBlockButton("block-quote")}
+              {this.renderBlockButton("link")}
+            </ToolBar>
+          )}
 
-        <Editor
-          value={this.state.value}
-          onChange={this.onChange}
-          onKeyDown={this.onKeyDown}
-          renderMark={this.renderMark}
-          renderNode={this.renderNode}
-          readOnly={readOnly}
-        />
-        <Flex>
-          <Box width={"40%"} mr={1} mt={1}>
-            {!readOnly && (
-              <CancelButton onClick={this.onCancel}>Cancel</CancelButton>
-            )}
-          </Box>
-          <Box width={"40%"} mr={1} mt={1}>
-            {!readOnly && <SaveButton onClick={this.onSave}>Save</SaveButton>}
-          </Box>
-        </Flex>
-      </div>
+          <Editor
+            value={this.state.value}
+            onChange={this.onChange}
+            onKeyDown={this.onKeyDown}
+            renderMark={renderMark}
+            renderNode={renderNode}
+            readOnly={readOnly}
+          />
+          <br />
+          <Flex>
+            <Box width={["30%"]} mr={1} mt={1}>
+              {!readOnly && (
+                <CancelButton onClick={this.onCancel}>Cancel</CancelButton>
+              )}
+            </Box>
+            <Box width={["30%"]} mr={1} mt={1}>
+              {!readOnly && <SaveButton onClick={this.onSave}>Save</SaveButton>}
+            </Box>
+          </Flex>
+        </Box>
+      </Flex>
     )
   }
 }
 
-export default connect(null, { editInline, saveInlineEditing })(InlineEditor)
+const mapStateToProps = state => {
+  const loggedInUser = new AuthenticatedUser(state.auth.user)
+  return {
+    loggedInUser: loggedInUser,
+  }
+}
+
+export default connect(mapStateToProps, {
+  addNewsItem,
+  cancelEditing,
+})(AddNewsForm)

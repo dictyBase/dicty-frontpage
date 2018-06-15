@@ -5,12 +5,30 @@ import { manageStateStorage } from "dicty-components-redux"
 import createHistory from "history/createBrowserHistory"
 import callAPI from "middlewares/callAPI"
 import rootReducer from "reducers"
-import { LOGIN_SUCCESS, LOGOUT_SUCCESS } from "constants/types"
+import {
+  LOGIN_SUCCESS,
+  LOGOUT_SUCCESS,
+  FETCH_ROLE_SUCCESS,
+  FETCH_PERMISSION_SUCCESS,
+} from "constants/types"
 
 export const history = createHistory()
 
 const authArg = {
   save_action: LOGIN_SUCCESS,
+  remove_action: LOGOUT_SUCCESS,
+  key: "auth",
+  namespace: "auth",
+}
+
+const roleArg = {
+  save_action: FETCH_ROLE_SUCCESS,
+  remove_action: LOGOUT_SUCCESS,
+  key: "auth",
+  namespace: "auth",
+}
+const permArg = {
+  save_action: FETCH_PERMISSION_SUCCESS,
   remove_action: LOGOUT_SUCCESS,
   key: "auth",
   namespace: "auth",
@@ -24,6 +42,8 @@ const enhancer = composeEnhancers(
     thunk,
     callAPI,
     manageStateStorage(authArg),
+    manageStateStorage(roleArg),
+    manageStateStorage(permArg),
   ),
 )
 

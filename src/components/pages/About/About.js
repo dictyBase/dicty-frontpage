@@ -3,7 +3,13 @@ import React from "react"
 import FontAwesome from "react-fontawesome"
 import TechnicalSummary from "./TechnicalSummary"
 import SpecialThanks from "./SpecialThanks"
-import { Banner, Header, Hdrtxt, Container, Item } from "./EditablePageStyles"
+import {
+  Banner,
+  Header,
+  Hdrtxt,
+  Container,
+  Item,
+} from "styles/EditablePageStyles"
 
 /**
  * This is the About page component. It is set up to accept two Items, both of which are 50% width, below the main Header.
