@@ -34,12 +34,12 @@ if (process.env.REACT_APP_API_SERVER) {
     process.env.REACT_APP_API_SERVER
   }${fetchPermissionByIdBase}`
 } else {
-  fetchBySlugResource = "http://localhost:8080/contents/slug"
-  fetchByIdResource = "http://localhost:8080/contents"
-  fetchUserByIdResource = "http://localhost:8080/users"
-  fetchUserByEmailResource = "http://localhost:8000/users/email"
-  fetchRoleByIdResource = "http://localhost:8000/roles"
-  fetchPermissionByIdResource = "http://localhost:8000/permissions"
+  fetchBySlugResource = "http://betaapi.dictybase.local/contents/slug"
+  fetchByIdResource = "http://betaapi.dictybase.local/contents"
+  fetchUserByIdResource = "http://betaapi.dictybase.local/users"
+  fetchUserByEmailResource = "http://betaapi.dictybase.local/users/email"
+  fetchRoleByIdResource = "http://betaapi.dictybase.local/roles"
+  fetchPermissionByIdResource = "http://betaapi.dictybase.local/permissions"
 }
 
 if (process.env.REACT_APP_AUTH_SERVER) {
@@ -48,7 +48,7 @@ if (process.env.REACT_APP_AUTH_SERVER) {
     process.env.REACT_APP_AUTH_SERVER
   }${oauthEndpointBase}`
 } else {
-  oauthEndpointResource = "http://localhost:9999/tokens"
+  oauthEndpointResource = "http://betaauth.dictybase.local/tokens"
 }
 
 const fetchHeaderConfig = {

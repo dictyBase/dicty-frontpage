@@ -5,16 +5,17 @@ import { Editor, getEventTransfer } from "slate-react"
 import { Value, type Change } from "slate"
 import FontAwesome from "react-fontawesome"
 import { Flex, Box } from "rebass"
+import renderMark from "components/editor/tools/renderMark"
+import renderNode from "components/editor/tools/renderNode"
+import { AuthenticatedUser } from "utils/apiClasses"
+import { editInline, addNewsItem } from "actions/editablePages"
 import {
   Button,
   ToolBar,
   CancelButton,
   SaveButton,
 } from "styles/EditablePageStyles"
-import { editInline, saveInlineEditing } from "actions/editablePages"
-import { NAMESPACE } from "constants/namespace"
-import renderMark from "components/editor/tools/renderMark"
-import renderNode from "components/editor/tools/renderNode"
+import { frontpagenews } from "constants/namespace"
 
 type Props = {}
 
@@ -43,7 +44,7 @@ const unwrapLink = change => {
   change.unwrapInline("link")
 }
 
-class NewsForm extends Component<Props, State> {
+class AddNewsForm extends Component<Props, State> {
   constructor(props: Props) {
     super(props)
 
@@ -101,22 +102,24 @@ class NewsForm extends Component<Props, State> {
   // on save, save the value to the content API server
   onSave = () => {
     const { value } = this.state
-    const { page, saveInlineEditing } = this.props
+    const { addNewsItem, loggedInUser } = this.props
 
     const content = JSON.stringify(value.toJSON())
+    // get today's current date for use as news item name
+    const date = new Date().toISOString().split("T")[0]
 
     const body = {
       data: {
         type: "contents",
         attributes: {
-          name: "name", // need to create name on save
-          created_by: "loggedinuser", // update reference to be logged in user id
+          name: date,
+          created_by: loggedInUser.json.data.id,
           content: content,
-          namespace: NAMESPACE,
+          namespace: frontpagenews,
         },
       },
     }
-    saveInlineEditing(page.data.id, body)
+    addNewsItem(body)
 
     this.setState(this.state.value)
   }
@@ -380,4 +383,13 @@ class NewsForm extends Component<Props, State> {
   }
 }
 
-export default connect(null, { editInline, saveInlineEditing })(NewsForm)
+const mapStateToProps = state => {
+  const loggedInUser = new AuthenticatedUser(state.auth.user)
+  return {
+    loggedInUser: loggedInUser,
+  }
+}
+
+export default connect(mapStateToProps, { editInline, addNewsItem })(
+  AddNewsForm,
+)

@@ -1,7 +1,7 @@
 // @flow
 import React from "react"
 import { Flex, Box } from "rebass"
-import NewsForm from "./NewsForm"
+import AddNewsForm from "./AddNewsForm"
 import { Banner, Header } from "./NewsStyles"
 
 /**
@@ -18,7 +18,7 @@ const AddNews = () => {
       </Box>
       <br />
       <Box w={"50%"}>
-        <NewsForm />
+        <AddNewsForm />
       </Box>
     </Flex>
   )
