@@ -8,7 +8,7 @@ import { Flex, Box } from "rebass"
 import renderMark from "components/editor/tools/renderMark"
 import renderNode from "components/editor/tools/renderNode"
 import { AuthenticatedUser } from "utils/apiClasses"
-import { editInline, addNewsItem, cancelEditing } from "actions/editablePages"
+import { addNewsItem, cancelEditing } from "actions/editablePages"
 import {
   Button,
   ToolBar,
@@ -63,15 +63,6 @@ class AddNewsForm extends Component<Props, State> {
 
   onChange = ({ value }: Object) => {
     this.setState({ value }) // on change, update state with new editor value
-  }
-
-  onEdit = e => {
-    e.preventDefault()
-    this.setState({
-      readOnly: false,
-    })
-    // const { editInline, page } = this.props
-    // editInline(page.data.attributes.content)
   }
 
   onCancel = () => {
@@ -374,7 +365,6 @@ const mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps, {
-  editInline,
   addNewsItem,
   cancelEditing,
 })(AddNewsForm)

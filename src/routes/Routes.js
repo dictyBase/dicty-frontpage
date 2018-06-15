@@ -1,6 +1,7 @@
 // @flow
 import React from "react"
 import { Route, Switch } from "react-router-dom"
+import PrivateRoute from "./PrivateRoute"
 import Front from "components/pages/Front"
 import Learn from "components/pages/Learn"
 import About from "components/pages/About/About"
@@ -18,7 +19,7 @@ const Routes = () => {
       <Route exact path="/explore/learn" component={Learn} />
       <Route exact path="/explore/teach" component={Teach} />
       <Route exact path="/about" component={About} />
-      <Route exact path="/addnews" component={AddNews} />
+      <PrivateRoute exact path="/addnews" component={AddNews} />
       <Route exact path="/login" component={Login} />
       <Route exact path="/:provider/callback" component={OauthCallback} />
       <Route exact path="/load/auth" component={AuthLoader} />
