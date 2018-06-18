@@ -9,6 +9,7 @@ import "font-awesome/css/font-awesome.min.css"
 const RouterLink = styled(Link)`
   color: #15317e;
   padding: 15px;
+  text-decoration: none;
 `
 
 const generateLinks = (link, i) => {
