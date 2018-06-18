@@ -1,6 +1,6 @@
 import React from "react"
-import StockCenter from "./StockCenter"
 import renderer from "react-test-renderer"
+import StockCenter from "components/frontpage/StockCenter"
 import stockcenter from "data/stockcenter"
 
 test("StockCenter snapshot test", () => {

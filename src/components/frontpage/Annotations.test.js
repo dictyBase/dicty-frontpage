@@ -1,6 +1,6 @@
 import React from "react"
-import Annotations from "./Annotations"
 import renderer from "react-test-renderer"
+import Annotations from "components/frontpage/Annotations"
 import annotations from "data/annotations"
 
 test("Annotations snapshot test", () => {

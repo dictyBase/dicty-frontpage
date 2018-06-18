@@ -1,6 +1,6 @@
 import React from "react"
-import Popular from "./Popular"
 import renderer from "react-test-renderer"
+import Popular from "components/frontpage/Popular"
 import widgets from "data/widgets"
 
 test("Popular snapshot test", () => {
