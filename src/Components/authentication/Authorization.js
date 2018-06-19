@@ -2,7 +2,6 @@
 import { connect } from "react-redux"
 import { PermissionAPI, RoleAPI, AuthAPI } from "utils/apiClasses"
 import { frontpagecontent, frontpagenews } from "constants/resources"
-import type { MapStateToProps } from "react-redux"
 
 type Props = {
   /** contains the object representing the logged in user's data */
@@ -30,7 +29,7 @@ const Authorization = (props: Props) => {
   })
 }
 
-const mapStateToProps: MapStateToProps<*, *, *> = state => {
+const mapStateToProps = state => {
   if (state.auth.user) {
     const loggedInUser = new PermissionAPI(state.auth.user)
     const roles = new RoleAPI(state.auth.user)

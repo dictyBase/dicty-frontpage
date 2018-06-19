@@ -6,11 +6,20 @@ import InlineEditor from "components/editor/InlineEditor"
 import { fetchPage } from "actions/editablePages"
 import { NAMESPACE } from "constants/namespace"
 
+type Props = {
+  /** Represents whether component is loading or not */
+  isFetching: boolean,
+  /** The object holding the fetched page content */
+  page: Object,
+  /** Action to fetch page content from API server */
+  fetchPage: Function,
+}
+
 /**
  * This is the view component for the Technical Summary section of the About page.
  */
 
-class TechnicalSummary extends Component {
+class TechnicalSummary extends Component<Props> {
   static defaultProps = {
     page: {
       data: {

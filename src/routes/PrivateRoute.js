@@ -2,7 +2,6 @@
 import React from "react"
 import { connect } from "react-redux"
 import { Route, Redirect } from "react-router-dom"
-import type { MapStateToProps } from "react-redux"
 
 // function uses same API as <Route />
 const PrivateRoute = ({ component: Component, ...rest }) => (
@@ -25,6 +24,6 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
   />
 )
 
-const mapStateToProps: MapStateToProps<*, *, *> = ({ auth }) => ({ auth })
+const mapStateToProps = ({ auth }) => ({ auth })
 
 export default connect(mapStateToProps)(PrivateRoute)

@@ -18,11 +18,20 @@ import {
 import { frontpagenews } from "constants/resources"
 import editorPlaceholder from "data/editorPlaceholder.json"
 
-type Props = {}
+type Props = {
+  /** Action that allows user to add a news item to the server */
+  addNewsItem: Function,
+  /** Dispatch that cancels editing and pushes them back to root directory */
+  cancelEditing: Function,
+  /** Class that represents the current logged in user */
+  loggedInUser: Object,
+}
 
 type State = {
   /** This is the initial value of the editable page content. */
   value: Object,
+  /** Determines whether the editor is read only or not */
+  readOnly: boolean,
 }
 
 /**

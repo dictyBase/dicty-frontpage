@@ -6,11 +6,24 @@ import NewsEditor from "components/editor/NewsEditor"
 import { fetchPage } from "actions/editablePages"
 import { ListItems, MainContent } from "styles"
 
+type Props = {
+  /** Represents whether component is loading or not */
+  isFetching: boolean,
+  /** The object holding the fetched page content */
+  page: Object,
+  /** The slugname used to fetch content from the API server */
+  slug: string,
+  /** Action to fetch page content from API server */
+  fetchPage: Function,
+  /** Object representing auth part of state */
+  auth: Object,
+}
+
 /** This component is for individual news items on the frontpage.
  *  It accepts a slugname as a prop and uses that to fetch the corresponding data.
  */
 
-class NewsItem extends PureComponent {
+class NewsItem extends PureComponent<Props> {
   static defaultProps = {
     page: {
       data: {

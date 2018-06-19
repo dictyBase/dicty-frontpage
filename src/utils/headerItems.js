@@ -12,7 +12,7 @@ const RouterLink = styled(Link)`
   text-decoration: none;
 `
 
-const generateLinks = (link, i) => {
+const generateLinks = (link: Object, i: string) => {
   return link.isRouter ? (
     <RouterLink key={i} to={link.url}>
       <center>

@@ -15,11 +15,24 @@ import {
   SaveButton,
 } from "styles/EditablePageStyles"
 
-type Props = {}
+type Props = {
+  /** Represents whether component is loading or not */
+  isFetching: boolean,
+  /** The object holding the fetched page content */
+  page: Object,
+  /** Action to fetch page content from API server */
+  fetchPage: Function,
+  /** Action that saves inline editor content to API server */
+  saveInlineEditing: Function,
+  /** Action creator to edit inline content */
+  editInline: Function,
+}
 
 type State = {
   /** This is the initial value of the editable page content. */
   value: Object,
+  /** Determines whether the editor is read only or not */
+  readOnly: boolean,
 }
 
 /**

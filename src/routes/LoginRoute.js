@@ -2,7 +2,6 @@
 import React from "react"
 import { connect } from "react-redux"
 import { Route, Redirect } from "react-router-dom"
-import type { MapStateToProps } from "react-redux"
 
 /**
  * This is a protected route that redirects an authenticated user away from the /login route.
@@ -30,6 +29,6 @@ const LoginRoute = ({ component: Component, ...rest }) => (
   />
 )
 
-const mapStateToProps: MapStateToProps<*, *, *> = ({ auth }) => ({ auth })
+const mapStateToProps = ({ auth }) => ({ auth })
 
 export default connect(mapStateToProps)(LoginRoute)

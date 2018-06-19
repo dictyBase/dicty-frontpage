@@ -6,7 +6,6 @@ import OauthSignHandler from "components/authentication/OauthSignHandler"
 import oauthConfig from "utils/oauthConfig"
 import ErrorNotification from "components/authentication/ErrorNotification"
 import { Flex, Box } from "rebass"
-import type { MapStateToProps } from "react-redux"
 
 // list of buttons to display
 const buttons = ["orcid", "google", "linkedin", "facebook"]
@@ -90,6 +89,6 @@ class Login extends Component<Props> {
   }
 }
 
-const mapStateToProps: MapStateToProps<*, *, *> = ({ auth }) => ({ auth })
+const mapStateToProps = ({ auth }) => ({ auth })
 
 export default connect(mapStateToProps)(Login)

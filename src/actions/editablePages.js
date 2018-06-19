@@ -11,6 +11,8 @@ import {
 import { fetchBySlugResource, fetchByIdResource } from "utils/fetchResources"
 import { push } from "react-router-redux"
 
+const server: string = process.env.REACT_APP_API_SERVER
+
 const fetchPageRequest = () => {
   return {
     type: FETCH_PAGE_REQUEST,
@@ -173,7 +175,7 @@ export const addNewsItem = (body: Object) => {
   return async (dispatch: Function, getState: Function) => {
     try {
       dispatch(savePageRequest())
-      const res = await fetch(`${process.env.REACT_APP_API_SERVER}/contents`, {
+      const res = await fetch(`${server}/contents`, {
         method: "POST",
         body: JSON.stringify(body),
         headers: {

@@ -18,11 +18,20 @@ import {
   TextInfo,
 } from "styles/EditablePageStyles"
 
-type Props = {}
+type Props = {
+  /** The object containing the fetched page content from the API server */
+  page: Object,
+  /** Action that saves inline editor content to API server */
+  saveInlineEditing: Function,
+  /** Action creator to edit inline content */
+  editInline: Function,
+}
 
 type State = {
   /** This is the initial value of the editable page content. */
   value: Object,
+  /** Determines whether the editor is read only or not */
+  readOnly: boolean,
 }
 
 /**

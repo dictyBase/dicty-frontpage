@@ -12,9 +12,13 @@ import {
   loggedHeaderItems,
   generateLinks,
 } from "utils/headerItems"
-import type { MapStateToProps } from "react-redux"
 
-export const App = props => {
+type Props = {
+  /** Object representing auth part of state */
+  auth: Object,
+}
+
+export const App = (props: Props) => {
   return (
     <div>
       {props.auth.isAuthenticated ? (
@@ -31,6 +35,6 @@ export const App = props => {
   )
 }
 
-const mapStateToProps: MapStateToProps<*, *, *> = ({ auth }) => ({ auth })
+const mapStateToProps = ({ auth }) => ({ auth })
 
 export default withRouter(connect(mapStateToProps)(App))
