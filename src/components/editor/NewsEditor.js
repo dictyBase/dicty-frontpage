@@ -1,5 +1,5 @@
 // @flow
-import React, { Component } from "react"
+import React, { PureComponent } from "react"
 import { connect } from "react-redux"
 import { Editor, getEventTransfer } from "slate-react"
 import { Value, type Change } from "slate"
@@ -45,7 +45,7 @@ const unwrapLink = change => {
   change.unwrapInline("link")
 }
 
-class NewsEditor extends Component<Props, State> {
+class NewsEditor extends PureComponent<Props, State> {
   constructor(props: Props) {
     super(props)
 

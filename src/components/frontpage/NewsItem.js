@@ -1,5 +1,5 @@
 // @flow
-import React, { Component } from "react"
+import React, { PureComponent } from "react"
 import { connect } from "react-redux"
 import Skeleton from "react-loading-skeleton"
 import NewsEditor from "components/editor/NewsEditor"
@@ -10,7 +10,7 @@ import { ListItems, MainContent } from "styles"
  *  It accepts a slugname as a prop and uses that to fetch the corresponding data.
  */
 
-class NewsItem extends Component {
+class NewsItem extends PureComponent {
   static defaultProps = {
     page: {
       data: {
@@ -25,6 +25,7 @@ class NewsItem extends Component {
 
   render() {
     const { isFetching, page } = this.props
+    console.log(page)
     if (!isFetching && page.data.attributes.content) {
       return (
         <ListItems>
