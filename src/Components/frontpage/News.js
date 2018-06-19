@@ -9,11 +9,6 @@ import {
   NewsContainer,
   Header,
   ListBox,
-  ListItems,
-  LeadText,
-  MainContent,
-  SourceContent,
-  SourceTitle,
   Link,
   MoreLink,
   NewsStockTitle,
@@ -22,38 +17,7 @@ import {
 
 /** Widget that displays the most recent Dicty news */
 
-const News = (props: {
-  /** List of news items */
-  posts: Array<{
-    id: number,
-    date: number,
-    content: string,
-    source: string,
-  }>,
-}) => {
-  const text = props.posts.map((post, index) => (
-    <ListItems key={index}>
-      <LeadText>{post.date}</LeadText>
-      <MainContent>{post.content}</MainContent>
-      <SourceContent>
-        <SourceTitle>Source:</SourceTitle>
-        {post.source}
-      </SourceContent>
-      &nbsp;
-      <FontAwesome
-        name="pencil"
-        title="Edit news item"
-        style={{ color: "blue" }}
-      />
-      &nbsp;
-      <FontAwesome
-        name="trash"
-        title="Delete news item"
-        style={{ color: "red" }}
-      />
-    </ListItems>
-  ))
-
+const News = () => {
   return (
     <NewsContainer>
       <Header>

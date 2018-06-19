@@ -1,11 +1,14 @@
+// @flow
 import React, { Component } from "react"
 import { connect } from "react-redux"
-import { Flex, Box } from "rebass"
 import Skeleton from "react-loading-skeleton"
-import FontAwesome from "react-fontawesome"
-import InlineEditor from "components/editor/InlineEditor"
+import NewsEditor from "components/editor/NewsEditor"
 import { fetchPage } from "actions/editablePages"
 import { ListItems, MainContent } from "styles"
+
+/** This component is for individual news items on the frontpage.
+ *  It accepts a slugname as a prop and uses that to fetch the corresponding data.
+ */
 
 class NewsItem extends Component {
   static defaultProps = {
@@ -22,40 +25,16 @@ class NewsItem extends Component {
 
   render() {
     const { isFetching, page } = this.props
-    console.log(page)
     if (!isFetching && page.data.attributes.content) {
       return (
-        <Flex justify="center">
-          <Box w={"95%"}>
-            <ListItems>
-              <MainContent>
-                <InlineEditor auth={this.props.auth} page={this.props.page} />
-              </MainContent>
-            </ListItems>
-          </Box>
-          <Box>
-            <FontAwesome
-              name="pencil"
-              title="Edit news item"
-              style={{ color: "blue" }}
-            />
-            &nbsp;
-            <FontAwesome
-              name="trash"
-              title="Delete news item"
-              style={{ color: "red" }}
-            />
-          </Box>
-        </Flex>
+        <ListItems>
+          <MainContent>
+            <NewsEditor auth={this.props.auth} page={this.props.page} />
+          </MainContent>
+        </ListItems>
       )
     }
-    return (
-      <Flex justify="center">
-        <Box w={"95%"}>
-          <Skeleton count={3} />
-        </Box>
-      </Flex>
-    )
+    return <Skeleton count={5} />
   }
 }
 

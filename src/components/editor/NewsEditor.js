@@ -5,6 +5,7 @@ import { Editor, getEventTransfer } from "slate-react"
 import { Value, type Change } from "slate"
 import FontAwesome from "react-fontawesome"
 import { Flex, Box } from "rebass"
+import Authorization from "components/authentication/Authorization"
 import renderMark from "components/editor/tools/renderMark"
 import renderNode from "components/editor/tools/renderNode"
 import { editInline, saveInlineEditing } from "actions/editablePages"
@@ -13,6 +14,8 @@ import {
   ToolBar,
   CancelButton,
   SaveButton,
+  InlineLink,
+  TextInfo,
 } from "styles/EditablePageStyles"
 
 type Props = {}
@@ -42,14 +45,14 @@ const unwrapLink = change => {
   change.unwrapInline("link")
 }
 
-class InlineEditor extends Component<Props, State> {
+class NewsEditor extends Component<Props, State> {
   constructor(props: Props) {
     super(props)
 
     this.state = {
       // Initial value of editor
       value: Value.fromJSON(JSON.parse(props.page.data.attributes.content)),
-      readOnly: false, // need to update with auth
+      readOnly: true,
     }
   }
 
@@ -345,13 +348,30 @@ class InlineEditor extends Component<Props, State> {
           renderNode={renderNode}
           readOnly={readOnly}
         />
+        <Authorization
+          render={({ canEditPages, verifiedToken }) => {
+            return (
+              <div>
+                {canEditPages &&
+                  verifiedToken &&
+                  readOnly && (
+                    <TextInfo>
+                      <InlineLink onClick={this.onEdit} title="Edit">
+                        <FontAwesome name="pencil" /> Edit
+                      </InlineLink>
+                    </TextInfo>
+                  )}
+              </div>
+            )
+          }}
+        />
         <Flex>
-          <Box width={"40%"} mr={1} mt={1}>
+          <Box width={"15%"} mr={1} mt={1}>
             {!readOnly && (
               <CancelButton onClick={this.onCancel}>Cancel</CancelButton>
             )}
           </Box>
-          <Box width={"40%"} mr={1} mt={1}>
+          <Box width={"15%"} mr={1} mt={1}>
             {!readOnly && <SaveButton onClick={this.onSave}>Save</SaveButton>}
           </Box>
         </Flex>
@@ -360,4 +380,4 @@ class InlineEditor extends Component<Props, State> {
   }
 }
 
-export default connect(null, { editInline, saveInlineEditing })(InlineEditor)
+export default connect(null, { editInline, saveInlineEditing })(NewsEditor)
