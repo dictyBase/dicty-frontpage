@@ -32,7 +32,7 @@ export default [
     alt: "jobs @ dicty",
   },
   {
-    link: "#",
+    link: "https://dictyexpress.research.bcm.edu/landing/",
     image: widgetDICTYEXPRESS,
     alt: "dicty express",
   },
