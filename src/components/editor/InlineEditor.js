@@ -49,7 +49,7 @@ class InlineEditor extends Component<Props, State> {
     this.state = {
       // Initial value of editor
       value: Value.fromJSON(JSON.parse(props.page.data.attributes.content)),
-      readOnly: false, // need to update with auth
+      readOnly: true, // need to update with auth
     }
   }
 

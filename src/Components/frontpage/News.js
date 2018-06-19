@@ -1,8 +1,9 @@
 // @flow
 import React from "react"
 import { Flex, Box } from "rebass"
-import twitterLogo from "images/twitterLogo.png"
 import FontAwesome from "react-fontawesome"
+import NewsList from "./NewsList"
+import twitterLogo from "images/twitterLogo.png"
 
 import {
   NewsContainer,
@@ -71,7 +72,9 @@ const News = (props: {
           </Box>
         </Flex>
       </Header>
-      <ListBox>{text}</ListBox>
+      <ListBox>
+        <NewsList />
+      </ListBox>
       <MoreLink>
         <FontAwesome name="plus" />
         <Link href="" alt="more news">
