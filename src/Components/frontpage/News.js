@@ -38,6 +38,18 @@ const News = (props: {
         <SourceTitle>Source:</SourceTitle>
         {post.source}
       </SourceContent>
+      &nbsp;
+      <FontAwesome
+        name="pencil"
+        title="Edit news item"
+        style={{ color: "blue" }}
+      />
+      &nbsp;
+      <FontAwesome
+        name="trash"
+        title="Delete news item"
+        style={{ color: "red" }}
+      />
     </ListItems>
   ))
 
