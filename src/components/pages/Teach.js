@@ -74,7 +74,7 @@ const Teach = () => {
       {item.linktxt ? (
         <span>
           {" "}
-          - <Link href="linkref">{item.linktxt}</Link>{" "}
+          - <Link href={item.href}>{item.linktxt}</Link>{" "}
         </span>
       ) : (
         ""
@@ -137,7 +137,7 @@ const Teach = () => {
         <Flex justify="center">
           <SectionBox id="davidk" width={2 / 3}>
             <h3>Dictyostelium cell biology course</h3>
-            <SectionSubText>by Dr.David Knecht</SectionSubText>
+            <SectionSubText>by Dr. David Knecht</SectionSubText>
             <SectionSubText>University of Connecticut</SectionSubText>
             <ListBox>{davidklist}</ListBox>
             <Link href="#">
