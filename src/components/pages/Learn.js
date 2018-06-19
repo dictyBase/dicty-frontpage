@@ -93,14 +93,16 @@ const Learn = () => {
             <SectionImgLeft src={communityimg} />
             <em>D. discoideum</em> is one of the model organisms chosen by the
             National Institutes of Health as part of its{" "}
-            <Link href="">Model Organism Initiative</Link>. dictyBase's
-            Colleague database contains over 1100 researchers and our weekly
-            newsletter goes to nearly 600 researchers around the world. This
-            active community has had an annual scientific meeting every year
-            since 1983, typically attended by over 150 investigators. Around 200
-            publications involving <em>Dictyostelium</em> appear each year in
-            peer reviewed journals and as of 2010 the NIH RePORTER Database
-            lists 87 funded research grants using <em>Dictyostelium</em>.
+            <Link href="http://www.nih.gov/science/models/d_discoideum/">
+              Model Organism Initiative
+            </Link>. dictyBase's Colleague database contains over 1100
+            researchers and our weekly newsletter goes to nearly 600 researchers
+            around the world. This active community has had an annual scientific
+            meeting every year since 1983, typically attended by over 150
+            investigators. Around 200 publications involving{" "}
+            <em>Dictyostelium</em> appear each year in peer reviewed journals
+            and as of 2010 the NIH RePORTER Database lists 87 funded research
+            grants using <em>Dictyostelium</em>.
           </p>
           <Link href="#">
             <TopLink>Top</TopLink>
@@ -160,8 +162,10 @@ const Learn = () => {
             including gene knock-out, gene knock-in, restriction enzyme-mediated
             mutagenesis, RNAi, and inducible gene expression, allow a wide range
             of biological questions to be tested. The dictybase{" "}
-            <Link href="">Techniques</Link> pages contain protocols for many
-            widey used methods.
+            <Link href="https://betatest.dictybase.org/research/techniques">
+              Techniques
+            </Link>{" "}
+            pages contain protocols for many widey used methods.
           </p>
 
           <h4>Phenotypic studies</h4>
@@ -181,8 +185,10 @@ const Learn = () => {
             recovered by scraping some frozen cells directly onto a lawn of
             bacteria or into axenic medium. Spores remain viable on silica gel
             at -20° C for 5-10 years and for longer when lyophilized. The{" "}
-            <Link href="">Nomenclature Guidelines</Link> describe how to name
-            strains and alleles.
+            <Link href="https://betatest.dictybase.org/research/nomenclature">
+              Nomenclature Guidelines
+            </Link>{" "}
+            describe how to name strains and alleles.
           </p>
           <p>
             Developmental and cell-type gene expression and differentiation have
@@ -204,11 +210,14 @@ const Learn = () => {
             signal transduction, and cell differentiation have been targeted.
             Strains with multiple gene deletions are constructed by consecutive
             transformations using different selectable markers.{" "}
-            <Link href="">Parasexual genetics</Link> and the cre-lox system (<Link href="">
+            <Link href="https://betatest.dictybase.org/research/techniques/media/parasexual_genet.html">
+              Parasexual genetics
+            </Link>{" "}
+            and the cre-lox system (<Link href="http://www.dictybase.org/db/cgi-bin/dictyBase/reference/reference.pl?refNo=10177">
               Faix et al., 2004
             </Link>) can also be used to construct double and triple-knockout
             strains. Many of those mutants are available at the{" "}
-            <Link href="">
+            <Link href="/stockcenter">
               <strong>Dicty Stock Center</strong>
             </Link>.
             <SectionImgRight src={techniqueimg2} />
@@ -219,10 +228,16 @@ const Learn = () => {
             organisms can often be productively studied in D. discoideum.
           </p>
           <p>
-            Restriction Enzyme-Mediated Integration <Link href="">REMI</Link> is
-            used to create libraries of strains containing random genomic
-            insertions. Cells are <Link href="">electroporated</Link> with a
-            mixture of a linearized plasmid and a restriction enzyme that
+            Restriction Enzyme-Mediated Integration{" "}
+            <Link href="https://betatest.dictybase.org/research/techniques/transformation/remi.html">
+              REMI
+            </Link>{" "}
+            is used to create libraries of strains containing random genomic
+            insertions. Cells are{" "}
+            <Link href="https://betatest.dictybase.org/research/techniques/transformation/gaudet_2007_transformation.html#electroporation">
+              electroporated
+            </Link>{" "}
+            with a mixture of a linearized plasmid and a restriction enzyme that
             catalyzes insertion of the plasmid into the genome at corresponding
             restriction sites. Generally, the transformed cells contain a single
             copy of the plasmid and the sequences flanking the insertion site
@@ -234,20 +249,26 @@ const Learn = () => {
             cytokinesis, motility, aggregation, and later development have been
             isolated. Many REMI mutants in a wild-type background and
             corresponding genes are available from the{" "}
-            <Link href="">Developmental Gene Project at UCSD</Link> and the
-            Baylor College of Medicine (you can view available mutants{" "}
-            <Link href="">here</Link>).
+            <Link href="http://www.biology.ucsd.edu/labs/loomis/REMI/index.html">
+              Developmental Gene Project at UCSD
+            </Link>{" "}
+            and the Baylor College of Medicine (you can view available mutants{" "}
+            <Link href="http://www.dictybase.org/Downloads/remi.html">
+              here
+            </Link>).
           </p>
 
           <h4>Biochemistry</h4>
           <p>
             The amoebae are easy to grow, lyse, and process for a multitude of
             biochemical assays or subcellular fractionations, as decribed in the{" "}
-            <Link href="">General Dictyostelium Techniques</Link> page. The
-            amoebae grow on bacterial lawns or in liquid cultures of defined
-            media with doubling times of 4 and 12 hours, respectively. Over 1011
-            clonal D. discoideum amoebae can be grown and harvested in a few
-            days without sophisticated equipment. A small-scale industrial
+            <Link href="https://betatest.dictybase.org/research/techniques/index.html">
+              General Dictyostelium Techniques
+            </Link>{" "}
+            page. The amoebae grow on bacterial lawns or in liquid cultures of
+            defined media with doubling times of 4 and 12 hours, respectively.
+            Over 1011 clonal D. discoideum amoebae can be grown and harvested in
+            a few days without sophisticated equipment. A small-scale industrial
             facility could increase this number to 5 x 1012 identical cells (5
             kilograms) per week. The cells can be harvested from growth or any
             of the developmental stages. In the early stages of development, the
@@ -263,20 +284,21 @@ const Learn = () => {
           <p>
             One of the incredible strengths of this model system is the capacity
             to track the{" "}
-            <Link href="">dynamic behaviors of individual cells</Link>. For
-            example, the normal cytokinesis displayed by wild-type cells and the
-            aborted cytokinesis displayed by mutant cells can be filmed in
-            suspension. There is a considerable collection of mutants displaying
-            similar defects in cytokinesis in suspension. The optical clarity
-            displayed by the cells facilitates digitized three-dimensional
-            imaging. Studies of the chemotactic movements of wild-type cells
-            have revealed features of normal motility such as the tendency of
-            pseudopods to be initially extended above the substratum and the
-            limited contact that a moving cell maintains with the substrate.
-            Digitized imaging has been used to compare the movements of a
-            wild-type and mutant cells. In the example presented here, it is
-            clear that the mutant moves poorly because it cannot suppress
-            pseudopod formation in the rear end of the cell.
+            <Link href="https://betatest.dictybase.org/Multimedia/CellsinMotion.htm">
+              dynamic behaviors of individual cells
+            </Link>. For example, the normal cytokinesis displayed by wild-type
+            cells and the aborted cytokinesis displayed by mutant cells can be
+            filmed in suspension. There is a considerable collection of mutants
+            displaying similar defects in cytokinesis in suspension. The optical
+            clarity displayed by the cells facilitates digitized
+            three-dimensional imaging. Studies of the chemotactic movements of
+            wild-type cells have revealed features of normal motility such as
+            the tendency of pseudopods to be initially extended above the
+            substratum and the limited contact that a moving cell maintains with
+            the substrate. Digitized imaging has been used to compare the
+            movements of a wild-type and mutant cells. In the example presented
+            here, it is clear that the mutant moves poorly because it cannot
+            suppress pseudopod formation in the rear end of the cell.
           </p>
           <p>
             <SectionImgLeft src={techniqueimg3} />
@@ -284,33 +306,44 @@ const Learn = () => {
             complementation of null mutants with GFP fusion proteins is
             providing extremely useful tools for cell biology. One of the
             significant conclusions of these studies has been the demonstration
-            that <Link href="">cytokinesis</Link>, <Link href="">motility</Link>,
-            and <Link href="">phagocytosis</Link> share features and molecular
-            components. Phenotypic rescue provides assurance that the GFP fusion
-            protein is functional and the behavior of the protein can be
-            followed in living cells under a variety of conditions. Some of the
-            most interesting observations made in these experiments have been
-            the rapid assembly of cytoskeletal proteins in the tips of newly
-            extended pseudopods. For example, coronin, actin, talin, and a
-            variety of other cytoskeletal proteins concentrate in the cortex of
-            nascent pseudopods. Many of these proteins have also been tracked
-            during cytokinesis and phagocytosis and found to translocate to the
-            rims of phagocytic cups and to the distal edges of dividing cells.
+            that{" "}
+            <Link href="https://betatest.dictybase.org/Multimedia/cytokinesis/cytokinesis.htm">
+              cytokinesis
+            </Link>,{" "}
+            <Link href="https://betatest.dictybase.org/Multimedia/motility/motility.htm">
+              motility
+            </Link>, and{" "}
+            <Link href="https://betatest.dictybase.org/Multimedia/phagocytosis/phagocytosis.htm">
+              phagocytosis
+            </Link>{" "}
+            share features and molecular components. Phenotypic rescue provides
+            assurance that the GFP fusion protein is functional and the behavior
+            of the protein can be followed in living cells under a variety of
+            conditions. Some of the most interesting observations made in these
+            experiments have been the rapid assembly of cytoskeletal proteins in
+            the tips of newly extended pseudopods. For example, coronin, actin,
+            talin, and a variety of other cytoskeletal proteins concentrate in
+            the cortex of nascent pseudopods. Many of these proteins have also
+            been tracked during cytokinesis and phagocytosis and found to
+            translocate to the rims of phagocytic cups and to the distal edges
+            of dividing cells.
           </p>
           <p>
             Signal transduction proteins have also been tracked to discover how{" "}
-            <Link href="">cells sense spatial gradients</Link>. While actin and
-            actin binding proteins accumulate in the cortex of new pseudopods at
-            the cell's leading edge, surface receptors and G-protein subunits
-            remain uniformly distributed around the cell perimeter. Thus, the
-            key decisions for directional sensing must occur at intermediary
-            steps. One of these steps appears to be a rapid and transient
-            appearance of binding sites for PH domains on the inner face of the
-            membrane elicited by increases in receptor occupancy. In gradients
-            of chemoattractant these sites are persistently present on the side
-            of the cell facing the higher concentration. The local formation of
-            these sites is independent of the actin cytoskeleton and may be an
-            early event in directional sensing.
+            <Link href="https://betatest.dictybase.org/Multimedia/chemotaxis/Chemotaxis.htm">
+              cells sense spatial gradients
+            </Link>. While actin and actin binding proteins accumulate in the
+            cortex of new pseudopods at the cell's leading edge, surface
+            receptors and G-protein subunits remain uniformly distributed around
+            the cell perimeter. Thus, the key decisions for directional sensing
+            must occur at intermediary steps. One of these steps appears to be a
+            rapid and transient appearance of binding sites for PH domains on
+            the inner face of the membrane elicited by increases in receptor
+            occupancy. In gradients of chemoattractant these sites are
+            persistently present on the side of the cell facing the higher
+            concentration. The local formation of these sites is independent of
+            the actin cytoskeleton and may be an early event in directional
+            sensing.
           </p>
           <p>
             Elegant studies of dynamics of groups of cells are being produced in
@@ -324,13 +357,16 @@ const Learn = () => {
             and a spontaneous biological oscillator that initiates the waves at
             centers of territories. The periodic stimuli are critical for proper
             timing of developmental gene expression and they control the{" "}
-            <Link href="">morphogenetic movements</Link> in three-dimensional
-            structures of the multicellular stages. The differentiated cells
-            provide a fantastic system for studies of chemotactic cell sorting.
-            Mixed cells will form chimeric organisms and individual
-            fluorescently labeled cells can be tracked. Prestalk cells sort to
-            the anterior region of the structure while prespore cells sort to
-            the posterior and various mutants sort to specific locations.
+            <Link href="https://betatest.dictybase.org/Multimedia/morphogenesis/morphogenetic_movements.htm">
+              morphogenetic movements
+            </Link>{" "}
+            in three-dimensional structures of the multicellular stages. The
+            differentiated cells provide a fantastic system for studies of
+            chemotactic cell sorting. Mixed cells will form chimeric organisms
+            and individual fluorescently labeled cells can be tracked. Prestalk
+            cells sort to the anterior region of the structure while prespore
+            cells sort to the posterior and various mutants sort to specific
+            locations.
           </p>
           <LastUpdated>
             <em>Last updated March 4, 2010</em>
