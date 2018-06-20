@@ -8,6 +8,7 @@ import Learn from "components/pages/Learn"
 import About from "components/pages/About/About"
 import Teach from "components/pages/Teach"
 import AddNews from "components/pages/News/AddNews"
+import NewsArchive from "components/pages/News/NewsArchive"
 import Login from "components/authentication/Login"
 import OauthCallback from "components/authentication/OauthCallback"
 import AuthLoader from "components/authentication/AuthLoader"
@@ -22,6 +23,7 @@ const Routes = () => {
       <Route exact path="/explore/teach" component={Teach} />
       <Route exact path="/about" component={About} />
       <PrivateRoute exact path="/addnews" component={AddNews} />
+      <Route exact path="/news" component={NewsArchive} />
       <LoginRoute exact path="/login" component={Login} />
       <Route exact path="/:provider/callback" component={OauthCallback} />
       <Route exact path="/load/auth" component={AuthLoader} />

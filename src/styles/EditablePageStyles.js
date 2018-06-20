@@ -35,6 +35,7 @@ export const Banner = styled.div`
 `
 
 export const Header = styled.h1`
+  background-color: #f2f2f2;
   @media (min-width: 768px) {
     font-size: 63px;
     padding: 2px;

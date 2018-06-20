@@ -1,6 +1,8 @@
 // @flow
 import React from "react"
+import { Link as RouterLink } from "react-router-dom"
 import { Flex, Box } from "rebass"
+import styled from "styled-components"
 import FontAwesome from "react-fontawesome"
 import NewsList from "./NewsList"
 import twitterLogo from "images/twitterLogo.png"
@@ -14,6 +16,10 @@ import {
   NewsStockTitle,
   Img,
 } from "styles"
+
+const StyledRouterLink = styled(RouterLink)`
+  text-decoration: none;
+`
 
 /** Widget that displays the most recent Dicty news */
 
@@ -41,10 +47,10 @@ const News = () => {
       </ListBox>
       <MoreLink>
         <FontAwesome name="plus" />
-        <Link href="" alt="more news">
+        <StyledRouterLink to="/news" alt="more news">
           {" "}
           more news{" "}
-        </Link>
+        </StyledRouterLink>
       </MoreLink>
     </NewsContainer>
   )
