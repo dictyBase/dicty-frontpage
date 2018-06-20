@@ -38,7 +38,6 @@ class NewsItem extends PureComponent<Props> {
 
   render() {
     const { isFetching, page } = this.props
-    console.log(page)
     if (!isFetching && page.data.attributes.content) {
       return (
         <ListItems>

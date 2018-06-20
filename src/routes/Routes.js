@@ -12,6 +12,7 @@ import Login from "components/authentication/Login"
 import OauthCallback from "components/authentication/OauthCallback"
 import AuthLoader from "components/authentication/AuthLoader"
 import Logout from "components/authentication/Logout"
+import PageNotReady from "components/pages/PageNotReady"
 
 const Routes = () => {
   return (
@@ -25,7 +26,7 @@ const Routes = () => {
       <Route exact path="/:provider/callback" component={OauthCallback} />
       <Route exact path="/load/auth" component={AuthLoader} />
       <PrivateRoute exact path="/logout" component={Logout} />
-      <Route component={Front} />
+      <Route exact path="*" component={PageNotReady} />
     </Switch>
   )
 }
