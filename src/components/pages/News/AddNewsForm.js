@@ -5,6 +5,7 @@ import { Editor, getEventTransfer } from "slate-react"
 import { Value, type Change } from "slate"
 import FontAwesome from "react-fontawesome"
 import { Flex, Box } from "rebass"
+import styled from "styled-components"
 import renderMark from "components/editor/tools/renderMark"
 import renderNode from "components/editor/tools/renderNode"
 import { AuthenticatedUser } from "utils/apiClasses"
@@ -17,6 +18,13 @@ import {
 } from "styles/EditablePageStyles"
 import { frontpagenews } from "constants/resources"
 import editorPlaceholder from "data/editorPlaceholder.json"
+
+// set up custom styling for text editor
+const StyledEditor = styled(Editor)`
+  a {
+    text-decoration: none;
+  }
+`
 
 type Props = {
   /** Action that allows user to add a news item to the server */
@@ -344,7 +352,7 @@ class AddNewsForm extends Component<Props, State> {
             </ToolBar>
           )}
 
-          <Editor
+          <StyledEditor
             value={this.state.value}
             onChange={this.onChange}
             onKeyDown={this.onKeyDown}
