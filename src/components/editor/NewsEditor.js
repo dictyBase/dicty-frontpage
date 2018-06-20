@@ -11,7 +11,7 @@ import renderNode from "components/editor/tools/renderNode"
 import { editInline, saveInlineEditing } from "actions/editablePages"
 import {
   Button,
-  ToolBar,
+  NewsToolBar,
   CancelButton,
   SaveButton,
   InlineLink,
@@ -333,7 +333,7 @@ class NewsEditor extends PureComponent<Props, State> {
     return (
       <div>
         {!readOnly && (
-          <ToolBar>
+          <NewsToolBar>
             {this.renderMarkButton("bold")}
             {this.renderMarkButton("italic")}
             {this.renderMarkButton("underline")}
@@ -346,7 +346,7 @@ class NewsEditor extends PureComponent<Props, State> {
             {this.renderBlockButton("heading-three")}
             {this.renderBlockButton("block-quote")}
             {this.renderBlockButton("link")}
-          </ToolBar>
+          </NewsToolBar>
         )}
 
         <Editor

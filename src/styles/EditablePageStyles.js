@@ -54,6 +54,12 @@ export const ToolBar = styled.div`
   margin-bottom: 20px;
 `
 
+export const NewsToolBar = styled.div`
+  position: relative;
+  padding: 5px 10px 5px;
+  margin: 0 -20px;
+`
+
 export const Button = styled.span`
   color: #d3d3d3;
   width: 50px;
