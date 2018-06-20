@@ -38,7 +38,7 @@ class TechnicalSummary extends Component<Props> {
     return (
       <div>
         <br />
-        <Skeleton count={5} />
+        <Skeleton count={2} />
         <br />
         <br />
         <Skeleton count={5} />

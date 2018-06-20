@@ -5,6 +5,7 @@ import { Editor, getEventTransfer } from "slate-react"
 import { Value, type Change } from "slate"
 import FontAwesome from "react-fontawesome"
 import { Flex, Box } from "rebass"
+import Authorization from "components/authentication/Authorization"
 import renderMark from "components/editor/tools/renderMark"
 import renderNode from "components/editor/tools/renderNode"
 import { editInline, saveInlineEditing } from "actions/editablePages"
@@ -13,6 +14,8 @@ import {
   ToolBar,
   CancelButton,
   SaveButton,
+  InlineLink,
+  TextInfo,
 } from "styles/EditablePageStyles"
 
 type Props = {
@@ -62,7 +65,7 @@ class InlineEditor extends Component<Props, State> {
     this.state = {
       // Initial value of editor
       value: Value.fromJSON(JSON.parse(props.page.data.attributes.content)),
-      readOnly: false, // need to update with auth
+      readOnly: true,
     }
   }
 
@@ -357,6 +360,24 @@ class InlineEditor extends Component<Props, State> {
           renderMark={renderMark}
           renderNode={renderNode}
           readOnly={readOnly}
+        />
+
+        <Authorization
+          render={({ canEditPages, verifiedToken }) => {
+            return (
+              <div>
+                {canEditPages &&
+                  verifiedToken &&
+                  readOnly && (
+                    <TextInfo>
+                      <InlineLink onClick={this.onEdit} title="Edit">
+                        <FontAwesome name="pencil" /> Edit
+                      </InlineLink>
+                    </TextInfo>
+                  )}
+              </div>
+            )
+          }}
         />
         <Flex>
           <Box width={"40%"} mr={1} mt={1}>
