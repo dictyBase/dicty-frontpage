@@ -1,6 +1,7 @@
 // @flow
 import React, { PureComponent } from "react"
 import { connect } from "react-redux"
+import { Flex, Box } from "rebass"
 import Skeleton from "react-loading-skeleton"
 import NewsEditor from "components/editor/NewsEditor"
 import { fetchPage } from "actions/editablePages"
@@ -47,7 +48,15 @@ class NewsItem extends PureComponent<Props> {
         </ListItems>
       )
     }
-    return <Skeleton count={5} />
+    return (
+      <Flex>
+        <Box width="100%">
+          <br />
+          <Skeleton count={3} />
+          <br />
+        </Box>
+      </Flex>
+    )
   }
 }
 
