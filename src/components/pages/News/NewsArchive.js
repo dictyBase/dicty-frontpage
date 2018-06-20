@@ -8,7 +8,7 @@ import news from "data/news"
 import twitterLogo from "images/twitterLogo.png"
 
 /**
- * This is the About page component. It is set up to accept two Items, both of which are 50% width, below the main Header.
+ * This displays the Dicty news archive.
  */
 
 const NewsArchive = () => {
