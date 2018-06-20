@@ -1,60 +1,159 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Annotations snapshot test 1`] = `
+.c4 {
+  box-sizing: border-box;
+  width: 50%;
+  margin-top: -16px;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.c0 {
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  line-height: 1.428;
+  text-align: center;
+  color: #084b8a;
+  background-color: #eff8fb;
+  padding: 5px 5px 0 5px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.c1 {
+  color: #0489b1;
+  font-size: 16px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  background-color: #fff;
+  vertical-align: middle;
+  text-align: center;
+  padding: 10px 0 10px 0;
+  margin-bottom: 10px;
+}
+
+.c2 {
+  padding-left: 5px;
+  font-weight: bold;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  row-wrap: wrap;
+  width: 90%;
+  margin: auto;
+}
+
+.c5 {
+  padding-top: 5px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.c6 {
+  padding: 0px 25px 10px 25px;
+  font-size: 12px;
+  margin-bottom: 5px;
+  padding-bottom: 0px;
+  margin-top: 0px;
+}
+
+.c7 {
+  list-style-type: none;
+  font-size: 11px;
+}
+
+.c8 {
+  color: #0b3861;
+  font-size: 11px;
+  font-style: italic;
+  font-weight: normal;
+  text-align: center;
+  padding-bottom: 0px;
+}
+
+@media (max-width:767px) {
+  .c1 {
+    font-size: 18px;
+    text-align: center;
+  }
+}
+
+@media (max-width:992px) and (min-width:767px) {
+  .c6 {
+    font-size: 10px;
+  }
+}
+
+@media (max-width:768px) {
+  .c6 {
+    font-size: 16px;
+  }
+}
+
 <div
-  className="sc-eilVRo iyiOnt"
+  className="c0"
 >
   <div
-    className="sc-emmjRN cJpPPZ"
+    className="c1"
   >
     <span
       aria-hidden={true}
       className="fa fa-pencil fa-md"
     />
     <span
-      className="sc-gFaPwZ iPmvKt"
+      className="c2"
     >
       RECENT ANNOTATIONS
     </span>
   </div>
   <div
-    className="sc-fONwsr hprXlC"
+    className="c3"
   >
     <div
-      className="sc-bwzfXH uTxCW sc-bdVaJa hSYntd"
+      className="c4"
       is={null}
     >
       <span
-        className="sc-fhYwyz kJfwYI"
+        className="c5"
       >
         Genes
       </span>
       <ul
-        className="sc-hGoxap dGwfIp"
+        className="c6"
       >
         <li
-          className="sc-jzgbtB kOqXSq"
+          className="c7"
         >
           abprtA
         </li>
         <li
-          className="sc-jzgbtB kOqXSq"
+          className="c7"
         >
           trgrB1
         </li>
         <li
-          className="sc-jzgbtB kOqXSq"
+          className="c7"
         >
           tgrC1
         </li>
         <li
-          className="sc-jzgbtB kOqXSq"
+          className="c7"
         >
           tacA
         </li>
       </ul>
       <div
-        className="sc-krDsej hjRQix"
+        className="c8"
       >
         <span
           aria-hidden={true}
@@ -63,40 +162,40 @@ exports[`Annotations snapshot test 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH uTxCW sc-bdVaJa hSYntd"
+      className="c4"
       is={null}
     >
       <span
-        className="sc-fhYwyz kJfwYI"
+        className="c5"
       >
         Papers
       </span>
       <ul
-        className="sc-hGoxap dGwfIp"
+        className="c6"
       >
         <li
-          className="sc-jzgbtB kOqXSq"
+          className="c7"
         >
           25609090
         </li>
         <li
-          className="sc-jzgbtB kOqXSq"
+          className="c7"
         >
           25546705
         </li>
         <li
-          className="sc-jzgbtB kOqXSq"
+          className="c7"
         >
           25540127
         </li>
         <li
-          className="sc-jzgbtB kOqXSq"
+          className="c7"
         >
           25596489
         </li>
       </ul>
       <div
-        className="sc-krDsej hjRQix"
+        className="c8"
       >
         <span
           aria-hidden={true}

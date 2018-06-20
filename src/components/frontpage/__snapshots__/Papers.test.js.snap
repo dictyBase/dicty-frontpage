@@ -1,18 +1,126 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Papers snapshot test 1`] = `
+.c3 {
+  box-sizing: border-box;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.c0 {
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  line-height: 1.428;
+  text-align: left;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: #eff8fb;
+  border-radius: 15px;
+  margin-bottom: 10px;
+}
+
+.c1 {
+  color: black;
+  font-size: 20px;
+  padding: 15px 30px 0px 35px;
+  vertical-align: top;
+  text-align: right;
+}
+
+.c4 {
+  padding-left: 5px;
+  color: #086a87;
+  font-size: 20px;
+  vertical-align: top;
+  text-align: left;
+}
+
+.c5 {
+  padding: 0px 25px 10px 25px;
+  font-size: 12px;
+  margin-bottom: 5px;
+  padding-bottom: 10px;
+  margin-top: 12px;
+}
+
+.c6 {
+  list-style-type: none;
+  margin-bottom: 10px;
+}
+
+.c7 {
+  color: #0b3861;
+  padding-right: 10px;
+}
+
+.c8 {
+  padding-right: 10px;
+}
+
+.c9 {
+  color: #0b3861;
+}
+
+.c10 {
+  padding-top: 7px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.c11 {
+  color: #428bca;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c12 {
+  color: #0b3861;
+  font-size: 11px;
+  font-style: italic;
+  font-weight: normal;
+  text-align: center;
+  padding-bottom: 15px;
+}
+
+@media (max-width:767px) {
+  .c1 {
+    font-size: 24px;
+    text-align: right;
+    padding: 20px 5px 20px 15px;
+  }
+}
+
+@media (max-width:992px) and (min-width:767px) {
+  .c5 {
+    font-size: 10px;
+  }
+}
+
+@media (max-width:768px) {
+  .c5 {
+    font-size: 16px;
+  }
+}
+
 <div
-  className="sc-gHboQg fFLpfM"
+  className="c0"
 >
   <div
-    className="sc-CtfFt ksgeeT"
+    className="c1"
   >
     <div
-      className="sc-bdVaJa bDWFJH sc-htpNat jtWIOA sc-bdVaJa iHZvIS"
+      className="c2 c3"
       is={null}
     >
       <span
-        className="sc-gJWqzi jpqoRp"
+        className="c4"
       >
         <span
           aria-hidden={true}
@@ -20,25 +128,25 @@ exports[`Papers snapshot test 1`] = `
         />
       </span>
       <span
-        className="sc-gJWqzi jpqoRp"
+        className="c4"
       >
         LATEST PAPERS
       </span>
     </div>
   </div>
   <ul
-    className="sc-hGoxap bpTpFR"
+    className="c5"
   >
     <li
-      className="sc-bHwgHz jiapwT"
+      className="c6"
     >
       <span
-        className="sc-dTdPqK eONKOG"
+        className="c7"
       >
         Xie X, Gutierrez A, Trofimov V, Szilágyi I, Soldati T, Bakker E.
       </span>
       <span
-        className="sc-eMigcr bKZfpz"
+        className="c8"
       >
         <strong>
           <em>
@@ -47,16 +155,16 @@ exports[`Papers snapshot test 1`] = `
         </strong>
       </span>
       <span
-        className="sc-itybZL gfzDPh"
+        className="c9"
       >
         <span
-          className="sc-fzsDOv dWbQIZ"
+          className="c10"
         >
           Journal: 
         </span>
         Anal Chem. 2015 Sep 9.[Epub ahead of print]
         <a
-          className="sc-rBLzX jKkeFB"
+          className="c11"
           href="https://www.ncbi.nlm.nih.gov/pubmed/26352133"
           target="new"
         >
@@ -66,15 +174,15 @@ exports[`Papers snapshot test 1`] = `
       </span>
     </li>
     <li
-      className="sc-bHwgHz jiapwT"
+      className="c6"
     >
       <span
-        className="sc-dTdPqK eONKOG"
+        className="c7"
       >
         Schmith A, Spaller T, Gaube F, Fransson Å, Boesler B, Ojha S, Nellen W, Hammann C, Söderbom F, Winckler T.
       </span>
       <span
-        className="sc-eMigcr bKZfpz"
+        className="c8"
       >
         <strong>
           <em>
@@ -83,16 +191,16 @@ exports[`Papers snapshot test 1`] = `
         </strong>
       </span>
       <span
-        className="sc-itybZL gfzDPh"
+        className="c9"
       >
         <span
-          className="sc-fzsDOv dWbQIZ"
+          className="c10"
         >
           Journal: 
         </span>
         Mob DNA. 2015;6:14. doi: 10.1186/s13100-015-0045-5.
         <a
-          className="sc-rBLzX jKkeFB"
+          className="c11"
           href="https://www.ncbi.nlm.nih.gov/pubmed/26339297"
           target="new"
         >
@@ -102,15 +210,15 @@ exports[`Papers snapshot test 1`] = `
       </span>
     </li>
     <li
-      className="sc-bHwgHz jiapwT"
+      className="c6"
     >
       <span
-        className="sc-dTdPqK eONKOG"
+        className="c7"
       >
         Von Bülow J, Beitz E.
       </span>
       <span
-        className="sc-eMigcr bKZfpz"
+        className="c8"
       >
         <strong>
           <em>
@@ -119,16 +227,16 @@ exports[`Papers snapshot test 1`] = `
         </strong>
       </span>
       <span
-        className="sc-itybZL gfzDPh"
+        className="c9"
       >
         <span
-          className="sc-fzsDOv dWbQIZ"
+          className="c10"
         >
           Journal: 
         </span>
         Biol Bull. 2015 Aug;229(1):38-46.
         <a
-          className="sc-rBLzX jKkeFB"
+          className="c11"
           href="https://www.ncbi.nlm.nih.gov/pubmed/26338868"
           target="new"
         >
@@ -138,15 +246,15 @@ exports[`Papers snapshot test 1`] = `
       </span>
     </li>
     <li
-      className="sc-bHwgHz jiapwT"
+      className="c6"
     >
       <span
-        className="sc-dTdPqK eONKOG"
+        className="c7"
       >
         Santarriaga S, Petersen A, Ndukwe K, Brandt A, Gerges N, Scaglione JB, Scaglione KM.
       </span>
       <span
-        className="sc-eMigcr bKZfpz"
+        className="c8"
       >
         <strong>
           <em>
@@ -155,16 +263,16 @@ exports[`Papers snapshot test 1`] = `
         </strong>
       </span>
       <span
-        className="sc-itybZL gfzDPh"
+        className="c9"
       >
         <span
-          className="sc-fzsDOv dWbQIZ"
+          className="c10"
         >
           Journal: 
         </span>
         J Biol Chem. 2015 Sep 1. doi:pii: jbc.M115.676247. [Epub ahead of print]
         <a
-          className="sc-rBLzX jKkeFB"
+          className="c11"
           href="https://www.ncbi.nlm.nih.gov/pubmed/26338868"
           target="new"
         >
@@ -174,15 +282,15 @@ exports[`Papers snapshot test 1`] = `
       </span>
     </li>
     <li
-      className="sc-bHwgHz jiapwT"
+      className="c6"
     >
       <span
-        className="sc-dTdPqK eONKOG"
+        className="c7"
       >
         Kim MK, Kim JH, Kim JS, Kang SO.
       </span>
       <span
-        className="sc-eMigcr bKZfpz"
+        className="c8"
       >
         <strong>
           <em>
@@ -191,16 +299,16 @@ exports[`Papers snapshot test 1`] = `
         </strong>
       </span>
       <span
-        className="sc-itybZL gfzDPh"
+        className="c9"
       >
         <span
-          className="sc-fzsDOv dWbQIZ"
+          className="c10"
         >
           Journal: 
         </span>
         Acta Crystallogr D Biol Crystallogr. 2015 Sep 1;71(Pt 9):1835-49. doi: 10.1107/S139900471501264X. Epub 2015 Aug 25.
         <a
-          className="sc-rBLzX jKkeFB"
+          className="c11"
           href="https://www.ncbi.nlm.nih.gov/pubmed/26338868"
           target="new"
         >
@@ -211,7 +319,7 @@ exports[`Papers snapshot test 1`] = `
     </li>
   </ul>
   <div
-    className="sc-krDsej kbEGrA"
+    className="c12"
   >
     <span
       aria-hidden={true}
@@ -219,7 +327,7 @@ exports[`Papers snapshot test 1`] = `
     />
     <a
       alt="more papers"
-      className="sc-rBLzX jKkeFB"
+      className="c11"
       href=""
     >
        
