@@ -1,0 +1,165 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Popular snapshot test 1`] = `
+.c1 {
+  box-sizing: border-box;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c2 {
+  color: #bdbdbd;
+  font-size: 12px;
+  vertical-align: top;
+  text-align: left;
+  font-style: italic;
+}
+
+.c3 {
+  padding: 0px;
+  margin-bottom: 5px;
+}
+
+.c4 {
+  list-style-type: none;
+  margin-bottom: 10px;
+}
+
+.c5 {
+  color: #428bca;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  max-width: 100%;
+  height: auto;
+}
+
+.c6 {
+  width: 300px;
+  max-width: 100%;
+  border-radius: 5px;
+}
+
+.c6:hover {
+  opacity: 0.5;
+}
+
+@media (max-width:767px) {
+  .c2 {
+    font-size: 14px;
+    text-align: left;
+  }
+}
+
+<div
+  className="c0 c1"
+  is={null}
+>
+  <div
+    className="c1"
+    is={null}
+  >
+    <div
+      className="c2"
+    >
+      Most popular tools and sections
+    </div>
+    <ul
+      className="c3"
+    >
+      <li
+        className="c4"
+      >
+        <a
+          alt="techniques"
+          className="c5"
+          href="#"
+        >
+          <img
+            className="c6"
+            src="widgetTECHNIQUES.png"
+          />
+        </a>
+      </li>
+      <li
+        className="c4"
+      >
+        <a
+          alt="genome browser"
+          className="c5"
+          href="#"
+        >
+          <img
+            className="c6"
+            src="widgetGBROWSER.png"
+          />
+        </a>
+      </li>
+      <li
+        className="c4"
+      >
+        <a
+          alt="learn dicty"
+          className="c5"
+          href="/explore/learn"
+        >
+          <img
+            className="c6"
+            src="widgetLEARNDICTY.png"
+          />
+        </a>
+      </li>
+      <li
+        className="c4"
+      >
+        <a
+          alt="dicty stats"
+          className="c5"
+          href="#"
+        >
+          <img
+            className="c6"
+            src="widgetSTATS.png"
+          />
+        </a>
+      </li>
+      <li
+        className="c4"
+      >
+        <a
+          alt="jobs @ dicty"
+          className="c5"
+          href="#"
+        >
+          <img
+            className="c6"
+            src="widgetJOBS.png"
+          />
+        </a>
+      </li>
+      <li
+        className="c4"
+      >
+        <a
+          alt="dicty express"
+          className="c5"
+          href="https://dictyexpress.research.bcm.edu/landing/"
+        >
+          <img
+            className="c6"
+            src="widgetDICTYEXPRESS.png"
+          />
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+`;
