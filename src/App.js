@@ -12,6 +12,7 @@ import {
   loggedHeaderItems,
   generateLinks,
 } from "utils/headerItems"
+import MainBodyContainer from "styles/MainBodyContainer"
 
 type Props = {
   /** Object representing auth part of state */
@@ -29,7 +30,9 @@ export const App = (props: Props) => {
         <Header items={headerItems}>{items => items.map(generateLinks)}</Header>
       )}
       <Navbar items={navItems} />
-      <Routes {...props} />
+      <MainBodyContainer>
+        <Routes {...props} />
+      </MainBodyContainer>
       <Footer items={items} />
     </div>
   )
