@@ -14,8 +14,8 @@ type Props = {
   page: Object,
   /** The slugname used to fetch content from the API server */
   slug: string,
-  /** Action to fetch page content from API server */
-  fetchPage: Function,
+  /** Action to fetch news content from API server */
+  fetchNews: Function,
   /** Object representing auth part of state */
   auth: Object,
 }
