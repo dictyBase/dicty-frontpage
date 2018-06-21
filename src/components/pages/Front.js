@@ -19,26 +19,28 @@ const Front = () => {
   return (
     <div>
       <Flex wrap mx={30}>
-        <Flex wrap>
-          <Box px={16} py={8} width={[1, 1, 1, 1 / 2]}>
-            <Slideshow images={images} />
-          </Box>
-          <Box px={16} py={8} width={[1, 1, 1, 1 / 2]}>
-            <News />
-          </Box>
-        </Flex>
-        <Flex wrap>
-          <Box px={2} py={1} width={[1, 1, 1, 1 / 2]}>
-            <Papers papers={papers.slice(0, 5)} />
-          </Box>
-          <Box px={2} py={1} width={[1, 1 / 2, 1 / 2, 1 / 4]}>
-            <Popular widgets={widgets} />
-          </Box>
-          <Box px={2} py={1} width={[1, 1 / 2, 1 / 2, 1 / 4]}>
-            <StockCenter stockcenter={stockcenter} />
-            <Annotations annotations={annotations} />
-          </Box>
-        </Flex>
+        <Box>
+          <Flex wrap>
+            <Box px={16} py={8} width={[1, 1, 1, 1 / 2]}>
+              <Slideshow images={images} />
+            </Box>
+            <Box px={16} py={8} width={[1, 1, 1, 1 / 2]}>
+              <News />
+            </Box>
+          </Flex>
+          <Flex wrap>
+            <Box px={2} py={1} width={[1, 1, 1, 1 / 2]}>
+              <Papers papers={papers.slice(0, 5)} />
+            </Box>
+            <Box px={2} py={1} width={[1, 1 / 2, 1 / 2, 1 / 4]}>
+              <Popular widgets={widgets} />
+            </Box>
+            <Box px={2} py={1} width={[1, 1 / 2, 1 / 2, 1 / 4]}>
+              <StockCenter stockcenter={stockcenter} />
+              <Annotations annotations={annotations} />
+            </Box>
+          </Flex>
+        </Box>
       </Flex>
     </div>
   )
