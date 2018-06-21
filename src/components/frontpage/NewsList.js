@@ -1,5 +1,5 @@
 // @flow
-import React, { Fragment } from "react"
+import React from "react"
 import { Link } from "react-router-dom"
 import styled from "styled-components"
 import Authorization from "components/authentication/Authorization"
@@ -13,11 +13,12 @@ const StyledLink = styled(Link)`
 
 const NewsList = () => {
   return (
-    <Fragment>
-      <NewsItem slug="frontpagenews-2015-08-19" />
+    <div style={{ height: "240px" }}>
+      {/* <NewsItem slug="frontpagenews-2015-08-19" />
       <NewsItem slug="frontpagenews-2015-08-12" />
-      <NewsItem slug="frontpagenews-2015-08-07" />
-      {/* <div>No data to display yet.</div> */}
+      <NewsItem slug="frontpagenews-2015-08-07" /> */}
+      <center>No data to display yet.</center>
+      <br />
       <Authorization
         render={({ canAddNews, verifiedToken }) => {
           return (
@@ -32,7 +33,7 @@ const NewsList = () => {
           )
         }}
       />
-    </Fragment>
+    </div>
   )
 }
 

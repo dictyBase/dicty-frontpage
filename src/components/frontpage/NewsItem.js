@@ -4,7 +4,7 @@ import { connect } from "react-redux"
 import { Flex, Box } from "rebass"
 import Skeleton from "react-loading-skeleton"
 import NewsEditor from "components/editor/NewsEditor"
-import { fetchPage } from "actions/editablePages"
+import { fetchNews } from "actions/news"
 import { ListItems, MainContent } from "styles"
 
 type Props = {
@@ -34,7 +34,7 @@ class NewsItem extends PureComponent<Props> {
   }
 
   componentDidMount() {
-    this.props.fetchPage(this.props.slug)
+    this.props.fetchNews(this.props.slug)
   }
 
   render() {
@@ -64,9 +64,9 @@ const mapStateToProps = (state, ownProps) => {
   const slugName = ownProps.slug
   return {
     auth: state.auth,
-    isFetching: state.editablePages.isFetching,
-    page: state.editablePages[slugName],
+    isFetching: state.news.isFetching,
+    page: state.news[slugName],
   }
 }
 
-export default connect(mapStateToProps, { fetchPage })(NewsItem)
+export default connect(mapStateToProps, { fetchNews })(NewsItem)

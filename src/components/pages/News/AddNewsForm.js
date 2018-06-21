@@ -9,7 +9,7 @@ import styled from "styled-components"
 import renderMark from "components/editor/tools/renderMark"
 import renderNode from "components/editor/tools/renderNode"
 import { AuthenticatedUser } from "utils/apiClasses"
-import { addNewsItem, cancelEditing } from "actions/editablePages"
+import { addNewsItem, cancelEditing } from "actions/news"
 import {
   Button,
   ToolBar,

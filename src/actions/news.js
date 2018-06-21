@@ -1,30 +1,30 @@
 // @flow
 import {
-  EDIT_PAGE,
-  SAVE_PAGE_REQUEST,
-  SAVE_PAGE_SUCCESS,
-  SAVE_PAGE_FAILURE,
-  FETCH_PAGE_REQUEST,
-  FETCH_PAGE_SUCCESS,
-  FETCH_PAGE_FAILURE,
+  EDIT_NEWS,
+  SAVE_NEWS_REQUEST,
+  SAVE_NEWS_SUCCESS,
+  SAVE_NEWS_FAILURE,
+  FETCH_NEWS_REQUEST,
+  FETCH_NEWS_SUCCESS,
+  FETCH_NEWS_FAILURE,
 } from "constants/types"
 import { fetchBySlugResource, fetchByIdResource } from "utils/fetchResources"
 import { push } from "react-router-redux"
 
 const server: string = process.env.REACT_APP_API_SERVER
 
-const fetchPageRequest = () => {
+const fetchNewsRequest = () => {
   return {
-    type: FETCH_PAGE_REQUEST,
+    type: FETCH_NEWS_REQUEST,
     payload: {
       isFetching: true,
     },
   }
 }
 
-const fetchPageSuccess = (json: Object) => {
+const fetchNewsSuccess = (json: Object) => {
   return {
-    type: FETCH_PAGE_SUCCESS,
+    type: FETCH_NEWS_SUCCESS,
     payload: {
       isFetching: false,
       json,
@@ -32,70 +32,70 @@ const fetchPageSuccess = (json: Object) => {
   }
 }
 
-const fetchPageFailure = error => {
+const fetchNewsFailure = error => {
   return {
-    type: FETCH_PAGE_FAILURE,
+    type: FETCH_NEWS_FAILURE,
     payload: {
       error,
     },
   }
 }
 
-const savePageRequest = () => {
+const saveNewsRequest = () => {
   return {
-    type: SAVE_PAGE_REQUEST,
+    type: SAVE_NEWS_REQUEST,
     payload: {
       isFetching: true,
     },
   }
 }
 
-const savePageSuccess = () => {
+const saveNewsSuccess = () => {
   return {
-    type: SAVE_PAGE_SUCCESS,
+    type: SAVE_NEWS_SUCCESS,
     payload: {
       isFetching: false,
     },
   }
 }
 
-const savePageFailure = error => {
+const saveNewsFailure = error => {
   return {
-    type: SAVE_PAGE_FAILURE,
+    type: SAVE_NEWS_FAILURE,
     payload: {
       error,
     },
   }
 }
 
-// fetch page function that fetches data using async/await
+// fetch NEWS function that fetches data using async/await
 // checks if header is correct, then either grabs data or displays error
-export const fetchPage = (slug: string) => {
+export const fetchNews = (slug: string) => {
   return async (dispatch: Function) => {
     try {
-      dispatch(fetchPageRequest())
+      dispatch(fetchNewsRequest())
       const res = await fetch(`${fetchBySlugResource}/${slug}`)
       const contentType = res.headers.get("content-type")
       if (contentType && contentType.includes("application/vnd.api+json")) {
         const json = await res.json()
         if (res.ok) {
-          dispatch(fetchPageSuccess(json))
+          dispatch(fetchNewsSuccess(json))
         } else {
           if (process.env.NODE_ENV !== "production") {
             printError(res, json)
           }
-          dispatch(fetchPageFailure(res.body))
+          dispatch(fetchNewsFailure(res.body))
           // dispatch(push("/error"))
         }
       } else {
         if (process.env.NODE_ENV !== "production") {
           console.error("Cannot convert to JSON")
         }
-        dispatch(fetchPageFailure(res.body))
+        dispatch(fetchNewsFailure(res.body))
         // dispatch(push("/error"))
       }
     } catch (error) {
-      dispatch(fetchPageFailure(error))
+      dispatch(fetchNewsFailure(error))
       // dispatch(push("/error"))
       if (process.env.NODE_ENV !== "production") {
         console.error(`Network error: ${error.message}`)
@@ -117,7 +117,7 @@ const printError = (res, json) => {
 
 const doEdit = (content: Object) => {
   return {
-    type: EDIT_PAGE,
+    type: EDIT_NEWS,
     payload: {
       content,
     },
@@ -133,7 +133,7 @@ export const editInline = (content: Object) => {
 export const saveInlineEditing = (id: string, body: Object) => {
   return async (dispatch: Function, getState: Function) => {
     try {
-      dispatch(savePageRequest())
+      dispatch(saveNewsRequest())
       const res = await fetch(`${fetchByIdResource}/${id}`, {
         method: "PATCH",
         body: JSON.stringify(body),
@@ -146,23 +146,65 @@ export const saveInlineEditing = (id: string, body: Object) => {
       if (contentType && contentType.includes("application/vnd.api+json")) {
         const json = await res.json()
         if (res.ok) {
-          dispatch(savePageSuccess())
+          dispatch(saveNewsSuccess())
         } else {
           if (process.env.NODE_ENV !== "production") {
             printError(res, json)
           }
-          dispatch(savePageFailure(res.body))
+          dispatch(saveNewsFailure(res.body))
           // dispatch(push("/error"))
         }
       } else {
         if (process.env.NODE_ENV !== "production") {
           console.error("Cannot convert to JSON")
         }
-        dispatch(savePageFailure(res.body))
+        dispatch(saveNewsFailure(res.body))
         // dispatch(push("/error"))
       }
     } catch (error) {
-      dispatch(savePageFailure(error))
+      dispatch(saveNewsFailure(error))
+      // dispatch(push("/error"))
+      if (process.env.NODE_ENV !== "production") {
+        console.error(`Network error: ${error.message}`)
+      }
+    }
+  }
+}
+
+export const addNewsItem = (body: Object) => {
+  return async (dispatch: Function, getState: Function) => {
+    try {
+      dispatch(saveNewsRequest())
+      const res = await fetch(`${server}/contents`, {
+        method: "POST",
+        body: JSON.stringify(body),
+        headers: {
+          "Content-Type": "application/json",
+          Application: `Bearer: ${getState().auth.token}`,
+        },
+      })
+      const contentType = res.headers.get("content-type")
+      if (contentType && contentType.includes("application/vnd.api+json")) {
+        const json = await res.json()
+        if (res.ok) {
+          dispatch(saveNewsSuccess())
+          dispatch(push("/"))
+        } else {
+          if (process.env.NODE_ENV !== "production") {
+            printError(res, json)
+          }
+          dispatch(saveNewsFailure(res.body))
+          // dispatch(push("/error"))
+        }
+      } else {
+        if (process.env.NODE_ENV !== "production") {
+          console.error("Cannot convert to JSON")
+        }
+        dispatch(saveNewsFailure(res.body))
+        // dispatch(push("/error"))
+      }
+    } catch (error) {
+      dispatch(saveNewsFailure(error))
       // dispatch(push("/error"))
       if (process.env.NODE_ENV !== "production") {
         console.error(`Network error: ${error.message}`)

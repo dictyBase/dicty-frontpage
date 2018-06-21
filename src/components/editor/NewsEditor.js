@@ -8,7 +8,7 @@ import { Flex, Box } from "rebass"
 import Authorization from "components/authentication/Authorization"
 import renderMark from "components/editor/tools/renderMark"
 import renderNode from "components/editor/tools/renderNode"
-import { editInline, saveInlineEditing } from "actions/editablePages"
+import { editInline, saveInlineEditing } from "actions/news"
 import {
   Button,
   NewsToolBar,
