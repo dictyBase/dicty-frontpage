@@ -241,11 +241,11 @@ class InlineEditor extends Component<Props, State> {
 
       if (isList) {
         change
-          .setBlock(isActive ? DEFAULT_NODE : type)
+          .setBlocks(isActive ? DEFAULT_NODE : type)
           .unwrapBlock("bulleted-list")
           .unwrapBlock("numbered-list")
       } else {
-        change.setBlock(isActive ? DEFAULT_NODE : type)
+        change.setBlocks(isActive ? DEFAULT_NODE : type)
       }
     } else {
       // Handle the extra wrapping required for list buttons.
@@ -256,7 +256,7 @@ class InlineEditor extends Component<Props, State> {
 
       if (isList && isType) {
         change
-          .setBlock(DEFAULT_NODE)
+          .setBlocks(DEFAULT_NODE)
           .unwrapBlock("bulleted-list")
           .unwrapBlock("numbered-list")
       } else if (isList) {
@@ -266,7 +266,7 @@ class InlineEditor extends Component<Props, State> {
           )
           .wrapBlock(type)
       } else {
-        change.setBlock("list-item").wrapBlock(type)
+        change.setBlocks("list-item").wrapBlock(type)
       }
     }
 
