@@ -68,13 +68,48 @@ const saveNewsFailure = error => {
   }
 }
 
-// fetch NEWS function that fetches data using async/await
+// fetch news function that fetches data using async/await
 // checks if header is correct, then either grabs data or displays error
 export const fetchNews = (slug: string) => {
   return async (dispatch: Function) => {
     try {
       dispatch(fetchNewsRequest())
       const res = await fetch(`${fetchBySlugResource}/${slug}`)
+      const contentType = res.headers.get("content-type")
+      if (contentType && contentType.includes("application/vnd.api+json")) {
+        const json = await res.json()
+        if (res.ok) {
+          dispatch(fetchNewsSuccess(json))
+        } else {
+          if (process.env.NODE_ENV !== "production") {
+            printError(res, json)
+          }
+          dispatch(fetchNewsFailure(res.body))
+          // dispatch(push("/error"))
+        }
+      } else {
+        if (process.env.NODE_ENV !== "production") {
+          console.error("Cannot convert to JSON")
+        }
+        dispatch(fetchNewsFailure(res.body))
+        // dispatch(push("/error"))
+      }
+    } catch (error) {
+      dispatch(fetchNewsFailure(error))
+      // dispatch(push("/error"))
+      if (process.env.NODE_ENV !== "production") {
+        console.error(`Network error: ${error.message}`)
+      }
+    }
+  }
+}
+
+// template for future fetch request to get all news items
+export const fetchAllNews = () => {
+  return async (dispatch: Function) => {
+    try {
+      dispatch(fetchNewsRequest())
+      const res = await fetch(`${fetchBySlugResource}/frontpage/news`)
       const contentType = res.headers.get("content-type")
       if (contentType && contentType.includes("application/vnd.api+json")) {
         const json = await res.json()
