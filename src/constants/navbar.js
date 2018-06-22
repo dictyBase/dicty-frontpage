@@ -1,116 +1,108 @@
 export const navItems = [
   {
     dropdown: true,
-    title: 'Genomes',
+    title: "Genomes",
     items: [
       {
-        name: 'Genomes Home',
-        href: 'http://www.google.com'
-      }
-    ]
+        name: "Genomes Home",
+        href: "/genomes",
+      },
+    ],
   },
   {
     dropdown: true,
-    title: 'Tools',
+    title: "Tools",
     items: [
       {
-        name: 'Tools Home',
-        href: 'http://www.google.com'
+        name: "Tools Home",
+        href: "/tools",
       },
       {
-        name: 'New Genome Browser',
-        href: 'http://wwww.google.com'
-      }
-    ]
+        name: "New Genome Browser",
+        href: "/tools/jbrowse",
+      },
+    ],
   },
   {
     dropdown: true,
-    title: 'Explore',
+    title: "Explore",
     items: [
       {
-        name: 'Explore Home',
-        href: 'http://www.google.com'
+        name: "Explore Home",
+        href: "/explore",
       },
       {
-        name: 'Dicty Art',
-        href: 'http://wwww.google.com'
+        name: "Dicty Art",
+        href: "/explore/art",
       },
       {
-        name: 'Gallery',
-        href: 'http://www.google.com'
+        name: "Gallery",
+        href: "/explore/gallery",
       },
       {
-        name: 'Genome Resources',
-        href: 'http://wwww.google.com'
+        name: "Learn About Dicty",
+        href: "/explore/learn",
       },
       {
-        name: 'Genome Statistics',
-        href: 'http://www.google.com'
+        name: "Teaching Protocols",
+        href: "/explore/teach",
       },
       {
-        name: 'Learn About Dicty',
-        href: '/explore/learn'
+        name: "Useful Links",
+        href: "/explore/links",
       },
-      {
-        name: 'Teaching Protocols',
-        href: '/explore/teach'
-      },
-      {
-        name: 'Useful Links',
-        href: 'http://wwww.google.com'
-      }
-    ]
+    ],
   },
   {
     dropdown: true,
-    title: 'Research',
+    title: "Research",
     items: [
       {
-        name: 'Research Home',
-        href: 'http://www.google.com'
+        name: "Research Home",
+        href: "/research",
       },
       {
-        name: 'Anatomy Ontology',
-        href: 'http://wwww.google.com'
+        name: "Anatomy Ontology",
+        href: "/research/ontology",
       },
       {
-        name: 'Codon Bias Table',
-        href: 'http://www.google.com'
+        name: "Codon Bias Table",
+        href: "/research/codon",
       },
       {
-        name: 'Nomenclature Guidelines',
-        href: 'http://wwww.google.com'
+        name: "Nomenclature Guidelines",
+        href: "/research/nomenclature",
       },
       {
-        name: 'Phenotyping',
-        href: 'http://www.google.com'
+        name: "Phenotyping",
+        href: "/research/phenotyping",
       },
       {
-        name: 'Techniques',
-        href: 'http://wwww.google.com'
-      }
-    ]
+        name: "Techniques",
+        href: "/research/techniques",
+      },
+    ],
   },
   {
-    title: 'Dicty Stock Center',
-    href: '/stockcenter'
+    title: "Dicty Stock Center",
+    href: "/stockcenter",
   },
   {
     dropdown: true,
-    title: 'Community',
+    title: "Community",
     items: [
       {
-        name: 'Community Home',
-        href: 'http://www.google.com'
+        name: "Community Home",
+        href: "/community",
       },
       {
-        name: 'Cite Us',
-        href: 'http://www.google.com'
+        name: "Cite Us",
+        href: "/citation",
       },
       {
-        name: 'Dicty Annual Conferences',
-        href: 'http://www.google.com'
-      }
-    ]
-  }
-];
+        name: "Dicty Annual Conferences",
+        href: "/community/conference",
+      },
+    ],
+  },
+]

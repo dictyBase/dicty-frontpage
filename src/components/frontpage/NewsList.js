@@ -4,7 +4,7 @@ import { connect } from "react-redux"
 import { Link } from "react-router-dom"
 import styled from "styled-components"
 import Authorization from "components/authentication/Authorization"
-import NewsItem from "./NewsItem"
+// import NewsItem from "./NewsItem"
 import { fetchAllNews } from "actions/news"
 
 const StyledLink = styled(Link)`
