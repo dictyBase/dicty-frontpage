@@ -122,9 +122,27 @@ const doEdit = (content: Object) => {
   }
 }
 
+export const editPage = (content: Object, path: string, name: string) => {
+  return (dispatch: Function) => {
+    dispatch(doEdit(content))
+    dispatch(push(`/${path}/${name}/edit`))
+  }
+}
+
 export const editInline = (content: Object) => {
   return (dispatch: Function) => {
     dispatch(doEdit(content))
+  }
+}
+
+export const saveEditing = (id: string, body: Object) => {
+  return {
+    types: [SAVE_PAGE_REQUEST, SAVE_PAGE_SUCCESS, SAVE_PAGE_FAILURE],
+    url: `${fetchByIdResource}/${id}`,
+    config: {
+      method: "PATCH",
+      body: JSON.stringify(body),
+    },
   }
 }
 

@@ -167,3 +167,51 @@ export const TextInfo = styled.span`
     color: #245269;
   }
 `
+
+export const ToolbarNav = styled.div`
+  background-color: #fafafa;
+  border-radius: 2px;
+  border: 1px solid #ddd;
+  padding: 5px;
+  width: 100%;
+  display: inline-block;
+`
+
+export const Label = styled.span`
+  display: inline;
+  padding: 0.2em 0.6em 0.3em;
+  font-size: 75%;
+  font-weight: bold;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25em;
+  background-color: #337ab7;
+  &:hover {
+    background-color: #337ab7;
+  }
+  &:focus {
+    background-color: #337ab7;
+  }
+`
+
+export const EditPanel = styled.div`
+  /* border: 1px solid #ddd; */
+  /* padding: 10px; */
+  [contenteditable="true"]:focus {
+    outline: none;
+  }
+`
+
+export const EditorStyle = styled.div`
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  cursor: text;
+  padding: 10px;
+  border-radius: 2px;
+  margin-bottom: 2em;
+  background: #fefefe;
+  margin: 10px auto;
+`

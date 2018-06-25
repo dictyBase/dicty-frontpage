@@ -13,7 +13,7 @@ const renderMark = (props: Props) => {
       return <strong>{props.children}</strong>
 
     case "italic":
-      return <i>{props.children}</i>
+      return <em>{props.children}</em>
 
     case "underline":
       return <u>{props.children}</u>
