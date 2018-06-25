@@ -2,7 +2,7 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
 import { Flex, Box } from "rebass"
-import InlineEditor from "components/editor/InlineEditor"
+import PageEditor from "components/editor/PageEditor"
 import Authorization from "components/authentication/Authorization"
 import ErrorNotification from "components/authentication/ErrorNotification"
 import timeSince from "utils/timeSince"
@@ -40,7 +40,7 @@ type State = {
   editorState: EditorState,
 }
 
-/** Displays the info page data that was fetched from the InfoPage component */
+/** Displays the info page data that was fetched from the ExplorePage component */
 
 class ExplorePageView extends Component<Props, State> {
   componentDidMount() {
@@ -93,7 +93,7 @@ class ExplorePageView extends Component<Props, State> {
 
         <Flex>
           <Box>
-            <InlineEditor page={this.props.page} />
+            <PageEditor page={this.props.page} readOnly={true} />
           </Box>
         </Flex>
       </Container>

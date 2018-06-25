@@ -1,7 +1,7 @@
 // @flow
 import React, { Component } from "react"
 import { connect } from "react-redux"
-import InlineEditor from "components/editor/InlineEditor"
+import PageEditor from "components/editor/PageEditor"
 import { saveEditing, cancelEditing } from "actions/editablePages"
 import { Container, EditorStyle, EditPanel } from "styles/EditablePageStyles"
 import { NAMESPACE } from "constants/namespace"
@@ -33,7 +33,7 @@ class EditExplorePage extends Component<Props, State> {
       <Container>
         <EditPanel>
           <EditorStyle>
-            <InlineEditor page={this.props.page} />
+            <PageEditor page={this.props.page} />
           </EditorStyle>
         </EditPanel>
       </Container>

@@ -1,6 +1,11 @@
 // @flow
 import { connect } from "react-redux"
-import { PermissionAPI, RoleAPI, AuthAPI } from "utils/apiClasses"
+import {
+  PermissionAPI,
+  RoleAPI,
+  AuthenticatedUser,
+  AuthAPI,
+} from "utils/apiClasses"
 import { frontpagecontent, frontpagenews } from "constants/resources"
 
 type Props = {
@@ -30,7 +35,18 @@ const Authorization = (props: Props) => {
 }
 
 const mapStateToProps = state => {
-  if (state.auth.user) {
+  if (state.auth.user && state.auth.fetchedUserData) {
+    const loggedInUser = new PermissionAPI(state.auth.user)
+    const roles = new RoleAPI(state.auth.user)
+    const fetchedUserData = new AuthenticatedUser(state.auth.fetchedUserData)
+    const verifiedToken = new AuthAPI(state.auth)
+    return {
+      loggedInUser: loggedInUser,
+      roles: roles,
+      fetchedUserData: fetchedUserData,
+      verifiedToken: verifiedToken,
+    }
+  } else if (state.auth.user) {
     const loggedInUser = new PermissionAPI(state.auth.user)
     const roles = new RoleAPI(state.auth.user)
     const verifiedToken = new AuthAPI(state.auth)
