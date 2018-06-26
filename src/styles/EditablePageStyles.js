@@ -50,7 +50,6 @@ export const Hdrtxt = styled.p`
 export const ToolBar = styled.div`
   position: relative;
   padding: 20px 18px 17px;
-  margin: 0 -20px;
   border-bottom: 2px solid #eee;
   margin-bottom: 20px;
 `
