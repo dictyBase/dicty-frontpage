@@ -9,7 +9,7 @@ import FontAwesome from "react-fontawesome"
 import isUrl from "is-url"
 import renderMark from "components/editor/tools/renderMark"
 import renderNode from "components/editor/tools/renderNode"
-import { editPage, saveEditing } from "actions/editablePages"
+import { editPage, saveEditing, cancelEditing } from "actions/editablePages"
 import {
   Button,
   ToolBar,
@@ -121,6 +121,8 @@ class PageEditor extends Component<Props, State> {
       value: this.state.value,
       readOnly: true,
     })
+    const { cancelEditing, match } = this.props
+    cancelEditing(match.url.slice(0, -5))
   }
 
   // on save, save the value to the content API server
@@ -402,6 +404,12 @@ class PageEditor extends Component<Props, State> {
             <FontAwesome name="image" />
           </Button>
         )
+      case "video":
+        return (
+          <Button onMouseDown={this.onMouseDown} data-active={isActive}>
+            <FontAwesome name="film" />
+          </Button>
+        )
       default:
         return
     }
@@ -426,6 +434,7 @@ class PageEditor extends Component<Props, State> {
             {this.renderBlockButton("block-quote")}
             {this.renderBlockButton("link")}
             {this.renderBlockButton("image")}
+            {this.renderBlockButton("video")}
           </ToolBar>
         )}
 
@@ -456,4 +465,6 @@ class PageEditor extends Component<Props, State> {
   }
 }
 
-export default connect(null, { editPage, saveEditing })(PageEditor)
+export default connect(null, { editPage, saveEditing, cancelEditing })(
+  PageEditor,
+)
