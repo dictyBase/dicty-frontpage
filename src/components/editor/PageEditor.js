@@ -2,13 +2,13 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
 import { Editor, getEventRange, getEventTransfer } from "slate-react"
-import { Block, Value, type Change } from "slate"
-import { LAST_CHILD_TYPE_INVALID } from "slate-schema-violations"
+import { Value, type Change } from "slate"
 import { Flex, Box } from "rebass"
 import FontAwesome from "react-fontawesome"
 import isUrl from "is-url"
 import renderMark from "components/editor/tools/renderMark"
 import renderNode from "components/editor/tools/renderNode"
+import schema from "components/editor/tools/schema"
 import { editPage, saveEditing, cancelEditing } from "actions/editablePages"
 import {
   Button,
@@ -38,7 +38,7 @@ type State = {
 }
 
 /**
- * This is a reusable Slate inline editor component.
+ * This is a reusable Slate page editor component.
  */
 
 /* The default mode for text */
@@ -67,23 +67,6 @@ const insertImage = (change, src, target) => {
     isVoid: true,
     data: { src },
   })
-}
-
-// schema to enforce that there's always a paragraph as the last block
-const schema = {
-  document: {
-    last: { types: ["paragraph"] },
-    normalize: (change, reason, { node, child }) => {
-      switch (reason) {
-        case LAST_CHILD_TYPE_INVALID: {
-          const paragraph = Block.create("paragraph")
-          return change.insertNodeByKey(node.key, node.nodes.size, paragraph)
-        }
-        default:
-          return
-      }
-    },
-  },
 }
 
 class PageEditor extends Component<Props, State> {
