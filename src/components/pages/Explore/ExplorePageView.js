@@ -11,7 +11,6 @@ import { editPage } from "actions/editablePages"
 import { fetchUserInfo } from "actions/auth"
 import FontAwesome from "react-fontawesome"
 import {
-  Container,
   ToolbarNav,
   TextInfo,
   Label,
@@ -36,11 +35,7 @@ type Props = {
   loggedInUser: Object,
 }
 
-type State = {
-  editorState: EditorState,
-}
-
-/** Displays the info page data that was fetched from the ExplorePage component */
+/** Displays the Explore page data that was fetched from the ExplorePage component */
 
 class ExplorePageView extends Component<Props, State> {
   componentDidMount() {
@@ -52,51 +47,53 @@ class ExplorePageView extends Component<Props, State> {
     const { loggedInUser } = this.props
 
     return (
-      <Container>
-        <Authorization
-          render={({ canEditPages, fetchedUserData, verifiedToken }) => {
-            return (
-              <div>
-                {canEditPages &&
-                  verifiedToken === false && (
-                    <ErrorNotification error={error} />
+      <Flex justify="center">
+        <Box>
+          <Authorization
+            render={({ canEditPages, fetchedUserData, verifiedToken }) => {
+              return (
+                <div>
+                  {canEditPages &&
+                    verifiedToken === false && (
+                      <ErrorNotification error={error} />
+                    )}
+                  <br />
+                  {canEditPages && (
+                    <ToolbarNav>
+                      <Flex justify="center">
+                        <Box>
+                          <TextInfo>
+                            <strong>
+                              <FontAwesome name="user" />{" "}
+                              {fetchedUserData.getFullName()}
+                            </strong>{" "}
+                            edited {timeSince(updated_at)} ago
+                          </TextInfo>
+                        </Box>
+                        <Box ml="auto">
+                          <Label>{fetchedUserData.getRoles()}</Label> &nbsp;
+                          {loggedInUser.canOverwrite(fetchedUserData.getId()) &&
+                            verifiedToken && (
+                              <InlineLink onClick={this.onClick}>
+                                <FontAwesome name="pencil" title="Edit page" />
+                              </InlineLink>
+                            )}
+                        </Box>
+                      </Flex>
+                    </ToolbarNav>
                   )}
-                <br />
-                {canEditPages && (
-                  <ToolbarNav>
-                    <Flex>
-                      <Box>
-                        <TextInfo>
-                          <strong>
-                            <FontAwesome name="user" />{" "}
-                            {fetchedUserData.getFullName()}
-                          </strong>{" "}
-                          edited {timeSince(updated_at)} ago
-                        </TextInfo>
-                      </Box>
-                      <Box ml="auto">
-                        <Label>{fetchedUserData.getRoles()}</Label> &nbsp;
-                        {loggedInUser.canOverwrite(fetchedUserData.getId()) &&
-                          verifiedToken && (
-                            <InlineLink onClick={this.onClick}>
-                              <FontAwesome name="pencil" title="Edit page" />
-                            </InlineLink>
-                          )}
-                      </Box>
-                    </Flex>
-                  </ToolbarNav>
-                )}
-              </div>
-            )
-          }}
-        />
+                </div>
+              )
+            }}
+          />
 
-        <Flex>
-          <Box>
-            <PageEditor page={this.props.page} readOnly={true} />
-          </Box>
-        </Flex>
-      </Container>
+          <Flex>
+            <Box>
+              <PageEditor page={this.props.page} readOnly={true} />
+            </Box>
+          </Flex>
+        </Box>
+      </Flex>
     )
   }
 }

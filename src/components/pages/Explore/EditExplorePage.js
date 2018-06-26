@@ -19,12 +19,8 @@ type Props = {
   saveEditing: Function,
 }
 
-type State = {
-  editorState: EditorState,
-}
-
 /**
- * Allows editing of the info page components (i.e. Deposit, Payment, Order)
+ * Allows editing of the explore page components (i.e. Teach, Learn, etc.)
  */
 
 class EditExplorePage extends Component<Props, State> {

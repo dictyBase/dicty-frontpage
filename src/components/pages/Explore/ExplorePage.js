@@ -19,7 +19,7 @@ type Props = {
 }
 
 /**
- * Fetches the data for the desired info page
+ * Fetches the data for the desired Explore page
  */
 
 class ExplorePage extends Component<Props> {

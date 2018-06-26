@@ -59,6 +59,5 @@
     "react-scripts": "^1.1.4",
     "react-styleguidist": "^7.0.17",
     "react-test-renderer": "^16.4.0"
-  },
-  "proxy": "http://localhost:3001"
+  }
 }
