@@ -1,7 +1,7 @@
 // @flow
 import React, { Component } from "react"
 import { connect } from "react-redux"
-import { Editor, getEventRange, getEventTransfer } from "slate-react"
+import { Editor, getEventTransfer } from "slate-react"
 import { Value, type Change } from "slate"
 import { Flex, Box } from "rebass"
 import FontAwesome from "react-fontawesome"
@@ -9,6 +9,7 @@ import isUrl from "is-url"
 import renderMark from "components/editor/tools/renderMark"
 import renderNode from "components/editor/tools/renderNode"
 import schema from "components/editor/tools/schema"
+import onKeyDown from "components/editor/tools/onKeyDown"
 import { editPage, saveEditing, cancelEditing } from "actions/editablePages"
 import {
   Button,
@@ -168,89 +169,20 @@ class PageEditor extends Component<Props, State> {
     this.onChange(change)
   }
 
-  // onPaste = (event: SyntheticEvent<>, change: Change) => {
-  //   if (change.value.isCollapsed) return
-
-  //   const transfer = getEventTransfer(event)
-  //   const { type, text } = transfer
-  //   if (type !== "text" && type !== "html") return
-  //   if (!isUrl(text)) return
-
-  //   if (this.hasLinks()) {
-  //     change.call(unwrapLink)
-  //   }
-
-  //   change.call(wrapLink, text)
-  //   return true
-  // }
-
-  onDropOrPaste = (event: SyntheticEvent<>, change: Change, editor) => {
-    const target = getEventRange(event, change.value)
-    if (!target && event.type === "drop") return
+  onPaste = (event: SyntheticEvent<>, change: Change) => {
+    if (change.value.isCollapsed) return
 
     const transfer = getEventTransfer(event)
-    const { type, text, files } = transfer
+    const { type, text } = transfer
+    if (type !== "text" && type !== "html") return
+    if (!isUrl(text)) return
 
-    if (type === "files") {
-      for (const file of files) {
-        const reader = new FileReader()
-        const [mime] = file.type.split("/")
-        if (mime !== "image") continue
-
-        reader.addEventListener("load", () => {
-          editor.change(c => {
-            c.call(insertImage, reader.result, target)
-          })
-        })
-
-        reader.readAsDataURL(file)
-      }
+    if (this.hasLinks()) {
+      change.call(unwrapLink)
     }
 
-    if (type === "text") {
-      if (!isUrl(text)) return
-      change.call(insertImage, text, target)
-    }
-  }
-
-  /* Keyboard Hotkeys */
-
-  onKeyDown = (event: SyntheticEvent<>, change: Change) => {
-    // if there is no metaKey, quit
-    if (!event.metaKey) return
-
-    if (event.key) {
-      switch (event.key) {
-        // if user pressed "b", add "bold" mark to text
-        case "b": {
-          event.preventDefault()
-          change.toggleMark("bold")
-          return true
-        }
-
-        case "i": {
-          event.preventDefault()
-          change.toggleMark("italic")
-          return true
-        }
-
-        case "u": {
-          event.preventDefault()
-          change.toggleMark("underline")
-          return true
-        }
-
-        // if the user presses " " then don't change text format
-        case " ": {
-          event.preventDefault()
-          change.addBlock(" ")
-          return true
-        }
-
-        default:
-          return
-      }
-    }
+    change.call(wrapLink, text)
+    return true
   }
 
   /* HTML Toolbar */
@@ -428,9 +360,8 @@ class PageEditor extends Component<Props, State> {
         <Editor
           value={this.state.value}
           onChange={this.onChange}
-          onKeyDown={this.onKeyDown}
-          onPaste={this.onDropOrPaste}
-          onDrop={this.onDropOrPaste}
+          onKeyDown={onKeyDown}
+          onPaste={this.onPaste}
           renderMark={renderMark}
           renderNode={renderNode}
           readOnly={readOnly}

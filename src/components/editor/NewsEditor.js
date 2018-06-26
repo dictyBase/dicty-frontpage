@@ -8,6 +8,7 @@ import { Flex, Box } from "rebass"
 import Authorization from "components/authentication/Authorization"
 import renderMark from "components/editor/tools/renderMark"
 import renderNode from "components/editor/tools/renderNode"
+import onKeyDown from "components/editor/tools/onKeyDown"
 import { editInline, saveInlineEditing } from "actions/news"
 import {
   Button,
@@ -149,46 +150,6 @@ class NewsEditor extends PureComponent<Props, State> {
 
     change.call(wrapLink, text)
     return true
-  }
-
-  /* Keyboard Hotkeys */
-
-  onKeyDown = (event: SyntheticEvent<>, change: Change) => {
-    // if there is no metaKey, quit
-    if (!event.metaKey) return
-
-    if (event.key) {
-      switch (event.key) {
-        // if user pressed "b", add "bold" mark to text
-        case "b": {
-          event.preventDefault()
-          change.toggleMark("bold")
-          return true
-        }
-
-        case "i": {
-          event.preventDefault()
-          change.toggleMark("italic")
-          return true
-        }
-
-        case "u": {
-          event.preventDefault()
-          change.toggleMark("underline")
-          return true
-        }
-
-        // if the user presses " " then don't change text format
-        case " ": {
-          event.preventDefault()
-          change.addBlock(" ")
-          return true
-        }
-
-        default:
-          return
-      }
-    }
   }
 
   /* HTML Toolbar */
@@ -352,7 +313,7 @@ class NewsEditor extends PureComponent<Props, State> {
         <Editor
           value={this.state.value}
           onChange={this.onChange}
-          onKeyDown={this.onKeyDown}
+          onKeyDown={onKeyDown}
           renderMark={renderMark}
           renderNode={renderNode}
           readOnly={readOnly}
