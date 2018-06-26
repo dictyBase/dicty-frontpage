@@ -49,8 +49,26 @@ const renderNode = (props: Props) => {
       return <img src={src} {...attributes} style={style} alt="" />
     }
 
+    case "left":
+      return (
+        <div style={{ textAlign: "left" }} {...attributes}>
+          {children}
+        </div>
+      )
+
     case "center":
-      return <center {...attributes}>{children}</center>
+      return (
+        <div style={{ textAlign: "center" }} {...attributes}>
+          {children}
+        </div>
+      )
+
+    case "right":
+      return (
+        <div style={{ textAlign: "right" }} {...attributes}>
+          {children}
+        </div>
+      )
 
     case "figure":
       return <figure {...attributes}>{children}</figure>

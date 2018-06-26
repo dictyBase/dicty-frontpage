@@ -329,6 +329,24 @@ class PageEditor extends Component<Props, State> {
             <FontAwesome name="film" />
           </Button>
         )
+      case "left":
+        return (
+          <Button onMouseDown={onMouseDown} data-active={isActive}>
+            <FontAwesome name="align-left" />
+          </Button>
+        )
+      case "center":
+        return (
+          <Button onMouseDown={onMouseDown} data-active={isActive}>
+            <FontAwesome name="align-center" />
+          </Button>
+        )
+      case "right":
+        return (
+          <Button onMouseDown={onMouseDown} data-active={isActive}>
+            <FontAwesome name="align-right" />
+          </Button>
+        )
       default:
         return
     }
@@ -354,6 +372,9 @@ class PageEditor extends Component<Props, State> {
             {this.renderBlockButton("link")}
             {this.renderBlockButton("image")}
             {this.renderBlockButton("video")}
+            {this.renderBlockButton("left")}
+            {this.renderBlockButton("center")}
+            {this.renderBlockButton("right")}
           </ToolBar>
         )}
 
