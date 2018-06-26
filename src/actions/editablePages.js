@@ -135,7 +135,7 @@ export const editInline = (content: Object) => {
   }
 }
 
-export const saveEditing = (id: string, body: Object) => {
+export const saveEditing = (id: string, body: Object, path: string) => {
   return {
     types: [SAVE_PAGE_REQUEST, SAVE_PAGE_SUCCESS, SAVE_PAGE_FAILURE],
     url: `${fetchByIdResource}/${id}`,
@@ -143,6 +143,7 @@ export const saveEditing = (id: string, body: Object) => {
       method: "PATCH",
       body: JSON.stringify(body),
     },
+    path: path,
   }
 }
 

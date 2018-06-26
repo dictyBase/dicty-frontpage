@@ -1,5 +1,5 @@
 // @flow
-import React, { Component } from "react"
+import React from "react"
 import { connect } from "react-redux"
 import { Flex, Box } from "rebass"
 import PageEditor from "components/editor/PageEditor"
@@ -24,20 +24,18 @@ type Props = {
  * Allows editing of the explore page components (i.e. Teach, Learn, etc.)
  */
 
-class EditExplorePage extends Component<Props, State> {
-  render() {
-    return (
-      <Flex justify="center">
-        <Box>
-          <EditPanel>
-            <EditorStyle>
-              <PageEditor page={this.props.page} />
-            </EditorStyle>
-          </EditPanel>
-        </Box>
-      </Flex>
-    )
-  }
+const EditExplorePage = (props: Props) => {
+  return (
+    <Flex justify="center">
+      <Box>
+        <EditPanel>
+          <EditorStyle>
+            <PageEditor page={props.page} match={props.match} />
+          </EditorStyle>
+        </EditPanel>
+      </Box>
+    </Flex>
+  )
 }
 
 const mapStateToProps = (state, ownProps) => {

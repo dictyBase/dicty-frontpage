@@ -95,7 +95,11 @@ class ExplorePageView extends Component<Props, State> {
 
           <Flex>
             <Box>
-              <PageEditor page={this.props.page} readOnly={true} />
+              <PageEditor
+                page={this.props.page}
+                readOnly={true}
+                match={this.props.match}
+              />
             </Box>
           </Flex>
         </Box>

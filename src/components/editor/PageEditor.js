@@ -95,7 +95,7 @@ class PageEditor extends Component<Props, State> {
   // on save, save the value to the content API server
   onSave = () => {
     const { value } = this.state
-    const { page, saveEditing } = this.props
+    const { page, saveEditing, match } = this.props
 
     const content = JSON.stringify(value.toJSON())
 
@@ -110,7 +110,7 @@ class PageEditor extends Component<Props, State> {
         },
       },
     }
-    saveEditing(page.data.id, body)
+    saveEditing(page.data.id, body, match.url)
 
     this.setState(this.state.value)
   }

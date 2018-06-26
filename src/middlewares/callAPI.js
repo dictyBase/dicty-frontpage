@@ -9,7 +9,7 @@ type param = { dispatch: Function, getState: Function }
 
 const callAPI = ({ dispatch, getState }: param) => {
   return (next: Function) => async (action: Object) => {
-    const { types, url, config } = action
+    const { types, url, config, path } = action
 
     if (!types || !url) {
       // normal action: pass it on
@@ -62,7 +62,7 @@ const callAPI = ({ dispatch, getState }: param) => {
             case "SAVE_PAGE_SUCCESS":
               // timeout is needed to show changes after action is passed through
               setTimeout(() => {
-                dispatch(push(`/information/${json.data.attributes.name}`))
+                dispatch(push(`${path.slice(0, -5)}`))
               }, 500)
               break
             // case "SAVE_INLINE_PAGE_SUCCESS":
