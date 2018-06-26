@@ -1,8 +1,9 @@
 // @flow
 import React, { Component } from "react"
 import { connect } from "react-redux"
-import { Editor, getEventTransfer } from "slate-react"
-import { Value, type Change } from "slate"
+import { Editor, getEventRange, getEventTransfer } from "slate-react"
+import { Block, Value, type Change } from "slate"
+import { LAST_CHILD_TYPE_INVALID } from "slate-schema-violations"
 import { Flex, Box } from "rebass"
 import FontAwesome from "react-fontawesome"
 import isUrl from "is-url"
@@ -54,6 +55,35 @@ const wrapLink = (change, href) => {
 
 const unwrapLink = change => {
   change.unwrapInline("link")
+}
+
+const insertImage = (change, src, target) => {
+  if (target) {
+    change.select(target)
+  }
+
+  change.insertBlock({
+    type: "image",
+    isVoid: true,
+    data: { src },
+  })
+}
+
+// schema to enforce that there's always a paragraph as the last block
+const schema = {
+  document: {
+    last: { types: ["paragraph"] },
+    normalize: (change, reason, { node, child }) => {
+      switch (reason) {
+        case LAST_CHILD_TYPE_INVALID: {
+          const paragraph = Block.create("paragraph")
+          return change.insertNodeByKey(node.key, node.nodes.size, paragraph)
+        }
+        default:
+          return
+      }
+    },
+  },
 }
 
 class PageEditor extends Component<Props, State> {
@@ -139,20 +169,59 @@ class PageEditor extends Component<Props, State> {
     this.onChange(change)
   }
 
-  onPaste = (event: SyntheticEvent<>, change: Change) => {
-    if (change.value.isCollapsed) return
+  onClickImage = event => {
+    event.preventDefault()
+    const src = window.prompt("Enter the URL of the image:")
+    if (!src) return
+
+    const change = this.state.value.change().call(insertImage, src)
+
+    this.onChange(change)
+  }
+
+  // onPaste = (event: SyntheticEvent<>, change: Change) => {
+  //   if (change.value.isCollapsed) return
+
+  //   const transfer = getEventTransfer(event)
+  //   const { type, text } = transfer
+  //   if (type !== "text" && type !== "html") return
+  //   if (!isUrl(text)) return
+
+  //   if (this.hasLinks()) {
+  //     change.call(unwrapLink)
+  //   }
+
+  //   change.call(wrapLink, text)
+  //   return true
+  // }
+
+  onDropOrPaste = (event: SyntheticEvent<>, change: Change, editor) => {
+    const target = getEventRange(event, change.value)
+    if (!target && event.type === "drop") return
 
     const transfer = getEventTransfer(event)
-    const { type, text } = transfer
-    if (type !== "text" && type !== "html") return
-    if (!isUrl(text)) return
+    const { type, text, files } = transfer
 
-    if (this.hasLinks()) {
-      change.call(unwrapLink)
+    if (type === "files") {
+      for (const file of files) {
+        const reader = new FileReader()
+        const [mime] = file.type.split("/")
+        if (mime !== "image") continue
+
+        reader.addEventListener("load", () => {
+          editor.change(c => {
+            c.call(insertImage, reader.result, target)
+          })
+        })
+
+        reader.readAsDataURL(file)
+      }
     }
 
-    change.call(wrapLink, text)
-    return true
+    if (type === "text") {
+      if (!isUrl(text)) return
+      change.call(insertImage, text, target)
+    }
   }
 
   /* Keyboard Hotkeys */
@@ -327,6 +396,12 @@ class PageEditor extends Component<Props, State> {
             <FontAwesome name="link" />
           </Button>
         )
+      case "image":
+        return (
+          <Button onMouseDown={this.onClickImage} data-active={isActive}>
+            <FontAwesome name="image" />
+          </Button>
+        )
       default:
         return
     }
@@ -350,6 +425,7 @@ class PageEditor extends Component<Props, State> {
             {this.renderBlockButton("heading-three")}
             {this.renderBlockButton("block-quote")}
             {this.renderBlockButton("link")}
+            {this.renderBlockButton("image")}
           </ToolBar>
         )}
 
@@ -357,10 +433,12 @@ class PageEditor extends Component<Props, State> {
           value={this.state.value}
           onChange={this.onChange}
           onKeyDown={this.onKeyDown}
-          onPaste={this.onPaste}
+          onPaste={this.onDropOrPaste}
+          onDrop={this.onDropOrPaste}
           renderMark={renderMark}
           renderNode={renderNode}
           readOnly={readOnly}
+          schema={schema}
         />
 
         <Flex>

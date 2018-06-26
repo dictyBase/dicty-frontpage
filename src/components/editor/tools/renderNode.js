@@ -45,7 +45,8 @@ const renderNode = (props: Props) => {
     case "image": {
       const { data } = node
       const src = data.get("src")
-      return <img src={src} {...attributes} alt="" />
+      const style = { display: "block" }
+      return <img src={src} {...attributes} style={style} alt="" />
     }
 
     case "center":
