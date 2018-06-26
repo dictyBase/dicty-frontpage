@@ -17,30 +17,6 @@ import {
   SaveButton,
 } from "styles/EditablePageStyles"
 
-type Props = {
-  /** Represents whether component is loading or not */
-  isFetching: boolean,
-  /** The object holding the fetched page content */
-  page: Object,
-  /** Action to fetch page content from API server */
-  fetchPage: Function,
-  /** Action that saves inline editor content to API server */
-  saveInlineEditing: Function,
-  /** Action creator to edit inline content */
-  editInline: Function,
-}
-
-type State = {
-  /** This is the initial value of the editable page content. */
-  value: Object,
-  /** Determines whether the editor is read only or not */
-  readOnly: boolean,
-}
-
-/**
- * This is a reusable Slate page editor component.
- */
-
 /* The default mode for text */
 const DEFAULT_NODE = "paragraph"
 
@@ -68,6 +44,34 @@ const insertImage = (change, src, target) => {
     data: { src },
   })
 }
+
+type Props = {
+  /** The object holding the fetched page content */
+  page: Object,
+  /** Action to fetch page content from API server */
+  fetchPage: Function,
+  /** Action that saves page editor content to API server */
+  saveEditing: Function,
+  /** Action that cancels page editing and redirects to main route */
+  cancelEditing: Function,
+  /** Action creator to edit page content */
+  editPage: Function,
+  /** React Router's match object */
+  match: Object,
+  /** Whether the editor is in read-only mode or not */
+  readOnly: boolean,
+}
+
+type State = {
+  /** This is the initial value of the editable page content. */
+  value: Object,
+  /** Determines whether the editor is read only or not */
+  readOnly: boolean,
+}
+
+/**
+ * This is a reusable Slate page editor component.
+ */
 
 class PageEditor extends Component<Props, State> {
   constructor(props: Props) {
@@ -389,7 +393,7 @@ class PageEditor extends Component<Props, State> {
         )
       case "video":
         return (
-          <Button onMouseDown={this.onMouseDown} data-active={isActive}>
+          <Button onMouseDown={onMouseDown} data-active={isActive}>
             <FontAwesome name="film" />
           </Button>
         )

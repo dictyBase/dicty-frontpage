@@ -18,6 +18,8 @@ type Props = {
   updated_by: string,
   /** action creator to save page content */
   saveEditing: Function,
+  /** The object holding the fetched page content */
+  page: Object,
 }
 
 /**

@@ -188,7 +188,7 @@ export const saveInlineEditing = (id: string, body: Object) => {
   }
 }
 
-export const cancelEditing = url => {
+export const cancelEditing = (url: string) => {
   return (dispatch: Function) => {
     dispatch(push(url))
   }

@@ -37,7 +37,7 @@ type Props = {
 
 /** Displays the Explore page data that was fetched from the ExplorePage component */
 
-class ExplorePageView extends Component<Props, State> {
+class ExplorePageView extends Component<Props> {
   componentDidMount() {
     const fetchedUser = new ContentAPI(this.props.page).getUser()
     this.props.fetchUserInfo(fetchedUser)

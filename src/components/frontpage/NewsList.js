@@ -11,9 +11,18 @@ const StyledLink = styled(Link)`
   text-decoration: none;
 `
 
+type Props = {
+  /** Contains all user authentication data */
+  auth: Object,
+  /** Represents whether page is loading */
+  isFetching: boolean,
+  /** The object holding the fetched page content */
+  page: Object,
+}
+
 /** This component has fake data right now, but it will be set up to map over fetched data by date and display the three most recent news items. */
 
-class NewsList extends PureComponent {
+class NewsList extends PureComponent<Props> {
   // componentDidMount() {
   //   this.props.fetchAllNews()
   // }
