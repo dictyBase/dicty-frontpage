@@ -122,10 +122,10 @@ const doEdit = (content: Object) => {
   }
 }
 
-export const editPage = (content: Object, path: string, name: string) => {
+export const editPage = (content: Object, url: string) => {
   return (dispatch: Function) => {
     dispatch(doEdit(content))
-    dispatch(push(`/${path}/${name}/edit`))
+    dispatch(push(`${url}/edit`))
   }
 }
 

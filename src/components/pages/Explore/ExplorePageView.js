@@ -42,6 +42,12 @@ class ExplorePageView extends Component<Props, State> {
     const fetchedUser = new ContentAPI(this.props.page).getUser()
     this.props.fetchUserInfo(fetchedUser)
   }
+  onClick = e => {
+    e.preventDefault()
+    const { editPage, match, page } = this.props
+
+    editPage(page.data.attributes.content, match.url)
+  }
   render() {
     const { updated_at } = this.props.page.data.attributes
     const { loggedInUser } = this.props

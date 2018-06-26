@@ -1,9 +1,10 @@
 // @flow
 import React, { Component } from "react"
 import { connect } from "react-redux"
+import { Flex, Box } from "rebass"
 import PageEditor from "components/editor/PageEditor"
 import { saveEditing, cancelEditing } from "actions/editablePages"
-import { Container, EditorStyle, EditPanel } from "styles/EditablePageStyles"
+import { EditorStyle, EditPanel } from "styles/EditablePageStyles"
 import { NAMESPACE } from "constants/namespace"
 
 type Props = {
@@ -26,13 +27,15 @@ type Props = {
 class EditExplorePage extends Component<Props, State> {
   render() {
     return (
-      <Container>
-        <EditPanel>
-          <EditorStyle>
-            <PageEditor page={this.props.page} />
-          </EditorStyle>
-        </EditPanel>
-      </Container>
+      <Flex justify="center">
+        <Box>
+          <EditPanel>
+            <EditorStyle>
+              <PageEditor page={this.props.page} />
+            </EditorStyle>
+          </EditPanel>
+        </Box>
+      </Flex>
     )
   }
 }
