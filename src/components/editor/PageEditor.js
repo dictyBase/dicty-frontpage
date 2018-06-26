@@ -3,8 +3,9 @@ import React, { Component } from "react"
 import { connect } from "react-redux"
 import { Editor, getEventTransfer } from "slate-react"
 import { Value, type Change } from "slate"
-import FontAwesome from "react-fontawesome"
 import { Flex, Box } from "rebass"
+import FontAwesome from "react-fontawesome"
+import isUrl from "is-url"
 import renderMark from "components/editor/tools/renderMark"
 import renderNode from "components/editor/tools/renderNode"
 import { editPage, saveEditing } from "actions/editablePages"
@@ -144,6 +145,7 @@ class PageEditor extends Component<Props, State> {
     const transfer = getEventTransfer(event)
     const { type, text } = transfer
     if (type !== "text" && type !== "html") return
+    if (!isUrl(text)) return
 
     if (this.hasLinks()) {
       change.call(unwrapLink)
@@ -355,6 +357,7 @@ class PageEditor extends Component<Props, State> {
           value={this.state.value}
           onChange={this.onChange}
           onKeyDown={this.onKeyDown}
+          onPaste={this.onPaste}
           renderMark={renderMark}
           renderNode={renderNode}
           readOnly={readOnly}
