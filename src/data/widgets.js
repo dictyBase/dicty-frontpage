@@ -1,18 +1,17 @@
 import widgetTECHNIQUES from "images/frontWidgets/widgetTECHNIQUES.png"
 import widgetGBROWSER from "images/frontWidgets/widgetGBROWSER.png"
 import widgetLEARNDICTY from "images/frontWidgets/widgetLEARNDICTY.png"
-import widgetSTATS from "images/frontWidgets/widgetSTATS.png"
 import widgetJOBS from "images/frontWidgets/widgetJOBS.png"
 import widgetDICTYEXPRESS from "images/frontWidgets/widgetDICTYEXPRESS.png"
 
 export default [
   {
-    link: "#",
+    link: "/research/techniques",
     image: widgetTECHNIQUES,
     alt: "techniques",
   },
   {
-    link: "#",
+    link: "/tools/jbrowse",
     image: widgetGBROWSER,
     alt: "genome browser",
   },
@@ -22,12 +21,7 @@ export default [
     alt: "learn dicty",
   },
   {
-    link: "#",
-    image: widgetSTATS,
-    alt: "dicty stats",
-  },
-  {
-    link: "#",
+    link: "/jobs",
     image: widgetJOBS,
     alt: "jobs @ dicty",
   },
