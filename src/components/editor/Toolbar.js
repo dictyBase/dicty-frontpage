@@ -1,11 +1,11 @@
 import React from "react"
-import Tooltip from "material-ui/Tooltip"
+import Tooltip from "@material-ui/core/Tooltip"
 import EditTable from "slate-edit-table"
 import EditList from "slate-edit-list"
 import EditBlockquote from "slate-edit-blockquote"
 import FontAwesome from "react-fontawesome"
 import MARKS from "components/editor/constants/marks"
-import BLOCKS from "components/constants/blocks"
+import BLOCKS from "components/editor/constants/blocks"
 import { Button, ToolBar as ToolbarContainer } from "styles/EditablePageStyles"
 
 const TablePlugin = EditTable()
@@ -106,6 +106,28 @@ const Toolbar = props => {
           change.setBlocks(isActive ? BLOCKS.PARAGRAPH : type),
         )
       }
+      case BLOCKS.ALIGN_LEFT:
+      case BLOCKS.ALIGN_CENTER:
+      case BLOCKS.ALIGN_RIGHT: {
+        const isType = value.blocks.some(block => {
+          return !!document.getClosest(
+            block.key,
+            parent => parent.type === type,
+          )
+        })
+
+        if (isType) {
+          // if type is in the ancestor node, remove it
+          change.unwrapBlock(type)
+        } else {
+          change
+            .unwrapBlock("left")
+            .unwrapBlock("center")
+            .unwrapBlock("right")
+            .wrapBlock(type)
+        }
+        break
+      }
       case BLOCKS.HR: {
         return props.onChange(change.setBlocks({ type, isVoid: true }))
       }
@@ -163,6 +185,33 @@ const Toolbar = props => {
       case BLOCKS.HEADING_3: {
         isActive = hasBlock(type)
         Tag = <Button>H3</Button>
+        break
+      }
+      case BLOCKS.ALIGN_LEFT: {
+        isActive = hasBlock(type)
+        Tag = (
+          <Button>
+            <FontAwesome name="align-left" />
+          </Button>
+        )
+        break
+      }
+      case BLOCKS.ALIGN_CENTER: {
+        isActive = hasBlock(type)
+        Tag = (
+          <Button>
+            <FontAwesome name="align-center" />
+          </Button>
+        )
+        break
+      }
+      case BLOCKS.ALIGN_RIGHT: {
+        isActive = hasBlock(type)
+        Tag = (
+          <Button>
+            <FontAwesome name="align-right" />
+          </Button>
+        )
         break
       }
       case BLOCKS.HR: {
@@ -224,7 +273,7 @@ const Toolbar = props => {
   }
 
   return (
-    <div>
+    <ToolbarContainer>
       {renderMarkButton(MARKS.BOLD, "⌘ + b")}
       {renderMarkButton(MARKS.ITALIC, "⌘ + i")}
       {renderMarkButton(MARKS.STRIKETHROUGH, "⌘ + d")}
@@ -233,12 +282,15 @@ const Toolbar = props => {
       {renderBlockButton(BLOCKS.HEADING_1, "# + space")}
       {renderBlockButton(BLOCKS.HEADING_2, "## + space")}
       {renderBlockButton(BLOCKS.HEADING_3, "### + space")}
+      {renderBlockButton(BLOCKS.ALIGN_LEFT, "n/a")}
+      {renderBlockButton(BLOCKS.ALIGN_CENTER, "n/a")}
+      {renderBlockButton(BLOCKS.ALIGN_RIGHT, "n/a")}
       {renderBlockButton(BLOCKS.HR, "--- + enter")}
       {renderBlockButton(BLOCKS.BLOCKQUOTE, "> + space")}
       {renderBlockButton(BLOCKS.TABLE, "table:2x3 + enter")}
       {renderBlockButton(BLOCKS.UL_LIST, "- + space")}
       {renderBlockButton(BLOCKS.OL_LIST, "1. + space")}
-    </div>
+    </ToolbarContainer>
   )
 }
 

@@ -4,22 +4,14 @@ import { connect } from "react-redux"
 import { Editor, getEventTransfer } from "slate-react"
 import { Value, type Change } from "slate"
 import { Flex, Box } from "rebass"
-import FontAwesome from "react-fontawesome"
 import isUrl from "is-url"
+import Toolbar from "components/editor/Toolbar"
 import renderMark from "components/editor/renderer/renderMark"
 import renderNode from "components/editor/renderer/renderNode"
 import schema from "components/editor/schema/schema"
 import onKeyDown from "components/editor/tools/onKeyDown"
 import { editPage, saveEditing, cancelEditing } from "actions/editablePages"
-import {
-  Button,
-  ToolBar,
-  CancelButton,
-  SaveButton,
-} from "styles/EditablePageStyles"
-
-/* The default mode for text */
-const DEFAULT_NODE = "paragraph"
+import { CancelButton, SaveButton } from "styles/EditablePageStyles"
 
 const wrapLink = (change, href) => {
   change.wrapInline({
@@ -91,7 +83,7 @@ class PageEditor extends Component<Props, State> {
   }
 
   onChange = ({ value }: Object) => {
-    this.setState({ value }) // on change, update state with new editor value
+    this.setState({ value })
   }
 
   onEdit = e => {
@@ -184,211 +176,15 @@ class PageEditor extends Component<Props, State> {
     return true
   }
 
-  /* HTML Toolbar */
-
-  /* For bold, underline, and italic text */
-  hasMark = (type: string) => {
-    const { value } = this.state
-    return value.activeMarks.some(mark => mark.type === type)
-  }
-
-  onClickMark = (event: SyntheticEvent<>, type: string) => {
-    event.preventDefault()
-    const { value } = this.state
-    const change = value.change().toggleMark(type)
-    this.onChange(change)
-  }
-
-  renderMarkButton = (type: string) => {
-    const isActive = this.hasMark(type)
-    const onMouseDown = event => this.onClickMark(event, type)
-
-    return (
-      <Button onMouseDown={onMouseDown} data-active={isActive}>
-        <FontAwesome name={type} />
-      </Button>
-    )
-  }
-
-  /* For ordered and unordered bullets */
-
-  hasBlock = (type: string) => {
-    const { value } = this.state
-    return value.blocks.some(node => node.type === type)
-  }
-
-  onClickBlock = (event: SyntheticEvent<>, type: string) => {
-    event.preventDefault()
-    const { value } = this.state
-    const change = value.change()
-    const { document } = value
-
-    if (type === "left" || type === "center" || type === "right") {
-      const isType = value.blocks.some(block => {
-        return !!document.getClosest(block.key, parent => parent.type === type)
-      })
-
-      if (isType) {
-        // if type is in the ancestor node, remove it
-        change.unwrapBlock(type)
-      } else {
-        change
-          .unwrapBlock("left")
-          .unwrapBlock("center")
-          .unwrapBlock("right")
-          .wrapBlock(type)
-      }
-    } else if (type !== "bulleted-list" && type !== "numbered-list") {
-      const isActive = this.hasBlock(type)
-      const isList = this.hasBlock("list-item")
-
-      if (isList) {
-        change
-          .setBlocks(isActive ? DEFAULT_NODE : type)
-          .unwrapBlock("bulleted-list")
-          .unwrapBlock("numbered-list")
-      } else {
-        change.setBlocks(isActive ? DEFAULT_NODE : type)
-      }
-    } else {
-      // Handle the extra wrapping required for list buttons.
-      const isList = this.hasBlock("list-item")
-      const isType = value.blocks.some(block => {
-        return !!document.getClosest(block.key, parent => parent.type === type)
-      })
-
-      if (isList && isType) {
-        change
-          .setBlocks(DEFAULT_NODE)
-          .unwrapBlock("bulleted-list")
-          .unwrapBlock("numbered-list")
-      } else if (isList) {
-        change
-          .unwrapBlock(
-            type === "bulleted-list" ? "numbered-list" : "bulleted-list",
-          )
-          .wrapBlock(type)
-      } else {
-        change.setBlocks("list-item").wrapBlock(type)
-      }
-    }
-
-    this.onChange(change)
-  }
-
-  renderBlockButton = (type: string) => {
-    const isActive = this.hasBlock(type)
-    const onMouseDown = event => this.onClickBlock(event, type)
-    const hasLinks = this.hasLinks()
-
-    switch (type) {
-      case "bulleted-list":
-        return (
-          <Button onMouseDown={onMouseDown} data-active={isActive}>
-            <FontAwesome name="list-ul" />
-          </Button>
-        )
-      case "numbered-list":
-        return (
-          <Button onMouseDown={onMouseDown} data-active={isActive}>
-            <FontAwesome name="list-ol" />
-          </Button>
-        )
-      case "heading-one":
-        return (
-          <Button onMouseDown={onMouseDown} data-active={isActive}>
-            H1
-          </Button>
-        )
-      case "heading-two":
-        return (
-          <Button onMouseDown={onMouseDown} data-active={isActive}>
-            H2
-          </Button>
-        )
-      case "heading-three":
-        return (
-          <Button onMouseDown={onMouseDown} data-active={isActive}>
-            H3
-          </Button>
-        )
-      case "block-quote":
-        return (
-          <Button onMouseDown={onMouseDown} data-active={isActive}>
-            <FontAwesome name="indent" />
-          </Button>
-        )
-      case "strikethrough":
-        return (
-          <Button onMouseDown={onMouseDown} data-active={isActive}>
-            <FontAwesome name="strikethrough" />
-          </Button>
-        )
-      case "link":
-        return (
-          <Button onMouseDown={this.onClickLink} data-active={hasLinks}>
-            <FontAwesome name="link" />
-          </Button>
-        )
-      case "image":
-        return (
-          <Button onMouseDown={this.onClickImage} data-active={isActive}>
-            <FontAwesome name="image" />
-          </Button>
-        )
-      case "video":
-        return (
-          <Button onMouseDown={onMouseDown} data-active={isActive}>
-            <FontAwesome name="film" />
-          </Button>
-        )
-      case "left":
-        return (
-          <Button onMouseDown={onMouseDown} data-active={isActive}>
-            <FontAwesome name="align-left" />
-          </Button>
-        )
-      case "center":
-        return (
-          <Button onMouseDown={onMouseDown} data-active={isActive}>
-            <FontAwesome name="align-center" />
-          </Button>
-        )
-      case "right":
-        return (
-          <Button onMouseDown={onMouseDown} data-active={isActive}>
-            <FontAwesome name="align-right" />
-          </Button>
-        )
-      default:
-        return
-    }
-  }
-
   render() {
     const { readOnly } = this.state
     return (
       <div>
         {!readOnly && (
-          <ToolBar>
-            {this.renderMarkButton("bold")}
-            {this.renderMarkButton("italic")}
-            {this.renderMarkButton("underline")}
-            {this.renderMarkButton("code")}
-            {this.renderMarkButton("strikethrough")}
-            {this.renderBlockButton("bulleted-list")}
-            {this.renderBlockButton("numbered-list")}
-            {this.renderBlockButton("heading-one")}
-            {this.renderBlockButton("heading-two")}
-            {this.renderBlockButton("heading-three")}
-            {this.renderBlockButton("block-quote")}
-            {this.renderBlockButton("link")}
-            {this.renderBlockButton("image")}
-            {this.renderBlockButton("video")}
-            {this.renderBlockButton("left")}
-            {this.renderBlockButton("center")}
-            {this.renderBlockButton("right")}
-          </ToolBar>
+          <Toolbar
+            value={this.state.value}
+            onChange={value => this.onChange(value)}
+          />
         )}
 
         <Editor
