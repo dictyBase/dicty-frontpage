@@ -1,22 +1,12 @@
 export const navItems = [
   {
-    dropdown: true,
     title: "Genomes",
-    items: [
-      {
-        name: "Genomes Home",
-        href: "/genomes",
-      },
-    ],
+    href: "/genomes",
   },
   {
     dropdown: true,
     title: "Tools",
     items: [
-      {
-        name: "Tools Home",
-        href: "/tools",
-      },
       {
         name: "New Genome Browser",
         href: "/tools/jbrowse",
@@ -27,10 +17,6 @@ export const navItems = [
     dropdown: true,
     title: "Explore",
     items: [
-      {
-        name: "Explore Home",
-        href: "/explore",
-      },
       {
         name: "Dicty Art",
         href: "/explore/art",
@@ -57,10 +43,6 @@ export const navItems = [
     dropdown: true,
     title: "Research",
     items: [
-      {
-        name: "Research Home",
-        href: "/research",
-      },
       {
         name: "Anatomy Ontology",
         href: "/research/ontology",
@@ -91,10 +73,6 @@ export const navItems = [
     dropdown: true,
     title: "Community",
     items: [
-      {
-        name: "Community Home",
-        href: "/community",
-      },
       {
         name: "Cite Us",
         href: "/citation",
