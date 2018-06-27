@@ -1,6 +1,8 @@
 // @flow
 import React, { type Node } from "react"
 import { type Block } from "slate"
+import BLOCKS from "components/editor/constants/blocks"
+import INLINES from "components/editor/constants/inlines"
 
 type Props = {
   node: Block,
@@ -11,28 +13,28 @@ type Props = {
 const renderNode = (props: Props) => {
   const { attributes, children, node } = props
   switch (node.type) {
-    case "bulleted-list":
+    case BLOCKS.UL_LIST:
       return <ul {...attributes}>{children}</ul>
 
-    case "numbered-list":
+    case BLOCKS.OL_LIST:
       return <ol {...attributes}>{children}</ol>
 
-    case "list-item":
+    case BLOCKS.LIST_ITEM:
       return <li {...attributes}>{children}</li>
 
-    case "heading-one":
+    case BLOCKS.HEADING_1:
       return <h1 {...attributes}>{children}</h1>
 
-    case "heading-two":
+    case BLOCKS.HEADING_2:
       return <h2 {...attributes}>{children}</h2>
 
-    case "heading-three":
+    case BLOCKS.HEADING_3:
       return <h3 {...attributes}>{children}</h3>
 
-    case "block-quote":
+    case BLOCKS.BLOCKQUOTE:
       return <blockquote {...attributes}>{children}</blockquote>
 
-    case "link": {
+    case INLINES.LINK: {
       const { data } = node
       const href = data.get("href")
       return (
@@ -42,58 +44,52 @@ const renderNode = (props: Props) => {
       )
     }
 
-    case "image": {
+    case BLOCKS.IMAGE: {
       const { data } = node
       const src = data.get("src")
       const style = { display: "block" }
       return <img src={src} {...attributes} style={style} alt="" />
     }
 
-    case "left":
+    case BLOCKS.ALIGN_LEFT:
       return (
         <div style={{ textAlign: "left" }} {...attributes}>
           {children}
         </div>
       )
 
-    case "center":
+    case BLOCKS.ALIGN_CENTER:
       return (
         <div style={{ textAlign: "center" }} {...attributes}>
           {children}
         </div>
       )
 
-    case "right":
+    case BLOCKS.ALIGN_RIGHT:
       return (
         <div style={{ textAlign: "right" }} {...attributes}>
           {children}
         </div>
       )
 
-    case "figure":
-      return <figure {...attributes}>{children}</figure>
-
-    case "figcaption":
-      return <figcaption {...attributes}>{children}</figcaption>
-
-    case "divider":
+    case BLOCKS.HR:
       return <hr {...attributes} />
 
-    case "table":
+    case BLOCKS.TABLE:
       return (
         <table {...attributes}>
           <tbody>{children}</tbody>
         </table>
       )
 
-    case "table-row":
+    case BLOCKS.TABLE_ROW:
       return <tr {...attributes}>{children}</tr>
 
-    case "table-cell":
+    case BLOCKS.TABLE_CELL:
       return <td {...attributes}>{children}</td>
 
     default:
-      return
+      return null
   }
 }
 
