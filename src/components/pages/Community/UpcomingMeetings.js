@@ -2,8 +2,7 @@
 import React from "react"
 import { Flex, Box } from "rebass"
 import FontAwesome from "react-fontawesome"
-import { Banner, Header, Hdrtxt } from "styles/EditablePageStyles"
-import { Link } from "styles"
+import { Banner, Header } from "styles/EditablePageStyles"
 
 /**
  * This displays upcoming Dicty meetings.
