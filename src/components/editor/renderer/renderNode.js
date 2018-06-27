@@ -1,6 +1,7 @@
 // @flow
 import React, { type Node } from "react"
 import { type Block } from "slate"
+import Video from "components/editor/renderer/Video"
 import BLOCKS from "components/editor/constants/blocks"
 import INLINES from "components/editor/constants/inlines"
 
@@ -87,6 +88,9 @@ const renderNode = (props: Props) => {
 
     case BLOCKS.TABLE_CELL:
       return <td {...attributes}>{children}</td>
+
+    case BLOCKS.VIDEO:
+      return <Video {...props} />
 
     default:
       return null
