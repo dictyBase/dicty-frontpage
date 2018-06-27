@@ -99,9 +99,8 @@ class PageEditor extends Component<Props, State> {
     this.setState({
       readOnly: false,
     })
-    const { editPage, page } = this.props
-    // needs to be (content, path, name)
-    editPage(page.data.attributes.content)
+    const { editPage, page, match } = this.props
+    editPage(page.data.attributes.content, match.url)
   }
 
   onCancel = () => {

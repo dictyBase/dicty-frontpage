@@ -45,6 +45,9 @@
     "redux": "^4.0.0",
     "redux-thunk": "^2.2.0",
     "slate": "^0.34.1",
+    "slate-edit-blockquote": "^0.6.1",
+    "slate-edit-list": "^0.11.3",
+    "slate-edit-table": "^0.15.2",
     "slate-react": "^0.12.10",
     "slate-schema-violations": "^0.1.15",
     "styled-components": "^2.4.0"
