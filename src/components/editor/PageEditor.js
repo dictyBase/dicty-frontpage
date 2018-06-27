@@ -6,6 +6,7 @@ import { Value, type Change } from "slate"
 import { Flex, Box } from "rebass"
 import isUrl from "is-url"
 import Toolbar from "components/editor/Toolbar"
+import plugins from "components/editor/plugins/plugins"
 import renderMark from "components/editor/renderer/renderMark"
 import renderNode from "components/editor/renderer/renderNode"
 import schema from "components/editor/schema/schema"
@@ -190,12 +191,13 @@ class PageEditor extends Component<Props, State> {
         <Editor
           value={this.state.value}
           onChange={this.onChange}
-          onKeyDown={onKeyDown}
           onPaste={this.onPaste}
+          onKeyDown={onKeyDown}
           renderMark={renderMark}
           renderNode={renderNode}
           readOnly={readOnly}
           schema={schema}
+          plugins={plugins}
         />
 
         <Flex>
