@@ -61,7 +61,7 @@ const Papers = (props: {
       <ListBox>{text}</ListBox>
       <MoreLink>
         <FontAwesome name="plus" />
-        <Link href="" alt="more papers">
+        <Link href="/papers" alt="more papers">
           {" "}
           more papers{" "}
         </Link>

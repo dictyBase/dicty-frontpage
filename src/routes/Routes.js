@@ -11,6 +11,7 @@ import ExplorePage from "components/pages/Explore/ExplorePage"
 import EditExplorePage from "components/pages/Explore/EditExplorePage"
 import AddNews from "components/pages/News/AddNews"
 import NewsArchive from "components/pages/News/NewsArchive"
+import PapersArchive from "components/pages/Papers/PapersArchive"
 import Login from "components/authentication/Login"
 import OauthCallback from "components/authentication/OauthCallback"
 import AuthLoader from "components/authentication/AuthLoader"
@@ -26,6 +27,7 @@ const Routes = () => {
       <Route exact path="/about" component={About} />
       <PrivateRoute exact path="/addnews" component={AddNews} />
       <Route exact path="/news" component={NewsArchive} />
+      <Route exact path="/papers" component={PapersArchive} />
       <LoginRoute exact path="/login" component={Login} />
       <Route exact path="/:provider/callback" component={OauthCallback} />
       <Route exact path="/load/auth" component={AuthLoader} />
