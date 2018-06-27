@@ -109,24 +109,13 @@ const Toolbar = props => {
       case BLOCKS.ALIGN_LEFT:
       case BLOCKS.ALIGN_CENTER:
       case BLOCKS.ALIGN_RIGHT: {
-        const isType = value.blocks.some(block => {
-          return !!document.getClosest(
-            block.key,
-            parent => parent.type === type,
-          )
-        })
-
-        if (isType) {
-          // if type is in the ancestor node, remove it
-          change.unwrapBlock(type)
-        } else {
+        return props.onChange(
           change
-            .unwrapBlock("left")
-            .unwrapBlock("center")
-            .unwrapBlock("right")
-            .wrapBlock(type)
-        }
-        break
+            .unwrapBlock(BLOCKS.ALIGN_LEFT)
+            .unwrapBlock(BLOCKS.ALIGN_CENTER)
+            .unwrapBlock(BLOCKS.ALIGN_RIGHT)
+            .wrapBlock(type),
+        )
       }
       case BLOCKS.HR: {
         return props.onChange(change.setBlocks({ type, isVoid: true }))
