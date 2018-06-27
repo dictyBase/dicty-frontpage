@@ -103,6 +103,10 @@ export const navItems = [
         name: "Dicty Annual Conferences",
         href: "/community/conference",
       },
+      {
+        name: "Upcoming Meetings",
+        href: "/community/meetings",
+      },
     ],
   },
 ]
