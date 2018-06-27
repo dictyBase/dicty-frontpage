@@ -4,6 +4,7 @@ import { Route, Switch } from "react-router-dom"
 import PrivateRoute from "./PrivateRoute"
 import LoginRoute from "./LoginRoute"
 import Front from "components/pages/Front"
+import Downloads from "components/pages/Downloads"
 // import Learn from "components/pages/Learn"
 // import Teach from "components/pages/Teach"
 import About from "components/pages/About/About"
@@ -28,6 +29,7 @@ const Routes = () => {
       <PrivateRoute exact path="/addnews" component={AddNews} />
       <Route exact path="/news" component={NewsArchive} />
       <Route exact path="/papers" component={PapersArchive} />
+      <Route exact path="/downloads" component={Downloads} />
       <LoginRoute exact path="/login" component={Login} />
       <Route exact path="/:provider/callback" component={OauthCallback} />
       <Route exact path="/load/auth" component={AuthLoader} />

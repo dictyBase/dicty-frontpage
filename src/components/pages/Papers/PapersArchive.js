@@ -7,7 +7,7 @@ import { Link } from "styles"
 import papers from "data/papers"
 
 /**
- * This displays the Dicty news archive.
+ * This displays the Dicty papers archive.
  */
 
 const PapersArchive = () => {
