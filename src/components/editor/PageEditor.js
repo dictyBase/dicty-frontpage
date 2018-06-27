@@ -224,8 +224,22 @@ class PageEditor extends Component<Props, State> {
     const change = value.change()
     const { document } = value
 
-    // Handle anything that aren't lists
-    if (type !== "bulleted-list" && type !== "numbered-list") {
+    if (type === "left" || type === "center" || type === "right") {
+      const isType = value.blocks.some(block => {
+        return !!document.getClosest(block.key, parent => parent.type === type)
+      })
+
+      if (isType) {
+        // if type is in the ancestor node, remove it
+        change.unwrapBlock(type)
+      } else {
+        change
+          .unwrapBlock("left")
+          .unwrapBlock("center")
+          .unwrapBlock("right")
+          .wrapBlock(type)
+      }
+    } else if (type !== "bulleted-list" && type !== "numbered-list") {
       const isActive = this.hasBlock(type)
       const isList = this.hasBlock("list-item")
 
