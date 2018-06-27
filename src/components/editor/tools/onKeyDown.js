@@ -1,4 +1,5 @@
 // @flow
+import { type Change } from "slate"
 
 /* Keyboard Hotkeys */
 
