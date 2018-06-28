@@ -82,6 +82,22 @@ export const navItems = [
         href: "/community/conference",
       },
       {
+        name: "Dicty Email Forum",
+        href: "/community/listserv",
+      },
+      {
+        name: "Dicty Labs",
+        href: "/community/labs",
+      },
+      {
+        name: "History",
+        href: "/community/history",
+      },
+      {
+        name: "Jobs",
+        href: "/community/jobs",
+      },
+      {
         name: "Upcoming Meetings",
         href: "/community/meetings",
       },
