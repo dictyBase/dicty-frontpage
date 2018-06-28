@@ -286,17 +286,22 @@ const Toolbar = props => {
       {renderMarkButton(MARKS.STRIKETHROUGH, "⌘ + d")}
       {renderMarkButton(MARKS.UNDERLINE, "⌘ + u")}
       {renderMarkButton(MARKS.CODE, "⌘ + shift + 9")}
+      &nbsp;
       {renderBlockButton(BLOCKS.HEADING_1, "# + space")}
       {renderBlockButton(BLOCKS.HEADING_2, "## + space")}
       {renderBlockButton(BLOCKS.HEADING_3, "### + space")}
+      &nbsp;
       {renderBlockButton(BLOCKS.ALIGN_LEFT, "n/a")}
       {renderBlockButton(BLOCKS.ALIGN_CENTER, "n/a")}
       {renderBlockButton(BLOCKS.ALIGN_RIGHT, "n/a")}
+      &nbsp;
       {renderBlockButton(BLOCKS.HR, "--- + enter")}
       {renderBlockButton(BLOCKS.BLOCKQUOTE, "> + space")}
       {renderBlockButton(BLOCKS.TABLE, "table:2x3 + enter")}
+      &nbsp;
       {renderBlockButton(BLOCKS.UL_LIST, "- + space")}
       {renderBlockButton(BLOCKS.OL_LIST, "1. + space")}
+      &nbsp;
       {renderBlockButton(BLOCKS.IMAGE, "n/a")}
       {renderBlockButton(BLOCKS.VIDEO, "n/a")}
     </ToolbarContainer>
