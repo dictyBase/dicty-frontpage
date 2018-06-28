@@ -11,6 +11,7 @@ import renderMark from "components/editor/renderer/renderMark"
 import renderNode from "components/editor/renderer/renderNode"
 import schema from "components/editor/schema/schema"
 import onKeyDown from "components/editor/tools/onKeyDown"
+import deserializer from "components/editor/tools/deserializer"
 import { editPage, saveEditing, cancelEditing } from "actions/editablePages"
 import { CancelButton, SaveButton } from "styles/EditablePageStyles"
 
@@ -167,14 +168,21 @@ class PageEditor extends Component<Props, State> {
     const transfer = getEventTransfer(event)
     const { type, text } = transfer
     if (type !== "text" && type !== "html") return
-    if (!isUrl(text)) return
 
-    if (this.hasLinks()) {
-      change.call(unwrapLink)
+    if (type === "text") {
+      if (!isUrl(text)) return
+
+      if (this.hasLinks()) {
+        change.call(unwrapLink)
+      }
+
+      change.call(wrapLink, text)
+      return true
+    } else if (type === "html") {
+      const { document } = deserializer.deserialize(transfer.html)
+      change.insertFragment(document)
+      return true
     }
-
-    change.call(wrapLink, text)
-    return true
   }
 
   render() {

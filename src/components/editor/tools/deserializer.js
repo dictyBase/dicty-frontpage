@@ -1,6 +1,4 @@
 import Html from "slate-html-serializer"
-import { Editor, getEventTransfer } from "slate-react"
-import { Value } from "slate"
 
 const BLOCK_TAGS = {
   p: "paragraph",
@@ -82,4 +80,6 @@ const rules = [
   },
 ]
 
-export const serializer = new Html({ rules: rules })
+const deserializer = new Html({ rules: rules })
+
+export default deserializer
