@@ -75,7 +75,7 @@ export const navItems = [
     items: [
       {
         name: "Cite Us",
-        href: "/citation",
+        href: "/community/citation",
       },
       {
         name: "Dicty Annual Conferences",

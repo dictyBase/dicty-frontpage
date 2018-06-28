@@ -7,7 +7,6 @@ import {
   fetchRoleByIdResource,
   fetchHeaderConfig,
 } from "utils/fetchResources"
-// import history from "utils/routerHistory"
 import { push } from "react-router-redux"
 
 import {
@@ -158,13 +157,12 @@ export const oAuthLogin = ({ query, provider, url }: oauthArg) => {
           dispatch(receiveLogin(json))
           await dispatch(fetchRoleInfo(json.user.data.id))
           dispatch(push("/"))
-          // history.go(-3)
         } else if (res.status === 401) {
           // user has invalid credentials, redirect with notification
           dispatch(
             loginError(
               `You are not an authorized user of dictyBase.
-              Please sign in with proper credentials or sign up with our user registration form when it is available.`,
+              Please sign in with proper credentials.`,
             ),
           )
           dispatch(push("/login"))

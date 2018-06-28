@@ -34,7 +34,7 @@ const generateLinks = (link: Object, i: string) => {
 
 const headerItems = [
   {
-    url: "/cite",
+    url: "/community/citation",
     icon: "plus",
     text: "Cite Us",
   },
@@ -59,7 +59,7 @@ const headerItems = [
 
 const loggedHeaderItems = [
   {
-    url: "/cite",
+    url: "/community/citation",
     icon: "plus",
     text: "Cite Us",
   },

@@ -32,15 +32,15 @@ const Routes = () => {
       {/* News page routes */}
       <PrivateRoute exact path="/addnews" component={AddNews} />
       <Route exact path="/news" component={NewsArchive} />
-      {/* Explore page routes */}
-      <Route exact path="/explore/:name" component={ExplorePage} />
-      <PrivateRoute
-        exact
-        path="/explore/:name/edit"
-        component={EditExplorePage}
-      />
       {/* Community page routes */}
       <Route exact path="/community/meetings" component={UpcomingMeetings} />
+      {/* Explore page routes */}
+      <Route exact path="/:section/:name" component={ExplorePage} />
+      <PrivateRoute
+        exact
+        path="/:section/:name/edit"
+        component={EditExplorePage}
+      />
       {/* Authentication routes */}
       <LoginRoute exact path="/login" component={Login} />
       <Route exact path="/:provider/callback" component={OauthCallback} />
