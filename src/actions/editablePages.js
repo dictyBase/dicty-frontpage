@@ -81,6 +81,7 @@ export const fetchPage = (slug: string) => {
         } else {
           if (process.env.NODE_ENV !== "production") {
             printError(res, json)
+            dispatch(push("/error"))
           }
           dispatch(fetchPageFailure(res.body))
           // dispatch(push("/error"))
