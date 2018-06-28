@@ -6,11 +6,14 @@ import { Value, type Change } from "slate"
 import { Flex, Box } from "rebass"
 import isUrl from "is-url"
 import Toolbar from "components/editor/Toolbar"
+import insertImage from "components/editor/helpers/insertImage"
+import onPasteHtml from "components/editor/helpers/onPasteHtml"
+import onPasteText from "components/editor/helpers/onPasteText"
+import onKeyDown from "components/editor/helpers/onKeyDown"
 import plugins from "components/editor/plugins/plugins"
 import renderMark from "components/editor/renderer/renderMark"
 import renderNode from "components/editor/renderer/renderNode"
 import schema from "components/editor/schema/schema"
-import onKeyDown from "components/editor/tools/onKeyDown"
 import deserializer from "components/editor/tools/deserializer"
 import { editPage, saveEditing, cancelEditing } from "actions/editablePages"
 import { CancelButton, SaveButton } from "styles/EditablePageStyles"
@@ -26,18 +29,6 @@ const wrapLink = (change, href) => {
 
 const unwrapLink = change => {
   change.unwrapInline("link")
-}
-
-const insertImage = (change, src, target) => {
-  if (target) {
-    change.select(target)
-  }
-
-  change.insertBlock({
-    type: "image",
-    isVoid: true,
-    data: { src },
-  })
 }
 
 type Props = {
@@ -162,26 +153,16 @@ class PageEditor extends Component<Props, State> {
     this.onChange(change)
   }
 
-  onPaste = (event: SyntheticEvent<>, change: Change) => {
-    if (change.value.isCollapsed) return
-
-    const transfer = getEventTransfer(event)
-    const { type, text } = transfer
-    if (type !== "text" && type !== "html") return
-
-    if (type === "text") {
-      if (!isUrl(text)) return
-
-      if (this.hasLinks()) {
-        change.call(unwrapLink)
-      }
-
-      change.call(wrapLink, text)
-      return true
-    } else if (type === "html") {
-      const { document } = deserializer.deserialize(transfer.html)
-      change.insertFragment(document)
-      return true
+  onPaste = (e: SyntheticEvent<>, change: Change) => {
+    const transfer = getEventTransfer(e)
+    const { type } = transfer
+    switch (type) {
+      case "text":
+        return onPasteText(e, change)
+      case "html":
+        return onPasteHtml(e, change)
+      default:
+        break
     }
   }
 

@@ -8,7 +8,7 @@ import { Flex, Box } from "rebass"
 import Authorization from "components/authentication/Authorization"
 import renderMark from "components/editor/renderer/renderMark"
 import renderNode from "components/editor/renderer/renderNode"
-import onKeyDown from "components/editor/tools/onKeyDown"
+import onKeyDown from "components/editor/helpers/onKeyDown"
 import { editInline, saveInlineEditing } from "actions/news"
 import {
   Button,
