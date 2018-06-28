@@ -49,6 +49,7 @@
     "slate-edit-blockquote": "^0.6.1",
     "slate-edit-list": "^0.11.3",
     "slate-edit-table": "^0.15.2",
+    "slate-html-serializer": "^0.6.8",
     "slate-react": "^0.12.10",
     "slate-schema-violations": "^0.1.15",
     "styled-components": "^2.4.0"
