@@ -1,4 +1,3 @@
-import Html from "slate-html-serializer"
 import { getEventTransfer } from "slate-react"
 import deserializer from "components/editor/tools/deserializer"
 
