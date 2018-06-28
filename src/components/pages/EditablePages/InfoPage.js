@@ -3,7 +3,7 @@ import React, { Component } from "react"
 import { connect } from "react-redux"
 import { Flex, Box } from "rebass"
 import Skeleton from "react-loading-skeleton"
-import ExplorePageView from "./ExplorePageView"
+import InfoPageView from "./InfoPageView"
 import { fetchPage } from "actions/editablePages"
 import { NAMESPACE } from "constants/namespace"
 
@@ -19,10 +19,10 @@ type Props = {
 }
 
 /**
- * Fetches the data for the desired Explore page
+ * Fetches the data for the desired editable page
  */
 
-class ExplorePage extends Component<Props> {
+class InfoPage extends Component<Props> {
   // set defaultProps to prevent console warnings
   static defaultProps = {
     page: {
@@ -40,7 +40,7 @@ class ExplorePage extends Component<Props> {
     const { isFetching, page } = this.props
 
     if (!isFetching && page.data.attributes.content) {
-      return <ExplorePageView page={page} match={this.props.match} />
+      return <InfoPageView page={page} match={this.props.match} />
     }
     return (
       <Flex justify="center">
@@ -69,4 +69,4 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-export default connect(mapStateToProps, { fetchPage })(ExplorePage)
+export default connect(mapStateToProps, { fetchPage })(InfoPage)

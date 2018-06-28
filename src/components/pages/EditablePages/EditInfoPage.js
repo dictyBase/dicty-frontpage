@@ -23,10 +23,10 @@ type Props = {
 }
 
 /**
- * Allows editing of the explore page components (i.e. Teach, Learn, etc.)
+ * Allows page editing
  */
 
-const EditExplorePage = (props: Props) => {
+const EditInfoPage = (props: Props) => {
   return (
     <Flex justify="center">
       <Box>
@@ -48,5 +48,5 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 export default connect(mapStateToProps, { saveEditing, cancelEditing })(
-  EditExplorePage,
+  EditInfoPage,
 )

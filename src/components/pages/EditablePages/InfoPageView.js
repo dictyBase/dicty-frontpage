@@ -35,9 +35,9 @@ type Props = {
   loggedInUser: Object,
 }
 
-/** Displays the Explore page data that was fetched from the ExplorePage component */
+/** Displays the page data that was fetched from the InfoPage component */
 
-class ExplorePageView extends Component<Props> {
+class InfoPageView extends Component<Props> {
   componentDidMount() {
     const fetchedUser = new ContentAPI(this.props.page).getUser()
     this.props.fetchUserInfo(fetchedUser)
@@ -116,5 +116,5 @@ const mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps, { editPage, fetchUserInfo })(
-  ExplorePageView,
+  InfoPageView,
 )
