@@ -248,6 +248,24 @@ const Toolbar = props => {
         )
         break
       }
+      case BLOCKS.IMAGE: {
+        isActive = hasBlock(type)
+        Tag = (
+          <Button>
+            <FontAwesome name="image" />
+          </Button>
+        )
+        break
+      }
+      case BLOCKS.VIDEO: {
+        isActive = hasBlock(type)
+        Tag = (
+          <Button>
+            <FontAwesome name="film" />
+          </Button>
+        )
+        break
+      }
       default:
         return null
     }
@@ -279,6 +297,8 @@ const Toolbar = props => {
       {renderBlockButton(BLOCKS.TABLE, "table:2x3 + enter")}
       {renderBlockButton(BLOCKS.UL_LIST, "- + space")}
       {renderBlockButton(BLOCKS.OL_LIST, "1. + space")}
+      {renderBlockButton(BLOCKS.IMAGE, "n/a")}
+      {renderBlockButton(BLOCKS.VIDEO, "n/a")}
     </ToolbarContainer>
   )
 }

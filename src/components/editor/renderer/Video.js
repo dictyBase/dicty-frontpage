@@ -48,20 +48,13 @@ export default class Video extends PureComponent {
             title="video-embed"
             id="ytplayer"
             type="text/html"
-            width="640"
+            width="580"
             height="390"
             src={src}
             frameBorder="0"
             style={iframeStyle}
           />
         </div>
-        <a
-          href={url}
-          target="_blank"
-          onClick={this.onClick}
-          style={{ marginTop: "5px" }}>
-          {url}
-        </a>
       </div>
     )
   }
