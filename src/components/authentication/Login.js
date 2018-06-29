@@ -8,7 +8,7 @@ import ErrorNotification from "components/authentication/ErrorNotification"
 import { Flex, Box } from "rebass"
 
 // list of buttons to display
-const buttons = ["orcid", "google", "linkedin", "facebook"]
+const buttons = ["orcid", "google", "linkedin"]
 
 // custom theme for styling the buttons
 const theme = {
