@@ -22,11 +22,7 @@ const PageNotReady = () => {
           <Flex justify="center">
             <Box w={["90%", "60%", "25%"]}>
               <Link to="/">
-                <SaveButton
-                  size="small"
-                  variant="contained"
-                  color="primary"
-                  onClick={this.onSave}>
+                <SaveButton size="small" variant="contained" color="primary">
                   Dictybase Home
                 </SaveButton>
               </Link>
