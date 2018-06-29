@@ -37,11 +37,13 @@ const headerItems = [
     url: "/community/citation",
     icon: "plus",
     text: "Cite Us",
+    isRouter: true,
   },
   {
     url: "/downloads",
     icon: "download",
     text: "Downloads",
+    isRouter: true,
   },
   {
     url: "/about",
@@ -62,11 +64,13 @@ const loggedHeaderItems = [
     url: "/community/citation",
     icon: "plus",
     text: "Cite Us",
+    isRouter: true,
   },
   {
     url: "/downloads",
     icon: "download",
     text: "Downloads",
+    isRouter: true,
   },
   {
     url: "/about",
