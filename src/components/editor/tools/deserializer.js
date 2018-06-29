@@ -58,6 +58,15 @@ const rules = [
             href: el.getAttribute("href"),
           },
         }
+      } else if (el.tagName.toLowerCase() === "td") {
+        return {
+          object: "block",
+          type: "table-cell",
+          nodes: next(el.childNodes),
+          data: {
+            align: el.style.textAlign,
+          },
+        }
       } else if (BLOCK_TAGS[tagName]) {
         // rule to handle blocks
         return {

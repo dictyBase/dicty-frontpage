@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import { Flex, Box } from "rebass"
 import Tooltip from "@material-ui/core/Tooltip"
 import EditTable from "slate-edit-table"
 import EditList from "slate-edit-list"
@@ -341,30 +342,38 @@ class Toolbar extends Component {
 
     return (
       <ToolbarContainer>
-        {renderMarkButton(MARKS.BOLD, "⌘ + b")}
-        {renderMarkButton(MARKS.ITALIC, "⌘ + i")}
-        {renderMarkButton(MARKS.STRIKETHROUGH, "⌘ + d")}
-        {renderMarkButton(MARKS.UNDERLINE, "⌘ + u")}
-        {renderMarkButton(MARKS.CODE, "⌘ + shift + 9")}
+        <Flex justify="space-between">
+          <Box w={1 / 4}>
+            {renderMarkButton(MARKS.BOLD, "⌘ + b")}
+            {renderMarkButton(MARKS.ITALIC, "⌘ + i")}
+            {renderMarkButton(MARKS.STRIKETHROUGH, "⌘ + d")}
+            {renderMarkButton(MARKS.UNDERLINE, "⌘ + u")}
+            {renderMarkButton(MARKS.CODE, "⌘ + shift + 9")}
+          </Box>
+          <Box w={1 / 5}>
+            {renderBlockButton(BLOCKS.HEADING_1, "# + space")}
+            {renderBlockButton(BLOCKS.HEADING_2, "## + space")}
+            {renderBlockButton(BLOCKS.HEADING_3, "### + space")}
+          </Box>
+          <Box w={1 / 4}>
+            {renderBlockButton(BLOCKS.ALIGN_LEFT, "n/a")}
+            {renderBlockButton(BLOCKS.ALIGN_CENTER, "n/a")}
+            {renderBlockButton(BLOCKS.ALIGN_RIGHT, "n/a")}
+            {renderBlockButton(INLINES.LINK, "n/a")}
+          </Box>
+          <Box w={"30%"}>
+            {renderBlockButton(BLOCKS.HR, "--- + enter")}
+            {renderBlockButton(BLOCKS.BLOCKQUOTE, "> + space")}
+            {renderBlockButton(BLOCKS.TABLE, "table:2x3 + enter")}
+
+            {renderBlockButton(BLOCKS.UL_LIST, "- + space")}
+            {renderBlockButton(BLOCKS.OL_LIST, "1. + space")}
+
+            {renderBlockButton(BLOCKS.IMAGE, "n/a")}
+            {renderBlockButton(BLOCKS.VIDEO, "n/a")}
+          </Box>
+        </Flex>
         &nbsp;
-        {renderBlockButton(BLOCKS.HEADING_1, "# + space")}
-        {renderBlockButton(BLOCKS.HEADING_2, "## + space")}
-        {renderBlockButton(BLOCKS.HEADING_3, "### + space")}
-        &nbsp;
-        {renderBlockButton(BLOCKS.ALIGN_LEFT, "n/a")}
-        {renderBlockButton(BLOCKS.ALIGN_CENTER, "n/a")}
-        {renderBlockButton(BLOCKS.ALIGN_RIGHT, "n/a")}
-        {renderBlockButton(INLINES.LINK, "n/a")}
-        <br />
-        {renderBlockButton(BLOCKS.HR, "--- + enter")}
-        {renderBlockButton(BLOCKS.BLOCKQUOTE, "> + space")}
-        {renderBlockButton(BLOCKS.TABLE, "table:2x3 + enter")}
-        &nbsp;
-        {renderBlockButton(BLOCKS.UL_LIST, "- + space")}
-        {renderBlockButton(BLOCKS.OL_LIST, "1. + space")}
-        &nbsp;
-        {renderBlockButton(BLOCKS.IMAGE, "n/a")}
-        {renderBlockButton(BLOCKS.VIDEO, "n/a")}
       </ToolbarContainer>
     )
   }
