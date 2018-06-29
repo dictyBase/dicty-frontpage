@@ -4,6 +4,7 @@ import { connect } from "react-redux"
 import { Editor, getEventTransfer } from "slate-react"
 import { Value, type Change } from "slate"
 import FontAwesome from "react-fontawesome"
+import styled from "styled-components"
 import { Flex, Box } from "rebass"
 import Authorization from "components/authentication/Authorization"
 import renderMark from "components/editor/renderer/renderMark"
@@ -11,7 +12,7 @@ import renderNode from "components/editor/renderer/renderNode"
 import onKeyDown from "components/editor/helpers/onKeyDown"
 import { editInline, saveInlineEditing } from "actions/news"
 import {
-  Button,
+  ToolbarButton,
   NewsToolBar,
   CancelButton,
   SaveButton,
@@ -54,6 +55,13 @@ const wrapLink = (change, href) => {
 const unwrapLink = change => {
   change.unwrapInline("link")
 }
+
+// set up custom styling for text editor
+const StyledEditor = styled(Editor)`
+  a {
+    text-decoration: none;
+  }
+`
 
 class NewsEditor extends PureComponent<Props, State> {
   constructor(props: Props) {
@@ -172,9 +180,9 @@ class NewsEditor extends PureComponent<Props, State> {
     const onMouseDown = event => this.onClickMark(event, type)
 
     return (
-      <Button onMouseDown={onMouseDown} data-active={isActive}>
+      <ToolbarButton onMouseDown={onMouseDown} data-active={isActive}>
         <FontAwesome name={type} />
-      </Button>
+      </ToolbarButton>
     )
   }
 
@@ -238,51 +246,51 @@ class NewsEditor extends PureComponent<Props, State> {
     switch (type) {
       case "bulleted-list":
         return (
-          <Button onMouseDown={onMouseDown} data-active={isActive}>
+          <ToolbarButton onMouseDown={onMouseDown} data-active={isActive}>
             <FontAwesome name="list-ul" />
-          </Button>
+          </ToolbarButton>
         )
       case "numbered-list":
         return (
-          <Button onMouseDown={onMouseDown} data-active={isActive}>
+          <ToolbarButton onMouseDown={onMouseDown} data-active={isActive}>
             <FontAwesome name="list-ol" />
-          </Button>
+          </ToolbarButton>
         )
       case "heading-one":
         return (
-          <Button onMouseDown={onMouseDown} data-active={isActive}>
+          <ToolbarButton onMouseDown={onMouseDown} data-active={isActive}>
             H1
-          </Button>
+          </ToolbarButton>
         )
       case "heading-two":
         return (
-          <Button onMouseDown={onMouseDown} data-active={isActive}>
+          <ToolbarButton onMouseDown={onMouseDown} data-active={isActive}>
             H2
-          </Button>
+          </ToolbarButton>
         )
       case "heading-three":
         return (
-          <Button onMouseDown={onMouseDown} data-active={isActive}>
+          <ToolbarButton onMouseDown={onMouseDown} data-active={isActive}>
             H3
-          </Button>
+          </ToolbarButton>
         )
       case "block-quote":
         return (
-          <Button onMouseDown={onMouseDown} data-active={isActive}>
+          <ToolbarButton onMouseDown={onMouseDown} data-active={isActive}>
             <FontAwesome name="indent" />
-          </Button>
+          </ToolbarButton>
         )
       case "strikethrough":
         return (
-          <Button onMouseDown={onMouseDown} data-active={isActive}>
+          <ToolbarButton onMouseDown={onMouseDown} data-active={isActive}>
             <FontAwesome name="strikethrough" />
-          </Button>
+          </ToolbarButton>
         )
       case "link":
         return (
-          <Button onMouseDown={this.onClickLink} data-active={hasLinks}>
+          <ToolbarButton onMouseDown={this.onClickLink} data-active={hasLinks}>
             <FontAwesome name="link" />
-          </Button>
+          </ToolbarButton>
         )
       default:
         return
@@ -300,17 +308,11 @@ class NewsEditor extends PureComponent<Props, State> {
             {this.renderMarkButton("underline")}
             {this.renderMarkButton("code")}
             {this.renderMarkButton("strikethrough")}
-            {this.renderBlockButton("bulleted-list")}
-            {this.renderBlockButton("numbered-list")}
-            {this.renderBlockButton("heading-one")}
-            {this.renderBlockButton("heading-two")}
-            {this.renderBlockButton("heading-three")}
-            {this.renderBlockButton("block-quote")}
             {this.renderBlockButton("link")}
           </NewsToolBar>
         )}
 
-        <Editor
+        <StyledEditor
           value={this.state.value}
           onChange={this.onChange}
           onKeyDown={onKeyDown}
@@ -335,14 +337,24 @@ class NewsEditor extends PureComponent<Props, State> {
             )
           }}
         />
-        <Flex>
+        <Flex justify="flex-end">
           <Box width={"15%"} mr={1} mt={1}>
             {!readOnly && (
-              <CancelButton onClick={this.onCancel}>Cancel</CancelButton>
+              <CancelButton mini variant="contained" onClick={this.onCancel}>
+                Cancel
+              </CancelButton>
             )}
           </Box>
           <Box width={"15%"} mr={1} mt={1}>
-            {!readOnly && <SaveButton onClick={this.onSave}>Save</SaveButton>}
+            {!readOnly && (
+              <SaveButton
+                mini
+                variant="contained"
+                color="primary"
+                onClick={this.onSave}>
+                Save
+              </SaveButton>
+            )}
           </Box>
         </Flex>
       </div>

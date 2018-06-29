@@ -1,5 +1,19 @@
 import styled from "styled-components"
 import { Box } from "rebass"
+import Button from "@material-ui/core/Button"
+
+export const CancelButton = styled(Button)`
+  && {
+    width: 100%;
+  }
+`
+
+export const SaveButton = styled(Button)`
+  && {
+    width: 100%;
+    background-color: #15317e;
+  }
+`
 
 export const Container = styled.div`
   display: flex;
@@ -48,7 +62,7 @@ export const ToolBar = styled.div`
   background-color: #f1f8ff;
 `
 
-export const Button = styled.span`
+export const ToolbarButton = styled.span`
   color: #586069;
   width: 50px;
   cursor: pointer;
@@ -98,88 +112,6 @@ export const NewsToolBar = styled.div`
   position: relative;
   padding: 5px 10px 5px;
   margin: 0 -20px;
-`
-
-export const DefaultButton = styled.button`
-  display: inline-block;
-  padding: 6px 12px;
-  margin-bottom: 0;
-  font-size: 14px;
-  font-weight: normal;
-  line-height: 1.42857143;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
-  -ms-touch-action: manipulation;
-  touch-action: manipulation;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  background-image: none;
-  border: 1px solid transparent;
-  border-radius: 4px;
-`
-
-export const CancelButton = DefaultButton.extend`
-  color: #333;
-  background-color: #fff;
-  border-color: #ccc;
-  display: block;
-  width: 100%;
-
-  &:focus {
-    color: #333;
-    background-color: #e6e6e6;
-    border-color: #8c8c8c;
-  }
-
-  &:hover {
-    color: #333;
-    background-color: #e6e6e6;
-    border-color: #adadad;
-  }
-
-  &:active {
-    color: #333;
-    background-color: #e6e6e6;
-    border-color: #adadad;
-  }
-`
-
-export const SaveButton = DefaultButton.extend`
-  color: #fff;
-  background-color: #337ab7;
-  border-color: #2e6da4;
-  width: 100%;
-
-  a {
-    color: #fff;
-  }
-
-  a:hover {
-    color: #fff;
-    text-decoration: none;
-  }
-
-  &:focus {
-    color: #fff;
-    background-color: #286090;
-    border-color: #122b40;
-  }
-
-  &:hover {
-    color: #fff;
-    background-color: #286090;
-    border-color: #204d74;
-  }
-
-  &:active {
-    color: #fff;
-    background-color: #286090;
-    border-color: #204d74;
-  }
 `
 
 export const InlineLink = styled.a`

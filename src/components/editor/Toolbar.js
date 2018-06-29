@@ -6,7 +6,10 @@ import EditBlockquote from "slate-edit-blockquote"
 import FontAwesome from "react-fontawesome"
 import MARKS from "components/editor/constants/marks"
 import BLOCKS from "components/editor/constants/blocks"
-import { Button, ToolBar as ToolbarContainer } from "styles/EditablePageStyles"
+import {
+  ToolbarButton,
+  ToolBar as ToolbarContainer,
+} from "styles/EditablePageStyles"
 
 const TablePlugin = EditTable()
 
@@ -45,37 +48,37 @@ const Toolbar = props => {
     switch (type) {
       case MARKS.BOLD:
         Tag = (
-          <Button>
+          <ToolbarButton>
             <FontAwesome name="bold" />
-          </Button>
+          </ToolbarButton>
         )
         break
       case MARKS.ITALIC:
         Tag = (
-          <Button>
+          <ToolbarButton>
             <FontAwesome name="italic" />
-          </Button>
+          </ToolbarButton>
         )
         break
       case MARKS.STRIKETHROUGH:
         Tag = (
-          <Button>
+          <ToolbarButton>
             <FontAwesome name="strikethrough" />
-          </Button>
+          </ToolbarButton>
         )
         break
       case MARKS.UNDERLINE:
         Tag = (
-          <Button>
+          <ToolbarButton>
             <FontAwesome name="underline" />
-          </Button>
+          </ToolbarButton>
         )
         break
       case MARKS.CODE:
         Tag = (
-          <Button>
+          <ToolbarButton>
             <FontAwesome name="code" />
-          </Button>
+          </ToolbarButton>
         )
         break
       default:
@@ -163,66 +166,66 @@ const Toolbar = props => {
     switch (type) {
       case BLOCKS.HEADING_1: {
         isActive = hasBlock(type)
-        Tag = <Button>H1</Button>
+        Tag = <ToolbarButton>H1</ToolbarButton>
         break
       }
       case BLOCKS.HEADING_2: {
         isActive = hasBlock(type)
-        Tag = <Button>H2</Button>
+        Tag = <ToolbarButton>H2</ToolbarButton>
         break
       }
       case BLOCKS.HEADING_3: {
         isActive = hasBlock(type)
-        Tag = <Button>H3</Button>
+        Tag = <ToolbarButton>H3</ToolbarButton>
         break
       }
       case BLOCKS.ALIGN_LEFT: {
         isActive = hasBlock(type)
         Tag = (
-          <Button>
+          <ToolbarButton>
             <FontAwesome name="align-left" />
-          </Button>
+          </ToolbarButton>
         )
         break
       }
       case BLOCKS.ALIGN_CENTER: {
         isActive = hasBlock(type)
         Tag = (
-          <Button>
+          <ToolbarButton>
             <FontAwesome name="align-center" />
-          </Button>
+          </ToolbarButton>
         )
         break
       }
       case BLOCKS.ALIGN_RIGHT: {
         isActive = hasBlock(type)
         Tag = (
-          <Button>
+          <ToolbarButton>
             <FontAwesome name="align-right" />
-          </Button>
+          </ToolbarButton>
         )
         break
       }
       case BLOCKS.HR: {
         isActive = hasBlock(type)
-        Tag = <Button>HR</Button>
+        Tag = <ToolbarButton>HR</ToolbarButton>
         break
       }
       case BLOCKS.BLOCKQUOTE: {
         isActive = BlockquotePlugin.utils.isSelectionInBlockquote(value)
         Tag = (
-          <Button>
+          <ToolbarButton>
             <FontAwesome name="indent" />
-          </Button>
+          </ToolbarButton>
         )
         break
       }
       case BLOCKS.TABLE: {
         isActive = TablePlugin.utils.isSelectionInTable(value)
         Tag = (
-          <Button>
+          <ToolbarButton>
             <FontAwesome name="table" />
-          </Button>
+          </ToolbarButton>
         )
         break
       }
@@ -231,9 +234,9 @@ const Toolbar = props => {
           ListPlugin.utils.isSelectionInList(value) &&
           ListPlugin.utils.getCurrentList(value).type === type
         Tag = (
-          <Button>
+          <ToolbarButton>
             <FontAwesome name="list-ul" />
-          </Button>
+          </ToolbarButton>
         )
         break
       }
@@ -242,27 +245,27 @@ const Toolbar = props => {
           ListPlugin.utils.isSelectionInList(value) &&
           ListPlugin.utils.getCurrentList(value).type === type
         Tag = (
-          <Button>
+          <ToolbarButton>
             <FontAwesome name="list-ol" />
-          </Button>
+          </ToolbarButton>
         )
         break
       }
       case BLOCKS.IMAGE: {
         isActive = hasBlock(type)
         Tag = (
-          <Button>
+          <ToolbarButton>
             <FontAwesome name="image" />
-          </Button>
+          </ToolbarButton>
         )
         break
       }
       case BLOCKS.VIDEO: {
         isActive = hasBlock(type)
         Tag = (
-          <Button>
+          <ToolbarButton>
             <FontAwesome name="film" />
-          </Button>
+          </ToolbarButton>
         )
         break
       }

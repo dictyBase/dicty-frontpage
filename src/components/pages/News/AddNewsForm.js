@@ -222,11 +222,19 @@ class AddNewsForm extends Component<Props, State> {
         <Flex justify="center">
           <NewsEditorButtonsBox width={["90%", "80%", "50%", "40%"]}>
             <Flex justify="flex-end">
-              <Box width={["25%"]} mr={1}>
-                <CancelButton onClick={this.onCancel}>Cancel</CancelButton>
+              <Box width={["20%"]} mr={1}>
+                <CancelButton mini variant="contained" onClick={this.onCancel}>
+                  Cancel
+                </CancelButton>
               </Box>
-              <Box width={["25%"]} mr={1}>
-                <SaveButton onClick={this.onSave}>Save</SaveButton>
+              <Box width={["20%"]} mr={1}>
+                <SaveButton
+                  mini
+                  variant="contained"
+                  color="primary"
+                  onClick={this.onSave}>
+                  Save
+                </SaveButton>
               </Box>
             </Flex>
           </NewsEditorButtonsBox>

@@ -2,7 +2,10 @@ import React from "react"
 import Tooltip from "@material-ui/core/Tooltip"
 import FontAwesome from "react-fontawesome"
 import MARKS from "components/editor/constants/marks"
-import { Button, ToolBar as ToolbarContainer } from "styles/EditablePageStyles"
+import {
+  ToolbarButton,
+  ToolBar as ToolbarContainer,
+} from "styles/EditablePageStyles"
 
 const NewsToolbar = props => {
   const hasMark = type => {
@@ -27,37 +30,37 @@ const NewsToolbar = props => {
     switch (type) {
       case MARKS.BOLD:
         Tag = (
-          <Button>
+          <ToolbarButton>
             <FontAwesome name="bold" />
-          </Button>
+          </ToolbarButton>
         )
         break
       case MARKS.ITALIC:
         Tag = (
-          <Button>
+          <ToolbarButton>
             <FontAwesome name="italic" />
-          </Button>
+          </ToolbarButton>
         )
         break
       case MARKS.UNDERLINE:
         Tag = (
-          <Button>
+          <ToolbarButton>
             <FontAwesome name="underline" />
-          </Button>
+          </ToolbarButton>
         )
         break
       case MARKS.STRIKETHROUGH:
         Tag = (
-          <Button>
+          <ToolbarButton>
             <FontAwesome name="strikethrough" />
-          </Button>
+          </ToolbarButton>
         )
         break
       case MARKS.CODE:
         Tag = (
-          <Button>
+          <ToolbarButton>
             <FontAwesome name="code" />
-          </Button>
+          </ToolbarButton>
         )
         break
       default:

@@ -11,7 +11,7 @@ import renderNode from "components/editor/renderer/renderNode"
 import onKeyDown from "components/editor/helpers/onKeyDown"
 import { editInline, saveInlineEditing } from "actions/editablePages"
 import {
-  Button,
+  ToolbarButton,
   ToolBar,
   CancelButton,
   SaveButton,
@@ -176,9 +176,9 @@ class InlineEditor extends Component<Props, State> {
     const onMouseDown = event => this.onClickMark(event, type)
 
     return (
-      <Button onMouseDown={onMouseDown} data-active={isActive}>
+      <ToolbarButton onMouseDown={onMouseDown} data-active={isActive}>
         <FontAwesome name={type} />
-      </Button>
+      </ToolbarButton>
     )
   }
 
@@ -240,53 +240,17 @@ class InlineEditor extends Component<Props, State> {
     const hasLinks = this.hasLinks()
 
     switch (type) {
-      case "bulleted-list":
-        return (
-          <Button onMouseDown={onMouseDown} data-active={isActive}>
-            <FontAwesome name="list-ul" />
-          </Button>
-        )
-      case "numbered-list":
-        return (
-          <Button onMouseDown={onMouseDown} data-active={isActive}>
-            <FontAwesome name="list-ol" />
-          </Button>
-        )
-      case "heading-one":
-        return (
-          <Button onMouseDown={onMouseDown} data-active={isActive}>
-            H1
-          </Button>
-        )
-      case "heading-two":
-        return (
-          <Button onMouseDown={onMouseDown} data-active={isActive}>
-            H2
-          </Button>
-        )
-      case "heading-three":
-        return (
-          <Button onMouseDown={onMouseDown} data-active={isActive}>
-            H3
-          </Button>
-        )
-      case "block-quote":
-        return (
-          <Button onMouseDown={onMouseDown} data-active={isActive}>
-            <FontAwesome name="indent" />
-          </Button>
-        )
       case "strikethrough":
         return (
-          <Button onMouseDown={onMouseDown} data-active={isActive}>
+          <ToolbarButton onMouseDown={onMouseDown} data-active={isActive}>
             <FontAwesome name="strikethrough" />
-          </Button>
+          </ToolbarButton>
         )
       case "link":
         return (
-          <Button onMouseDown={this.onClickLink} data-active={hasLinks}>
+          <ToolbarButton onMouseDown={this.onClickLink} data-active={hasLinks}>
             <FontAwesome name="link" />
-          </Button>
+          </ToolbarButton>
         )
       default:
         return
@@ -304,12 +268,6 @@ class InlineEditor extends Component<Props, State> {
             {this.renderMarkButton("underline")}
             {this.renderMarkButton("code")}
             {this.renderMarkButton("strikethrough")}
-            {this.renderBlockButton("bulleted-list")}
-            {this.renderBlockButton("numbered-list")}
-            {this.renderBlockButton("heading-one")}
-            {this.renderBlockButton("heading-two")}
-            {this.renderBlockButton("heading-three")}
-            {this.renderBlockButton("block-quote")}
             {this.renderBlockButton("link")}
           </ToolBar>
         )}
