@@ -7,6 +7,7 @@ import configureStore, { history } from "./store/configureStore"
 import "./index.css"
 import App from "./App"
 import registerServiceWorker from "./registerServiceWorker"
+import "styles/Body"
 
 // load state from localStorage(if any) to set the initial state for the store
 const initialState = hydrateStore({ key: "auth", namespace: "auth" })
