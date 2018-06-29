@@ -4,6 +4,7 @@ import { connect } from "react-redux"
 import { Editor, getEventTransfer } from "slate-react"
 import { Value, type Change } from "slate"
 import { Flex, Box } from "rebass"
+import styled from "styled-components"
 import Toolbar from "components/editor/Toolbar"
 import insertImage from "components/editor/helpers/insertImage"
 import onPasteHtml from "components/editor/helpers/onPasteHtml"
@@ -28,6 +29,21 @@ const wrapLink = (change, href) => {
 const unwrapLink = change => {
   change.unwrapInline("link")
 }
+
+// set up custom styling for text editor
+const StyledEditor = styled(Editor)`
+  padding: 15px;
+  min-height: 200px;
+
+  a {
+    color: #428bca;
+    text-decoration: none;
+  }
+  :focus {
+    border: 4px solid rgba(3, 102, 214, 0.3);
+    border-radius: 1px;
+  }
+`
 
 type Props = {
   /** The object holding the fetched page content */
@@ -175,7 +191,7 @@ class PageEditor extends Component<Props, State> {
           />
         )}
 
-        <Editor
+        <StyledEditor
           value={this.state.value}
           onChange={this.onChange}
           onPaste={this.onPaste}
@@ -187,14 +203,27 @@ class PageEditor extends Component<Props, State> {
           plugins={plugins}
         />
 
-        <Flex>
-          <Box width={"40%"} mr={1} mt={1}>
+        <Flex justify="flex-end">
+          <Box width={"20%"} mr={1} mt={1}>
             {!readOnly && (
-              <CancelButton onClick={this.onCancel}>Cancel</CancelButton>
+              <CancelButton
+                size="small"
+                variant="contained"
+                onClick={this.onCancel}>
+                Cancel
+              </CancelButton>
             )}
           </Box>
-          <Box width={"40%"} mr={1} mt={1}>
-            {!readOnly && <SaveButton onClick={this.onSave}>Save</SaveButton>}
+          <Box width={"20%"} mr={1} mt={1}>
+            {!readOnly && (
+              <SaveButton
+                size="small"
+                variant="contained"
+                color="primary"
+                onClick={this.onSave}>
+                Save
+              </SaveButton>
+            )}
           </Box>
         </Flex>
       </div>

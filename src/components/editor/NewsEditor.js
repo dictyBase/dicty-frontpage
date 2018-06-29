@@ -59,6 +59,7 @@ const unwrapLink = change => {
 // set up custom styling for text editor
 const StyledEditor = styled(Editor)`
   a {
+    color: #428bca;
     text-decoration: none;
   }
 `
@@ -340,7 +341,10 @@ class NewsEditor extends PureComponent<Props, State> {
         <Flex justify="flex-end">
           <Box width={"15%"} mr={1} mt={1}>
             {!readOnly && (
-              <CancelButton mini variant="contained" onClick={this.onCancel}>
+              <CancelButton
+                size="small"
+                variant="contained"
+                onClick={this.onCancel}>
                 Cancel
               </CancelButton>
             )}
@@ -348,7 +352,7 @@ class NewsEditor extends PureComponent<Props, State> {
           <Box width={"15%"} mr={1} mt={1}>
             {!readOnly && (
               <SaveButton
-                mini
+                size="small"
                 variant="contained"
                 color="primary"
                 onClick={this.onSave}>

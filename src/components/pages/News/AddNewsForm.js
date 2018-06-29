@@ -30,6 +30,7 @@ const StyledEditor = styled(Editor)`
   min-height: 200px;
 
   a {
+    color: #428bca;
     text-decoration: none;
   }
   :focus {

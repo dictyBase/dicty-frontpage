@@ -299,14 +299,27 @@ class InlineEditor extends Component<Props, State> {
             )
           }}
         />
-        <Flex>
-          <Box width={"40%"} mr={1} mt={1}>
+        <Flex justify="flex-end">
+          <Box width={"20%"} mr={1} mt={1}>
             {!readOnly && (
-              <CancelButton onClick={this.onCancel}>Cancel</CancelButton>
+              <CancelButton
+                size="small"
+                variant="contained"
+                onClick={this.onCancel}>
+                Cancel
+              </CancelButton>
             )}
           </Box>
-          <Box width={"40%"} mr={1} mt={1}>
-            {!readOnly && <SaveButton onClick={this.onSave}>Save</SaveButton>}
+          <Box width={"20%"} mr={1} mt={1}>
+            {!readOnly && (
+              <SaveButton
+                size="small"
+                variant="contained"
+                color="primary"
+                onClick={this.onSave}>
+                Save
+              </SaveButton>
+            )}
           </Box>
         </Flex>
       </div>
