@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { Box } from "rebass"
 
 export const Container = styled.div`
   display: flex;
@@ -10,6 +11,10 @@ export const Container = styled.div`
   @media (max-width: 767px) {
     flex-wrap: wrap;
   }
+`
+
+export const NewsEditorBox = styled(Box)`
+  border: 2px solid #d1d5da;
 `
 
 export const EditorStyle = styled.div`

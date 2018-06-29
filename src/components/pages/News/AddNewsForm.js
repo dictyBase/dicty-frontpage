@@ -3,24 +3,29 @@ import React, { Component } from "react"
 import { connect } from "react-redux"
 import { Editor, getEventTransfer } from "slate-react"
 import { Value, type Change } from "slate"
-import FontAwesome from "react-fontawesome"
 import { Flex, Box } from "rebass"
 import styled from "styled-components"
+import NewsToolbar from "components/editor/NewsToolbar"
+import onPasteHtml from "components/editor/helpers/onPasteHtml"
+import onPasteText from "components/editor/helpers/onPasteText"
+import onKeyDown from "components/editor/helpers/onKeyDown"
 import renderMark from "components/editor/renderer/renderMark"
 import renderNode from "components/editor/renderer/renderNode"
+import plugins from "components/editor/plugins/plugins"
+import schema from "components/editor/schema/schema"
 import { AuthenticatedUser } from "utils/apiClasses"
 import { addNewsItem, cancelEditing } from "actions/news"
 import {
-  Button,
-  ToolBar,
   CancelButton,
   SaveButton,
+  NewsEditorBox,
 } from "styles/EditablePageStyles"
 import { frontpagenews } from "constants/resources"
 import editorPlaceholder from "data/editorPlaceholder.json"
 
 // set up custom styling for text editor
 const StyledEditor = styled(Editor)`
+  padding: 5px;
   a {
     text-decoration: none;
   }
@@ -43,11 +48,8 @@ type State = {
 }
 
 /**
- * This is a reusable Slate inline editor component.
+ * This is the Slate editor for adding a news item.
  */
-
-/* The default mode for text */
-const DEFAULT_NODE = "paragraph"
 
 const wrapLink = (change, href) => {
   change.wrapInline({
@@ -138,19 +140,17 @@ class AddNewsForm extends Component<Props, State> {
     this.onChange(change)
   }
 
-  onPaste = (event: SyntheticEvent<>, change: Change) => {
-    if (change.value.isCollapsed) return
-
-    const transfer = getEventTransfer(event)
-    const { type, text } = transfer
-    if (type !== "text" && type !== "html") return
-
-    if (this.hasLinks()) {
-      change.call(unwrapLink)
+  onPaste = (e: SyntheticEvent<>, change: Change) => {
+    const transfer = getEventTransfer(e)
+    const { type } = transfer
+    switch (type) {
+      case "text":
+        return onPasteText(e, change)
+      case "html":
+        return onPasteHtml(e, change)
+      default:
+        break
     }
-
-    change.call(wrapLink, text)
-    return true
   }
 
   /* Keyboard Hotkeys */
@@ -193,172 +193,29 @@ class AddNewsForm extends Component<Props, State> {
     }
   }
 
-  /* HTML Toolbar */
-
-  /* For bold, underline, and italic text */
-  hasMark = (type: string) => {
-    const { value } = this.state
-    return value.activeMarks.some(mark => mark.type === type)
-  }
-
-  onClickMark = (event: SyntheticEvent<>, type: string) => {
-    event.preventDefault()
-    const { value } = this.state
-    const change = value.change().toggleMark(type)
-    this.onChange(change)
-  }
-
-  renderMarkButton = (type: string) => {
-    const isActive = this.hasMark(type)
-    const onMouseDown = event => this.onClickMark(event, type)
-
-    return (
-      <Button onMouseDown={onMouseDown} data-active={isActive}>
-        <FontAwesome name={type} />
-      </Button>
-    )
-  }
-
-  /* For ordered and unordered bullets */
-
-  hasBlock = (type: string) => {
-    const { value } = this.state
-    return value.blocks.some(node => node.type === type)
-  }
-
-  onClickBlock = (event: SyntheticEvent<>, type: string) => {
-    event.preventDefault()
-    const { value } = this.state
-    const change = value.change()
-    const { document } = value
-
-    // Handle anything that aren't lists
-    if (type !== "bulleted-list" && type !== "numbered-list") {
-      const isActive = this.hasBlock(type)
-      const isList = this.hasBlock("list-item")
-
-      if (isList) {
-        change
-          .setBlocks(isActive ? DEFAULT_NODE : type)
-          .unwrapBlock("bulleted-list")
-          .unwrapBlock("numbered-list")
-      } else {
-        change.setBlocks(isActive ? DEFAULT_NODE : type)
-      }
-    } else {
-      // Handle the extra wrapping required for list buttons.
-      const isList = this.hasBlock("list-item")
-      const isType = value.blocks.some(block => {
-        return !!document.getClosest(block.key, parent => parent.type === type)
-      })
-
-      if (isList && isType) {
-        change
-          .setBlocks(DEFAULT_NODE)
-          .unwrapBlock("bulleted-list")
-          .unwrapBlock("numbered-list")
-      } else if (isList) {
-        change
-          .unwrapBlock(
-            type === "bulleted-list" ? "numbered-list" : "bulleted-list",
-          )
-          .wrapBlock(type)
-      } else {
-        change.setBlocks("list-item").wrapBlock(type)
-      }
-    }
-
-    this.onChange(change)
-  }
-
-  renderBlockButton = (type: string) => {
-    const isActive = this.hasBlock(type)
-    const onMouseDown = event => this.onClickBlock(event, type)
-    const hasLinks = this.hasLinks()
-
-    switch (type) {
-      case "bulleted-list":
-        return (
-          <Button onMouseDown={onMouseDown} data-active={isActive}>
-            <FontAwesome name="list-ul" />
-          </Button>
-        )
-      case "numbered-list":
-        return (
-          <Button onMouseDown={onMouseDown} data-active={isActive}>
-            <FontAwesome name="list-ol" />
-          </Button>
-        )
-      case "heading-one":
-        return (
-          <Button onMouseDown={onMouseDown} data-active={isActive}>
-            H1
-          </Button>
-        )
-      case "heading-two":
-        return (
-          <Button onMouseDown={onMouseDown} data-active={isActive}>
-            H2
-          </Button>
-        )
-      case "heading-three":
-        return (
-          <Button onMouseDown={onMouseDown} data-active={isActive}>
-            H3
-          </Button>
-        )
-      case "block-quote":
-        return (
-          <Button onMouseDown={onMouseDown} data-active={isActive}>
-            <FontAwesome name="indent" />
-          </Button>
-        )
-      case "strikethrough":
-        return (
-          <Button onMouseDown={onMouseDown} data-active={isActive}>
-            <FontAwesome name="strikethrough" />
-          </Button>
-        )
-      case "link":
-        return (
-          <Button onMouseDown={this.onClickLink} data-active={hasLinks}>
-            <FontAwesome name="link" />
-          </Button>
-        )
-      default:
-        return
-    }
-  }
-
   render() {
     const { readOnly } = this.state
     return (
       <Flex justify="center">
-        <Box width={["90%", "80%", "50%", "40%"]}>
+        <NewsEditorBox width={["90%", "80%", "50%", "40%"]}>
           {!readOnly && (
-            <ToolBar>
-              {this.renderMarkButton("bold")}
-              {this.renderMarkButton("italic")}
-              {this.renderMarkButton("underline")}
-              {this.renderMarkButton("code")}
-              {this.renderMarkButton("strikethrough")}
-              {this.renderBlockButton("bulleted-list")}
-              {this.renderBlockButton("numbered-list")}
-              {this.renderBlockButton("heading-one")}
-              {this.renderBlockButton("heading-two")}
-              {this.renderBlockButton("heading-three")}
-              {this.renderBlockButton("block-quote")}
-              {this.renderBlockButton("link")}
-            </ToolBar>
+            <NewsToolbar
+              value={this.state.value}
+              onChange={value => this.onChange(value)}
+            />
           )}
 
           <StyledEditor
             value={this.state.value}
             onChange={this.onChange}
-            onKeyDown={this.onKeyDown}
+            onPaste={this.onPaste}
+            onKeyDown={onKeyDown}
             renderMark={renderMark}
             renderNode={renderNode}
             readOnly={readOnly}
+            schema={schema}
+            plugins={plugins}
+            placeholder="Enter text here..."
           />
           <br />
           <Flex>
@@ -371,7 +228,7 @@ class AddNewsForm extends Component<Props, State> {
               {!readOnly && <SaveButton onClick={this.onSave}>Save</SaveButton>}
             </Box>
           </Flex>
-        </Box>
+        </NewsEditorBox>
       </Flex>
     )
   }
