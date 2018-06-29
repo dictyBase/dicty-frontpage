@@ -14,7 +14,19 @@ export const Container = styled.div`
 `
 
 export const NewsEditorBox = styled(Box)`
-  border: 2px solid #d1d5da;
+  border-top: 2px solid #d1d5da;
+  border-left: 2px solid #d1d5da;
+  border-right: 2px solid #d1d5da;
+  border-radius: 5px 5px 0px 0px;
+  min-height: 200px;
+`
+
+export const NewsEditorButtonsBox = styled(Box)`
+  border-left: 2px solid #d1d5da;
+  border-right: 2px solid #d1d5da;
+  border-bottom: 2px solid #d1d5da;
+  border-radius: 0px 0px 5px 5px;
+  padding: 5px;
 `
 
 export const EditorStyle = styled.div`
@@ -31,8 +43,8 @@ export const EditorStyle = styled.div`
 export const ToolBar = styled.div`
   position: relative;
   padding: 20px 18px 17px;
-  border: 2px solid #d1d5da;
-  margin-bottom: 20px;
+  border-bottom: 2px solid #d1d5da;
+  /* margin-bottom: 20px; */
   background-color: #f1f8ff;
 `
 

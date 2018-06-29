@@ -19,15 +19,22 @@ import {
   CancelButton,
   SaveButton,
   NewsEditorBox,
+  NewsEditorButtonsBox,
 } from "styles/EditablePageStyles"
 import { frontpagenews } from "constants/resources"
 import editorPlaceholder from "data/editorPlaceholder.json"
 
 // set up custom styling for text editor
 const StyledEditor = styled(Editor)`
-  padding: 5px;
+  padding: 15px;
+  min-height: 200px;
+
   a {
     text-decoration: none;
+  }
+  :focus {
+    border: 4px solid rgba(3, 102, 214, 0.3);
+    border-radius: 1px;
   }
 `
 
@@ -43,8 +50,6 @@ type Props = {
 type State = {
   /** This is the initial value of the editable page content. */
   value: Object,
-  /** Determines whether the editor is read only or not */
-  readOnly: boolean,
 }
 
 /**
@@ -71,7 +76,6 @@ class AddNewsForm extends Component<Props, State> {
     this.state = {
       // Initial value of editor
       value: Value.fromJSON(editorPlaceholder),
-      readOnly: false,
     }
   }
 
@@ -87,7 +91,6 @@ class AddNewsForm extends Component<Props, State> {
   onCancel = () => {
     this.setState({
       value: this.state.value,
-      readOnly: true,
     })
     this.props.cancelEditing()
   }
@@ -194,42 +197,41 @@ class AddNewsForm extends Component<Props, State> {
   }
 
   render() {
-    const { readOnly } = this.state
     return (
-      <Flex justify="center">
-        <NewsEditorBox width={["90%", "80%", "50%", "40%"]}>
-          {!readOnly && (
+      <div>
+        <Flex justify="center">
+          <NewsEditorBox width={["90%", "80%", "50%", "40%"]}>
             <NewsToolbar
               value={this.state.value}
               onChange={value => this.onChange(value)}
             />
-          )}
 
-          <StyledEditor
-            value={this.state.value}
-            onChange={this.onChange}
-            onPaste={this.onPaste}
-            onKeyDown={onKeyDown}
-            renderMark={renderMark}
-            renderNode={renderNode}
-            readOnly={readOnly}
-            schema={schema}
-            plugins={plugins}
-            placeholder="Enter text here..."
-          />
-          <br />
-          <Flex>
-            <Box width={["30%"]} mr={1} mt={1}>
-              {!readOnly && (
+            <StyledEditor
+              value={this.state.value}
+              onChange={this.onChange}
+              onPaste={this.onPaste}
+              onKeyDown={onKeyDown}
+              renderMark={renderMark}
+              renderNode={renderNode}
+              schema={schema}
+              plugins={plugins}
+              placeholder="Enter text here..."
+            />
+          </NewsEditorBox>
+        </Flex>
+        <Flex justify="center">
+          <NewsEditorButtonsBox width={["90%", "80%", "50%", "40%"]}>
+            <Flex justify="flex-end">
+              <Box width={["25%"]} mr={1}>
                 <CancelButton onClick={this.onCancel}>Cancel</CancelButton>
-              )}
-            </Box>
-            <Box width={["30%"]} mr={1} mt={1}>
-              {!readOnly && <SaveButton onClick={this.onSave}>Save</SaveButton>}
-            </Box>
-          </Flex>
-        </NewsEditorBox>
-      </Flex>
+              </Box>
+              <Box width={["25%"]} mr={1}>
+                <SaveButton onClick={this.onSave}>Save</SaveButton>
+              </Box>
+            </Flex>
+          </NewsEditorButtonsBox>
+        </Flex>
+      </div>
     )
   }
 }
