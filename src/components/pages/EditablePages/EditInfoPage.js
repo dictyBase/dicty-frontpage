@@ -4,7 +4,7 @@ import { connect } from "react-redux"
 import { Flex, Box } from "rebass"
 import PageEditor from "components/editor/PageEditor"
 import { saveEditing, cancelEditing } from "actions/editablePages"
-import { EditorStyle, EditPanel } from "styles/EditablePageStyles"
+import { EditorStyle } from "styles/EditablePageStyles"
 import { NAMESPACE } from "constants/namespace"
 
 type Props = {
@@ -30,11 +30,9 @@ const EditInfoPage = (props: Props) => {
   return (
     <Flex justify="center">
       <Box w="50%">
-        <EditPanel>
-          <EditorStyle>
-            <PageEditor page={props.page} match={props.match} />
-          </EditorStyle>
-        </EditPanel>
+        <EditorStyle>
+          <PageEditor page={props.page} match={props.match} />
+        </EditorStyle>
       </Box>
     </Flex>
   )

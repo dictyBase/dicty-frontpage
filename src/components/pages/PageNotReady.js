@@ -1,18 +1,10 @@
 // @flow
 import React from "react"
 import { Link } from "react-router-dom"
-import styled from "styled-components"
+import { Flex, Box } from "rebass"
 import FontAwesome from "react-fontawesome"
 import Jumbotron from "styles/Jumbotron"
-import { Container } from "styles/learn_teach/learn_teach_styles"
-
-const ConstructionContainer = styled(Container)`
-  margin-top: 20px;
-`
-
-const HomeLink = styled(Link)`
-  text-decoration: none;
-`
+import { SaveButton } from "styles/EditablePageStyles"
 
 /**
  * General 404 error page, currently designated as "Page Not Ready"/"Under Construction"
@@ -20,16 +12,29 @@ const HomeLink = styled(Link)`
 
 const PageNotReady = () => {
   return (
-    <ConstructionContainer>
-      <Jumbotron>
-        <h1>
-          <FontAwesome name="wrench" /> Under Construction
-        </h1>
-        <p>This page is not ready yet.</p>
-
-        <HomeLink to="/">Dictybase Home</HomeLink>
-      </Jumbotron>
-    </ConstructionContainer>
+    <Flex justify="center" style={{ marginTop: "20px" }}>
+      <Box w="60%">
+        <Jumbotron>
+          <h1>
+            <FontAwesome name="wrench" /> Under Construction
+          </h1>
+          <p>This page is not ready yet.</p>
+          <Flex justify="center">
+            <Box w={["90%", "60%", "25%"]}>
+              <Link to="/">
+                <SaveButton
+                  size="small"
+                  variant="contained"
+                  color="primary"
+                  onClick={this.onSave}>
+                  Dictybase Home
+                </SaveButton>
+              </Link>
+            </Box>
+          </Flex>
+        </Jumbotron>
+      </Box>
+    </Flex>
   )
 }
 

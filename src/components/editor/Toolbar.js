@@ -8,7 +8,7 @@ import MARKS from "components/editor/constants/marks"
 import BLOCKS from "components/editor/constants/blocks"
 import {
   ToolbarButton,
-  ToolBar as ToolbarContainer,
+  Toolbar as ToolbarContainer,
 } from "styles/EditablePageStyles"
 
 const TablePlugin = EditTable()

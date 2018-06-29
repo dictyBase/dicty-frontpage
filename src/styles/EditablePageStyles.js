@@ -15,18 +15,6 @@ export const SaveButton = styled(Button)`
   }
 `
 
-export const Container = styled.div`
-  display: flex;
-  flex-direction: row;
-  width: 90%;
-  margin: auto;
-  line-height: 1.428;
-
-  @media (max-width: 767px) {
-    flex-wrap: wrap;
-  }
-`
-
 export const NewsEditorBox = styled(Box)`
   border-top: 2px solid #d1d5da;
   border-left: 2px solid #d1d5da;
@@ -44,17 +32,14 @@ export const NewsEditorButtonsBox = styled(Box)`
 `
 
 export const EditorStyle = styled.div`
-  box-sizing: border-box;
   border: 1px solid #ddd;
   cursor: text;
-  padding: 2px;
   border-radius: 2px;
-  margin-bottom: 2em;
-  background: #fefefe;
   margin: 10px auto;
+  padding-bottom: 5px;
 `
 
-export const ToolBar = styled.div`
+export const Toolbar = styled.div`
   position: relative;
   padding: 20px 18px 17px;
   border-bottom: 2px solid #d1d5da;
@@ -107,7 +92,7 @@ export const Hdrtxt = styled.p`
   font-size: 21px;
 `
 
-export const NewsToolBar = styled.div`
+export const NewsToolbar = styled.div`
   background-color: #f1f8ff;
   position: relative;
   padding: 5px 10px 5px;
@@ -132,7 +117,7 @@ export const ToolbarNav = styled.div`
   background-color: #fafafa;
   border-radius: 2px;
   border: 1px solid #ddd;
-  padding: 5px;
+  padding: 9px;
   width: 100%;
   display: inline-block;
 `
@@ -154,13 +139,5 @@ export const Label = styled.span`
   }
   &:focus {
     background-color: #337ab7;
-  }
-`
-
-export const EditPanel = styled.div`
-  /* border: 1px solid #ddd; */
-  /* padding: 10px; */
-  [contenteditable="true"]:focus {
-    outline: none;
   }
 `

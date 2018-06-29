@@ -12,7 +12,7 @@ import onKeyDown from "components/editor/helpers/onKeyDown"
 import { editInline, saveInlineEditing } from "actions/editablePages"
 import {
   ToolbarButton,
-  ToolBar,
+  Toolbar,
   CancelButton,
   SaveButton,
   InlineLink,
@@ -262,14 +262,14 @@ class InlineEditor extends Component<Props, State> {
     return (
       <div>
         {!readOnly && (
-          <ToolBar>
+          <Toolbar>
             {this.renderMarkButton("bold")}
             {this.renderMarkButton("italic")}
             {this.renderMarkButton("underline")}
             {this.renderMarkButton("code")}
             {this.renderMarkButton("strikethrough")}
             {this.renderBlockButton("link")}
-          </ToolBar>
+          </Toolbar>
         )}
 
         <Editor

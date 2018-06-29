@@ -42,7 +42,7 @@ class InfoPage extends Component<Props> {
     if (!isFetching && page.data.attributes.content) {
       return (
         <Flex justify="center">
-          <Box w={"50%"}>
+          <Box w={"60%"}>
             <InfoPageView page={page} match={this.props.match} />
           </Box>
         </Flex>
@@ -50,7 +50,7 @@ class InfoPage extends Component<Props> {
     }
     return (
       <Flex justify="center">
-        <Box w={"50%"}>
+        <Box w={"60%"}>
           <h1>
             <Skeleton />
           </h1>

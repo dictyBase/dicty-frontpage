@@ -4,7 +4,7 @@ import FontAwesome from "react-fontawesome"
 import MARKS from "components/editor/constants/marks"
 import {
   ToolbarButton,
-  ToolBar as ToolbarContainer,
+  Toolbar as ToolbarContainer,
 } from "styles/EditablePageStyles"
 
 const NewsToolbar = props => {

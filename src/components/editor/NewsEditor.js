@@ -13,7 +13,7 @@ import onKeyDown from "components/editor/helpers/onKeyDown"
 import { editInline, saveInlineEditing } from "actions/news"
 import {
   ToolbarButton,
-  NewsToolBar,
+  NewsToolbar,
   CancelButton,
   SaveButton,
   InlineLink,
@@ -303,14 +303,14 @@ class NewsEditor extends PureComponent<Props, State> {
     return (
       <div>
         {!readOnly && (
-          <NewsToolBar>
+          <NewsToolbar>
             {this.renderMarkButton("bold")}
             {this.renderMarkButton("italic")}
             {this.renderMarkButton("underline")}
             {this.renderMarkButton("code")}
             {this.renderMarkButton("strikethrough")}
             {this.renderBlockButton("link")}
-          </NewsToolBar>
+          </NewsToolbar>
         )}
 
         <StyledEditor
