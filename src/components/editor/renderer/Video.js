@@ -8,7 +8,6 @@ export default class Video extends PureComponent {
   render() {
     const { node, isSelected, editor, attributes } = this.props
     const src = node.data.get("src")
-    const url = node.data.get("url")
 
     const { readOnly } = editor.props
 

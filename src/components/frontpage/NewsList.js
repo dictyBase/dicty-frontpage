@@ -1,15 +1,8 @@
 // @flow
 import React, { PureComponent } from "react"
 import { connect } from "react-redux"
-import { Link } from "react-router-dom"
-import styled from "styled-components"
-import Authorization from "components/authentication/Authorization"
-// import NewsItem from "./NewsItem"
+import NewsItem from "./NewsItem"
 import { fetchAllNews } from "actions/news"
-
-const StyledLink = styled(Link)`
-  text-decoration: none;
-`
 
 type Props = {
   /** Contains all user authentication data */
@@ -36,26 +29,11 @@ class NewsList extends PureComponent<Props> {
   render() {
     return (
       <div style={{ height: "240px" }}>
-        {/* <NewsItem slug="frontpagenews-2015-08-19" />
+        <NewsItem slug="frontpagenews-2015-08-19" />
         <NewsItem slug="frontpagenews-2015-08-12" />
-        <NewsItem slug="frontpagenews-2015-08-07" /> */}
+        <NewsItem slug="frontpagenews-2015-08-07" />
         {/* {this.renderNews(this.props.items)} */}
-        <center>No data to display yet.</center>
-        <br />
-        <Authorization
-          render={({ canAddNews, verifiedToken }) => {
-            return (
-              <div>
-                {canAddNews &&
-                  verifiedToken && (
-                    <center>
-                      <StyledLink to="/addnews">Add News Item</StyledLink>
-                    </center>
-                  )}
-              </div>
-            )
-          }}
-        />
+        {/* <center>No data to display yet.</center> */}
       </div>
     )
   }
