@@ -27,7 +27,6 @@ export default class Video extends PureComponent {
       right: "0px",
       bottom: "0px",
       height: "100%",
-      cursor: "cell",
       zIndex: 1,
     }
 

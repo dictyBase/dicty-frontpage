@@ -17,19 +17,6 @@ import schema from "components/editor/schema/schema"
 import { editPage, saveEditing, cancelEditing } from "actions/editablePages"
 import { CancelButton, SaveButton } from "styles/EditablePageStyles"
 
-const wrapLink = (change, href) => {
-  change.wrapInline({
-    type: "link",
-    data: { href },
-  })
-
-  change.collapseToEnd()
-}
-
-const unwrapLink = change => {
-  change.unwrapInline("link")
-}
-
 // set up custom styling for text editor
 const StyledEditor = styled(Editor)`
   padding: 15px;
@@ -84,11 +71,6 @@ class PageEditor extends Component<Props, State> {
     }
   }
 
-  hasLinks = () => {
-    const { value } = this.state
-    return value.inlines.some(inline => inline.type === "link")
-  }
-
   onChange = ({ value }: Object) => {
     this.setState({ value })
   }
@@ -132,29 +114,6 @@ class PageEditor extends Component<Props, State> {
     saveEditing(page.data.id, body, match.url)
 
     this.setState(this.state.value)
-  }
-
-  onClickLink = (event: SyntheticEvent<>) => {
-    event.preventDefault()
-    const { value } = this.state
-    const hasLinks = this.hasLinks()
-    const change = value.change()
-
-    if (hasLinks) {
-      change.call(unwrapLink)
-    } else if (value.isExpanded) {
-      const href = window.prompt("Enter the URL of the link:")
-      change.call(wrapLink, href)
-    } else {
-      const href = window.prompt("Enter the URL of the link:")
-      const text = window.prompt("Enter the text for the link:")
-      change
-        .insertText(text)
-        .extend(0 - text.length)
-        .call(wrapLink, href)
-    }
-
-    this.onChange(change)
   }
 
   onClickImage = event => {
