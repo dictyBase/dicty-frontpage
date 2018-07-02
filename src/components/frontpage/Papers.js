@@ -15,6 +15,7 @@ import {
   SourceTitle,
   Link,
   MoreLink,
+  RouterLink,
 } from "styles"
 
 /** Widget that displays the latest Dicty papers */
@@ -61,10 +62,10 @@ const Papers = (props: {
       <ListBox>{text}</ListBox>
       <MoreLink>
         <FontAwesome name="plus" />
-        <Link href="/papers" alt="more papers">
+        <RouterLink to="/papers" alt="more papers">
           {" "}
           more papers{" "}
-        </Link>
+        </RouterLink>
       </MoreLink>
     </PaperContainer>
   )
