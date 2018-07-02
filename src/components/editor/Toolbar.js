@@ -57,7 +57,7 @@ class Toolbar extends Component {
     } else {
       const href = window.prompt("Enter the URL of the link:")
       const text = window.prompt("Enter the text for the link:")
-      console.log(href)
+
       if (!href || !text) {
         return
       } else {

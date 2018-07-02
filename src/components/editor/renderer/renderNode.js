@@ -1,7 +1,6 @@
 // @flow
 import React, { type Node } from "react"
 import { type Block } from "slate"
-import styled from "styled-components"
 import Video from "components/editor/renderer/Video"
 import BLOCKS from "components/editor/constants/blocks"
 import INLINES from "components/editor/constants/inlines"
