@@ -89,6 +89,12 @@ exports[`Papers snapshot test 1`] = `
   padding-bottom: 15px;
 }
 
+.c13 {
+  color: #428bca;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
 @media (max-width:767px) {
   .c1 {
     font-size: 24px;
@@ -327,8 +333,9 @@ exports[`Papers snapshot test 1`] = `
     />
     <a
       alt="more papers"
-      className="c11"
+      className="c13"
       href="/papers"
+      onClick={[Function]}
     >
        
       more papers

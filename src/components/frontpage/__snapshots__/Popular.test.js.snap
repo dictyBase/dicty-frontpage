@@ -82,6 +82,7 @@ exports[`Popular snapshot test 1`] = `
           alt="techniques"
           className="c5"
           href="/research/techniques"
+          onClick={[Function]}
         >
           <img
             className="c6"
@@ -96,6 +97,7 @@ exports[`Popular snapshot test 1`] = `
           alt="genome browser"
           className="c5"
           href="/tools/jbrowse"
+          onClick={[Function]}
         >
           <img
             className="c6"
@@ -110,6 +112,7 @@ exports[`Popular snapshot test 1`] = `
           alt="learn dicty"
           className="c5"
           href="/explore/learn"
+          onClick={[Function]}
         >
           <img
             className="c6"
@@ -123,7 +126,8 @@ exports[`Popular snapshot test 1`] = `
         <a
           alt="jobs @ dicty"
           className="c5"
-          href="/jobs"
+          href="/community/jobs"
+          onClick={[Function]}
         >
           <img
             className="c6"
@@ -137,7 +141,8 @@ exports[`Popular snapshot test 1`] = `
         <a
           alt="dicty express"
           className="c5"
-          href="https://dictyexpress.research.bcm.edu/landing/"
+          href="/dictyexpress"
+          onClick={[Function]}
         >
           <img
             className="c6"

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`matching a snapshot of PageNotReady 1`] = `
-.c2 {
+.c0 {
   padding-top: 30px;
   padding-bottom: 30px;
   margin-bottom: 30px;
@@ -10,74 +10,88 @@ exports[`matching a snapshot of PageNotReady 1`] = `
   text-align: center;
 }
 
-.c2 h1 {
+.c0 h1 {
   color: inherit;
 }
 
-.c2 p {
+.c0 p {
   margin-bottom: 15px;
   font-size: 21px;
   font-weight: 200;
 }
 
-.c1 {
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-  line-height: 1.428;
-  color: #555;
-  padding: 0 15px 0 15px;
-  margin: 0 auto;
-}
-
-.c0 {
-  margin-top: 20px;
-}
-
-.c3 {
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
-@media (min-width:768px) {
-  .c1 {
-    width: 750px;
-  }
-}
-
-@media (min-width:992px) {
-  .c1 {
-    width: 970px;
-  }
-}
-
-@media (min-width:1200px) {
-  .c1 {
-    width: 1170px;
-  }
+.c1.c1 {
+  width: 100%;
+  background-color: #15317e;
 }
 
 <div
-  className="c0 c1"
+  className="sc-htpNat iZBBQa sc-bdVaJa iHZvIS"
+  is={null}
+  style={
+    Object {
+      "marginTop": "20px",
+    }
+  }
 >
   <div
-    className="c2"
+    className="ilqAEZ"
+    is={null}
   >
-    <h1>
-      <span
-        aria-hidden={true}
-        className="fa fa-wrench"
-      />
-       Under Construction
-    </h1>
-    <p>
-      This page is not ready yet.
-    </p>
-    <a
-      className="c3"
-      href="/"
-      onClick={[Function]}
+    <div
+      className="c0"
     >
-      Dictybase Home
-    </a>
+      <h1>
+        <span
+          aria-hidden={true}
+          className="fa fa-wrench"
+        />
+         Under Construction
+      </h1>
+      <p>
+        This page is not ready yet.
+      </p>
+      <div
+        className="sc-htpNat iZBBQa sc-bdVaJa iHZvIS"
+        is={null}
+      >
+        <div
+          className="eyMZla"
+          is={null}
+        >
+          <a
+            href="/"
+            onClick={[Function]}
+          >
+            <button
+              className="MuiButtonBase-root-23 MuiButton-root-1 MuiButton-contained-10 MuiButton-containedPrimary-11 MuiButton-raised-13 MuiButton-raisedPrimary-14 MuiButton-sizeSmall-20 c1"
+              disabled={false}
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+              tabIndex="0"
+              type="button"
+            >
+              <span
+                className="MuiButton-label-2"
+              >
+                Dictybase Home
+              </span>
+              <span
+                className="MuiTouchRipple-root-26"
+              />
+            </button>
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 `;
