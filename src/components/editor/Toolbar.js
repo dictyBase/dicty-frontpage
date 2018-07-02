@@ -280,7 +280,7 @@ class Toolbar extends Component {
           Tag = (
             <ToolbarButton
               onMouseDown={this.onClickLink}
-              data-active={this.hasLinks}>
+              active={this.hasLinks}>
               <FontAwesome name="link" />
             </ToolbarButton>
           )
@@ -332,7 +332,6 @@ class Toolbar extends Component {
           break
         }
         case BLOCKS.IMAGE: {
-          isActive = hasBlock(type)
           Tag = (
             <ToolbarButton onMouseDown={this.onClickImage}>
               <FontAwesome name="image" />
@@ -341,7 +340,6 @@ class Toolbar extends Component {
           break
         }
         case BLOCKS.VIDEO: {
-          isActive = hasBlock(type)
           Tag = (
             <ToolbarButton onMouseDown={this.onClickVideo}>
               <FontAwesome name="film" />
