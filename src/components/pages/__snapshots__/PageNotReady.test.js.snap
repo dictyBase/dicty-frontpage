@@ -20,9 +20,15 @@ exports[`matching a snapshot of PageNotReady 1`] = `
   font-weight: 200;
 }
 
-.c1.c1 {
+.c2.c2 {
   width: 100%;
   background-color: #15317e;
+}
+
+.c1 {
+  color: #428bca;
+  -webkit-text-decoration: none;
+  text-decoration: none;
 }
 
 <div
@@ -60,11 +66,12 @@ exports[`matching a snapshot of PageNotReady 1`] = `
           is={null}
         >
           <a
+            className="c1"
             href="/"
             onClick={[Function]}
           >
             <button
-              className="MuiButtonBase-root-23 MuiButton-root-1 MuiButton-contained-10 MuiButton-containedPrimary-11 MuiButton-raised-13 MuiButton-raisedPrimary-14 MuiButton-sizeSmall-20 c1"
+              className="MuiButtonBase-root-23 MuiButton-root-1 MuiButton-contained-10 MuiButton-containedPrimary-11 MuiButton-raised-13 MuiButton-raisedPrimary-14 MuiButton-sizeSmall-20 c2"
               disabled={false}
               onBlur={[Function]}
               onFocus={[Function]}

@@ -3,7 +3,8 @@ import React from "react"
 import { Flex, Box } from "rebass"
 import FontAwesome from "react-fontawesome"
 import Jumbotron from "styles/Jumbotron"
-import { SaveButton, RouterLink } from "styles/EditablePageStyles"
+import { SaveButton } from "styles/EditablePageStyles"
+import { RouterLink } from "styles"
 
 /**
  * General 404 error page, currently designated as "Page Not Ready"/"Under Construction"
