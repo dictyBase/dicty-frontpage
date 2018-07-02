@@ -217,12 +217,6 @@ class PageEditor extends Component<Props, State> {
         reader.readAsDataURL(file)
       }
     }
-
-    // if (type == 'text') {
-    //   if (!isUrl(text)) return
-    //   if (!isImage(text)) return
-    //   change.call(insertImage, text, target)
-    // }
   }
 
   render() {
