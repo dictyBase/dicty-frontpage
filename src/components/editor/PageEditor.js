@@ -6,7 +6,6 @@ import { Value, type Change } from "slate"
 import { Flex, Box } from "rebass"
 import styled from "styled-components"
 import Toolbar from "components/editor/Toolbar"
-import insertImage from "components/editor/helpers/insertImage"
 import onPasteHtml from "components/editor/helpers/onPasteHtml"
 import onPasteText from "components/editor/helpers/onPasteText"
 import onKeyDown from "components/editor/helpers/onKeyDown"
@@ -110,7 +109,7 @@ class PageEditor extends Component<Props, State> {
       }
     } else {
       this.state = {
-        // Initial value of editor
+        // set default value for any page route refreshing
         value: Value.fromJSON({
           document: {
             nodes: [
@@ -180,16 +179,6 @@ class PageEditor extends Component<Props, State> {
     saveEditing(page.data.id, body, match.url)
 
     this.setState(this.state.value)
-  }
-
-  onClickImage = event => {
-    event.preventDefault()
-    const src = window.prompt("Enter the URL of the image:")
-    if (!src) return
-
-    const change = this.state.value.change().call(insertImage, src)
-
-    this.onChange(change)
   }
 
   onPaste = (e: SyntheticEvent<>, change: Change) => {

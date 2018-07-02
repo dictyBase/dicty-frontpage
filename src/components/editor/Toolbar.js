@@ -5,6 +5,8 @@ import EditTable from "slate-edit-table"
 import EditList from "slate-edit-list"
 import EditBlockquote from "slate-edit-blockquote"
 import FontAwesome from "react-fontawesome"
+import insertImage from "components/editor/helpers/insertImage"
+import insertVideo from "components/editor/helpers/insertVideo"
 import MARKS from "components/editor/constants/marks"
 import BLOCKS from "components/editor/constants/blocks"
 import INLINES from "components/editor/constants/inlines"
@@ -60,6 +62,26 @@ class Toolbar extends Component {
         .extend(0 - text.length)
         .call(wrapLink, href)
     }
+
+    this.props.onChange(change)
+  }
+
+  onClickImage = event => {
+    event.preventDefault()
+    const src = window.prompt("Enter the URL of the image:")
+    if (!src) return
+
+    const change = this.props.value.change().call(insertImage, src)
+
+    this.props.onChange(change)
+  }
+
+  onClickVideo = event => {
+    event.preventDefault()
+    const src = window.prompt("Enter the URL of the video (YouTube or Vimeo):")
+    if (!src) return
+
+    const change = this.props.value.change().call(insertVideo, src)
 
     this.props.onChange(change)
   }
@@ -312,7 +334,7 @@ class Toolbar extends Component {
         case BLOCKS.IMAGE: {
           isActive = hasBlock(type)
           Tag = (
-            <ToolbarButton>
+            <ToolbarButton onMouseDown={this.onClickImage}>
               <FontAwesome name="image" />
             </ToolbarButton>
           )
@@ -321,7 +343,7 @@ class Toolbar extends Component {
         case BLOCKS.VIDEO: {
           isActive = hasBlock(type)
           Tag = (
-            <ToolbarButton>
+            <ToolbarButton onMouseDown={this.onClickVideo}>
               <FontAwesome name="film" />
             </ToolbarButton>
           )

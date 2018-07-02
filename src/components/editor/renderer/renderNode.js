@@ -1,6 +1,7 @@
 // @flow
 import React, { type Node } from "react"
 import { type Block } from "slate"
+import styled from "styled-components"
 import Video from "components/editor/renderer/Video"
 import BLOCKS from "components/editor/constants/blocks"
 import INLINES from "components/editor/constants/inlines"
@@ -10,6 +11,13 @@ type Props = {
   children: Node,
   attributes: Object,
 }
+
+const Image = styled("img")`
+  display: block;
+  max-width: 100%;
+  max-height: 20em;
+  box-shadow: ${props => (props.selected ? "0 0 0 2px blue;" : "none")};
+`
 
 const renderNode = (props: Props) => {
   const { attributes, children, node } = props
@@ -46,10 +54,9 @@ const renderNode = (props: Props) => {
     }
 
     case BLOCKS.IMAGE: {
-      const { data } = node
+      const { data, isSelected } = node
       const src = data.get("src")
-      const style = { display: "block" }
-      return <img src={src} {...attributes} style={style} alt="" />
+      return <Image src={src} selected={isSelected} {...attributes} alt="" />
     }
 
     case BLOCKS.ALIGN_LEFT:
