@@ -21,6 +21,7 @@ import { CancelButton, SaveButton } from "styles/EditablePageStyles"
 const StyledEditor = styled(Editor)`
   padding: 15px;
   min-height: 200px;
+  min-width: 800px;
 
   a {
     color: #428bca;
