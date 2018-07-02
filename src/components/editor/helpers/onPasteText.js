@@ -1,5 +1,4 @@
 import { getEventTransfer, getEventRange } from "slate-react"
-import isImage from "is-image"
 import isUrl from "is-url"
 import insertImage from "./insertImage"
 import insertVideo from "./insertVideo"
@@ -12,7 +11,7 @@ const onPasteText = (e, change) => {
   const { text } = transfer
   if (!isUrl(text)) return null
 
-  if (isImage(text)) {
+  if (text.slice(-3) === "png" || text.slice(-3) === "jpg") {
     return change.call(insertImage, text, target)
   } else if (text.match(/youtube\.com|vimeo\.com/)) {
     return change.call(insertVideo, text)
