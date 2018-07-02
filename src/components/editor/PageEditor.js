@@ -30,6 +30,44 @@ const StyledEditor = styled(Editor)`
     border: 4px solid rgba(3, 102, 214, 0.3);
     border-radius: 1px;
   }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    border-top: 1px solid #ccc;
+  }
+
+  table tr {
+    border: none;
+    border-bottom: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+
+  table tr:first-child {
+    background: #f7f8f9;
+  }
+
+  table tr:first-child p {
+    font-weight: bold;
+  }
+
+  table td {
+    padding: 0.4rem 1.4rem 0.4rem 0.8rem;
+    border: 1px solid #ccc;
+    border-top: none;
+    border-bottom: none;
+    border-right: none;
+    flex: 1;
+    word-break: break-all;
+    position: relative;
+  }
+
+  table td p {
+    margin: 0;
+  }
 `
 
 type Props = {
