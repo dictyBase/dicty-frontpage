@@ -343,34 +343,34 @@ class Toolbar extends Component {
     return (
       <ToolbarContainer>
         <Flex justify="space-between">
-          <Box w={1 / 4}>
+          <Box w={"25%"}>
             {renderMarkButton(MARKS.BOLD, "⌘ + b")}
             {renderMarkButton(MARKS.ITALIC, "⌘ + i")}
             {renderMarkButton(MARKS.STRIKETHROUGH, "⌘ + d")}
             {renderMarkButton(MARKS.UNDERLINE, "⌘ + u")}
             {renderMarkButton(MARKS.CODE, "⌘ + shift + 9")}
           </Box>
-          <Box w={1 / 5}>
-            {renderBlockButton(BLOCKS.HEADING_1, "# + space")}
-            {renderBlockButton(BLOCKS.HEADING_2, "## + space")}
-            {renderBlockButton(BLOCKS.HEADING_3, "### + space")}
+          <Box w={"20%"}>
+            {renderBlockButton(BLOCKS.HEADING_1, "<h1>")}
+            {renderBlockButton(BLOCKS.HEADING_2, "<h2>")}
+            {renderBlockButton(BLOCKS.HEADING_3, "<h3>")}
           </Box>
-          <Box w={1 / 4}>
-            {renderBlockButton(BLOCKS.ALIGN_LEFT, "n/a")}
-            {renderBlockButton(BLOCKS.ALIGN_CENTER, "n/a")}
-            {renderBlockButton(BLOCKS.ALIGN_RIGHT, "n/a")}
-            {renderBlockButton(INLINES.LINK, "n/a")}
+          <Box w={"25%"}>
+            {renderBlockButton(BLOCKS.ALIGN_LEFT, "align left")}
+            {renderBlockButton(BLOCKS.ALIGN_CENTER, "align center")}
+            {renderBlockButton(BLOCKS.ALIGN_RIGHT, "align right")}
+            {renderBlockButton(INLINES.LINK, "link")}
           </Box>
           <Box w={"30%"}>
-            {renderBlockButton(BLOCKS.HR, "--- + enter")}
-            {renderBlockButton(BLOCKS.BLOCKQUOTE, "> + space")}
-            {renderBlockButton(BLOCKS.TABLE, "table:2x3 + enter")}
+            {renderBlockButton(BLOCKS.HR, "divider")}
+            {renderBlockButton(BLOCKS.BLOCKQUOTE, "blockquote")}
+            {renderBlockButton(BLOCKS.TABLE, "table")}
 
-            {renderBlockButton(BLOCKS.UL_LIST, "- + space")}
-            {renderBlockButton(BLOCKS.OL_LIST, "1. + space")}
+            {renderBlockButton(BLOCKS.UL_LIST, "unordered list")}
+            {renderBlockButton(BLOCKS.OL_LIST, "ordered list")}
 
-            {renderBlockButton(BLOCKS.IMAGE, "n/a")}
-            {renderBlockButton(BLOCKS.VIDEO, "n/a")}
+            {renderBlockButton(BLOCKS.IMAGE, "image")}
+            {renderBlockButton(BLOCKS.VIDEO, "viddeo")}
           </Box>
         </Flex>
         &nbsp;
