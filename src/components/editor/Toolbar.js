@@ -370,7 +370,7 @@ class Toolbar extends Component {
             {renderBlockButton(BLOCKS.OL_LIST, "ordered list")}
 
             {renderBlockButton(BLOCKS.IMAGE, "image")}
-            {renderBlockButton(BLOCKS.VIDEO, "viddeo")}
+            {renderBlockButton(BLOCKS.VIDEO, "video")}
           </Box>
         </Flex>
         &nbsp;

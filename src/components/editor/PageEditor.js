@@ -102,10 +102,38 @@ class PageEditor extends Component<Props, State> {
   constructor(props: Props) {
     super(props)
 
-    this.state = {
-      // Initial value of editor
-      value: Value.fromJSON(JSON.parse(props.page.data.attributes.content)),
-      readOnly: props.readOnly,
+    if (props.page) {
+      this.state = {
+        // Initial value of editor
+        value: Value.fromJSON(JSON.parse(props.page.data.attributes.content)),
+        readOnly: props.readOnly,
+      }
+    } else {
+      this.state = {
+        // Initial value of editor
+        value: Value.fromJSON({
+          document: {
+            nodes: [
+              {
+                object: "block",
+                type: "paragraph",
+                nodes: [
+                  {
+                    object: "text",
+                    leaves: [
+                      {
+                        text:
+                          "Please revisit the page and click the edit button again to edit this content.",
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        }),
+        readOnly: props.readOnly,
+      }
     }
   }
 
