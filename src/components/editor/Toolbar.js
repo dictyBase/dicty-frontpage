@@ -57,10 +57,15 @@ class Toolbar extends Component {
     } else {
       const href = window.prompt("Enter the URL of the link:")
       const text = window.prompt("Enter the text for the link:")
-      change
-        .insertText(text)
-        .extend(0 - text.length)
-        .call(wrapLink, href)
+      console.log(href)
+      if (!href || !text) {
+        return
+      } else {
+        change
+          .insertText(text)
+          .extend(0 - text.length)
+          .call(wrapLink, href)
+      }
     }
 
     this.props.onChange(change)
