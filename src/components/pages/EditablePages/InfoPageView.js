@@ -64,30 +64,36 @@ class InfoPageView extends Component<Props> {
                       <ErrorNotification error={error} />
                     )}
                   <br />
-                  {canEditPages && (
-                    <ToolbarNav>
-                      <Flex justify="center">
-                        <Box>
-                          <TextInfo>
-                            <strong>
-                              <FontAwesome name="user" />{" "}
-                              {fetchedUserData.getFullName()}
-                            </strong>{" "}
-                            edited {timeSince(updated_at)} ago
-                          </TextInfo>
-                        </Box>
-                        <Box ml="auto">
-                          <Label>{fetchedUserData.getRoles()}</Label> &nbsp;
-                          {loggedInUser.canOverwrite(fetchedUserData.getId()) &&
-                            verifiedToken && (
-                              <InlineLink onClick={this.onClick}>
-                                <FontAwesome name="pencil" title="Edit page" />
-                              </InlineLink>
-                            )}
-                        </Box>
-                      </Flex>
-                    </ToolbarNav>
-                  )}
+                  {canEditPages &&
+                    fetchedUserData && (
+                      <ToolbarNav>
+                        <Flex justify="center">
+                          <Box>
+                            <TextInfo>
+                              <strong>
+                                <FontAwesome name="user" />{" "}
+                                {fetchedUserData.getFullName()}
+                              </strong>{" "}
+                              edited {timeSince(updated_at)} ago
+                            </TextInfo>
+                          </Box>
+                          <Box ml="auto">
+                            <Label>{fetchedUserData.getRoles()}</Label> &nbsp;
+                            {loggedInUser.canOverwrite(
+                              fetchedUserData.getId(),
+                            ) &&
+                              verifiedToken && (
+                                <InlineLink onClick={this.onClick}>
+                                  <FontAwesome
+                                    name="pencil"
+                                    title="Edit page"
+                                  />
+                                </InlineLink>
+                              )}
+                          </Box>
+                        </Flex>
+                      </ToolbarNav>
+                    )}
                 </div>
               )
             }}
