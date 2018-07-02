@@ -1,10 +1,9 @@
 // @flow
 import React from "react"
-import { Link } from "react-router-dom"
 import { Flex, Box } from "rebass"
 import FontAwesome from "react-fontawesome"
 import Jumbotron from "styles/Jumbotron"
-import { SaveButton } from "styles/EditablePageStyles"
+import { SaveButton, RouterLink } from "styles/EditablePageStyles"
 
 /**
  * General 404 error page, currently designated as "Page Not Ready"/"Under Construction"
@@ -21,11 +20,11 @@ const PageNotReady = () => {
           <p>This page is not ready yet.</p>
           <Flex justify="center">
             <Box w={["90%", "60%", "25%"]}>
-              <Link to="/">
+              <RouterLink to="/">
                 <SaveButton size="small" variant="contained" color="primary">
                   Dictybase Home
                 </SaveButton>
-              </Link>
+              </RouterLink>
             </Box>
           </Flex>
         </Jumbotron>

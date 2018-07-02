@@ -1,8 +1,6 @@
 // @flow
 import React from "react"
-import { Link as RouterLink } from "react-router-dom"
 import { Flex, Box } from "rebass"
-import styled from "styled-components"
 import Button from "@material-ui/core/Button"
 import AddIcon from "@material-ui/icons/Add"
 import FontAwesome from "react-fontawesome"
@@ -18,11 +16,8 @@ import {
   MoreLink,
   NewsStockTitle,
   Img,
+  RouterLink,
 } from "styles"
-
-const StyledRouterLink = styled(RouterLink)`
-  text-decoration: none;
-`
 
 /** Widget that displays the most recent Dicty news */
 
@@ -49,7 +44,7 @@ const News = () => {
                 <Box w={1 / 10}>
                   {canAddNews &&
                     verifiedToken && (
-                      <StyledRouterLink to="/addnews">
+                      <RouterLink to="/addnews">
                         <Button
                           variant="fab"
                           mini
@@ -58,7 +53,7 @@ const News = () => {
                           title="Add News Item">
                           <AddIcon />
                         </Button>
-                      </StyledRouterLink>
+                      </RouterLink>
                     )}
                 </Box>
               )
@@ -73,10 +68,10 @@ const News = () => {
       <br />
       <MoreLink>
         <FontAwesome name="plus" />
-        <StyledRouterLink to="/news" alt="more news">
+        <RouterLink to="/news" alt="more news">
           {" "}
           more news{" "}
-        </StyledRouterLink>
+        </RouterLink>
       </MoreLink>
     </NewsContainer>
   )
