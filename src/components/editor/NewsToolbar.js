@@ -120,9 +120,6 @@ class NewsToolbar extends Component {
     }
 
     const renderBlockButton = (type, title) => {
-      const { value } = this.props
-
-      let isActive
       let Tag
 
       switch (type) {

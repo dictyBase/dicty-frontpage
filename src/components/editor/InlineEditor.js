@@ -300,7 +300,7 @@ class InlineEditor extends Component<Props, State> {
           }}
         />
         <Flex justify="flex-end">
-          <Box width={"20%"} mr={1} mt={1}>
+          <Box width={"15%"} mr={1} mt={1}>
             {!readOnly && (
               <CancelButton
                 size="small"
@@ -310,7 +310,7 @@ class InlineEditor extends Component<Props, State> {
               </CancelButton>
             )}
           </Box>
-          <Box width={"20%"} mr={1} mt={1}>
+          <Box width={"15%"} mr={1} mt={1}>
             {!readOnly && (
               <SaveButton
                 size="small"

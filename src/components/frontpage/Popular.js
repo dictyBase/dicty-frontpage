@@ -22,7 +22,7 @@ const Popular = (props: {
 }) => {
   const widgetlist = props.widgets.map((widget, index) => (
     <ListItems key={index}>
-      <WidgetLink href={widget.link} alt={widget.alt}>
+      <WidgetLink to={widget.link} alt={widget.alt}>
         <WidgetImg src={widget.image} />
       </WidgetLink>
     </ListItems>

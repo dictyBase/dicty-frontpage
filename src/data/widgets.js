@@ -21,12 +21,12 @@ export default [
     alt: "learn dicty",
   },
   {
-    link: "/jobs",
+    link: "/community/jobs",
     image: widgetJOBS,
     alt: "jobs @ dicty",
   },
   {
-    link: "https://dictyexpress.research.bcm.edu/landing/",
+    link: "/dictyexpress",
     image: widgetDICTYEXPRESS,
     alt: "dicty express",
   },
