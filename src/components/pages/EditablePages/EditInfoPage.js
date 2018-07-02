@@ -29,7 +29,7 @@ type Props = {
 const EditInfoPage = (props: Props) => {
   return (
     <Flex justify="center">
-      <Box w={["90%", "90%", "90%", "60%"]}>
+      <Box w={["90%", "90%", "90%", "65%"]}>
         <EditorStyle>
           <PageEditor page={props.page} match={props.match} />
         </EditorStyle>

@@ -361,7 +361,7 @@ class Toolbar extends Component {
     return (
       <ToolbarContainer>
         <Flex justify="space-between">
-          <Box w={1 / 3}>
+          <Box w={"25%"}>
             {renderMarkButton(MARKS.BOLD, "⌘ + b")}
             {renderMarkButton(MARKS.ITALIC, "⌘ + i")}
             {renderMarkButton(MARKS.STRIKETHROUGH, "⌘ + d")}
@@ -369,17 +369,21 @@ class Toolbar extends Component {
             {renderBlockButton(BLOCKS.BLOCKQUOTE, "blockquote")}
             {renderBlockButton(INLINES.LINK, "link")}
           </Box>
-          <Box w={1 / 3}>
+          <Box w={"15%"}>
             {renderBlockButton(BLOCKS.HEADING_1, "<h1>")}
             {renderBlockButton(BLOCKS.HEADING_2, "<h2>")}
             {renderBlockButton(BLOCKS.HEADING_3, "<h3>")}
+          </Box>
+          <Box w={"15%"}>
             {renderBlockButton(BLOCKS.ALIGN_LEFT, "align left")}
             {renderBlockButton(BLOCKS.ALIGN_CENTER, "align center")}
             {renderBlockButton(BLOCKS.ALIGN_RIGHT, "align right")}
           </Box>
-          <Box w={1 / 3}>
+          <Box w={"10%"}>
             {renderBlockButton(BLOCKS.UL_LIST, "unordered list")}
             {renderBlockButton(BLOCKS.OL_LIST, "ordered list")}
+          </Box>
+          <Box w={"25%"}>
             {renderBlockButton(BLOCKS.HR, "divider")}
             {renderBlockButton(BLOCKS.TABLE, "table")}
             {renderBlockButton(BLOCKS.IMAGE, "image")}
