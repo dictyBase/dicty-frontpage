@@ -12,7 +12,7 @@ type Props = {
   attributes: Object,
 }
 
-const Image = styled("img")`
+const Image = styled.img`
   display: block;
   max-width: 100%;
   max-height: 20em;
@@ -56,7 +56,17 @@ const renderNode = (props: Props) => {
     case BLOCKS.IMAGE: {
       const { data, isSelected } = node
       const src = data.get("src")
-      return <Image src={src} selected={isSelected} {...attributes} alt="" />
+      const className = isSelected ? "selected" : "unselected"
+      const style = { display: "inline-block" }
+      return (
+        <img
+          src={src}
+          className={className}
+          {...attributes}
+          style={style}
+          alt=""
+        />
+      )
     }
 
     case BLOCKS.ALIGN_LEFT:
