@@ -99,13 +99,6 @@ class NewsToolbar extends Component {
             </ToolbarButton>
           )
           break
-        case MARKS.CODE:
-          Tag = (
-            <ToolbarButton>
-              <FontAwesome name="code" />
-            </ToolbarButton>
-          )
-          break
         default:
           return null
       }

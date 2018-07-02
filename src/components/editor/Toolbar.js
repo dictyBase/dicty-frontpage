@@ -140,13 +140,6 @@ class Toolbar extends Component {
             </ToolbarButton>
           )
           break
-        case MARKS.CODE:
-          Tag = (
-            <ToolbarButton>
-              <FontAwesome name="code" />
-            </ToolbarButton>
-          )
-          break
         default:
           return null
       }
@@ -368,7 +361,6 @@ class Toolbar extends Component {
             {renderMarkButton(MARKS.ITALIC, "⌘ + i")}
             {renderMarkButton(MARKS.STRIKETHROUGH, "⌘ + d")}
             {renderMarkButton(MARKS.UNDERLINE, "⌘ + u")}
-            {renderMarkButton(MARKS.CODE, "code")}
             {renderBlockButton(BLOCKS.BLOCKQUOTE, "blockquote")}
             {renderBlockButton(INLINES.LINK, "link")}
           </Box>

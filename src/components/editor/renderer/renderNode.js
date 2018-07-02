@@ -12,13 +12,6 @@ type Props = {
   attributes: Object,
 }
 
-const Image = styled.img`
-  display: block;
-  max-width: 100%;
-  max-height: 20em;
-  box-shadow: ${props => (props.selected ? "0 0 0 2px blue;" : "none")};
-`
-
 const renderNode = (props: Props) => {
   const { attributes, children, node } = props
   switch (node.type) {
@@ -57,16 +50,7 @@ const renderNode = (props: Props) => {
       const { data, isSelected } = node
       const src = data.get("src")
       const className = isSelected ? "selected" : "unselected"
-      const style = { display: "inline-block" }
-      return (
-        <img
-          src={src}
-          className={className}
-          {...attributes}
-          style={style}
-          alt=""
-        />
-      )
+      return <img src={src} className={className} {...attributes} alt="" />
     }
 
     case BLOCKS.ALIGN_LEFT:
@@ -108,6 +92,9 @@ const renderNode = (props: Props) => {
 
     case BLOCKS.VIDEO:
       return <Video {...props} />
+
+    case BLOCKS.FONT_COLOR:
+      return <div {...attributes} />
 
     default:
       return null

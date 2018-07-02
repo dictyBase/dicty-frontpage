@@ -20,9 +20,6 @@ const renderMark = (props: Props) => {
     case MARKS.UNDERLINE:
       return <u>{children}</u>
 
-    case MARKS.CODE:
-      return <code>{children}</code>
-
     case MARKS.STRIKETHROUGH:
       return <del>{children}</del>
 
