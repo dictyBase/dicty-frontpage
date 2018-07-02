@@ -1,11 +1,12 @@
 // @flow
 import React, { Component } from "react"
 import { connect } from "react-redux"
-import { Editor, getEventTransfer } from "slate-react"
+import { Editor, getEventTransfer, getEventRange } from "slate-react"
 import { Value, type Change } from "slate"
 import { Flex, Box } from "rebass"
 import styled from "styled-components"
 import Toolbar from "components/editor/Toolbar"
+import insertImage from "components/editor/helpers/insertImage"
 import onPasteHtml from "components/editor/helpers/onPasteHtml"
 import onPasteText from "components/editor/helpers/onPasteText"
 import onKeyDown from "components/editor/helpers/onKeyDown"
@@ -194,6 +195,36 @@ class PageEditor extends Component<Props, State> {
     }
   }
 
+  onDrop = (event, change, editor) => {
+    const target = getEventRange(event, change.value)
+    if (!target && event.type === "drop") return
+
+    const transfer = getEventTransfer(event)
+    const { type, files } = transfer
+
+    if (type === "files") {
+      for (const file of files) {
+        const reader = new FileReader()
+        const [mime] = file.type.split("/")
+        if (mime !== "image") continue
+
+        reader.addEventListener("load", () => {
+          editor.change(c => {
+            c.call(insertImage, reader.result, target)
+          })
+        })
+
+        reader.readAsDataURL(file)
+      }
+    }
+
+    // if (type == 'text') {
+    //   if (!isUrl(text)) return
+    //   if (!isImage(text)) return
+    //   change.call(insertImage, text, target)
+    // }
+  }
+
   render() {
     const { readOnly } = this.state
     return (
@@ -209,6 +240,7 @@ class PageEditor extends Component<Props, State> {
           value={this.state.value}
           onChange={this.onChange}
           onPaste={this.onPaste}
+          onDrop={this.onDrop}
           onKeyDown={onKeyDown}
           renderMark={renderMark}
           renderNode={renderNode}
