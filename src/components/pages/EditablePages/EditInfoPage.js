@@ -39,13 +39,20 @@ type Props = {
   saveEditing: Function,
   /** The object holding the fetched page content */
   page: Object,
+  /** Styling classes from Material-UI */
+  classes: Object,
+}
+
+type State = {
+  /** Boolean for whether help modal is open or not */
+  helpModalOpen: boolean,
 }
 
 /**
  * Allows page editing
  */
 
-class EditInfoPage extends Component<Props> {
+class EditInfoPage extends Component<Props, State> {
   state = {
     helpModalOpen: false,
   }
@@ -78,8 +85,8 @@ class EditInfoPage extends Component<Props> {
           </Tooltip>
           <ScrollButton
             className={this.props.classes.scrollButton}
-            scrollStepInPx="50"
-            delayInMs="5"
+            scrollStepInPx={50}
+            delayInMs={5}
           />
         </Box>
         <Box />
