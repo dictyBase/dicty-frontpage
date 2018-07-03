@@ -28,13 +28,13 @@ class NewsList extends PureComponent<Props> {
 
   render() {
     return (
-      <ul style={{ height: "240px" }}>
+      <div style={{ height: "240px" }}>
         <NewsItem slug="frontpagenews-2015-08-19" />
         <NewsItem slug="frontpagenews-2015-08-12" />
         <NewsItem slug="frontpagenews-2015-08-07" />
         {/* {this.renderNews(this.props.items)} */}
         {/* <center>No data to display yet.</center> */}
-      </ul>
+      </div>
     )
   }
 }
