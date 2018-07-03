@@ -33,32 +33,27 @@ const HelpMuiModal = props => {
             </center>
           </Box>
           <Box w={"100%"}>
-            <p>
-              <h3>Keyboard Shortcuts:</h3>
-            </p>
-            <p>
-              <Flex wrap>
-                <Box w="50%">
-                  <strong>Bold</strong>
-                </Box>
-                <Box w="50%">CTRL + B</Box>
-                <Box w="50%">
-                  <em>Italic</em>
-                </Box>
-                <Box w="50%">CTRL + I</Box>
-                <Box w="50%">
-                  <strike>Strikethrough</strike>
-                </Box>
-                <Box w="50%">CTRL + D</Box>
-                <Box w="50%">
-                  <u>Underline</u>
-                </Box>
-                <Box w="50%">CTRL + U</Box>
-              </Flex>
-            </p>
-            <p>
-              <h3>Pasting Content</h3>
-            </p>
+            <h3>Keyboard Shortcuts:</h3>
+            <Flex wrap>
+              <Box w="50%">
+                <strong>Bold</strong>
+              </Box>
+              <Box w="50%">CTRL + B</Box>
+              <Box w="50%">
+                <em>Italic</em>
+              </Box>
+              <Box w="50%">CTRL + I</Box>
+              <Box w="50%">
+                <strike>Strikethrough</strike>
+              </Box>
+              <Box w="50%">CTRL + D</Box>
+              <Box w="50%">
+                <u>Underline</u>
+              </Box>
+              <Box w="50%">CTRL + U</Box>
+            </Flex>
+
+            <h3>Pasting Content</h3>
             <p>
               Most content from HTML pages can be copied and pasted directly
               into the editor. Just go to any page, highlight what you want to
