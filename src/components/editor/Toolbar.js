@@ -390,7 +390,6 @@ class Toolbar extends Component {
             {renderBlockButton(BLOCKS.VIDEO, "video")}
           </Box>
         </Flex>
-        &nbsp;
       </ToolbarContainer>
     )
   }
