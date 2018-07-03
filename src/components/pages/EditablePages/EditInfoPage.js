@@ -8,14 +8,20 @@ import Tooltip from "@material-ui/core/Tooltip"
 import FontAwesome from "react-fontawesome"
 import PageEditor from "components/editor/PageEditor"
 import HelpModal from "components/editor/docs/HelpModal"
+import ScrollButton from "components/common/ScrollButton"
 import { saveEditing, cancelEditing } from "actions/editablePages"
 import { EditorStyle } from "styles/EditablePageStyles"
 import { NAMESPACE } from "constants/namespace"
 
 const styles = theme => ({
-  absolute: {
+  scrollButton: {
     position: "fixed",
     bottom: theme.spacing.unit * 2,
+    right: theme.spacing.unit * 3,
+  },
+  helpButton: {
+    position: "fixed",
+    bottom: theme.spacing.unit * 10,
     right: theme.spacing.unit * 3,
   },
 })
@@ -65,16 +71,23 @@ class EditInfoPage extends Component<Props> {
             <Button
               onClick={this.handleClick}
               variant="fab"
-              color="secondary"
-              className={this.props.classes.absolute}>
+              color="primary"
+              className={this.props.classes.helpButton}>
               <FontAwesome name="question" />
             </Button>
           </Tooltip>
+          <ScrollButton
+            className={this.props.classes.scrollButton}
+            scrollStepInPx="50"
+            delayInMs="5"
+          />
         </Box>
+        <Box />
         {this.state.helpModalOpen && (
           <HelpModal
             helpModalOpen={this.state.helpModalOpen}
             handleClose={this.handleClose}
+            onClick={() => window.scrollTo(0, 0)}
           />
         )}
       </Flex>
