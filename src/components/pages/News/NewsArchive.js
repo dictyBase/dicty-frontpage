@@ -35,9 +35,9 @@ const NewsArchive = () => {
           Also available at{" "}
           <Link
             href="https://twitter.com/dictybase"
-            alt="Dicty News at Twitter"
+            title="Dicty News at Twitter"
             target="new">
-            <Img src={twitterLogo} />
+            <Img src={twitterLogo} alt="Twitter logo" />
           </Link>
         </Hdrtxt>
       </Banner>

@@ -98,7 +98,7 @@ export default class Slideshow extends Component {
     return images.map((image, i) => {
       return (
         <ImageContainer key={i}>
-          <Slide src={image} />
+          <Slide src={image} alt="" />
         </ImageContainer>
       )
     })

@@ -29,9 +29,9 @@ const News = () => {
           <Box px={2} py={1} width={1 / 10}>
             <Link
               href="https://twitter.com/dictybase"
-              alt="Dicty News at Twitter"
+              title="Dicty News at Twitter"
               target="new">
-              <Img src={twitterLogo} />
+              <Img src={twitterLogo} alt="Twitter logo" />
             </Link>
           </Box>
           <Box pl={2} py={1} width={8 / 10}>

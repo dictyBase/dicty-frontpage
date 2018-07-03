@@ -31,7 +31,9 @@ export const App = (props: Props) => {
       )}
       <Navbar items={navItems} />
       <MainBodyContainer>
-        <Routes {...props} />
+        <main>
+          <Routes {...props} />
+        </main>
       </MainBodyContainer>
       <Footer items={items} />
     </div>
