@@ -15,11 +15,10 @@ const styles = theme => ({
   paper: {
     position: "absolute",
     width: theme.spacing.unit * 50,
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: "#faf9f9",
     boxShadow: theme.shadows[5],
     padding: theme.spacing.unit * 4,
     borderRadius: "5px",
-    backgroundColor: "#faf9f9",
   },
 })
 
@@ -62,16 +61,18 @@ const HelpMuiModal = props => {
             </p>
             <p>
               Most content from HTML pages can be copied and pasted directly
-              into the editor like this:
+              into the editor. Just go to any page, highlight what you want to
+              copy then paste it into the editor.
             </p>
-            <p>(insert gif here)</p>
             <p>
               Links can easily be added by highlighting text and pasting a URL.
             </p>
-            <p>Images can be added by copying and pasting an image URL.</p>
+            <p>
+              Images can be added by simply copying and pasting an image URL.
+            </p>
             <p>
               Videos can be added by copying and pasting the video URL (either
-              YouTube or Vimeo).
+              YouTube or Vimeo). This will automatically embed the video.
             </p>
             <SaveButton
               style={{
