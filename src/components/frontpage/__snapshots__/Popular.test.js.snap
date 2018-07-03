@@ -85,6 +85,7 @@ exports[`Popular snapshot test 1`] = `
           onClick={[Function]}
         >
           <img
+            alt="techniques"
             className="c6"
             src="widgetTECHNIQUES.png"
           />
@@ -100,6 +101,7 @@ exports[`Popular snapshot test 1`] = `
           onClick={[Function]}
         >
           <img
+            alt="genome browser"
             className="c6"
             src="widgetGBROWSER.png"
           />
@@ -115,6 +117,7 @@ exports[`Popular snapshot test 1`] = `
           onClick={[Function]}
         >
           <img
+            alt="learn dicty"
             className="c6"
             src="widgetLEARNDICTY.png"
           />
@@ -130,6 +133,7 @@ exports[`Popular snapshot test 1`] = `
           onClick={[Function]}
         >
           <img
+            alt="jobs @ dicty"
             className="c6"
             src="widgetJOBS.png"
           />
@@ -145,6 +149,7 @@ exports[`Popular snapshot test 1`] = `
           onClick={[Function]}
         >
           <img
+            alt="dicty express"
             className="c6"
             src="widgetDICTYEXPRESS.png"
           />
