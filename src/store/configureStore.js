@@ -12,7 +12,9 @@ import {
   FETCH_PERMISSION_SUCCESS,
 } from "constants/types"
 
-export const history = createHistory()
+export const history = createHistory({
+  basename: process.env.REACT_APP_BASENAME,
+})
 
 const authArg = {
   save_action: LOGIN_SUCCESS,
