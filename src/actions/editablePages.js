@@ -9,7 +9,7 @@ import {
   FETCH_PAGE_FAILURE,
 } from "constants/types"
 import { fetchBySlugResource, fetchByIdResource } from "utils/fetchResources"
-import { push } from "react-router-redux"
+import { push } from "connected-react-router"
 
 const fetchPageRequest = () => {
   return {

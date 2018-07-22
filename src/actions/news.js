@@ -9,7 +9,7 @@ import {
   FETCH_NEWS_FAILURE,
 } from "constants/types"
 import { fetchBySlugResource, fetchByIdResource } from "utils/fetchResources"
-import { push } from "react-router-redux"
+import { push } from "connected-react-router"
 
 const server: string = process.env.REACT_APP_API_SERVER
 

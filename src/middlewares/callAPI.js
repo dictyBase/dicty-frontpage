@@ -1,5 +1,5 @@
 // @flow
-import { push } from "react-router-redux"
+import { push } from "connected-react-router"
 
 type param = { dispatch: Function, getState: Function }
 

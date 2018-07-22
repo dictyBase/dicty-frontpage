@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware, compose } from "redux"
 import thunk from "redux-thunk"
-import { routerMiddleware } from "react-router-redux"
+import { connectRouter, routerMiddleware } from "connected-react-router"
 import { manageStateStorage } from "dicty-components-redux"
 import createHistory from "history/createBrowserHistory"
 import callAPI from "middlewares/callAPI"
@@ -50,7 +50,11 @@ const enhancer = composeEnhancers(
 )
 
 export default function configureStore(initialState: Object) {
-  const store = createStore(rootReducer, initialState, enhancer)
+  const store = createStore(
+    connectRouter(history)(rootReducer),
+    initialState,
+    enhancer,
+  )
   if (process.env.NODE_ENV === "development") {
     if (module.hot) {
       module.hot.accept("../reducers", () =>

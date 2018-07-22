@@ -7,7 +7,7 @@ import {
   fetchRoleByIdResource,
   fetchHeaderConfig,
 } from "utils/fetchResources"
-import { push } from "react-router-redux"
+import { push } from "connected-react-router"
 
 import {
   LOGIN_REQUEST,
