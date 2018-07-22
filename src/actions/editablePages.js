@@ -137,14 +137,46 @@ export const editInline = (content: Object) => {
 }
 
 export const saveEditing = (id: string, body: Object, path: string) => {
-  return {
-    types: [SAVE_PAGE_REQUEST, SAVE_PAGE_SUCCESS, SAVE_PAGE_FAILURE],
-    url: `${fetchByIdResource}/${id}`,
-    config: {
-      method: "PATCH",
-      body: JSON.stringify(body),
-    },
-    path: path,
+  return async (dispatch: Function, getState: Function) => {
+    try {
+      dispatch(savePageRequest())
+      const res = await fetch(`${fetchByIdResource}/${id}`, {
+        method: "PATCH",
+        body: JSON.stringify(body),
+        headers: {
+          "Content-Type": "application/json",
+          Application: `Bearer: ${getState().auth.token}`,
+        },
+      })
+      const contentType = res.headers.get("content-type")
+      if (contentType && contentType.includes("application/vnd.api+json")) {
+        const json = await res.json()
+        if (res.ok) {
+          dispatch(savePageSuccess())
+          setTimeout(() => {
+            dispatch(push(`${path.slice(0, -5)}`))
+          }, 500)
+        } else {
+          if (process.env.NODE_ENV !== "production") {
+            printError(res, json)
+          }
+          dispatch(savePageFailure(res.body))
+          dispatch(push("/error"))
+        }
+      } else {
+        if (process.env.NODE_ENV !== "production") {
+          console.error("Cannot convert to JSON")
+        }
+        dispatch(savePageFailure(res.body))
+        dispatch(push("/error"))
+      }
+    } catch (error) {
+      dispatch(savePageFailure(error))
+      dispatch(push("/error"))
+      if (process.env.NODE_ENV !== "production") {
+        console.error(`Network error: ${error.message}`)
+      }
+    }
   }
 }
 

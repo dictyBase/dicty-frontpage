@@ -141,6 +141,62 @@ export const fetchRoleFailure = (error: string) => {
   }
 }
 
+const fetchNonAuthRoleRequest = () => {
+  return {
+    type: FETCH_NON_AUTH_ROLE_REQUEST,
+    payload: {
+      isFetching: true,
+    },
+  }
+}
+
+const fetchNonAuthRoleSuccess = (json: Object) => {
+  return {
+    type: FETCH_NON_AUTH_ROLE_SUCCESS,
+    payload: {
+      isFetching: false,
+      roles: json,
+    },
+  }
+}
+
+const fetchNonAuthRoleFailure = error => {
+  return {
+    type: FETCH_NON_AUTH_ROLE_FAILURE,
+    payload: {
+      error: error,
+    },
+  }
+}
+
+const fetchPermissionRequest = () => {
+  return {
+    type: FETCH_PERMISSION_REQUEST,
+    payload: {
+      isFetching: true,
+    },
+  }
+}
+
+const fetchPermissionSuccess = (json: Object) => {
+  return {
+    type: FETCH_PERMISSION_SUCCESS,
+    payload: {
+      isFetching: false,
+      permissions: json,
+    },
+  }
+}
+
+const fetchPermissionFailure = error => {
+  return {
+    type: FETCH_PERMISSION_FAILURE,
+    payload: {
+      error: error,
+    },
+  }
+}
+
 // Calls the API to get a token and
 // dispatch actions along the way
 export const oAuthLogin = ({ query, provider, url }: oauthArg) => {
@@ -271,27 +327,82 @@ export const fetchRoleInfo = (userId: string) => {
   }
 }
 
+// fetch roles function that fetches data for non-authenticated users using async/await
+// checks if header is correct, then either grabs data or displays error
 export const fetchNonAuthRoleInfo = (userId: string) => {
-  return {
-    types: [
-      FETCH_NON_AUTH_ROLE_REQUEST,
-      FETCH_NON_AUTH_ROLE_SUCCESS,
-      FETCH_NON_AUTH_ROLE_FAILURE,
-    ],
-    url: `${fetchUserByIdResource}/${userId}/roles`,
-    config: fetchHeaderConfig,
+  return async (dispatch: Function) => {
+    try {
+      dispatch(fetchNonAuthRoleRequest())
+      const res = await fetch(
+        `${fetchUserByIdResource}/${userId}/roles`,
+        fetchHeaderConfig,
+      )
+      const contentType = res.headers.get("content-type")
+      if (contentType && contentType.includes("application/vnd.api+json")) {
+        const json = await res.json()
+
+        if (res.ok) {
+          dispatch(fetchNonAuthRoleSuccess(json))
+        } else {
+          if (process.env.NODE_ENV !== "production") {
+            printError(res, json)
+          }
+          dispatch(fetchNonAuthRoleFailure(json.errors[0].title))
+          dispatch(push("/error"))
+        }
+      } else {
+        if (process.env.NODE_ENV !== "production") {
+          console.error(res.statusText)
+        }
+        dispatch(fetchNonAuthRoleFailure(res.body))
+        dispatch(push("/error"))
+      }
+    } catch (error) {
+      dispatch(fetchNonAuthRoleFailure(error.toString()))
+      dispatch(push("/error"))
+      if (process.env.NODE_ENV !== "production") {
+        console.error(`Network error: ${error.message}`)
+      }
+    }
   }
 }
 
+// fetch permissions function that fetches data using async/await
+// checks if header is correct, then either grabs data or displays error
 export const fetchPermissionInfo = (roleId: string) => {
-  return {
-    types: [
-      FETCH_PERMISSION_REQUEST,
-      FETCH_PERMISSION_SUCCESS,
-      FETCH_PERMISSION_FAILURE,
-    ],
-    url: `${fetchRoleByIdResource}/${roleId}/permissions`,
-    config: fetchHeaderConfig,
+  return async (dispatch: Function) => {
+    try {
+      dispatch(fetchPermissionRequest())
+      const res = await fetch(
+        `${fetchRoleByIdResource}/${roleId}/permissions`,
+        fetchHeaderConfig,
+      )
+      const contentType = res.headers.get("content-type")
+      if (contentType && contentType.includes("application/vnd.api+json")) {
+        const json = await res.json()
+        if (res.ok) {
+          dispatch(fetchPermissionSuccess(json))
+        } else {
+          if (process.env.NODE_ENV !== "production") {
+            printError(res, json)
+          }
+          dispatch(fetchPermissionFailure(json.errors[0].title))
+          dispatch(push("/error"))
+        }
+      } else {
+        if (process.env.NODE_ENV !== "production") {
+          console.error(res.statusText)
+        }
+        dispatch(fetchPermissionFailure(res.body))
+        dispatch(push("/error"))
+      }
+    } catch (error) {
+      dispatch(fetchUserFailure(error.toString()))
+      dispatch(push("/error"))
+      if (process.env.NODE_ENV !== "production") {
+        console.error(`Network error: ${error.message}`)
+      }
+    }
   }
 }
 

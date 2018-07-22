@@ -1,7 +1,7 @@
 // @flow
 import React, { PureComponent } from "react"
 import { connect } from "react-redux"
-import NewsItem from "./NewsItem"
+// import NewsItem from "./NewsItem"
 import { fetchAllNews } from "actions/news"
 
 type Props = {
@@ -29,11 +29,11 @@ class NewsList extends PureComponent<Props> {
   render() {
     return (
       <div style={{ height: "240px" }}>
-        <NewsItem slug="frontpagenews-2015-08-19" />
+        {/* <NewsItem slug="frontpagenews-2015-08-19" />
         <NewsItem slug="frontpagenews-2015-08-12" />
-        <NewsItem slug="frontpagenews-2015-08-07" />
+        <NewsItem slug="frontpagenews-2015-08-07" /> */}
         {/* {this.renderNews(this.props.items)} */}
-        {/* <center>No data to display yet.</center> */}
+        <center>No data to display yet.</center>
       </div>
     )
   }
@@ -48,4 +48,7 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-export default connect(mapStateToProps, { fetchAllNews })(NewsList)
+export default connect(
+  mapStateToProps,
+  { fetchAllNews },
+)(NewsList)
