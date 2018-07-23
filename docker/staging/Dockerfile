@@ -21,6 +21,10 @@ ENV REACT_APP_AUTH_SERVER ${auth_server:-https://betatoken.dictybase.org}
 ARG basename
 ENV REACT_APP_BASENAME ${basename:-frontpage}
 
+# Google Analytics tracking ID
+ARG ga_tracking_id
+ENV REACT_APP_GA_TRACKING_ID ${ga_tracking_id:-UA-16352781-8}
+
 # Setup client keys for third party auth
 ARG client_keys
 ENV CLIENT_KEYS ${client_keys:-https://raw.githubusercontent.com/dictybase-playground/client-keys/master/clientConfig.js}
