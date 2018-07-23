@@ -1,4 +1,4 @@
-import { createStore, applyMiddleware, compose } from "redux"
+import { createStore, applyMiddleware } from "redux"
 import thunk from "redux-thunk"
 import { connectRouter, routerMiddleware } from "connected-react-router"
 import { manageStateStorage } from "dicty-components-redux"
@@ -31,16 +31,12 @@ const permArg = {
   namespace: "auth",
 }
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
-
-const enhancer = composeEnhancers(
-  applyMiddleware(
-    routerMiddleware(history),
-    thunk,
-    manageStateStorage(authArg),
-    manageStateStorage(roleArg),
-    manageStateStorage(permArg),
-  ),
+const enhancer = applyMiddleware(
+  routerMiddleware(history),
+  thunk,
+  manageStateStorage(authArg),
+  manageStateStorage(roleArg),
+  manageStateStorage(permArg),
 )
 
 export default function configureStore(initialState: Object) {
