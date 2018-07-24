@@ -163,7 +163,7 @@ class PageEditor extends Component<Props, State> {
   // on save, save the value to the content API server
   onSave = () => {
     const { value } = this.state
-    const { page, saveEditing, match } = this.props
+    const { page, saveEditing, match, userId } = this.props
 
     const content = JSON.stringify(value.toJSON())
 
@@ -173,7 +173,7 @@ class PageEditor extends Component<Props, State> {
         id: page.data.id,
         type: "contents",
         attributes: {
-          updated_by: page.data.attributes.updated_by,
+          updated_by: userId,
           content: content,
         },
       },
@@ -272,7 +272,17 @@ class PageEditor extends Component<Props, State> {
   }
 }
 
+const mapStateToProps = state => {
+  if (state.auth.user) {
+    return {
+      userId: state.auth.user.data.id,
+    }
+  } else {
+    return
+  }
+}
+
 export default connect(
-  null,
+  mapStateToProps,
   { editPage, saveEditing, cancelEditing },
 )(PageEditor)
