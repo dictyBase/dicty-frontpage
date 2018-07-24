@@ -174,7 +174,7 @@ export const saveInlineEditing = (id: string, body: Object) => {
         body: JSON.stringify(body),
         headers: {
           "Content-Type": "application/json",
-          Application: `Bearer: ${getState().auth.token}`,
+          Authorization: `Bearer ${getState().auth.token}`,
         },
       })
       const contentType = res.headers.get("content-type")
@@ -215,7 +215,7 @@ export const addNewsItem = (body: Object) => {
         body: JSON.stringify(body),
         headers: {
           "Content-Type": "application/json",
-          Application: `Bearer: ${getState().auth.token}`,
+          Authorization: `Bearer ${getState().auth.token}`,
         },
       })
       const contentType = res.headers.get("content-type")
