@@ -103,7 +103,7 @@ class NewsEditor extends PureComponent<Props, State> {
   // on save, save the value to the content API server
   onSave = () => {
     const { value } = this.state
-    const { page, saveInlineEditing } = this.props
+    const { page, saveInlineEditing, userId } = this.props
 
     const content = JSON.stringify(value.toJSON())
 
@@ -113,7 +113,7 @@ class NewsEditor extends PureComponent<Props, State> {
         id: page.data.id,
         type: "contents",
         attributes: {
-          updated_by: page.data.attributes.updated_by,
+          updated_by: userId,
           content: content,
         },
       },
@@ -366,4 +366,17 @@ class NewsEditor extends PureComponent<Props, State> {
   }
 }
 
-export default connect(null, { editInline, saveInlineEditing })(NewsEditor)
+const mapStateToProps = state => {
+  if (state.auth.user) {
+    return {
+      userId: state.auth.user.data.id,
+    }
+  } else {
+    return
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  { editInline, saveInlineEditing },
+)(NewsEditor)
