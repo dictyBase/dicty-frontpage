@@ -1,49 +1,45 @@
-import React, { Component } from 'react'
-import { Flex, Box } from 'grid-styled'
-import { Navbar } from 'dicty-components-navbar'
-import Header from 'dicty-components-header'
-import styled from 'styled-components'
-import Slideshow from './Components/Slideshow'
-import { navItems } from './constants/navbar'
-import './App.css'
+// @flow
+import React from "react"
+import { connect } from "react-redux"
+import { withRouter } from "react-router-dom"
+import { Header, Footer } from "dicty-components-header-footer"
+import { Navbar } from "dicty-components-navbar"
+import Routes from "routes/Routes"
+import { navItems } from "constants/navbar"
+import items from "data/footer"
+import {
+  headerItems,
+  loggedHeaderItems,
+  generateLinks,
+} from "utils/headerItems"
+import MainBodyContainer from "styles/MainBodyContainer"
 
-const images = [
-    'http://betatest.dictybase.org/images/dictyFront01.jpg',
-    'http://betatest.dictybase.org/images/dictyFront01.jpg',
-    'http://betatest.dictybase.org/images/dictyFront01.jpg',
-    'http://betatest.dictybase.org/images/dictyFront01.jpg'
-]
-const Container = styled.div`
-    display: flex;
-    flex-direction: row;
-    row-wrap: wrap;
-    height: 50%;
-    width: 100%;
-`
-const Item = styled.div`
-    width: 50%;
-    height: 400px;
-`
-
-class App extends Component {
-    render() {
-        return (
-          <div className="App">
-              <Header downloads="" cite="" info="" />
-              <Navbar items={ navItems } theme={ {} }/>
-              <Flex>
-                  <Container>
-                      <Item>
-                          <Slideshow images={ images } time={ 2000 }/>
-                      </Item>
-                      <Item>
-                          <div />
-                      </Item>
-                  </Container>
-              </Flex>
-          </div>
-        );
-    }
+type Props = {
+  /** Object representing auth part of state */
+  auth: Object,
 }
 
-export default App;
+export const App = (props: Props) => {
+  return (
+    <div>
+      {props.auth.isAuthenticated ? (
+        <Header items={loggedHeaderItems}>
+          {items => items.map(generateLinks)}
+        </Header>
+      ) : (
+        <Header items={headerItems}>{items => items.map(generateLinks)}</Header>
+      )}
+      <Navbar items={navItems} />
+      <MainBodyContainer>
+        <main>
+          <Routes {...props} />
+        </main>
+      </MainBodyContainer>
+      <Footer items={items} />
+    </div>
+  )
+}
+
+const mapStateToProps = ({ auth }) => ({ auth })
+
+export default withRouter(connect(mapStateToProps)(App))

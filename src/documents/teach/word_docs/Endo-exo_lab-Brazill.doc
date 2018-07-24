@@ -1,0 +1,10 @@
+<!doctype html> <html class="no-js"> <head> <meta charset="utf-8"> <title>DictyBase Beta Version</title> <meta name="description" content="The beta version of the new dictyBase"> <meta name="viewport" content="width=device-width"> <!-- Removing hashtag from URL requires to specify the base URL for the application --> <base href="/"> <!-- Place favicon.ico and apple-touch-icon.png in the root directory --> <link rel="shortcut icon" type="image/x-icon" href="/dicty.ico"> <link rel="stylesheet" href="styles/vendor.8089f103.css"> <link rel="stylesheet" href="styles/main.e7eff4cf.css">  <body ng-app="dictyFrontpageApp" ng-controller="MainController"> <a name="top" id="top"></a> <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]--> <!-- Site Content --> <dicty-header></dicty-header> <div ng-view autoscroll="true"></div> <dicty-footer></dicty-footer> <!-- Analytics --> <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-54217557-2', 'auto');</script> <!--[if lt IE 9]>
+    <script src="scripts/oldieshim.bfe322b1.js"></script>
+    <![endif]--> <script src="scripts/vendor.01f538ae.js"></script> <script src="scripts/scripts.c58bc70c.js"></script>  
