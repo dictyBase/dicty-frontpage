@@ -18,8 +18,8 @@ ARG auth_server
 ENV REACT_APP_AUTH_SERVER ${auth_server:-https://betatoken.dictybase.org}
 
 # base path for React Router
-ARG basename
-ENV REACT_APP_BASENAME ${basename:-frontpage}
+# ARG basename
+# ENV REACT_APP_BASENAME ${basename:-frontpage}
 
 # Google Analytics tracking ID
 ARG ga_tracking_id
@@ -37,11 +37,12 @@ WORKDIR /usr/src/app
 COPY package-lock.json ./
 
 # package.json have to be modified later on, so 
-ADD package.json package-dev.json
+ADD package.json ./
+#ADD package.json package-dev.json
 
 # create new package.json with relative path
-RUN jq '. + {"homepage": "/frontpage"}' package-dev.json > package.json \
-  && rm package-dev.json
+# RUN jq '. + {"homepage": "/frontpage"}' package-dev.json > package.json \
+#  && rm package-dev.json
 
 # add necessary folders
 ADD src src
