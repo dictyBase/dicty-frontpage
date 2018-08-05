@@ -19,23 +19,23 @@ const Front = () => {
   return (
     <div>
       <Flex wrap mx={30}>
-        <Box>
+        <Box w="100%">
           <Flex wrap>
-            <Box px={16} py={8} width={[1, 1, 1, 1 / 2]}>
+            <Box px={16} py={8} width={["100%", "100%", "100%", "50%"]}>
               <Slideshow images={images} />
             </Box>
-            <Box px={16} py={8} width={[1, 1, 1, 1 / 2]}>
+            <Box px={16} py={8} width={["100%", "100%", "100%", "50%"]}>
               <News />
             </Box>
           </Flex>
           <Flex wrap>
-            <Box px={2} py={1} width={[1, 1, 1, 1 / 2]}>
+            <Box px={2} py={1} width={["100%", "100%", "100%", "50%"]}>
               <Papers papers={papers.slice(0, 5)} />
             </Box>
-            <Box px={2} py={1} width={[1, 1 / 2, 1 / 2, 1 / 4]}>
+            <Box px={2} py={1} width={["100%", "50%", "50%", "25%"]}>
               <Popular widgets={widgets} />
             </Box>
-            <Box px={2} py={1} width={[1, 1 / 2, 1 / 2, 1 / 4]}>
+            <Box px={2} py={1} width={["100%", "50%", "50%", "25%"]}>
               <StockCenter stockcenter={stockcenter} />
               <Annotations annotations={annotations} />
             </Box>
