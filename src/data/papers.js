@@ -1,41 +1,42 @@
 module.exports = [
   {
-    author: "Xie X, Gutierrez A, Trofimov V, Szilágyi I, Soldati T, Bakker E.",
+    author: "Usaj, Zattelman, Regev, Shneyer, Wiesel-Motiuk & Henn",
     title:
-      "Charged Solvatochromic Dyes as Signal Transducers in pH Independent Fluorescent and Colorimetric Ion Selective Nanosensors.",
-    journal: "Anal Chem. 2015 Sep 9.[Epub ahead of print]",
-    link: "https://www.ncbi.nlm.nih.gov/pubmed/26352133",
+      "Overexpression and purification of human myosins from transiently and stably transfected suspension adapted HEK293SF-3F6 cells.",
+    journal:
+      "Anal Biochem. 2018 Jul 31. pii: S0003-2697(18)30419-6. doi: 10.1016/j.ab.2018.07.026. [Epub ahead of print]",
+    link: "https://www.ncbi.nlm.nih.gov/pubmed/30075102",
+  },
+  {
+    author: "Marinović M, Xiong H, Rivero F, Weber I.",
+    title:
+      "Assaying Rho GTPase-Dependent Processes in Dictyostelium discoideum.",
+    journal:
+      "Methods Mol Biol. 2018;1821:371-392. doi: 10.1007/978-1-4939-8612-5_25.",
+    link: "https://www.ncbi.nlm.nih.gov/pubmed/30062425",
+  },
+  {
+    author: "Tunnacliffe E, Corrigan AM, Chubb JR.",
+    title:
+      "Promoter-mediated diversification of transcriptional bursting dynamics following gene duplication.",
+    journal:
+      "Proc Natl Acad Sci U S A. 2018 Jul 30. pii: 201800943. doi: 10.1073/pnas.1800943115. [Epub ahead of print]",
+    link: "https://www.ncbi.nlm.nih.gov/pubmed/30061408",
   },
   {
     author:
-      "Schmith A, Spaller T, Gaube F, Fransson Å, Boesler B, Ojha S, Nellen W, Hammann C, Söderbom F, Winckler T.",
+      "Song L, Rijal R, Karow M, Stumpf M, Hahn O, Park L, Insall R, Schröder R, Hofmann A, Clemen CS, Eichinger L.",
     title:
-      "A host factor supports retrotransposition of the TRE5-A population in Dictyostelium cells by suppressing an Argonaute protein.",
-    journal: "Mob DNA. 2015;6:14. doi: 10.1186/s13100-015-0045-5.",
-    link: "https://www.ncbi.nlm.nih.gov/pubmed/26339297",
-  },
-  {
-    author: "Von Bülow J, Beitz E.",
-    title:
-      "Number and Regulation of Protozoan Aquaporins Reflect Environmental Complexity.",
-    journal: "Biol Bull. 2015 Aug;229(1):38-46.",
-    link: "https://www.ncbi.nlm.nih.gov/pubmed/26338868",
-  },
-  {
-    author:
-      "Santarriaga S, Petersen A, Ndukwe K, Brandt A, Gerges N, Scaglione JB, Scaglione KM.",
-    title:
-      "The Social Amoeba Dictyostelium discoideum is Highly Resistant to Polyglutamine Aggregation.",
+      "Expression of N471D strumpellin leads to defects in the endolysosomal system.",
     journal:
-      "J Biol Chem. 2015 Sep 1. doi:pii: jbc.M115.676247. [Epub ahead of print]",
-    link: "https://www.ncbi.nlm.nih.gov/pubmed/26338868",
+      "Dis Model Mech. 2018 Jul 30. pii: dmm.033449. doi: 10.1242/dmm.033449. [Epub ahead of print]",
+    link: "https://www.ncbi.nlm.nih.gov/pubmed/30061306",
   },
   {
-    author: "Kim MK, Kim JH, Kim JS, Kang SO.",
-    title:
-      "Structure of the 34 kDa F-actin-bundling protein ABP34 from Dictyostelium discoideum.",
+    author: "Tu Y, Rappel WJ.",
+    title: "Adaptation of Living Systems.",
     journal:
-      "Acta Crystallogr D Biol Crystallogr. 2015 Sep 1;71(Pt 9):1835-49. doi: 10.1107/S139900471501264X. Epub 2015 Aug 25.",
-    link: "https://www.ncbi.nlm.nih.gov/pubmed/26338868",
+      "Annu Rev Condens Matter Phys. 2018 Mar;9:183-205. doi: 10.1146/annurev-conmatphys-033117-054046. Epub 2017 Dec 8.",
+    link: "https://www.ncbi.nlm.nih.gov/pubmed/30057689",
   },
 ]
