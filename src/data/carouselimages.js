@@ -1,6 +1,5 @@
-import dictyFront01 from "images/frontCarousel/dictyFront01.jpg"
-import dictyFront02 from "images/frontCarousel/dictyFront02.jpg"
-import dictyFront03 from "images/frontCarousel/dictyFront03.jpg"
-import dictyFront04 from "images/frontCarousel/dictyFront04.jpg"
+import dictyFront01 from "images/frontCarousel/dicty-life-cycle.jpg"
+import dictyFront02 from "images/frontCarousel/dicty-slug.jpg"
+import dictyFront03 from "images/frontCarousel/dicty-tubulin-centrosom.png"
 
-export default [dictyFront01, dictyFront02, dictyFront03, dictyFront04]
+export default [dictyFront01, dictyFront02, dictyFront03]
