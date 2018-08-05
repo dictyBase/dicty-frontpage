@@ -9,6 +9,7 @@ import Annotations from "components/frontpage/Annotations"
 import StockCenter from "components/frontpage/StockCenter"
 import papers from "data/papers"
 import widgets from "data/widgets"
+import news from "data/news"
 import annotations from "data/annotations"
 import stockcenter from "data/stockcenter"
 import images from "data/carouselimages"
@@ -25,7 +26,7 @@ const Front = () => {
               <Slideshow images={images} />
             </Box>
             <Box px={16} py={8} width={["100%", "100%", "100%", "50%"]}>
-              <News />
+              <News posts={news.slice(0, 5)} />
             </Box>
           </Flex>
           <Flex wrap>

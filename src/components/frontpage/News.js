@@ -5,7 +5,7 @@ import Button from "@material-ui/core/Button"
 import AddIcon from "@material-ui/icons/Add"
 import FontAwesome from "react-fontawesome"
 import Authorization from "components/authentication/Authorization"
-import NewsList from "./NewsList"
+// import NewsList from "./NewsList"
 import twitterLogo from "images/twitterLogo.png"
 
 import {
@@ -17,11 +17,28 @@ import {
   NewsStockTitle,
   Img,
   RouterLink,
+  ListItems,
+  LeadText,
+  MainContent,
+  SourceContent,
+  SourceTitle,
 } from "styles"
 
 /** Widget that displays the most recent Dicty news */
 
-const News = () => {
+const News = props => {
+  const text = props.posts.map((post, index) => (
+    <ListItems key={index}>
+      <LeadText>
+        <strong>{post.date}</strong>
+      </LeadText>
+      <MainContent>{post.content}</MainContent>
+      <SourceContent>
+        <SourceTitle>Source:</SourceTitle> {post.source}
+      </SourceContent>
+    </ListItems>
+  ))
+
   return (
     <NewsContainer>
       <Header>
@@ -62,7 +79,8 @@ const News = () => {
         </Flex>
       </Header>
       <ListBox>
-        <NewsList />
+        {/* <NewsList /> */}
+        {text}
       </ListBox>
       <br />
       <br />
