@@ -32,6 +32,7 @@
     "dicty-components-login": "github:dictyBase/dicty-components-login#v1.4.0",
     "dicty-components-navbar": "github:dictyBase/dicty-components-navbar#v0.2.0",
     "dicty-components-redux": "github:dictybase-playground/dicty-components-redux#v2.3.0",
+    "element-remove": "^1.0.2",
     "font-awesome": "^4.7.0",
     "get-video-id": "^3.1.0",
     "history": "^4.7.2",
@@ -57,6 +58,7 @@
     "slate-html-serializer": "^0.6.11",
     "slate-react": "^0.12.10",
     "slate-schema-violations": "^0.1.18",
+    "string.prototype.includes": "^1.0.0",
     "styled-components": "^2.4.0",
     "typeface-roboto": "0.0.54"
   },
