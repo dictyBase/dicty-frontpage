@@ -20,13 +20,22 @@ const Popular = (props: {
     alt: string,
   }>,
 }) => {
-  const widgetlist = props.widgets.map((widget, index) => (
-    <ListItems key={index}>
-      <WidgetLink to={widget.link} alt={widget.alt}>
-        <WidgetImg src={widget.image} alt={widget.alt} />
-      </WidgetLink>
-    </ListItems>
-  ))
+  const widgetlist = props.widgets.map(
+    (widget, index) =>
+      widget.isRouter ? (
+        <ListItems key={index}>
+          <WidgetLink to={widget.link} alt={widget.alt}>
+            <WidgetImg src={widget.image} alt={widget.alt} />
+          </WidgetLink>
+        </ListItems>
+      ) : (
+        <ListItems key={index}>
+          <a href={widget.link} alt={widget.alt}>
+            <WidgetImg src={widget.image} alt={widget.alt} />
+          </a>
+        </ListItems>
+      ),
+  )
 
   return (
     <Flex justify={"center"}>

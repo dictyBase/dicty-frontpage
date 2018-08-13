@@ -24,7 +24,7 @@ const JBrowse = () => {
         <em>
           <p>
             <Link
-              href="http://dictybase.org/tools/jbrowse/?data=data%2Fjbrowse%2Fdiscoideum&amp;loc=1%3A2334653..2521452&amp;tracks=transcript%2CtRNA%2Cgene%2Cretino2&amp;highlight="
+              href="http://dictybase.org/tools/jbrowse/?data=data%2Fjbrowse%2Fdiscoideum&loc=1%3A2334627..2521426&tracks=transcript%2CtRNA%2Cgene%2Cretino2&highlight="
               title="D. discoideum"
               target="new">
               D. discoideum
@@ -32,7 +32,7 @@ const JBrowse = () => {
           </p>
           <p>
             <Link
-              href="http://dictybase.org/tools/jbrowse/?data=data%2Fjbrowse%2Fpurpureum&amp;loc=scaffold_1%3A89486..146533&amp;tracks=&amp;highlight="
+              href="http://dictybase.org/tools/jbrowse/?data=data%2Fjbrowse%2Fpurpureum&loc=scaffold_1%3A89495..146542&tracks=&highlight="
               title="D. purpureum"
               target="new">
               D. purpureum
@@ -40,7 +40,7 @@ const JBrowse = () => {
           </p>
           <p>
             <Link
-              href="http://dictybase.org/tools/jbrowse/?data=data%2Fjbrowse%2Fpallidum&amp;loc=PPA1267848%3A582884..992552&amp;tracks=tblastn_discoideum%2Ctranscript%2Cgene&amp;highlight="
+              href="http://dictybase.org/tools/jbrowse/?data=data%2Fjbrowse%2Fpallidum&loc=PPA1267848%3A582840..992508&tracks=tblastn_discoideum%2Ctranscript%2Cgene&highlight="
               title="P. pallidum"
               target="new">
               P. pallidum
@@ -48,7 +48,7 @@ const JBrowse = () => {
           </p>
           <p>
             <Link
-              href="http://dictybase.org/tools/jbrowse/?data=data%2Fjbrowse%2Ffasciculatum&amp;loc=DFA1435654%3A879778..900543&amp;tracks=gene%2CtRNA%2Ctranscript%2Ctblastn_discoideum%2Creference&amp;highlight="
+              href="http://dictybase.org/tools/jbrowse/?data=data%2Fjbrowse%2Ffasciculatum&loc=DFA1435654%3A879771..900536&tracks=gene%2CtRNA%2Ctranscript%2Ctblastn_discoideum%2Creference&highlight="
               title="D. fasciculatum"
               target="new">
               D. fasciculatum
