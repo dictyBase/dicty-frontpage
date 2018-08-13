@@ -1,149 +1,64 @@
-import React, { Component } from "react"
-import styled from "styled-components"
+// @flow
+import React from "react"
+import { Carousel } from "react-responsive-carousel"
+import lifeCycle from "images/frontCarousel/dicty-life-cycle.jpg"
+import slug from "images/frontCarousel/dicty-slug.jpg"
+import tubulin from "images/frontCarousel/dicty-tubulin-centrosom.png"
+import "react-responsive-carousel/lib/styles/carousel.min.css"
 
-const Container = styled.div`
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  height: 95%;
-  background: ${props =>
-    props.theme.background ? props.theme.background : "black"};
-  margin-top: 10px;
-  min-height: 350px;
-`
-const Carousel = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  position: absolute;
-  transform: translate3d(${props => props.activeIndex * -100}%, 0, 0);
-  transition: transform 0.3s linear;
-  width: 100%;
-  height: 100%;
-`
-const ImageContainer = styled.div`
-  min-width: 100%;
-  max-width: 100%;
-`
-const Slide = styled.img`
-  object-fit: contain;
-  max-width: 100%;
-  max-height: 100%;
-  min-width: 100%;
-`
-const Button = styled.i`
-  cursor: pointer;
-  height: 20px;
-  width: 20px;
-  color: white;
-  opacity: 0.7;
-  position: absolute;
-  ${props => props.side === "left" && "left: 10px;"} ${props =>
-    props.side === "right" && "right: 10px;"} margin: auto 0;
-  z-index: 100;
-  top: 0;
-  bottom: 0;
-  transition: opacity 0.2s ease;
+/**
+ * Image slideshow carousel with curated dicty photos
+ */
 
-  &:hover {
-    opacity: 1;
-  }
-`
-const Dots = styled.div`
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 20px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  height: 20px;
-`
-const Dot = styled.i`
-  color: white;
-  opacity: ${props => (props.active ? 1 : 0.7)};
-  transition: opacity 0.15s ease;
-  z-index: 100;
-  width: 20px;
-`
-
-/** Slideshow image carousel */
-
-export default class Slideshow extends Component {
-  constructor() {
-    super()
-    this.state = {
-      activeIndex: 0,
-    }
-  }
-  componentDidMount() {
-    this.start()
-  }
-  next = () => {
-    const { images } = this.props
-    const { activeIndex } = this.state
-    this.setState({
-      activeIndex: activeIndex === images.length - 1 ? 0 : activeIndex + 1,
-    })
-  }
-  previous = () => {
-    const { images } = this.props
-    const { activeIndex } = this.state
-    this.setState({
-      activeIndex: activeIndex === 0 ? images.length - 1 : activeIndex - 1,
-    })
-  }
-  renderImages = () => {
-    const { images } = this.props
-    return images.map((image, i) => {
-      return (
-        <ImageContainer key={i}>
-          <Slide src={image} alt="" />
-        </ImageContainer>
-      )
-    })
-  }
-  renderDots = () => {
-    const { images } = this.props
-    const { activeIndex } = this.state
-    return images.map((image, i) => {
-      return (
-        <Dot
-          key={i}
-          className={`fa fa-circle${i !== activeIndex ? "-thin" : ""}`}
-          aria-hidden="true"
-          active={activeIndex === i && true}
+const Slideshow = () => {
+  return (
+    <Carousel
+      showStatus={false}
+      showIndicators={false}
+      showThumbs={false}
+      autoPlay
+      interval={5000}
+      infiniteLoop>
+      <div style={{ height: "440px" }}>
+        <img
+          src={lifeCycle}
+          alt="dicty life cycle"
+          style={{ width: "100%", height: "100%" }}
         />
-      )
-    })
-  }
-  start = () => {
-    setInterval(() => {
-      this.next()
-    }, this.props.time ? this.props.time : 20000)
-  }
-  render() {
-    const { images } = this.props
-    const { activeIndex } = this.state
-    return (
-      <Container>
-        <Button
-          className="fa fa-chevron-left fa-2x"
-          aria-hidden="true"
-          onClick={this.previous}
-          side="left"
+        <p className="legend">
+          <strong>Dicty Life Cycle</strong> Courtesy of M.J. Grimson & R.L.
+          Blanton, Biological Sciences Electron Microscopy Laboratory, Texas
+          Tech University
+        </p>
+      </div>
+      <div style={{ height: "440px" }}>
+        <img
+          src={slug}
+          alt="D. discoideum slug"
+          style={{ width: "100%", height: "100%" }}
         />
-        <Carousel length={images.length} activeIndex={activeIndex}>
-          {this.renderImages()}
-        </Carousel>
-        <Button
-          className="fa fa-chevron-right fa-2x"
-          aria-hidden="true"
-          onClick={this.next}
-          side="right"
+        <p className="legend">
+          <strong>D. discoideum slug</strong> Courtesy Dirk Dormann, MRC London
+          Institute of Medical Sciences
+        </p>
+      </div>
+      <div style={{ height: "440px" }}>
+        <img
+          src={tubulin}
+          alt="ggtA-mutant-DG1109"
+          style={{ width: "100%", height: "100%" }}
         />
-        <Dots>{this.renderDots()}</Dots>
-      </Container>
-    )
-  }
+        <p className="legend">
+          <strong>
+            Triple stained and fixed Dictyostelium cells: apha-tubulin (green),
+            centrosome (red, appears yellow due to colocalization with tubulin),
+            nuclei (blue)
+          </strong>{" "}
+          Courtesy of Ralph Gräf, Potsdam University
+        </p>
+      </div>
+    </Carousel>
+  )
 }
+
+export default Slideshow

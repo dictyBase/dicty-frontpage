@@ -47,13 +47,15 @@ const News = props => {
             </Link>
           </Box>
           <Box pl={2} py={1} width={8 / 10}>
-            <FontAwesome name="globe fa-lg" />
-            <NewsStockTitle>DICTY NEWS</NewsStockTitle>
+            <center>
+              <FontAwesome name="globe fa-lg" />
+              <NewsStockTitle>DICTY NEWS</NewsStockTitle>
+            </center>
           </Box>
           <Authorization
             render={({ canAddNews, verifiedToken }) => {
               return (
-                <Box w={1 / 10}>
+                <Box width={1 / 10}>
                   {canAddNews &&
                     verifiedToken && (
                       <RouterLink to="/addnews">
@@ -77,7 +79,6 @@ const News = props => {
         {/* <NewsList /> */}
         {text}
       </ListBox>
-      <br />
       <br />
       <MoreLink>
         <FontAwesome name="plus" />

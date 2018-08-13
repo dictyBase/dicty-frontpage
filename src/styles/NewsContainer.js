@@ -9,6 +9,8 @@ const NewsContainerStyle = styled.div`
   border-radius: 15px;
   margin-top: 10px;
   margin-bottom: 10px;
+  height: 440px;
+  overflow: auto;
 `
 
 const NewsContainer = ({ children, ...props }) => (
