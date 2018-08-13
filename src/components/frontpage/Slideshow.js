@@ -23,7 +23,7 @@ const Slideshow = () => {
         <img
           src={lifeCycle}
           alt="dicty life cycle"
-          style={{ width: "100%", height: "100%" }}
+          style={{ width: "100%", height: "100%", maxHeight: "440px" }}
         />
         <p className="legend">
           <strong>Dicty Life Cycle</strong> Courtesy of M.J. Grimson & R.L.
@@ -35,7 +35,7 @@ const Slideshow = () => {
         <img
           src={slug}
           alt="D. discoideum slug"
-          style={{ width: "100%", height: "100%" }}
+          style={{ width: "100%", height: "100%", maxHeight: "440px" }}
         />
         <p className="legend">
           <strong>D. discoideum slug</strong> Courtesy Dirk Dormann, MRC London
@@ -46,7 +46,7 @@ const Slideshow = () => {
         <img
           src={tubulin}
           alt="ggtA-mutant-DG1109"
-          style={{ width: "100%", height: "100%" }}
+          style={{ width: "100%", height: "100%", maxHeight: "440px" }}
         />
         <p className="legend">
           <strong>

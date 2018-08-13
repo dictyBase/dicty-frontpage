@@ -27,7 +27,7 @@ const Front = () => {
           <News posts={news.slice(0, 5)} />
         </Box>
         <Box px={2} py={1} width={["100%", "100%", "100%", "50%"]}>
-          <Papers papers={papers.slice(0, 4)} />
+          <Papers papers={papers.slice(0, 5)} />
         </Box>
         <Box px={2} py={1} width={["100%", "50%", "50%", "25%"]}>
           <Popular widgets={widgets} />

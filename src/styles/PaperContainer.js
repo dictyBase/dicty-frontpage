@@ -10,8 +10,8 @@ const PaperContainerStyle = styled.div`
   background-color: #eff8fb;
   border-radius: 15px;
   margin-bottom: 10px;
-  height: 400px;
-  overflow: auto;
+  /* height: 400px;
+  overflow: auto; */
 `
 
 const PaperContainer = ({ children, ...props }) => (
