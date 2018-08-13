@@ -127,6 +127,20 @@ exports[`Popular snapshot test 1`] = `
         className="c4"
       >
         <a
+          alt="dicty STATS (dictyAccess)"
+          href="https://testdb.dictybase.org/dictyaccess"
+        >
+          <img
+            alt="dicty STATS (dictyAccess)"
+            className="c6"
+            src="widgetSTATS.png"
+          />
+        </a>
+      </li>
+      <li
+        className="c4"
+      >
+        <a
           alt="jobs @ dicty"
           className="c5"
           href="/community/jobs"
@@ -144,9 +158,7 @@ exports[`Popular snapshot test 1`] = `
       >
         <a
           alt="dicty express"
-          className="c5"
-          href="/dictyexpress"
-          onClick={[Function]}
+          href="https://dictyexpress.research.bcm.edu/landing/"
         >
           <img
             alt="dicty express"
