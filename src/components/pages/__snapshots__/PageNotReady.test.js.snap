@@ -71,7 +71,7 @@ exports[`matching a snapshot of PageNotReady 1`] = `
             onClick={[Function]}
           >
             <button
-              className="MuiButtonBase-root-25 MuiButton-root-1 MuiButton-contained-10 MuiButton-containedPrimary-11 MuiButton-raised-13 MuiButton-raisedPrimary-14 MuiButton-sizeSmall-22 c2"
+              className="MuiButtonBase-root-27 MuiButton-root-1 MuiButton-contained-12 MuiButton-containedPrimary-13 MuiButton-raised-15 MuiButton-raisedPrimary-16 MuiButton-sizeSmall-24 c2"
               disabled={false}
               onBlur={[Function]}
               onFocus={[Function]}
@@ -92,7 +92,7 @@ exports[`matching a snapshot of PageNotReady 1`] = `
                 Dictybase Home
               </span>
               <span
-                className="MuiTouchRipple-root-28"
+                className="MuiTouchRipple-root-30"
               />
             </button>
           </a>
