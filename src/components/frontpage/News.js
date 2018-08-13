@@ -20,8 +20,6 @@ import {
   ListItems,
   LeadText,
   MainContent,
-  SourceContent,
-  SourceTitle,
 } from "styles"
 
 /** Widget that displays the most recent Dicty news */
@@ -33,9 +31,6 @@ const News = props => {
         <strong>{post.date}</strong>
       </LeadText>
       <MainContent>{post.content}</MainContent>
-      <SourceContent>
-        <SourceTitle>Source:</SourceTitle> {post.source}
-      </SourceContent>
     </ListItems>
   ))
 
