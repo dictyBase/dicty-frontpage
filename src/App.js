@@ -5,7 +5,7 @@ import { withRouter } from "react-router-dom"
 import { Header, Footer } from "dicty-components-header-footer"
 import { Navbar } from "dicty-components-navbar"
 import Routes from "routes/Routes"
-import { navItems, navbarGenerator } from "constants/navbar"
+import { navItems, navbarGenerator } from "utils/navbar"
 import items from "data/footer"
 import {
   headerItems,
@@ -24,15 +24,20 @@ export class App extends Component<Props> {
     loading: true,
     navLinks: [],
   }
+
   async componentDidMount() {
     const data = await navbarGenerator()
     this.setState({ loading: false, navLinks: data })
   }
+
   render() {
-    if (this.state.loading) {
+    const { loading, navLinks } = this.state
+    const { auth } = this.props
+
+    if (loading) {
       return (
         <div>
-          {this.props.auth.isAuthenticated ? (
+          {auth.isAuthenticated ? (
             <Header items={loggedHeaderItems}>
               {items => items.map(generateLinks)}
             </Header>
@@ -53,7 +58,7 @@ export class App extends Component<Props> {
     }
     return (
       <div>
-        {this.props.auth.isAuthenticated ? (
+        {auth.isAuthenticated ? (
           <Header items={loggedHeaderItems}>
             {items => items.map(generateLinks)}
           </Header>
@@ -62,7 +67,7 @@ export class App extends Component<Props> {
             {items => items.map(generateLinks)}
           </Header>
         )}
-        <Navbar items={this.state.navLinks} />
+        <Navbar items={navLinks} />
         <MainBodyContainer>
           <main>
             <Routes {...this.props} />

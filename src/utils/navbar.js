@@ -8,30 +8,6 @@ if (process.env.NODE_ENV === "production") {
     "https://raw.githubusercontent.com/dictyBase/migration-data/master/navbar/navbar.dev.json"
 }
 
-export const navbarGenerator = async () => {
-  try {
-    const res = await fetch(url)
-    const json = await res.json()
-
-    const navbarArr = json.data.map(item => {
-      if (!item.attributes.items) {
-        return {
-          title: item.type,
-          href: item.attributes.href,
-        }
-      }
-      return {
-        dropdown: true,
-        title: item.type,
-        items: item.attributes.items,
-      }
-    })
-    return navbarArr
-  } catch (error) {
-    console.error(error.message)
-  }
-}
-
 // keep old links as fall back
 export const navItems = [
   {
@@ -149,3 +125,28 @@ export const navItems = [
     ],
   },
 ]
+
+export const navbarGenerator = async () => {
+  try {
+    const res = await fetch(url)
+    const json = await res.json()
+
+    const navbarArr = json.data.map(item => {
+      if (!item.attributes.items) {
+        return {
+          title: item.type,
+          href: item.attributes.href,
+        }
+      }
+      return {
+        dropdown: true,
+        title: item.type,
+        items: item.attributes.items,
+      }
+    })
+    return navbarArr
+  } catch (error) {
+    console.error(error.message)
+    return navItems
+  }
+}
