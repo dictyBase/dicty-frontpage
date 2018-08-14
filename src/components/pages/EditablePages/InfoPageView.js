@@ -6,7 +6,7 @@ import PageEditor from "components/editor/PageEditor"
 import Authorization from "components/authentication/Authorization"
 import ErrorNotification from "components/authentication/ErrorNotification"
 import timeSince from "utils/timeSince"
-import { AuthenticatedUser, ContentAPI } from "utils/apiClasses"
+import { ContentAPI } from "utils/apiClasses"
 import { editPage } from "actions/editablePages"
 import { fetchUserInfo } from "actions/auth"
 import FontAwesome from "react-fontawesome"
@@ -31,8 +31,6 @@ type Props = {
   page: Object,
   /** contains the object representing the fetched user's data */
   fetchedUserData: Object,
-  /** contains the object representing the logged in user's data */
-  loggedInUser: Object,
 }
 
 /** Displays the page data that was fetched from the InfoPage component */
@@ -50,7 +48,6 @@ class InfoPageView extends Component<Props> {
   }
   render() {
     const { updated_at } = this.props.page.data.attributes
-    const { loggedInUser } = this.props
 
     return (
       <Flex justify="center">
@@ -79,17 +76,11 @@ class InfoPageView extends Component<Props> {
                           </Box>
                           <Box ml="auto">
                             <Label>{fetchedUserData.getRoles()}</Label> &nbsp;
-                            {loggedInUser.canOverwrite(
-                              fetchedUserData.getId(),
-                            ) &&
-                              verifiedToken && (
-                                <InlineLink onClick={this.onClick}>
-                                  <FontAwesome
-                                    name="pencil"
-                                    title="Edit page"
-                                  />
-                                </InlineLink>
-                              )}
+                            {verifiedToken && (
+                              <InlineLink onClick={this.onClick}>
+                                <FontAwesome name="pencil" title="Edit page" />
+                              </InlineLink>
+                            )}
                           </Box>
                         </Flex>
                       </ToolbarNav>
@@ -114,14 +105,7 @@ class InfoPageView extends Component<Props> {
   }
 }
 
-const mapStateToProps = state => {
-  const loggedInUser = new AuthenticatedUser(state.auth.user)
-  return {
-    loggedInUser: loggedInUser,
-  }
-}
-
 export default connect(
-  mapStateToProps,
+  null,
   { editPage, fetchUserInfo },
 )(InfoPageView)

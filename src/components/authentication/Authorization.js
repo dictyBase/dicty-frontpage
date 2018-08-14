@@ -1,8 +1,7 @@
 // @flow
 import { connect } from "react-redux"
 import {
-  PermissionAPI,
-  RoleAPI,
+  RolesPermissionsAPI,
   AuthenticatedUser,
   AuthAPI,
 } from "utils/apiClasses"
@@ -29,38 +28,38 @@ const Authorization = (props: Props) => {
     canEditPages: loggedInUser.verifyPermissions("write", frontpagecontent),
     canAddNews: loggedInUser.verifyPermissions("write", frontpagenews),
     isSuperUser: roles.checkRoles("superuser"),
-    fetchedUserData: fetchedUserData,
+    fetchedUserData,
     verifiedToken: verifiedToken.verifyToken(),
   })
 }
 
 const mapStateToProps = state => {
   if (state.auth.user && state.auth.fetchedUserData) {
-    const loggedInUser = new PermissionAPI(state.auth.user)
-    const roles = new RoleAPI(state.auth.user)
+    const loggedInUser = new RolesPermissionsAPI(state.auth.user)
+    const roles = new RolesPermissionsAPI(state.auth.user)
     const fetchedUserData = new AuthenticatedUser(state.auth.fetchedUserData)
     const verifiedToken = new AuthAPI(state.auth)
     return {
-      loggedInUser: loggedInUser,
-      roles: roles,
-      fetchedUserData: fetchedUserData,
-      verifiedToken: verifiedToken,
+      loggedInUser,
+      roles,
+      fetchedUserData,
+      verifiedToken,
     }
-  } else if (state.auth.user) {
-    const loggedInUser = new PermissionAPI(state.auth.user)
-    const roles = new RoleAPI(state.auth.user)
+  }
+  if (state.auth.user) {
+    const loggedInUser = new RolesPermissionsAPI(state.auth.user)
+    const roles = new RolesPermissionsAPI(state.auth.user)
     const verifiedToken = new AuthAPI(state.auth)
     return {
-      loggedInUser: loggedInUser,
-      roles: roles,
-      verifiedToken: verifiedToken,
+      loggedInUser,
+      roles,
+      verifiedToken,
     }
-  } else {
-    return {
-      loggedInUser: { verifyPermissions: () => {} },
-      roles: { checkRoles: () => {} },
-      verifiedToken: { verifyToken: () => {} },
-    }
+  }
+  return {
+    loggedInUser: { verifyPermissions: () => {} },
+    roles: { checkRoles: () => {} },
+    verifiedToken: { verifyToken: () => {} },
   }
 }
 
