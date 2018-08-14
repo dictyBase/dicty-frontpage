@@ -11,6 +11,17 @@ import {
 import { fetchBySlugResource, fetchByIdResource } from "utils/fetchResources"
 import { push } from "connected-react-router"
 
+// helper function to print HTTP errors to console
+// responses are structured in JSONAPI format
+const printError = (res, json) => {
+  console.error("HTTP Error")
+  console.error(
+    `HTTP Response: ${res.status}
+    Title: ${json.errors[0].title}
+    Detail: ${json.errors[0].detail}`,
+  )
+}
+
 const fetchPageRequest = () => {
   return {
     type: FETCH_PAGE_REQUEST,
@@ -81,37 +92,26 @@ export const fetchPage = (slug: string) => {
         } else {
           if (process.env.NODE_ENV !== "production") {
             printError(res, json)
-            dispatch(push("/error"))
+            dispatch(push("/notfound"))
           }
           dispatch(fetchPageFailure(res.body))
-          dispatch(push("/error"))
+          dispatch(push("/notfound"))
         }
       } else {
         if (process.env.NODE_ENV !== "production") {
           console.error("Cannot convert to JSON")
         }
         dispatch(fetchPageFailure(res.body))
-        dispatch(push("/error"))
+        dispatch(push("/notfound"))
       }
     } catch (error) {
       dispatch(fetchPageFailure(error))
-      dispatch(push("/error"))
+      dispatch(push("/notfound"))
       if (process.env.NODE_ENV !== "production") {
         console.error(`Network error: ${error.message}`)
       }
     }
   }
-}
-
-// helper function to print HTTP errors to console
-// responses are structured in JSONAPI format
-const printError = (res, json) => {
-  console.error("HTTP Error")
-  console.error(
-    `HTTP Response: ${res.status}
-    Title: ${json.errors[0].title}
-    Detail: ${json.errors[0].detail}`,
-  )
 }
 
 const doEdit = (content: Object) => {
