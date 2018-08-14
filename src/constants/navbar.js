@@ -1,7 +1,48 @@
+let url
+
+if (process.env.NODE_ENV === "production") {
+  url =
+    "https://raw.githubusercontent.com/dictyBase/migration-data/master/navbar/navbar.staging.json"
+} else {
+  url =
+    "https://raw.githubusercontent.com/dictyBase/migration-data/master/navbar/navbar.dev.json"
+}
+
+export const navbarGenerator = async () => {
+  try {
+    const res = await fetch(url)
+    const json = await res.json()
+
+    const navbarArr = json.data.map(item => {
+      if (!item.attributes.items) {
+        return {
+          title: item.type,
+          href: item.attributes.href,
+        }
+      }
+      return {
+        dropdown: true,
+        title: item.type,
+        items: item.attributes.items,
+      }
+    })
+    return navbarArr
+  } catch (error) {
+    console.error(error.message)
+  }
+}
+
+// keep old links as fall back
 export const navItems = [
   {
+    dropdown: true,
     title: "Genomes",
-    href: "/genomes",
+    items: [
+      {
+        name: "Dictyostelium discoideum",
+        href: "/genomes",
+      },
+    ],
   },
   {
     dropdown: true,
@@ -17,6 +58,10 @@ export const navItems = [
     dropdown: true,
     title: "Explore",
     items: [
+      {
+        name: "dictyAccess",
+        href: "https://testdb.dictybase.org/dictyaccess",
+      },
       {
         name: "Dicty Art",
         href: "/explore/art",
