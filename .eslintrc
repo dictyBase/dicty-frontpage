@@ -2,8 +2,6 @@
   "extends": [
     "react-app",
     "airbnb",
-    "plugin:import/errors",
-    "plugin:import/warnings",
     "prettier",
     "prettier/flowtype",
     "prettier/react",
@@ -13,12 +11,13 @@
     "quotes": ["error", "double"],
     "semi": ["error", "never"],
     "no-console": ["error", { "allow": ["log"] }],
-    "arrow-body-style": ["error", "always"],
+    "arrow-body-style": ["error", "as-needed"],
     "arrow-parens": ["error", "as-needed"],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "react/prop-types": [0],
     "jsx-a11y/href-no-hash": [0],
     "jsx-a11y/label-has-associated-control": [0],
-    "react/jsx-no-bind": [2, {}]
+    "react/jsx-no-bind": [2, {}],
+    "import/no-unresolved": "off"
   }
 }

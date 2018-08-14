@@ -332,9 +332,8 @@ const mapStateToProps = state => {
     return {
       userId: state.auth.user.data.id,
     }
-  } else {
-    return
   }
+  return {}
 }
 
 export default connect(
