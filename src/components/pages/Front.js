@@ -12,7 +12,6 @@ import widgets from "data/widgets"
 import news from "data/news"
 import annotations from "data/annotations"
 import stockcenter from "data/stockcenter"
-import images from "data/carouselimages"
 
 /** This is the frontpage component that appears when the user hits the "/" route. */
 
@@ -21,13 +20,13 @@ const Front = () => {
     <div>
       <Flex wrap mx={30}>
         <Box px={16} py={8} width={["100%", "100%", "50%", "50%"]}>
-          <Slideshow images={images} />
+          <Slideshow />
         </Box>
         <Box px={16} py={8} width={["100%", "100%", "50%", "50%"]}>
           <News posts={news.slice(0, 5)} />
         </Box>
         <Box px={2} py={1} width={["100%", "100%", "100%", "50%"]}>
-          <Papers papers={papers.slice(0, 5)} />
+          <Papers papers={papers.slice(0, 4)} />
         </Box>
         <Box px={2} py={1} width={["100%", "50%", "50%", "25%"]}>
           <Popular widgets={widgets} />

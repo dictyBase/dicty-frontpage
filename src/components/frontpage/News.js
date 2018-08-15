@@ -38,7 +38,7 @@ const News = props => {
     <NewsContainer>
       <Header>
         <Flex wrap>
-          <Box px={2} py={1} width={1 / 10}>
+          <Box px={2} width={1 / 10}>
             <Link
               href="https://twitter.com/dictybase"
               title="Dicty News at Twitter"
@@ -46,7 +46,7 @@ const News = props => {
               <Img src={twitterLogo} alt="Twitter logo" />
             </Link>
           </Box>
-          <Box pl={2} py={1} width={8 / 10}>
+          <Box pl={2} width={8 / 10}>
             <center>
               <FontAwesome name="globe fa-lg" />
               <NewsStockTitle>DICTY NEWS</NewsStockTitle>
@@ -75,18 +75,23 @@ const News = props => {
           />
         </Flex>
       </Header>
-      <ListBox>
-        {/* <NewsList /> */}
-        {text}
-      </ListBox>
-      <br />
-      <MoreLink>
-        <FontAwesome name="plus" />
-        <RouterLink to="/news" alt="more news">
-          {" "}
-          more news{" "}
-        </RouterLink>
-      </MoreLink>
+      <Flex wrap column>
+        <Box>
+          <ListBox>
+            {/* <NewsList /> */}
+            {text}
+          </ListBox>
+        </Box>
+        <Box>
+          <MoreLink>
+            <FontAwesome name="plus" />
+            <RouterLink to="/news" alt="more news">
+              {" "}
+              more news{" "}
+            </RouterLink>
+          </MoreLink>
+        </Box>
+      </Flex>
     </NewsContainer>
   )
 }
