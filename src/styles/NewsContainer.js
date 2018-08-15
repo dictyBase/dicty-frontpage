@@ -11,6 +11,10 @@ const NewsContainerStyle = styled.div`
   margin-bottom: 10px;
   height: 440px;
   overflow: auto;
+
+  @media (max-width: 768px) {
+    height: 350px;
+  }
 `
 
 const NewsContainer = ({ children, ...props }) => (
