@@ -1,7 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Popular snapshot test 1`] = `
+.c1 {
+  box-sizing: border-box;
+}
+
 .c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c2 {
   color: #bdbdbd;
   font-size: 12px;
   vertical-align: top;
@@ -9,17 +24,17 @@ exports[`Popular snapshot test 1`] = `
   font-style: italic;
 }
 
-.c1 {
+.c3 {
   padding: 0px;
   margin-bottom: 5px;
 }
 
-.c2 {
+.c4 {
   list-style-type: none;
   margin-bottom: 10px;
 }
 
-.c3 {
+.c5 {
   color: #428bca;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -27,89 +42,89 @@ exports[`Popular snapshot test 1`] = `
   height: auto;
 }
 
-.c4 {
+.c6 {
   width: 300px;
   max-width: 100%;
   border-radius: 5px;
 }
 
-.c4:hover {
+.c6:hover {
   opacity: 0.5;
 }
 
 @media (max-width:767px) {
-  .c0 {
+  .c2 {
     font-size: 14px;
     text-align: left;
   }
 }
 
 <div
-  className="iZBBQa sc-bdVaJa iHZvIS"
+  className="c0 c1"
   is={null}
 >
   <div
-    className="iHZvIS"
+    className="c1"
     is={null}
   >
     <div
-      className="c0"
+      className="c2"
     >
       Most popular tools and sections
     </div>
     <ul
-      className="c1"
+      className="c3"
     >
       <li
-        className="c2"
+        className="c4"
       >
         <a
           alt="techniques"
-          className="c3"
+          className="c5"
           href="/research/techniques"
           onClick={[Function]}
         >
           <img
             alt="techniques"
-            className="c4"
+            className="c6"
             src="widgetTECHNIQUES.png"
           />
         </a>
       </li>
       <li
-        className="c2"
+        className="c4"
       >
         <a
           alt="genome browser"
-          className="c3"
+          className="c5"
           href="/tools/jbrowse"
           onClick={[Function]}
         >
           <img
             alt="genome browser"
-            className="c4"
+            className="c6"
             src="widgetGBROWSER.png"
           />
         </a>
       </li>
       <li
-        className="c2"
+        className="c4"
       >
         <a
           alt="learn dicty"
-          className="c3"
+          className="c5"
           href="/explore/learn"
           onClick={[Function]}
         >
           <img
             alt="learn dicty"
-            className="c4"
+            className="c6"
             src="widgetLEARNDICTY.png"
           />
         </a>
       </li>
       <li
-        className="c2"
+        className="c4"
       >
         <a
           alt="dicty STATS (dictyAccess)"
@@ -117,29 +132,29 @@ exports[`Popular snapshot test 1`] = `
         >
           <img
             alt="dicty STATS (dictyAccess)"
-            className="c4"
+            className="c6"
             src="widgetSTATS.png"
           />
         </a>
       </li>
       <li
-        className="c2"
+        className="c4"
       >
         <a
           alt="jobs @ dicty"
-          className="c3"
+          className="c5"
           href="/community/jobs"
           onClick={[Function]}
         >
           <img
             alt="jobs @ dicty"
-            className="c4"
+            className="c6"
             src="widgetJOBS.png"
           />
         </a>
       </li>
       <li
-        className="c2"
+        className="c4"
       >
         <a
           alt="dicty express"
@@ -147,7 +162,7 @@ exports[`Popular snapshot test 1`] = `
         >
           <img
             alt="dicty express"
-            className="c4"
+            className="c6"
             src="widgetDICTYEXPRESS.png"
           />
         </a>
