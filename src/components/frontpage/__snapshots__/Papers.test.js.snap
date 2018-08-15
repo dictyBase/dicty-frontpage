@@ -1,20 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Papers snapshot test 1`] = `
-.c3 {
-  box-sizing: border-box;
-}
-
-.c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-}
-
 .c0 {
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   line-height: 1.428;
@@ -36,7 +22,7 @@ exports[`Papers snapshot test 1`] = `
   text-align: right;
 }
 
-.c4 {
+.c2 {
   padding-left: 5px;
   color: #086a87;
   font-size: 20px;
@@ -44,7 +30,7 @@ exports[`Papers snapshot test 1`] = `
   text-align: left;
 }
 
-.c5 {
+.c3 {
   padding: 0px 25px 10px 25px;
   font-size: 12px;
   margin-bottom: 5px;
@@ -52,37 +38,37 @@ exports[`Papers snapshot test 1`] = `
   margin-top: 12px;
 }
 
-.c6 {
+.c4 {
   list-style-type: none;
   margin-bottom: 10px;
 }
 
-.c7 {
+.c5 {
   color: #0b3861;
   padding-right: 10px;
+}
+
+.c6 {
+  padding-right: 10px;
+}
+
+.c7 {
+  color: #0b3861;
 }
 
 .c8 {
-  padding-right: 10px;
-}
-
-.c9 {
-  color: #0b3861;
-}
-
-.c10 {
   padding-top: 7px;
   font-weight: bold;
   text-align: center;
 }
 
-.c11 {
+.c9 {
   color: #428bca;
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c12 {
+.c10 {
   color: #0b3861;
   font-size: 11px;
   font-style: italic;
@@ -91,7 +77,7 @@ exports[`Papers snapshot test 1`] = `
   padding-bottom: 10px;
 }
 
-.c13 {
+.c11 {
   color: #428bca;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -112,19 +98,19 @@ exports[`Papers snapshot test 1`] = `
 }
 
 @media (max-width:992px) and (min-width:767px) {
-  .c5 {
+  .c3 {
     font-size: 10px;
   }
 }
 
 @media (max-width:768px) {
-  .c5 {
+  .c3 {
     font-size: 16px;
   }
 }
 
 @media (min-width:1400px) {
-  .c12 {
+  .c10 {
     padding-top: 30px;
     font-size: 12px;
   }
@@ -137,11 +123,11 @@ exports[`Papers snapshot test 1`] = `
     className="c1"
   >
     <div
-      className="c2 c3"
+      className="jtWIOA sc-bdVaJa iHZvIS"
       is={null}
     >
       <span
-        className="c4"
+        className="c2"
       >
         <span
           aria-hidden={true}
@@ -149,25 +135,25 @@ exports[`Papers snapshot test 1`] = `
         />
       </span>
       <span
-        className="c4"
+        className="c2"
       >
         LATEST PAPERS
       </span>
     </div>
   </div>
   <ul
-    className="c5"
+    className="c3"
   >
     <li
-      className="c6"
+      className="c4"
     >
       <span
-        className="c7"
+        className="c5"
       >
         Usaj, Zattelman, Regev, Shneyer, Wiesel-Motiuk & Henn
       </span>
       <span
-        className="c8"
+        className="c6"
       >
         <strong>
           <em>
@@ -176,16 +162,16 @@ exports[`Papers snapshot test 1`] = `
         </strong>
       </span>
       <span
-        className="c9"
+        className="c7"
       >
         <span
-          className="c10"
+          className="c8"
         >
           Journal: 
         </span>
         Anal Biochem. 2018 Jul 31. pii: S0003-2697(18)30419-6. doi: 10.1016/j.ab.2018.07.026. [Epub ahead of print]
         <a
-          className="c11"
+          className="c9"
           href="https://www.ncbi.nlm.nih.gov/pubmed/30075102"
           target="new"
         >
@@ -195,15 +181,15 @@ exports[`Papers snapshot test 1`] = `
       </span>
     </li>
     <li
-      className="c6"
+      className="c4"
     >
       <span
-        className="c7"
+        className="c5"
       >
         Marinović M, Xiong H, Rivero F, Weber I.
       </span>
       <span
-        className="c8"
+        className="c6"
       >
         <strong>
           <em>
@@ -212,16 +198,16 @@ exports[`Papers snapshot test 1`] = `
         </strong>
       </span>
       <span
-        className="c9"
+        className="c7"
       >
         <span
-          className="c10"
+          className="c8"
         >
           Journal: 
         </span>
         Methods Mol Biol. 2018;1821:371-392. doi: 10.1007/978-1-4939-8612-5_25.
         <a
-          className="c11"
+          className="c9"
           href="https://www.ncbi.nlm.nih.gov/pubmed/30062425"
           target="new"
         >
@@ -231,15 +217,15 @@ exports[`Papers snapshot test 1`] = `
       </span>
     </li>
     <li
-      className="c6"
+      className="c4"
     >
       <span
-        className="c7"
+        className="c5"
       >
         Tunnacliffe E, Corrigan AM, Chubb JR.
       </span>
       <span
-        className="c8"
+        className="c6"
       >
         <strong>
           <em>
@@ -248,16 +234,16 @@ exports[`Papers snapshot test 1`] = `
         </strong>
       </span>
       <span
-        className="c9"
+        className="c7"
       >
         <span
-          className="c10"
+          className="c8"
         >
           Journal: 
         </span>
         Proc Natl Acad Sci U S A. 2018 Jul 30. pii: 201800943. doi: 10.1073/pnas.1800943115. [Epub ahead of print]
         <a
-          className="c11"
+          className="c9"
           href="https://www.ncbi.nlm.nih.gov/pubmed/30061408"
           target="new"
         >
@@ -267,15 +253,15 @@ exports[`Papers snapshot test 1`] = `
       </span>
     </li>
     <li
-      className="c6"
+      className="c4"
     >
       <span
-        className="c7"
+        className="c5"
       >
         Song L, Rijal R, Karow M, Stumpf M, Hahn O, Park L, Insall R, Schröder R, Hofmann A, Clemen CS, Eichinger L.
       </span>
       <span
-        className="c8"
+        className="c6"
       >
         <strong>
           <em>
@@ -284,16 +270,16 @@ exports[`Papers snapshot test 1`] = `
         </strong>
       </span>
       <span
-        className="c9"
+        className="c7"
       >
         <span
-          className="c10"
+          className="c8"
         >
           Journal: 
         </span>
         Dis Model Mech. 2018 Jul 30. pii: dmm.033449. doi: 10.1242/dmm.033449. [Epub ahead of print]
         <a
-          className="c11"
+          className="c9"
           href="https://www.ncbi.nlm.nih.gov/pubmed/30061306"
           target="new"
         >
@@ -303,15 +289,15 @@ exports[`Papers snapshot test 1`] = `
       </span>
     </li>
     <li
-      className="c6"
+      className="c4"
     >
       <span
-        className="c7"
+        className="c5"
       >
         Tu Y, Rappel WJ.
       </span>
       <span
-        className="c8"
+        className="c6"
       >
         <strong>
           <em>
@@ -320,16 +306,16 @@ exports[`Papers snapshot test 1`] = `
         </strong>
       </span>
       <span
-        className="c9"
+        className="c7"
       >
         <span
-          className="c10"
+          className="c8"
         >
           Journal: 
         </span>
         Annu Rev Condens Matter Phys. 2018 Mar;9:183-205. doi: 10.1146/annurev-conmatphys-033117-054046. Epub 2017 Dec 8.
         <a
-          className="c11"
+          className="c9"
           href="https://www.ncbi.nlm.nih.gov/pubmed/30057689"
           target="new"
         >
@@ -340,7 +326,7 @@ exports[`Papers snapshot test 1`] = `
     </li>
   </ul>
   <div
-    className="c12"
+    className="c10"
   >
     <span
       aria-hidden={true}
@@ -348,7 +334,7 @@ exports[`Papers snapshot test 1`] = `
     />
     <a
       alt="more papers"
-      className="c13"
+      className="c11"
       href="/papers"
       onClick={[Function]}
     >

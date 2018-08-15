@@ -77,9 +77,9 @@
     "husky": "^0.14.3",
     "jest-styled-components": "^6.0.1",
     "lint-staged": "^7.2.0",
-    "prettier": "^1.13.7",
+    "prettier": "^1.14.2",
     "react-scripts": "^1.1.4",
-    "react-styleguidist": "^7.1.1",
-    "react-test-renderer": "^16.4.1"
+    "react-styleguidist": "^7.2.3",
+    "react-test-renderer": "^16.4.2"
   }
 }
