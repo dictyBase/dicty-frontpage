@@ -137,6 +137,13 @@ exports[`StockCenter snapshot test 1`] = `
   }
 }
 
+@media (min-width:1400px) {
+  .c8 {
+    padding-top: 30px;
+    font-size: 12px;
+  }
+}
+
 <div
   className="c0"
 >

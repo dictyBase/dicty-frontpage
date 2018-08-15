@@ -90,6 +90,13 @@ exports[`matching a snapshot of Annotations 1`] = `
   }
 }
 
+@media (min-width:1400px) {
+  .c7 {
+    padding-top: 30px;
+    font-size: 12px;
+  }
+}
+
 <div
   className="c0"
 >
