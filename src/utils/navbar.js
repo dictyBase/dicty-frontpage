@@ -151,18 +151,18 @@ export const navbarGenerator = async () => {
     const json = await res.json()
 
     const navbarArr = json.data.map(item => {
-      if (!item.attributes.items) {
-        return {
-          title: item.type,
-          href: item.attributes.href,
-        }
-      }
+      const menuItemsArr = item.attributes.items.map(c => ({
+        name: c.label,
+        href: c.link,
+      }))
+
       return {
         dropdown: true,
-        title: item.type,
-        items: item.attributes.items,
+        title: item.attributes.display,
+        items: menuItemsArr,
       }
     })
+
     return navbarArr
   } catch (error) {
     console.error(error.message)
