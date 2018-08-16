@@ -8,7 +8,19 @@ export const navItems = [
     items: [
       {
         name: "Dictyostelium discoideum",
-        href: "/genomes",
+        href: "/",
+      },
+      {
+        name: "Dictyostelium purpureum",
+        href: "http://genomes.dictybase.org/purpureum",
+      },
+      {
+        name: "Dictyostelium fasciculatum",
+        href: "http://genomes.dictybase.org/fasciculatum",
+      },
+      {
+        name: "Polysphondylium pallium",
+        href: "http://genomes.dictybase.org/pallidum",
       },
     ],
   },
@@ -17,8 +29,13 @@ export const navItems = [
     title: "Tools",
     items: [
       {
-        name: "New Genome Browser",
-        href: "/tools/jbrowse",
+        name: "Genome Browser",
+        href:
+          "http://dictybase.org/tools/jbrowse/?data=data/jbrowse/discoideum&loc=6:1..50011&tracks=reference,gene,transcript",
+      },
+      {
+        name: "Dashboard",
+        href: "/dictyaccess",
       },
     ],
   },
@@ -26,10 +43,6 @@ export const navItems = [
     dropdown: true,
     title: "Explore",
     items: [
-      {
-        name: "dictyAccess",
-        href: "https://testdb.dictybase.org/dictyaccess",
-      },
       {
         name: "Dicty Art",
         href: "/explore/art",
@@ -79,8 +92,22 @@ export const navItems = [
     ],
   },
   {
+    dropdown: true,
     title: "Dicty Stock Center",
-    href: "/stockcenter",
+    items: [
+      {
+        name: "Stock Center Home",
+        href: "/stockcenter",
+      },
+      {
+        name: "Order Information",
+        href: "/stockcenter/information/order",
+      },
+      {
+        name: "FAQ",
+        href: "/stockcenter/information/faq",
+      },
+    ],
   },
   {
     dropdown: true,
