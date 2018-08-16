@@ -17,9 +17,9 @@ ENV REACT_APP_API_SERVER ${api_server:-https://betaapi.dictybase.org}
 ARG auth_server
 ENV REACT_APP_AUTH_SERVER ${auth_server:-https://betatoken.dictybase.org}
 
-# base path for React Router
-# ARG basename
-# ENV REACT_APP_BASENAME ${basename:-frontpage}
+# URL for navbar json
+ARG navbar_json
+ENV REACT_APP_NAVBAR_JSON ${navbar_json:-https://raw.githubusercontent.com/dictyBase/migration-data/master/navbar/navbar.json}
 
 # Google Analytics tracking ID
 ARG ga_tracking_id

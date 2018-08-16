@@ -1,12 +1,4 @@
-let url
-
-if (process.env.NODE_ENV === "production") {
-  url =
-    "https://raw.githubusercontent.com/dictyBase/migration-data/master/navbar/navbar.staging.json"
-} else {
-  url =
-    "https://raw.githubusercontent.com/dictyBase/migration-data/master/navbar/navbar.dev.json"
-}
+const navbarJson = process.env.REACT_APP_NAVBAR_JSON
 
 // keep old links as fall back
 export const navItems = [
@@ -128,7 +120,7 @@ export const navItems = [
 
 export const navbarGenerator = async () => {
   try {
-    const res = await fetch(url)
+    const res = await fetch(navbarJson)
     const json = await res.json()
 
     const navbarArr = json.data.map(item => {
