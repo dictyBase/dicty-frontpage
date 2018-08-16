@@ -1,7 +1,5 @@
-const navbarJson = process.env.REACT_APP_NAVBAR_JSON
-
 // keep old links as fall back
-export const navItems = [
+const navItems = [
   {
     dropdown: true,
     title: "Genomes",
@@ -145,31 +143,4 @@ export const navItems = [
   },
 ]
 
-export const navbarGenerator = async () => {
-  try {
-    const res = await fetch(navbarJson)
-    const json = await res.json()
-
-    if (res.ok) {
-      const navbarArr = json.data.map(item => {
-        const menuItemsArr = item.attributes.items.map(c => ({
-          name: c.label,
-          href: c.link,
-        }))
-
-        return {
-          dropdown: true,
-          title: item.attributes.display,
-          items: menuItemsArr,
-        }
-      })
-
-      return navbarArr
-    }
-
-    return navItems
-  } catch (error) {
-    console.error(error.message)
-    return navItems
-  }
-}
+export default navItems

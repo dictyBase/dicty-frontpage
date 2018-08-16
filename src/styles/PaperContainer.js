@@ -7,6 +7,7 @@ const PaperContainerStyle = styled.div`
   text-align: left;
   padding-left: 10px;
   padding-right: 10px;
+  padding-bottom: 10px;
   background-color: #eff8fb;
   border-radius: 15px;
   margin-bottom: 10px;

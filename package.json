@@ -50,6 +50,7 @@
     "react-router-dom": "^4.3.1",
     "rebass": "^1.0.7",
     "redux": "^4.0.0",
+    "redux-devtools-extension": "^2.13.5",
     "redux-thunk": "^2.3.0",
     "slate": "^0.33.5",
     "slate-auto-replace": "^0.9.1",

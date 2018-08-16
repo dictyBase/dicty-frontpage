@@ -5,7 +5,9 @@ import { withRouter } from "react-router-dom"
 import { Header, Footer } from "dicty-components-header-footer"
 import { Navbar } from "dicty-components-navbar"
 import Routes from "routes/Routes"
-import { navItems, navbarGenerator } from "utils/navbar"
+
+import fetchNavbar from "actions/navbar"
+import navItems from "constants/navbar"
 import items from "data/footer"
 import {
   headerItems,
@@ -20,21 +22,15 @@ type Props = {
 }
 
 export class App extends Component<Props> {
-  state = {
-    loading: true,
-    navLinks: [],
-  }
-
-  async componentDidMount() {
-    const data = await navbarGenerator()
-    this.setState({ loading: false, navLinks: data })
+  componentDidMount() {
+    const { fetchNavbar } = this.props
+    fetchNavbar()
   }
 
   render() {
-    const { loading, navLinks } = this.state
-    const { auth } = this.props
+    const { auth, navbar } = this.props
 
-    if (loading) {
+    if (navbar.isFetching) {
       return (
         <div>
           {auth.isAuthenticated ? (
@@ -67,7 +63,7 @@ export class App extends Component<Props> {
             {items => items.map(generateLinks)}
           </Header>
         )}
-        <Navbar items={navLinks} />
+        <Navbar items={navbar.links} />
         <MainBodyContainer>
           <main>
             <Routes {...this.props} />
@@ -79,6 +75,11 @@ export class App extends Component<Props> {
   }
 }
 
-const mapStateToProps = ({ auth }) => ({ auth })
+const mapStateToProps = ({ auth, navbar }) => ({ auth, navbar })
 
-export default withRouter(connect(mapStateToProps)(App))
+export default withRouter(
+  connect(
+    mapStateToProps,
+    { fetchNavbar },
+  )(App),
+)
