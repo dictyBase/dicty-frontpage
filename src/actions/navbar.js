@@ -8,17 +8,6 @@ import navItems from "constants/navbar"
 
 const navbarJson = process.env.REACT_APP_NAVBAR_JSON
 
-// helper function to print HTTP errors to console
-// responses are structured in JSONAPI format
-const printError = (res, json) => {
-  console.error("HTTP Error")
-  console.error(
-    `HTTP Response: ${res.status}
-    Title: ${json.errors[0].title}
-    Detail: ${json.errors[0].detail}`,
-  )
-}
-
 const fetchNavbarRequest = () => ({
   type: FETCH_NAVBAR_REQUEST,
   payload: {
@@ -42,7 +31,6 @@ const fetchNavbarFailure = error => ({
 })
 
 // fetch navbar function that fetches data using async/await
-// checks if header is correct, then either grabs data or displays error
 export const fetchNavbar = () => async (dispatch: Function) => {
   try {
     dispatch(fetchNavbarRequest())
@@ -62,20 +50,12 @@ export const fetchNavbar = () => async (dispatch: Function) => {
         }
       })
 
-      dispatch(fetchNavbarSuccess(navbarArr))
-    } else {
-      if (process.env.NODE_ENV !== "production") {
-        printError(res, json)
-      }
-      dispatch(fetchNavbarFailure(res.body))
-      return navItems
+      return dispatch(fetchNavbarSuccess(navbarArr))
     }
-  } catch (error) {
-    dispatch(fetchNavbarFailure(error))
-    if (process.env.NODE_ENV !== "production") {
-      console.error(`Network error: ${error.message}`)
-    }
+    dispatch(fetchNavbarFailure(res.body))
     return navItems
+  } catch (error) {
+    return dispatch(fetchNavbarFailure(error.toString()))
   }
 }
 

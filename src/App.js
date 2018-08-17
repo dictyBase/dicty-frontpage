@@ -7,8 +7,8 @@ import { Navbar } from "dicty-components-navbar"
 import Routes from "routes/Routes"
 
 import fetchNavbar from "actions/navbar"
+import footerItems from "data/footer"
 import navItems from "constants/navbar"
-import items from "data/footer"
 import {
   headerItems,
   loggedHeaderItems,
@@ -19,18 +19,20 @@ import MainBodyContainer from "styles/MainBodyContainer"
 type Props = {
   /** Object representing auth part of state */
   auth: Object,
+  /** Object representing navbar part of state */
+  navbar: Object,
 }
 
 export class App extends Component<Props> {
   componentDidMount() {
-    const { fetchNavbar } = this.props
-    fetchNavbar()
+    const { fetchNavbarAction } = this.props
+    fetchNavbarAction()
   }
 
   render() {
     const { auth, navbar } = this.props
 
-    if (navbar.isFetching) {
+    if (navbar.error || navbar.isFetching) {
       return (
         <div>
           {auth.isAuthenticated ? (
@@ -48,10 +50,11 @@ export class App extends Component<Props> {
               <Routes {...this.props} />
             </main>
           </MainBodyContainer>
-          <Footer items={items} />
+          <Footer items={footerItems} />
         </div>
       )
     }
+
     return (
       <div>
         {auth.isAuthenticated ? (
@@ -69,7 +72,7 @@ export class App extends Component<Props> {
             <Routes {...this.props} />
           </main>
         </MainBodyContainer>
-        <Footer items={items} />
+        <Footer items={footerItems} />
       </div>
     )
   }
@@ -77,9 +80,11 @@ export class App extends Component<Props> {
 
 const mapStateToProps = ({ auth, navbar }) => ({ auth, navbar })
 
+// why rename action creator?
+// https://stackoverflow.com/questions/37682705/avoid-no-shadow-eslint-error-with-mapdispatchtoprops/42337137#42337137
 export default withRouter(
   connect(
     mapStateToProps,
-    { fetchNavbar },
+    { fetchNavbarAction: fetchNavbar },
   )(App),
 )

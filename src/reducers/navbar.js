@@ -5,11 +5,7 @@ import {
   FETCH_NAVBAR_FAILURE,
 } from "constants/types"
 
-const initialState = {
-  isFetching: false,
-  error: null,
-  links: [],
-}
+const initialState = {}
 
 const navbarReducer = (state: Object = initialState, action: Object) => {
   switch (action.type) {

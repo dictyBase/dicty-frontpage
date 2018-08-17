@@ -12,8 +12,8 @@ const RouterLink = styled(Link)`
   text-decoration: none;
 `
 
-const generateLinks = (link: Object, i: string) => {
-  return link.isRouter ? (
+const generateLinks = (link: Object, i: string) =>
+  link.isRouter ? (
     <RouterLink key={i} to={link.url}>
       <center>
         <FontAwesome name={link.icon} size="2x" />
@@ -30,7 +30,6 @@ const generateLinks = (link: Object, i: string) => {
       </center>
     </HeaderLink>
   )
-}
 
 const headerItems = [
   {
