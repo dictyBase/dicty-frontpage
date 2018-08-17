@@ -81,9 +81,7 @@ exports[`Popular snapshot test 1`] = `
       >
         <a
           alt="genome browser"
-          className="c3"
-          href="/tools/jbrowse"
-          onClick={[Function]}
+          href="http://dictybase.org/tools/jbrowse/?data=data/jbrowse/discoideum&loc=6:1..50011&tracks=reference,gene,transcript"
         >
           <img
             alt="genome browser"

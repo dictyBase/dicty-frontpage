@@ -13,10 +13,11 @@ export default [
     isRouter: true,
   },
   {
-    link: "/tools/jbrowse",
+    link:
+      "http://dictybase.org/tools/jbrowse/?data=data/jbrowse/discoideum&loc=6:1..50011&tracks=reference,gene,transcript",
     image: widgetGBROWSER,
     alt: "genome browser",
-    isRouter: true,
+    isRouter: false,
   },
   {
     link: "/explore/learn",
