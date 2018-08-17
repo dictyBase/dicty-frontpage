@@ -25,10 +25,10 @@ export default [
     isRouter: true,
   },
   {
-    link: "https://testdb.dictybase.org/dictyaccess",
+    link: "/dictyaccess",
     image: widgetSTATS,
     alt: "dicty STATS (dictyAccess)",
-    isRouter: false,
+    isRouter: true,
   },
   {
     link: "/community/jobs",

@@ -113,7 +113,9 @@ exports[`Popular snapshot test 1`] = `
       >
         <a
           alt="dicty STATS (dictyAccess)"
-          href="https://testdb.dictybase.org/dictyaccess"
+          className="c3"
+          href="/dictyaccess"
+          onClick={[Function]}
         >
           <img
             alt="dicty STATS (dictyAccess)"
