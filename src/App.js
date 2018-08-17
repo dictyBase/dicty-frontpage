@@ -7,7 +7,7 @@ import { Navbar } from "dicty-components-navbar"
 import Routes from "routes/Routes"
 
 import fetchNavbar from "actions/navbar"
-import footerItems from "data/footer"
+import footerItems from "constants/footer"
 import navItems from "constants/navbar"
 import {
   headerItems,
