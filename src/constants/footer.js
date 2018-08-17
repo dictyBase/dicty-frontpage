@@ -39,17 +39,17 @@ const footerItems = [
     {
       header: { description: "Explore" },
       items: [
-        { link: "http://dictybase.org/tools", description: "Dicty Art" },
-        { link: "http://dictybase.org/tools", description: "Gallery" },
+        { link: "/explore/art", description: "Dicty Art" },
+        { link: "/explore/gallery", description: "Gallery" },
         {
-          link: "http://dictybase.org/tools",
+          link: "/explore/learn",
           description: "Learn About Dicty",
         },
         {
-          link: "http://dictybase.org/tools",
+          link: "/explore/teach",
           description: "Teaching Protocols",
         },
-        { link: "http://dictybase.org/tools", description: "Useful Links" },
+        { link: "/explore/links", description: "Useful Links" },
       ],
     },
   ],
@@ -57,14 +57,14 @@ const footerItems = [
     {
       header: { description: "Research" },
       items: [
-        { link: "http://dictybase.org/tools", description: "Anatomy Ontology" },
-        { link: "http://dictybase.org/tools", description: "Codon Bias Table" },
+        { link: "/research/ontology", description: "Anatomy Ontology" },
+        { link: "/research/codon", description: "Codon Bias Table" },
         {
-          link: "http://dictybase.org/tools",
+          link: "/research/nomenclature",
           description: "Nomenclature Guidelines",
         },
-        { link: "http://dictybase.org/tools", description: "Phenotyping" },
-        { link: "http://dictybase.org/tools", description: "Techniques" },
+        { link: "/research/phenotyping", description: "Phenotyping" },
+        { link: "/research/techniques", description: "Techniques" },
       ],
     },
   ],
@@ -126,19 +126,19 @@ const footerItems = [
     {
       header: { description: "Please Cite" },
       items: [
-        { description: "dictyBase", link: "http://dictybase.org" },
+        { description: "dictyBase", link: "" },
         {
-          description: "Dicty stock center",
-          link: "http://dictybase.org/stock",
+          description: "Dicty Stock Center",
+          link: "/stockcenter",
         },
       ],
     },
     {
       header: { description: "Supported By" },
       items: [
-        { description: "NIH", link: "http://dictybase.org/nih" },
-        { description: "GMOD", link: "http://dictybase.org/nih" },
-        { description: "Gene ontology", link: "http://dictybase.org/nih" },
+        { description: "NIH", link: "https://www.nih.gov/" },
+        { description: "GMOD", link: "http://gmod.org/wiki/Main_Page" },
+        { description: "Gene Ontology", link: "http://www.geneontology.org/" },
       ],
     },
   ],
