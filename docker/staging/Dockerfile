@@ -21,6 +21,10 @@ ENV REACT_APP_AUTH_SERVER ${auth_server:-https://betatoken.dictybase.org}
 ARG navbar_json
 ENV REACT_APP_NAVBAR_JSON ${navbar_json:-https://raw.githubusercontent.com/dictyBase/migration-data/master/navbar/navbar.json}
 
+# URL for footer json
+ARG footer_json
+ENV REACT_APP_FOOTER_JSON ${footer_json:-https://raw.githubusercontent.com/dictyBase/migration-data/master/footer/footer.json}
+
 # Google Analytics tracking ID
 ARG ga_tracking_id
 ENV REACT_APP_GA_TRACKING_ID ${ga_tracking_id:-UA-16352781-8}

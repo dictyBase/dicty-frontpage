@@ -21,6 +21,10 @@ ENV REACT_APP_AUTH_SERVER ${auth_server:-https://betatoken.dictybase.local}
 ARG navbar_json
 ENV REACT_APP_NAVBAR_JSON ${navbar_json:-https://raw.githubusercontent.com/dictyBase/migration-data/master/navbar/navbar.json}
 
+# URL for footer json
+ARG footer_json
+ENV REACT_APP_FOOTER_JSON ${footer_json:-https://raw.githubusercontent.com/dictyBase/migration-data/master/footer/footer.json}
+
 # Setup client keys for third party auth
 ARG client_keys
 ENV CLIENT_KEYS ${client_keys:-https://raw.githubusercontent.com/dictybase-playground/client-keys/master/clientConfig.js}
