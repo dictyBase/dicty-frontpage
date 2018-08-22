@@ -1,6 +1,6 @@
 {
   "name": "dicty-frontpage",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "private": true,
   "engines": {
     "node": "10.4.0"
