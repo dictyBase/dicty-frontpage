@@ -24,22 +24,30 @@ class ScrollButton extends Component<Props, State> {
   }
 
   scrollStep = () => {
+    const { intervalId } = this.state
+    const { scrollStepInPx } = this.props
+
     if (window.pageYOffset === 0) {
-      clearInterval(this.state.intervalId)
+      // $FlowFixMe
+      clearInterval(intervalId)
     }
-    window.scroll(0, window.pageYOffset - this.props.scrollStepInPx)
+    window.scroll(0, window.pageYOffset - scrollStepInPx)
   }
 
   scrollToTop = () => {
-    let intervalId = setInterval(this.scrollStep, this.props.delayInMs)
-    this.setState({ intervalId: intervalId })
+    const { delayInMs } = this.props
+    const intervalId = setInterval(this.scrollStep, delayInMs)
+
+    // $FlowFixMe
+    this.setState({ intervalId })
   }
 
   render() {
+    const { className } = this.props
     return (
       <Tooltip title="Go to top of page">
         <Button
-          className={this.props.className}
+          className={className}
           onClick={this.scrollToTop}
           variant="fab"
           color="secondary">

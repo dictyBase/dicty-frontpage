@@ -27,9 +27,11 @@ type Props = {
   /** Action to fetch page content from API server */
   fetchPage: Function,
   /** Action that saves inline editor content to API server */
-  saveInlineEditing: Function,
+  saveInlineEditingAction: Function,
   /** Action creator to edit inline content */
-  editInline: Function,
+  editInlineAction: Function,
+  /** ID of current logged in user */
+  userId: string,
 }
 
 type State = {
@@ -84,13 +86,14 @@ class InlineEditor extends Component<Props, State> {
     this.setState({
       readOnly: false,
     })
-    const { editInline, page } = this.props
-    editInline(page.data.attributes.content)
+    const { editInlineAction, page } = this.props
+    editInlineAction(page.data.attributes.content)
   }
 
   onCancel = () => {
+    const { value } = this.state
     this.setState({
-      value: this.state.value,
+      value,
       readOnly: true,
     })
   }
@@ -98,7 +101,7 @@ class InlineEditor extends Component<Props, State> {
   // on save, save the value to the content API server
   onSave = () => {
     const { value } = this.state
-    const { page, saveInlineEditing, userId } = this.props
+    const { page, saveInlineEditingAction, userId } = this.props
 
     const content = JSON.stringify(value.toJSON())
 
@@ -109,13 +112,13 @@ class InlineEditor extends Component<Props, State> {
         type: "contents",
         attributes: {
           updated_by: userId,
-          content: content,
+          content,
         },
       },
     }
-    saveInlineEditing(page.data.id, body)
+    saveInlineEditingAction(page.data.id, body)
 
-    this.setState(this.state.value)
+    this.setState(value)
   }
 
   onClickLink = (event: SyntheticEvent<>) => {
@@ -176,6 +179,7 @@ class InlineEditor extends Component<Props, State> {
     const onMouseDown = event => this.onClickMark(event, type)
 
     return (
+      // eslint-disable-next-line
       <ToolbarButton onMouseDown={onMouseDown} data-active={isActive}>
         <FontAwesome name={type} />
       </ToolbarButton>
@@ -211,9 +215,10 @@ class InlineEditor extends Component<Props, State> {
     } else {
       // Handle the extra wrapping required for list buttons.
       const isList = this.hasBlock("list-item")
-      const isType = value.blocks.some(block => {
-        return !!document.getClosest(block.key, parent => parent.type === type)
-      })
+      const isType = value.blocks.some(
+        block =>
+          !!document.getClosest(block.key, parent => parent.type === type),
+      )
 
       if (isList && isType) {
         change
@@ -242,6 +247,7 @@ class InlineEditor extends Component<Props, State> {
     switch (type) {
       case "strikethrough":
         return (
+          // eslint-disable-next-line
           <ToolbarButton onMouseDown={onMouseDown} data-active={isActive}>
             <FontAwesome name="strikethrough" />
           </ToolbarButton>
@@ -253,12 +259,12 @@ class InlineEditor extends Component<Props, State> {
           </ToolbarButton>
         )
       default:
-        return
+        return <div />
     }
   }
 
   render() {
-    const { readOnly } = this.state
+    const { readOnly, value } = this.state
     return (
       <div>
         {!readOnly && (
@@ -273,7 +279,7 @@ class InlineEditor extends Component<Props, State> {
         )}
 
         <Editor
-          value={this.state.value}
+          value={value}
           onChange={this.onChange}
           onKeyDown={onKeyDown}
           onPaste={this.onPaste}
@@ -283,24 +289,23 @@ class InlineEditor extends Component<Props, State> {
         />
 
         <Authorization
-          render={({ canEditPages, verifiedToken }) => {
-            return (
-              <div>
-                {canEditPages &&
-                  verifiedToken &&
-                  readOnly && (
-                    <TextInfo>
-                      <InlineLink onClick={this.onEdit} title="Edit">
-                        <FontAwesome name="pencil" /> Edit
-                      </InlineLink>
-                    </TextInfo>
-                  )}
-              </div>
-            )
-          }}
+          // eslint-disable-next-line
+          render={({ canEditPages, verifiedToken }) => (
+            <div>
+              {canEditPages &&
+                verifiedToken &&
+                readOnly && (
+                  <TextInfo>
+                    <InlineLink onClick={this.onEdit} title="Edit">
+                      <FontAwesome name="pencil" /> Edit
+                    </InlineLink>
+                  </TextInfo>
+                )}
+            </div>
+          )}
         />
         <Flex justify="flex-end">
-          <Box width={"15%"} mr={1} mt={1}>
+          <Box width="15%" mr={1} mt={1}>
             {!readOnly && (
               <CancelButton
                 size="small"
@@ -310,7 +315,7 @@ class InlineEditor extends Component<Props, State> {
               </CancelButton>
             )}
           </Box>
-          <Box width={"15%"} mr={1} mt={1}>
+          <Box width="15%" mr={1} mt={1}>
             {!readOnly && (
               <SaveButton
                 size="small"
@@ -338,5 +343,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { editInline, saveInlineEditing },
+  { editInlineAction: editInline, saveInlineEditingAction: saveInlineEditing },
 )(InlineEditor)

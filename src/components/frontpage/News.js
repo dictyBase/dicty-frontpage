@@ -22,11 +22,17 @@ import {
   MainContent,
 } from "styles"
 
+type Props = {
+  /** The posts to display */
+  posts: Object,
+}
+
 /** Widget that displays the most recent Dicty news */
 
-const News = props => {
-  const text = props.posts.map((post, index) => (
-    <ListItems key={index}>
+const News = (props: Props) => {
+  const { posts } = props
+  const text = posts.map(post => (
+    <ListItems key={post.date}>
       <LeadText>
         <strong>{post.date}</strong>
       </LeadText>
@@ -53,25 +59,24 @@ const News = props => {
             </center>
           </Box>
           <Authorization
-            render={({ canAddNews, verifiedToken }) => {
-              return (
-                <Box width={1 / 10}>
-                  {canAddNews &&
-                    verifiedToken && (
-                      <RouterLink to="/addnews">
-                        <Button
-                          variant="fab"
-                          mini
-                          color="primary"
-                          aria-label="add"
-                          title="Add News Item">
-                          <AddIcon />
-                        </Button>
-                      </RouterLink>
-                    )}
-                </Box>
-              )
-            }}
+            // eslint-disable-next-line
+            render={({ canAddNews, verifiedToken }) => (
+              <Box width={1 / 10}>
+                {canAddNews &&
+                  verifiedToken && (
+                    <RouterLink to="/addnews">
+                      <Button
+                        variant="fab"
+                        mini
+                        color="primary"
+                        aria-label="add"
+                        title="Add News Item">
+                        <AddIcon />
+                      </Button>
+                    </RouterLink>
+                  )}
+              </Box>
+            )}
           />
         </Flex>
       </Header>

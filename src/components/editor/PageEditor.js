@@ -86,6 +86,8 @@ type Props = {
   match: Object,
   /** Whether the editor is in read-only mode or not */
   readOnly: boolean,
+  /** ID of current logged in user */
+  userId: string,
 }
 
 type State = {
@@ -152,8 +154,9 @@ class PageEditor extends Component<Props, State> {
   }
 
   onCancel = () => {
+    const { value } = this.state
     this.setState({
-      value: this.state.value,
+      value,
       readOnly: true,
     })
     const { cancelEditing, match } = this.props
@@ -174,13 +177,13 @@ class PageEditor extends Component<Props, State> {
         type: "contents",
         attributes: {
           updated_by: userId,
-          content: content,
+          content,
         },
       },
     }
     saveEditing(page.data.id, body, match.url)
 
-    this.setState(this.state.value)
+    this.setState(value)
   }
 
   onPaste = (e: SyntheticEvent<>, change: Change) => {
@@ -221,18 +224,15 @@ class PageEditor extends Component<Props, State> {
   }
 
   render() {
-    const { readOnly } = this.state
+    const { readOnly, value } = this.state
     return (
       <div>
         {!readOnly && (
-          <Toolbar
-            value={this.state.value}
-            onChange={value => this.onChange(value)}
-          />
+          <Toolbar value={value} onChange={value => this.onChange(value)} />
         )}
 
         <StyledEditor
-          value={this.state.value}
+          value={value}
           onChange={this.onChange}
           onPaste={this.onPaste}
           onDrop={this.onDrop}
@@ -245,7 +245,7 @@ class PageEditor extends Component<Props, State> {
         />
 
         <Flex justify="flex-end">
-          <Box width={"20%"} mr={1} mt={1}>
+          <Box width="20%" mr={1} mt={1}>
             {!readOnly && (
               <CancelButton
                 size="small"
@@ -255,7 +255,7 @@ class PageEditor extends Component<Props, State> {
               </CancelButton>
             )}
           </Box>
-          <Box width={"20%"} mr={1} mt={1}>
+          <Box width="20%" mr={1} mt={1}>
             {!readOnly && (
               <SaveButton
                 size="small"

@@ -27,6 +27,8 @@ type Props = {
   saveInlineEditing: Function,
   /** Action creator to edit inline content */
   editInline: Function,
+  /** ID of current logged in user */
+  userId: string,
 }
 
 type State = {
@@ -94,8 +96,9 @@ class NewsEditor extends PureComponent<Props, State> {
   }
 
   onCancel = () => {
+    const { value } = this.state
     this.setState({
-      value: this.state.value,
+      value,
       readOnly: true,
     })
   }
@@ -114,13 +117,13 @@ class NewsEditor extends PureComponent<Props, State> {
         type: "contents",
         attributes: {
           updated_by: userId,
-          content: content,
+          content,
         },
       },
     }
     saveInlineEditing(page.data.id, body)
 
-    this.setState(this.state.value)
+    this.setState(value)
   }
 
   onClickLink = (event: SyntheticEvent<>) => {
@@ -216,9 +219,10 @@ class NewsEditor extends PureComponent<Props, State> {
     } else {
       // Handle the extra wrapping required for list buttons.
       const isList = this.hasBlock("list-item")
-      const isType = value.blocks.some(block => {
-        return !!document.getClosest(block.key, parent => parent.type === type)
-      })
+      const isType = value.blocks.some(
+        block =>
+          !!document.getClosest(block.key, parent => parent.type === type),
+      )
 
       if (isList && isType) {
         change
@@ -294,12 +298,12 @@ class NewsEditor extends PureComponent<Props, State> {
           </ToolbarButton>
         )
       default:
-        return
+        return <div />
     }
   }
 
   render() {
-    const { readOnly } = this.state
+    const { readOnly, value } = this.state
     return (
       <div>
         {!readOnly && (
@@ -314,7 +318,7 @@ class NewsEditor extends PureComponent<Props, State> {
         )}
 
         <StyledEditor
-          value={this.state.value}
+          value={value}
           onChange={this.onChange}
           onKeyDown={onKeyDown}
           renderMark={renderMark}
@@ -322,6 +326,7 @@ class NewsEditor extends PureComponent<Props, State> {
           readOnly={readOnly}
         />
         <Authorization
+          // eslint-disable-next-line
           render={({ canEditPages, verifiedToken }) => {
             return (
               <div>
@@ -339,7 +344,7 @@ class NewsEditor extends PureComponent<Props, State> {
           }}
         />
         <Flex justify="flex-end">
-          <Box width={"15%"} mr={1} mt={1}>
+          <Box width="15%" mr={1} mt={1}>
             {!readOnly && (
               <CancelButton
                 size="small"
@@ -349,7 +354,7 @@ class NewsEditor extends PureComponent<Props, State> {
               </CancelButton>
             )}
           </Box>
-          <Box width={"15%"} mr={1} mt={1}>
+          <Box width="15%" mr={1} mt={1}>
             {!readOnly && (
               <SaveButton
                 size="small"
