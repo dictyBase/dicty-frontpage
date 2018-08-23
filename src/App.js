@@ -4,8 +4,9 @@ import { connect } from "react-redux"
 import { withRouter } from "react-router-dom"
 import { Header, Footer } from "dicty-components-header-footer"
 import { Navbar } from "dicty-components-navbar"
-import Routes from "routes/Routes"
 
+import Routes from "routes/Routes"
+import ErrorBoundary from "components/pages/ErrorBoundary"
 import fetchNavbar from "actions/navbar"
 import fetchFooter from "actions/footer"
 import footerItems from "constants/footer"
@@ -56,7 +57,9 @@ export class App extends Component<Props> {
           <Navbar items={navItems} />
           <MainBodyContainer>
             <main>
-              <Routes {...this.props} />
+              <ErrorBoundary>
+                <Routes {...this.props} />
+              </ErrorBoundary>
             </main>
           </MainBodyContainer>
           <Footer items={footerItems} />
@@ -78,7 +81,9 @@ export class App extends Component<Props> {
         <Navbar items={navbar.links} />
         <MainBodyContainer>
           <main>
-            <Routes {...this.props} />
+            <ErrorBoundary>
+              <Routes {...this.props} />
+            </ErrorBoundary>
           </main>
         </MainBodyContainer>
         <Footer items={footer.links} />
