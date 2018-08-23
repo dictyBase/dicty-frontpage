@@ -27,6 +27,10 @@ const styles = theme => ({
   save: {
     width: "50%",
     color: "#fff",
+
+    "&:hover": {
+      backgroundColor: "#3f51b5",
+    },
   },
 })
 
