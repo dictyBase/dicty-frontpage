@@ -1,6 +1,6 @@
 import React from "react"
-import { Flex, Box } from "rebass"
 import { withStyles } from "@material-ui/core/styles"
+import Grid from "@material-ui/core/Grid"
 import Modal from "@material-ui/core/Modal"
 import { SaveButton } from "styles/EditablePageStyles"
 
@@ -20,38 +20,55 @@ const styles = theme => ({
     padding: theme.spacing.unit * 4,
     borderRadius: "5px",
   },
+  modal: {
+    display: "flex",
+    justifyContent: "center",
+  },
+  save: {
+    width: "50%",
+    color: "#fff",
+  },
 })
 
 const HelpMuiModal = props => {
+  const { helpModalOpen, classes, handleClose } = props
   return (
-    <Modal open={props.helpModalOpen} style={{ justifyContent: "center" }}>
-      <div style={getModalStyle()} className={props.classes.paper}>
-        <Flex justify="center" direction="column">
-          <Box w={"100%"}>
+    <Modal className={classes.modal} open={helpModalOpen}>
+      <div style={getModalStyle()} className={classes.paper}>
+        <Grid container justify="center" direction="column">
+          <Grid item xs={12}>
             <center>
               <h1>Editor Help</h1>
             </center>
-          </Box>
-          <Box w={"100%"}>
+          </Grid>
+          <Grid item xs={12}>
             <h3>Keyboard Shortcuts:</h3>
-            <Flex wrap>
-              <Box w="50%">
+            <Grid container>
+              <Grid item xs={6}>
                 <strong>Bold</strong>
-              </Box>
-              <Box w="50%">CTRL + B</Box>
-              <Box w="50%">
+              </Grid>
+              <Grid item xs={6}>
+                CTRL + B
+              </Grid>
+              <Grid item xs={6}>
                 <em>Italic</em>
-              </Box>
-              <Box w="50%">CTRL + I</Box>
-              <Box w="50%">
+              </Grid>
+              <Grid item xs={6}>
+                CTRL + I
+              </Grid>
+              <Grid item xs={6}>
                 <strike>Strikethrough</strike>
-              </Box>
-              <Box w="50%">CTRL + D</Box>
-              <Box w="50%">
+              </Grid>
+              <Grid item xs={6}>
+                CTRL + D
+              </Grid>
+              <Grid item xs={6}>
                 <u>Underline</u>
-              </Box>
-              <Box w="50%">CTRL + U</Box>
-            </Flex>
+              </Grid>
+              <Grid item xs={6}>
+                CTRL + U
+              </Grid>
+            </Grid>
 
             <h3>Pasting Content</h3>
             <p>
@@ -69,16 +86,11 @@ const HelpMuiModal = props => {
               Videos can be added by copying and pasting the video URL (either
               YouTube or Vimeo). This will automatically embed the video.
             </p>
-            <SaveButton
-              style={{
-                width: "50%",
-                color: "#fff",
-              }}
-              onClick={props.handleClose}>
+            <SaveButton className={classes.save} onClick={handleClose}>
               Close
             </SaveButton>
-          </Box>
-        </Flex>
+          </Grid>
+        </Grid>
       </div>
     </Modal>
   )

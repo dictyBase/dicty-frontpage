@@ -24,35 +24,38 @@ type Props = {
   /** React Router's match object */
   match: Object,
   /** action creator for editing the current page content */
-  editPage: Function,
+  editPageAction: Function,
   /** action creator to fetch a non-authenticated user's information */
-  fetchUserInfo: Function,
+  fetchUserInfoAction: Function,
   /** the object that contains page data from current state */
   page: Object,
-  /** contains the object representing the fetched user's data */
-  fetchedUserData: Object,
 }
 
 /** Displays the page data that was fetched from the InfoPage component */
 
 class InfoPageView extends Component<Props> {
   componentDidMount() {
-    const fetchedUser = new ContentAPI(this.props.page).getUser()
-    this.props.fetchUserInfo(fetchedUser)
+    const { page, fetchUserInfoAction } = this.props
+
+    const fetchedUser = new ContentAPI(page).getUser()
+    fetchUserInfoAction(fetchedUser)
   }
+
   onClick = e => {
     e.preventDefault()
-    const { editPage, match, page } = this.props
+    const { editPageAction, match, page } = this.props
 
-    editPage(page.data.attributes.content, match.url)
+    editPageAction(page.data.attributes.content, match.url)
   }
+
   render() {
-    const { updated_at } = this.props.page.data.attributes
+    const { page, match } = this.props
 
     return (
       <Flex justify="center">
         <Box>
           <Authorization
+            // eslint-disable-next-line
             render={({ canEditPages, fetchedUserData, verifiedToken }) => {
               return (
                 <div>
@@ -71,7 +74,8 @@ class InfoPageView extends Component<Props> {
                                 <FontAwesome name="user" />{" "}
                                 {fetchedUserData.getFullName()}
                               </strong>{" "}
-                              edited {timeSince(updated_at)} ago
+                              edited{" "}
+                              {timeSince(page.data.attributes.updated_at)} ago
                             </TextInfo>
                           </Box>
                           <Box ml="auto">
@@ -92,11 +96,7 @@ class InfoPageView extends Component<Props> {
 
           <Flex>
             <Box>
-              <PageEditor
-                page={this.props.page}
-                readOnly={true}
-                match={this.props.match}
-              />
+              <PageEditor page={page} readOnly match={match} />
             </Box>
           </Flex>
         </Box>
@@ -107,5 +107,5 @@ class InfoPageView extends Component<Props> {
 
 export default connect(
   null,
-  { editPage, fetchUserInfo },
+  { editPageAction: editPage, fetchUserInfoAction: fetchUserInfo },
 )(InfoPageView)

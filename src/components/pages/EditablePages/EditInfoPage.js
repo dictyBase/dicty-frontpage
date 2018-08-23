@@ -9,7 +9,6 @@ import FontAwesome from "react-fontawesome"
 import PageEditor from "components/editor/PageEditor"
 import HelpModal from "components/editor/docs/HelpModal"
 import ScrollButton from "components/common/ScrollButton"
-import { saveEditing, cancelEditing } from "actions/editablePages"
 import { EditorStyle } from "styles/EditablePageStyles"
 import { NAMESPACE } from "constants/namespace"
 
@@ -29,14 +28,6 @@ const styles = theme => ({
 type Props = {
   /** React Router's match object */
   match: Object,
-  /** action creator to cancel editing */
-  cancelEditing: Function,
-  /** the user's ID number */
-  id: string,
-  /** value for who last updated the page */
-  updated_by: string,
-  /** action creator to save page content */
-  saveEditing: Function,
   /** The object holding the fetched page content */
   page: Object,
   /** Styling classes from Material-UI */
@@ -61,16 +52,22 @@ class EditInfoPage extends Component<Props, State> {
     this.setState({ helpModalOpen: true })
   }
 
+  handleHelpClick = () => {
+    window.scrollTo(0, 0)
+  }
+
   handleClose = () => {
     this.setState({ helpModalOpen: false })
   }
 
   render() {
+    const { page, match, classes } = this.props
+    const { helpModalOpen } = this.state
     return (
       <Flex justify="center">
         <Box w={["90%", "90%", "90%", "65%"]}>
           <EditorStyle>
-            <PageEditor page={this.props.page} match={this.props.match} />
+            <PageEditor page={page} match={match} />
           </EditorStyle>
         </Box>
         <Box>
@@ -79,22 +76,22 @@ class EditInfoPage extends Component<Props, State> {
               onClick={this.handleClick}
               variant="fab"
               color="primary"
-              className={this.props.classes.helpButton}>
+              className={classes.helpButton}>
               <FontAwesome name="question" />
             </Button>
           </Tooltip>
           <ScrollButton
-            className={this.props.classes.scrollButton}
+            className={classes.scrollButton}
             scrollStepInPx={50}
             delayInMs={5}
           />
         </Box>
         <Box />
-        {this.state.helpModalOpen && (
+        {helpModalOpen && (
           <HelpModal
-            helpModalOpen={this.state.helpModalOpen}
+            helpModalOpen={helpModalOpen}
             handleClose={this.handleClose}
-            onClick={() => window.scrollTo(0, 0)}
+            onClick={this.handleHelpClick}
           />
         )}
       </Flex>
@@ -109,9 +106,4 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-export default withStyles(styles)(
-  connect(
-    mapStateToProps,
-    { saveEditing, cancelEditing },
-  )(EditInfoPage),
-)
+export default withStyles(styles)(connect(mapStateToProps)(EditInfoPage))
