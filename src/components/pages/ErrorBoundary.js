@@ -1,6 +1,16 @@
 import React from "react"
+import Grid from "@material-ui/core/Grid"
+import { withStyles } from "@material-ui/core/styles"
+import { PaperContainer } from "styles"
 
-export default class ErrorBoundary extends React.Component {
+// eslint-disable-next-line
+const styles = theme => ({
+  gridContainer: {
+    marginTop: "50px",
+  },
+})
+
+class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props)
     this.state = { error: null, errorInfo: null }
@@ -16,26 +26,34 @@ export default class ErrorBoundary extends React.Component {
 
   render() {
     const { errorInfo, error } = this.state
-    const { children } = this.props
+    const { children, classes } = this.props
 
     if (errorInfo) {
       // error path
       return (
-        <center>
-          <h2>Sorry! There was an error loading this page.</h2>
-          <p>Something went wrong with our user interface.</p>
-          <em>{error && error.toString()}</em>
-          <p>
-            If the problem persists, please email us at{" "}
-            <a href="mailto:dictybase@northwestern.edu">
-              dictybase@northwestern.edu
-            </a>
-            .
-          </p>
-        </center>
+        <Grid className={classes.gridContainer} container justify="center">
+          <Grid item xs={6}>
+            <PaperContainer>
+              <center>
+                <h2>Sorry! There was an error loading this page.</h2>
+                <p>Something went wrong with our user interface.</p>
+                <em>{error && error.toString()}</em>
+                <p>
+                  If the problem persists, please email us at{" "}
+                  <a href="mailto:dictybase@northwestern.edu">
+                    dictybase@northwestern.edu
+                  </a>
+                  .
+                </p>
+              </center>
+            </PaperContainer>
+          </Grid>
+        </Grid>
       )
     }
     // normally, just render children
     return children
   }
 }
+
+export default withStyles(styles)(ErrorBoundary)
