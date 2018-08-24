@@ -15,20 +15,26 @@ exports[`Papers snapshot test 1`] = `
   overflow: auto;
 }
 
-.c1 {
-  color: black;
-  font-size: 20px;
-  padding: 15px 30px 0px 35px;
-  vertical-align: top;
-  text-align: right;
-}
-
 .c2 {
   padding-left: 5px;
   color: #086a87;
   font-size: 20px;
   vertical-align: top;
   text-align: left;
+}
+
+.c9 {
+  color: #428bca;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c1 {
+  color: black;
+  font-size: 20px;
+  padding: 15px 30px 0px 35px;
+  vertical-align: top;
+  text-align: right;
 }
 
 .c3 {
@@ -44,31 +50,6 @@ exports[`Papers snapshot test 1`] = `
   margin-bottom: 10px;
 }
 
-.c5 {
-  color: #0b3861;
-  padding-right: 10px;
-}
-
-.c6 {
-  padding-right: 10px;
-}
-
-.c7 {
-  color: #0b3861;
-}
-
-.c8 {
-  padding-top: 7px;
-  font-weight: bold;
-  text-align: center;
-}
-
-.c9 {
-  color: #428bca;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
 .c10 {
   color: #0b3861;
   font-size: 11px;
@@ -76,6 +57,25 @@ exports[`Papers snapshot test 1`] = `
   font-weight: normal;
   text-align: center;
   padding-bottom: 10px;
+}
+
+.c5 {
+  color: #0b3861;
+  padding-right: 10px;
+}
+
+.c7 {
+  color: #0b3861;
+}
+
+.c6 {
+  padding-right: 10px;
+}
+
+.c8 {
+  padding-top: 7px;
+  font-weight: bold;
+  text-align: center;
 }
 
 .c11 {
@@ -124,7 +124,7 @@ exports[`Papers snapshot test 1`] = `
     className="c1"
   >
     <div
-      className="jtWIOA sc-bdVaJa iHZvIS"
+      className="sc-htpNat jtWIOA sc-bdVaJa iHZvIS"
       is={null}
     >
       <span
