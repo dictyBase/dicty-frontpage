@@ -166,76 +166,30 @@ const fetchPermissionFailure = error => ({
   },
 })
 
-// Calls the API to get a token and
-// dispatch actions along the way
-export const oAuthLogin = ({ query, provider, url }: oauthArg) => async (
+// fetch permissions function that fetches data using async/await
+// checks if header is correct, then either grabs data or displays error
+export const fetchPermissionInfo = (roleId: string) => async (
   dispatch: Function,
 ) => {
-  const { config, endpoint } = makeOauthConfig({ query, provider, url })
   try {
-    dispatch(requestLogin(provider))
-    dispatch(push("/load/auth"))
-    const res = await fetch(endpoint, config)
-    const contentType = res.headers.get("content-type")
-    if (contentType && contentType.includes("application/vnd.api+json")) {
-      if (res.ok) {
-        const json = await res.json()
-        dispatch(receiveLogin(json))
-        await dispatch(fetchRoleInfo(json.user.data.id))
-        dispatch(push("/"))
-      } else if (res.status === 401) {
-        // user has invalid credentials, redirect with notification
-        dispatch(
-          loginError(
-            `You are not an authorized user of dictyBase.
-              Please sign in with proper credentials.`,
-          ),
-        )
-        dispatch(push("/login"))
-      } else {
-        dispatch(loginError(createErrorObj(res.status, res.statusText)))
-        dispatch(push("/error"))
-      }
-    } else {
-      if (process.env.NODE_ENV !== "production") {
-        console.error(res.statusText)
-      }
-      dispatch(loginError(createErrorObj(res.status, res.statusText)))
-      dispatch(push("/error"))
-    }
-  } catch (error) {
-    dispatch(loginError(createErrorObj(error.name, error.message)))
-    dispatch(push("/error"))
-  }
-}
-
-// Logs the user out
-export const logoutUser = () => (dispatch: Function) => {
-  dispatch(receiveLogout())
-}
-
-// fetch user function that fetches data using async/await
-// checks if header is correct, then either grabs data or displays error
-// this is used to get a non-authenticated user's information
-export const fetchUserInfo = (userId: string) => async (dispatch: Function) => {
-  try {
-    dispatch(fetchUserRequest())
+    dispatch(fetchPermissionRequest())
     const res = await fetch(
-      `${fetchUserByIdResource}/${userId}`,
+      `${fetchRoleByIdResource}/${roleId}/permissions`,
       fetchHeaderConfig,
     )
     const contentType = res.headers.get("content-type")
     if (contentType && contentType.includes("application/vnd.api+json")) {
       const json = await res.json()
       if (res.ok) {
-        dispatch(fetchUserSuccess(json))
-        await dispatch(fetchNonAuthRoleInfo(json.data.id))
+        dispatch(fetchPermissionSuccess(json))
       } else {
         if (process.env.NODE_ENV !== "production") {
           printError(res, json)
         }
         dispatch(
-          fetchUserFailure(createErrorObj(res.status, json.errors[0].title)),
+          fetchPermissionFailure(
+            createErrorObj(res.status, json.errors[0].title),
+          ),
         )
         dispatch(push("/error"))
       }
@@ -243,7 +197,9 @@ export const fetchUserInfo = (userId: string) => async (dispatch: Function) => {
       if (process.env.NODE_ENV !== "production") {
         console.error(res.statusText)
       }
-      dispatch(fetchUserFailure(createErrorObj(res.status, res.statusText)))
+      dispatch(
+        fetchPermissionFailure(createErrorObj(res.status, res.statusText)),
+      )
       dispatch(push("/error"))
     }
   } catch (error) {
@@ -340,30 +296,76 @@ export const fetchNonAuthRoleInfo = (userId: string) => async (
   }
 }
 
-// fetch permissions function that fetches data using async/await
-// checks if header is correct, then either grabs data or displays error
-export const fetchPermissionInfo = (roleId: string) => async (
+// Calls the API to get a token and
+// dispatch actions along the way
+export const oAuthLogin = ({ query, provider, url }: oauthArg) => async (
   dispatch: Function,
 ) => {
+  const { config, endpoint } = makeOauthConfig({ query, provider, url })
   try {
-    dispatch(fetchPermissionRequest())
+    dispatch(requestLogin(provider))
+    dispatch(push("/load/auth"))
+    const res = await fetch(endpoint, config)
+    const contentType = res.headers.get("content-type")
+    if (contentType && contentType.includes("application/vnd.api+json")) {
+      if (res.ok) {
+        const json = await res.json()
+        dispatch(receiveLogin(json))
+        await dispatch(fetchRoleInfo(json.user.data.id))
+        dispatch(push("/"))
+      } else if (res.status === 401) {
+        // user has invalid credentials, redirect with notification
+        dispatch(
+          loginError(
+            `You are not an authorized user of dictyBase.
+              Please sign in with proper credentials.`,
+          ),
+        )
+        dispatch(push("/login"))
+      } else {
+        dispatch(loginError(createErrorObj(res.status, res.statusText)))
+        dispatch(push("/error"))
+      }
+    } else {
+      if (process.env.NODE_ENV !== "production") {
+        console.error(res.statusText)
+      }
+      dispatch(loginError(createErrorObj(res.status, res.statusText)))
+      dispatch(push("/error"))
+    }
+  } catch (error) {
+    dispatch(loginError(createErrorObj(error.name, error.message)))
+    dispatch(push("/error"))
+  }
+}
+
+// Logs the user out
+export const logoutUser = () => (dispatch: Function) => {
+  dispatch(receiveLogout())
+}
+
+// fetch user function that fetches data using async/await
+// checks if header is correct, then either grabs data or displays error
+// this is used to get a non-authenticated user's information
+export const fetchUserInfo = (userId: string) => async (dispatch: Function) => {
+  try {
+    dispatch(fetchUserRequest())
     const res = await fetch(
-      `${fetchRoleByIdResource}/${roleId}/permissions`,
+      `${fetchUserByIdResource}/${userId}`,
       fetchHeaderConfig,
     )
     const contentType = res.headers.get("content-type")
     if (contentType && contentType.includes("application/vnd.api+json")) {
       const json = await res.json()
       if (res.ok) {
-        dispatch(fetchPermissionSuccess(json))
+        dispatch(fetchUserSuccess(json))
+        await dispatch(fetchNonAuthRoleInfo(json.data.id))
       } else {
         if (process.env.NODE_ENV !== "production") {
           printError(res, json)
         }
         dispatch(
-          fetchPermissionFailure(
-            createErrorObj(res.status, json.errors[0].title),
-          ),
+          fetchUserFailure(createErrorObj(res.status, json.errors[0].title)),
         )
         dispatch(push("/error"))
       }
@@ -371,9 +373,7 @@ export const fetchPermissionInfo = (roleId: string) => async (
       if (process.env.NODE_ENV !== "production") {
         console.error(res.statusText)
       }
-      dispatch(
-        fetchPermissionFailure(createErrorObj(res.status, res.statusText)),
-      )
+      dispatch(fetchUserFailure(createErrorObj(res.status, res.statusText)))
       dispatch(push("/error"))
     }
   } catch (error) {
