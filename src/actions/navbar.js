@@ -52,7 +52,7 @@ export const fetchNavbar = () => async (dispatch: Function) => {
 
       return dispatch(fetchNavbarSuccess(navbarArr))
     }
-    dispatch(fetchNavbarFailure(res.body))
+    dispatch(fetchNavbarFailure(res.statusText))
     return navItems
   } catch (error) {
     return dispatch(fetchNavbarFailure(error.toString()))

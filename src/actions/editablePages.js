@@ -1,4 +1,5 @@
 // @flow
+import { push } from "connected-react-router"
 import {
   EDIT_PAGE,
   SAVE_PAGE_REQUEST,
@@ -8,25 +9,8 @@ import {
   FETCH_PAGE_SUCCESS,
   FETCH_PAGE_FAILURE,
 } from "constants/types"
+import { printError, createErrorObj } from "utils/actionHelpers"
 import { fetchBySlugResource, fetchByIdResource } from "utils/fetchResources"
-import { push } from "connected-react-router"
-
-// helper function to print HTTP errors to console
-// responses are structured in JSONAPI format
-const printError = (res, json) => {
-  console.error("HTTP Error")
-  console.error(
-    `HTTP Response: ${res.status}
-    Title: ${json.errors[0].title}
-    Detail: ${json.errors[0].detail}`,
-  )
-}
-
-const createErrorObj = (res, json) => ({
-  status: res.status,
-  title: json.errors[0].title,
-  detail: json.errors[0].detail,
-})
 
 const fetchPageRequest = () => ({
   type: FETCH_PAGE_REQUEST,
@@ -87,15 +71,17 @@ export const fetchPage = (slug: string) => async (dispatch: Function) => {
           printError(res, json)
         }
 
-        dispatch(fetchPageFailure(createErrorObj(res, json)))
+        dispatch(
+          fetchPageFailure(createErrorObj(res.status, json.errors[0].title)),
+        )
         dispatch(push("/error"))
       }
     } else {
-      dispatch(fetchPageFailure(res.body))
+      dispatch(fetchPageFailure(createErrorObj(res.status, res.statusText)))
       dispatch(push("/error"))
     }
   } catch (error) {
-    dispatch(fetchPageFailure(error))
+    dispatch(fetchPageFailure(createErrorObj(error.name, error.message)))
     dispatch(push("/error"))
     if (process.env.NODE_ENV !== "production") {
       console.error(`Network error: ${error.message}`)
@@ -147,15 +133,17 @@ export const saveEditing = (id: string, body: Object, path: string) => async (
         if (process.env.NODE_ENV !== "production") {
           printError(res, json)
         }
-        dispatch(savePageFailure(createErrorObj(res, json)))
+        dispatch(
+          savePageFailure(createErrorObj(res.status, json.errors[0].title)),
+        )
         dispatch(push("/error"))
       }
     } else {
-      dispatch(savePageFailure(res.body))
+      dispatch(savePageFailure(createErrorObj(res.status, res.statusText)))
       dispatch(push("/error"))
     }
   } catch (error) {
-    dispatch(savePageFailure(error))
+    dispatch(savePageFailure(createErrorObj(error.name, error.message)))
     dispatch(push("/error"))
     if (process.env.NODE_ENV !== "production") {
       console.error(`Network error: ${error.message}`)
@@ -186,15 +174,17 @@ export const saveInlineEditing = (id: string, body: Object) => async (
         if (process.env.NODE_ENV !== "production") {
           printError(res, json)
         }
-        dispatch(savePageFailure(createErrorObj(res, json)))
+        dispatch(
+          savePageFailure(createErrorObj(res.status, json.errors[0].title)),
+        )
         dispatch(push("/error"))
       }
     } else {
-      dispatch(savePageFailure(res.body))
+      dispatch(savePageFailure(createErrorObj(res.status, res.statusText)))
       dispatch(push("/error"))
     }
   } catch (error) {
-    dispatch(savePageFailure(error))
+    dispatch(savePageFailure(createErrorObj(error.name, error.message)))
     dispatch(push("/error"))
     if (process.env.NODE_ENV !== "production") {
       console.error(`Network error: ${error.message}`)
