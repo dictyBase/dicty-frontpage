@@ -106,13 +106,16 @@ class AddNewsForm extends Component<Props, State> {
 
     const content = JSON.stringify(value.toJSON())
     // get today's current date for use as news item name
-    const date = new Date().toISOString().split("T")[0]
+    // const date = new Date().toISOString().split("T")[0]
+
+    // get random five digit ID number to use for saved news content
+    const random = Math.floor(10000 + Math.random() * 90000).toString()
 
     const body = {
       data: {
         type: "contents",
         attributes: {
-          name: date,
+          name: random,
           created_by: loggedInUser.json.data.id,
           content,
           namespace: frontpagenews,
