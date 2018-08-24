@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matching a snapshot of ErrorBoundary 1`] = `
+<ErrorBoundary
+  classes={
+    Object {
+      "gridContainer": "ErrorBoundary-gridContainer-1",
+    }
+  }
+>
+  <Component />
+</ErrorBoundary>
+`;

@@ -11,8 +11,8 @@ import papers from "data/papers"
  */
 
 const PapersArchive = () => {
-  const paperList = papers.map((paper, index) => (
-    <Flex justify="center" key={index}>
+  const paperList = papers.map(paper => (
+    <Flex justify="center" key={paper.title}>
       <Box w={["90%", "90%", "90%", "60%"]} py={5}>
         <div>{paper.author}</div>
         <div>

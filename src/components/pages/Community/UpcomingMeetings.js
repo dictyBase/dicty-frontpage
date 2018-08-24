@@ -1,6 +1,6 @@
 // @flow
 import React from "react"
-import { Flex, Box } from "rebass"
+import Grid from "@material-ui/core/Grid"
 import FontAwesome from "react-fontawesome"
 import { Banner, Header } from "styles/EditablePageStyles"
 
@@ -8,22 +8,20 @@ import { Banner, Header } from "styles/EditablePageStyles"
  * This displays upcoming Dicty meetings.
  */
 
-const UpcomingMeetings = () => {
-  return (
-    <div>
-      <Banner>
-        <Header>
-          <FontAwesome name="plane" />
-          <br />
-          Upcoming Meetings
-        </Header>
-      </Banner>
-      <br />
-      <Flex justify="center">
-        <Box>Coming soon...</Box>
-      </Flex>
-    </div>
-  )
-}
+const UpcomingMeetings = () => (
+  <div>
+    <Banner>
+      <Header>
+        <FontAwesome name="plane" />
+        <br />
+        Upcoming Meetings
+      </Header>
+    </Banner>
+    <br />
+    <Grid container justify="center">
+      <Grid item>Coming soon...</Grid>
+    </Grid>
+  </div>
+)
 
 export default UpcomingMeetings

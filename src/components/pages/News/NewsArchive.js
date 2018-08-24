@@ -12,8 +12,8 @@ import twitterLogo from "images/twitterLogo.png"
  */
 
 const NewsArchive = () => {
-  const newsList = news.map((post, index) => (
-    <Flex justify="center" key={index}>
+  const newsList = news.map(post => (
+    <Flex justify="center" key={post.date}>
       <Box w={["90%", "90%", "90%", "60%"]} py={5}>
         <div>
           <strong>{post.date}</strong>

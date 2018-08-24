@@ -1,4 +1,4 @@
-import React from "react"
+import React, { Component } from "react"
 import Grid from "@material-ui/core/Grid"
 import { withStyles } from "@material-ui/core/styles"
 import { PaperContainer } from "styles"
@@ -10,7 +10,7 @@ const styles = theme => ({
   },
 })
 
-class ErrorBoundary extends React.Component {
+class ErrorBoundary extends Component {
   constructor(props) {
     super(props)
     this.state = { error: null, errorInfo: null }

@@ -1,0 +1,275 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matching a snapshot of NewsArchive 1`] = `
+<div>
+  <styled.div>
+    <styled.h1>
+      <FontAwesome
+        name="globe"
+      />
+       Dicty News
+    </styled.h1>
+    <styled.p>
+      Also available at
+       
+      <Link
+        href="https://twitter.com/dictybase"
+        target="new"
+        title="Dicty News at Twitter"
+      >
+        <Img
+          alt="Twitter logo"
+          src="twitterLogo.png"
+        />
+      </Link>
+    </styled.p>
+  </styled.div>
+  <br />
+  <Flex
+    justify="center"
+  >
+    <Box>
+      <Flex
+        justify="center"
+        key="2018.07.21"
+      >
+        <Box
+          py={5}
+          w={
+            Array [
+              "90%",
+              "90%",
+              "90%",
+              "60%",
+            ]
+          }
+        >
+          <div>
+            <strong>
+              2018.07.21
+            </strong>
+          </div>
+          <div>
+            Dicty in the News: Bacteria carried as food within Dictyostelium discoideum are protected by a lectin coat. Reported in ScienceNews, and recently published by Dinh and colleagues in Science with comments by co-author Adam Kuspa.
+          </div>
+          <div>
+            <strong>
+              ScienceNews
+            </strong>
+          </div>
+        </Box>
+      </Flex>
+      <Flex
+        justify="center"
+        key="2018.07.19"
+      >
+        <Box
+          py={5}
+          w={
+            Array [
+              "90%",
+              "90%",
+              "90%",
+              "60%",
+            ]
+          }
+        >
+          <div>
+            <strong>
+              2018.07.19
+            </strong>
+          </div>
+          <div>
+            Dicty2018: A list of currently registered people is available here. Please check if all your information has been correctly processed and email the organizers if corrections are needed. 
+          </div>
+          <div>
+            <strong>
+              dictyBase
+            </strong>
+          </div>
+        </Box>
+      </Flex>
+      <Flex
+        justify="center"
+        key="2018.05.14"
+      >
+        <Box
+          py={5}
+          w={
+            Array [
+              "90%",
+              "90%",
+              "90%",
+              "60%",
+            ]
+          }
+        >
+          <div>
+            <strong>
+              2018.05.14
+            </strong>
+          </div>
+          <div>
+            Thierry Soldati is amongst 62 life scientists elected to EMBO (European Molecular Biology Organisation) this year. New EMBO members. Congratulations Thierry!
+          </div>
+          <div>
+            <strong>
+              Dicty Stock Center
+            </strong>
+          </div>
+        </Box>
+      </Flex>
+      <Flex
+        justify="center"
+        key="2018.04.24"
+      >
+        <Box
+          py={5}
+          w={
+            Array [
+              "90%",
+              "90%",
+              "90%",
+              "60%",
+            ]
+          }
+        >
+          <div>
+            <strong>
+              2018.04.24
+            </strong>
+          </div>
+          <div>
+            Thomas Williams, who graduated and now is a post-doc in Rob Kay's lab, recently first authored a paper in JCS. In addition, JCS chose him to be First Person, a series of interviews with selected first authors, helping early-career researchers promote themselves alongside their papers.
+          </div>
+          <div>
+            <strong>
+              Dicty Stock Center
+            </strong>
+          </div>
+        </Box>
+      </Flex>
+      <Flex
+        justify="center"
+        key="2018.02.13"
+      >
+        <Box
+          py={5}
+          w={
+            Array [
+              "90%",
+              "90%",
+              "90%",
+              "60%",
+            ]
+          }
+        >
+          <div>
+            <strong>
+              2018.02.13
+            </strong>
+          </div>
+          <div>
+            After Northwestern moved our servers from one campus to the other recently our Blast from the Front - and all Gene Pages, as well as the Genome Browser (including snapshot on gene page) are down. We and Northwestern IT staff are working on the problem. Meanwhile for Blast use the Genome Server, the Blast server which is available from the other genome sites we house. Thanks for your patience! 
+          </div>
+          <div>
+            <strong>
+              dictyBase
+            </strong>
+          </div>
+        </Box>
+      </Flex>
+      <Flex
+        justify="center"
+        key="2018.02.07"
+      >
+        <Box
+          py={5}
+          w={
+            Array [
+              "90%",
+              "90%",
+              "90%",
+              "60%",
+            ]
+          }
+        >
+          <div>
+            <strong>
+              2018.02.07
+            </strong>
+          </div>
+          <div>
+            Dicty in the News: New evidence using Dictyostelium discoideum suggests a role for curcumin and related compounds in the treatment of cancer and Alzheimer's disease. Reported in Medical Xpress with comments from Professor Robin SB Williams.
+          </div>
+          <div>
+            <strong>
+              Medical Express
+            </strong>
+          </div>
+        </Box>
+      </Flex>
+      <Flex
+        justify="center"
+        key="2018.01.29"
+      >
+        <Box
+          py={5}
+          w={
+            Array [
+              "90%",
+              "90%",
+              "90%",
+              "60%",
+            ]
+          }
+        >
+          <div>
+            <strong>
+              2018.01.29
+            </strong>
+          </div>
+          <div>
+            We are happy to announce that Eric Hartline has joined the dictyBase team. Eric is working with us on user interface and software development.
+          </div>
+          <div>
+            <strong>
+              dictyBase
+            </strong>
+          </div>
+        </Box>
+      </Flex>
+      <Flex
+        justify="center"
+        key="2018.01.23"
+      >
+        <Box
+          py={5}
+          w={
+            Array [
+              "90%",
+              "90%",
+              "90%",
+              "60%",
+            ]
+          }
+        >
+          <div>
+            <strong>
+              2018.01.23
+            </strong>
+          </div>
+          <div>
+            Dicty in the News: New research shows that plague bacterium Yersinia pestis can survive and replicate within Dictyostelium discoideum, potentially explaining how the plague can remain dormant for years before unexpectedly re-emerging. Reported in LiveScience and EurekAlert. Recently published by Markman and colleagues in Emerging Infect. Dis.
+          </div>
+          <div>
+            <strong>
+              LiveScience
+            </strong>
+          </div>
+        </Box>
+      </Flex>
+    </Box>
+  </Flex>
+</div>
+`;

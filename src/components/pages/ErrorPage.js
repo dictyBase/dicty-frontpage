@@ -49,7 +49,7 @@ type Props = {
  * General error handling page
  */
 
-const ErrorPage = (props: Props) => {
+export const ErrorPage = (props: Props) => {
   const { page, classes } = props
 
   if (page.error.status >= 500) {

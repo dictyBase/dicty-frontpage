@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matching a snapshot of JBrowse 1`] = `
+<div>
+  <styled.div>
+    <styled.h1>
+      <FontAwesome
+        name="plane"
+      />
+      <br />
+      Upcoming Meetings
+    </styled.h1>
+  </styled.div>
+  <br />
+  <WithStyles(Grid)
+    container={true}
+    justify="center"
+  >
+    <WithStyles(Grid)
+      item={true}
+    >
+      Coming soon...
+    </WithStyles(Grid)>
+  </WithStyles(Grid)>
+</div>
+`;
