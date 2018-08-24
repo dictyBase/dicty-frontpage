@@ -12,6 +12,18 @@ test("matching a snapshot of ErrorPage", () => {
         title: "Not Found",
       },
     },
+    news: {
+      error: {
+        status: "404",
+        title: "Not Found",
+      },
+    },
+    auth: {
+      error: {
+        status: "404",
+        title: "Not Found",
+      },
+    },
     classes: {},
   }
   const subject = shallow(<ErrorPage {...props} />)

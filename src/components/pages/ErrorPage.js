@@ -43,6 +43,10 @@ type Props = {
   classes: Object,
   /** The page object in the state */
   page: Object,
+  /** The news object in the state */
+  news: Object,
+  /** The auth object in the state */
+  auth: Object,
 }
 
 /**
@@ -50,18 +54,36 @@ type Props = {
  */
 
 export const ErrorPage = (props: Props) => {
-  const { page, classes } = props
+  const { page, news, auth, classes } = props
 
-  if (page.error.status >= 500) {
+  let errorStatus
+  let errorMsg
+
+  if (page.error) {
+    errorStatus = page.error.status
+    errorMsg = page.error.title
+  }
+
+  if (news.error) {
+    errorStatus = news.error.status
+    errorMsg = news.error.title
+  }
+
+  if (auth.error) {
+    errorStatus = auth.error.status
+    errorMsg = auth.error.title
+  }
+
+  if (errorStatus >= 500) {
     return (
       <Grid container className={classes.mainGrid} justify="center">
         <Grid item xs={10} md={8}>
           <div className={classes.error500}>
             <h1>
-              <FontAwesome name="exclamation-circle" /> {page.error.status}{" "}
-              Error <FontAwesome name="exclamation-circle" />
+              <FontAwesome name="exclamation-circle" /> {errorStatus} Error{" "}
+              <FontAwesome name="exclamation-circle" />
             </h1>
-            <h3>{page.error.title}</h3>
+            <h3>{errorMsg}</h3>
             <p>Sorry! There was a server error.</p>
             <p>
               If the problem persists, please email us at{" "}
@@ -82,17 +104,16 @@ export const ErrorPage = (props: Props) => {
     )
   }
 
-  if (page.error.status === 404) {
+  if (errorStatus === 404) {
     return (
       <Grid container className={classes.mainGrid} justify="center">
         <Grid item xs={10} md={8}>
           <div className={classes.error400}>
             <img src={sadDicty} alt="Sad Dicty -- 404 Page Not Found" />
             <h1>
-              <FontAwesome name="exclamation-circle" /> {page.error.status}{" "}
-              Error
+              <FontAwesome name="exclamation-circle" /> {errorStatus} Error
             </h1>
-            <h3>{page.error.title}</h3>
+            <h3>{errorMsg}</h3>
             <p className={classes.paragraph}>
               Sorry! We can&apos;t find that page. You can try one of the links
               in our navbar above, or head back to the homepage.
@@ -118,9 +139,9 @@ export const ErrorPage = (props: Props) => {
         <div className={classes.error400}>
           <img src={sadDicty} alt="Sad Dicty -- HTTP Error" />
           <h1>
-            <FontAwesome name="exclamation-circle" /> {page.error.status} Error
+            <FontAwesome name="exclamation-circle" /> {errorStatus} Error
           </h1>
-          <h3>{page.error.title}</h3>
+          <h3>{errorMsg}</h3>
           <p>
             If the problem persists, please email us at{" "}
             <a href="mailto:dictybase@northwestern.edu">
@@ -145,6 +166,8 @@ export const ErrorPage = (props: Props) => {
 
 const mapStateToProps = state => ({
   page: state.editablePages,
+  news: state.news,
+  auth: state.auth,
 })
 
 export default withStyles(styles)(connect(mapStateToProps)(ErrorPage))

@@ -41,9 +41,9 @@ const StyledEditor = styled(Editor)`
 
 type Props = {
   /** Action that allows user to add a news item to the server */
-  addNewsItem: Function,
+  addNewsItemAction: Function,
   /** Dispatch that cancels editing and pushes them back to root directory */
-  cancelEditing: Function,
+  cancelEditingAction: Function,
   /** Class that represents the current logged in user */
   loggedInUser: Object,
 }
@@ -90,16 +90,19 @@ class AddNewsForm extends Component<Props, State> {
   }
 
   onCancel = () => {
+    const { value } = this.state
+    const { cancelEditingAction } = this.props
+
     this.setState({
-      value: this.state.value,
+      value,
     })
-    this.props.cancelEditing()
+    cancelEditingAction()
   }
 
   // on save, save the value to the content API server
   onSave = () => {
     const { value } = this.state
-    const { addNewsItem, loggedInUser } = this.props
+    const { addNewsItemAction, loggedInUser } = this.props
 
     const content = JSON.stringify(value.toJSON())
     // get today's current date for use as news item name
@@ -111,14 +114,14 @@ class AddNewsForm extends Component<Props, State> {
         attributes: {
           name: date,
           created_by: loggedInUser.json.data.id,
-          content: content,
+          content,
           namespace: frontpagenews,
         },
       },
     }
-    addNewsItem(body)
+    addNewsItemAction(body)
 
-    this.setState(this.state.value)
+    this.setState(value)
   }
 
   onClickLink = (event: SyntheticEvent<>) => {
@@ -158,17 +161,18 @@ class AddNewsForm extends Component<Props, State> {
   }
 
   render() {
+    const { value } = this.state
     return (
       <div>
         <Flex justify="center">
           <NewsEditorBox width={["90%", "80%", "50%", "40%"]}>
             <NewsToolbar
-              value={this.state.value}
+              value={value}
               onChange={value => this.onChange(value)}
             />
 
             <StyledEditor
-              value={this.state.value}
+              value={value}
               onChange={this.onChange}
               onPaste={this.onPaste}
               onKeyDown={onKeyDown}
@@ -208,14 +212,14 @@ class AddNewsForm extends Component<Props, State> {
 const mapStateToProps = state => {
   const loggedInUser = new AuthenticatedUser(state.auth.user)
   return {
-    loggedInUser: loggedInUser,
+    loggedInUser,
   }
 }
 
 export default connect(
   mapStateToProps,
   {
-    addNewsItem,
-    cancelEditing,
+    addNewsItemAction: addNewsItem,
+    cancelEditingAction: cancelEditing,
   },
 )(AddNewsForm)
