@@ -3,7 +3,8 @@ import React, { Component } from "react"
 import { connect } from "react-redux"
 import { Flex, Box } from "rebass"
 import Skeleton from "react-loading-skeleton"
-import InfoPageView from "./InfoPageView"
+
+import InfoPageView from "components/pages/EditablePages/InfoPageView"
 import { fetchPage } from "actions/editablePages"
 import { NAMESPACE } from "constants/namespace"
 
@@ -15,7 +16,7 @@ type Props = {
   /** React Router's match object */
   match: Object,
   /** Action creator that fetches data from API */
-  fetchPage: Function,
+  fetchPageAction: Function,
 }
 
 /**
@@ -31,26 +32,28 @@ class InfoPage extends Component<Props> {
       },
     },
   }
+
   componentDidMount() {
-    const { match, fetchPage } = this.props
+    const { match, fetchPageAction } = this.props
     const slugName = `${NAMESPACE}-${match.params.name}`
-    fetchPage(slugName)
+    fetchPageAction(slugName)
   }
+
   render() {
-    const { isFetching, page } = this.props
+    const { isFetching, page, match } = this.props
 
     if (!isFetching && page.data.attributes.content) {
       return (
         <Flex justify="center">
-          <Box w={"60%"}>
-            <InfoPageView page={page} match={this.props.match} />
+          <Box w="60%">
+            <InfoPageView page={page} match={match} />
           </Box>
         </Flex>
       )
     }
     return (
       <Flex justify="center">
-        <Box w={"60%"}>
+        <Box w="60%">
           <h1>
             <Skeleton />
           </h1>
@@ -77,5 +80,5 @@ const mapStateToProps = (state, ownProps) => {
 
 export default connect(
   mapStateToProps,
-  { fetchPage },
+  { fetchPageAction: fetchPage },
 )(InfoPage)

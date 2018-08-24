@@ -22,6 +22,12 @@ const printError = (res, json) => {
   )
 }
 
+const createErrorObj = (res, json) => ({
+  status: res.status,
+  title: json.errors[0].title,
+  detail: json.errors[0].detail,
+})
+
 const fetchPageRequest = () => ({
   type: FETCH_PAGE_REQUEST,
   payload: {
@@ -79,21 +85,18 @@ export const fetchPage = (slug: string) => async (dispatch: Function) => {
       } else {
         if (process.env.NODE_ENV !== "production") {
           printError(res, json)
-          dispatch(push("/notfound"))
         }
-        dispatch(fetchPageFailure(res.body))
-        dispatch(push("/notfound"))
+
+        dispatch(fetchPageFailure(createErrorObj(res, json)))
+        dispatch(push("/error"))
       }
     } else {
-      if (process.env.NODE_ENV !== "production") {
-        console.error("Cannot convert to JSON")
-      }
       dispatch(fetchPageFailure(res.body))
-      dispatch(push("/notfound"))
+      dispatch(push("/error"))
     }
   } catch (error) {
     dispatch(fetchPageFailure(error))
-    dispatch(push("/notfound"))
+    dispatch(push("/error"))
     if (process.env.NODE_ENV !== "production") {
       console.error(`Network error: ${error.message}`)
     }
@@ -144,13 +147,10 @@ export const saveEditing = (id: string, body: Object, path: string) => async (
         if (process.env.NODE_ENV !== "production") {
           printError(res, json)
         }
-        dispatch(savePageFailure(res.body))
+        dispatch(savePageFailure(createErrorObj(res, json)))
         dispatch(push("/error"))
       }
     } else {
-      if (process.env.NODE_ENV !== "production") {
-        console.error("Cannot convert to JSON")
-      }
       dispatch(savePageFailure(res.body))
       dispatch(push("/error"))
     }
@@ -186,13 +186,10 @@ export const saveInlineEditing = (id: string, body: Object) => async (
         if (process.env.NODE_ENV !== "production") {
           printError(res, json)
         }
-        dispatch(savePageFailure(res.body))
+        dispatch(savePageFailure(createErrorObj(res, json)))
         dispatch(push("/error"))
       }
     } else {
-      if (process.env.NODE_ENV !== "production") {
-        console.error("Cannot convert to JSON")
-      }
       dispatch(savePageFailure(res.body))
       dispatch(push("/error"))
     }
