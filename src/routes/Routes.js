@@ -42,7 +42,7 @@ const Routes = () => (
     <Route exact path="/:section/:name" component={InfoPage} />
     <PrivateRoute exact path="/:section/:name/edit" component={EditInfoPage} />
     {/* Error page */}
-    <Route exact path="*" component={ErrorPage} />
+    <Route exact path="/error" component={ErrorPage} />
     {/* Page not found routes */}
     <Route exact path="*" component={PageNotReady} />
   </Switch>

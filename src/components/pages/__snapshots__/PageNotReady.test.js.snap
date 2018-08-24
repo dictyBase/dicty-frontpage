@@ -2,53 +2,22 @@
 
 exports[`matching a snapshot of PageNotReady 1`] = `
 .c0 {
-  padding-top: 30px;
-  padding-bottom: 30px;
-  margin-bottom: 30px;
-  color: inherit;
-  background-color: #eee;
-  text-align: center;
-}
-
-.c0 h1 {
-  color: inherit;
-}
-
-.c0 p {
-  margin-bottom: 15px;
-  font-size: 21px;
-  font-weight: 200;
-}
-
-.c2.c2 {
-  width: 100%;
-  background-color: #15317e;
-}
-
-.c1 {
   color: #428bca;
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
 <div
-  className="sc-htpNat iZBBQa sc-bdVaJa iHZvIS"
-  is={null}
-  style={
-    Object {
-      "marginTop": "33px",
-    }
-  }
+  className="MuiGrid-container-5 MuiGrid-justify-xs-center-22 PageNotReady-mainGrid-3"
 >
   <div
-    className="ilqAEZ"
-    is={null}
+    className="MuiGrid-item-6 MuiGrid-grid-xs-10-43 MuiGrid-grid-md-8-69"
   >
     <div
-      className="c0"
+      className="PageNotReady-container-1"
     >
       <img
-        alt="Sad Dicty -- 404 Page Not Found"
+        alt="Sad Dicty Logo"
         src="sad-dicty.png"
       />
       <h1>
@@ -58,53 +27,47 @@ exports[`matching a snapshot of PageNotReady 1`] = `
         />
          Under Construction
       </h1>
-      <p>
+      <p
+        className="PageNotReady-paragraph-4"
+      >
         This page is not ready yet.
       </p>
-      <p>
+      <p
+        className="PageNotReady-paragraph-4"
+      >
         We are constantly adding content to our new website so check back soon!
       </p>
-      <div
-        className="sc-htpNat iZBBQa sc-bdVaJa iHZvIS"
-        is={null}
+      <a
+        className="c0"
+        href="/"
+        onClick={[Function]}
       >
-        <div
-          className="eyMZla"
-          is={null}
+        <button
+          className="MuiButtonBase-root-128 MuiButton-root-102 MuiButton-contained-113 MuiButton-containedPrimary-114 MuiButton-raised-116 MuiButton-raisedPrimary-117 MuiButton-sizeSmall-125 PageNotReady-button-2"
+          disabled={false}
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex="0"
+          type="button"
         >
-          <a
-            className="c1"
-            href="/"
-            onClick={[Function]}
+          <span
+            className="MuiButton-label-103"
           >
-            <button
-              className="MuiButtonBase-root-27 MuiButton-root-1 MuiButton-contained-12 MuiButton-containedPrimary-13 MuiButton-raised-15 MuiButton-raisedPrimary-16 MuiButton-sizeSmall-24 c2"
-              disabled={false}
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onKeyUp={[Function]}
-              onMouseDown={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-              onTouchEnd={[Function]}
-              onTouchMove={[Function]}
-              onTouchStart={[Function]}
-              tabIndex="0"
-              type="button"
-            >
-              <span
-                className="MuiButton-label-2"
-              >
-                dictyBase Home
-              </span>
-              <span
-                className="MuiTouchRipple-root-30"
-              />
-            </button>
-          </a>
-        </div>
-      </div>
+            dictyBase Home
+          </span>
+          <span
+            className="MuiTouchRipple-root-131"
+          />
+        </button>
+      </a>
     </div>
   </div>
 </div>
