@@ -36,7 +36,7 @@ exports[`matching a snapshot of PageNotReady 1`] = `
   is={null}
   style={
     Object {
-      "marginTop": "20px",
+      "marginTop": "33px",
     }
   }
 >
@@ -47,6 +47,10 @@ exports[`matching a snapshot of PageNotReady 1`] = `
     <div
       className="c0"
     >
+      <img
+        alt="Sad Dicty -- 404 Page Not Found"
+        src="sad-dicty.png"
+      />
       <h1>
         <span
           aria-hidden={true}
@@ -56,6 +60,9 @@ exports[`matching a snapshot of PageNotReady 1`] = `
       </h1>
       <p>
         This page is not ready yet.
+      </p>
+      <p>
+        We are constantly adding content to our new website so check back soon!
       </p>
       <div
         className="sc-htpNat iZBBQa sc-bdVaJa iHZvIS"
@@ -89,7 +96,7 @@ exports[`matching a snapshot of PageNotReady 1`] = `
               <span
                 className="MuiButton-label-2"
               >
-                Dictybase Home
+                dictyBase Home
               </span>
               <span
                 className="MuiTouchRipple-root-30"
