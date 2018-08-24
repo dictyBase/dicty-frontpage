@@ -30,7 +30,7 @@ const styles = theme => ({
 })
 
 /**
- * General 404 error page, currently designated as "Page Not Ready"/"Under Construction"
+ * Fallback component for non-existent routes -- "Page Not Ready"/"Under Construction"
  */
 
 const PageNotReady = props => {
