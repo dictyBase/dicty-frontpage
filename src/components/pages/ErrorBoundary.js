@@ -6,7 +6,7 @@ import { PaperContainer } from "styles"
 // eslint-disable-next-line
 const styles = theme => ({
   gridContainer: {
-    marginTop: "50px",
+    marginTop: "33px",
   },
 })
 
@@ -36,7 +36,7 @@ class ErrorBoundary extends React.Component {
             <PaperContainer>
               <center>
                 <h2>Sorry! There was an error loading this page.</h2>
-                <p>Something went wrong with our user interface.</p>
+                <p>Something went wrong behind the scenes.</p>
                 <em>{error && error.toString()}</em>
                 <p>
                   If the problem persists, please email us at{" "}
