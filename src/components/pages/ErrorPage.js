@@ -5,6 +5,7 @@ import { withRouter } from "react-router-dom"
 import { withStyles } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
 import Button from "@material-ui/core/Button"
+import AddIcon from "@material-ui/icons/Add"
 import FontAwesome from "react-fontawesome"
 
 import Authorization from "components/authentication/Authorization"
@@ -30,8 +31,21 @@ const styles = theme => ({
     borderRadius: 5,
     color: "#fff",
   },
-  button: {
+  backButton: {
     width: "25%",
+    padding: "20px",
+    textTransform: "none",
+    backgroundColor: "#15317e",
+  },
+  addPageButton: {
+    width: "25%",
+    marginTop: "25px",
+    padding: "25px",
+    textTransform: "none",
+    backgroundColor: "#FF6347",
+    "&:hover": {
+      backgroundColor: "#cc381e",
+    },
   },
   mainGrid: {
     marginTop: "40px",
@@ -91,11 +105,11 @@ export const ErrorPage = (props: Props) => {
             </p>
             <RouterLink to="/">
               <Button
-                className={classes.button}
+                className={classes.backButton}
                 size="small"
                 variant="contained"
                 color="default">
-                dictyBase Home
+                Back to homepage
               </Button>
             </RouterLink>
           </div>
@@ -120,11 +134,11 @@ export const ErrorPage = (props: Props) => {
             </p>
             <RouterLink to="/">
               <Button
-                className={classes.button}
+                className={classes.backButton}
                 size="small"
                 variant="contained"
                 color="primary">
-                dictyBase Home
+                Back to homepage
               </Button>
             </RouterLink>
 
@@ -141,7 +155,14 @@ export const ErrorPage = (props: Props) => {
                             pathname: "/addpage",
                             state: { slug: match.params.name, url: match.url },
                           }}>
-                          Add a page to this route
+                          <Button
+                            className={classes.addPageButton}
+                            size="small"
+                            variant="contained"
+                            color="primary">
+                            <AddIcon />
+                            &nbsp; Add a page to this route
+                          </Button>
                         </RouterLink>
                       </div>
                     )}
@@ -172,11 +193,11 @@ export const ErrorPage = (props: Props) => {
           </p>
           <RouterLink to="/">
             <Button
-              className={classes.button}
+              className={classes.backButton}
               size="small"
               variant="contained"
               color="primary">
-              dictyBase Home
+              Back to Homepage
             </Button>
           </RouterLink>
         </div>
