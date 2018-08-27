@@ -22,6 +22,9 @@ const styles = theme => ({
   grid: {
     padding: "8px 16px 8px 16px",
   },
+  link: {
+    textDecoration: "none",
+  },
 })
 
 type Props = {
@@ -40,7 +43,7 @@ const Popular = (props: Props) => {
   const { widgets, classes } = props
   const widgetlist = widgets.map(widget => (
     <ListItems key={widget.link}>
-      <a href={widget.link}>
+      <a className={classes.link} href={widget.link}>
         <Button
           className={classes.button}
           size="small"
