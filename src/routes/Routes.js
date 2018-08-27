@@ -6,6 +6,7 @@ import Downloads from "components/pages/Downloads"
 import About from "components/pages/About/About"
 import InfoPage from "components/pages/EditablePages/InfoPage"
 import EditInfoPage from "components/pages/EditablePages/EditInfoPage"
+import AddPage from "components/pages/EditablePages/AddPage"
 import AddNews from "components/pages/News/AddNews"
 import NewsArchive from "components/pages/News/NewsArchive"
 import PapersArchive from "components/pages/Papers/PapersArchive"
@@ -41,6 +42,7 @@ const Routes = () => (
     {/* Editable page routes */}
     <Route exact path="/:section/:name" component={InfoPage} />
     <PrivateRoute exact path="/:section/:name/edit" component={EditInfoPage} />
+    <PrivateRoute exact path="/addpage" component={AddPage} />
     {/* Error page */}
     <Route exact path="/error" component={ErrorPage} />
     {/* Page not found routes */}

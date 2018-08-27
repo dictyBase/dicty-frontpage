@@ -12,6 +12,8 @@ import {
 import { printError, createErrorObj } from "utils/actionHelpers"
 import { fetchBySlugResource, fetchByIdResource } from "utils/fetchResources"
 
+const server: string = process.env.REACT_APP_API_SERVER
+
 const fetchPageRequest = () => ({
   type: FETCH_PAGE_REQUEST,
   payload: {
@@ -176,6 +178,48 @@ export const saveInlineEditing = (id: string, body: Object) => async (
       const json = await res.json()
       if (res.ok) {
         dispatch(savePageSuccess())
+      } else {
+        if (process.env.NODE_ENV !== "production") {
+          printError(res, json)
+        }
+        dispatch(
+          savePageFailure(createErrorObj(res.status, json.errors[0].title)),
+        )
+        dispatch(push("/error"))
+      }
+    } else {
+      dispatch(savePageFailure(createErrorObj(res.status, res.statusText)))
+      dispatch(push("/error"))
+    }
+  } catch (error) {
+    dispatch(savePageFailure(createErrorObj(error.name, error.message)))
+    dispatch(push("/error"))
+    if (process.env.NODE_ENV !== "production") {
+      console.error(`Network error: ${error.message}`)
+    }
+  }
+}
+
+export const addEditablePage = (body: Object, url: string) => async (
+  dispatch: Function,
+  getState: Function,
+) => {
+  try {
+    dispatch(savePageRequest())
+    const res = await fetch(`${server}/contents`, {
+      method: "POST",
+      body: JSON.stringify(body),
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${getState().auth.token}`,
+      },
+    })
+    const contentType = res.headers.get("content-type")
+    if (contentType && contentType.includes("application/vnd.api+json")) {
+      const json = await res.json()
+      if (res.ok) {
+        dispatch(savePageSuccess())
+        dispatch(push(url))
       } else {
         if (process.env.NODE_ENV !== "production") {
           printError(res, json)

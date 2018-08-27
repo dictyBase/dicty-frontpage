@@ -1,10 +1,13 @@
 // @flow
 import React from "react"
 import { connect } from "react-redux"
+import { withRouter } from "react-router-dom"
 import { withStyles } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
 import Button from "@material-ui/core/Button"
 import FontAwesome from "react-fontawesome"
+
+import Authorization from "components/authentication/Authorization"
 import { RouterLink } from "styles"
 import sadDicty from "images/sad-dicty.png"
 
@@ -47,6 +50,8 @@ type Props = {
   news: Object,
   /** The auth object in the state */
   auth: Object,
+  /** React-Router's match object */
+  match: Object,
 }
 
 /**
@@ -54,7 +59,7 @@ type Props = {
  */
 
 export const ErrorPage = (props: Props) => {
-  const { page, news, auth, classes } = props
+  const { page, news, auth, classes, match } = props
 
   let errorStatus
   let errorMsg
@@ -79,12 +84,7 @@ export const ErrorPage = (props: Props) => {
       <Grid container className={classes.mainGrid} justify="center">
         <Grid item xs={10} md={8}>
           <div className={classes.error500}>
-            <h1>
-              <FontAwesome name="exclamation-circle" /> {errorStatus} Error{" "}
-              <FontAwesome name="exclamation-circle" />
-            </h1>
-            <h3>{errorMsg}</h3>
-            <p>Sorry! There was a server error.</p>
+            <h3>Sorry! There was a server error.</h3>
             <p>
               If the problem persists, please email us at{" "}
               dictybase@northwestern.edu
@@ -109,14 +109,14 @@ export const ErrorPage = (props: Props) => {
       <Grid container className={classes.mainGrid} justify="center">
         <Grid item xs={10} md={8}>
           <div className={classes.error400}>
-            <img src={sadDicty} alt="Sad Dicty -- 404 Page Not Found" />
-            <h1>
-              <FontAwesome name="exclamation-circle" /> {errorStatus} Error
-            </h1>
-            <h3>{errorMsg}</h3>
+            <img src={sadDicty} alt="Sad Dicty -- Page Not Found" />
+            <h3>Page Not Found</h3>
             <p className={classes.paragraph}>
-              Sorry! We can&apos;t find that page. You can try one of the links
-              in our navbar above, or head back to the homepage.
+              Sorry! We can&apos;t find that page.
+            </p>
+            <p className={classes.paragraph}>
+              You can try one of the links in our navbar above, or head back to
+              the homepage.
             </p>
             <RouterLink to="/">
               <Button
@@ -127,6 +127,27 @@ export const ErrorPage = (props: Props) => {
                 dictyBase Home
               </Button>
             </RouterLink>
+
+            <Authorization
+              // eslint-disable-next-line
+              render={({ canEditPages, verifiedToken }) => (
+                <Grid item>
+                  {canEditPages &&
+                    verifiedToken && (
+                      <div>
+                        <br />
+                        <RouterLink
+                          to={{
+                            pathname: "/addpage",
+                            state: { slug: match.params.name, url: match.url },
+                          }}>
+                          Add a page to this route
+                        </RouterLink>
+                      </div>
+                    )}
+                </Grid>
+              )}
+            />
           </div>
         </Grid>
       </Grid>
@@ -170,4 +191,6 @@ const mapStateToProps = state => ({
   auth: state.auth,
 })
 
-export default withStyles(styles)(connect(mapStateToProps)(ErrorPage))
+export default withRouter(
+  withStyles(styles)(connect(mapStateToProps)(ErrorPage)),
+)
