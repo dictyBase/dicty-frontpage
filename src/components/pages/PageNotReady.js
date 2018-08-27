@@ -41,7 +41,7 @@ const PageNotReady = props => {
         <div className={classes.container}>
           <img src={sadDicty} alt="Sad Dicty Logo" />
           <h1>
-            <FontAwesome name="wrench" /> Under Construction
+            <FontAwesome name="wrench" /> Content Not Ready
           </h1>
           <p className={classes.paragraph}>This page is not ready yet.</p>
           <p className={classes.paragraph}>
