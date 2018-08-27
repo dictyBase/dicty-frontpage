@@ -5,6 +5,7 @@ import { Flex, Box } from "rebass"
 import Skeleton from "react-loading-skeleton"
 
 import InfoPageView from "components/pages/EditablePages/InfoPageView"
+import ErrorPage from "components/pages/ErrorPage"
 import { fetchPage } from "actions/editablePages"
 import { NAMESPACE } from "constants/namespace"
 
@@ -17,6 +18,8 @@ type Props = {
   match: Object,
   /** Action creator that fetches data from API */
   fetchPageAction: Function,
+  /** Error from page fetching */
+  error: Object,
 }
 
 /**
@@ -40,7 +43,7 @@ class InfoPage extends Component<Props> {
   }
 
   render() {
-    const { isFetching, page, match } = this.props
+    const { isFetching, page, match, error } = this.props
 
     if (!isFetching && page.data.attributes.content) {
       return (
@@ -51,6 +54,15 @@ class InfoPage extends Component<Props> {
         </Flex>
       )
     }
+
+    if (error) {
+      return (
+        <div>
+          <ErrorPage />
+        </div>
+      )
+    }
+
     return (
       <Flex justify="center">
         <Box w="60%">
@@ -75,6 +87,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     isFetching: state.editablePages.isFetching,
     page: state.editablePages[slugName],
+    error: state.editablePages.error,
   }
 }
 

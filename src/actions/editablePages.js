@@ -71,10 +71,16 @@ export const fetchPage = (slug: string) => async (dispatch: Function) => {
           printError(res, json)
         }
 
+        if (res.status !== 404) {
+          dispatch(
+            fetchPageFailure(createErrorObj(res.status, json.errors[0].title)),
+          )
+          dispatch(push("/error"))
+        }
+
         dispatch(
           fetchPageFailure(createErrorObj(res.status, json.errors[0].title)),
         )
-        dispatch(push("/error"))
       }
     } else {
       dispatch(fetchPageFailure(createErrorObj(res.status, res.statusText)))
