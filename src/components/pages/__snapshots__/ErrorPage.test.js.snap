@@ -44,7 +44,7 @@ exports[`matching a snapshot of ErrorPage 1`] = `
           size="small"
           variant="contained"
         >
-          dictyBase Home
+          Back to Homepage
         </WithStyles(Button)>
       </RouterLink>
     </div>

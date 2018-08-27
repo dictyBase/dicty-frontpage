@@ -25,7 +25,7 @@ exports[`matching a snapshot of PageNotReady 1`] = `
           aria-hidden={true}
           className="fa fa-wrench"
         />
-         Under Construction
+         Content Not Ready
       </h1>
       <p
         className="PageNotReady-paragraph-4"
