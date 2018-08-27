@@ -1,50 +1,67 @@
 // @flow
 import React from "react"
-import { Flex, Box } from "rebass"
+import { withStyles } from "@material-ui/core/styles"
+import Grid from "@material-ui/core/Grid"
+import Button from "@material-ui/core/Button"
 
-import {
-  PopularHeader,
-  WidgetListBox,
-  ListItems,
-  WidgetLink,
-  WidgetImg,
-} from "styles"
+import { PopularHeader, WidgetListBox, ListItems } from "styles"
 
-/** Widget that displays the most popular tools and sections */
+// eslint-disable-next-line
+const styles = theme => ({
+  button: {
+    width: "100%",
+    marginBottom: "5px",
+    padding: "25px",
+    textTransform: "none",
+    backgroundColor: "#99b3ff",
+    color: "#050505",
+    "&:hover": {
+      backgroundColor: "#ccd9ff",
+    },
+  },
+  grid: {
+    padding: "8px 16px 8px 16px",
+  },
+})
 
-const Popular = (props: {
+type Props = {
   /** List of widget items */
   widgets: Array<{
     link: string,
-    image: any,
-    alt: string,
+    name: string,
   }>,
-}) => {
-  const widgetlist = props.widgets.map(
-    (widget, index) =>
-      widget.isRouter ? (
-        <ListItems key={index}>
-          <WidgetLink to={widget.link} alt={widget.alt}>
-            <WidgetImg src={widget.image} alt={widget.alt} />
-          </WidgetLink>
-        </ListItems>
-      ) : (
-        <ListItems key={index}>
-          <a href={widget.link} alt={widget.alt}>
-            <WidgetImg src={widget.image} alt={widget.alt} />
-          </a>
-        </ListItems>
-      ),
-  )
+  /** Material-UI styling */
+  classes: Object,
+}
+
+/** Widget that displays the most popular tools and sections */
+
+const Popular = (props: Props) => {
+  const { widgets, classes } = props
+  const widgetlist = widgets.map(widget => (
+    <ListItems key={widget.link}>
+      <a href={widget.link}>
+        <Button
+          className={classes.button}
+          size="small"
+          variant="contained"
+          color="primary">
+          {widget.name}
+        </Button>
+      </a>
+    </ListItems>
+  ))
 
   return (
-    <Flex justify={"center"}>
-      <Box>
-        <PopularHeader>Most popular tools and sections</PopularHeader>
+    <Grid container justify="center" className={classes.grid}>
+      <Grid item xs={12}>
+        <PopularHeader>
+          <center>New features and pages</center>
+        </PopularHeader>
         <WidgetListBox>{widgetlist}</WidgetListBox>
-      </Box>
-    </Flex>
+      </Grid>
+    </Grid>
   )
 }
 
-export default Popular
+export default withStyles(styles)(Popular)

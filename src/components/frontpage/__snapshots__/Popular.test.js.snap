@@ -1,14 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Popular snapshot test 1`] = `
-.c3 {
-  color: #428bca;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  max-width: 100%;
-  height: auto;
-}
-
 .c0 {
   color: #bdbdbd;
   font-size: 12px;
@@ -27,16 +19,6 @@ exports[`Popular snapshot test 1`] = `
   margin-bottom: 10px;
 }
 
-.c4 {
-  width: 300px;
-  max-width: 100%;
-  border-radius: 5px;
-}
-
-.c4:hover {
-  opacity: 0.5;
-}
-
 @media (max-width:767px) {
   .c0 {
     font-size: 14px;
@@ -45,17 +27,17 @@ exports[`Popular snapshot test 1`] = `
 }
 
 <div
-  className="sc-htpNat iZBBQa sc-bdVaJa iHZvIS"
-  is={null}
+  className="MuiGrid-container-3 MuiGrid-justify-xs-center-20 Popular-grid-2"
 >
   <div
-    className="iHZvIS"
-    is={null}
+    className="MuiGrid-item-4 MuiGrid-grid-xs-12-43"
   >
     <div
       className="c0"
     >
-      Most popular tools and sections
+      <center>
+        New features and pages
+      </center>
     </div>
     <ul
       className="c1"
@@ -64,92 +46,132 @@ exports[`Popular snapshot test 1`] = `
         className="c2"
       >
         <a
-          alt="techniques"
-          className="c3"
-          href="/research/techniques"
-          onClick={[Function]}
+          href="/dictyaccess"
         >
-          <img
-            alt="techniques"
-            className="c4"
-            src="widgetTECHNIQUES.png"
-          />
+          <button
+            className="MuiButtonBase-root-126 MuiButton-root-100 MuiButton-contained-111 MuiButton-containedPrimary-112 MuiButton-raised-114 MuiButton-raisedPrimary-115 MuiButton-sizeSmall-123 Popular-button-1"
+            disabled={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex="0"
+            type="button"
+          >
+            <span
+              className="MuiButton-label-101"
+            >
+              dictyAccess
+            </span>
+            <span
+              className="MuiTouchRipple-root-129"
+            />
+          </button>
         </a>
       </li>
       <li
         className="c2"
       >
         <a
-          alt="genome browser"
           href="http://dictybase.org/tools/jbrowse/?data=data/jbrowse/discoideum&loc=6:1..50011&tracks=reference,gene,transcript"
         >
-          <img
-            alt="genome browser"
-            className="c4"
-            src="widgetGBROWSER.png"
-          />
+          <button
+            className="MuiButtonBase-root-126 MuiButton-root-100 MuiButton-contained-111 MuiButton-containedPrimary-112 MuiButton-raised-114 MuiButton-raisedPrimary-115 MuiButton-sizeSmall-123 Popular-button-1"
+            disabled={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex="0"
+            type="button"
+          >
+            <span
+              className="MuiButton-label-101"
+            >
+              Genome Browser
+            </span>
+            <span
+              className="MuiTouchRipple-root-129"
+            />
+          </button>
         </a>
       </li>
       <li
         className="c2"
       >
         <a
-          alt="learn dicty"
-          className="c3"
-          href="/explore/learn"
-          onClick={[Function]}
+          href="/gene/DDB_G0283267"
         >
-          <img
-            alt="learn dicty"
-            className="c4"
-            src="widgetLEARNDICTY.png"
-          />
+          <button
+            className="MuiButtonBase-root-126 MuiButton-root-100 MuiButton-contained-111 MuiButton-containedPrimary-112 MuiButton-raised-114 MuiButton-raisedPrimary-115 MuiButton-sizeSmall-123 Popular-button-1"
+            disabled={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex="0"
+            type="button"
+          >
+            <span
+              className="MuiButton-label-101"
+            >
+              Gene Page (in progress)
+            </span>
+            <span
+              className="MuiTouchRipple-root-129"
+            />
+          </button>
         </a>
       </li>
       <li
         className="c2"
       >
         <a
-          alt="dicty STATS (dictyAccess)"
-          className="c3"
-          href="/dictyaccess"
-          onClick={[Function]}
+          href="/stockcenter"
         >
-          <img
-            alt="dicty STATS (dictyAccess)"
-            className="c4"
-            src="widgetSTATS.png"
-          />
-        </a>
-      </li>
-      <li
-        className="c2"
-      >
-        <a
-          alt="jobs @ dicty"
-          className="c3"
-          href="/community/jobs"
-          onClick={[Function]}
-        >
-          <img
-            alt="jobs @ dicty"
-            className="c4"
-            src="widgetJOBS.png"
-          />
-        </a>
-      </li>
-      <li
-        className="c2"
-      >
-        <a
-          alt="dicty express"
-          href="https://dictyexpress.research.bcm.edu/landing/"
-        >
-          <img
-            alt="dicty express"
-            className="c4"
-            src="widgetDICTYEXPRESS.png"
-          />
+          <button
+            className="MuiButtonBase-root-126 MuiButton-root-100 MuiButton-contained-111 MuiButton-containedPrimary-112 MuiButton-raised-114 MuiButton-raisedPrimary-115 MuiButton-sizeSmall-123 Popular-button-1"
+            disabled={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex="0"
+            type="button"
+          >
+            <span
+              className="MuiButton-label-101"
+            >
+              Dicty Stock Center
+            </span>
+            <span
+              className="MuiTouchRipple-root-129"
+            />
+          </button>
         </a>
       </li>
     </ul>

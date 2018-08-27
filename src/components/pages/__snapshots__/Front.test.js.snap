@@ -119,44 +119,24 @@ exports[`matching a snapshot of Front 1`] = `
         ]
       }
     >
-      <Popular
+      <WithStyles(Popular)
         widgets={
           Array [
             Object {
-              "alt": "techniques",
-              "image": "widgetTECHNIQUES.png",
-              "isRouter": true,
-              "link": "/research/techniques",
-            },
-            Object {
-              "alt": "genome browser",
-              "image": "widgetGBROWSER.png",
-              "isRouter": false,
-              "link": "http://dictybase.org/tools/jbrowse/?data=data/jbrowse/discoideum&loc=6:1..50011&tracks=reference,gene,transcript",
-            },
-            Object {
-              "alt": "learn dicty",
-              "image": "widgetLEARNDICTY.png",
-              "isRouter": true,
-              "link": "/explore/learn",
-            },
-            Object {
-              "alt": "dicty STATS (dictyAccess)",
-              "image": "widgetSTATS.png",
-              "isRouter": true,
               "link": "/dictyaccess",
+              "name": "dictyAccess",
             },
             Object {
-              "alt": "jobs @ dicty",
-              "image": "widgetJOBS.png",
-              "isRouter": true,
-              "link": "/community/jobs",
+              "link": "http://dictybase.org/tools/jbrowse/?data=data/jbrowse/discoideum&loc=6:1..50011&tracks=reference,gene,transcript",
+              "name": "Genome Browser",
             },
             Object {
-              "alt": "dicty express",
-              "image": "widgetDICTYEXPRESS.png",
-              "isRouter": false,
-              "link": "https://dictyexpress.research.bcm.edu/landing/",
+              "link": "/gene/DDB_G0283267",
+              "name": "Gene Page (in progress)",
+            },
+            Object {
+              "link": "/stockcenter",
+              "name": "Dicty Stock Center",
             },
           ]
         }
