@@ -8,7 +8,6 @@ import Popular from "components/frontpage/Popular"
 import Annotations from "components/frontpage/Annotations"
 import StockCenter from "components/frontpage/StockCenter"
 import papers from "data/papers"
-import widgets from "data/widgets"
 import news from "data/news"
 import annotations from "data/annotations"
 import stockcenter from "data/stockcenter"
@@ -28,7 +27,7 @@ const Front = () => (
         <Papers papers={papers.slice(0, 4)} />
       </Box>
       <Box px={2} py={1} width={["100%", "50%", "50%", "25%"]}>
-        <Popular widgets={widgets} />
+        <Popular />
       </Box>
       <Box px={2} py={1} width={["100%", "50%", "50%", "25%"]}>
         <StockCenter stockcenter={stockcenter} />

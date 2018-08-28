@@ -119,28 +119,7 @@ exports[`matching a snapshot of Front 1`] = `
         ]
       }
     >
-      <WithStyles(Popular)
-        widgets={
-          Array [
-            Object {
-              "link": "/dictyaccess",
-              "name": "dictyAccess",
-            },
-            Object {
-              "link": "http://dictybase.org/tools/jbrowse/?data=data/jbrowse/discoideum&loc=6:1..50011&tracks=reference,gene,transcript",
-              "name": "Genome Browser",
-            },
-            Object {
-              "link": "/gene/DDB_G0283267",
-              "name": "Gene Page (in progress)",
-            },
-            Object {
-              "link": "/stockcenter",
-              "name": "Dicty Stock Center",
-            },
-          ]
-        }
-      />
+      <WithStyles(Popular) />
     </Box>
     <Box
       px={2}

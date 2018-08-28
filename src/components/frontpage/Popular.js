@@ -13,10 +13,21 @@ const styles = theme => ({
     marginBottom: "5px",
     padding: "25px",
     textTransform: "none",
-    backgroundColor: "#99b3ff",
-    color: "#050505",
+    backgroundColor: "#004080",
     "&:hover": {
-      backgroundColor: "#ccd9ff",
+      backgroundColor: "#80c1ff",
+      color: "#333232",
+    },
+  },
+  altButton: {
+    width: "100%",
+    marginBottom: "5px",
+    padding: "25px",
+    textTransform: "none",
+    backgroundColor: "#0073e6",
+    "&:hover": {
+      backgroundColor: "#80c1ff",
+      color: "#333232",
     },
   },
   grid: {
@@ -28,11 +39,6 @@ const styles = theme => ({
 })
 
 type Props = {
-  /** List of widget items */
-  widgets: Array<{
-    link: string,
-    name: string,
-  }>,
   /** Material-UI styling */
   classes: Object,
 }
@@ -40,20 +46,49 @@ type Props = {
 /** Widget that displays the most popular tools and sections */
 
 const Popular = (props: Props) => {
-  const { widgets, classes } = props
-  const widgetlist = widgets.map(widget => (
-    <ListItems key={widget.link}>
-      <a className={classes.link} href={widget.link}>
+  const { classes } = props
+  const widgetlist = (
+    <ListItems>
+      <a className={classes.link} href="/dictyaccess">
         <Button
           className={classes.button}
           size="small"
           variant="contained"
           color="primary">
-          {widget.name}
+          dictyAccess
+        </Button>
+      </a>
+      <a
+        className={classes.link}
+        href="http://dictybase.org/tools/jbrowse/?data=data/jbrowse/discoideum&loc=6:1..50011&tracks=reference,gene,transcript">
+        <Button
+          className={classes.altButton}
+          size="small"
+          variant="contained"
+          color="primary">
+          Genome Browser
+        </Button>
+      </a>
+      <a className={classes.link} href="/gene/DDB_G0283267">
+        <Button
+          className={classes.button}
+          size="small"
+          variant="contained"
+          color="primary">
+          Gene Page (in progress)
+        </Button>
+      </a>
+      <a className={classes.link} href="/stockcenter">
+        <Button
+          className={classes.altButton}
+          size="small"
+          variant="contained"
+          color="primary">
+          Dicty Stock Center
         </Button>
       </a>
     </ListItems>
-  ))
+  )
 
   return (
     <Grid container justify="center" className={classes.grid}>

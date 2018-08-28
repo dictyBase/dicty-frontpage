@@ -27,10 +27,10 @@ exports[`Popular snapshot test 1`] = `
 }
 
 <div
-  className="MuiGrid-container-4 MuiGrid-justify-xs-center-21 Popular-grid-2"
+  className="MuiGrid-container-5 MuiGrid-justify-xs-center-22 Popular-grid-3"
 >
   <div
-    className="MuiGrid-item-5 MuiGrid-grid-xs-12-44"
+    className="MuiGrid-item-6 MuiGrid-grid-xs-12-45"
   >
     <div
       className="c0"
@@ -46,11 +46,11 @@ exports[`Popular snapshot test 1`] = `
         className="c2"
       >
         <a
-          className="Popular-link-3"
+          className="Popular-link-4"
           href="/dictyaccess"
         >
           <button
-            className="MuiButtonBase-root-127 MuiButton-root-101 MuiButton-contained-112 MuiButton-containedPrimary-113 MuiButton-raised-115 MuiButton-raisedPrimary-116 MuiButton-sizeSmall-124 Popular-button-1"
+            className="MuiButtonBase-root-128 MuiButton-root-102 MuiButton-contained-113 MuiButton-containedPrimary-114 MuiButton-raised-116 MuiButton-raisedPrimary-117 MuiButton-sizeSmall-125 Popular-button-1"
             disabled={false}
             onBlur={[Function]}
             onFocus={[Function]}
@@ -66,25 +66,21 @@ exports[`Popular snapshot test 1`] = `
             type="button"
           >
             <span
-              className="MuiButton-label-102"
+              className="MuiButton-label-103"
             >
               dictyAccess
             </span>
             <span
-              className="MuiTouchRipple-root-130"
+              className="MuiTouchRipple-root-131"
             />
           </button>
         </a>
-      </li>
-      <li
-        className="c2"
-      >
         <a
-          className="Popular-link-3"
+          className="Popular-link-4"
           href="http://dictybase.org/tools/jbrowse/?data=data/jbrowse/discoideum&loc=6:1..50011&tracks=reference,gene,transcript"
         >
           <button
-            className="MuiButtonBase-root-127 MuiButton-root-101 MuiButton-contained-112 MuiButton-containedPrimary-113 MuiButton-raised-115 MuiButton-raisedPrimary-116 MuiButton-sizeSmall-124 Popular-button-1"
+            className="MuiButtonBase-root-128 MuiButton-root-102 MuiButton-contained-113 MuiButton-containedPrimary-114 MuiButton-raised-116 MuiButton-raisedPrimary-117 MuiButton-sizeSmall-125 Popular-altButton-2"
             disabled={false}
             onBlur={[Function]}
             onFocus={[Function]}
@@ -100,25 +96,21 @@ exports[`Popular snapshot test 1`] = `
             type="button"
           >
             <span
-              className="MuiButton-label-102"
+              className="MuiButton-label-103"
             >
               Genome Browser
             </span>
             <span
-              className="MuiTouchRipple-root-130"
+              className="MuiTouchRipple-root-131"
             />
           </button>
         </a>
-      </li>
-      <li
-        className="c2"
-      >
         <a
-          className="Popular-link-3"
+          className="Popular-link-4"
           href="/gene/DDB_G0283267"
         >
           <button
-            className="MuiButtonBase-root-127 MuiButton-root-101 MuiButton-contained-112 MuiButton-containedPrimary-113 MuiButton-raised-115 MuiButton-raisedPrimary-116 MuiButton-sizeSmall-124 Popular-button-1"
+            className="MuiButtonBase-root-128 MuiButton-root-102 MuiButton-contained-113 MuiButton-containedPrimary-114 MuiButton-raised-116 MuiButton-raisedPrimary-117 MuiButton-sizeSmall-125 Popular-button-1"
             disabled={false}
             onBlur={[Function]}
             onFocus={[Function]}
@@ -134,25 +126,21 @@ exports[`Popular snapshot test 1`] = `
             type="button"
           >
             <span
-              className="MuiButton-label-102"
+              className="MuiButton-label-103"
             >
               Gene Page (in progress)
             </span>
             <span
-              className="MuiTouchRipple-root-130"
+              className="MuiTouchRipple-root-131"
             />
           </button>
         </a>
-      </li>
-      <li
-        className="c2"
-      >
         <a
-          className="Popular-link-3"
+          className="Popular-link-4"
           href="/stockcenter"
         >
           <button
-            className="MuiButtonBase-root-127 MuiButton-root-101 MuiButton-contained-112 MuiButton-containedPrimary-113 MuiButton-raised-115 MuiButton-raisedPrimary-116 MuiButton-sizeSmall-124 Popular-button-1"
+            className="MuiButtonBase-root-128 MuiButton-root-102 MuiButton-contained-113 MuiButton-containedPrimary-114 MuiButton-raised-116 MuiButton-raisedPrimary-117 MuiButton-sizeSmall-125 Popular-altButton-2"
             disabled={false}
             onBlur={[Function]}
             onFocus={[Function]}
@@ -168,12 +156,12 @@ exports[`Popular snapshot test 1`] = `
             type="button"
           >
             <span
-              className="MuiButton-label-102"
+              className="MuiButton-label-103"
             >
               Dicty Stock Center
             </span>
             <span
-              className="MuiTouchRipple-root-130"
+              className="MuiTouchRipple-root-131"
             />
           </button>
         </a>
