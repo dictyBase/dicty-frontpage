@@ -61,7 +61,7 @@ exports[`matching a snapshot of PageNotReady 1`] = `
           <span
             className="MuiButton-label-103"
           >
-            dictyBase Home
+            Back to homepage
           </span>
           <span
             className="MuiTouchRipple-root-131"

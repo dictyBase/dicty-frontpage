@@ -19,6 +19,7 @@ const styles = theme => ({
   },
   button: {
     width: "25%",
+    textTransform: "none",
   },
   mainGrid: {
     marginTop: "40px",
@@ -54,7 +55,7 @@ const PageNotReady = props => {
               size="small"
               variant="contained"
               color="primary">
-              dictyBase Home
+              Back to homepage
             </Button>
           </RouterLink>
         </div>
