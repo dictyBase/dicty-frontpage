@@ -25,6 +25,10 @@ ENV REACT_APP_NAVBAR_JSON ${navbar_json:-https://raw.githubusercontent.com/dicty
 ARG footer_json
 ENV REACT_APP_FOOTER_JSON ${footer_json:-https://raw.githubusercontent.com/dictyBase/migration-data/master/footer/footer.json}
 
+# URL for download tabs json
+ARG download_tabs_json
+ENV REACT_APP_DOWNLOAD_TABS_JSON ${download_tabs_json:-https://raw.githubusercontent.com/dictyBase/migration-data/master/downloads/organisms.json}
+
 # Setup client keys for third party auth
 ARG client_keys
 ENV CLIENT_KEYS ${client_keys:-https://raw.githubusercontent.com/dictybase-playground/client-keys/master/clientConfig.js}

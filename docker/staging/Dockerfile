@@ -25,6 +25,10 @@ ENV REACT_APP_NAVBAR_JSON ${navbar_json:-https://raw.githubusercontent.com/dicty
 ARG footer_json
 ENV REACT_APP_FOOTER_JSON ${footer_json:-https://raw.githubusercontent.com/dictyBase/migration-data/master/footer/footer.json}
 
+# URL for download tabs json
+ARG download_tabs_json
+ENV REACT_APP_DOWNLOAD_TABS_JSON ${download_tabs_json:-https://raw.githubusercontent.com/dictyBase/migration-data/master/downloads/organisms.json}
+
 # Google Analytics tracking ID
 ARG ga_tracking_id
 ENV REACT_APP_GA_TRACKING_ID ${ga_tracking_id:-UA-16352781-8}

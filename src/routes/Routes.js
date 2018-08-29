@@ -2,7 +2,7 @@
 import React from "react"
 import { Route, Switch } from "react-router-dom"
 import Front from "components/pages/Front"
-import Downloads from "components/pages/Downloads"
+import Downloads from "components/pages/Downloads/Downloads"
 import About from "components/pages/About/About"
 import InfoPage from "components/pages/EditablePages/InfoPage"
 import EditInfoPage from "components/pages/EditablePages/EditInfoPage"
