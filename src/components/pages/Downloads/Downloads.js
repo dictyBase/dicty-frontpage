@@ -70,7 +70,6 @@ export class Downloads extends Component<Props, State> {
     this.setState({ value })
   }
 
-  // generates tabs dynamically based on json data structure
   generateTabs = (json: Object) => {
     const tabs = json.map(item => (
       <Tab
@@ -125,7 +124,14 @@ export class Downloads extends Component<Props, State> {
                 {downloads.tabs && this.generateTabs(downloads.tabs)}
               </Tabs>
             </AppBar>
-            <TabContainer>test</TabContainer>
+            <TabContainer>
+              <br />
+              <div>
+                <h3>
+                  <center>New downloads coming soon!</center>
+                </h3>
+              </div>
+            </TabContainer>
           </Grid>
         </Grid>
       </MuiThemeProvider>
