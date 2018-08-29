@@ -9,6 +9,7 @@ import Tab from "@material-ui/core/Tab"
 import Typography from "@material-ui/core/Typography"
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles"
 
+import Citations from "./Citations"
 import { fetchDownloadTabs } from "actions/downloads"
 
 type tabContainerProps = {
@@ -106,6 +107,7 @@ export class Downloads extends Component<Props, State> {
         </Grid>
       )
     }
+
     return (
       <MuiThemeProvider theme={muiTheme}>
         <Grid container justify="center">
@@ -124,14 +126,38 @@ export class Downloads extends Component<Props, State> {
                 {downloads.tabs && this.generateTabs(downloads.tabs)}
               </Tabs>
             </AppBar>
-            <TabContainer>
-              <br />
-              <div>
+            {value === "44689" && (
+              <TabContainer>
+                {downloads.tabs && <Citations data={downloads.tabs[0]} />}
                 <h3>
                   <center>New downloads coming soon!</center>
                 </h3>
-              </div>
-            </TabContainer>
+              </TabContainer>
+            )}
+            {value === "5786" && (
+              <TabContainer>
+                {downloads.tabs && <Citations data={downloads.tabs[1]} />}
+                <h3>
+                  <center>New downloads coming soon!</center>
+                </h3>
+              </TabContainer>
+            )}
+            {value === "1054147" && (
+              <TabContainer>
+                {downloads.tabs && <Citations data={downloads.tabs[2]} />}
+                <h3>
+                  <center>New downloads coming soon!</center>
+                </h3>
+              </TabContainer>
+            )}
+            {value === "13642" && (
+              <TabContainer>
+                {downloads.tabs && <Citations data={downloads.tabs[3]} />}
+                <h3>
+                  <center>New downloads coming soon!</center>
+                </h3>
+              </TabContainer>
+            )}
           </Grid>
         </Grid>
       </MuiThemeProvider>
