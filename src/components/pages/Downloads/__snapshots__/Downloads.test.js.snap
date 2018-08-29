@@ -300,7 +300,12 @@ exports[`matching a snapshot of Downloads 1`] = `
         />
       </WithStyles(AppBar)>
       <TabContainer>
-        test
+        <Citations />
+        <h3>
+          <center>
+            New downloads coming soon!
+          </center>
+        </h3>
       </TabContainer>
     </WithStyles(Grid)>
   </WithStyles(Grid)>
