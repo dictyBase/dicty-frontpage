@@ -41,7 +41,7 @@ export class Downloads extends Component<Props, State> {
   }
 
   generateTabs = (json: Object) => {
-    const tabs = json.map(item => (
+    const tabs = json.data.map(item => (
       <Tab
         value={item.id}
         label={item.attributes.scientific_name}
@@ -49,6 +49,23 @@ export class Downloads extends Component<Props, State> {
       />
     ))
     return tabs
+  }
+
+  generateTabContainers = (json: Object) => {
+    const tabContent = json.data.map(item => {
+      if (item.id === json.currentTab) {
+        return (
+          <TabContainer>
+            <Citations data={item} />
+            <h3>
+              <center>New downloads coming soon!</center>
+            </h3>
+          </TabContainer>
+        )
+      }
+      return <TabContainer />
+    })
+    return tabContent
   }
 
   render() {
@@ -61,41 +78,10 @@ export class Downloads extends Component<Props, State> {
             <DownloadsHeader />
             <AppBar position="static">
               <Tabs value={downloads.currentTab} onChange={this.handleChange}>
-                {downloads.data && this.generateTabs(downloads.data)}
+                {downloads.data && this.generateTabs(downloads)}
               </Tabs>
             </AppBar>
-            {downloads.currentTab === "44689" && (
-              <TabContainer>
-                {downloads.data && <Citations data={downloads.data[0]} />}
-                <h3>
-                  <center>New downloads coming soon!</center>
-                </h3>
-              </TabContainer>
-            )}
-            {downloads.currentTab === "5786" && (
-              <TabContainer>
-                {downloads.data && <Citations data={downloads.data[1]} />}
-                <h3>
-                  <center>New downloads coming soon!</center>
-                </h3>
-              </TabContainer>
-            )}
-            {downloads.currentTab === "1054147" && (
-              <TabContainer>
-                {downloads.data && <Citations data={downloads.data[2]} />}
-                <h3>
-                  <center>New downloads coming soon!</center>
-                </h3>
-              </TabContainer>
-            )}
-            {downloads.currentTab === "13642" && (
-              <TabContainer>
-                {downloads.data && <Citations data={downloads.data[3]} />}
-                <h3>
-                  <center>New downloads coming soon!</center>
-                </h3>
-              </TabContainer>
-            )}
+            {downloads.data && this.generateTabContainers(downloads)}
           </Grid>
         </Grid>
       </MuiThemeProvider>
