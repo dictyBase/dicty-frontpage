@@ -5,12 +5,12 @@ import Grid from "@material-ui/core/Grid"
 import AppBar from "@material-ui/core/AppBar"
 import Tabs from "@material-ui/core/Tabs"
 import Tab from "@material-ui/core/Tab"
-
 import { MuiThemeProvider } from "@material-ui/core/styles"
 
 import Citations from "./Citations"
 import TabContainer from "./TabContainer"
 import DownloadsHeader from "./DownloadsHeader"
+import DownloadsLoader from "./DownloadsLoader"
 import withDataFetching from "components/common/withDataFetching"
 import MuiTheme from "components/common/MuiTheme"
 import { fetchDownloadTabs, changeTabValue } from "actions/downloads"
@@ -105,9 +105,11 @@ export class Downloads extends Component<Props, State> {
 
 const mapStateToProps = ({ downloads }) => ({ downloads })
 
-const DownloadsWithFetch = withDataFetching(fetchDownloadTabs, "downloads")(
-  Downloads,
-)
+const DownloadsWithFetch = withDataFetching(
+  fetchDownloadTabs,
+  "downloads",
+  DownloadsLoader,
+)(Downloads)
 
 export default connect(
   mapStateToProps,

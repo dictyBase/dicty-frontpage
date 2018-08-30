@@ -5,8 +5,8 @@ import Skeleton from "react-loading-skeleton"
 const WithDataFetching = (
   action,
   key,
-  loadingComponent,
-  errorComponent,
+  LoadingComponent,
+  ErrorComponent,
 ) => WrappedComponent => {
   class WithDataFetchingComponent extends Component {
     componentDidMount() {
@@ -16,14 +16,23 @@ const WithDataFetching = (
     render() {
       const { error, isFetching } = this.props
       if (error) {
+        if (ErrorComponent) {
+          return <ErrorComponent />
+        }
+
         return (
           <p>Sorry! There was an error loading the items: {error.message}</p>
         )
       }
 
       if (isFetching) {
+        if (LoadingComponent) {
+          return <LoadingComponent />
+        }
+
         return (
           <div>
+            <br />
             <Skeleton count={10} />
           </div>
         )
