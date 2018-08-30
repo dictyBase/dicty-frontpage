@@ -3,6 +3,7 @@ import {
   FETCH_DOWNLOAD_TABS_REQUEST,
   FETCH_DOWNLOAD_TABS_SUCCESS,
   FETCH_DOWNLOAD_TABS_FAILURE,
+  CHANGE_TAB,
 } from "constants/types"
 
 const downloadTabsJson = process.env.REACT_APP_DOWNLOAD_TABS_JSON
@@ -29,6 +30,17 @@ const fetchDownloadTabsFailure = error => ({
   },
 })
 
+const changeTab = (tab: string) => ({
+  type: CHANGE_TAB,
+  payload: {
+    tab,
+  },
+})
+
+export const changeTabValue = (tab: string) => (dispatch: Function) => {
+  dispatch(changeTab(tab))
+}
+
 export const fetchDownloadTabs = () => async (dispatch: Function) => {
   try {
     dispatch(fetchDownloadTabsRequest())
@@ -43,5 +55,3 @@ export const fetchDownloadTabs = () => async (dispatch: Function) => {
     return dispatch(fetchDownloadTabsFailure(error.toString()))
   }
 }
-
-export default fetchDownloadTabs

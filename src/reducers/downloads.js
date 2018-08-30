@@ -3,6 +3,7 @@ import {
   FETCH_DOWNLOAD_TABS_REQUEST,
   FETCH_DOWNLOAD_TABS_SUCCESS,
   FETCH_DOWNLOAD_TABS_FAILURE,
+  CHANGE_TAB,
 } from "constants/types"
 
 const initialState = {}
@@ -19,12 +20,18 @@ const downloadsReducer = (state: Object = initialState, action: Object) => {
         ...state,
         isFetching: false,
         tabs: action.payload.tabs,
+        currentTab: action.payload.tabs[0].id,
       }
     case FETCH_DOWNLOAD_TABS_FAILURE:
       return {
         ...state,
         isFetching: false,
         error: action.payload.error,
+      }
+    case CHANGE_TAB:
+      return {
+        ...state,
+        currentTab: action.payload.tab,
       }
     default:
       return state

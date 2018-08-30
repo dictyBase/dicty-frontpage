@@ -13,7 +13,7 @@ import Citations from "./Citations"
 import TabContainer from "./TabContainer"
 import DownloadsHeader from "./DownloadsHeader"
 import MuiTheme from "components/common/MuiTheme"
-import { fetchDownloadTabs } from "actions/downloads"
+import { fetchDownloadTabs, changeTabValue } from "actions/downloads"
 
 type State = {
   /** Value representing each tab */
@@ -25,6 +25,8 @@ type Props = {
   downloads: Object,
   /** Action creator to fetch the download tabs data */
   fetchDownloadTabs: Function,
+  /** Action that changes the value of the selected tab */
+  changeTabValue: Function,
 }
 
 /**
@@ -32,10 +34,6 @@ type Props = {
  */
 
 export class Downloads extends Component<Props, State> {
-  state = {
-    value: "44689",
-  }
-
   componentDidMount() {
     const { fetchDownloadTabs } = this.props
 
@@ -43,7 +41,9 @@ export class Downloads extends Component<Props, State> {
   }
 
   handleChange = (event: SyntheticEvent<>, value: string) => {
-    this.setState({ value })
+    const { changeTabValue } = this.props
+
+    changeTabValue(value)
   }
 
   generateTabs = (json: Object) => {
@@ -58,7 +58,6 @@ export class Downloads extends Component<Props, State> {
   }
 
   render() {
-    const { value } = this.state
     const { downloads } = this.props
 
     if (downloads.isFetching) {
@@ -81,11 +80,11 @@ export class Downloads extends Component<Props, State> {
           <Grid item xs={8}>
             <DownloadsHeader />
             <AppBar position="static">
-              <Tabs value={value} onChange={this.handleChange}>
+              <Tabs value={downloads.currentTab} onChange={this.handleChange}>
                 {downloads.tabs && this.generateTabs(downloads.tabs)}
               </Tabs>
             </AppBar>
-            {value === "44689" && (
+            {downloads.currentTab === "44689" && (
               <TabContainer>
                 {downloads.tabs && <Citations data={downloads.tabs[0]} />}
                 <h3>
@@ -93,7 +92,7 @@ export class Downloads extends Component<Props, State> {
                 </h3>
               </TabContainer>
             )}
-            {value === "5786" && (
+            {downloads.currentTab === "5786" && (
               <TabContainer>
                 {downloads.tabs && <Citations data={downloads.tabs[1]} />}
                 <h3>
@@ -101,7 +100,7 @@ export class Downloads extends Component<Props, State> {
                 </h3>
               </TabContainer>
             )}
-            {value === "1054147" && (
+            {downloads.currentTab === "1054147" && (
               <TabContainer>
                 {downloads.tabs && <Citations data={downloads.tabs[2]} />}
                 <h3>
@@ -109,7 +108,7 @@ export class Downloads extends Component<Props, State> {
                 </h3>
               </TabContainer>
             )}
-            {value === "13642" && (
+            {downloads.currentTab === "13642" && (
               <TabContainer>
                 {downloads.tabs && <Citations data={downloads.tabs[3]} />}
                 <h3>
@@ -128,5 +127,5 @@ const mapStateToProps = ({ downloads }) => ({ downloads })
 
 export default connect(
   mapStateToProps,
-  { fetchDownloadTabs },
+  { fetchDownloadTabs, changeTabValue },
 )(Downloads)
