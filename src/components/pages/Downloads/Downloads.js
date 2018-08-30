@@ -1,7 +1,6 @@
 // @flow
 import React, { Component } from "react"
 import { connect } from "react-redux"
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton"
 import Grid from "@material-ui/core/Grid"
 import AppBar from "@material-ui/core/AppBar"
 import Tabs from "@material-ui/core/Tabs"
@@ -12,6 +11,7 @@ import { MuiThemeProvider } from "@material-ui/core/styles"
 import Citations from "./Citations"
 import TabContainer from "./TabContainer"
 import DownloadsHeader from "./DownloadsHeader"
+import withDataFetching from "components/common/withDataFetching"
 import MuiTheme from "components/common/MuiTheme"
 import { fetchDownloadTabs, changeTabValue } from "actions/downloads"
 
@@ -34,12 +34,6 @@ type Props = {
  */
 
 export class Downloads extends Component<Props, State> {
-  componentDidMount() {
-    const { fetchDownloadTabs } = this.props
-
-    fetchDownloadTabs()
-  }
-
   handleChange = (event: SyntheticEvent<>, value: string) => {
     const { changeTabValue } = this.props
 
@@ -60,20 +54,6 @@ export class Downloads extends Component<Props, State> {
   render() {
     const { downloads } = this.props
 
-    if (downloads.isFetching) {
-      return (
-        <Grid container justify="center">
-          <Grid item xs={8}>
-            <DownloadsHeader />
-            <SkeletonTheme color="#d1d1d1">
-              <br />
-              <Skeleton count={10} />
-            </SkeletonTheme>
-          </Grid>
-        </Grid>
-      )
-    }
-
     return (
       <MuiThemeProvider theme={MuiTheme}>
         <Grid container justify="center">
@@ -81,12 +61,12 @@ export class Downloads extends Component<Props, State> {
             <DownloadsHeader />
             <AppBar position="static">
               <Tabs value={downloads.currentTab} onChange={this.handleChange}>
-                {downloads.tabs && this.generateTabs(downloads.tabs)}
+                {downloads.data && this.generateTabs(downloads.data)}
               </Tabs>
             </AppBar>
             {downloads.currentTab === "44689" && (
               <TabContainer>
-                {downloads.tabs && <Citations data={downloads.tabs[0]} />}
+                {downloads.data && <Citations data={downloads.data[0]} />}
                 <h3>
                   <center>New downloads coming soon!</center>
                 </h3>
@@ -94,7 +74,7 @@ export class Downloads extends Component<Props, State> {
             )}
             {downloads.currentTab === "5786" && (
               <TabContainer>
-                {downloads.tabs && <Citations data={downloads.tabs[1]} />}
+                {downloads.data && <Citations data={downloads.data[1]} />}
                 <h3>
                   <center>New downloads coming soon!</center>
                 </h3>
@@ -102,7 +82,7 @@ export class Downloads extends Component<Props, State> {
             )}
             {downloads.currentTab === "1054147" && (
               <TabContainer>
-                {downloads.tabs && <Citations data={downloads.tabs[2]} />}
+                {downloads.data && <Citations data={downloads.data[2]} />}
                 <h3>
                   <center>New downloads coming soon!</center>
                 </h3>
@@ -110,7 +90,7 @@ export class Downloads extends Component<Props, State> {
             )}
             {downloads.currentTab === "13642" && (
               <TabContainer>
-                {downloads.tabs && <Citations data={downloads.tabs[3]} />}
+                {downloads.data && <Citations data={downloads.data[3]} />}
                 <h3>
                   <center>New downloads coming soon!</center>
                 </h3>
@@ -125,7 +105,11 @@ export class Downloads extends Component<Props, State> {
 
 const mapStateToProps = ({ downloads }) => ({ downloads })
 
+const DownloadsWithFetch = withDataFetching(fetchDownloadTabs, "downloads")(
+  Downloads,
+)
+
 export default connect(
   mapStateToProps,
-  { fetchDownloadTabs, changeTabValue },
-)(Downloads)
+  { changeTabValue },
+)(DownloadsWithFetch)

@@ -19,7 +19,7 @@ const fetchDownloadTabsSuccess = (json: Object) => ({
   type: FETCH_DOWNLOAD_TABS_SUCCESS,
   payload: {
     isFetching: false,
-    tabs: json.data,
+    data: json.data,
   },
 })
 

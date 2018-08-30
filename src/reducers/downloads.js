@@ -19,8 +19,8 @@ const downloadsReducer = (state: Object = initialState, action: Object) => {
       return {
         ...state,
         isFetching: false,
-        tabs: action.payload.tabs,
-        currentTab: action.payload.tabs[0].id,
+        data: action.payload.data,
+        currentTab: action.payload.data[0].id,
       }
     case FETCH_DOWNLOAD_TABS_FAILURE:
       return {
