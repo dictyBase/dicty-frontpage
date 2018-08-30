@@ -6,39 +6,14 @@ import Grid from "@material-ui/core/Grid"
 import AppBar from "@material-ui/core/AppBar"
 import Tabs from "@material-ui/core/Tabs"
 import Tab from "@material-ui/core/Tab"
-import Typography from "@material-ui/core/Typography"
-import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles"
+
+import { MuiThemeProvider } from "@material-ui/core/styles"
 
 import Citations from "./Citations"
+import TabContainer from "./TabContainer"
+import DownloadsHeader from "./DownloadsHeader"
+import MuiTheme from "components/common/MuiTheme"
 import { fetchDownloadTabs } from "actions/downloads"
-
-type tabContainerProps = {
-  children: any,
-}
-
-const TabContainer = (props: tabContainerProps) => (
-  <Typography component="div">{props.children}</Typography>
-)
-
-// create theme with our standard tab overrides
-const muiTheme = createMuiTheme({
-  overrides: {
-    MuiTab: {
-      root: {
-        textTransform: "none",
-      },
-    },
-    MuiTabs: {
-      root: {
-        backgroundColor: "#a3bae9",
-        color: "#000",
-      },
-      indicator: {
-        backgroundColor: "#858780",
-      },
-    },
-  },
-})
 
 type State = {
   /** Value representing each tab */
@@ -90,15 +65,7 @@ export class Downloads extends Component<Props, State> {
       return (
         <Grid container justify="center">
           <Grid item xs={8}>
-            <h1>
-              <center>dictyBase Downloads</center>
-            </h1>
-            <h3>
-              <center>
-                The central collection of downloadable material from the
-                dictyBase
-              </center>
-            </h3>
+            <DownloadsHeader />
             <SkeletonTheme color="#d1d1d1">
               <br />
               <Skeleton count={10} />
@@ -109,18 +76,10 @@ export class Downloads extends Component<Props, State> {
     }
 
     return (
-      <MuiThemeProvider theme={muiTheme}>
+      <MuiThemeProvider theme={MuiTheme}>
         <Grid container justify="center">
           <Grid item xs={8}>
-            <h1>
-              <center>dictyBase Downloads</center>
-            </h1>
-            <h3>
-              <center>
-                The central collection of downloadable material from the
-                dictyBase
-              </center>
-            </h3>
+            <DownloadsHeader />
             <AppBar position="static">
               <Tabs value={value} onChange={this.handleChange}>
                 {downloads.tabs && this.generateTabs(downloads.tabs)}

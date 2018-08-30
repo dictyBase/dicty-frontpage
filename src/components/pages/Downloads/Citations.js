@@ -4,17 +4,17 @@ const Citations = props => (
   <div>
     <h3>Please cite:</h3>
     <p>
-      <strong>{props.data.attributes.citation_authors}</strong>
+      <strong>{props.data.attributes.citation.authors}</strong>
       {"  "}
-      {props.data.attributes.citation_title}
+      {props.data.attributes.citation.title}
       {"  "}
-      <em>{props.data.attributes.citation_journal}</em>
+      <em>{props.data.attributes.citation.journal}</em>
       {"  "}
       <a
-        href={props.data.attributes.citation_link}
+        href={props.data.attributes.citation.link}
         target="_blank"
         style={{ textDecoration: "none" }}>
-        Link
+        [Pubmed]
       </a>
     </p>
   </div>
