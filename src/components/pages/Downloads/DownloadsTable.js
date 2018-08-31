@@ -14,12 +14,12 @@ const styles = theme => ({
     overflowX: "auto",
   },
   head: {
-    backgroundColor: "#cce6ff",
+    backgroundColor: "#4C5E81",
   },
   headerCell: {
-    color: "#333",
-    fontWeight: "600",
+    fontWeight: "400",
     fontSize: "1.2em",
+    color: "#fff",
   },
   row: {
     "&:nth-of-type(even)": {
@@ -29,10 +29,10 @@ const styles = theme => ({
   button: {
     padding: "10px",
     textTransform: "none",
-    backgroundColor: "#80c1ff",
+    backgroundColor: "#a3bae9",
     "&:hover": {
-      backgroundColor: "#004080",
-      color: "#e0e0e0",
+      backgroundColor: "#4C5E81",
+      color: "#fff",
     },
   },
   link: {
