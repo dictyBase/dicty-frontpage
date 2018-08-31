@@ -8,6 +8,7 @@ import Tab from "@material-ui/core/Tab"
 import { MuiThemeProvider } from "@material-ui/core/styles"
 
 import Citations from "./Citations"
+import DownloadsTable from "./DownloadsTable"
 import TabContainer from "./TabContainer"
 import DownloadsHeader from "./DownloadsHeader"
 import DownloadsLoader from "./DownloadsLoader"
@@ -52,14 +53,14 @@ export class Downloads extends Component<Props, State> {
   }
 
   generateTabContainers = (json: Object) => {
+    const { downloads } = this.props
+
     const tabContent = json.data.map(item => {
       if (item.id === json.currentTab) {
         return (
           <TabContainer key={item.id}>
             <Citations data={item} />
-            <h3>
-              <center>New downloads coming soon!</center>
-            </h3>
+            {downloads[item.id] && <DownloadsTable data={downloads[item.id]} />}
           </TabContainer>
         )
       }
