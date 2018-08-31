@@ -78,7 +78,11 @@ export class Downloads extends Component<Props, State> {
           <Grid item xs={8}>
             <DownloadsHeader />
             <AppBar position="static">
-              <Tabs value={downloads.currentTab} onChange={this.handleChange}>
+              <Tabs
+                value={downloads.currentTab}
+                onChange={this.handleChange}
+                scrollable
+                scrollButtons="auto">
                 {downloads.data && this.generateTabs(downloads)}
               </Tabs>
             </AppBar>
