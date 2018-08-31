@@ -27,7 +27,7 @@ ENV REACT_APP_FOOTER_JSON ${footer_json:-https://raw.githubusercontent.com/dicty
 
 # URL for download tabs json
 ARG download_tabs_json
-ENV REACT_APP_DOWNLOAD_TABS_JSON ${download_tabs_json:-https://raw.githubusercontent.com/dictyBase/migration-data/master/downloads/organisms.json}
+ENV REACT_APP_DOWNLOAD_TABS_JSON ${download_tabs_json:-https://raw.githubusercontent.com/dictyBase/migration-data/master/downloads/organisms.dev.json}
 
 # Setup client keys for third party auth
 ARG client_keys

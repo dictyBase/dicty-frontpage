@@ -21,7 +21,15 @@ const WithDataFetching = (
         }
 
         return (
-          <p>Sorry! There was an error loading the items: {error.message}</p>
+          <center>
+            <br />
+            <p>
+              <strong>Sorry! There was an error loading the items:</strong>
+            </p>
+            <p>
+              <em>{error.toString()}</em>
+            </p>
+          </center>
         )
       }
 

@@ -7,7 +7,7 @@ const DownloadsHeader = () => (
     </h1>
     <h3>
       <center>
-        The central collection of downloadable material from the dictyBase
+        The central collection of downloadable material from dictyBase
       </center>
     </h3>
   </div>
