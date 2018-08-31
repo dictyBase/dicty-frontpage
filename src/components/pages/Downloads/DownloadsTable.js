@@ -5,16 +5,38 @@ import TableBody from "@material-ui/core/TableBody"
 import TableCell from "@material-ui/core/TableCell"
 import TableHead from "@material-ui/core/TableHead"
 import TableRow from "@material-ui/core/TableRow"
+import Button from "@material-ui/core/Button"
 import Paper from "@material-ui/core/Paper"
 
 const styles = theme => ({
   root: {
     width: "100%",
-    marginTop: theme.spacing.unit * 3,
     overflowX: "auto",
   },
-  table: {
-    minWidth: 700,
+  head: {
+    backgroundColor: "#cce6ff",
+  },
+  headerCell: {
+    color: "#333",
+    fontWeight: "600",
+    fontSize: "1.2em",
+  },
+  row: {
+    "&:nth-of-type(even)": {
+      backgroundColor: theme.palette.background.default,
+    },
+  },
+  button: {
+    padding: "10px",
+    textTransform: "none",
+    backgroundColor: "#80c1ff",
+    "&:hover": {
+      backgroundColor: "#004080",
+      color: "#e0e0e0",
+    },
+  },
+  link: {
+    textDecoration: "none",
   },
 })
 
@@ -24,21 +46,36 @@ const DownloadsTable = props => {
   return (
     <Paper className={classes.root}>
       <Table className={classes.table}>
+        <colgroup>
+          <col style={{ width: "90%" }} />
+          <col style={{ width: "10%" }} />
+        </colgroup>
         {data.data.map(section => (
           <Fragment key={section.attributes.title}>
-            <TableHead>
+            <TableHead className={classes.head}>
               <TableRow>
-                <TableCell>{section.attributes.title}</TableCell>
+                <TableCell className={classes.headerCell}>
+                  {section.attributes.title}
+                </TableCell>
+                <TableCell className={classes.headerCell} />
               </TableRow>
             </TableHead>
             <TableBody>
               {section.attributes.items.map(row => (
-                <TableRow key={row.title}>
+                <TableRow className={classes.row} key={row.title}>
                   <TableCell component="th" scope="row">
                     {row.title}
                   </TableCell>
                   <TableCell>
-                    <a href={row.url}>Download</a>
+                    <a className={classes.link} href={row.url}>
+                      <Button
+                        className={classes.button}
+                        size="small"
+                        variant="contained"
+                        color="default">
+                        Download
+                      </Button>
+                    </a>
                   </TableCell>
                 </TableRow>
               ))}

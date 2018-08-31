@@ -10,7 +10,7 @@ const MuiTheme = createMuiTheme({
     },
     MuiTabs: {
       root: {
-        backgroundColor: "#a3bae9",
+        backgroundColor: "#80c1ff",
         color: "#000",
       },
       indicator: {
