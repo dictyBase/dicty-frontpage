@@ -55,7 +55,7 @@ export class Downloads extends Component<Props, State> {
     const tabContent = json.data.map(item => {
       if (item.id === json.currentTab) {
         return (
-          <TabContainer>
+          <TabContainer key={item.id}>
             <Citations data={item} />
             <h3>
               <center>New downloads coming soon!</center>
@@ -63,7 +63,7 @@ export class Downloads extends Component<Props, State> {
           </TabContainer>
         )
       }
-      return <TabContainer />
+      return <TabContainer key={item.id} />
     })
     return tabContent
   }

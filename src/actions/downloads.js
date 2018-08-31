@@ -19,7 +19,7 @@ const fetchDownloadTabsSuccess = (json: Object) => ({
   type: FETCH_DOWNLOAD_TABS_SUCCESS,
   payload: {
     isFetching: false,
-    data: json.data,
+    data: json,
   },
 })
 
@@ -37,6 +37,17 @@ const changeTab = (tab: string) => ({
   },
 })
 
+const normalizeData = json =>
+  json.data.map(r => ({
+    type: r.type,
+    id: r.id,
+    attributes: {
+      taxon_id: r.attributes.taxon_id,
+      scientific_name: r.attributes.scientific_name,
+      citation: r.attributes.citation,
+    },
+  }))
+
 export const changeTabValue = (tab: string) => (dispatch: Function) => {
   dispatch(changeTab(tab))
 }
@@ -48,7 +59,8 @@ export const fetchDownloadTabs = () => async (dispatch: Function) => {
     const json = await res.json()
 
     if (res.ok) {
-      return dispatch(fetchDownloadTabsSuccess(json))
+      const normalized = normalizeData(json)
+      return dispatch(fetchDownloadTabsSuccess(normalized))
     }
     dispatch(fetchDownloadTabsFailure(res.statusText))
   } catch (error) {
