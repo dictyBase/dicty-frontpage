@@ -16,11 +16,6 @@ import withDataFetching from "components/common/withDataFetching"
 import MuiTheme from "components/common/MuiTheme"
 import { fetchDownloadTabs, changeTabValue } from "actions/downloads"
 
-type State = {
-  /** Value representing each tab */
-  value: string,
-}
-
 type Props = {
   /** The downloads slice of the state */
   downloads: Object,
@@ -34,7 +29,7 @@ type Props = {
  * This displays the Dicty downloads page.
  */
 
-export class Downloads extends Component<Props, State> {
+export class Downloads extends Component<Props> {
   handleChange = (event: SyntheticEvent<>, value: string) => {
     const { changeTabValue } = this.props
 
@@ -64,7 +59,7 @@ export class Downloads extends Component<Props, State> {
           </TabContainer>
         )
       }
-      return <TabContainer key={item.id} />
+      return null
     })
     return tabContent
   }

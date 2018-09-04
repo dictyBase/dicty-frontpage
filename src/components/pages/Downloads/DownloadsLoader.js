@@ -1,3 +1,4 @@
+// @flow
 import React from "react"
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton"
 import Grid from "@material-ui/core/Grid"

@@ -75,7 +75,7 @@ type Props = {
 export const ErrorPage = (props: Props) => {
   const { page, news, auth, classes, match } = props
 
-  let errorStatus
+  let errorStatus = 0
   let errorMsg
 
   if (page.error) {
