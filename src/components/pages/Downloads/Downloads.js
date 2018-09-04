@@ -14,7 +14,7 @@ import DownloadsHeader from "./DownloadsHeader"
 import DownloadsLoader from "./DownloadsLoader"
 import withDataFetching from "components/common/withDataFetching"
 import MuiTheme from "components/common/MuiTheme"
-import { fetchDownloadTabs, changeTabValue } from "actions/downloads"
+import { fetchDownloadTabs, changeTab } from "actions/downloads"
 
 type Props = {
   /** The downloads slice of the state */
@@ -22,7 +22,7 @@ type Props = {
   /** Action creator to fetch the download tabs data */
   fetchDownloadTabs: Function,
   /** Action that changes the value of the selected tab */
-  changeTabValue: Function,
+  changeTab: Function,
 }
 
 /**
@@ -31,9 +31,9 @@ type Props = {
 
 export class Downloads extends Component<Props> {
   handleChange = (event: SyntheticEvent<>, value: string) => {
-    const { changeTabValue } = this.props
+    const { changeTab } = this.props
 
-    changeTabValue(value)
+    changeTab(value)
   }
 
   generateTabs = (json: Object) => {
@@ -99,5 +99,5 @@ const DownloadsWithFetch = withDataFetching(
 
 export default connect(
   mapStateToProps,
-  { changeTabValue },
+  { changeTab },
 )(DownloadsWithFetch)

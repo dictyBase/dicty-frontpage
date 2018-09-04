@@ -56,7 +56,7 @@ const fetchDownloadContentFailure = error => ({
   },
 })
 
-const changeTab = (tab: string) => ({
+export const changeTab = (tab: string) => ({
   type: CHANGE_TAB,
   payload: {
     tab,
@@ -73,10 +73,6 @@ const normalizeData = json =>
       citation: r.attributes.citation,
     },
   }))
-
-export const changeTabValue = (tab: string) => (dispatch: Function) => {
-  dispatch(changeTab(tab))
-}
 
 export const fetchDownloadTabs = () => async (dispatch: Function) => {
   try {
