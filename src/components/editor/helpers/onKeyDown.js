@@ -4,8 +4,8 @@ import { type Change } from "slate"
 /* Keyboard Hotkeys */
 
 const onKeyDown = (event: SyntheticEvent<>, change: Change) => {
-  // if there is no metaKey, quit
-  if (!event.metaKey) return
+  // if there is no ctrlKey, quit
+  if (!event.ctrlKey) return
 
   if (event.key) {
     switch (event.key) {

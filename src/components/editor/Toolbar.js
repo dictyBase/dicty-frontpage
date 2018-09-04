@@ -362,10 +362,10 @@ class Toolbar extends Component {
       <ToolbarContainer>
         <Flex justify="space-between">
           <Box w={"25%"}>
-            {renderMarkButton(MARKS.BOLD, "⌘ + b")}
-            {renderMarkButton(MARKS.ITALIC, "⌘ + i")}
-            {renderMarkButton(MARKS.STRIKETHROUGH, "⌘ + d")}
-            {renderMarkButton(MARKS.UNDERLINE, "⌘ + u")}
+            {renderMarkButton(MARKS.BOLD, "CTRL + b")}
+            {renderMarkButton(MARKS.ITALIC, "CTRL + i")}
+            {renderMarkButton(MARKS.STRIKETHROUGH, "CTRL + d")}
+            {renderMarkButton(MARKS.UNDERLINE, "CTRL + u")}
             {renderBlockButton(BLOCKS.BLOCKQUOTE, "blockquote")}
             {renderBlockButton(INLINES.LINK, "link")}
           </Box>
