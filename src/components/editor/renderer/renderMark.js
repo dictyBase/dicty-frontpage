@@ -6,22 +6,23 @@ import MARKS from "components/editor/constants/marks"
 type Props = {
   children: Node,
   mark: Mark,
+  attributes: any,
 }
 
 const renderMark = (props: Props) => {
-  const { children, mark } = props
+  const { children, mark, attributes } = props
   switch (mark.type) {
     case MARKS.BOLD:
-      return <strong>{children}</strong>
+      return <strong {...{ attributes }}>{children}</strong>
 
     case MARKS.ITALIC:
-      return <em>{children}</em>
+      return <em {...{ attributes }}>{children}</em>
 
     case MARKS.UNDERLINE:
-      return <u>{children}</u>
+      return <u {...{ attributes }}>{children}</u>
 
     case MARKS.STRIKETHROUGH:
-      return <del>{children}</del>
+      return <del {...{ attributes }}>{children}</del>
 
     default:
       return null
