@@ -18,6 +18,7 @@ import { BoldButton } from "components/editor/plugins/bold"
 import { ItalicButton } from "components/editor/plugins/italic"
 import { UnderlineButton } from "components/editor/plugins/underline"
 import { StrikethroughButton } from "components/editor/plugins/strikethrough"
+import { AlignmentButtonBar } from "components/editor/plugins/alignment"
 
 const TablePlugin = EditTable()
 
@@ -318,9 +319,10 @@ class Toolbar extends Component {
             {renderBlockButton(BLOCKS.HEADING_3, "<h3>")}
           </Box>
           <Box w="15%">
-            {renderBlockButton(BLOCKS.ALIGN_LEFT, "align left")}
+            <AlignmentButtonBar {...this.props} />
+            {/* {renderBlockButton(BLOCKS.ALIGN_LEFT, "align left")}
             {renderBlockButton(BLOCKS.ALIGN_CENTER, "align center")}
-            {renderBlockButton(BLOCKS.ALIGN_RIGHT, "align right")}
+            {renderBlockButton(BLOCKS.ALIGN_RIGHT, "align right")} */}
           </Box>
           <Box w="10%">
             {renderBlockButton(BLOCKS.UL_LIST, "unordered list")}

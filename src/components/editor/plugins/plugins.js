@@ -8,6 +8,7 @@ import { BoldPlugin } from "components/editor/plugins/bold"
 import { ItalicPlugin } from "components/editor/plugins/italic"
 import { UnderlinePlugin } from "components/editor/plugins/underline"
 import { StrikethroughPlugin } from "components/editor/plugins/strikethrough"
+import { AlignmentPlugin } from "components/editor/plugins/alignment"
 
 const plugins = [
   EditTable(),
@@ -67,6 +68,7 @@ const plugins = [
   ItalicPlugin(),
   UnderlinePlugin(),
   StrikethroughPlugin(),
+  AlignmentPlugin(),
 ]
 
 export default plugins

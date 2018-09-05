@@ -27,10 +27,6 @@ const StyledEditor = styled(Editor)`
     color: #428bca;
     text-decoration: none;
   }
-  :focus {
-    border: 4px solid rgba(3, 102, 214, 0.3);
-    border-radius: 1px;
-  }
 
   table {
     width: 100%;
