@@ -2,8 +2,6 @@ import AutoReplace from "slate-auto-replace"
 import EditList from "slate-edit-list"
 import EditBlockquote from "slate-edit-blockquote"
 import EditTable from "slate-edit-table"
-import markHotkey from "components/editor/plugins/markHotkey"
-import MARKS from "components/editor/constants/marks"
 import BLOCKS from "components/editor/constants/blocks"
 
 import { BoldPlugin } from "components/editor/plugins/bold"
@@ -65,10 +63,6 @@ const plugins = [
       return transform.setBlocks({ type: `heading_${level}` })
     },
   }),
-  markHotkey({ key: "b", type: MARKS.BOLD }),
-  markHotkey({ key: "i", type: MARKS.ITALIC }),
-  markHotkey({ key: "d", type: MARKS.STRIKETHROUGH }),
-  markHotkey({ key: "u", type: MARKS.UNDERLINE }),
   BoldPlugin(),
   ItalicPlugin(),
   UnderlinePlugin(),
