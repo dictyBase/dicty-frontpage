@@ -1,16 +1,15 @@
 import React from "react"
-import Button from "@material-ui/core/Button"
+import ToolbarButton from "components/editor/common/ToolbarButton"
 import FormatBoldIcon from "@material-ui/icons/FormatBold"
 
 import { boldMarkStrategy } from "./BoldUtils"
 
-const BoldButton = ({ value, onChange, changeState, style, type }) => (
-  <Button
-    style={style}
+const BoldButton = ({ value, onChange, type }) => (
+  <ToolbarButton
     type={type}
     onClick={e => onChange(boldMarkStrategy(value.change()))}>
     <FormatBoldIcon />
-  </Button>
+  </ToolbarButton>
 )
 
 export default BoldButton

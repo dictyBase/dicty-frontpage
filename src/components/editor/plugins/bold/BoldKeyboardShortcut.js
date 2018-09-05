@@ -1,4 +1,4 @@
-import { isMod } from "components/editor/tools/isMod"
+import { isMod } from "components/editor/utils/isMod"
 import { boldMarkStrategy } from "./BoldUtils"
 
 const BoldKeyboardShortcut = (event, change) => {

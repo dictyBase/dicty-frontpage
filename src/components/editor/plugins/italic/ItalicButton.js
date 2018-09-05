@@ -1,16 +1,15 @@
 import React from "react"
-import Button from "@material-ui/core/Button"
+import ToolbarButton from "components/editor/common/ToolbarButton"
 import FormatItalicIcon from "@material-ui/icons/FormatItalic"
 
 import { italicMarkStrategy } from "./ItalicUtils"
 
-const ItalicButton = ({ value, onChange, changeState, style, type }) => (
-  <Button
-    style={style}
+const ItalicButton = ({ value, onChange, type }) => (
+  <ToolbarButton
     type={type}
     onClick={e => onChange(italicMarkStrategy(value.change()))}>
     <FormatItalicIcon />
-  </Button>
+  </ToolbarButton>
 )
 
 export default ItalicButton
