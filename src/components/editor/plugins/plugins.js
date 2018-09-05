@@ -6,6 +6,7 @@ import markHotkey from "components/editor/plugins/markHotkey"
 import MARKS from "components/editor/constants/marks"
 import BLOCKS from "components/editor/constants/blocks"
 import { BoldPlugin } from "components/editor/plugins/bold"
+import { ItalicPlugin } from "components/editor/plugins/italic"
 
 const plugins = [
   EditTable(),
@@ -66,6 +67,7 @@ const plugins = [
   markHotkey({ key: "d", type: MARKS.STRIKETHROUGH }),
   markHotkey({ key: "u", type: MARKS.UNDERLINE }),
   BoldPlugin(),
+  ItalicPlugin(),
 ]
 
 export default plugins
