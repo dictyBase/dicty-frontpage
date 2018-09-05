@@ -9,6 +9,7 @@ import BLOCKS from "components/editor/constants/blocks"
 import { BoldPlugin } from "components/editor/plugins/bold"
 import { ItalicPlugin } from "components/editor/plugins/italic"
 import { UnderlinePlugin } from "components/editor/plugins/underline"
+import { StrikethroughPlugin } from "components/editor/plugins/strikethrough"
 
 const plugins = [
   EditTable(),
@@ -71,6 +72,7 @@ const plugins = [
   BoldPlugin(),
   ItalicPlugin(),
   UnderlinePlugin(),
+  StrikethroughPlugin(),
 ]
 
 export default plugins

@@ -7,7 +7,6 @@ import EditBlockquote from "slate-edit-blockquote"
 import FontAwesome from "react-fontawesome"
 import insertImage from "components/editor/helpers/insertImage"
 import insertVideo from "components/editor/helpers/insertVideo"
-import MARKS from "components/editor/constants/marks"
 import BLOCKS from "components/editor/constants/blocks"
 import INLINES from "components/editor/constants/inlines"
 import {
@@ -18,6 +17,7 @@ import {
 import { BoldButton } from "components/editor/plugins/bold"
 import { ItalicButton } from "components/editor/plugins/italic"
 import { UnderlineButton } from "components/editor/plugins/underline"
+import { StrikethroughButton } from "components/editor/plugins/strikethrough"
 
 const TablePlugin = EditTable()
 
@@ -96,70 +96,9 @@ class Toolbar extends Component {
   }
 
   render() {
-    const hasMark = type => {
-      const { value } = this.props
-      return value.activeMarks.some(mark => mark.type === type)
-    }
-
     const hasBlock = type => {
       const { value } = this.props
       return value.blocks.some(node => node.type === type)
-    }
-
-    const onClickMark = (e, type) => {
-      e.preventDefault()
-      const { value } = this.props
-      const change = value.change().toggleMark(type)
-
-      this.props.onChange(change)
-    }
-
-    const renderMarkButton = (type, title) => {
-      const isActive = hasMark(type)
-      const onMouseDown = e => onClickMark(e, type)
-
-      let Tag
-
-      switch (type) {
-        case MARKS.BOLD:
-          Tag = (
-            <ToolbarButton>
-              <FontAwesome name="bold" />
-            </ToolbarButton>
-          )
-          break
-        case MARKS.ITALIC:
-          Tag = (
-            <ToolbarButton>
-              <FontAwesome name="italic" />
-            </ToolbarButton>
-          )
-          break
-        case MARKS.STRIKETHROUGH:
-          Tag = (
-            <ToolbarButton>
-              <FontAwesome name="strikethrough" />
-            </ToolbarButton>
-          )
-          break
-        case MARKS.UNDERLINE:
-          Tag = (
-            <ToolbarButton>
-              <FontAwesome name="underline" />
-            </ToolbarButton>
-          )
-          break
-        default:
-          return null
-      }
-
-      return (
-        <Tooltip id={`tooltip-block-${type}`} title={title} placement="bottom">
-          <span onMouseDown={onMouseDown} data-active={isActive}>
-            {Tag}
-          </span>
-        </Tooltip>
-      )
     }
 
     const onClickBlock = (e, type) => {
@@ -369,7 +308,7 @@ class Toolbar extends Component {
             <BoldButton {...this.props} />
             <ItalicButton {...this.props} />
             <UnderlineButton {...this.props} />
-            {renderMarkButton(MARKS.STRIKETHROUGH, "CTRL + d")}
+            <StrikethroughButton {...this.props} />
             {renderBlockButton(BLOCKS.BLOCKQUOTE, "blockquote")}
             {renderBlockButton(INLINES.LINK, "link")}
           </Box>
