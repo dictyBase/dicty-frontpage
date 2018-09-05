@@ -14,8 +14,10 @@ import {
   ToolbarButton,
   Toolbar as ToolbarContainer,
 } from "styles/EditablePageStyles"
+
 import { BoldButton } from "components/editor/plugins/bold"
 import { ItalicButton } from "components/editor/plugins/italic"
+import { UnderlineButton } from "components/editor/plugins/underline"
 
 const TablePlugin = EditTable()
 
@@ -364,12 +366,10 @@ class Toolbar extends Component {
       <ToolbarContainer>
         <Flex justify="space-between">
           <Box w="25%">
-            {/* {renderMarkButton(MARKS.BOLD, "CTRL + b")} */}
-            {/* {renderMarkButton(MARKS.ITALIC, "CTRL + i")} */}
             <BoldButton {...this.props} />
             <ItalicButton {...this.props} />
+            <UnderlineButton {...this.props} />
             {renderMarkButton(MARKS.STRIKETHROUGH, "CTRL + d")}
-            {renderMarkButton(MARKS.UNDERLINE, "CTRL + u")}
             {renderBlockButton(BLOCKS.BLOCKQUOTE, "blockquote")}
             {renderBlockButton(INLINES.LINK, "link")}
           </Box>

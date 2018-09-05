@@ -5,8 +5,10 @@ import EditTable from "slate-edit-table"
 import markHotkey from "components/editor/plugins/markHotkey"
 import MARKS from "components/editor/constants/marks"
 import BLOCKS from "components/editor/constants/blocks"
+
 import { BoldPlugin } from "components/editor/plugins/bold"
 import { ItalicPlugin } from "components/editor/plugins/italic"
+import { UnderlinePlugin } from "components/editor/plugins/underline"
 
 const plugins = [
   EditTable(),
@@ -68,6 +70,7 @@ const plugins = [
   markHotkey({ key: "u", type: MARKS.UNDERLINE }),
   BoldPlugin(),
   ItalicPlugin(),
+  UnderlinePlugin(),
 ]
 
 export default plugins
