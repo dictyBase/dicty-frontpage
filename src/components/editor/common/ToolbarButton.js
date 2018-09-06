@@ -6,7 +6,7 @@ import { isFunction } from "components/editor/utils/isFunction"
 
 const styles = theme => ({
   button: {
-    padding: 0,
+    padding: "5px",
     minWidth: "30px",
     minHeight: 0,
   },

@@ -223,9 +223,7 @@ class PageEditor extends Component<Props, State> {
     const { readOnly, value } = this.state
     return (
       <div>
-        {!readOnly && (
-          <Toolbar value={value} onChange={value => this.onChange(value)} />
-        )}
+        {!readOnly && <Toolbar value={value} onChange={this.onChange} />}
 
         <StyledEditor
           value={value}
