@@ -1,5 +1,4 @@
 import AutoReplace from "slate-auto-replace"
-import EditList from "slate-edit-list"
 import EditBlockquote from "slate-edit-blockquote"
 import EditTable from "slate-edit-table"
 import BLOCKS from "components/editor/constants/blocks"
@@ -9,14 +8,11 @@ import { ItalicPlugin } from "components/editor/plugins/italic"
 import { UnderlinePlugin } from "components/editor/plugins/underline"
 import { StrikethroughPlugin } from "components/editor/plugins/strikethrough"
 import { AlignmentPlugin } from "components/editor/plugins/alignment"
+import { ListPlugin } from "components/editor/plugins/list"
 
 const plugins = [
   EditTable(),
   EditBlockquote(),
-  EditList({
-    types: [BLOCKS.OL_LIST, BLOCKS.UL_LIST],
-    typeItem: BLOCKS.LIST_ITEM,
-  }),
   AutoReplace({
     trigger: "enter",
     before: /^(table:[1-9]\d?x[1-9]\d?)$/,
@@ -33,18 +29,6 @@ const plugins = [
     before: /^(>)$/,
     transform: transform =>
       EditBlockquote().changes.wrapInBlockquote(transform),
-  }),
-  AutoReplace({
-    trigger: "space",
-    before: /^(-)$/,
-    transform: transform =>
-      EditList().changes.wrapInList(transform, BLOCKS.UL_LIST),
-  }),
-  AutoReplace({
-    trigger: "space",
-    before: /^(1.)$/,
-    transform: transform =>
-      EditList().changes.wrapInList(transform, BLOCKS.OL_LIST),
   }),
   AutoReplace({
     trigger: "enter",
@@ -67,6 +51,7 @@ const plugins = [
   AlignmentPlugin(),
   BoldPlugin(),
   ItalicPlugin(),
+  ListPlugin(),
   StrikethroughPlugin(),
   UnderlinePlugin(),
 ]

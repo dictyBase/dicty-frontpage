@@ -2,7 +2,6 @@ import React, { Component } from "react"
 import { Flex, Box } from "rebass"
 import Tooltip from "@material-ui/core/Tooltip"
 import EditTable from "slate-edit-table"
-import EditList from "slate-edit-list"
 import EditBlockquote from "slate-edit-blockquote"
 import FontAwesome from "react-fontawesome"
 import insertImage from "components/editor/helpers/insertImage"
@@ -19,13 +18,9 @@ import { ItalicButton } from "components/editor/plugins/italic"
 import { UnderlineButton } from "components/editor/plugins/underline"
 import { StrikethroughButton } from "components/editor/plugins/strikethrough"
 import { AlignmentButtonBar } from "components/editor/plugins/alignment"
+import { ListButtonBar } from "components/editor/plugins/list"
 
 const TablePlugin = EditTable()
-
-const ListPlugin = EditList({
-  types: [BLOCKS.OL_LIST, BLOCKS.UL_LIST],
-  typeItem: BLOCKS.LIST_ITEM,
-})
 
 const BlockquotePlugin = EditBlockquote()
 
@@ -117,17 +112,6 @@ class Toolbar extends Component {
             change.setBlocks(isActive ? BLOCKS.PARAGRAPH : type),
           )
         }
-        case BLOCKS.ALIGN_LEFT:
-        case BLOCKS.ALIGN_CENTER:
-        case BLOCKS.ALIGN_RIGHT: {
-          return this.props.onChange(
-            change
-              .unwrapBlock(BLOCKS.ALIGN_LEFT)
-              .unwrapBlock(BLOCKS.ALIGN_CENTER)
-              .unwrapBlock(BLOCKS.ALIGN_RIGHT)
-              .wrapBlock(type),
-          )
-        }
         case BLOCKS.HR: {
           return this.props.onChange(change.setBlocks({ type, isVoid: true }))
         }
@@ -146,22 +130,6 @@ class Toolbar extends Component {
           return isActive
             ? this.props.onChange(TablePlugin.changes.removeTable(change))
             : this.props.onChange(TablePlugin.changes.insertTable(change))
-        }
-        case BLOCKS.UL_LIST: {
-          const isActive =
-            ListPlugin.utils.isSelectionInList(value) &&
-            ListPlugin.utils.getCurrentList(value).type === type
-          return isActive
-            ? this.props.onChange(ListPlugin.changes.unwrapList(change))
-            : this.props.onChange(ListPlugin.changes.wrapInList(change, type))
-        }
-        case BLOCKS.OL_LIST: {
-          const isActive =
-            ListPlugin.utils.isSelectionInList(value) &&
-            ListPlugin.utils.getCurrentList(value).type === type
-          return isActive
-            ? this.props.onChange(ListPlugin.changes.unwrapList(change))
-            : this.props.onChange(ListPlugin.changes.wrapInList(change, type))
         }
         default:
           return null
@@ -189,33 +157,6 @@ class Toolbar extends Component {
         case BLOCKS.HEADING_3: {
           isActive = hasBlock(type)
           Tag = <ToolbarButton>H3</ToolbarButton>
-          break
-        }
-        case BLOCKS.ALIGN_LEFT: {
-          isActive = hasBlock(type)
-          Tag = (
-            <ToolbarButton>
-              <FontAwesome name="align-left" />
-            </ToolbarButton>
-          )
-          break
-        }
-        case BLOCKS.ALIGN_CENTER: {
-          isActive = hasBlock(type)
-          Tag = (
-            <ToolbarButton>
-              <FontAwesome name="align-center" />
-            </ToolbarButton>
-          )
-          break
-        }
-        case BLOCKS.ALIGN_RIGHT: {
-          isActive = hasBlock(type)
-          Tag = (
-            <ToolbarButton>
-              <FontAwesome name="align-right" />
-            </ToolbarButton>
-          )
           break
         }
         case INLINES.LINK: {
@@ -247,28 +188,6 @@ class Toolbar extends Component {
           Tag = (
             <ToolbarButton>
               <FontAwesome name="table" />
-            </ToolbarButton>
-          )
-          break
-        }
-        case BLOCKS.UL_LIST: {
-          isActive =
-            ListPlugin.utils.isSelectionInList(value) &&
-            ListPlugin.utils.getCurrentList(value).type === type
-          Tag = (
-            <ToolbarButton>
-              <FontAwesome name="list-ul" />
-            </ToolbarButton>
-          )
-          break
-        }
-        case BLOCKS.OL_LIST: {
-          isActive =
-            ListPlugin.utils.isSelectionInList(value) &&
-            ListPlugin.utils.getCurrentList(value).type === type
-          Tag = (
-            <ToolbarButton>
-              <FontAwesome name="list-ol" />
             </ToolbarButton>
           )
           break
@@ -320,13 +239,9 @@ class Toolbar extends Component {
           </Box>
           <Box w="15%">
             <AlignmentButtonBar {...this.props} />
-            {/* {renderBlockButton(BLOCKS.ALIGN_LEFT, "align left")}
-            {renderBlockButton(BLOCKS.ALIGN_CENTER, "align center")}
-            {renderBlockButton(BLOCKS.ALIGN_RIGHT, "align right")} */}
           </Box>
           <Box w="10%">
-            {renderBlockButton(BLOCKS.UL_LIST, "unordered list")}
-            {renderBlockButton(BLOCKS.OL_LIST, "ordered list")}
+            <ListButtonBar {...this.props} />
           </Box>
           <Box w="25%">
             {renderBlockButton(BLOCKS.HR, "divider")}

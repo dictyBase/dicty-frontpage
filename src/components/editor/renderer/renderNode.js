@@ -1,10 +1,16 @@
 // @flow
 import React, { type Node } from "react"
 import { type Block } from "slate"
+
 import Video from "components/editor/renderer/Video"
 import BLOCKS from "components/editor/constants/blocks"
 import INLINES from "components/editor/constants/inlines"
 import { AlignmentNode } from "components/editor/plugins/alignment"
+import {
+  ListItemNode,
+  OrderedListNode,
+  UnorderedListNode,
+} from "components/editor/plugins/list"
 
 type Props = {
   node: Block,
@@ -15,14 +21,14 @@ type Props = {
 const renderNode = (props: Props) => {
   const { attributes, children, node } = props
   switch (node.type) {
-    case BLOCKS.UL_LIST:
-      return <ul {...attributes}>{children}</ul>
-
-    case BLOCKS.OL_LIST:
-      return <ol {...attributes}>{children}</ol>
-
-    case BLOCKS.LIST_ITEM:
-      return <li {...attributes}>{children}</li>
+    case "alignment":
+      return <AlignmentNode {...props} />
+    case "list-item":
+      return <ListItemNode {...props} />
+    case "ordered-list":
+      return <OrderedListNode {...props} />
+    case "unordered-list":
+      return <UnorderedListNode {...props} />
 
     case BLOCKS.HEADING_1:
       return <h1 {...attributes}>{children}</h1>
@@ -53,9 +59,6 @@ const renderNode = (props: Props) => {
       return <img src={src} className={className} {...attributes} alt="" />
     }
 
-    case "alignment":
-      return <AlignmentNode {...props} />
-
     case BLOCKS.HR:
       return <hr {...attributes} />
 
@@ -74,9 +77,6 @@ const renderNode = (props: Props) => {
 
     case BLOCKS.VIDEO:
       return <Video {...props} />
-
-    case BLOCKS.FONT_COLOR:
-      return <div {...attributes} />
 
     default:
       return null
