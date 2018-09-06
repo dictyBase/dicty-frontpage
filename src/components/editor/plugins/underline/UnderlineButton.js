@@ -5,14 +5,14 @@ import ToolbarButton from "components/editor/common/ToolbarButton"
 
 import { underlineMarkStrategy } from "./UnderlineUtils"
 
-const UnderlineButton = ({ value, onChange, type }) => {
+const UnderlineButton = ({ value, onChange }) => {
   const handleClick = e => {
     onChange(underlineMarkStrategy(value.change()))
   }
 
   return (
     <Tooltip title="ctrl + b" placement="bottom">
-      <ToolbarButton type={type} onClick={handleClick}>
+      <ToolbarButton onClick={handleClick}>
         <FormatUnderlinedIcon />
       </ToolbarButton>
     </Tooltip>

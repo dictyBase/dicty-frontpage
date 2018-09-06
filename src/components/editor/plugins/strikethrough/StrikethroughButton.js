@@ -5,14 +5,14 @@ import ToolbarButton from "components/editor/common/ToolbarButton"
 
 import { strikethroughMarkStrategy } from "./StrikethroughUtils"
 
-const StrikethroughButton = ({ value, onChange, type }) => {
+const StrikethroughButton = ({ value, onChange }) => {
   const handleClick = e => {
     onChange(strikethroughMarkStrategy(value.change()))
   }
 
   return (
     <Tooltip title="ctrl + d" placement="bottom">
-      <ToolbarButton type={type} onClick={handleClick}>
+      <ToolbarButton onClick={handleClick}>
         <FormatStrikethroughIcon />
       </ToolbarButton>
     </Tooltip>

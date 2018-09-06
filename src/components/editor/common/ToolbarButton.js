@@ -12,10 +12,9 @@ const styles = theme => ({
   },
 })
 
-const ToolbarButton = ({ children, onClick, type, classes, ...props }) => (
+const ToolbarButton = ({ children, onClick, classes, ...props }) => (
   <Button
     className={classes.button}
-    type={type}
     onClick={e => isFunction(onClick) && onClick(e)}
     {...props}>
     {children}

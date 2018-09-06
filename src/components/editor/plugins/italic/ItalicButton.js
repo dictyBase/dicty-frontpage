@@ -5,14 +5,14 @@ import ToolbarButton from "components/editor/common/ToolbarButton"
 
 import { italicMarkStrategy } from "./ItalicUtils"
 
-const ItalicButton = ({ value, onChange, type }) => {
+const ItalicButton = ({ value, onChange }) => {
   const handleClick = e => {
     onChange(italicMarkStrategy(value.change()))
   }
 
   return (
     <Tooltip title="ctrl + i" placement="bottom">
-      <ToolbarButton type={type} onClick={handleClick}>
+      <ToolbarButton onClick={handleClick}>
         <FormatItalicIcon />
       </ToolbarButton>
     </Tooltip>

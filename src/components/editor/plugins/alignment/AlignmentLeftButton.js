@@ -5,14 +5,14 @@ import ToolbarButton from "components/editor/common/ToolbarButton"
 
 import { alignmentMarkStrategy } from "./AlignmentUtils"
 
-const AlignmentLeftButton = ({ value, onChange, type }) => {
+const AlignmentLeftButton = ({ value, onChange }) => {
   const handleClick = e => {
     onChange(alignmentMarkStrategy(value.change(), "left"))
   }
 
   return (
     <Tooltip title="ctrl + shift + l" placement="bottom">
-      <ToolbarButton type={type} onClick={handleClick}>
+      <ToolbarButton onClick={handleClick}>
         <FormatAlignLeftIcon />
       </ToolbarButton>
     </Tooltip>
