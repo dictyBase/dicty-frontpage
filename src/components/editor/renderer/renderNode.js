@@ -4,6 +4,7 @@ import { type Block } from "slate"
 import Video from "components/editor/renderer/Video"
 import BLOCKS from "components/editor/constants/blocks"
 import INLINES from "components/editor/constants/inlines"
+import { AlignmentNode } from "components/editor/plugins/alignment"
 
 type Props = {
   node: Block,
@@ -52,26 +53,8 @@ const renderNode = (props: Props) => {
       return <img src={src} className={className} {...attributes} alt="" />
     }
 
-    case BLOCKS.ALIGN_LEFT:
-      return (
-        <div style={{ textAlign: "left" }} {...attributes}>
-          {children}
-        </div>
-      )
-
-    case BLOCKS.ALIGN_CENTER:
-      return (
-        <div style={{ textAlign: "center" }} {...attributes}>
-          {children}
-        </div>
-      )
-
-    case BLOCKS.ALIGN_RIGHT:
-      return (
-        <div style={{ textAlign: "right" }} {...attributes}>
-          {children}
-        </div>
-      )
+    case "alignment":
+      return <AlignmentNode {...props} />
 
     case BLOCKS.HR:
       return <hr {...attributes} />

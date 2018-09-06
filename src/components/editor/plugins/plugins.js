@@ -64,11 +64,11 @@ const plugins = [
       return transform.setBlocks({ type: `heading_${level}` })
     },
   }),
+  AlignmentPlugin(),
   BoldPlugin(),
   ItalicPlugin(),
-  UnderlinePlugin(),
   StrikethroughPlugin(),
-  AlignmentPlugin(),
+  UnderlinePlugin(),
 ]
 
 export default plugins

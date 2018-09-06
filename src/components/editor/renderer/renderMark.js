@@ -1,28 +1,31 @@
 // @flow
-import React, { type Node } from "react"
+import React from "react"
 import { type Mark } from "slate"
-import MARKS from "components/editor/constants/marks"
+
+import { BoldMark } from "components/editor/plugins/bold"
+import { ItalicMark } from "components/editor/plugins/italic"
+import { StrikethroughMark } from "components/editor/plugins/strikethrough"
+import { UnderlineMark } from "components/editor/plugins/underline"
 
 type Props = {
-  children: Node,
   mark: Mark,
-  attributes: any,
 }
 
 const renderMark = (props: Props) => {
-  const { children, mark, attributes } = props
+  const { mark } = props
+
   switch (mark.type) {
-    case MARKS.BOLD:
-      return <strong {...{ attributes }}>{children}</strong>
+    case "bold":
+      return <BoldMark {...props} />
 
-    case MARKS.ITALIC:
-      return <em {...{ attributes }}>{children}</em>
+    case "italic":
+      return <ItalicMark {...props} />
 
-    case MARKS.UNDERLINE:
-      return <u {...{ attributes }}>{children}</u>
+    case "strikethrough":
+      return <StrikethroughMark {...props} />
 
-    case MARKS.STRIKETHROUGH:
-      return <del {...{ attributes }}>{children}</del>
+    case "underline":
+      return <UnderlineMark {...props} />
 
     default:
       return null
