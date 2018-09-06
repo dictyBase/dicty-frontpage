@@ -10,7 +10,6 @@ import AddPage from "components/pages/EditablePages/AddPage"
 import AddNews from "components/pages/News/AddNews"
 import NewsArchive from "components/pages/News/NewsArchive"
 import PapersArchive from "components/pages/Papers/PapersArchive"
-import UpcomingMeetings from "components/pages/Community/UpcomingMeetings"
 import JBrowse from "components/pages/Tools/JBrowse"
 import Login from "components/authentication/Login"
 import OauthCallback from "components/authentication/OauthCallback"
@@ -32,8 +31,6 @@ const Routes = () => (
     {/* News page routes */}
     <PrivateRoute exact path="/addnews" component={AddNews} />
     <Route exact path="/news" component={NewsArchive} />
-    {/* Community page routes */}
-    <Route exact path="/community/meetings" component={UpcomingMeetings} />
     {/* Authentication routes */}
     <LoginRoute exact path="/login" component={Login} />
     <Route exact path="/:provider/callback" component={OauthCallback} />
