@@ -3,8 +3,11 @@ import React, { Component } from "react"
 import { connect } from "react-redux"
 import { Editor, getEventTransfer, getEventRange } from "slate-react"
 import { Value, type Change } from "slate"
+import EditBlockquote from "slate-edit-blockquote"
+import EditTable from "slate-edit-table"
 import { Flex, Box } from "rebass"
 import styled from "styled-components"
+
 import Toolbar from "components/editor/Toolbar"
 import insertImage from "components/editor/helpers/insertImage"
 import onPasteHtml from "components/editor/helpers/onPasteHtml"
@@ -18,9 +21,18 @@ import { editPage, saveEditing, cancelEditing } from "actions/editablePages"
 import { CancelButton, SaveButton } from "styles/EditablePageStyles"
 import placeholder from "./data/placeholder.json"
 
-/**
- * Import plugins
- */
+/** Import custom plugins */
+// import { AlignmentPlugin } from "./plugins/alignment"
+// import { BoldPlugin } from "./plugins/bold"
+// import { DividerPlugin } from "./plugins/divider"
+// import { HeadingPlugin } from "./plugins/heading"
+// import { ImagePlugin } from "./plugins/image"
+// import { ItalicPlugin } from "./plugins/italic"
+// import { LinkPlugin } from "./plugins/link"
+// import { ListPlugin } from "./plugins/list"
+// import { StrikethroughPlugin } from "./plugins/strikethrough"
+// import { UnderlinePlugin } from "./plugins/underline"
+// import { VideoPlugin } from "./plugins/video"
 
 // set up custom styling for text editor
 const StyledEditor = styled(Editor)`
@@ -71,6 +83,22 @@ const StyledEditor = styled(Editor)`
     margin: 0;
   }
 `
+
+// const plugins = [
+//   EditBlockquote(),
+//   EditTable(),
+//   AlignmentPlugin(),
+//   BoldPlugin(),
+//   DividerPlugin(),
+//   HeadingPlugin(),
+//   ImagePlugin(),
+//   ItalicPlugin(),
+//   LinkPlugin(),
+//   ListPlugin(),
+//   StrikethroughPlugin(),
+//   UnderlinePlugin(),
+//   VideoPlugin(),
+// ]
 
 type Props = {
   /** The object holding the fetched page content */
