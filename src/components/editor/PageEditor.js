@@ -9,30 +9,47 @@ import { Flex, Box } from "rebass"
 import styled from "styled-components"
 
 import Toolbar from "components/editor/Toolbar"
+import EditorToolbar from "./toolbar/EditorToolbar"
 import insertImage from "components/editor/helpers/insertImage"
-import onPasteHtml from "components/editor/helpers/onPasteHtml"
-import onPasteText from "components/editor/helpers/onPasteText"
 import onKeyDown from "components/editor/helpers/onKeyDown"
-import plugins from "components/editor/plugins/plugins"
-import renderMark from "components/editor/renderer/renderMark"
-import renderNode from "components/editor/renderer/renderNode"
 import schema from "components/editor/schema/schema"
+import { onPasteHtml, onPasteText } from "./utils/utils"
 import { editPage, saveEditing, cancelEditing } from "actions/editablePages"
 import { CancelButton, SaveButton } from "styles/EditablePageStyles"
 import placeholder from "./data/placeholder.json"
 
+/** Import mark renderers */
+import { BoldMark } from "./plugins/bold"
+import { FontFamilyMark } from "./plugins/fontfamily"
+import { ItalicMark } from "./plugins/italic"
+import { StrikethroughMark } from "./plugins/strikethrough"
+import { UnderlineMark } from "./plugins/underline"
+
+/** Import node renderers */
+import { AlignmentNode } from "./plugins/alignment"
+import { DividerNode } from "./plugins/divider"
+import { H1Node, H2Node, H3Node } from "./plugins/heading"
+import { ImageNode } from "./plugins/image"
+import { LinkNode } from "./plugins/link"
+import {
+  ListItemNode,
+  OrderedListNode,
+  UnorderedListNode,
+} from "./plugins/list"
+import { VideoNode } from "./plugins/video"
+
 /** Import custom plugins */
-// import { AlignmentPlugin } from "./plugins/alignment"
-// import { BoldPlugin } from "./plugins/bold"
-// import { DividerPlugin } from "./plugins/divider"
-// import { HeadingPlugin } from "./plugins/heading"
-// import { ImagePlugin } from "./plugins/image"
-// import { ItalicPlugin } from "./plugins/italic"
-// import { LinkPlugin } from "./plugins/link"
-// import { ListPlugin } from "./plugins/list"
-// import { StrikethroughPlugin } from "./plugins/strikethrough"
-// import { UnderlinePlugin } from "./plugins/underline"
-// import { VideoPlugin } from "./plugins/video"
+import { AlignmentPlugin } from "./plugins/alignment"
+import { BoldPlugin } from "./plugins/bold"
+import { DividerPlugin } from "./plugins/divider"
+import { HeadingPlugin } from "./plugins/heading"
+import { ImagePlugin } from "./plugins/image"
+import { ItalicPlugin } from "./plugins/italic"
+import { LinkPlugin } from "./plugins/link"
+import { ListPlugin } from "./plugins/list"
+import { StrikethroughPlugin } from "./plugins/strikethrough"
+import { UnderlinePlugin } from "./plugins/underline"
+import { VideoPlugin } from "./plugins/video"
 
 // set up custom styling for text editor
 const StyledEditor = styled(Editor)`
@@ -84,21 +101,83 @@ const StyledEditor = styled(Editor)`
   }
 `
 
-// const plugins = [
-//   EditBlockquote(),
-//   EditTable(),
-//   AlignmentPlugin(),
-//   BoldPlugin(),
-//   DividerPlugin(),
-//   HeadingPlugin(),
-//   ImagePlugin(),
-//   ItalicPlugin(),
-//   LinkPlugin(),
-//   ListPlugin(),
-//   StrikethroughPlugin(),
-//   UnderlinePlugin(),
-//   VideoPlugin(),
-// ]
+/**
+ * All of the plugins that go into our editor
+ * These are generally keyboard shortcuts
+ */
+const plugins = [
+  EditBlockquote(),
+  EditTable(),
+  AlignmentPlugin(),
+  BoldPlugin(),
+  DividerPlugin(),
+  HeadingPlugin(),
+  ImagePlugin(),
+  ItalicPlugin(),
+  LinkPlugin(),
+  ListPlugin(),
+  StrikethroughPlugin(),
+  UnderlinePlugin(),
+  VideoPlugin(),
+]
+
+/**
+ * Necessary renderMark function that receives the mark type then renders the HTML
+ * In our case, we are returning custom components
+ */
+export const renderMark = props => {
+  const { mark } = props
+
+  switch (mark.type) {
+    case "bold":
+      return <BoldMark {...props} />
+    case "font-family":
+      return <FontFamilyMark {...props} />
+    case "italic":
+      return <ItalicMark {...props} />
+    case "strikethrough":
+      return <StrikethroughMark {...props} />
+    case "underline":
+      return <UnderlineMark {...props} />
+
+    default:
+      return null
+  }
+}
+
+/**
+ * Similar to renderMark above, except now we are working with nodes.
+ */
+export const renderNode = props => {
+  const { node, attributes, children } = props
+  switch (node.type) {
+    case "alignment":
+      return <AlignmentNode {...props} />
+    case "divider":
+      return <DividerNode {...props} />
+    case "h1":
+      return <H1Node {...props} />
+    case "h2":
+      return <H2Node {...props} />
+    case "h3":
+      return <H3Node {...props} />
+    case "image":
+      return <ImageNode {...props} />
+    case "link":
+      return <LinkNode {...props} />
+    case "list-item":
+      return <ListItemNode {...props} />
+    case "unordered-list":
+      return <UnorderedListNode {...props} />
+    case "ordered-list":
+      return <OrderedListNode {...props} />
+    case "video":
+      return <VideoNode {...props} />
+
+    default:
+      return <p {...attributes}>{children}</p>
+  }
+}
 
 type Props = {
   /** The object holding the fetched page content */
@@ -236,7 +315,7 @@ class PageEditor extends Component<Props, State> {
     const { readOnly, value } = this.state
     return (
       <div>
-        {!readOnly && <Toolbar value={value} onChange={this.onChange} />}
+        {!readOnly && <EditorToolbar value={value} onChange={this.onChange} />}
 
         <StyledEditor
           value={value}

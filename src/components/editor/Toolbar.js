@@ -13,12 +13,24 @@ import {
   Toolbar as ToolbarContainer,
 } from "styles/EditablePageStyles"
 
-import { BoldButton } from "components/editor/plugins/bold"
-import { ItalicButton } from "components/editor/plugins/italic"
-import { UnderlineButton } from "components/editor/plugins/underline"
-import { StrikethroughButton } from "components/editor/plugins/strikethrough"
-import { AlignmentButtonBar } from "components/editor/plugins/alignment"
-import { ListButtonBar } from "components/editor/plugins/list"
+/** import toolbar buttons */
+import { BoldButton } from "./plugins/bold"
+import { ItalicButton } from "./plugins/italic"
+import { StrikethroughButton } from "./plugins/strikethrough"
+import { UnderlineButton } from "./plugins/underline"
+
+import {
+  AlignmentLeftButton,
+  AlignmentCenterButton,
+  AlignmentRightButton,
+} from "./plugins/alignment"
+// import { DividerButton } from "./plugins/divider"
+// import { FontFamilyDropdown } from "./plugins/fontfamily"
+// import { H1Button, H2Button, H3Button } from "./plugins/heading"
+// import { ImageButton } from "./plugins/image"
+// import { LinkButton } from "./plugins/link"
+import { OrderedListButton, UnorderedListButton } from "./plugins/list"
+// import { VideoButton } from "./plugins/video"
 
 const TablePlugin = EditTable()
 
@@ -236,10 +248,13 @@ class Toolbar extends Component {
             {this.renderBlockButton(BLOCKS.HEADING_3, "<h3>")}
           </Box>
           <Box w="15%">
-            <AlignmentButtonBar {...this.props} />
+            <AlignmentLeftButton {...this.props} />
+            <AlignmentCenterButton {...this.props} />
+            <AlignmentRightButton {...this.props} />
           </Box>
           <Box w="10%">
-            <ListButtonBar {...this.props} />
+            <OrderedListButton {...this.props} />
+            <UnorderedListButton {...this.props} />
           </Box>
           <Box w="25%">
             {this.renderBlockButton(BLOCKS.HR, "divider")}
