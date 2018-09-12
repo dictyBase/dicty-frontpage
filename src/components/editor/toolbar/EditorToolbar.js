@@ -26,7 +26,7 @@ import { VideoButton } from "../plugins/video"
 const styles = theme => ({
   toolbar: {
     position: "relative",
-    padding: "20px 18px 17px",
+    padding: "10px 0px 10px",
     borderBottom: "2px solid #d1d5da",
     backgroundColor: "#f1f8ff",
     // marginBottom: "20px"

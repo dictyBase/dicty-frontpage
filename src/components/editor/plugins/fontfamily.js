@@ -9,10 +9,6 @@ import Select from "@material-ui/core/Select"
  * Material-UI styling for dropdown
  */
 const styles = theme => ({
-  root: {
-    display: "flex",
-    flexWrap: "wrap",
-  },
   formControl: {
     margin: theme.spacing.unit,
     minWidth: 150,
@@ -80,23 +76,21 @@ const FontFamilyMark = ({ children, mark: { data } }) => (
  * Dropdown component that connects to the editor.
  */
 const Dropdown = ({ value, onChange, classes }) => (
-  <form className={classes.root}>
-    <FormControl className={classes.formControl}>
-      <InputLabel>Font Family</InputLabel>
-      <Select
-        value="font-family"
-        // eslint-disable-next-line
-        onChange={({ target: { value: fontFamilyIndex } }) => {
-          onChange(fontFamilyMarkStrategy({ value, fontFamilyIndex }))
-        }}>
-        {FontFamilyList.map((font, index) => (
-          <MenuItem key={`font-family-${index}`} value={index}>
-            {font.name}
-          </MenuItem>
-        ))}
-      </Select>
-    </FormControl>
-  </form>
+  <FormControl className={classes.formControl}>
+    <InputLabel>Font Family</InputLabel>
+    <Select
+      value="font-family"
+      // eslint-disable-next-line
+      onChange={({ target: { value: fontFamilyIndex } }) => {
+        onChange(fontFamilyMarkStrategy({ value, fontFamilyIndex }))
+      }}>
+      {FontFamilyList.map((font, index) => (
+        <MenuItem key={`font-family-${index}`} value={index}>
+          {font.name}
+        </MenuItem>
+      ))}
+    </Select>
+  </FormControl>
 )
 
 const FontFamilyDropdown = withStyles(styles)(Dropdown)
