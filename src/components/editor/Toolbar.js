@@ -1,3 +1,9 @@
+/**
+ *
+ * This is the old toolbar component
+ *
+ */
+
 import React, { Component } from "react"
 import { Flex, Box } from "rebass"
 import Tooltip from "@material-ui/core/Tooltip"

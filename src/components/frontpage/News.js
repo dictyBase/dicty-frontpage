@@ -1,11 +1,7 @@
 // @flow
 import React from "react"
 import { Flex, Box } from "rebass"
-import Button from "@material-ui/core/Button"
-import AddIcon from "@material-ui/icons/Add"
 import FontAwesome from "react-fontawesome"
-import Authorization from "components/authentication/Authorization"
-// import NewsList from "./NewsList"
 import twitterLogo from "images/twitterLogo.png"
 
 import {
@@ -58,34 +54,11 @@ const News = (props: Props) => {
               <NewsStockTitle>DICTY NEWS</NewsStockTitle>
             </center>
           </Box>
-          <Authorization
-            // eslint-disable-next-line
-            render={({ canAddNews, verifiedToken }) => (
-              <Box width={1 / 10}>
-                {canAddNews &&
-                  verifiedToken && (
-                    <RouterLink to="/addnews">
-                      <Button
-                        variant="fab"
-                        mini
-                        color="primary"
-                        aria-label="add"
-                        title="Add News Item">
-                        <AddIcon />
-                      </Button>
-                    </RouterLink>
-                  )}
-              </Box>
-            )}
-          />
         </Flex>
       </Header>
       <Flex wrap column>
         <Box>
-          <ListBox>
-            {/* <NewsList /> */}
-            {text}
-          </ListBox>
+          <ListBox>{text}</ListBox>
         </Box>
         <Box>
           <MoreLink>

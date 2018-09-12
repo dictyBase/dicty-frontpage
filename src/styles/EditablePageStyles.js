@@ -92,13 +92,6 @@ export const Hdrtxt = styled.p`
   font-size: 21px;
 `
 
-export const NewsToolbar = styled.div`
-  background-color: #f1f8ff;
-  position: relative;
-  padding: 5px 10px 5px;
-  margin: 0 -20px;
-`
-
 export const InlineLink = styled.a`
   cursor: pointer;
 `

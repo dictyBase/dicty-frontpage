@@ -44,7 +44,8 @@ const AddPage = (props: Props) => {
                 </Box>
                 <br />
                 <Box w="100%">
-                  <AddPageForm slug={slug} url={url} />
+                  {/* <AddPageForm slug={slug} url={url} /> */}
+                  editor coming soon
                 </Box>
               </Flex>
             )}

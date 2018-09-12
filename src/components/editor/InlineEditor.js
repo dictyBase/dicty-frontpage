@@ -6,8 +6,6 @@ import { Value, type Change } from "slate"
 import FontAwesome from "react-fontawesome"
 import { Flex, Box } from "rebass"
 import Authorization from "components/authentication/Authorization"
-import renderMark from "components/editor/renderer/renderMark"
-import renderNode from "components/editor/renderer/renderNode"
 import { editInline, saveInlineEditing } from "actions/editablePages"
 import {
   ToolbarButton,
@@ -17,6 +15,46 @@ import {
   InlineLink,
   TextInfo,
 } from "styles/EditablePageStyles"
+
+const renderMark = props => {
+  const { children, mark } = props
+
+  switch (mark.type) {
+    case "bold":
+      return <strong>{children}</strong>
+
+    case "italic":
+      return <em>{children}</em>
+
+    case "underline":
+      return <u>{children}</u>
+
+    case "strikethrough":
+      return <del>{children}</del>
+
+    default:
+      return null
+  }
+}
+
+const renderNode = props => {
+  const { node, attributes, children } = props
+
+  switch (node.type) {
+    case "link": {
+      const { data } = node
+      const href = data.get("href")
+      return (
+        <a {...attributes} href={href}>
+          {children}
+        </a>
+      )
+    }
+
+    default:
+      return <p {...attributes}>{children}</p>
+  }
+}
 
 type Props = {
   /** Represents whether component is loading or not */
@@ -44,9 +82,6 @@ type State = {
  * This is a reusable Slate inline editor component.
  */
 
-/* The default mode for text */
-const DEFAULT_NODE = "paragraph"
-
 const wrapLink = (change, href) => {
   change.wrapInline({
     type: "link",
@@ -65,7 +100,7 @@ class InlineEditor extends Component<Props, State> {
     super(props)
 
     this.state = {
-      // Initial value of editor
+      // initial value of editor
       value: Value.fromJSON(JSON.parse(props.page.data.attributes.content)),
       readOnly: true,
     }
@@ -77,7 +112,7 @@ class InlineEditor extends Component<Props, State> {
   }
 
   onChange = ({ value }: Object) => {
-    this.setState({ value }) // on change, update state with new editor value
+    this.setState({ value })
   }
 
   onEdit = e => {
@@ -185,72 +220,10 @@ class InlineEditor extends Component<Props, State> {
     )
   }
 
-  /* For ordered and unordered bullets */
-
-  hasBlock = (type: string) => {
-    const { value } = this.state
-    return value.blocks.some(node => node.type === type)
-  }
-
-  onClickBlock = (event: SyntheticEvent<>, type: string) => {
-    event.preventDefault()
-    const { value } = this.state
-    const change = value.change()
-    const { document } = value
-
-    // Handle anything that aren't lists
-    if (type !== "bulleted-list" && type !== "numbered-list") {
-      const isActive = this.hasBlock(type)
-      const isList = this.hasBlock("list-item")
-
-      if (isList) {
-        change
-          .setBlocks(isActive ? DEFAULT_NODE : type)
-          .unwrapBlock("bulleted-list")
-          .unwrapBlock("numbered-list")
-      } else {
-        change.setBlocks(isActive ? DEFAULT_NODE : type)
-      }
-    } else {
-      // Handle the extra wrapping required for list buttons.
-      const isList = this.hasBlock("list-item")
-      const isType = value.blocks.some(
-        block =>
-          !!document.getClosest(block.key, parent => parent.type === type),
-      )
-
-      if (isList && isType) {
-        change
-          .setBlocks(DEFAULT_NODE)
-          .unwrapBlock("bulleted-list")
-          .unwrapBlock("numbered-list")
-      } else if (isList) {
-        change
-          .unwrapBlock(
-            type === "bulleted-list" ? "numbered-list" : "bulleted-list",
-          )
-          .wrapBlock(type)
-      } else {
-        change.setBlocks("list-item").wrapBlock(type)
-      }
-    }
-
-    this.onChange(change)
-  }
-
   renderBlockButton = (type: string) => {
-    const isActive = this.hasBlock(type)
-    const onMouseDown = event => this.onClickBlock(event, type)
     const hasLinks = this.hasLinks()
 
     switch (type) {
-      case "strikethrough":
-        return (
-          // eslint-disable-next-line
-          <ToolbarButton onMouseDown={onMouseDown} data-active={isActive}>
-            <FontAwesome name="strikethrough" />
-          </ToolbarButton>
-        )
       case "link":
         return (
           <ToolbarButton onMouseDown={this.onClickLink} data-active={hasLinks}>
@@ -271,7 +244,6 @@ class InlineEditor extends Component<Props, State> {
             {this.renderMarkButton("bold")}
             {this.renderMarkButton("italic")}
             {this.renderMarkButton("underline")}
-            {this.renderMarkButton("code")}
             {this.renderMarkButton("strikethrough")}
             {this.renderBlockButton("link")}
           </Toolbar>

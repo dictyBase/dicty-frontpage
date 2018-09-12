@@ -6,8 +6,7 @@ import Downloads from "components/pages/Downloads/Downloads"
 import About from "components/pages/About/About"
 import InfoPage from "components/pages/EditablePages/InfoPage"
 import EditInfoPage from "components/pages/EditablePages/EditInfoPage"
-import AddPage from "components/pages/EditablePages/AddPage"
-import AddNews from "components/pages/News/AddNews"
+// import AddPage from "components/pages/EditablePages/AddPage"
 import NewsArchive from "components/pages/News/NewsArchive"
 import PapersArchive from "components/pages/Papers/PapersArchive"
 import JBrowse from "components/pages/Tools/JBrowse"
@@ -29,7 +28,6 @@ const Routes = () => (
     {/* Tools page routes */}
     <Route exact path="/tools/jbrowse" component={JBrowse} />
     {/* News page routes */}
-    <PrivateRoute exact path="/addnews" component={AddNews} />
     <Route exact path="/news" component={NewsArchive} />
     {/* Authentication routes */}
     <LoginRoute exact path="/login" component={Login} />
@@ -39,7 +37,7 @@ const Routes = () => (
     {/* Editable page routes */}
     <Route exact path="/:section/:name" component={InfoPage} />
     <PrivateRoute exact path="/:section/:name/edit" component={EditInfoPage} />
-    <PrivateRoute exact path="/addpage" component={AddPage} />
+    {/* <PrivateRoute exact path="/addpage" component={AddPage} /> */}
     {/* Error page */}
     <Route exact path="/error" component={ErrorPage} />
     {/* Page not found routes */}
