@@ -4,11 +4,11 @@ import EditTable from "slate-edit-table"
 import BLOCKS from "components/editor/constants/blocks"
 
 import { BoldPlugin } from "./bold"
-import { ItalicPlugin } from "components/editor/plugins/italic"
-import { UnderlinePlugin } from "components/editor/plugins/underline"
-import { StrikethroughPlugin } from "components/editor/plugins/strikethrough"
-import { AlignmentPlugin } from "components/editor/plugins/alignment"
-import { ListPlugin } from "components/editor/plugins/list"
+import { ItalicPlugin } from "./italic"
+import { UnderlinePlugin } from "./underline"
+import { StrikethroughPlugin } from "./strikethrough"
+import { AlignmentPlugin } from "./alignment"
+import { ListPlugin } from "./list"
 
 const plugins = [
   EditTable(),
