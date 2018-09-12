@@ -1,19 +1,20 @@
 // @flow
 import React, { Component } from "react"
 import { connect } from "react-redux"
-import { Editor, getEventTransfer, getEventRange } from "slate-react"
+import { getEventTransfer, getEventRange } from "slate-react"
 import { Value, type Change } from "slate"
 import EditBlockquote from "slate-edit-blockquote"
 import EditTable from "slate-edit-table"
-import { Flex, Box } from "rebass"
-import styled from "styled-components"
+import { withStyles } from "@material-ui/core/styles"
+import Grid from "@material-ui/core/Grid"
+import Button from "@material-ui/core/Button"
 
 // import Toolbar from "components/editor/Toolbar"
 import EditorToolbar from "./toolbar/EditorToolbar"
 import { insertImage } from "./plugins/image"
 import { onPasteHtml, onPasteText } from "./utils/utils"
 import { editPage, saveEditing, cancelEditing } from "actions/editablePages"
-import { CancelButton, SaveButton } from "styles/EditablePageStyles"
+import { StyledEditor } from "styles/EditablePageStyles"
 import placeholder from "./data/placeholder.json"
 
 /** Import mark renderers */
@@ -49,55 +50,19 @@ import { StrikethroughPlugin } from "./plugins/strikethrough"
 import { UnderlinePlugin } from "./plugins/underline"
 import { VideoPlugin } from "./plugins/video"
 
-// set up custom styling for text editor
-const StyledEditor = styled(Editor)`
-  padding: 15px;
-  min-height: 200px;
-  min-width: 800px;
-
-  a {
-    color: #428bca;
-    text-decoration: none;
-  }
-
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    border-top: 1px solid #ccc;
-  }
-
-  table tr {
-    border: none;
-    border-bottom: 1px solid #ccc;
-    border-right: 1px solid #ccc;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-  }
-
-  table tr:first-child {
-    background: #f7f8f9;
-  }
-
-  table tr:first-child p {
-    font-weight: bold;
-  }
-
-  table td {
-    padding: 0.4rem 1.4rem 0.4rem 0.8rem;
-    border: 1px solid #ccc;
-    border-top: none;
-    border-bottom: none;
-    border-right: none;
-    flex: 1;
-    word-break: break-all;
-    position: relative;
-  }
-
-  table td p {
-    margin: 0;
-  }
-`
+const styles = theme => ({
+  buttonGrid: {
+    marginRight: "8px",
+    marginTop: "8px",
+  },
+  saveButton: {
+    width: "100%",
+    backgroundColor: "#15317e",
+  },
+  cancelButton: {
+    width: "100%",
+  },
+})
 
 /**
  * All of the plugins that go into our editor
@@ -311,6 +276,8 @@ class PageEditor extends Component<Props, State> {
 
   render() {
     const { readOnly, value } = this.state
+    const { classes } = this.props
+
     return (
       <div>
         {!readOnly && <EditorToolbar value={value} onChange={this.onChange} />}
@@ -326,29 +293,31 @@ class PageEditor extends Component<Props, State> {
           plugins={plugins}
         />
 
-        <Flex justify="flex-end">
-          <Box width="20%" mr={1} mt={1}>
+        <Grid container justify="flex-end">
+          <Grid item xs={2} className={classes.buttonGrid}>
             {!readOnly && (
-              <CancelButton
+              <Button
+                className={classes.cancelButton}
                 size="small"
                 variant="contained"
                 onClick={this.onCancel}>
                 Cancel
-              </CancelButton>
+              </Button>
             )}
-          </Box>
-          <Box width="20%" mr={1} mt={1}>
+          </Grid>
+          <Grid item xs={2} className={classes.buttonGrid}>
             {!readOnly && (
-              <SaveButton
+              <Button
+                className={classes.saveButton}
                 size="small"
                 variant="contained"
                 color="primary"
                 onClick={this.onSave}>
                 Save
-              </SaveButton>
+              </Button>
             )}
-          </Box>
-        </Flex>
+          </Grid>
+        </Grid>
       </div>
     )
   }
@@ -366,4 +335,4 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   { editPage, saveEditing, cancelEditing },
-)(PageEditor)
+)(withStyles(styles)(PageEditor))

@@ -1,6 +1,56 @@
 import styled from "styled-components"
 import { Box } from "rebass"
+import { Editor } from "slate-react"
 import Button from "@material-ui/core/Button"
+
+export const StyledEditor = styled(Editor)`
+  padding: 15px;
+  min-height: 200px;
+  min-width: 800px;
+
+  a {
+    color: #428bca;
+    text-decoration: none;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    border-top: 1px solid #ccc;
+  }
+
+  table tr {
+    border: none;
+    border-bottom: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+
+  table tr:first-child {
+    background: #f7f8f9;
+  }
+
+  table tr:first-child p {
+    font-weight: bold;
+  }
+
+  table td {
+    padding: 0.4rem 1.4rem 0.4rem 0.8rem;
+    border: 1px solid #ccc;
+    border-top: none;
+    border-bottom: none;
+    border-right: none;
+    flex: 1;
+    word-break: break-all;
+    position: relative;
+  }
+
+  table td p {
+    margin: 0;
+  }
+`
 
 export const CancelButton = styled(Button)`
   && {
