@@ -16,6 +16,11 @@ import renderNode from "components/editor/renderer/renderNode"
 import schema from "components/editor/schema/schema"
 import { editPage, saveEditing, cancelEditing } from "actions/editablePages"
 import { CancelButton, SaveButton } from "styles/EditablePageStyles"
+import placeholder from "./data/placeholder.json"
+
+/**
+ * Import plugins
+ */
 
 // set up custom styling for text editor
 const StyledEditor = styled(Editor)`
@@ -110,27 +115,7 @@ class PageEditor extends Component<Props, State> {
     } else {
       this.state = {
         // set default value for any page route refreshing
-        value: Value.fromJSON({
-          document: {
-            nodes: [
-              {
-                object: "block",
-                type: "paragraph",
-                nodes: [
-                  {
-                    object: "text",
-                    leaves: [
-                      {
-                        text:
-                          "Please revisit the page and click the edit button again to edit this content.",
-                      },
-                    ],
-                  },
-                ],
-              },
-            ],
-          },
-        }),
+        value: Value.fromJSON(placeholder),
         readOnly: props.readOnly,
       }
     }
