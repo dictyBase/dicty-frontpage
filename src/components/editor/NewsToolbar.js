@@ -1,8 +1,6 @@
 import React, { Component } from "react"
 import Tooltip from "@material-ui/core/Tooltip"
 import FontAwesome from "react-fontawesome"
-import MARKS from "components/editor/constants/marks"
-import INLINES from "components/editor/constants/inlines"
 import {
   ToolbarButton,
   Toolbar as ToolbarContainer,
@@ -71,28 +69,28 @@ class NewsToolbar extends Component {
       let Tag
 
       switch (type) {
-        case MARKS.BOLD:
+        case "bold":
           Tag = (
             <ToolbarButton>
               <FontAwesome name="bold" />
             </ToolbarButton>
           )
           break
-        case MARKS.ITALIC:
+        case "italic":
           Tag = (
             <ToolbarButton>
               <FontAwesome name="italic" />
             </ToolbarButton>
           )
           break
-        case MARKS.UNDERLINE:
+        case "underline":
           Tag = (
             <ToolbarButton>
               <FontAwesome name="underline" />
             </ToolbarButton>
           )
           break
-        case MARKS.STRIKETHROUGH:
+        case "strikethrough":
           Tag = (
             <ToolbarButton>
               <FontAwesome name="strikethrough" />
@@ -116,7 +114,7 @@ class NewsToolbar extends Component {
       let Tag
 
       switch (type) {
-        case INLINES.LINK: {
+        case "link": {
           Tag = (
             <ToolbarButton
               onMouseDown={this.onClickLink}
@@ -139,11 +137,11 @@ class NewsToolbar extends Component {
 
     return (
       <ToolbarContainer>
-        {renderMarkButton(MARKS.BOLD, "⌘ + b")}
-        {renderMarkButton(MARKS.ITALIC, "⌘ + i")}
-        {renderMarkButton(MARKS.UNDERLINE, "⌘ + u")}
-        {renderMarkButton(MARKS.STRIKETHROUGH, "⌘ + d")}
-        {renderBlockButton(INLINES.LINK, "n/a")}
+        {renderMarkButton("bold", "⌘ + b")}
+        {renderMarkButton("italic", "⌘ + i")}
+        {renderMarkButton("underline", "⌘ + u")}
+        {renderMarkButton("strikethrough", "⌘ + d")}
+        {renderBlockButton("link", "n/a")}
       </ToolbarContainer>
     )
   }

@@ -2,37 +2,22 @@ import React, { Component } from "react"
 import { Flex, Box } from "rebass"
 import Tooltip from "@material-ui/core/Tooltip"
 import EditTable from "slate-edit-table"
+import EditList from "slate-edit-list"
 import EditBlockquote from "slate-edit-blockquote"
 import FontAwesome from "react-fontawesome"
 import insertImage from "components/editor/helpers/insertImage"
 import insertVideo from "components/editor/helpers/insertVideo"
-import BLOCKS from "components/editor/constants/blocks"
-import INLINES from "components/editor/constants/inlines"
 import {
   ToolbarButton,
   Toolbar as ToolbarContainer,
 } from "styles/EditablePageStyles"
 
-/** import toolbar buttons */
-import { BoldButton } from "./plugins/bold"
-import { ItalicButton } from "./plugins/italic"
-import { StrikethroughButton } from "./plugins/strikethrough"
-import { UnderlineButton } from "./plugins/underline"
-
-import {
-  AlignmentLeftButton,
-  AlignmentCenterButton,
-  AlignmentRightButton,
-} from "./plugins/alignment"
-// import { DividerButton } from "./plugins/divider"
-// import { FontFamilyDropdown } from "./plugins/fontfamily"
-// import { H1Button, H2Button, H3Button } from "./plugins/heading"
-// import { ImageButton } from "./plugins/image"
-// import { LinkButton } from "./plugins/link"
-import { OrderedListButton, UnorderedListButton } from "./plugins/list"
-// import { VideoButton } from "./plugins/video"
-
 const TablePlugin = EditTable()
+
+const ListPlugin = EditList({
+  types: ["ol_list", "ul_list"],
+  typeItem: "list_item",
+})
 
 const BlockquotePlugin = EditBlockquote()
 
@@ -103,164 +88,303 @@ class Toolbar extends Component {
     this.props.onChange(change)
   }
 
-  hasBlock = type => {
-    const { value } = this.props
-    return value.blocks.some(node => node.type === type)
-  }
-
-  onClickBlock = (e, type) => {
-    e.preventDefault()
-
-    const { value } = this.props
-    const change = value.change()
-
-    switch (type) {
-      case BLOCKS.HEADING_1:
-      case BLOCKS.HEADING_2:
-      case BLOCKS.HEADING_3: {
-        const isActive = this.hasBlock(type)
-        return this.props.onChange(
-          change.setBlocks(isActive ? BLOCKS.PARAGRAPH : type),
-        )
-      }
-      case BLOCKS.HR: {
-        return this.props.onChange(change.setBlocks({ type, isVoid: true }))
-      }
-      case BLOCKS.BLOCKQUOTE: {
-        const isActive = BlockquotePlugin.utils.isSelectionInBlockquote(value)
-        return isActive
-          ? this.props.onChange(
-              BlockquotePlugin.changes.unwrapBlockquote(change),
-            )
-          : this.props.onChange(
-              BlockquotePlugin.changes.wrapInBlockquote(change),
-            )
-      }
-      case BLOCKS.TABLE: {
-        const isActive = TablePlugin.utils.isSelectionInTable(value)
-        return isActive
-          ? this.props.onChange(TablePlugin.changes.removeTable(change))
-          : this.props.onChange(TablePlugin.changes.insertTable(change))
-      }
-      default:
-        return null
-    }
-  }
-
-  renderBlockButton = (type, title) => {
-    const { value } = this.props
-    const onMouseDown = e => this.onClickBlock(e, type)
-
-    let isActive
-    let Tag
-
-    switch (type) {
-      case BLOCKS.HEADING_1: {
-        isActive = this.hasBlock(type)
-        Tag = <ToolbarButton>H1</ToolbarButton>
-        break
-      }
-      case BLOCKS.HEADING_2: {
-        isActive = this.hasBlock(type)
-        Tag = <ToolbarButton>H2</ToolbarButton>
-        break
-      }
-      case BLOCKS.HEADING_3: {
-        isActive = this.hasBlock(type)
-        Tag = <ToolbarButton>H3</ToolbarButton>
-        break
-      }
-      case INLINES.LINK: {
-        Tag = (
-          <ToolbarButton onMouseDown={this.onClickLink} active={this.hasLinks}>
-            <FontAwesome name="link" />
-          </ToolbarButton>
-        )
-        break
-      }
-      case BLOCKS.HR: {
-        isActive = this.hasBlock(type)
-        Tag = <ToolbarButton>HR</ToolbarButton>
-        break
-      }
-      case BLOCKS.BLOCKQUOTE: {
-        isActive = BlockquotePlugin.utils.isSelectionInBlockquote(value)
-        Tag = (
-          <ToolbarButton>
-            <FontAwesome name="indent" />
-          </ToolbarButton>
-        )
-        break
-      }
-      case BLOCKS.TABLE: {
-        isActive = TablePlugin.utils.isSelectionInTable(value)
-        Tag = (
-          <ToolbarButton>
-            <FontAwesome name="table" />
-          </ToolbarButton>
-        )
-        break
-      }
-      case BLOCKS.IMAGE: {
-        Tag = (
-          <ToolbarButton onMouseDown={this.onClickImage}>
-            <FontAwesome name="image" />
-          </ToolbarButton>
-        )
-        break
-      }
-      case BLOCKS.VIDEO: {
-        Tag = (
-          <ToolbarButton onMouseDown={this.onClickVideo}>
-            <FontAwesome name="film" />
-          </ToolbarButton>
-        )
-        break
-      }
-      default:
-        return null
-    }
-
-    return (
-      <Tooltip id={`tooltip-block-${type}`} title={title} placement="bottom">
-        <span onMouseDown={onMouseDown} data-active={isActive}>
-          {Tag}
-        </span>
-      </Tooltip>
-    )
-  }
-
   render() {
+    const hasMark = type => {
+      const { value } = this.props
+      return value.activeMarks.some(mark => mark.type === type)
+    }
+
+    const hasBlock = type => {
+      const { value } = this.props
+      return value.blocks.some(node => node.type === type)
+    }
+
+    const onClickMark = (e, type) => {
+      e.preventDefault()
+      const { value } = this.props
+      const change = value.change().toggleMark(type)
+
+      this.props.onChange(change)
+    }
+
+    const renderMarkButton = (type, title) => {
+      const isActive = hasMark(type)
+      const onMouseDown = e => onClickMark(e, type)
+
+      let Tag
+
+      switch (type) {
+        case "bold":
+          Tag = (
+            <ToolbarButton>
+              <FontAwesome name="bold" />
+            </ToolbarButton>
+          )
+          break
+        case "italic":
+          Tag = (
+            <ToolbarButton>
+              <FontAwesome name="italic" />
+            </ToolbarButton>
+          )
+          break
+        case "strikethrough":
+          Tag = (
+            <ToolbarButton>
+              <FontAwesome name="strikethrough" />
+            </ToolbarButton>
+          )
+          break
+        case "underline":
+          Tag = (
+            <ToolbarButton>
+              <FontAwesome name="underline" />
+            </ToolbarButton>
+          )
+          break
+        default:
+          return null
+      }
+
+      return (
+        <Tooltip id={`tooltip-block-${type}`} title={title} placement="bottom">
+          <span onMouseDown={onMouseDown} data-active={isActive}>
+            {Tag}
+          </span>
+        </Tooltip>
+      )
+    }
+
+    const onClickBlock = (e, type) => {
+      e.preventDefault()
+
+      const { value } = this.props
+      const change = value.change()
+
+      switch (type) {
+        case "heading_1":
+        case "heading_2":
+        case "heading_3": {
+          const isActive = hasBlock(type)
+          return this.props.onChange(
+            change.setBlocks(isActive ? "paragraph" : type),
+          )
+        }
+        case "align_left":
+        case "align_center":
+        case "align_right": {
+          return this.props.onChange(
+            change
+              .unwrapBlock("align_left")
+              .unwrapBlock("align_center")
+              .unwrapBlock("align_right")
+              .wrapBlock(type),
+          )
+        }
+        case "hr": {
+          return this.props.onChange(change.setBlocks({ type, isVoid: true }))
+        }
+        case "blockquote": {
+          const isActive = BlockquotePlugin.utils.isSelectionInBlockquote(value)
+          return isActive
+            ? this.props.onChange(
+                BlockquotePlugin.changes.unwrapBlockquote(change),
+              )
+            : this.props.onChange(
+                BlockquotePlugin.changes.wrapInBlockquote(change),
+              )
+        }
+        case "table": {
+          const isActive = TablePlugin.utils.isSelectionInTable(value)
+          return isActive
+            ? this.props.onChange(TablePlugin.changes.removeTable(change))
+            : this.props.onChange(TablePlugin.changes.insertTable(change))
+        }
+        case "ul_list": {
+          const isActive =
+            ListPlugin.utils.isSelectionInList(value) &&
+            ListPlugin.utils.getCurrentList(value).type === type
+          return isActive
+            ? this.props.onChange(ListPlugin.changes.unwrapList(change))
+            : this.props.onChange(ListPlugin.changes.wrapInList(change, type))
+        }
+        case "ol_list": {
+          const isActive =
+            ListPlugin.utils.isSelectionInList(value) &&
+            ListPlugin.utils.getCurrentList(value).type === type
+          return isActive
+            ? this.props.onChange(ListPlugin.changes.unwrapList(change))
+            : this.props.onChange(ListPlugin.changes.wrapInList(change, type))
+        }
+        default:
+          return null
+      }
+    }
+
+    const renderBlockButton = (type, title) => {
+      const { value } = this.props
+      const onMouseDown = e => onClickBlock(e, type)
+
+      let isActive
+      let Tag
+
+      switch (type) {
+        case "heading_1": {
+          isActive = hasBlock(type)
+          Tag = <ToolbarButton>H1</ToolbarButton>
+          break
+        }
+        case "heading_2": {
+          isActive = hasBlock(type)
+          Tag = <ToolbarButton>H2</ToolbarButton>
+          break
+        }
+        case "heading_3": {
+          isActive = hasBlock(type)
+          Tag = <ToolbarButton>H3</ToolbarButton>
+          break
+        }
+        case "align_left": {
+          isActive = hasBlock(type)
+          Tag = (
+            <ToolbarButton>
+              <FontAwesome name="align-left" />
+            </ToolbarButton>
+          )
+          break
+        }
+        case "align_center": {
+          isActive = hasBlock(type)
+          Tag = (
+            <ToolbarButton>
+              <FontAwesome name="align-center" />
+            </ToolbarButton>
+          )
+          break
+        }
+        case "align_right": {
+          isActive = hasBlock(type)
+          Tag = (
+            <ToolbarButton>
+              <FontAwesome name="align-right" />
+            </ToolbarButton>
+          )
+          break
+        }
+        case "link": {
+          Tag = (
+            <ToolbarButton
+              onMouseDown={this.onClickLink}
+              active={this.hasLinks}>
+              <FontAwesome name="link" />
+            </ToolbarButton>
+          )
+          break
+        }
+        case "hr": {
+          isActive = hasBlock(type)
+          Tag = <ToolbarButton>HR</ToolbarButton>
+          break
+        }
+        case "blockquote": {
+          isActive = BlockquotePlugin.utils.isSelectionInBlockquote(value)
+          Tag = (
+            <ToolbarButton>
+              <FontAwesome name="indent" />
+            </ToolbarButton>
+          )
+          break
+        }
+        case "table": {
+          isActive = TablePlugin.utils.isSelectionInTable(value)
+          Tag = (
+            <ToolbarButton>
+              <FontAwesome name="table" />
+            </ToolbarButton>
+          )
+          break
+        }
+        case "ul_list": {
+          isActive =
+            ListPlugin.utils.isSelectionInList(value) &&
+            ListPlugin.utils.getCurrentList(value).type === type
+          Tag = (
+            <ToolbarButton>
+              <FontAwesome name="list-ul" />
+            </ToolbarButton>
+          )
+          break
+        }
+        case "ol_list": {
+          isActive =
+            ListPlugin.utils.isSelectionInList(value) &&
+            ListPlugin.utils.getCurrentList(value).type === type
+          Tag = (
+            <ToolbarButton>
+              <FontAwesome name="list-ol" />
+            </ToolbarButton>
+          )
+          break
+        }
+        case "image": {
+          Tag = (
+            <ToolbarButton onMouseDown={this.onClickImage}>
+              <FontAwesome name="image" />
+            </ToolbarButton>
+          )
+          break
+        }
+        case "video": {
+          Tag = (
+            <ToolbarButton onMouseDown={this.onClickVideo}>
+              <FontAwesome name="film" />
+            </ToolbarButton>
+          )
+          break
+        }
+        default:
+          return null
+      }
+
+      return (
+        <Tooltip id={`tooltip-block-${type}`} title={title} placement="bottom">
+          <span onMouseDown={onMouseDown} data-active={isActive}>
+            {Tag}
+          </span>
+        </Tooltip>
+      )
+    }
+
     return (
       <ToolbarContainer>
         <Flex justify="space-between">
-          <Box w="25%">
-            <BoldButton {...this.props} />
-            <ItalicButton {...this.props} />
-            <UnderlineButton {...this.props} />
-            <StrikethroughButton {...this.props} />
-            {this.renderBlockButton(BLOCKS.BLOCKQUOTE, "blockquote")}
-            {this.renderBlockButton(INLINES.LINK, "link")}
+          <Box w={"25%"}>
+            {renderMarkButton("bold", "⌘ + b")}
+            {renderMarkButton("italic", "⌘ + i")}
+            {renderMarkButton("strikethrough", "⌘ + d")}
+            {renderMarkButton("underline", "⌘ + u")}
+            {renderBlockButton("blockquote", "blockquote")}
+            {renderBlockButton("link", "link")}
           </Box>
-          <Box w="15%">
-            {this.renderBlockButton(BLOCKS.HEADING_1, "<h1>")}
-            {this.renderBlockButton(BLOCKS.HEADING_2, "<h2>")}
-            {this.renderBlockButton(BLOCKS.HEADING_3, "<h3>")}
+          <Box w={"15%"}>
+            {renderBlockButton("heading_1", "<h1>")}
+            {renderBlockButton("heading_2", "<h2>")}
+            {renderBlockButton("heading_3", "<h3>")}
           </Box>
-          <Box w="15%">
-            <AlignmentLeftButton {...this.props} />
-            <AlignmentCenterButton {...this.props} />
-            <AlignmentRightButton {...this.props} />
+          <Box w={"15%"}>
+            {renderBlockButton("align_left", "align left")}
+            {renderBlockButton("align_center", "align center")}
+            {renderBlockButton("align_right", "align right")}
           </Box>
-          <Box w="10%">
-            <OrderedListButton {...this.props} />
-            <UnorderedListButton {...this.props} />
+          <Box w={"10%"}>
+            {renderBlockButton("ul_list", "unordered list")}
+            {renderBlockButton("ol_list", "ordered list")}
           </Box>
-          <Box w="25%">
-            {this.renderBlockButton(BLOCKS.HR, "divider")}
-            {this.renderBlockButton(BLOCKS.TABLE, "table")}
-            {this.renderBlockButton(BLOCKS.IMAGE, "image")}
-            {this.renderBlockButton(BLOCKS.VIDEO, "video")}
+          <Box w={"25%"}>
+            {renderBlockButton("hr", "divider")}
+            {renderBlockButton("table", "table")}
+            {renderBlockButton("image", "image")}
+            {renderBlockButton("video", "video")}
           </Box>
         </Flex>
       </ToolbarContainer>

@@ -1,7 +1,6 @@
 import AutoReplace from "slate-auto-replace"
 import EditBlockquote from "slate-edit-blockquote"
 import EditTable from "slate-edit-table"
-import BLOCKS from "components/editor/constants/blocks"
 
 import { BoldPlugin } from "./bold"
 import { ItalicPlugin } from "./italic"
@@ -35,7 +34,7 @@ const plugins = [
     before: /^(-{3})$/,
     transform: transform =>
       transform.insertBlock({
-        type: BLOCKS.HR,
+        type: "hr",
         isVoid: true,
       }),
   }),
