@@ -8,7 +8,6 @@ import { Flex, Box } from "rebass"
 import Authorization from "components/authentication/Authorization"
 import renderMark from "components/editor/renderer/renderMark"
 import renderNode from "components/editor/renderer/renderNode"
-import onKeyDown from "components/editor/helpers/onKeyDown"
 import { editInline, saveInlineEditing } from "actions/editablePages"
 import {
   ToolbarButton,
@@ -281,7 +280,6 @@ class InlineEditor extends Component<Props, State> {
         <Editor
           value={value}
           onChange={this.onChange}
-          onKeyDown={onKeyDown}
           onPaste={this.onPaste}
           renderMark={renderMark}
           renderNode={renderNode}

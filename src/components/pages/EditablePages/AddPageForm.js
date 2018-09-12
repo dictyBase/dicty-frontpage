@@ -7,9 +7,7 @@ import { Flex, Box } from "rebass"
 import styled from "styled-components"
 
 import Toolbar from "components/editor/Toolbar"
-import onPasteHtml from "components/editor/helpers/onPasteHtml"
-import onPasteText from "components/editor/helpers/onPasteText"
-import onKeyDown from "components/editor/helpers/onKeyDown"
+import { onPasteHtml, onPasteText } from "components/editor/utils/utils"
 import renderMark from "components/editor/renderer/renderMark"
 import renderNode from "components/editor/renderer/renderNode"
 import plugins from "components/editor/plugins/plugins"
@@ -174,7 +172,6 @@ class AddPageForm extends Component<Props, State> {
               value={value}
               onChange={this.onChange}
               onPaste={this.onPaste}
-              onKeyDown={onKeyDown}
               renderMark={renderMark}
               renderNode={renderNode}
               plugins={plugins}

@@ -6,9 +6,7 @@ import { Value, type Change } from "slate"
 import { Flex, Box } from "rebass"
 import styled from "styled-components"
 import NewsToolbar from "components/editor/NewsToolbar"
-import onPasteHtml from "components/editor/helpers/onPasteHtml"
-import onPasteText from "components/editor/helpers/onPasteText"
-import onKeyDown from "components/editor/helpers/onKeyDown"
+import { onPasteHtml, onPasteText } from "components/editor/utils/utils"
 import renderMark from "components/editor/renderer/renderMark"
 import renderNode from "components/editor/renderer/renderNode"
 import plugins from "components/editor/plugins/plugins"
@@ -174,7 +172,6 @@ class AddNewsForm extends Component<Props, State> {
               value={value}
               onChange={this.onChange}
               onPaste={this.onPaste}
-              onKeyDown={onKeyDown}
               renderMark={renderMark}
               renderNode={renderNode}
               plugins={plugins}

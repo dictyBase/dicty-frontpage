@@ -10,8 +10,7 @@ import styled from "styled-components"
 
 // import Toolbar from "components/editor/Toolbar"
 import EditorToolbar from "./toolbar/EditorToolbar"
-import insertImage from "components/editor/helpers/insertImage"
-import onKeyDown from "components/editor/helpers/onKeyDown"
+import { insertImage } from "./plugins/image"
 import { onPasteHtml, onPasteText } from "./utils/utils"
 import { editPage, saveEditing, cancelEditing } from "actions/editablePages"
 import { CancelButton, SaveButton } from "styles/EditablePageStyles"
@@ -321,7 +320,6 @@ class PageEditor extends Component<Props, State> {
           onChange={this.onChange}
           onPaste={this.onPaste}
           onDrop={this.onDrop}
-          onKeyDown={onKeyDown}
           renderMark={renderMark}
           renderNode={renderNode}
           readOnly={readOnly}

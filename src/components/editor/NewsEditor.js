@@ -9,7 +9,6 @@ import { Flex, Box } from "rebass"
 import Authorization from "components/authentication/Authorization"
 import renderMark from "components/editor/renderer/renderMark"
 import renderNode from "components/editor/renderer/renderNode"
-import onKeyDown from "components/editor/helpers/onKeyDown"
 import { editInline, saveInlineEditing } from "actions/news"
 import {
   ToolbarButton,
@@ -320,7 +319,6 @@ class NewsEditor extends PureComponent<Props, State> {
         <StyledEditor
           value={value}
           onChange={this.onChange}
-          onKeyDown={onKeyDown}
           renderMark={renderMark}
           renderNode={renderNode}
           readOnly={readOnly}

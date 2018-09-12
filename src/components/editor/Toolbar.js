@@ -5,8 +5,8 @@ import EditTable from "slate-edit-table"
 import EditList from "slate-edit-list"
 import EditBlockquote from "slate-edit-blockquote"
 import FontAwesome from "react-fontawesome"
-import insertImage from "components/editor/helpers/insertImage"
-import insertVideo from "components/editor/helpers/insertVideo"
+import { insertImage } from "./plugins/image"
+import { insertVideo } from "./plugins/video"
 import {
   ToolbarButton,
   Toolbar as ToolbarContainer,
