@@ -3,7 +3,6 @@ import React, { Component } from "react"
 import { connect } from "react-redux"
 import { getEventTransfer, getEventRange } from "slate-react"
 import { Value, type Change } from "slate"
-import EditBlockquote from "slate-edit-blockquote"
 import EditTable from "slate-edit-table"
 import { withStyles } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
@@ -69,7 +68,6 @@ const styles = theme => ({
  * These are generally keyboard shortcuts
  */
 const plugins = [
-  EditBlockquote(),
   EditTable(),
   AlignmentPlugin(),
   BoldPlugin(),
