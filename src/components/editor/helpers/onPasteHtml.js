@@ -1,5 +1,5 @@
 import { getEventTransfer } from "slate-react"
-import deserializer from "components/editor/tools/deserializer"
+import deserializer from "components/editor/utils/deserializer"
 
 const onPasteHtml = (e, change) => {
   if (e.shiftKey) return

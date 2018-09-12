@@ -8,11 +8,10 @@ import EditTable from "slate-edit-table"
 import { Flex, Box } from "rebass"
 import styled from "styled-components"
 
-import Toolbar from "components/editor/Toolbar"
+// import Toolbar from "components/editor/Toolbar"
 import EditorToolbar from "./toolbar/EditorToolbar"
 import insertImage from "components/editor/helpers/insertImage"
 import onKeyDown from "components/editor/helpers/onKeyDown"
-import schema from "components/editor/schema/schema"
 import { onPasteHtml, onPasteText } from "./utils/utils"
 import { editPage, saveEditing, cancelEditing } from "actions/editablePages"
 import { CancelButton, SaveButton } from "styles/EditablePageStyles"
@@ -326,7 +325,6 @@ class PageEditor extends Component<Props, State> {
           renderMark={renderMark}
           renderNode={renderNode}
           readOnly={readOnly}
-          schema={schema}
           plugins={plugins}
         />
 

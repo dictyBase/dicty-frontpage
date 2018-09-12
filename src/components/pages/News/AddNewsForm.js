@@ -12,7 +12,6 @@ import onKeyDown from "components/editor/helpers/onKeyDown"
 import renderMark from "components/editor/renderer/renderMark"
 import renderNode from "components/editor/renderer/renderNode"
 import plugins from "components/editor/plugins/plugins"
-import schema from "components/editor/schema/schema"
 import { AuthenticatedUser } from "utils/apiClasses"
 import { addNewsItem, cancelEditing } from "actions/news"
 import {
@@ -169,10 +168,7 @@ class AddNewsForm extends Component<Props, State> {
       <div>
         <Flex justify="center">
           <NewsEditorBox width={["90%", "80%", "50%", "40%"]}>
-            <NewsToolbar
-              value={value}
-              onChange={value => this.onChange(value)}
-            />
+            <NewsToolbar value={value} onChange={this.onChange} />
 
             <StyledEditor
               value={value}
@@ -181,7 +177,6 @@ class AddNewsForm extends Component<Props, State> {
               onKeyDown={onKeyDown}
               renderMark={renderMark}
               renderNode={renderNode}
-              schema={schema}
               plugins={plugins}
               placeholder="Enter text here..."
             />
