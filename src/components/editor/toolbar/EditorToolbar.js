@@ -17,6 +17,7 @@ import {
 } from "../plugins/alignment"
 import { DividerButton } from "../plugins/divider"
 import { FontFamilyDropdown } from "../plugins/fontfamily"
+import { FontSizeDropdown } from "../plugins/fontsize"
 import { H1Button, H2Button, H3Button } from "../plugins/heading"
 import { ImageButton } from "../plugins/image"
 import { LinkButton } from "../plugins/link"
@@ -29,7 +30,6 @@ const styles = theme => ({
     padding: "10px 0px 10px",
     borderBottom: "2px solid #d1d5da",
     backgroundColor: "#f1f8ff",
-    // marginBottom: "20px"
   },
 })
 
@@ -60,6 +60,7 @@ const EditorToolbar = props => {
           <VideoButton {...props} />
           <DividerButton {...props} />
           <FontFamilyDropdown {...props} />
+          <FontSizeDropdown {...props} />
         </Typography>
       </Toolbar>
     </AppBar>

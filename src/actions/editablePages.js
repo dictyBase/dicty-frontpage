@@ -9,6 +9,7 @@ import {
   FETCH_PAGE_SUCCESS,
   FETCH_PAGE_FAILURE,
   CHANGE_FONT_SELECT,
+  CHANGE_FONT_SIZE,
 } from "constants/types"
 import { printError, createErrorObj } from "utils/actionHelpers"
 import { fetchBySlugResource, fetchByIdResource } from "utils/fetchResources"
@@ -251,5 +252,12 @@ export const changeFontSelect = (font: string) => ({
   type: CHANGE_FONT_SELECT,
   payload: {
     font,
+  },
+})
+
+export const changeFontSize = (fontSize: string) => ({
+  type: CHANGE_FONT_SIZE,
+  payload: {
+    fontSize,
   },
 })

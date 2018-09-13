@@ -19,6 +19,7 @@ import placeholder from "./data/placeholder.json"
 /** Import mark renderers */
 import { BoldMark } from "./plugins/bold"
 import { FontFamilyMark } from "./plugins/fontfamily"
+import { FontSizeMark } from "./plugins/fontsize"
 import { ItalicMark } from "./plugins/italic"
 import { StrikethroughMark } from "./plugins/strikethrough"
 import { UnderlineMark } from "./plugins/underline"
@@ -98,6 +99,8 @@ export const renderMark = (props: markProps) => {
       return <BoldMark {...props} />
     case "font-family":
       return <FontFamilyMark {...props} />
+    case "font-size":
+      return <FontSizeMark {...props} />
     case "italic":
       return <ItalicMark {...props} />
     case "strikethrough":
