@@ -146,7 +146,7 @@ export const renderNode = (props: nodeProps) => {
       return <VideoNode {...props} />
 
     default:
-      return <p {...attributes}>{children}</p>
+      return <div {...attributes}>{children}</div>
   }
 }
 
@@ -286,11 +286,13 @@ class PageEditor extends Component<Props, State> {
 
   render() {
     const { readOnly, value } = this.state
-    const { classes } = this.props
+    const { classes, page } = this.props
 
     return (
       <div>
-        {!readOnly && <EditorToolbar value={value} onChange={this.onChange} />}
+        {!readOnly && (
+          <EditorToolbar value={value} onChange={this.onChange} page={page} />
+        )}
 
         <StyledEditor
           value={value}

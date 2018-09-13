@@ -7,12 +7,14 @@ import {
   FETCH_PAGE_REQUEST,
   FETCH_PAGE_SUCCESS,
   FETCH_PAGE_FAILURE,
+  CHANGE_FONT_SELECT,
 } from "constants/types"
 
 const initialState = {
   content: null,
   isFetching: false,
   error: null,
+  currentFont: 0,
 }
 
 const editablePagesReducer = (state: Object = initialState, action: Object) => {
@@ -56,6 +58,11 @@ const editablePagesReducer = (state: Object = initialState, action: Object) => {
         ...state,
         isFetching: false,
         error: action.payload.error,
+      }
+    case CHANGE_FONT_SELECT:
+      return {
+        ...state,
+        currentFont: action.payload.font,
       }
     default:
       return state

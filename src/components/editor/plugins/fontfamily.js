@@ -1,9 +1,12 @@
 import React from "react"
+import { connect } from "react-redux"
 import { withStyles } from "@material-ui/core/styles"
 import InputLabel from "@material-ui/core/InputLabel"
 import MenuItem from "@material-ui/core/MenuItem"
 import FormControl from "@material-ui/core/FormControl"
 import Select from "@material-ui/core/Select"
+
+import { changeFontSelect } from "actions/editablePages"
 
 /**
  * Material-UI styling for dropdown
@@ -19,10 +22,10 @@ const styles = theme => ({
  * List of fonts available
  */
 const FontFamilyList = [
+  { name: "Roboto", options: "400,400i,700,700i" },
   { name: "Roboto Condensed", options: "400,400i,700,700i" },
   { name: "Roboto Mono", options: "400,400i,700,700i" },
   { name: "Roboto Slab", options: "400,700" },
-  { name: "Roboto", options: "400,400i,700,700i" },
 ]
 
 /**
@@ -54,9 +57,6 @@ const fontFamilyMarkStrategy = attributes => {
     if (value.isExpanded) {
       return applyMark({ change: value.change(), fontFamilyIndex })
     }
-    // why is handleChange always hitting here?
-    // need to fix this
-    return applyMark({ change: value.change(), fontFamilyIndex })
   }
 
   return value.change()
@@ -75,13 +75,20 @@ const FontFamilyMark = ({ children, mark: { data } }) => (
 /**
  * Dropdown component that connects to the editor.
  */
-const Dropdown = ({ value, onChange, classes }) => (
+const Dropdown = ({
+  value,
+  onChange,
+  classes,
+  editablePages,
+  changeFontSelect,
+}) => (
   <FormControl className={classes.formControl}>
     <InputLabel>Font Family</InputLabel>
     <Select
-      value="font-family"
+      value={editablePages.currentFont}
       // eslint-disable-next-line
       onChange={({ target: { value: fontFamilyIndex } }) => {
+        changeFontSelect(fontFamilyIndex)
         onChange(fontFamilyMarkStrategy({ value, fontFamilyIndex }))
       }}>
       {FontFamilyList.map((font, index) => (
@@ -93,7 +100,12 @@ const Dropdown = ({ value, onChange, classes }) => (
   </FormControl>
 )
 
-const FontFamilyDropdown = withStyles(styles)(Dropdown)
+const mapStateToProps = ({ editablePages }) => ({ editablePages })
+
+const FontFamilyDropdown = connect(
+  mapStateToProps,
+  { changeFontSelect },
+)(withStyles(styles)(Dropdown))
 
 /**
  * Export everything needed for the editor.
