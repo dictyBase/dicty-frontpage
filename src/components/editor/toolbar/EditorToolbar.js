@@ -59,6 +59,7 @@ const EditorToolbar = props => {
           <ImageButton {...props} />
           <VideoButton {...props} />
           <DividerButton {...props} />
+          <br />
           <FontFamilyDropdown {...props} />
           <FontSizeDropdown {...props} />
         </Typography>
