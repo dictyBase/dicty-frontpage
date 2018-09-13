@@ -82,11 +82,15 @@ const plugins = [
   VideoPlugin(),
 ]
 
+type markProps = {
+  mark: Object,
+}
+
 /**
  * Necessary renderMark function that receives the mark type then renders the HTML
  * In our case, we are returning custom components
  */
-export const renderMark = props => {
+export const renderMark = (props: markProps) => {
   const { mark } = props
 
   switch (mark.type) {
@@ -106,10 +110,16 @@ export const renderMark = props => {
   }
 }
 
+type nodeProps = {
+  node: Object,
+  attributes: Object,
+  children: any,
+}
+
 /**
  * Similar to renderMark above, except now we are working with nodes.
  */
-export const renderNode = props => {
+export const renderNode = (props: nodeProps) => {
   const { node, attributes, children } = props
   switch (node.type) {
     case "alignment":
@@ -157,6 +167,8 @@ type Props = {
   readOnly: boolean,
   /** ID of current logged in user */
   userId: string,
+  /** Material-UI styling */
+  classes: Object,
 }
 
 type State = {

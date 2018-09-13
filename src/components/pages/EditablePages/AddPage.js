@@ -2,7 +2,6 @@
 import React from "react"
 import { Flex, Box } from "rebass"
 
-import AddPageForm from "components/pages/EditablePages/AddPageForm"
 import Authorization from "components/authentication/Authorization"
 import ErrorNotification from "components/authentication/ErrorNotification"
 import { Banner } from "styles/NewsStyles"
