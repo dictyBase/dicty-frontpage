@@ -77,7 +77,7 @@ const plugins = [
   ImagePlugin(),
   ItalicPlugin(),
   LinkPlugin(),
-  ListPlugin(),
+  ListPlugin,
   StrikethroughPlugin(),
   TablePlugin,
   UnderlinePlugin(),
