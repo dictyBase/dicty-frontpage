@@ -3,7 +3,6 @@ import Tooltip from "@material-ui/core/Tooltip"
 import ImageIcon from "@material-ui/icons/Image"
 
 import ToolbarButton from "../toolbar/ToolbarButton"
-import { isMod } from "../utils/utils"
 
 /**
  * Functions to set the image blocks.
@@ -40,7 +39,7 @@ const ImageNode = ({ attributes, node: { data } }) => {
  * Button component that uses a click handler to connect to the editor.
  */
 const ImageButton = ({ value, onChange }) => (
-  <Tooltip title="image" placement="bottom">
+  <Tooltip title="⌘ + shift + i" placement="bottom">
     <ToolbarButton
       // eslint-disable-next-line
       onClick={e => onChange(insertImageStrategy(value.change()))}>
@@ -54,7 +53,14 @@ const ImageButton = ({ value, onChange }) => (
  * It accepts event and change as arguments.
  */
 const ImageKeyboardShortcut = (event, change) => {
-  if (isMod(event) && event.key === "i") return insertImageStrategy(change)
+  const key = event.key === "i"
+  const macKey = event.metaKey && event.shiftKey && key
+  const winKey = event.altKey && event.shiftKey && key
+  const isLeft = macKey || winKey
+  if (isLeft) {
+    event.preventDefault()
+    return insertImageStrategy(change)
+  }
   return
 }
 

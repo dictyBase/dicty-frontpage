@@ -12,7 +12,7 @@ import ToolbarButton from "../toolbar/ToolbarButton"
 const alignmentMarkStrategy = (change, align) =>
   change.setBlocks({
     type: "alignment",
-    data: { align, currentBlockType: change.value.blocks.first().type },
+    data: { align },
   })
 
 const alignLeft = change => alignmentMarkStrategy(change, "left")
@@ -73,28 +73,22 @@ const AlignmentRightButton = ({ value, onChange }) => (
  */
 const AlignmentKeyboardShortcut = (event, change) => {
   const keyLeft = event.key === "l"
-  const macLeft = event.metaKey && event.shiftKey && keyLeft
-  const winLeft = event.altKey && event.shiftKey && keyLeft
-  const isLeft = macLeft || winLeft
-  if (isLeft) {
+  const leftFullKeyPress = event.metaKey && event.shiftKey && keyLeft
+  if (leftFullKeyPress) {
     event.preventDefault()
     return alignLeft(change)
   }
 
   const keyCenter = event.key === "c"
-  const macCenter = event.metaKey && event.shiftKey && keyCenter
-  const winCenter = event.altKey && event.shiftKey && keyCenter
-  const isCenter = macCenter || winCenter
-  if (isCenter) {
+  const centerFullKeyPress = event.metaKey && event.shiftKey && keyCenter
+  if (centerFullKeyPress) {
     event.preventDefault()
     return alignCenter(change)
   }
 
   const keyRight = event.key === "r"
-  const macRight = event.metaKey && event.shiftKey && keyRight
-  const winRight = event.altKey && event.shiftKey && keyRight
-  const isRight = macRight || winRight
-  if (isRight) {
+  const rightFullKeyPress = event.metaKey && event.shiftKey && keyRight
+  if (rightFullKeyPress) {
     event.preventDefault()
     return alignRight(change)
   }

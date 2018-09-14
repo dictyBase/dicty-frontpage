@@ -6,11 +6,7 @@ import ToolbarButton from "../toolbar/ToolbarButton"
 /**
  * Functions to set the heading blocks.
  */
-const headingStrategy = (change, heading) => {
-  change.setBlocks(heading)
-
-  return change
-}
+const headingStrategy = (change, heading) => change.setBlocks(heading)
 
 const headingH1 = change => headingStrategy(change, "h1")
 const headingH2 = change => headingStrategy(change, "h2")
@@ -51,7 +47,7 @@ const H2Button = ({ value, onChange }) => (
 )
 
 const H3Button = ({ value, onChange }) => (
-  <Tooltip title="⌘ + shift + 3" placement="bottom">
+  <Tooltip title="<h3>" placement="bottom">
     <ToolbarButton
       // eslint-disable-next-line
       onClick={e => {
@@ -67,31 +63,18 @@ const H3Button = ({ value, onChange }) => (
  * It accepts event and change as arguments.
  */
 const HeadingKeyboardShortcut = (event, change) => {
-  const keyLeft = event.key === "1"
-  const macLeft = event.metaKey && event.shiftKey && keyLeft
-  const winLeft = event.altKey && event.shiftKey && keyLeft
-  const isLeft = macLeft || winLeft
-  if (isLeft) {
+  const h1Key = event.key === "1"
+  const h1KeyPress = event.metaKey && event.shiftKey && h1Key
+  if (h1KeyPress) {
     event.preventDefault()
     return headingH1(change)
   }
 
-  const keyCenter = event.key === "2"
-  const macCenter = event.metaKey && event.shiftKey && keyCenter
-  const winCenter = event.altKey && event.shiftKey && keyCenter
-  const isCenter = macCenter || winCenter
-  if (isCenter) {
+  const h2Key = event.key === "2"
+  const h2KeyPress = event.metaKey && event.shiftKey && h2Key
+  if (h2KeyPress) {
     event.preventDefault()
     return headingH2(change)
-  }
-
-  const keyRight = event.key === "3"
-  const macRight = event.metaKey && event.shiftKey && keyRight
-  const winRight = event.altKey && event.shiftKey && keyRight
-  const isRight = macRight || winRight
-  if (isRight) {
-    event.preventDefault()
-    return headingH3(change)
   }
 
   return

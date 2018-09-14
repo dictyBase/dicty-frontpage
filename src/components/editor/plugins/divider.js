@@ -5,16 +5,13 @@ import ToolbarButton from "../toolbar/ToolbarButton"
 import { isMod } from "../utils/utils"
 
 /**
- * Functions to set the link blocks.
+ * Functions to set the divider blocks.
  */
-const dividerStrategy = change => {
+const dividerStrategy = change =>
   change.setBlocks({
     type: "divider",
     isVoid: true,
   })
-
-  return change
-}
 
 /**
  * Rendering components that provide the actual HTML to use inside the editor.

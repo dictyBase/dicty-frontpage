@@ -1,22 +1,10 @@
 import React from "react"
 import { connect } from "react-redux"
-import { withStyles } from "@material-ui/core/styles"
-import InputLabel from "@material-ui/core/InputLabel"
 import MenuItem from "@material-ui/core/MenuItem"
 import FormControl from "@material-ui/core/FormControl"
 import Select from "@material-ui/core/Select"
 
 import { changeFontSelect } from "actions/editablePages"
-
-/**
- * Material-UI styling for dropdown
- */
-const styles = theme => ({
-  formControl: {
-    margin: theme.spacing.unit,
-    minWidth: 150,
-  },
-})
 
 /**
  * List of fonts available
@@ -82,8 +70,7 @@ const Dropdown = ({
   editablePages,
   changeFontSelect,
 }) => (
-  <FormControl className={classes.formControl}>
-    <InputLabel>Font Family</InputLabel>
+  <FormControl className={classes.fontFamilyDropdown}>
     <Select
       value={editablePages.currentFont}
       // eslint-disable-next-line
@@ -105,7 +92,7 @@ const mapStateToProps = ({ editablePages }) => ({ editablePages })
 const FontFamilyDropdown = connect(
   mapStateToProps,
   { changeFontSelect },
-)(withStyles(styles)(Dropdown))
+)(Dropdown)
 
 /**
  * Export everything needed for the editor.

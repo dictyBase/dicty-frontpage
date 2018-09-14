@@ -39,6 +39,14 @@ const styles = theme => ({
     borderBottom: "2px solid #d1d5da",
     backgroundColor: "#ccd9ff",
   },
+  fontSizeDropdown: {
+    margin: theme.spacing.unit,
+    minWidth: 100,
+  },
+  fontFamilyDropdown: {
+    margin: theme.spacing.unit,
+    minWidth: 150,
+  },
 })
 
 /**
@@ -58,6 +66,7 @@ export const EditorToolbar = props => {
           <AlignmentLeftButton {...props} />
           <AlignmentCenterButton {...props} />
           <AlignmentRightButton {...props} />
+          <DividerButton {...props} />
           <UnorderedListButton {...props} />
           <OrderedListButton {...props} />
           <H1Button {...props} />
@@ -66,10 +75,6 @@ export const EditorToolbar = props => {
           <LinkButton {...props} />
           <ImageButton {...props} />
           <VideoButton {...props} />
-          <DividerButton {...props} />
-          <br />
-          <FontFamilyDropdown {...props} />
-          <FontSizeDropdown {...props} />
           <br />
           <InsertTableButton {...props} />
           <InsertTableColumnButton {...props} />
@@ -77,6 +82,8 @@ export const EditorToolbar = props => {
           <RemoveTableRowButton {...props} />
           <RemoveTableColumnButton {...props} />
           <RemoveTableButton {...props} />
+          <FontFamilyDropdown {...props} />
+          <FontSizeDropdown {...props} />
         </Typography>
       </Toolbar>
     </AppBar>
