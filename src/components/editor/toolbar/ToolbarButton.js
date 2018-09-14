@@ -6,12 +6,9 @@ import { isFunction } from "../utils/utils"
 
 const styles = theme => ({
   button: {
-    color: "#586069",
+    color: "rgba(0, 0, 0, 0.87)",
     padding: "10px",
-    minWidth: "30px",
-    "&:hover": {
-      color: "#000",
-    },
+    minWidth: "25px",
   },
 })
 

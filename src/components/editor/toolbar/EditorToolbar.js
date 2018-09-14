@@ -74,8 +74,8 @@ export const EditorToolbar = props => {
           <InsertTableButton {...props} />
           <InsertTableColumnButton {...props} />
           <InsertTableRowButton {...props} />
-          <RemoveTableColumnButton {...props} />
           <RemoveTableRowButton {...props} />
+          <RemoveTableColumnButton {...props} />
           <RemoveTableButton {...props} />
         </Typography>
       </Toolbar>
