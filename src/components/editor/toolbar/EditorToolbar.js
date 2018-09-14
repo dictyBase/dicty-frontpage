@@ -22,7 +22,14 @@ import { H1Button, H2Button, H3Button } from "../plugins/heading"
 import { ImageButton } from "../plugins/image"
 import { LinkButton } from "../plugins/link"
 import { OrderedListButton, UnorderedListButton } from "../plugins/list"
-import { TableButton } from "../plugins/table"
+import {
+  InsertTableButton,
+  InsertTableColumnButton,
+  InsertTableRowButton,
+  RemoveTableColumnButton,
+  RemoveTableRowButton,
+  RemoveTableButton,
+} from "../plugins/table"
 import { VideoButton } from "../plugins/video"
 
 const styles = theme => ({
@@ -30,7 +37,7 @@ const styles = theme => ({
     position: "relative",
     padding: "10px 0px 10px",
     borderBottom: "2px solid #d1d5da",
-    backgroundColor: "#f1f8ff",
+    backgroundColor: "#ccd9ff",
   },
 })
 
@@ -60,10 +67,16 @@ export const EditorToolbar = props => {
           <ImageButton {...props} />
           <VideoButton {...props} />
           <DividerButton {...props} />
-          <TableButton {...props} />
           <br />
           <FontFamilyDropdown {...props} />
           <FontSizeDropdown {...props} />
+          <br />
+          <InsertTableButton {...props} />
+          <InsertTableColumnButton {...props} />
+          <InsertTableRowButton {...props} />
+          <RemoveTableColumnButton {...props} />
+          <RemoveTableRowButton {...props} />
+          <RemoveTableButton {...props} />
         </Typography>
       </Toolbar>
     </AppBar>
