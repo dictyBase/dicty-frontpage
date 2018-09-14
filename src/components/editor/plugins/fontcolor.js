@@ -5,7 +5,7 @@ import Tooltip from "@material-ui/core/Tooltip"
 import FormatColorTextIcon from "@material-ui/icons/FormatColorText"
 
 import ToolbarButton from "../toolbar/ToolbarButton"
-import { changeFontColor, showColorPicker } from "actions/editorToolbar"
+import { showColorPicker } from "actions/editorToolbar"
 
 /**
  * Functions to set the font color marks.
@@ -46,7 +46,7 @@ const FontColorMark = ({ children, mark: { data } }) => (
 )
 
 /**
- * Button component that uses a click handler to connect to the editor.
+ * Button component that uses a click handler to connect to the ColorPicker component.
  */
 const FontColor = ({ showColorPicker, editorToolbar }) => (
   <Tooltip title="font color picker" placement="bottom">
@@ -60,13 +60,15 @@ const FontColor = ({ showColorPicker, editorToolbar }) => (
   </Tooltip>
 )
 
-const ColorPicker = ({ value, onChange, changeFontColor }) => (
+/**
+ * The font color picker widget-style component
+ */
+const FontColorPicker = ({ value, onChange, editorToolbar }) => (
   <SketchPicker
     disableAlpha
     // eslint-disable-next-line
-    onChangeComplete={e => {
-      changeFontColor(e.hex)
-      onChange(fontColorMarkStrategy(value, e.hex))
+    onChangeComplete={(color, e) => {
+      onChange(fontColorMarkStrategy(value, color.hex))
     }}
   />
 )
@@ -75,10 +77,5 @@ const FontColorButton = connect(
   null,
   { showColorPicker },
 )(FontColor)
-
-const FontColorPicker = connect(
-  null,
-  { changeFontColor },
-)(ColorPicker)
 
 export { FontColorMark, FontColorButton, FontColorPicker }
