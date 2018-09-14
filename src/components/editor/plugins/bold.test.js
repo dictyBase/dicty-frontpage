@@ -1,9 +1,8 @@
 import React from "react"
 import { shallow } from "enzyme"
-import { Value } from "slate"
 
-import { BoldButton, BoldPlugin, BoldMark } from "./bold"
-import ToolbarButton from "editor/toolbar/ToolbarButton"
+import { BoldButton, BoldMark } from "./bold"
+import ToolbarButton from "../toolbar/ToolbarButton"
 
 describe("editor/plugins/bold", () => {
   describe("BoldMark", () => {
@@ -32,15 +31,5 @@ describe("editor/plugins/bold", () => {
         expect(wrapper.find(ToolbarButton).length).toBe(1)
       })
     })
-
-    describe("handleClick", () => {
-      // what happens when user clicks button?
-      // wrapper.find(ToolbarButton).simulate("click")
-      // wrapper.debug()
-    })
-  })
-
-  describe("BoldKeyboardShortcut", () => {
-    // what happens when user types keyboard shortcut?
   })
 })

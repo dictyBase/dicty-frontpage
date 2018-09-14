@@ -1,15 +1,8 @@
 import React from "react"
 import { shallow } from "enzyme"
 
-import {
-  ListPlugin,
-  ListItemNode,
-  OrderedListNode,
-  UnorderedListNode,
-  UnorderedListButton,
-  OrderedListButton,
-} from "./list"
-import ToolbarButton from "editor/toolbar/ToolbarButton"
+import { OrderedListNode, OrderedListButton } from "./list"
+import ToolbarButton from "../toolbar/ToolbarButton"
 
 describe("editor/plugins/list", () => {
   describe("OrderedListNode", () => {
@@ -34,8 +27,4 @@ describe("editor/plugins/list", () => {
       })
     })
   })
-
-  // describe("ListPlugin", () => {
-
-  // })
 })

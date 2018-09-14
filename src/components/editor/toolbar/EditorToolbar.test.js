@@ -1,11 +1,16 @@
 import React from "react"
-import { mount } from "enzyme"
-import EditorToolbar from "./EditorToolbar"
+import { shallow } from "enzyme"
+import { EditorToolbar } from "./EditorToolbar"
 import AppBar from "@material-ui/core/AppBar"
 import Toolbar from "@material-ui/core/Toolbar"
 
 describe("editor/toolbar/EditorToolbar", () => {
-  const wrapper = mount(<EditorToolbar />)
+  const props = {
+    classes: {
+      toolbar: {},
+    },
+  }
+  const wrapper = shallow(<EditorToolbar {...props} />)
 
   describe("initial render", () => {
     it("always renders an AppBar", () => {
