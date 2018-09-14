@@ -37,7 +37,7 @@ const handleClick = (value, onChange, type) => {
  * Button components that use click handlers to connect the buttons to the editor.
  */
 const OrderedListButton = ({ value, onChange }) => (
-  <Tooltip title="ctrl + shift + n" placement="bottom">
+  <Tooltip title="ordered list" placement="bottom">
     <ToolbarButton
       // eslint-disable-next-line
       onClick={e => handleClick(value, onChange, "ordered-list")}>
@@ -47,7 +47,7 @@ const OrderedListButton = ({ value, onChange }) => (
 )
 
 const UnorderedListButton = ({ value, onChange }) => (
-  <Tooltip title="ctrl + shift + l" placement="bottom">
+  <Tooltip title="unordered list" placement="bottom">
     <ToolbarButton
       // eslint-disable-next-line
       onClick={e => handleClick(value, onChange, "unordered-list")}>
