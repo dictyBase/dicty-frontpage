@@ -16,7 +16,7 @@ const initialState = {
   isFetching: false,
   error: null,
   currentFont: 0,
-  currentFontSize: 3,
+  currentFontSize: 2,
 }
 
 const editablePagesReducer = (state: Object = initialState, action: Object) => {

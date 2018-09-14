@@ -22,14 +22,14 @@ const styles = theme => ({
  * List of font sizes
  */
 const FontSizeList = [
-  { size: "10px" },
   { size: "12px" },
   { size: "14px" },
   { size: "16px" },
   { size: "18px" },
   { size: "20px" },
   { size: "22px" },
-  { size: "24px" },
+  { size: "26px" },
+  { size: "30px" },
 ]
 
 /**
