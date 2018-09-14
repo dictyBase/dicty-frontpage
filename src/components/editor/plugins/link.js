@@ -14,26 +14,26 @@ const wrapLink = (change, href) => {
     data: { href },
   })
 
-  change.moveToEnd()
+  change.collapseToEnd()
 }
 
 const insertLink = (change, url) => {
   if (change.value.isCollapsed) {
     change
       .insertText(url)
-      .moveFocusForward(0 - url.length)
+      .extend(0 - url.length)
       .wrapInline({
         type: "link",
         data: { url },
       })
-      .moveToEnd()
+      .collapseToEnd()
   } else {
     change.wrapInline({
       type: "link",
       data: { url },
     })
 
-    change.moveToEnd()
+    change.collapseToEnd()
   }
 }
 
@@ -56,7 +56,7 @@ const insertLinkStrategy = change => {
     } else {
       change
         .insertText(text)
-        .moveFocusForward(0 - text.length)
+        .extend(0 - text.length)
         .call(wrapLink, href)
     }
   }
