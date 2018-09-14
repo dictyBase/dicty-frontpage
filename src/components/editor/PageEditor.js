@@ -3,7 +3,6 @@ import React, { Component } from "react"
 import { connect } from "react-redux"
 import { getEventTransfer, getEventRange } from "slate-react"
 import { Value, type Change } from "slate"
-import EditTable from "slate-edit-table"
 import { withStyles } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
 import Button from "@material-ui/core/Button"
@@ -35,6 +34,7 @@ import {
   OrderedListNode,
   UnorderedListNode,
 } from "./plugins/list"
+import { TableNode, TableRowNode, TableCellNode } from "./plugins/table"
 import { VideoNode } from "./plugins/video"
 
 /** Import custom plugins */
@@ -47,6 +47,7 @@ import { ItalicPlugin } from "./plugins/italic"
 import { LinkPlugin } from "./plugins/link"
 import { ListPlugin } from "./plugins/list"
 import { StrikethroughPlugin } from "./plugins/strikethrough"
+import { TablePlugin } from "./plugins/table"
 import { UnderlinePlugin } from "./plugins/underline"
 import { VideoPlugin } from "./plugins/video"
 
@@ -69,7 +70,6 @@ const styles = theme => ({
  * These are generally keyboard shortcuts
  */
 const plugins = [
-  EditTable(),
   AlignmentPlugin(),
   BoldPlugin(),
   DividerPlugin(),
@@ -79,6 +79,7 @@ const plugins = [
   LinkPlugin(),
   ListPlugin(),
   StrikethroughPlugin(),
+  TablePlugin,
   UnderlinePlugin(),
   VideoPlugin(),
 ]
@@ -145,6 +146,12 @@ export const renderNode = (props: nodeProps) => {
       return <UnorderedListNode {...props} />
     case "ordered-list":
       return <OrderedListNode {...props} />
+    case "table":
+      return <TableNode {...props} />
+    case "table-row":
+      return <TableRowNode {...props} />
+    case "table-cell":
+      return <TableCellNode {...props} />
     case "video":
       return <VideoNode {...props} />
 
