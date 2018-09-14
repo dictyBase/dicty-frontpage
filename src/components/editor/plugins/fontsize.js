@@ -93,10 +93,8 @@ const Dropdown = ({
   </FormControl>
 )
 
-const mapStateToProps = ({ editorToolbar }) => ({ editorToolbar })
-
 const FontSizeDropdown = connect(
-  mapStateToProps,
+  null,
   { changeFontSize },
 )(Dropdown)
 

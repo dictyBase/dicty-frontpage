@@ -68,16 +68,12 @@ const FontColorPicker = ({ color, onClick }) => (
   <SketchPicker
     disableAlpha
     // color={color}
-    width="180px"
-    presetColors={[]}
-    // onChangeComplete={e => this.onClickColor(e.hex, "color", isActive)}
+    // onChangeComplete={e => this.onClickColor(e.hex)}
   />
 )
 
-const mapStateToProps = ({ editorToolbar }) => ({ editorToolbar })
-
 const FontColorButton = connect(
-  mapStateToProps,
+  null,
   { changeFontColor, showColorPicker },
 )(FontColor)
 
