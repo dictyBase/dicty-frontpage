@@ -4,7 +4,7 @@ import MenuItem from "@material-ui/core/MenuItem"
 import FormControl from "@material-ui/core/FormControl"
 import Select from "@material-ui/core/Select"
 
-import { changeFontSelect } from "actions/editablePages"
+import { changeFontSelect } from "actions/editorToolbar"
 
 /**
  * List of fonts available
@@ -67,12 +67,12 @@ const Dropdown = ({
   value,
   onChange,
   classes,
-  editablePages,
+  editorToolbar,
   changeFontSelect,
 }) => (
   <FormControl className={classes.fontFamilyDropdown}>
     <Select
-      value={editablePages.currentFont}
+      value={editorToolbar.currentFont}
       // eslint-disable-next-line
       onChange={({ target: { value: fontFamilyIndex } }) => {
         changeFontSelect(fontFamilyIndex)
@@ -87,7 +87,7 @@ const Dropdown = ({
   </FormControl>
 )
 
-const mapStateToProps = ({ editablePages }) => ({ editablePages })
+const mapStateToProps = ({ editorToolbar }) => ({ editorToolbar })
 
 const FontFamilyDropdown = connect(
   mapStateToProps,

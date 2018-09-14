@@ -35,9 +35,9 @@ const styles = theme => ({
 })
 
 const HelpMuiModal = props => {
-  const { helpModalOpen, classes, handleClose } = props
+  const { showHelpModal, classes, handleClose } = props
   return (
-    <Modal className={classes.modal} open={helpModalOpen}>
+    <Modal className={classes.modal} open={showHelpModal}>
       <div style={getModalStyle()} className={classes.paper}>
         <Grid container justify="center" direction="column">
           <Grid item xs={12}>

@@ -17,6 +17,7 @@ import placeholder from "./data/placeholder.json"
 
 /** Import mark renderers */
 import { BoldMark } from "./plugins/bold"
+import { FontColorMark } from "./plugins/fontcolor"
 import { FontFamilyMark } from "./plugins/fontfamily"
 import { FontSizeMark } from "./plugins/fontsize"
 import { ItalicMark } from "./plugins/italic"
@@ -98,6 +99,8 @@ export const renderMark = (props: markProps) => {
   switch (mark.type) {
     case "bold":
       return <BoldMark {...props} />
+    case "font-color":
+      return <FontColorMark {...props} />
     case "font-family":
       return <FontFamilyMark {...props} />
     case "font-size":

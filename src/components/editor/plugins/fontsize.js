@@ -4,7 +4,7 @@ import MenuItem from "@material-ui/core/MenuItem"
 import FormControl from "@material-ui/core/FormControl"
 import Select from "@material-ui/core/Select"
 
-import { changeFontSize } from "actions/editablePages"
+import { changeFontSize } from "actions/editorToolbar"
 
 /**
  * List of font sizes
@@ -73,12 +73,12 @@ const Dropdown = ({
   value,
   onChange,
   classes,
-  editablePages,
+  editorToolbar,
   changeFontSize,
 }) => (
   <FormControl className={classes.fontSizeDropdown}>
     <Select
-      value={editablePages.currentFontSize}
+      value={editorToolbar.currentFontSize}
       // eslint-disable-next-line
       onChange={({ target: { value: fontSizeIndex } }) => {
         changeFontSize(fontSizeIndex)
@@ -93,7 +93,7 @@ const Dropdown = ({
   </FormControl>
 )
 
-const mapStateToProps = ({ editablePages }) => ({ editablePages })
+const mapStateToProps = ({ editorToolbar }) => ({ editorToolbar })
 
 const FontSizeDropdown = connect(
   mapStateToProps,

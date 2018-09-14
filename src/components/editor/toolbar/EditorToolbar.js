@@ -1,4 +1,5 @@
 import React from "react"
+import { connect } from "react-redux"
 import AppBar from "@material-ui/core/AppBar"
 import Toolbar from "@material-ui/core/Toolbar"
 import Typography from "@material-ui/core/Typography"
@@ -16,6 +17,7 @@ import {
   AlignmentRightButton,
 } from "../plugins/alignment"
 import { DividerButton } from "../plugins/divider"
+import { FontColorButton, FontColorPicker } from "../plugins/fontcolor"
 import { FontFamilyDropdown } from "../plugins/fontfamily"
 import { FontSizeDropdown } from "../plugins/fontsize"
 import { H1Button, H2Button, H3Button } from "../plugins/heading"
@@ -47,6 +49,9 @@ const styles = theme => ({
     margin: theme.spacing.unit,
     minWidth: 150,
   },
+  colorPicker: {
+    float: "right",
+  },
 })
 
 /**
@@ -75,7 +80,11 @@ export const EditorToolbar = props => {
           <LinkButton {...props} />
           <ImageButton {...props} />
           <VideoButton {...props} />
+          <FontColorButton {...props} />
           <br />
+          <div className={classes.colorPicker}>
+            {props.editorToolbar.showColorPicker && <FontColorPicker />}
+          </div>
           <InsertTableButton {...props} />
           <InsertTableColumnButton {...props} />
           <InsertTableRowButton {...props} />
@@ -90,4 +99,6 @@ export const EditorToolbar = props => {
   )
 }
 
-export default withStyles(styles)(EditorToolbar)
+const mapStateToProps = ({ editorToolbar }) => ({ editorToolbar })
+
+export default connect(mapStateToProps)(withStyles(styles)(EditorToolbar))
