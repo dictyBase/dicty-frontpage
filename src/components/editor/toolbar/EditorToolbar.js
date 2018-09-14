@@ -83,7 +83,9 @@ export const EditorToolbar = props => {
           <FontColorButton {...props} />
           <br />
           <div className={classes.colorPicker}>
-            {props.editorToolbar.showColorPicker && <FontColorPicker />}
+            {props.editorToolbar.showColorPicker && (
+              <FontColorPicker {...props} />
+            )}
           </div>
           <InsertTableButton {...props} />
           <InsertTableColumnButton {...props} />

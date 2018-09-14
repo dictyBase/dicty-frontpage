@@ -24,9 +24,7 @@ const reapplyMark = ({ change, color }) =>
 
 const applyMark = ({ change, color }) => change.addMark(createMark(color))
 
-const fontColorMarkStrategy = attributes => {
-  const { value, color } = attributes
-
+const fontColorMarkStrategy = (value, color) => {
   if (hasMark(value)) {
     if (value.isExpanded) {
       return reapplyMark({ change: value.change(), color })
@@ -44,37 +42,43 @@ const fontColorMarkStrategy = attributes => {
  * Rendering components that provide the actual HTML to use inside the editor.
  */
 const FontColorMark = ({ children, mark: { data } }) => (
-  <span style={{ color: data.color }}>{children}</span>
+  <span style={{ color: data.get("color") }}>{children}</span>
 )
 
 /**
  * Button component that uses a click handler to connect to the editor.
  */
-const FontColor = ({ value, onChange, showColorPicker, editorToolbar }) => (
+const FontColor = ({ showColorPicker, editorToolbar }) => (
   <Tooltip title="font color picker" placement="bottom">
     <ToolbarButton
       // eslint-disable-next-line
-      onClick={({ target: { value: color } }) => {
-        // changeFontColor(color)
+      onClick={e => {
         showColorPicker(!editorToolbar.showColorPicker)
-        // onChange(fontColorMarkStrategy(value, color))
       }}>
       <FormatColorTextIcon />
     </ToolbarButton>
   </Tooltip>
 )
 
-const FontColorPicker = ({ color, onClick }) => (
+const ColorPicker = ({ value, onChange, changeFontColor }) => (
   <SketchPicker
     disableAlpha
-    // color={color}
-    // onChangeComplete={e => this.onClickColor(e.hex)}
+    // eslint-disable-next-line
+    onChangeComplete={e => {
+      changeFontColor(e.hex)
+      onChange(fontColorMarkStrategy(value, e.hex))
+    }}
   />
 )
 
 const FontColorButton = connect(
   null,
-  { changeFontColor, showColorPicker },
+  { showColorPicker },
 )(FontColor)
+
+const FontColorPicker = connect(
+  null,
+  { changeFontColor },
+)(ColorPicker)
 
 export { FontColorMark, FontColorButton, FontColorPicker }
