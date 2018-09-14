@@ -28,14 +28,6 @@ export const StyledEditor = styled(Editor)`
     flex-wrap: nowrap;
   }
 
-  table tr:first-child {
-    background: #f7f8f9;
-  }
-
-  table tr:first-child p {
-    font-weight: bold;
-  }
-
   table td {
     padding: 0.4rem 1.4rem 0.4rem 0.8rem;
     border: 1px solid #ccc;
