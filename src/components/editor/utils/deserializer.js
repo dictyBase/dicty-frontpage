@@ -2,9 +2,9 @@ import Html from "slate-html-serializer"
 
 const BLOCK_TAGS = {
   p: "paragraph",
-  li: "list-item",
   ul: "unordered-list",
   ol: "ordered-list",
+  li: "list-item",
   h1: "h1",
   h2: "h2",
   h3: "h3",
@@ -54,14 +54,10 @@ const rules = [
             href: el.getAttribute("href"),
           },
         }
-      } else if (el.tagName.toLowerCase() === "td") {
+      } else if (el.tagName.toLowerCase() === "br") {
         return {
-          object: "block",
-          type: "table-cell",
-          nodes: next(el.childNodes),
-          data: {
-            align: el.style.textAlign,
-          },
+          object: "text",
+          text: "\n",
         }
       } else if (BLOCK_TAGS[tagName]) {
         // rule to handle blocks
