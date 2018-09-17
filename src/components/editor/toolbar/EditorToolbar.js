@@ -36,7 +36,9 @@ import { VideoButton } from "../plugins/video"
 
 const styles = theme => ({
   toolbar: {
-    position: "relative",
+    // make toolbar stay at top within container, even on scroll
+    position: "sticky",
+    top: 0,
     padding: "10px 0px 10px",
     borderBottom: "2px solid #d1d5da",
     backgroundColor: "#ccd9ff",
