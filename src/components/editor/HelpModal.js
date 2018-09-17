@@ -46,34 +46,6 @@ const HelpMuiModal = props => {
             </center>
           </Grid>
           <Grid item xs={12}>
-            <h3>Keyboard Shortcuts:</h3>
-            <Grid container>
-              <Grid item xs={6}>
-                <strong>Bold</strong>
-              </Grid>
-              <Grid item xs={6}>
-                CTRL + B
-              </Grid>
-              <Grid item xs={6}>
-                <em>Italic</em>
-              </Grid>
-              <Grid item xs={6}>
-                CTRL + I
-              </Grid>
-              <Grid item xs={6}>
-                <strike>Strikethrough</strike>
-              </Grid>
-              <Grid item xs={6}>
-                CTRL + D
-              </Grid>
-              <Grid item xs={6}>
-                <u>Underline</u>
-              </Grid>
-              <Grid item xs={6}>
-                CTRL + U
-              </Grid>
-            </Grid>
-
             <h3>Pasting Content</h3>
             <p>
               Most content from HTML pages can be copied and pasted directly
@@ -89,6 +61,13 @@ const HelpMuiModal = props => {
             <p>
               Videos can be added by copying and pasting the video URL (either
               YouTube or Vimeo). This will automatically embed the video.
+            </p>
+            <h3>Keyboard Shortcuts</h3>
+            <p>
+              Some features have keyboard shortcuts. These can be found by
+              hovering over a button in the toolbar. These tooltips will show
+              any applicable shortcuts. For example, <strong>bold</strong> is
+              CTRL + B.
             </p>
             <SaveButton className={classes.save} onClick={handleClose}>
               Close
