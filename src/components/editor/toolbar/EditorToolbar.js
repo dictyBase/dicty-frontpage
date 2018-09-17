@@ -1,7 +1,6 @@
 import React from "react"
 import { connect } from "react-redux"
 import AppBar from "@material-ui/core/AppBar"
-import Button from "@material-ui/core/Button"
 import Toolbar from "@material-ui/core/Toolbar"
 import Tooltip from "@material-ui/core/Tooltip"
 import Typography from "@material-ui/core/Typography"
@@ -110,7 +109,6 @@ export const EditorToolbar = props => {
           <FontSizeDropdown {...props} />
           <Tooltip title="Editor Help">
             <ToolbarButton
-              size="large"
               // eslint-disable-next-line
               onClick={e => {
                 showHelpModal(true)

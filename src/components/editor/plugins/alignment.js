@@ -10,7 +10,7 @@ import ToolbarButton from "../toolbar/ToolbarButton"
  * Functions to set the alignment blocks.
  */
 const alignmentMarkStrategy = (change, align) =>
-  change.setBlocks({
+  change.unwrapBlock("alignment").wrapBlock({
     type: "alignment",
     data: { align },
   })
