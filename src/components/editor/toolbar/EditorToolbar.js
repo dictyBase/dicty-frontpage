@@ -1,9 +1,15 @@
 import React from "react"
 import { connect } from "react-redux"
 import AppBar from "@material-ui/core/AppBar"
+import Button from "@material-ui/core/Button"
 import Toolbar from "@material-ui/core/Toolbar"
+import Tooltip from "@material-ui/core/Tooltip"
 import Typography from "@material-ui/core/Typography"
+import HelpIcon from "@material-ui/icons/Help"
 import { withStyles } from "@material-ui/core/styles"
+
+import ToolbarButton from "components/editor/toolbar/ToolbarButton"
+import { showHelpModal } from "actions/editorToolbar"
 
 /** import toolbar buttons */
 import { BoldButton } from "../plugins/bold"
@@ -42,6 +48,7 @@ const styles = theme => ({
     padding: "10px 0px 10px",
     borderBottom: "2px solid #d1d5da",
     backgroundColor: "#ccd9ff",
+    cursor: "default",
   },
   fontSizeDropdown: {
     margin: theme.spacing.unit,
@@ -54,6 +61,10 @@ const styles = theme => ({
   colorPicker: {
     float: "right",
   },
+  largeIcon: {
+    height: "35px",
+    width: "40px",
+  },
 })
 
 /**
@@ -61,7 +72,7 @@ const styles = theme => ({
  */
 
 export const EditorToolbar = props => {
-  const { classes } = props
+  const { classes, showHelpModal } = props
   return (
     <AppBar className={classes.toolbar} position="static" color="default">
       <Toolbar>
@@ -97,6 +108,16 @@ export const EditorToolbar = props => {
           <RemoveTableButton {...props} />
           <FontFamilyDropdown {...props} />
           <FontSizeDropdown {...props} />
+          <Tooltip title="Editor Help">
+            <ToolbarButton
+              size="large"
+              // eslint-disable-next-line
+              onClick={e => {
+                showHelpModal(true)
+              }}>
+              <HelpIcon className={classes.largeIcon} />
+            </ToolbarButton>
+          </Tooltip>
         </Typography>
       </Toolbar>
     </AppBar>
@@ -105,4 +126,7 @@ export const EditorToolbar = props => {
 
 const mapStateToProps = ({ editorToolbar }) => ({ editorToolbar })
 
-export default connect(mapStateToProps)(withStyles(styles)(EditorToolbar))
+export default connect(
+  mapStateToProps,
+  { showHelpModal },
+)(withStyles(styles)(EditorToolbar))
