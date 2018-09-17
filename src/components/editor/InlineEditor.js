@@ -1,74 +1,188 @@
 // @flow
 import React, { Component } from "react"
 import { connect } from "react-redux"
-import { Editor, getEventTransfer } from "slate-react"
+import { getEventTransfer, getEventRange } from "slate-react"
 import { Value, type Change } from "slate"
-import FontAwesome from "react-fontawesome"
-import { Flex, Box } from "rebass"
-import Authorization from "components/authentication/Authorization"
-import { editInline, saveInlineEditing } from "actions/editablePages"
-import {
-  ToolbarButton,
-  Toolbar,
-  CancelButton,
-  SaveButton,
-  InlineLink,
-  TextInfo,
-} from "styles/EditablePageStyles"
+import { withStyles } from "@material-ui/core/styles"
+import Grid from "@material-ui/core/Grid"
+import Button from "@material-ui/core/Button"
+import CreateIcon from "@material-ui/icons/Create"
 
-const renderMark = props => {
-  const { children, mark } = props
+import Authorization from "components/authentication/Authorization"
+import EditorToolbar from "./toolbar/EditorToolbar"
+import { insertImage } from "./plugins/image"
+import { onPasteHtml, onPasteText } from "./utils/utils"
+import { editInline, saveInlineEditing } from "actions/editablePages"
+import { StyledEditor, InlineLink, TextInfo } from "styles/EditablePageStyles"
+import placeholder from "./data/placeholder.json"
+
+/** Import mark renderers */
+import { BoldMark } from "./plugins/bold"
+import { FontColorMark } from "./plugins/fontcolor"
+import { FontFamilyMark } from "./plugins/fontfamily"
+import { FontSizeMark } from "./plugins/fontsize"
+import { ItalicMark } from "./plugins/italic"
+import { StrikethroughMark } from "./plugins/strikethrough"
+import { UnderlineMark } from "./plugins/underline"
+
+/** Import node renderers */
+import { AlignmentNode } from "./plugins/alignment"
+import { DividerNode } from "./plugins/divider"
+import { H1Node, H2Node, H3Node } from "./plugins/heading"
+import { ImageNode } from "./plugins/image"
+import { LinkNode } from "./plugins/link"
+import {
+  ListItemNode,
+  OrderedListNode,
+  UnorderedListNode,
+} from "./plugins/list"
+import { TableNode, TableRowNode, TableCellNode } from "./plugins/table"
+import { VideoNode } from "./plugins/video"
+
+/** Import custom plugins */
+import { AlignmentPlugin } from "./plugins/alignment"
+import { BoldPlugin } from "./plugins/bold"
+import { DividerPlugin } from "./plugins/divider"
+import { HeadingPlugin } from "./plugins/heading"
+import { ImagePlugin } from "./plugins/image"
+import { ItalicPlugin } from "./plugins/italic"
+import { LinkPlugin } from "./plugins/link"
+import { ListPlugin } from "./plugins/list"
+import { StrikethroughPlugin } from "./plugins/strikethrough"
+import { TablePlugin } from "./plugins/table"
+import { UnderlinePlugin } from "./plugins/underline"
+
+const styles = theme => ({
+  buttonGrid: {
+    marginRight: "8px",
+    marginTop: "8px",
+  },
+  saveButton: {
+    width: "100%",
+    backgroundColor: "#15317e",
+  },
+  cancelButton: {
+    width: "100%",
+  },
+  icon: {
+    height: "17px",
+    width: "17px",
+  },
+})
+
+/**
+ * All of the plugins that go into our editor
+ * These are generally keyboard shortcuts
+ */
+const plugins = [
+  AlignmentPlugin(),
+  BoldPlugin(),
+  DividerPlugin(),
+  HeadingPlugin(),
+  ImagePlugin(),
+  ItalicPlugin(),
+  LinkPlugin(),
+  ListPlugin,
+  StrikethroughPlugin(),
+  TablePlugin,
+  UnderlinePlugin(),
+]
+
+type markProps = {
+  mark: Object,
+}
+
+/**
+ * Necessary renderMark function that receives the mark type then renders the HTML
+ * In our case, we are returning custom components
+ */
+export const renderMark = (props: markProps) => {
+  const { mark } = props
 
   switch (mark.type) {
     case "bold":
-      return <strong>{children}</strong>
-
+      return <BoldMark {...props} />
+    case "font-color":
+      return <FontColorMark {...props} />
+    case "font-family":
+      return <FontFamilyMark {...props} />
+    case "font-size":
+      return <FontSizeMark {...props} />
     case "italic":
-      return <em>{children}</em>
-
-    case "underline":
-      return <u>{children}</u>
-
+      return <ItalicMark {...props} />
     case "strikethrough":
-      return <del>{children}</del>
+      return <StrikethroughMark {...props} />
+    case "underline":
+      return <UnderlineMark {...props} />
 
     default:
       return null
   }
 }
 
-const renderNode = props => {
-  const { node, attributes, children } = props
+type nodeProps = {
+  node: Object,
+  attributes: Object,
+  children: any,
+}
 
+/**
+ * Similar to renderMark above, except now we are working with nodes.
+ */
+export const renderNode = (props: nodeProps) => {
+  const { node, attributes, children } = props
   switch (node.type) {
-    case "link": {
-      const { data } = node
-      const href = data.get("href")
-      return (
-        <a {...attributes} href={href}>
-          {children}
-        </a>
-      )
-    }
+    case "alignment":
+      return <AlignmentNode {...props} />
+    case "divider":
+      return <DividerNode {...props} />
+    case "h1":
+      return <H1Node {...props} />
+    case "h2":
+      return <H2Node {...props} />
+    case "h3":
+      return <H3Node {...props} />
+    case "image":
+      return <ImageNode {...props} />
+    case "link":
+      return <LinkNode {...props} />
+    case "list-item":
+      return <ListItemNode {...props} />
+    case "unordered-list":
+      return <UnorderedListNode {...props} />
+    case "ordered-list":
+      return <OrderedListNode {...props} />
+    case "table":
+      return <TableNode {...props} />
+    case "table-row":
+      return <TableRowNode {...props} />
+    case "table-cell":
+      return <TableCellNode {...props} />
+    case "video":
+      return <VideoNode {...props} />
 
     default:
-      return <p {...attributes}>{children}</p>
+      return <div {...attributes}>{children}</div>
   }
 }
 
 type Props = {
-  /** Represents whether component is loading or not */
-  isFetching: boolean,
   /** The object holding the fetched page content */
   page: Object,
   /** Action to fetch page content from API server */
   fetchPage: Function,
   /** Action that saves inline editor content to API server */
-  saveInlineEditingAction: Function,
+  saveInlineEditing: Function,
   /** Action creator to edit inline content */
-  editInlineAction: Function,
+  editInline: Function,
+  /** React Router's match object */
+  match: Object,
+  /** Whether the editor is in read-only mode or not */
+  readOnly: boolean,
   /** ID of current logged in user */
   userId: string,
+  /** Material-UI styling */
+  classes: Object,
 }
 
 type State = {
@@ -79,36 +193,26 @@ type State = {
 }
 
 /**
- * This is a reusable Slate inline editor component.
+ * This is a reusable Slate inline page editor component.
  */
-
-const wrapLink = (change, href) => {
-  change.wrapInline({
-    type: "link",
-    data: { href },
-  })
-
-  change.collapseToEnd()
-}
-
-const unwrapLink = change => {
-  change.unwrapInline("link")
-}
 
 class InlineEditor extends Component<Props, State> {
   constructor(props: Props) {
     super(props)
 
-    this.state = {
-      // initial value of editor
-      value: Value.fromJSON(JSON.parse(props.page.data.attributes.content)),
-      readOnly: true,
+    if (props.page) {
+      this.state = {
+        // Initial value of editor
+        value: Value.fromJSON(JSON.parse(props.page.data.attributes.content)),
+        readOnly: true,
+      }
+    } else {
+      this.state = {
+        // set default value for any page route refreshing
+        value: Value.fromJSON(placeholder),
+        readOnly: props.readOnly,
+      }
     }
-  }
-
-  hasLinks = () => {
-    const { value } = this.state
-    return value.inlines.some(inline => inline.type === "link")
   }
 
   onChange = ({ value }: Object) => {
@@ -120,8 +224,8 @@ class InlineEditor extends Component<Props, State> {
     this.setState({
       readOnly: false,
     })
-    const { editInlineAction, page } = this.props
-    editInlineAction(page.data.attributes.content)
+    const { editInline, page } = this.props
+    editInline(page.data.attributes.content)
   }
 
   onCancel = () => {
@@ -135,7 +239,7 @@ class InlineEditor extends Component<Props, State> {
   // on save, save the value to the content API server
   onSave = () => {
     const { value } = this.state
-    const { page, saveInlineEditingAction, userId } = this.props
+    const { page, saveInlineEditing, userId } = this.props
 
     const content = JSON.stringify(value.toJSON())
 
@@ -150,112 +254,67 @@ class InlineEditor extends Component<Props, State> {
         },
       },
     }
-    saveInlineEditingAction(page.data.id, body)
+    saveInlineEditing(page.data.id, body)
 
     this.setState(value)
   }
 
-  onClickLink = (event: SyntheticEvent<>) => {
-    event.preventDefault()
-    const { value } = this.state
-    const hasLinks = this.hasLinks()
-    const change = value.change()
-
-    if (hasLinks) {
-      change.call(unwrapLink)
-    } else if (value.isExpanded) {
-      const href = window.prompt("Enter the URL of the link:")
-      change.call(wrapLink, href)
-    } else {
-      const href = window.prompt("Enter the URL of the link:")
-      const text = window.prompt("Enter the text for the link:")
-      change
-        .insertText(text)
-        .extend(0 - text.length)
-        .call(wrapLink, href)
+  onPaste = (e: SyntheticEvent<>, change: Change) => {
+    const transfer = getEventTransfer(e)
+    const { type } = transfer
+    switch (type) {
+      case "text":
+        return onPasteText(e, change)
+      case "html":
+        return onPasteHtml(e, change)
+      default:
+        break
     }
-
-    this.onChange(change)
   }
 
-  onPaste = (event: SyntheticEvent<>, change: Change) => {
-    if (change.value.isCollapsed) return
+  onDrop = (event, change, editor) => {
+    const target = getEventRange(event, change.value)
+    if (!target && event.type === "drop") return
 
     const transfer = getEventTransfer(event)
-    const { type, text } = transfer
-    if (type !== "text" && type !== "html") return
+    const { type, files } = transfer
 
-    if (this.hasLinks()) {
-      change.call(unwrapLink)
-    }
+    if (type === "files") {
+      for (const file of files) {
+        const reader = new FileReader()
+        const [mime] = file.type.split("/")
+        if (mime !== "image") continue
 
-    change.call(wrapLink, text)
-    return true
-  }
+        reader.addEventListener("load", () => {
+          editor.change(c => {
+            c.call(insertImage, reader.result, target)
+          })
+        })
 
-  /* HTML Toolbar */
-
-  /* For bold, underline, and italic text */
-  hasMark = (type: string) => {
-    const { value } = this.state
-    return value.activeMarks.some(mark => mark.type === type)
-  }
-
-  onClickMark = (event: SyntheticEvent<>, type: string) => {
-    event.preventDefault()
-    const { value } = this.state
-    const change = value.change().toggleMark(type)
-    this.onChange(change)
-  }
-
-  renderMarkButton = (type: string) => {
-    const isActive = this.hasMark(type)
-    const onMouseDown = event => this.onClickMark(event, type)
-
-    return (
-      // eslint-disable-next-line
-      <ToolbarButton onMouseDown={onMouseDown} data-active={isActive}>
-        <FontAwesome name={type} />
-      </ToolbarButton>
-    )
-  }
-
-  renderBlockButton = (type: string) => {
-    const hasLinks = this.hasLinks()
-
-    switch (type) {
-      case "link":
-        return (
-          <ToolbarButton onMouseDown={this.onClickLink} data-active={hasLinks}>
-            <FontAwesome name="link" />
-          </ToolbarButton>
-        )
-      default:
-        return <div />
+        reader.readAsDataURL(file)
+      }
     }
   }
 
   render() {
     const { readOnly, value } = this.state
+    const { classes, page } = this.props
+
     return (
       <div>
         {!readOnly && (
-          <Toolbar>
-            {this.renderMarkButton("bold")}
-            {this.renderMarkButton("italic")}
-            {this.renderMarkButton("underline")}
-            {this.renderMarkButton("strikethrough")}
-            {this.renderBlockButton("link")}
-          </Toolbar>
+          <EditorToolbar value={value} onChange={this.onChange} page={page} />
         )}
 
-        <Editor
+        <StyledEditor
           value={value}
           onChange={this.onChange}
           onPaste={this.onPaste}
+          onDrop={this.onDrop}
           renderMark={renderMark}
           renderNode={renderNode}
           readOnly={readOnly}
+          plugins={plugins}
         />
 
         <Authorization
@@ -267,36 +326,39 @@ class InlineEditor extends Component<Props, State> {
                 readOnly && (
                   <TextInfo>
                     <InlineLink onClick={this.onEdit} title="Edit">
-                      <FontAwesome name="pencil" /> Edit
+                      <CreateIcon className={classes.icon} /> Edit
                     </InlineLink>
                   </TextInfo>
                 )}
             </div>
           )}
         />
-        <Flex justify="flex-end">
-          <Box width="15%" mr={1} mt={1}>
+
+        <Grid container justify="flex-end">
+          <Grid item xs={2} className={classes.buttonGrid}>
             {!readOnly && (
-              <CancelButton
+              <Button
+                className={classes.cancelButton}
                 size="small"
                 variant="contained"
                 onClick={this.onCancel}>
                 Cancel
-              </CancelButton>
+              </Button>
             )}
-          </Box>
-          <Box width="15%" mr={1} mt={1}>
+          </Grid>
+          <Grid item xs={2} className={classes.buttonGrid}>
             {!readOnly && (
-              <SaveButton
+              <Button
+                className={classes.saveButton}
                 size="small"
                 variant="contained"
                 color="primary"
                 onClick={this.onSave}>
                 Save
-              </SaveButton>
+              </Button>
             )}
-          </Box>
-        </Flex>
+          </Grid>
+        </Grid>
       </div>
     )
   }
@@ -313,5 +375,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { editInlineAction: editInline, saveInlineEditingAction: saveInlineEditing },
-)(InlineEditor)
+  { editInline, saveInlineEditing },
+)(withStyles(styles)(InlineEditor))
