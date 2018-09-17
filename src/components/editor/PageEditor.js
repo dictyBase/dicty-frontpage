@@ -50,7 +50,6 @@ import { ListPlugin } from "./plugins/list"
 import { StrikethroughPlugin } from "./plugins/strikethrough"
 import { TablePlugin } from "./plugins/table"
 import { UnderlinePlugin } from "./plugins/underline"
-import { VideoPlugin } from "./plugins/video"
 
 const styles = theme => ({
   buttonGrid: {
@@ -82,7 +81,6 @@ const plugins = [
   StrikethroughPlugin(),
   TablePlugin,
   UnderlinePlugin(),
-  VideoPlugin(),
 ]
 
 type markProps = {

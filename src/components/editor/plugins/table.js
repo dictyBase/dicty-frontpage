@@ -47,7 +47,7 @@ const InsertTableColumnButton = ({ value, onChange }) => (
 )
 
 const InsertTableRowButton = ({ value, onChange }) => (
-  <Tooltip title="insert table column" placement="bottom">
+  <Tooltip title="insert table row" placement="bottom">
     <ToolbarButton
       // eslint-disable-next-line
       onClick={e => {

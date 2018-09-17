@@ -5,7 +5,6 @@ import VideoIcon from "@material-ui/icons/Videocam"
 import getVideoId from "get-video-id"
 
 import ToolbarButton from "../toolbar/ToolbarButton"
-import { isMod } from "../utils/utils"
 
 /**
  * Material-UI styling
@@ -97,25 +96,6 @@ const VideoButton = ({ value, onChange }) => (
 )
 
 /**
- * Function that specifies the keyboard shortcuts to use for videos.
- * It accepts event and change as arguments.
- */
-const VideoKeyboardShortcut = (event, change) => {
-  if (isMod(event) && event.key === "m") return insertVideoStrategy(change)
-  return
-}
-
-/**
- * Function that represents our actual plugin.
- * It takes options in case we want to add more to it in the future.
- */
-const VideoPlugin = options => ({
-  onKeyDown(...args) {
-    return VideoKeyboardShortcut(...args)
-  },
-})
-
-/**
  * Export everything needed for the editor.
  */
-export { VideoNode, VideoButton, VideoPlugin, insertVideo }
+export { VideoNode, VideoButton, insertVideo }

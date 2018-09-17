@@ -17,7 +17,7 @@ import {
   AlignmentRightButton,
 } from "../plugins/alignment"
 import { DividerButton } from "../plugins/divider"
-import { FontColorButton, FontColorPicker } from "../plugins/fontcolor"
+// import { FontColorButton, FontColorPicker } from "../plugins/fontcolor"
 import { FontFamilyDropdown } from "../plugins/fontfamily"
 import { FontSizeDropdown } from "../plugins/fontsize"
 import { H1Button, H2Button, H3Button } from "../plugins/heading"
@@ -80,13 +80,13 @@ export const EditorToolbar = props => {
           <LinkButton {...props} />
           <ImageButton {...props} />
           <VideoButton {...props} />
-          <FontColorButton {...props} />
+          {/* <FontColorButton {...props} /> */}
           <br />
-          <div className={classes.colorPicker}>
+          {/* <div className={classes.colorPicker}>
             {props.editorToolbar.showColorPicker && (
               <FontColorPicker {...props} />
             )}
-          </div>
+          </div> */}
           <InsertTableButton {...props} />
           <InsertTableColumnButton {...props} />
           <InsertTableRowButton {...props} />
