@@ -5,13 +5,6 @@ import Modal from "@material-ui/core/Modal"
 import ClickAwayListener from "@material-ui/core/ClickAwayListener"
 import { SaveButton } from "styles/EditablePageStyles"
 
-function getModalStyle() {
-  return {
-    top: "5%",
-    margin: "auto",
-  }
-}
-
 const styles = theme => ({
   paper: {
     position: "absolute",
@@ -20,6 +13,8 @@ const styles = theme => ({
     boxShadow: theme.shadows[5],
     padding: theme.spacing.unit * 2,
     borderRadius: "5px",
+    top: "5%",
+    margin: "auto",
   },
   modal: {
     display: "flex",
@@ -40,11 +35,11 @@ const styles = theme => ({
 
 const HelpMuiModal = props => {
   const { showHelpModal, classes, handleClose } = props
-  console.log(handleClose)
+
   return (
     <Modal className={classes.modal} open={showHelpModal}>
       <ClickAwayListener onClickAway={handleClose}>
-        <div style={getModalStyle()} className={classes.paper}>
+        <div className={classes.paper}>
           <Grid container justify="center" direction="column">
             <Grid item xs={12}>
               <center>

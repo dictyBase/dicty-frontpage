@@ -7,7 +7,6 @@ import { withStyles } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
 import Button from "@material-ui/core/Button"
 
-// import Toolbar from "components/editor/Toolbar"
 import EditorToolbar from "./toolbar/EditorToolbar"
 import { insertImage } from "./plugins/image"
 import { onPasteHtml, onPasteText } from "./utils/utils"
