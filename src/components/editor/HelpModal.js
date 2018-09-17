@@ -7,7 +7,7 @@ import { SaveButton } from "styles/EditablePageStyles"
 
 function getModalStyle() {
   return {
-    top: "15%",
+    top: "5%",
     margin: "auto",
   }
 }
@@ -15,10 +15,10 @@ function getModalStyle() {
 const styles = theme => ({
   paper: {
     position: "absolute",
-    width: theme.spacing.unit * 50,
+    width: theme.spacing.unit * 75,
     backgroundColor: "#faf9f9",
     boxShadow: theme.shadows[5],
-    padding: theme.spacing.unit * 4,
+    padding: theme.spacing.unit * 2,
     borderRadius: "5px",
   },
   modal: {
@@ -32,6 +32,9 @@ const styles = theme => ({
     "&:hover": {
       backgroundColor: "#3f51b5",
     },
+  },
+  link: {
+    textDecoration: "none",
   },
 })
 
@@ -56,6 +59,14 @@ const HelpMuiModal = props => {
                 copy then paste it into the editor.
               </p>
               <p>
+                <strong>Known bugs:</strong> Lists and tables sometimes do not
+                work as expected when pasted into the editor. For lists, your
+                best bet is to copy item by item (or a few items at once), then
+                format accordingly. For tables, it will be easier to create a
+                new table with the applicable toolbar buttons (i.e. create
+                table, add row, etc.), then paste in the content cell by cell.
+              </p>
+              <p>
                 Links can easily be added by highlighting text and pasting a
                 URL.
               </p>
@@ -70,8 +81,22 @@ const HelpMuiModal = props => {
               <p>
                 Some features have keyboard shortcuts. These can be found by
                 hovering over a button in the toolbar. These tooltips will show
-                any applicable shortcuts. For example, <strong>bold</strong> is
+                any available shortcuts. For example, <strong>bold</strong> is
                 CTRL + B.
+              </p>
+              <h3>Found a bug? Got a request?</h3>
+              <p>
+                Send an email and/or post an issue in the{" "}
+                <em>
+                  <a
+                    className={classes.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://github.com/dictyBase/dicty-frontpage/issues">
+                    dicty-frontpage
+                  </a>
+                </em>{" "}
+                repo.
               </p>
               <SaveButton className={classes.save} onClick={handleClose}>
                 Close
