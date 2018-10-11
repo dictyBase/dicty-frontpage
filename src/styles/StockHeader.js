@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 
 const StockHeaderStyle = styled.div`
-  background-color: #084b8a;
+  background-color: #004080;
   color: #efeffb;
   font-size: 18px;
   text-align: center;

@@ -6,10 +6,10 @@ const AnnotationContainerStyle = styled.div`
   line-height: 1.428;
   text-align: center;
   color: #084b8a;
-  background-color: #eff8fb;
+  background-color: #e6f2ff;
   padding: 5px 5px 0 5px;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
   margin-bottom: 10px;
 `
 
