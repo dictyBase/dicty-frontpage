@@ -10,8 +10,8 @@ const StockBoxStyle = styled.div`
     props.background ? props.background : "#81DAF5"};
   text-align: center;
   padding-bottom: 5px;
-  border-bottom-left-radius: 30px;
-  border-bottom-right-radius: 30px;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
 
   @media (max-width: 992px) and (min-width: 767px) {
     font-size: 10px;

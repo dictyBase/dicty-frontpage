@@ -6,7 +6,6 @@ const StockSubHeaderStyle = styled.div`
   color: black;
   font-size: 10px;
   letter-spacing: 5px;
-  border: 3px solid black;
   padding: 1px 0px 1px 0px;
 
   @media (max-width: 767px) {

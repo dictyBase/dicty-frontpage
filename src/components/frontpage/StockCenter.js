@@ -36,8 +36,10 @@ const StockCenter = (props: Props) => {
         <FontAwesome name="shopping-cart fa-md" />
         <NewsStockTitle>DICTY STOCK CENTER</NewsStockTitle>
       </StockHeader>
-      <StockSubHeader>New items</StockSubHeader>
-      <StockBox>
+      <StockSubHeader>
+        <strong>New items</strong>
+      </StockSubHeader>
+      <StockBox color="#fff" background="#0073e6">
         <StockTitle>PLASMIDS</StockTitle>
         <ListBox margintop="5px" padbottom="0px">
           {plasmidlist}
@@ -46,7 +48,7 @@ const StockCenter = (props: Props) => {
           <FontAwesome name="plus fa-xs" />
         </MoreLink>
       </StockBox>
-      <StockBox color="white" background={"#0489B1"}>
+      <StockBox color="#242124" background="#80c1ff">
         <StockTitle>STRAINS</StockTitle>
         <ListBox margintop="5px" padbottom="0px">
           {strainlist}

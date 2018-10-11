@@ -8,8 +8,8 @@ const StockHeaderStyle = styled.div`
   text-align: center;
   padding: 10px 0px 10px 0px;
   border: 1px dotted #f5f6ce;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
 
   @media (max-width: 767px) {
     font-size: 18px;
