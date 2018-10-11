@@ -30,7 +30,7 @@ const styles = theme => ({
   button: {
     padding: "10px",
     textTransform: "none",
-    backgroundColor: "#ccd9ff",
+    backgroundColor: "#e6f2ff",
     "&:hover": {
       backgroundColor: "#0073e6",
       color: "#fff",
