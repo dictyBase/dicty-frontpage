@@ -15,7 +15,7 @@ const styles = theme => ({
     overflowX: "auto",
   },
   head: {
-    backgroundColor: "#4C5E81",
+    backgroundColor: "#004080",
   },
   headerCell: {
     fontWeight: "400",
@@ -30,9 +30,9 @@ const styles = theme => ({
   button: {
     padding: "10px",
     textTransform: "none",
-    backgroundColor: "#a3bae9",
+    backgroundColor: "#ccd9ff",
     "&:hover": {
-      backgroundColor: "#4C5E81",
+      backgroundColor: "#0073e6",
       color: "#fff",
     },
   },
