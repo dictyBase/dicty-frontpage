@@ -30,7 +30,7 @@
     "babel-polyfill": "^6.26.0",
     "connected-react-router": "^4.4.1",
     "core-js": "^2.5.7",
-    "dicty-components-header-footer": "github:dictyBase/dicty-components-header-footer#v6.6.0",
+    "dicty-components-header-footer": "github:dictyBase/dicty-components-header-footer#v7.0.0",
     "dicty-components-login": "github:dictyBase/dicty-components-login#v1.4.0",
     "dicty-components-navbar": "github:dictyBase/dicty-components-navbar#v0.2.0",
     "dicty-components-redux": "github:dictybase-playground/dicty-components-redux#v2.3.0",
