@@ -63,6 +63,8 @@
     "typeface-roboto-slab": "0.0.54"
   },
   "devDependencies": {
+    "@semantic-release/changelog": "^3.0.1",
+    "@semantic-release/git": "^7.0.5",
     "ajv": "^6.5.3",
     "babel-eslint": "^7.2.3",
     "commitizen": "^3.0.2",
@@ -76,7 +78,7 @@
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-react": "^7.1.0",
     "flow-bin": "^0.78.0",
-    "husky": "^0.14.3",
+    "husky": "^1.1.2",
     "jest": "^23.5.0",
     "jest-enzyme": "^6.0.3",
     "jest-styled-components": "^6.1.1",
@@ -87,6 +89,11 @@
     "react-test-renderer": "^16.4.2",
     "recast": "^0.13.0",
     "semantic-release": "^15.9.17"
+  },
+  "husky": {
+    "hooks": {
+      "precommit": "lint-staged"
+    }
   },
   "lint-staged": {
     "src/**/*.{js,jsx,json,css}": [
