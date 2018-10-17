@@ -21,6 +21,7 @@ The React based frontpage web application of new dictybase
     - [Providers](#providers)
     - [Auth server](#auth-server)
     - [API server](#api-server)
+    - [Navbar and footer](#navbar-and-footer)
   - [Semantic Versioning](#semantic-versioning)
   - [Running the application (dev version)](#running-the-application-dev-version)
   - [Application Structure](#application-structure)
@@ -64,6 +65,11 @@ The React based frontpage web application of new dictybase
 - The API server to manage data from the rich text editor frontend is available [here](https://github.com/dictyBase/modware-content).
 - The **REACT_APP_API_SERVER** env variable can also be customize by modifying the
   global variable in the [env](.env.development) file.
+
+### Navbar and Footer
+
+- The application has env variables for `REACT_APP_NAVBAR_JSON` and `REACT_APP_FOOTER_JSON` that are set to
+  the corresponding URLs where the JSON data is stored on GitHub.
 
 ## Semantic Versioning
 
