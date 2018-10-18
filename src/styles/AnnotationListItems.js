@@ -3,7 +3,7 @@ import styled from "styled-components"
 
 const AnnotationListItemsStyle = styled.li`
   list-style-type: none;
-  font-size: 11px;
+  font-size: 12px;
 `
 
 const AnnotationListItems = ({ children, ...props }) => (

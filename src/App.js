@@ -18,6 +18,11 @@ import {
 } from "utils/headerItems"
 import MainBodyContainer from "styles/MainBodyContainer"
 
+const navTheme = {
+  primary: "#004080",
+  secondary: "#0059b3",
+}
+
 type Props = {
   /** Object representing auth part of state */
   auth: Object,
@@ -26,16 +31,16 @@ type Props = {
   /** Object representing footer part of state */
   footer: Object,
   /** Action creator to fetch navbar content */
-  fetchNavbarAction: Function,
+  fetchNavbar: Function,
   /** Action creator to fetch footer content */
-  fetchFooterAction: Function,
+  fetchFooter: Function,
 }
 
 export class App extends Component<Props> {
   componentDidMount() {
-    const { fetchNavbarAction, fetchFooterAction } = this.props
-    fetchNavbarAction()
-    fetchFooterAction()
+    const { fetchNavbar, fetchFooter } = this.props
+    fetchNavbar()
+    fetchFooter()
   }
 
   render() {
@@ -54,7 +59,7 @@ export class App extends Component<Props> {
               {items => items.map(generateLinks)}
             </Header>
           )}
-          <Navbar items={navItems} />
+          <Navbar items={navItems} theme={navTheme} />
           <MainBodyContainer>
             <main>
               <ErrorBoundary>
@@ -78,7 +83,7 @@ export class App extends Component<Props> {
             {items => items.map(generateLinks)}
           </Header>
         )}
-        <Navbar items={navbar.links} />
+        <Navbar items={navbar.links} theme={navTheme} />
         <MainBodyContainer>
           <main>
             <ErrorBoundary>
@@ -94,11 +99,9 @@ export class App extends Component<Props> {
 
 const mapStateToProps = ({ auth, navbar, footer }) => ({ auth, navbar, footer })
 
-// why rename action creator?
-// https://stackoverflow.com/questions/37682705/avoid-no-shadow-eslint-error-with-mapdispatchtoprops/42337137#42337137
 export default withRouter(
   connect(
     mapStateToProps,
-    { fetchNavbarAction: fetchNavbar, fetchFooterAction: fetchFooter },
+    { fetchNavbar, fetchFooter },
   )(App),
 )
