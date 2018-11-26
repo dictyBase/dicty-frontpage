@@ -3,8 +3,6 @@ import styled from "styled-components"
 export const SlideshowContainer = styled.div`
   margin-top: 10px;
   margin-bottom: 10px;
-  /* height: 440px;
-  overflow: auto; */
 `
 
 export const ImageDiv = styled.div`
@@ -22,32 +20,17 @@ export const ImageSizer = styled.img`
 `
 
 export const Legend = styled.p`
-  -webkit-transition: all 0.5s ease-in-out;
-  -moz-transition: all 0.5s ease-in-out;
-  -ms-transition: all 0.5s ease-in-out;
-  -o-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out;
   position: absolute;
-  bottom: 40px;
+  bottom: 30px;
   left: 50%;
   margin-left: -45%;
   width: 90%;
   border-radius: 10px;
-  background: #000;
+  background: rgba(51, 51, 51, 0.8);
   color: #fff;
   padding: 10px;
   font-size: 12px;
-  text-align: center;
-  opacity: 0.25;
-  -webkit-transition: opacity 0.35s ease-in-out;
-  -moz-transition: opacity 0.35s ease-in-out;
-  -ms-transition: opacity 0.35s ease-in-out;
-  -o-transition: opacity 0.35s ease-in-out;
-  transition: opacity 0.35s ease-in-out;
-
-  &:hover {
-    opacity: 1;
-  }
+  text-align: left;
 
   @media (max-width: 768px) {
     display: none;
