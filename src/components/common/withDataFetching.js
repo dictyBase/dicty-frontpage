@@ -10,6 +10,8 @@ const WithDataFetching = (
 ) => WrappedComponent => {
   class WithDataFetchingComponent extends Component {
     componentDidMount() {
+      const { action } = this.props
+
       action()
     }
 
@@ -57,7 +59,7 @@ const WithDataFetching = (
 
   return connect(
     mapStateToProps,
-    action,
+    { action },
   )(WithDataFetchingComponent)
 }
 
