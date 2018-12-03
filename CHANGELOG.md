@@ -1,3 +1,11 @@
+## [2.3.1](https://github.com/dictyBase/dicty-frontpage/compare/2.3.0...2.3.1) (2018-12-03)
+
+
+### Bug Fixes
+
+* make credits more readable on frontpage slideshow ([3e18ddf](https://github.com/dictyBase/dicty-frontpage/commit/3e18ddf)), closes [#108](https://github.com/dictyBase/dicty-frontpage/issues/108)
+* remove console warning caused by HOC action ([6f2e4a5](https://github.com/dictyBase/dicty-frontpage/commit/6f2e4a5))
+
 # [2.3.0](https://github.com/dictyBase/dicty-frontpage/compare/2.2.1...2.3.0) (2018-10-19)
 
 
