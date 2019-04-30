@@ -27,33 +27,31 @@ const AddPage = (props: Props) => {
 
   return (
     <Authorization
-      // eslint-disable-next-line
-      render={({ canEditPages, verifiedToken }) => {
-        return (
-          <div>
-            {canEditPages &&
-              verifiedToken === false && <ErrorNotification error={error} />}
-            {canEditPages && (
-              <Flex wrap justify="center">
-                <Box w="100%" pb={5}>
-                  <Banner>
-                    <h2>Add Editable Page for Route:</h2>
-                    <h3>{url}</h3>
-                  </Banner>
-                </Box>
-                <br />
-                <Box w="100%">
-                  {/* <AddPageForm slug={slug} url={url} /> */}
-                  editor coming soon
-                </Box>
-              </Flex>
-            )}
-            {!canEditPages && (
-              <ErrorNotification error="You have reached this page in error." />
-            )}
-          </div>
-        )
-      }}
+      render={({ canEditPages, verifiedToken }) => (
+        <div>
+          {canEditPages && verifiedToken === false && (
+            <ErrorNotification error={error} />
+          )}
+          {canEditPages && (
+            <Flex wrap justify="center">
+              <Box w="100%" pb={5}>
+                <Banner>
+                  <h2>Add Editable Page for Route:</h2>
+                  <h3>{url}</h3>
+                </Banner>
+              </Box>
+              <br />
+              <Box w="100%">
+                {/* <AddPageForm slug={slug} url={url} /> */}
+                editor coming soon
+              </Box>
+            </Flex>
+          )}
+          {!canEditPages && (
+            <ErrorNotification error="You have reached this page in error." />
+          )}
+        </div>
+      )}
     />
   )
 }

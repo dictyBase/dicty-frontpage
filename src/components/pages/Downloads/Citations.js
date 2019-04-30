@@ -1,3 +1,4 @@
+// @flow
 import React from "react"
 import { withStyles } from "@material-ui/core/styles"
 
@@ -10,7 +11,14 @@ const styles = theme => ({
   },
 })
 
-const Citations = props => {
+type Props = {
+  /** Material-UI styling */
+  classes: Object,
+  /** Citations data */
+  data: Object,
+}
+
+const Citations = (props: Props) => {
   const { classes } = props
 
   return (
@@ -26,6 +34,7 @@ const Citations = props => {
         <a
           href={props.data.attributes.citation.link}
           target="_blank"
+          rel="noopener noreferrer"
           style={{ textDecoration: "none" }}>
           [Pubmed]
         </a>
