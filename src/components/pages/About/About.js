@@ -1,5 +1,6 @@
 // @flow
 import React from "react"
+import { Helmet } from "react-helmet"
 import FontAwesome from "react-fontawesome"
 import styled from "styled-components"
 import TechnicalSummary from "./TechnicalSummary"
@@ -22,28 +23,30 @@ const Container = styled.div`
  * This is the About page component. It is set up to accept two Items, both of which are 50% width, below the main Header.
  */
 
-const About = () => {
-  return (
-    <div>
-      <Banner>
-        <Header>About Us</Header>
-        <Hdrtxt>
-          We{"  "}
-          <FontAwesome name="heart fa-2x" />
-          {"  "}dictyBase
-        </Hdrtxt>
-      </Banner>
-      <br />
-      <Container>
-        <Item>
-          <TechnicalSummary />
-        </Item>
-        <Item>
-          <SpecialThanks />
-        </Item>
-      </Container>
-    </div>
-  )
-}
+const About = () => (
+  <div>
+    <Helmet>
+      <title>About Us - dictyBase</title>
+      <meta name="description" content="About Us page for dictyBase" />
+    </Helmet>
+    <Banner>
+      <Header>About Us</Header>
+      <Hdrtxt>
+        We{"  "}
+        <FontAwesome name="heart fa-2x" />
+        {"  "}dictyBase
+      </Hdrtxt>
+    </Banner>
+    <br />
+    <Container>
+      <Item>
+        <TechnicalSummary />
+      </Item>
+      <Item>
+        <SpecialThanks />
+      </Item>
+    </Container>
+  </div>
+)
 
 export default About

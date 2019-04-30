@@ -1,5 +1,6 @@
 // @flow
 import React from "react"
+import { Helmet } from "react-helmet"
 import { Flex, Box } from "rebass"
 import Slideshow from "components/frontpage/Slideshow"
 import News from "components/frontpage/News"
@@ -16,6 +17,13 @@ import stockcenter from "data/stockcenter"
 
 const Front = () => (
   <div>
+    <Helmet>
+      <title>dictyBase - your central resource for Dictyostelid genomics</title>
+      <meta
+        name="description"
+        content="dictyBase is a central resource for Dictyostelid genomics"
+      />
+    </Helmet>
     <Flex wrap mx={30}>
       <Box px={16} py={8} width={["100%", "100%", "50%", "50%"]}>
         <Slideshow />

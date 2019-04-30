@@ -1,5 +1,6 @@
 // @flow
 import React from "react"
+import { Helmet } from "react-helmet"
 import { Flex, Box } from "rebass"
 import FontAwesome from "react-fontawesome"
 import { Banner, Header, Hdrtxt } from "styles/EditablePageStyles"
@@ -27,6 +28,10 @@ const NewsArchive = () => {
   ))
   return (
     <div>
+      <Helmet>
+        <title>dictyBase News Archive</title>
+        <meta name="description" content="An archive of dictyBase news items" />
+      </Helmet>
       <Banner>
         <Header>
           <FontAwesome name="globe" /> Dicty News

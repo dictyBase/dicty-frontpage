@@ -1,5 +1,6 @@
 // @flow
 import React, { Component } from "react"
+import { Helmet } from "react-helmet"
 import { connect } from "react-redux"
 import { Flex, Box } from "rebass"
 import Skeleton from "react-loading-skeleton"
@@ -49,10 +50,16 @@ class InfoPage extends Component<Props> {
 
   render() {
     const { isFetching, page, match, error } = this.props
+    const name = page.data.attributes.name
 
     if (!isFetching && page.data.attributes.content) {
       return (
         <Flex justify="center">
+          <Helmet>
+            <title>
+              {name.charAt(0).toUpperCase() + name.slice(1)} Page - dictyBase
+            </title>
+          </Helmet>
           <Box w="60%">
             <InfoPageView page={page} match={match} />
           </Box>
