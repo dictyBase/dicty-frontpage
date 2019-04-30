@@ -24,9 +24,9 @@ type Props = {
   /** React Router's match object */
   match: Object,
   /** action creator for editing the current page content */
-  editPageAction: Function,
+  editPage: Function,
   /** action creator to fetch a non-authenticated user's information */
-  fetchUserInfoAction: Function,
+  fetchUserInfo: Function,
   /** the object that contains page data from current state */
   page: Object,
 }
@@ -35,17 +35,17 @@ type Props = {
 
 class InfoPageView extends Component<Props> {
   componentDidMount() {
-    const { page, fetchUserInfoAction } = this.props
+    const { page, fetchUserInfo } = this.props
 
     const fetchedUser = new ContentAPI(page).getUser()
-    fetchUserInfoAction(fetchedUser)
+    fetchUserInfo(fetchedUser)
   }
 
   onClick = e => {
     e.preventDefault()
-    const { editPageAction, match, page } = this.props
+    const { editPage, match, page } = this.props
 
-    editPageAction(page.data.attributes.content, match.url)
+    editPage(page.data.attributes.content, match.url)
   }
 
   render() {
@@ -59,36 +59,34 @@ class InfoPageView extends Component<Props> {
             render={({ canEditPages, fetchedUserData, verifiedToken }) => {
               return (
                 <div>
-                  {canEditPages &&
-                    verifiedToken === false && (
-                      <ErrorNotification error={error} />
-                    )}
+                  {canEditPages && verifiedToken === false && (
+                    <ErrorNotification error={error} />
+                  )}
                   <br />
-                  {canEditPages &&
-                    fetchedUserData && (
-                      <ToolbarNav>
-                        <Flex justify="center">
-                          <Box>
-                            <TextInfo>
-                              <strong>
-                                <FontAwesome name="user" />{" "}
-                                {fetchedUserData.getFullName()}
-                              </strong>{" "}
-                              edited{" "}
-                              {timeSince(page.data.attributes.updated_at)} ago
-                            </TextInfo>
-                          </Box>
-                          <Box ml="auto">
-                            <Label>{fetchedUserData.getRoles()}</Label> &nbsp;
-                            {verifiedToken && (
-                              <InlineLink onClick={this.onClick}>
-                                <FontAwesome name="pencil" title="Edit page" />
-                              </InlineLink>
-                            )}
-                          </Box>
-                        </Flex>
-                      </ToolbarNav>
-                    )}
+                  {canEditPages && fetchedUserData && (
+                    <ToolbarNav>
+                      <Flex justify="center">
+                        <Box>
+                          <TextInfo>
+                            <strong>
+                              <FontAwesome name="user" />{" "}
+                              {fetchedUserData.getFullName()}
+                            </strong>{" "}
+                            edited {timeSince(page.data.attributes.updated_at)}{" "}
+                            ago
+                          </TextInfo>
+                        </Box>
+                        <Box ml="auto">
+                          <Label>{fetchedUserData.getRoles()}</Label> &nbsp;
+                          {verifiedToken && (
+                            <InlineLink onClick={this.onClick}>
+                              <FontAwesome name="pencil" title="Edit page" />
+                            </InlineLink>
+                          )}
+                        </Box>
+                      </Flex>
+                    </ToolbarNav>
+                  )}
                 </div>
               )
             }}
@@ -107,5 +105,5 @@ class InfoPageView extends Component<Props> {
 
 export default connect(
   null,
-  { editPageAction: editPage, fetchUserInfoAction: fetchUserInfo },
+  { editPage, fetchUserInfo },
 )(InfoPageView)

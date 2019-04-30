@@ -1,7 +1,9 @@
 // @flow
 import React from "react"
-import { Flex, Box } from "rebass"
+import { withRouter } from "react-router-dom"
+import Grid from "@material-ui/core/Grid"
 
+import PageEditor from "components/editor/PageEditor"
 import Authorization from "components/authentication/Authorization"
 import ErrorNotification from "components/authentication/ErrorNotification"
 import { Banner } from "styles/NewsStyles"
@@ -11,19 +13,34 @@ const error =
 
 type Props = {
   // the location object passed in by React Router
-  location: Object,
+  location: {
+    /** Route params for section name (i.e. "techniques" in "/research/techniques") */
+    name: string,
+    /** Route params for section subname (i.e. "media" in "/research/techniques/media") */
+    subname: string,
+    /** Full URL of expected new page */
+    url: string,
+  },
 }
 
 /**
- * This is the view component so an authorized user can add a news item.
+ * This is the view component so an authorized user can add a new page.
  */
 
 const AddPage = (props: Props) => {
   const {
     location: {
-      state: { slug, url },
+      state: { name, subname, url },
     },
+    match,
   } = props
+
+  let slug
+  if (subname) {
+    slug = subname
+  } else {
+    slug = name
+  }
 
   return (
     <Authorization
@@ -33,19 +50,23 @@ const AddPage = (props: Props) => {
             <ErrorNotification error={error} />
           )}
           {canEditPages && (
-            <Flex wrap justify="center">
-              <Box w="100%" pb={5}>
+            <Grid container wrap="wrap" justify="center">
+              <Grid item xs={12}>
                 <Banner>
                   <h2>Add Editable Page for Route:</h2>
                   <h3>{url}</h3>
                 </Banner>
-              </Box>
+              </Grid>
               <br />
-              <Box w="100%">
-                {/* <AddPageForm slug={slug} url={url} /> */}
-                editor coming soon
-              </Box>
-            </Flex>
+              <Grid item xs={9}>
+                <PageEditor
+                  slug={slug}
+                  url={url}
+                  match={match}
+                  readOnly={false}
+                />
+              </Grid>
+            </Grid>
           )}
           {!canEditPages && (
             <ErrorNotification error="You have reached this page in error." />
@@ -56,4 +77,4 @@ const AddPage = (props: Props) => {
   )
 }
 
-export default AddPage
+export default withRouter(AddPage)

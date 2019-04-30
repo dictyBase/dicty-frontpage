@@ -17,7 +17,7 @@ type Props = {
   /** React Router's match object */
   match: Object,
   /** Action creator that fetches data from API */
-  fetchPageAction: Function,
+  fetchPage: Function,
   /** Error from page fetching */
   error: Object,
 }
@@ -37,9 +37,14 @@ class InfoPage extends Component<Props> {
   }
 
   componentDidMount() {
-    const { match, fetchPageAction } = this.props
-    const slugName = `${NAMESPACE}-${match.params.name}`
-    fetchPageAction(slugName)
+    const { match, fetchPage } = this.props
+    let slugName
+    if (match.params.subname) {
+      slugName = `${NAMESPACE}-${match.params.subname}`
+    } else {
+      slugName = `${NAMESPACE}-${match.params.name}`
+    }
+    fetchPage(slugName)
   }
 
   render() {
@@ -83,7 +88,12 @@ class InfoPage extends Component<Props> {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const slugName = `${NAMESPACE}-${ownProps.match.params.name}`
+  let slugName
+  if (ownProps.match.params.subname) {
+    slugName = `${NAMESPACE}-${ownProps.match.params.subname}`
+  } else {
+    slugName = `${NAMESPACE}-${ownProps.match.params.name}`
+  }
   return {
     isFetching: state.editablePages.isFetching,
     page: state.editablePages[slugName],
@@ -93,5 +103,5 @@ const mapStateToProps = (state, ownProps) => {
 
 export default connect(
   mapStateToProps,
-  { fetchPageAction: fetchPage },
+  { fetchPage },
 )(InfoPage)

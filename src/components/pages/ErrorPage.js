@@ -146,26 +146,29 @@ export const ErrorPage = (props: Props) => {
               // eslint-disable-next-line
               render={({ canEditPages, verifiedToken }) => (
                 <Grid item>
-                  {canEditPages &&
-                    verifiedToken && (
-                      <div>
-                        <br />
-                        <RouterLink
-                          to={{
-                            pathname: "/addpage",
-                            state: { slug: match.params.name, url: match.url },
-                          }}>
-                          <Button
-                            className={classes.addPageButton}
-                            size="small"
-                            variant="contained"
-                            color="primary">
-                            <AddIcon />
-                            &nbsp; Add a page to this route
-                          </Button>
-                        </RouterLink>
-                      </div>
-                    )}
+                  {canEditPages && verifiedToken && (
+                    <div>
+                      <br />
+                      <RouterLink
+                        to={{
+                          pathname: "/addpage",
+                          state: {
+                            name: match.params.name,
+                            subname: match.params.subname,
+                            url: match.url,
+                          },
+                        }}>
+                        <Button
+                          className={classes.addPageButton}
+                          size="small"
+                          variant="contained"
+                          color="primary">
+                          <AddIcon />
+                          &nbsp; Add a page to this route
+                        </Button>
+                      </RouterLink>
+                    </div>
+                  )}
                 </Grid>
               )}
             />

@@ -10,7 +10,11 @@ import Button from "@material-ui/core/Button"
 import EditorToolbar from "./toolbar/EditorToolbar"
 import { insertImage } from "./plugins/image"
 import { onPasteHtml, onPasteText } from "./utils/utils"
-import { editPage, saveEditing, cancelEditing } from "actions/editablePages"
+import {
+  saveEditing,
+  cancelEditing,
+  addEditablePage,
+} from "actions/editablePages"
 import { StyledEditor } from "styles/EditablePageStyles"
 import placeholder from "./data/placeholder.json"
 
@@ -162,15 +166,13 @@ export const renderNode = (props: nodeProps) => {
 
 type Props = {
   /** The object holding the fetched page content */
-  page: Object,
+  page?: Object,
   /** Action to fetch page content from API server */
   fetchPage: Function,
   /** Action that saves page editor content to API server */
-  saveEditing: Function,
+  saveEditing?: Function,
   /** Action that cancels page editing and redirects to main route */
   cancelEditing: Function,
-  /** Action creator to edit page content */
-  editPage: Function,
   /** React Router's match object */
   match: Object,
   /** Whether the editor is in read-only mode or not */
@@ -179,6 +181,12 @@ type Props = {
   userId: string,
   /** Material-UI styling */
   classes: Object,
+  /** Slug name to be used in page creation */
+  slug?: string,
+  /** URL path for which a new page will be created */
+  url?: string,
+  /** Action for posting new page content to the API server */
+  addEditablePage?: Function,
 }
 
 type State = {
@@ -215,15 +223,6 @@ class PageEditor extends Component<Props, State> {
     this.setState({ value })
   }
 
-  onEdit = e => {
-    e.preventDefault()
-    this.setState({
-      readOnly: false,
-    })
-    const { editPage, page, match } = this.props
-    editPage(page.data.attributes.content, match.url)
-  }
-
   onCancel = () => {
     const { value } = this.state
     this.setState({
@@ -237,24 +236,46 @@ class PageEditor extends Component<Props, State> {
   // on save, save the value to the content API server
   onSave = () => {
     const { value } = this.state
-    const { page, saveEditing, match, userId } = this.props
-
+    const {
+      page,
+      saveEditing,
+      match,
+      userId,
+      slug,
+      url,
+      addEditablePage,
+    } = this.props
     const content = JSON.stringify(value.toJSON())
 
-    const body = {
-      id: page.data.id,
-      data: {
-        id: page.data.id,
-        type: "contents",
-        attributes: {
-          updated_by: userId,
-          content,
+    if (slug) {
+      const body = {
+        data: {
+          type: "contents",
+          attributes: {
+            name: slug,
+            created_by: userId,
+            content,
+            namespace: "dfp",
+          },
         },
-      },
+      }
+      addEditablePage(body, url)
+      this.setState(value)
+    } else {
+      const body = {
+        id: page.data.id,
+        data: {
+          id: page.data.id,
+          type: "contents",
+          attributes: {
+            updated_by: userId,
+            content,
+          },
+        },
+      }
+      saveEditing(page.data.id, body, match.url)
+      this.setState(value)
     }
-    saveEditing(page.data.id, body, match.url)
-
-    this.setState(value)
   }
 
   onPaste = (e: SyntheticEvent<>, change: Change) => {
@@ -356,5 +377,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { editPage, saveEditing, cancelEditing },
+  { saveEditing, cancelEditing, addEditablePage },
 )(withStyles(styles)(PageEditor))
