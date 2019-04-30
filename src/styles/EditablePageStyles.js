@@ -7,6 +7,8 @@ export const StyledEditor = styled(Editor)`
   padding: 15px;
   min-height: 200px;
   min-width: 800px;
+  line-height: 1.6;
+  color: "rgba(0, 0, 0, 0.87)";
 
   a {
     color: #428bca;
