@@ -11,6 +11,7 @@ injectGlobal([
   `
     body {
         font-family: Roboto, sans-serif;
+        line-height: 1.6;
     }
 `,
 ])

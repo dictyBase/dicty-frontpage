@@ -11,6 +11,7 @@ const styles = theme => ({
 })
 
 type Props = {
+  /** Material-UI styling */
   classes: Object,
 }
 
