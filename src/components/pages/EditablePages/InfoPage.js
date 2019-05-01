@@ -2,7 +2,7 @@
 import React, { Component } from "react"
 import { Helmet } from "react-helmet"
 import { connect } from "react-redux"
-import { Flex, Box } from "rebass"
+import Grid from "@material-ui/core/Grid"
 import Skeleton from "react-loading-skeleton"
 
 import InfoPageView from "components/pages/EditablePages/InfoPageView"
@@ -21,6 +21,8 @@ type Props = {
   fetchPage: Function,
   /** Error from page fetching */
   error: Object,
+  /** Material-UI styling */
+  classes: Object,
 }
 
 /**
@@ -54,16 +56,16 @@ class InfoPage extends Component<Props> {
 
     if (!isFetching && page.data.attributes.content) {
       return (
-        <Flex justify="center">
+        <Grid container justify="center">
           <Helmet>
             <title>
               {name.charAt(0).toUpperCase() + name.slice(1)} Page - dictyBase
             </title>
           </Helmet>
-          <Box w="60%">
+          <Grid item xs={7}>
             <InfoPageView page={page} match={match} />
-          </Box>
-        </Flex>
+          </Grid>
+        </Grid>
       )
     }
 
@@ -76,8 +78,8 @@ class InfoPage extends Component<Props> {
     }
 
     return (
-      <Flex justify="center">
-        <Box w="60%">
+      <Grid container justify="center">
+        <Grid item xs={7}>
           <h1>
             <Skeleton />
           </h1>
@@ -88,8 +90,8 @@ class InfoPage extends Component<Props> {
           <br />
           <br />
           <Skeleton count={10} />
-        </Box>
-      </Flex>
+        </Grid>
+      </Grid>
     )
   }
 }

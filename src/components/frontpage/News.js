@@ -1,6 +1,7 @@
 // @flow
 import React from "react"
-import { Flex, Box } from "rebass"
+import Grid from "@material-ui/core/Grid"
+import { withStyles } from "@material-ui/core/styles"
 import FontAwesome from "react-fontawesome"
 import twitterLogo from "images/twitterLogo.png"
 
@@ -18,15 +19,28 @@ import {
   MainContent,
 } from "styles"
 
+const styles = theme => ({
+  twitter: {
+    paddingLeft: "2px",
+    paddingRight: "2px",
+  },
+  title: {
+    paddingLeft: "2px",
+  },
+})
+
 type Props = {
   /** The posts to display */
   posts: Object,
+  /** Material-UI styling */
+  classes: Object,
 }
 
 /** Widget that displays the most recent Dicty news */
 
 const News = (props: Props) => {
-  const { posts } = props
+  const { posts, classes } = props
+
   const text = posts.map(post => (
     <ListItems key={post.date}>
       <LeadText>
@@ -39,28 +53,28 @@ const News = (props: Props) => {
   return (
     <NewsContainer>
       <Header>
-        <Flex wrap>
-          <Box px={2} width={1 / 10}>
+        <Grid container wrap="wrap">
+          <Grid item className={classes.twitter} xs={1}>
             <Link
               href="https://twitter.com/dictybase"
               title="Dicty News at Twitter"
               target="new">
               <Img src={twitterLogo} alt="Twitter logo" />
             </Link>
-          </Box>
-          <Box pl={2} width={8 / 10}>
+          </Grid>
+          <Grid item className={classes.title} xs={10}>
             <center>
               <FontAwesome name="globe fa-lg" />
               <NewsStockTitle>DICTY NEWS</NewsStockTitle>
             </center>
-          </Box>
-        </Flex>
+          </Grid>
+        </Grid>
       </Header>
-      <Flex wrap column>
-        <Box>
+      <Grid container wrap="wrap" direction="column">
+        <Grid item xs={12}>
           <ListBox>{text}</ListBox>
-        </Box>
-        <Box>
+        </Grid>
+        <Grid item xs={12}>
           <MoreLink>
             <FontAwesome name="plus" />
             <RouterLink to="/news" alt="more news">
@@ -68,10 +82,10 @@ const News = (props: Props) => {
               more news{" "}
             </RouterLink>
           </MoreLink>
-        </Box>
-      </Flex>
+        </Grid>
+      </Grid>
     </NewsContainer>
   )
 }
 
-export default News
+export default withStyles(styles)(News)

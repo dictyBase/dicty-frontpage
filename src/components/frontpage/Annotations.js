@@ -1,8 +1,8 @@
 // @flow
 import React from "react"
-import { Box } from "rebass"
+import { withStyles } from "@material-ui/core/styles"
+import Grid from "@material-ui/core/Grid"
 import FontAwesome from "react-fontawesome"
-import styled from "styled-components"
 
 import {
   AnnotationTitle,
@@ -14,27 +14,33 @@ import {
   MoreLink,
 } from "styles"
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: row;
-  row-wrap: wrap;
-  width: 90%;
-  margin: auto;
-`
+const styles = theme => ({
+  container: {
+    margin: "auto",
+  },
+  box: {
+    padding: "1px 2px 1px 2px",
+    marginTop: "-2px",
+  },
+})
 
 type Props = {
   /** The annotations data in object form */
   annotations: Object,
+  /** Material-UI styling */
+  classes: Object,
 }
 
 /** Widget that displays the most recent annotations for genes and papers */
 
 const Annotations = (props: Props) => {
-  const genelist = props.annotations.genes.map((gene, index) => (
+  const { annotations, classes } = props
+
+  const genelist = annotations.genes.map((gene, index) => (
     <AnnotationListItems key={index}>{gene}</AnnotationListItems>
   ))
 
-  const paperlist = props.annotations.papers.map((paper, index) => (
+  const paperlist = annotations.papers.map((paper, index) => (
     <AnnotationListItems key={index}>{paper}</AnnotationListItems>
   ))
 
@@ -44,8 +50,8 @@ const Annotations = (props: Props) => {
         <FontAwesome name="pencil fa-md" />
         <AnnotationTitle>RECENT ANNOTATIONS</AnnotationTitle>
       </AnnotationHeader>
-      <Container>
-        <Box px={2} py={1} mt={-2} width={1 / 2}>
+      <Grid container className={classes.container} wrap="wrap" xs={12}>
+        <Grid item className={classes.box} xs={6}>
           <AnnotationSubTitle>Genes</AnnotationSubTitle>
           <ListBox margintop="0px" padbottom="0px">
             {genelist}
@@ -53,8 +59,8 @@ const Annotations = (props: Props) => {
           <MoreLink padbottom="0px">
             <FontAwesome name="plus fa-xs" />
           </MoreLink>
-        </Box>
-        <Box px={2} py={1} mt={-2} width={1 / 2}>
+        </Grid>
+        <Grid item className={classes.box} xs={6}>
           <AnnotationSubTitle>Papers</AnnotationSubTitle>
           <ListBox margintop="0px" padbottom="0px">
             {paperlist}
@@ -62,10 +68,10 @@ const Annotations = (props: Props) => {
           <MoreLink padbottom="0px">
             <FontAwesome name="plus fa-xs" />
           </MoreLink>
-        </Box>
-      </Container>
+        </Grid>
+      </Grid>
     </AnnotationContainer>
   )
 }
 
-export default Annotations
+export default withStyles(styles)(Annotations)

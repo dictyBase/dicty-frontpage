@@ -1,7 +1,8 @@
 // @flow
 import React, { Component } from "react"
 import { connect } from "react-redux"
-import { Flex, Box } from "rebass"
+import Grid from "@material-ui/core/Grid"
+import { withStyles } from "@material-ui/core/styles"
 import PageEditor from "components/editor/PageEditor"
 import Authorization from "components/authentication/Authorization"
 import ErrorNotification from "components/authentication/ErrorNotification"
@@ -17,6 +18,12 @@ import {
   InlineLink,
 } from "styles/EditablePageStyles"
 
+const styles = theme => ({
+  toolbar: {
+    marginLeft: "auto",
+  },
+})
+
 const error =
   "Your login token is expired. Please log out and then log back in to regain full user access."
 
@@ -29,6 +36,8 @@ type Props = {
   fetchUserInfo: Function,
   /** the object that contains page data from current state */
   page: Object,
+  /** Material-UI styling */
+  classes: Object,
 }
 
 /** Displays the page data that was fetched from the InfoPage component */
@@ -49,11 +58,11 @@ class InfoPageView extends Component<Props> {
   }
 
   render() {
-    const { page, match } = this.props
+    const { page, match, classes } = this.props
 
     return (
-      <Flex justify="center">
-        <Box>
+      <Grid container justify="center">
+        <Grid item>
           <Authorization
             // eslint-disable-next-line
             render={({ canEditPages, fetchedUserData, verifiedToken }) => {
@@ -65,8 +74,8 @@ class InfoPageView extends Component<Props> {
                   <br />
                   {canEditPages && fetchedUserData && (
                     <ToolbarNav>
-                      <Flex justify="center">
-                        <Box>
+                      <Grid container justify="center">
+                        <Grid item>
                           <TextInfo>
                             <strong>
                               <FontAwesome name="user" />{" "}
@@ -75,16 +84,16 @@ class InfoPageView extends Component<Props> {
                             edited {timeSince(page.data.attributes.updated_at)}{" "}
                             ago
                           </TextInfo>
-                        </Box>
-                        <Box ml="auto">
+                        </Grid>
+                        <Grid item className={classes.toolbar}>
                           <Label>{fetchedUserData.getRoles()}</Label> &nbsp;
                           {verifiedToken && (
                             <InlineLink onClick={this.onClick}>
                               <FontAwesome name="pencil" title="Edit page" />
                             </InlineLink>
                           )}
-                        </Box>
-                      </Flex>
+                        </Grid>
+                      </Grid>
                     </ToolbarNav>
                   )}
                 </div>
@@ -92,13 +101,13 @@ class InfoPageView extends Component<Props> {
             }}
           />
 
-          <Flex>
-            <Box>
+          <Grid container>
+            <Grid item>
               <PageEditor page={page} readOnly match={match} />
-            </Box>
-          </Flex>
-        </Box>
-      </Flex>
+            </Grid>
+          </Grid>
+        </Grid>
+      </Grid>
     )
   }
 }
@@ -106,4 +115,4 @@ class InfoPageView extends Component<Props> {
 export default connect(
   null,
   { editPage, fetchUserInfo },
-)(InfoPageView)
+)(withStyles(styles)(InfoPageView))
