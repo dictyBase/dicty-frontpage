@@ -16,7 +16,8 @@ import {
   addEditablePage,
 } from "actions/editablePages"
 import { StyledEditor } from "styles/EditablePageStyles"
-import placeholder from "./data/placeholder.json"
+import existingPagePlaceholder from "./data/existingPagePlaceholder.json"
+import newPagePlaceholder from "./data/newPagePlaceholder.json"
 
 /** Import mark renderers */
 import { BoldMark } from "./plugins/bold"
@@ -221,10 +222,15 @@ class PageEditor extends Component<Props, State> {
         value: Value.fromJSON(JSON.parse(props.page.data.attributes.content)),
         readOnly: props.readOnly,
       }
+    } else if (props.slug) {
+      this.state = {
+        value: Value.fromJSON(newPagePlaceholder),
+        readOnly: props.readOnly,
+      }
     } else {
       this.state = {
         // set default value for any page route refreshing
-        value: Value.fromJSON(placeholder),
+        value: Value.fromJSON(existingPagePlaceholder),
         readOnly: props.readOnly,
       }
     }

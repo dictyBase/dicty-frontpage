@@ -14,7 +14,7 @@ import { insertImage } from "./plugins/image"
 import { onPasteHtml, onPasteText } from "./utils/utils"
 import { editInline, saveInlineEditing } from "actions/editablePages"
 import { StyledEditor, InlineLink, TextInfo } from "styles/EditablePageStyles"
-import placeholder from "./data/placeholder.json"
+import placeholder from "./data/existingPagePlaceholder.json"
 
 /** Import mark renderers */
 import { BoldMark } from "./plugins/bold"
@@ -321,15 +321,13 @@ class InlineEditor extends Component<Props, State> {
           // eslint-disable-next-line
           render={({ canEditPages, verifiedToken }) => (
             <div>
-              {canEditPages &&
-                verifiedToken &&
-                readOnly && (
-                  <TextInfo>
-                    <InlineLink onClick={this.onEdit} title="Edit">
-                      <CreateIcon className={classes.icon} /> Edit
-                    </InlineLink>
-                  </TextInfo>
-                )}
+              {canEditPages && verifiedToken && readOnly && (
+                <TextInfo>
+                  <InlineLink onClick={this.onEdit} title="Edit">
+                    <CreateIcon className={classes.icon} /> Edit
+                  </InlineLink>
+                </TextInfo>
+              )}
             </div>
           )}
         />
