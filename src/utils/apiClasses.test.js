@@ -41,7 +41,7 @@ describe("API Classes", () => {
     let instance = new JsonAPI(userJson)
 
     it("creates a new JsonAPI instance", () => {
-      expect(typeof instance, "object")
+      expect(typeof instance).toBe("object")
     })
 
     describe("getAttributes()", () => {
@@ -104,7 +104,7 @@ describe("API Classes", () => {
     let unauthInstance = new AuthAPI(unauthenticatedUser)
 
     it("creates a new AuthAPI instance", () => {
-      expect(typeof instance, "object")
+      expect(typeof instance).toBe("object")
     })
 
     describe("isAuthenticated()", () => {
@@ -238,7 +238,7 @@ describe("API Classes", () => {
     let emptyRolesInstance = new AuthenticatedUser(emptyRoles)
 
     it("creates a new AuthenticatedUser instance", () => {
-      expect(typeof instance, "object")
+      expect(typeof instance).toBe("object")
     })
 
     describe("getFullName()", () => {
@@ -453,7 +453,7 @@ describe("API Classes", () => {
     let noRolesInstance = new RolesPermissionsAPI(userNoRoles)
 
     it("creates a new RolesPermissionsAPI instance", () => {
-      expect(typeof instance, "object")
+      expect(typeof instance).toBe("object")
     })
 
     describe("getResources()", () => {
@@ -555,7 +555,7 @@ describe("API Classes", () => {
     let noDataInstance = new ContentAPI(noData)
 
     it("creates a new ContentAPI instance", () => {
-      expect(typeof instance, "object")
+      expect(typeof instance).toBe("object")
     })
 
     describe("getUser()", () => {
