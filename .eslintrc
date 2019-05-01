@@ -10,7 +10,7 @@
     "react/prop-types": [0],
     "jsx-a11y/href-no-hash": [0],
     "jsx-a11y/label-has-associated-control": [0],
-    "react/jsx-no-bind": [2, {}],
+    "react/jsx-no-bind": [0],
     "import/no-unresolved": "off"
   }
 }

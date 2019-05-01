@@ -165,12 +165,23 @@ export const renderNode = (props: nodeProps) => {
 }
 
 type Props = {
-  /** The object holding the fetched page content */
-  page?: Object,
+  /** The fetched page content */
+  page: {
+    /** All data related to this content */
+    data: {
+      /** ID of content from API server */
+      id: string,
+      /** Data attributes for piece of content */
+      attributes: {
+        /** Slate-compatible JSON */
+        content: string,
+      },
+    },
+  },
   /** Action to fetch page content from API server */
   fetchPage: Function,
   /** Action that saves page editor content to API server */
-  saveEditing?: Function,
+  saveEditing: Function,
   /** Action that cancels page editing and redirects to main route */
   cancelEditing: Function,
   /** React Router's match object */
@@ -186,7 +197,7 @@ type Props = {
   /** URL path for which a new page will be created */
   url?: string,
   /** Action for posting new page content to the API server */
-  addEditablePage?: Function,
+  addEditablePage: Function,
 }
 
 type State = {

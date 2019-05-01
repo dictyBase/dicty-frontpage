@@ -14,13 +14,17 @@ const error =
 type Props = {
   // the location object passed in by React Router
   location: {
-    /** Route params for section name (i.e. "techniques" in "/research/techniques") */
-    name: string,
-    /** Route params for section subname (i.e. "media" in "/research/techniques/media") */
-    subname: string,
-    /** Full URL of expected new page */
-    url: string,
+    state: {
+      /** Route params for section name (i.e. "techniques" in "/research/techniques") */
+      name: string,
+      /** Route params for section subname (i.e. "media" in "/research/techniques/media") */
+      subname: string,
+      /** Full URL of expected new page */
+      url: string,
+    },
   },
+  /** React-Router object */
+  match: Object,
 }
 
 /**
