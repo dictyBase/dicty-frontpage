@@ -1,6 +1,6 @@
 // @flow
 import React, { Component } from "react"
-import { Flex, Box } from "rebass"
+import Grid from "@material-ui/core/Grid"
 
 type Props = {
   /** Object passed by React-Router */
@@ -27,11 +27,11 @@ export default class OauthCallback extends Component<Props> {
   }
   render() {
     return (
-      <Flex justify="center">
-        <Box>
+      <Grid container justify="center">
+        <Grid item>
           <h1>Transferring to login system ........</h1>
-        </Box>
-      </Flex>
+        </Grid>
+      </Grid>
     )
   }
 }
