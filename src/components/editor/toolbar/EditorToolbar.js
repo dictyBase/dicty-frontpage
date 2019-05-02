@@ -57,7 +57,8 @@ const styles = theme => ({
     minWidth: 150,
   },
   colorPicker: {
-    float: "right",
+    position: "absolute",
+    zIndex: "100",
   },
   largeIcon: {
     height: "35px",
@@ -94,12 +95,13 @@ export const EditorToolbar = props => {
             <ImageButton {...props} />
             <VideoButton {...props} />
             <FontColorButton {...props} />
-            <br />
-            <div className={classes.colorPicker}>
+            &nbsp;&nbsp;
+            <span className={classes.colorPicker}>
               {props.editorToolbar.showColorPicker && (
                 <FontColorPicker {...props} />
               )}
-            </div>
+            </span>
+            <br />
             <InsertTableButton {...props} />
             <InsertTableColumnButton {...props} />
             <InsertTableRowButton {...props} />
