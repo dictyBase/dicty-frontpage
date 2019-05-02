@@ -49,7 +49,12 @@ const EditInfoPage = (props: Props) => {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const slugName = `${NAMESPACE}-${ownProps.match.params.name}`
+  let slugName
+  if (ownProps.match.params.subname) {
+    slugName = `${NAMESPACE}-${ownProps.match.params.subname}`
+  } else {
+    slugName = `${NAMESPACE}-${ownProps.match.params.name}`
+  }
   return {
     page: state.editablePages[slugName],
     editorToolbar: state.editorToolbar,

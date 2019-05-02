@@ -35,6 +35,11 @@ const Routes = () => (
     <Route exact path="/:section/:name" component={InfoPage} />
     <PrivateRoute exact path="/:section/:name/edit" component={EditInfoPage} />
     <Route exact path="/:section/:name/:subname" component={InfoPage} />
+    <PrivateRoute
+      exact
+      path="/:section/:name/:subname/edit"
+      component={EditInfoPage}
+    />
     <PrivateRoute exact path="/addpage" component={AddPage} />
     {/* Error page */}
     <Route exact path="/error" component={ErrorPage} />
