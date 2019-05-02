@@ -242,12 +242,18 @@ class PageEditor extends Component<Props, State> {
 
   onCancel = () => {
     const { value } = this.state
+    const { slug } = this.props
+
     this.setState({
       value,
       readOnly: true,
     })
     const { cancelEditing, match } = this.props
-    cancelEditing(match.url.slice(0, -5))
+    if (slug) {
+      cancelEditing(match.url.slice(0, -7))
+    } else {
+      cancelEditing(match.url.slice(0, -5))
+    }
   }
 
   // on save, save the value to the content API server
