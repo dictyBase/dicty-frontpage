@@ -8,7 +8,7 @@ import HelpIcon from "@material-ui/icons/Help"
 import { withStyles } from "@material-ui/core/styles"
 
 import ToolbarButton from "components/editor/toolbar/ToolbarButton"
-import { showHelpModal } from "actions/editorToolbar"
+import { showHelpModal, showTableOptions } from "actions/editorToolbar"
 
 /** import toolbar buttons */
 import { BoldButton } from "../plugins/bold"
@@ -30,6 +30,7 @@ import { ImageButton } from "../plugins/image"
 import { LinkButton } from "../plugins/link"
 import { OrderedListButton, UnorderedListButton } from "../plugins/list"
 import {
+  InsertInitialTableButton,
   InsertTableButton,
   InsertTableColumnButton,
   InsertTableRowButton,
@@ -59,10 +60,23 @@ const styles = theme => ({
   colorPicker: {
     position: "absolute",
     zIndex: "100",
+    borderRadius: "5px",
   },
   largeIcon: {
     height: "35px",
     width: "40px",
+  },
+  button: {
+    textTransform: "none",
+    paddingLeft: "2px",
+    paddingRight: "6px",
+  },
+  tableButtons: {
+    border: "1px solid",
+    borderRadius: "2px",
+    display: "flex",
+    justifyContent: "space-between",
+    padding: "1px",
   },
 })
 
@@ -71,7 +85,7 @@ const styles = theme => ({
  */
 
 export const EditorToolbar = props => {
-  const { classes, showHelpModal } = props
+  const { classes, editorToolbar, showHelpModal, showTableOptions } = props
 
   return (
     <Fragment>
@@ -92,22 +106,32 @@ export const EditorToolbar = props => {
             <H2Button {...props} />
             <H3Button {...props} />
             <LinkButton {...props} />
+            <InsertInitialTableButton
+              {...props}
+              onClick={e => {
+                showTableOptions(true)
+              }}
+            />
             <ImageButton {...props} />
             <VideoButton {...props} />
             <FontColorButton {...props} />
             &nbsp;&nbsp;
             <span className={classes.colorPicker}>
-              {props.editorToolbar.showColorPicker && (
-                <FontColorPicker {...props} />
-              )}
+              {editorToolbar.showColorPicker && <FontColorPicker {...props} />}
             </span>
             <br />
-            <InsertTableButton {...props} />
-            <InsertTableColumnButton {...props} />
-            <InsertTableRowButton {...props} />
-            <RemoveTableRowButton {...props} />
-            <RemoveTableColumnButton {...props} />
-            <RemoveTableButton {...props} />
+            {editorToolbar.showTableOptions && (
+              <div className={classes.tableButtons}>
+                <InsertTableButton {...props} />
+                <InsertTableColumnButton {...props} />
+                <InsertTableRowButton {...props} />
+                &nbsp;&nbsp;
+                <RemoveTableRowButton {...props} />
+                <RemoveTableColumnButton {...props} />
+                <RemoveTableButton {...props} />
+                <br />
+              </div>
+            )}
             <FontFamilyDropdown {...props} />
             <FontSizeDropdown {...props} />
             <Tooltip title="Editor Help">
@@ -129,5 +153,5 @@ const mapStateToProps = ({ editorToolbar }) => ({ editorToolbar })
 
 export default connect(
   mapStateToProps,
-  { showHelpModal },
+  { showHelpModal, showTableOptions },
 )(withStyles(styles)(EditorToolbar))

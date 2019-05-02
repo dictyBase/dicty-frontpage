@@ -62,7 +62,7 @@ class InfoPage extends Component<Props> {
               {name.charAt(0).toUpperCase() + name.slice(1)} Page - dictyBase
             </title>
           </Helmet>
-          <Grid item xs={7}>
+          <Grid item xs={8}>
             <InfoPageView page={page} match={match} />
           </Grid>
         </Grid>

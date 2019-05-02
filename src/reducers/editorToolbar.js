@@ -4,6 +4,7 @@ import {
   CHANGE_FONT_SIZE,
   SHOW_HELP_MODAL,
   SHOW_COLOR_PICKER,
+  SHOW_TABLE_OPTIONS,
 } from "constants/types"
 
 const initialState = {
@@ -11,6 +12,7 @@ const initialState = {
   currentFontSize: 2,
   showHelpModal: false,
   showColorPicker: false,
+  showTableOptions: false,
 }
 
 const editorToolbarReducer = (state: Object = initialState, action: Object) => {
@@ -34,6 +36,11 @@ const editorToolbarReducer = (state: Object = initialState, action: Object) => {
       return {
         ...state,
         showColorPicker: action.payload.bool,
+      }
+    case SHOW_TABLE_OPTIONS:
+      return {
+        ...state,
+        showTableOptions: action.payload.bool,
       }
     default:
       return state
