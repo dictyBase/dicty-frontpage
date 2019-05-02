@@ -19,7 +19,6 @@ const styles = theme => ({
 const ToolbarButton = ({ children, onClick, classes, ...props }) => (
   <Button
     className={classes.button}
-    // eslint-disable-next-line
     onClick={e => {
       isFunction(onClick) && onClick(e)
     }}

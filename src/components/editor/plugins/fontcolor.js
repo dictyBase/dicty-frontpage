@@ -34,7 +34,6 @@ const fontColorMarkStrategy = (value, color) => {
       return applyMark({ change: value.change(), color })
     }
   }
-
   return value.change()
 }
 
@@ -51,7 +50,6 @@ const FontColorMark = ({ children, mark: { data } }) => (
 const FontColor = ({ showColorPicker, editorToolbar }) => (
   <Tooltip title="font color picker" placement="bottom">
     <ToolbarButton
-      // eslint-disable-next-line
       onClick={e => {
         showColorPicker(!editorToolbar.showColorPicker)
       }}>
@@ -63,15 +61,21 @@ const FontColor = ({ showColorPicker, editorToolbar }) => (
 /**
  * The font color picker widget-style component
  */
-const FontColorPicker = ({ value, onChange, editorToolbar }) => (
-  <SketchPicker
-    disableAlpha
-    // eslint-disable-next-line
-    onChangeComplete={(color, e) => {
-      onChange(fontColorMarkStrategy(value, color.hex))
-    }}
-  />
-)
+const FontColorPicker = ({ value, onChange }) => {
+  let color = "#000"
+  if (hasMark(value)) {
+    color = getMark(value).data.get("color")
+  }
+  return (
+    <SketchPicker
+      disableAlpha
+      color={color}
+      onChangeComplete={(color, e) => {
+        onChange(fontColorMarkStrategy(value, color.hex))
+      }}
+    />
+  )
+}
 
 const FontColorButton = connect(
   null,
