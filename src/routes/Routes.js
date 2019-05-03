@@ -6,10 +6,9 @@ import Downloads from "components/pages/Downloads/Downloads"
 import About from "components/pages/About/About"
 import InfoPage from "components/pages/EditablePages/InfoPage"
 import EditInfoPage from "components/pages/EditablePages/EditInfoPage"
-// import AddPage from "components/pages/EditablePages/AddPage"
+import AddPage from "components/pages/EditablePages/AddPage"
 import NewsArchive from "components/pages/News/NewsArchive"
 import PapersArchive from "components/pages/Papers/PapersArchive"
-import JBrowse from "components/pages/Tools/JBrowse"
 import Login from "components/authentication/Login"
 import OauthCallback from "components/authentication/OauthCallback"
 import AuthLoader from "components/authentication/AuthLoader"
@@ -25,8 +24,6 @@ const Routes = () => (
     <Route exact path="/about" component={About} />
     <Route exact path="/papers" component={PapersArchive} />
     <Route exact path="/downloads" component={Downloads} />
-    {/* Tools page routes */}
-    <Route exact path="/tools/jbrowse" component={JBrowse} />
     {/* News page routes */}
     <Route exact path="/news" component={NewsArchive} />
     {/* Authentication routes */}
@@ -37,7 +34,13 @@ const Routes = () => (
     {/* Editable page routes */}
     <Route exact path="/:section/:name" component={InfoPage} />
     <PrivateRoute exact path="/:section/:name/edit" component={EditInfoPage} />
-    {/* <PrivateRoute exact path="/addpage" component={AddPage} /> */}
+    <Route exact path="/:section/:name/:subname" component={InfoPage} />
+    <PrivateRoute
+      exact
+      path="/:section/:name/:subname/edit"
+      component={EditInfoPage}
+    />
+    <PrivateRoute exact path="/addpage" component={AddPage} />
     {/* Error page */}
     <Route exact path="/error" component={ErrorPage} />
     {/* Page not found routes */}

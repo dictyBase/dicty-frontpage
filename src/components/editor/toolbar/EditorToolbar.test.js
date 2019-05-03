@@ -9,6 +9,9 @@ describe("editor/toolbar/EditorToolbar", () => {
     classes: {
       toolbar: {},
     },
+    editorToolbar: {
+      showColorPicker: false,
+    },
   }
   const wrapper = shallow(<EditorToolbar {...props} />)
 

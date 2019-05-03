@@ -68,11 +68,7 @@ const insertLinkStrategy = change => {
  * Rendering components that provide the actual HTML to use inside the editor.
  */
 const LinkNode = ({ attributes, children, node: { data } }) => (
-  <a
-    href={data.get("href")}
-    target="_blank"
-    rel="noopener noreferrer"
-    {...attributes}>
+  <a href={data.get("href")} {...attributes}>
     {children}
   </a>
 )

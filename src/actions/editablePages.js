@@ -136,7 +136,7 @@ export const saveEditing = (id: string, body: Object, path: string) => async (
         dispatch(savePageSuccess())
         setTimeout(() => {
           dispatch(push(`${path.slice(0, -5)}`))
-        }, 500)
+        }, 1000)
       } else {
         if (process.env.NODE_ENV !== "production") {
           printError(res, json)
@@ -219,7 +219,9 @@ export const addEditablePage = (body: Object, url: string) => async (
       const json = await res.json()
       if (res.ok) {
         dispatch(savePageSuccess())
-        dispatch(push(url))
+        setTimeout(() => {
+          dispatch(push(url))
+        }, 1000)
       } else {
         if (process.env.NODE_ENV !== "production") {
           printError(res, json)

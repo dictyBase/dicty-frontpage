@@ -5,7 +5,8 @@ import { Login as LoginContainer } from "dicty-components-login"
 import OauthSignHandler from "components/authentication/OauthSignHandler"
 import oauthConfig from "utils/oauthConfig"
 import ErrorNotification from "components/authentication/ErrorNotification"
-import { Flex, Box } from "rebass"
+import Grid from "@material-ui/core/Grid"
+import type { MapStateToProps } from "react-redux"
 
 // list of buttons to display
 const buttons = ["orcid", "google", "linkedin"]
@@ -27,9 +28,9 @@ const theme = {
 }
 
 type Props = {
-  /** Object passed by React-Router */
+  // Object passed by React-Router
   location: Object,
-  /** Auth part of state */
+  // Auth part of state
   auth: Object,
 }
 
@@ -65,30 +66,30 @@ class Login extends Component<Props> {
     const { state = {} } = this.props.location
     const { error } = state
     return (
-      <Flex justify="center">
-        <Box w={["100%", "60%", "40%"]}>
+      <Grid container justify="center">
+        <Grid item xs={8}>
           <center>
             <h1>Log in</h1>
           </center>
           {error && <ErrorNotification error={error} />}
           {auth.error && <ErrorNotification error={auth.error} />}
-          <Flex justify="center">
-            <Box w={"17%"} />
-            <Box w={"83%"}>
+          <Grid container justify="center">
+            <Grid item xs={1} />
+            <Grid item xs={4}>
               <LoginContainer
                 buttons={buttons}
                 theme={theme}
                 onClick={this.handleClick}
               />
               <OauthSignHandler />
-            </Box>
-          </Flex>
-        </Box>
-      </Flex>
+            </Grid>
+          </Grid>
+        </Grid>
+      </Grid>
     )
   }
 }
 
-const mapStateToProps = ({ auth }) => ({ auth })
+const mapStateToProps: MapStateToProps<*, *, *> = ({ auth }) => ({ auth })
 
 export default connect(mapStateToProps)(Login)

@@ -1,20 +1,35 @@
 // @flow
 import React from "react"
-import { Flex, Box } from "rebass"
+import Grid from "@material-ui/core/Grid"
+import { withStyles } from "@material-ui/core"
+import { Helmet } from "react-helmet"
 import FontAwesome from "react-fontawesome"
 import { Banner, Header, Hdrtxt } from "styles/EditablePageStyles"
 import { Link, Img } from "styles"
 import news from "data/news"
 import twitterLogo from "images/twitterLogo.png"
 
+const styles = theme => ({
+  item: {
+    paddingBottom: "10px",
+  },
+})
+
+type Props = {
+  /** Material-UI styling */
+  classes: Object,
+}
+
 /**
  * This displays the Dicty news archive.
  */
 
-const NewsArchive = () => {
+const NewsArchive = (props: Props) => {
+  const { classes } = props
+
   const newsList = news.map(post => (
-    <Flex justify="center" key={post.date}>
-      <Box w={["90%", "90%", "90%", "60%"]} py={5}>
+    <Grid container justify="center" key={post.date}>
+      <Grid item className={classes.item} xs={8}>
         <div>
           <strong>{post.date}</strong>
         </div>
@@ -22,11 +37,16 @@ const NewsArchive = () => {
         <div>
           <strong>{post.source}</strong>
         </div>
-      </Box>
-    </Flex>
+      </Grid>
+    </Grid>
   ))
+
   return (
     <div>
+      <Helmet>
+        <title>dictyBase News Archive</title>
+        <meta name="description" content="An archive of dictyBase news items" />
+      </Helmet>
       <Banner>
         <Header>
           <FontAwesome name="globe" /> Dicty News
@@ -42,11 +62,11 @@ const NewsArchive = () => {
         </Hdrtxt>
       </Banner>
       <br />
-      <Flex justify="center">
-        <Box>{newsList}</Box>
-      </Flex>
+      <Grid container justify="center">
+        <Grid item>{newsList}</Grid>
+      </Grid>
     </div>
   )
 }
 
-export default NewsArchive
+export default withStyles(styles)(NewsArchive)

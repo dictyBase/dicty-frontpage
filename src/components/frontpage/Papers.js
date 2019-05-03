@@ -1,6 +1,6 @@
 // @flow
 import React from "react"
-import { Flex } from "rebass"
+import Grid from "@material-ui/core/Grid"
 import FontAwesome from "react-fontawesome"
 
 import {
@@ -52,12 +52,12 @@ const Papers = (props: {
   return (
     <PaperContainer>
       <Header>
-        <Flex wrap>
+        <Grid container wrap="wrap">
           <PaperTitle>
             <FontAwesome name="paperclip fa-lg" />
           </PaperTitle>
           <PaperTitle>LATEST PAPERS</PaperTitle>
-        </Flex>
+        </Grid>
       </Header>
       <ListBox>{text}</ListBox>
       <MoreLink>

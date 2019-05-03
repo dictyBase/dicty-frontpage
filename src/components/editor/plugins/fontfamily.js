@@ -14,6 +14,9 @@ const FontFamilyList = [
   { name: "Roboto Condensed", options: "400,400i,700,700i" },
   { name: "Roboto Mono", options: "400,400i,700,700i" },
   { name: "Roboto Slab", options: "400,700" },
+  { name: "Lato", options: "400,700" },
+  { name: "Merriweather", options: "400,700" },
+  { name: "Montserrat", options: "400,700" },
 ]
 
 /**

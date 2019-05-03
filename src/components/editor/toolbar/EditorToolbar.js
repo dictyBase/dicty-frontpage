@@ -1,14 +1,15 @@
-import React from "react"
+import React, { Fragment } from "react"
 import { connect } from "react-redux"
 import AppBar from "@material-ui/core/AppBar"
 import Toolbar from "@material-ui/core/Toolbar"
 import Tooltip from "@material-ui/core/Tooltip"
-import Typography from "@material-ui/core/Typography"
+import Grid from "@material-ui/core/Grid"
+import Button from "@material-ui/core/Button"
 import HelpIcon from "@material-ui/icons/Help"
 import { withStyles } from "@material-ui/core/styles"
 
 import ToolbarButton from "components/editor/toolbar/ToolbarButton"
-import { showHelpModal } from "actions/editorToolbar"
+import { showHelpModal, showTableOptions } from "actions/editorToolbar"
 
 /** import toolbar buttons */
 import { BoldButton } from "../plugins/bold"
@@ -22,7 +23,7 @@ import {
   AlignmentRightButton,
 } from "../plugins/alignment"
 import { DividerButton } from "../plugins/divider"
-// import { FontColorButton, FontColorPicker } from "../plugins/fontcolor"
+import { FontColorButton, FontColorPicker } from "../plugins/fontcolor"
 import { FontFamilyDropdown } from "../plugins/fontfamily"
 import { FontSizeDropdown } from "../plugins/fontsize"
 import { H1Button, H2Button, H3Button } from "../plugins/heading"
@@ -30,6 +31,7 @@ import { ImageButton } from "../plugins/image"
 import { LinkButton } from "../plugins/link"
 import { OrderedListButton, UnorderedListButton } from "../plugins/list"
 import {
+  InsertInitialTableButton,
   InsertTableButton,
   InsertTableColumnButton,
   InsertTableRowButton,
@@ -41,7 +43,6 @@ import { VideoButton } from "../plugins/video"
 
 const styles = theme => ({
   toolbar: {
-    // make toolbar stay at top within container, even on scroll
     position: "sticky",
     top: 0,
     padding: "10px 0px 10px",
@@ -58,11 +59,29 @@ const styles = theme => ({
     minWidth: 150,
   },
   colorPicker: {
-    float: "right",
+    position: "absolute",
+    zIndex: "100",
+    borderRadius: "5px",
   },
   largeIcon: {
     height: "35px",
     width: "40px",
+  },
+  button: {
+    textTransform: "none",
+    paddingLeft: "2px",
+    paddingRight: "6px",
+  },
+  tableButtons: {
+    border: "1px solid",
+    borderRadius: "2px",
+    display: "flex",
+    justifyContent: "space-between",
+    padding: "1px",
+  },
+  saveButton: {
+    width: "100%",
+    backgroundColor: "#15317e",
   },
 })
 
@@ -71,54 +90,86 @@ const styles = theme => ({
  */
 
 export const EditorToolbar = props => {
-  const { classes, showHelpModal } = props
+  const { classes, editorToolbar, showHelpModal, showTableOptions } = props
+
   return (
-    <AppBar className={classes.toolbar} position="static" color="default">
-      <Toolbar>
-        <Typography variant="title" color="inherit">
-          <BoldButton {...props} />
-          <ItalicButton {...props} />
-          <UnderlineButton {...props} />
-          <StrikethroughButton {...props} />
-          <AlignmentLeftButton {...props} />
-          <AlignmentCenterButton {...props} />
-          <AlignmentRightButton {...props} />
-          <DividerButton {...props} />
-          <UnorderedListButton {...props} />
-          <OrderedListButton {...props} />
-          <H1Button {...props} />
-          <H2Button {...props} />
-          <H3Button {...props} />
-          <LinkButton {...props} />
-          <ImageButton {...props} />
-          <VideoButton {...props} />
-          {/* <FontColorButton {...props} /> */}
-          <br />
-          {/* <div className={classes.colorPicker}>
-            {props.editorToolbar.showColorPicker && (
-              <FontColorPicker {...props} />
-            )}
-          </div> */}
-          <InsertTableButton {...props} />
-          <InsertTableColumnButton {...props} />
-          <InsertTableRowButton {...props} />
-          <RemoveTableRowButton {...props} />
-          <RemoveTableColumnButton {...props} />
-          <RemoveTableButton {...props} />
-          <FontFamilyDropdown {...props} />
-          <FontSizeDropdown {...props} />
-          <Tooltip title="Editor Help">
-            <ToolbarButton
-              // eslint-disable-next-line
-              onClick={e => {
-                showHelpModal(true)
-              }}>
-              <HelpIcon className={classes.largeIcon} />
-            </ToolbarButton>
-          </Tooltip>
-        </Typography>
-      </Toolbar>
-    </AppBar>
+    <Fragment>
+      <AppBar className={classes.toolbar} position="static" color="default">
+        <Toolbar>
+          <Grid container>
+            <Grid item xs={12}>
+              <BoldButton {...props} />
+              <ItalicButton {...props} />
+              <UnderlineButton {...props} />
+              <StrikethroughButton {...props} />
+              <AlignmentLeftButton {...props} />
+              <AlignmentCenterButton {...props} />
+              <AlignmentRightButton {...props} />
+              <DividerButton {...props} />
+              <UnorderedListButton {...props} />
+              <OrderedListButton {...props} />
+              <H1Button {...props} />
+              <H2Button {...props} />
+              <H3Button {...props} />
+              <LinkButton {...props} />
+              <InsertInitialTableButton
+                {...props}
+                onClick={e => {
+                  showTableOptions(true)
+                }}
+              />
+              <ImageButton {...props} />
+              <VideoButton {...props} />
+              <FontColorButton {...props} />
+              &nbsp;&nbsp;
+              <span className={classes.colorPicker}>
+                {editorToolbar.showColorPicker && (
+                  <FontColorPicker {...props} />
+                )}
+              </span>
+            </Grid>
+            <Grid item xs={12}>
+              <Grid container>
+                <Grid item xs={11}>
+                  {editorToolbar.showTableOptions && (
+                    <div className={classes.tableButtons}>
+                      <InsertTableButton {...props} />
+                      <InsertTableColumnButton {...props} />
+                      <InsertTableRowButton {...props} />
+                      &nbsp;&nbsp;
+                      <RemoveTableRowButton {...props} />
+                      <RemoveTableColumnButton {...props} />
+                      <RemoveTableButton {...props} />
+                      <br />
+                    </div>
+                  )}
+                  <FontFamilyDropdown {...props} />
+                  <FontSizeDropdown {...props} />
+                  <Tooltip title="Editor Help">
+                    <ToolbarButton
+                      onClick={e => {
+                        showHelpModal(true)
+                      }}>
+                      <HelpIcon className={classes.largeIcon} />
+                    </ToolbarButton>
+                  </Tooltip>
+                </Grid>
+                <Grid item xs={1}>
+                  <Button
+                    className={classes.saveButton}
+                    size="small"
+                    variant="contained"
+                    color="primary"
+                    onClick={props.onSave}>
+                    Save
+                  </Button>
+                </Grid>
+              </Grid>
+            </Grid>
+          </Grid>
+        </Toolbar>
+      </AppBar>
+    </Fragment>
   )
 }
 
@@ -126,5 +177,5 @@ const mapStateToProps = ({ editorToolbar }) => ({ editorToolbar })
 
 export default connect(
   mapStateToProps,
-  { showHelpModal },
+  { showHelpModal, showTableOptions },
 )(withStyles(styles)(EditorToolbar))

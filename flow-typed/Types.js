@@ -12,5 +12,6 @@ class process {
     REACT_APP_NAVBAR_JSON: string,
     REACT_APP_FOOTER_JSON: string,
     REACT_APP_DOWNLOAD_TABS_JSON: string,
+    NODE_ENV: string,
   }
 }

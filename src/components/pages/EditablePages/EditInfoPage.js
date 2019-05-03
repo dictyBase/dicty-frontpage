@@ -1,7 +1,7 @@
 // @flow
 import React from "react"
 import { connect } from "react-redux"
-import { Flex, Box } from "rebass"
+import Grid from "@material-ui/core/Grid"
 
 import PageEditor from "components/editor/PageEditor"
 import HelpModal from "components/editor/HelpModal"
@@ -29,30 +29,32 @@ type Props = {
 const EditInfoPage = (props: Props) => {
   const { page, match, editorToolbar, showHelpModal } = props
   return (
-    <Flex justify="center">
-      <Box w={["90%", "90%", "90%", "65%"]}>
+    <Grid container justify="center">
+      <Grid item xs={11} lg={7}>
         <EditorStyle>
           <PageEditor page={page} match={match} />
         </EditorStyle>
-      </Box>
-      <Box />
+      </Grid>
       {editorToolbar.showHelpModal && (
         <HelpModal
           showHelpModal={editorToolbar.showHelpModal}
-          // eslint-disable-next-line
           handleClose={e => {
             showHelpModal(false)
           }}
-          // eslint-disable-next-line
           onClick={e => window.scrollTo(0, 0)}
         />
       )}
-    </Flex>
+    </Grid>
   )
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const slugName = `${NAMESPACE}-${ownProps.match.params.name}`
+  let slugName
+  if (ownProps.match.params.subname) {
+    slugName = `${NAMESPACE}-${ownProps.match.params.subname}`
+  } else {
+    slugName = `${NAMESPACE}-${ownProps.match.params.name}`
+  }
   return {
     page: state.editablePages[slugName],
     editorToolbar: state.editorToolbar,

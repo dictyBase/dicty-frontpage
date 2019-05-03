@@ -1,5 +1,4 @@
 import styled from "styled-components"
-import { Box } from "rebass"
 import { Editor } from "slate-react"
 import Button from "@material-ui/core/Button"
 
@@ -7,6 +6,8 @@ export const StyledEditor = styled(Editor)`
   padding: 15px;
   min-height: 200px;
   min-width: 800px;
+  line-height: 1.6;
+  color: "rgba(0, 0, 0, 0.87)";
 
   a {
     color: #428bca;
@@ -55,22 +56,6 @@ export const SaveButton = styled(Button)`
     width: 100%;
     background-color: #15317e;
   }
-`
-
-export const NewsEditorBox = styled(Box)`
-  border-top: 2px solid #d1d5da;
-  border-left: 2px solid #d1d5da;
-  border-right: 2px solid #d1d5da;
-  border-radius: 5px 5px 0px 0px;
-  min-height: 200px;
-`
-
-export const NewsEditorButtonsBox = styled(Box)`
-  border-left: 2px solid #d1d5da;
-  border-right: 2px solid #d1d5da;
-  border-bottom: 2px solid #d1d5da;
-  border-radius: 0px 0px 5px 5px;
-  padding: 5px;
 `
 
 export const EditorStyle = styled.div`

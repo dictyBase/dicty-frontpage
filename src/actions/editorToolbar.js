@@ -3,6 +3,7 @@ import {
   CHANGE_FONT_SIZE,
   SHOW_HELP_MODAL,
   SHOW_COLOR_PICKER,
+  SHOW_TABLE_OPTIONS,
 } from "constants/types"
 
 export const changeFontSelect = (font: string) => ({
@@ -28,6 +29,13 @@ export const showHelpModal = (bool: boolean) => ({
 
 export const showColorPicker = (bool: boolean) => ({
   type: SHOW_COLOR_PICKER,
+  payload: {
+    bool,
+  },
+})
+
+export const showTableOptions = (bool: boolean) => ({
+  type: SHOW_TABLE_OPTIONS,
   payload: {
     bool,
   },

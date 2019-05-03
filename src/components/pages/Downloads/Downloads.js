@@ -1,5 +1,6 @@
 // @flow
 import React, { Component } from "react"
+import { Helmet } from "react-helmet"
 import { connect } from "react-redux"
 import Grid from "@material-ui/core/Grid"
 import AppBar from "@material-ui/core/AppBar"
@@ -69,6 +70,13 @@ export class Downloads extends Component<Props> {
 
     return (
       <MuiThemeProvider theme={MuiTheme}>
+        <Helmet>
+          <title>dictyBase Downloads</title>
+          <meta
+            name="description"
+            content="dictyBase Downloads - the central collection of downloadable material from dictyBase"
+          />
+        </Helmet>
         <Grid container justify="center">
           <Grid item xs={8}>
             <DownloadsHeader />
