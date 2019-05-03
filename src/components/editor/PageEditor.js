@@ -345,7 +345,12 @@ class PageEditor extends Component<Props, State> {
     return (
       <div>
         {!readOnly && (
-          <EditorToolbar value={value} onChange={this.onChange} page={page} />
+          <EditorToolbar
+            value={value}
+            onChange={this.onChange}
+            page={page}
+            onSave={this.onSave}
+          />
         )}
 
         <StyledEditor
