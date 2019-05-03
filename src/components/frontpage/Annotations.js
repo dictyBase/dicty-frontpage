@@ -50,7 +50,7 @@ const Annotations = (props: Props) => {
         <FontAwesome name="pencil fa-md" />
         <AnnotationTitle>RECENT ANNOTATIONS</AnnotationTitle>
       </AnnotationHeader>
-      <Grid container className={classes.container} wrap="wrap" xs={12}>
+      <Grid container className={classes.container} wrap="wrap">
         <Grid item className={classes.box} xs={6}>
           <AnnotationSubTitle>Genes</AnnotationSubTitle>
           <ListBox margintop="0px" padbottom="0px">
