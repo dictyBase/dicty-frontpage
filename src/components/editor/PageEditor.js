@@ -25,6 +25,7 @@ import { FontColorMark } from "./plugins/fontcolor"
 import { FontFamilyMark } from "./plugins/fontfamily"
 import { FontSizeMark } from "./plugins/fontsize"
 import { ItalicMark } from "./plugins/italic"
+import { SubscriptMark } from "./plugins/subscript"
 import { StrikethroughMark } from "./plugins/strikethrough"
 import { UnderlineMark } from "./plugins/underline"
 
@@ -52,6 +53,7 @@ import { ItalicPlugin } from "./plugins/italic"
 import { LinkPlugin } from "./plugins/link"
 import { ListPlugin } from "./plugins/list"
 import { StrikethroughPlugin } from "./plugins/strikethrough"
+import { SubscriptPlugin } from "./plugins/subscript"
 import { TablePlugin } from "./plugins/table"
 import { UnderlinePlugin } from "./plugins/underline"
 
@@ -83,6 +85,7 @@ const plugins = [
   LinkPlugin(),
   ListPlugin,
   StrikethroughPlugin(),
+  SubscriptPlugin(),
   TablePlugin,
   UnderlinePlugin(),
 ]
@@ -111,6 +114,8 @@ export const renderMark = (props: markProps) => {
       return <ItalicMark {...props} />
     case "strikethrough":
       return <StrikethroughMark {...props} />
+    case "subscript":
+      return <SubscriptMark {...props} />
     case "underline":
       return <UnderlineMark {...props} />
 

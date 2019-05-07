@@ -15,6 +15,7 @@ import { showHelpModal, showTableOptions } from "actions/editorToolbar"
 import { BoldButton } from "../plugins/bold"
 import { ItalicButton } from "../plugins/italic"
 import { StrikethroughButton } from "../plugins/strikethrough"
+import { SubscriptButton } from "../plugins/subscript"
 import { UnderlineButton } from "../plugins/underline"
 
 import {
@@ -102,6 +103,7 @@ export const EditorToolbar = props => {
               <ItalicButton {...props} />
               <UnderlineButton {...props} />
               <StrikethroughButton {...props} />
+              <SubscriptButton {...props} />
               <AlignmentLeftButton {...props} />
               <AlignmentCenterButton {...props} />
               <AlignmentRightButton {...props} />
