@@ -75,7 +75,7 @@ const styles = theme => ({
     paddingRight: "6px",
   },
   tableButtons: {
-    border: "1px solid",
+    border: "1px solid #bcbcbc",
     borderRadius: "2px",
     display: "flex",
     justifyContent: "space-between",
@@ -134,7 +134,7 @@ export const EditorToolbar = props => {
             </Grid>
             <Grid item xs={12}>
               <Grid container>
-                <Grid item xs={11}>
+                <Grid item xs={10}>
                   {editorToolbar.showTableOptions && (
                     <div className={classes.tableButtons}>
                       <InsertTableButton {...props} />
@@ -158,6 +158,7 @@ export const EditorToolbar = props => {
                     </ToolbarButton>
                   </Tooltip>
                 </Grid>
+                <Grid item xs={1} />
                 <Grid item xs={1}>
                   <Button
                     className={classes.saveButton}
