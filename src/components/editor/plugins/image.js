@@ -87,8 +87,8 @@ const ImageButton = ({ value, onChange }) => {
         <Dialog
           open={imageModalOpen}
           onClose={() => setImageModalOpen(false)}
-          aria-labelledby="form-dialog-title">
-          <DialogTitle id="form-dialog-title">Image Details</DialogTitle>
+          aria-labelledby="image-dialog-title">
+          <DialogTitle id="image-dialog-title">Image Details</DialogTitle>
           <DialogContent>
             <TextField
               autoFocus

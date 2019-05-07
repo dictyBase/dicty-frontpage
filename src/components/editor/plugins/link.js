@@ -1,5 +1,12 @@
-import React from "react"
+import React, { useState } from "react"
 import Tooltip from "@material-ui/core/Tooltip"
+import TextField from "@material-ui/core/TextField"
+import Button from "@material-ui/core/Button"
+import Dialog from "@material-ui/core/Dialog"
+import DialogActions from "@material-ui/core/DialogActions"
+import DialogContent from "@material-ui/core/DialogContent"
+import DialogContentText from "@material-ui/core/DialogContentText"
+import DialogTitle from "@material-ui/core/DialogTitle"
 import LinkIcon from "@material-ui/icons/Link"
 
 import ToolbarButton from "../toolbar/ToolbarButton"
@@ -39,18 +46,16 @@ const insertLink = (change, url) => {
 
 const hasLinks = value => value.inlines.some(inline => inline.type === "link")
 
-const insertLinkStrategy = change => {
+const insertLinkStrategy = (change, data) => {
   const { value } = change
+  const href = data.url
+  const text = data.text
 
   if (hasLinks(value)) {
     change.unwrapInline("link")
   } else if (value.isExpanded) {
-    const href = window.prompt("Enter the URL of the link:")
     change.call(wrapLink, href)
   } else {
-    const href = window.prompt("Enter the URL of the link:")
-    const text = window.prompt("Enter the text for the link:")
-
     if (!href || !text) {
       return
     } else {
@@ -76,17 +81,72 @@ const LinkNode = ({ attributes, children, node: { data } }) => (
 /**
  * Button components that use click handlers to connect to the editor.
  */
-const LinkButton = ({ value, onChange }) => (
-  <Tooltip title="ctrl + k" placement="bottom">
-    <ToolbarButton
-      // eslint-disable-next-line
-      onClick={e => {
-        onChange(insertLinkStrategy(value.change()))
-      }}>
-      <LinkIcon />
-    </ToolbarButton>
-  </Tooltip>
-)
+const LinkButton = ({ value, onChange }) => {
+  const [linkModalOpen, setLinkModalOpen] = useState(false)
+  const [url, setURL] = useState("")
+  const [text, setText] = useState("")
+
+  const data = {
+    url,
+    text,
+  }
+
+  return (
+    <>
+      <Tooltip title="Link (ctrl + k)" placement="bottom">
+        <ToolbarButton
+          onClick={e => {
+            setLinkModalOpen(true)
+          }}>
+          <LinkIcon />
+        </ToolbarButton>
+      </Tooltip>
+      {linkModalOpen && (
+        <Dialog
+          open={linkModalOpen}
+          onClose={() => setLinkModalOpen(false)}
+          aria-labelledby="link-dialog-title">
+          <DialogTitle id="link-dialog-title">Link Details</DialogTitle>
+          <DialogContent>
+            <TextField
+              autoFocus
+              margin="dense"
+              id="url"
+              label="URL"
+              type="url"
+              onChange={e => setURL(e.target.value)}
+              fullWidth
+            />
+            {!value.change().value.isExpanded && (
+              <TextField
+                margin="dense"
+                id="text"
+                label="Text"
+                type="text"
+                onChange={e => setText(e.target.value)}
+                fullWidth
+              />
+            )}
+          </DialogContent>
+          <DialogContentText style={{ padding: "20px" }}>
+            <strong>Tip:</strong> if you want to remove an existing link, just
+            keep these fields empty and click Add Link.
+          </DialogContentText>
+          <DialogActions>
+            <Button
+              onClick={() => {
+                setLinkModalOpen(false)
+                onChange(insertLinkStrategy(value.change(), data))
+              }}
+              color="primary">
+              Add Link
+            </Button>
+          </DialogActions>
+        </Dialog>
+      )}
+    </>
+  )
+}
 
 /**
  * Function that specifies the keyboard shortcuts to use for links.
