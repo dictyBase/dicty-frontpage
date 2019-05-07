@@ -25,8 +25,9 @@ import { FontColorMark } from "./plugins/fontcolor"
 import { FontFamilyMark } from "./plugins/fontfamily"
 import { FontSizeMark } from "./plugins/fontsize"
 import { ItalicMark } from "./plugins/italic"
-import { SubscriptMark } from "./plugins/subscript"
 import { StrikethroughMark } from "./plugins/strikethrough"
+import { SubscriptMark } from "./plugins/subscript"
+import { SuperscriptMark } from "./plugins/superscript"
 import { UnderlineMark } from "./plugins/underline"
 
 /** Import node renderers */
@@ -54,6 +55,7 @@ import { LinkPlugin } from "./plugins/link"
 import { ListPlugin } from "./plugins/list"
 import { StrikethroughPlugin } from "./plugins/strikethrough"
 import { SubscriptPlugin } from "./plugins/subscript"
+import { SuperscriptPlugin } from "./plugins/superscript"
 import { TablePlugin } from "./plugins/table"
 import { UnderlinePlugin } from "./plugins/underline"
 
@@ -86,6 +88,7 @@ const plugins = [
   ListPlugin,
   StrikethroughPlugin(),
   SubscriptPlugin(),
+  SuperscriptPlugin(),
   TablePlugin,
   UnderlinePlugin(),
 ]
@@ -116,6 +119,8 @@ export const renderMark = (props: markProps) => {
       return <StrikethroughMark {...props} />
     case "subscript":
       return <SubscriptMark {...props} />
+    case "superscript":
+      return <SuperscriptMark {...props} />
     case "underline":
       return <UnderlineMark {...props} />
 
