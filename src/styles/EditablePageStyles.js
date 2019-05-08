@@ -37,7 +37,6 @@ export const StyledEditor = styled(Editor)`
     border-bottom: none;
     border-right: none;
     flex: 1;
-    word-break: break-all;
     position: relative;
   }
 
@@ -71,7 +70,6 @@ export const Toolbar = styled.div`
   position: relative;
   padding: 20px 18px 17px;
   border-bottom: 2px solid #d1d5da;
-  /* margin-bottom: 20px; */
   background-color: #f1f8ff;
 `
 
