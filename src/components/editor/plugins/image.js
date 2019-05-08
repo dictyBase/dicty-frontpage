@@ -1,3 +1,4 @@
+// @flow
 import React, { useState } from "react"
 import Tooltip from "@material-ui/core/Tooltip"
 import TextField from "@material-ui/core/TextField"
@@ -7,7 +8,6 @@ import DialogActions from "@material-ui/core/DialogActions"
 import DialogContent from "@material-ui/core/DialogContent"
 import DialogTitle from "@material-ui/core/DialogTitle"
 import ImageIcon from "@material-ui/icons/Image"
-
 import ToolbarButton from "../toolbar/ToolbarButton"
 
 /**
@@ -75,7 +75,7 @@ const ImageButton = ({ value, onChange }) => {
 
   return (
     <>
-      <Tooltip title="⌘ + shift + i" placement="bottom">
+      <Tooltip title="Image" placement="bottom">
         <ToolbarButton
           onClick={() => {
             setImageModalOpen(true)

@@ -1,7 +1,7 @@
+// @flow
 import React from "react"
 import Tooltip from "@material-ui/core/Tooltip"
 import FormatStrikethroughIcon from "@material-ui/icons/FormatStrikethrough"
-
 import ToolbarButton from "../toolbar/ToolbarButton"
 import { isMod } from "../utils/utils"
 
@@ -19,10 +19,9 @@ const StrikethroughMark = ({ children }) => <del>{children}</del>
  * Strikethrough button that uses a click handler to connect the button to the editor.
  */
 const StrikethroughButton = ({ value, onChange }) => (
-  <Tooltip title="ctrl + s" placement="bottom">
+  <Tooltip title="Strikethrough" placement="bottom">
     <ToolbarButton
-      // eslint-disable-next-line
-      onClick={e => {
+      onClick={() => {
         onChange(strikethroughMarkStrategy(value.change()))
       }}>
       <FormatStrikethroughIcon />

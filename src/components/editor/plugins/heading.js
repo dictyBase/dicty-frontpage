@@ -1,6 +1,6 @@
+// @flow
 import React from "react"
 import Tooltip from "@material-ui/core/Tooltip"
-
 import ToolbarButton from "../toolbar/ToolbarButton"
 
 /**
@@ -23,10 +23,9 @@ const H3Node = ({ attributes, children }) => <h3 {...attributes}>{children}</h3>
  * Button components that use click handlers to connect the buttons to the editor.
  */
 const H1Button = ({ value, onChange }) => (
-  <Tooltip title="⌘ + shift + 1" placement="bottom">
+  <Tooltip title="<h1> Tag" placement="bottom">
     <ToolbarButton
-      // eslint-disable-next-line
-      onClick={e => {
+      onClick={() => {
         onChange(headingH1(value.change()))
       }}>
       <strong>H1</strong>
@@ -35,10 +34,9 @@ const H1Button = ({ value, onChange }) => (
 )
 
 const H2Button = ({ value, onChange }) => (
-  <Tooltip title="⌘ + shift + 2" placement="bottom">
+  <Tooltip title="<h2> Tag" placement="bottom">
     <ToolbarButton
-      // eslint-disable-next-line
-      onClick={e => {
+      onClick={() => {
         onChange(headingH2(value.change()))
       }}>
       <strong>H2</strong>
@@ -47,10 +45,9 @@ const H2Button = ({ value, onChange }) => (
 )
 
 const H3Button = ({ value, onChange }) => (
-  <Tooltip title="<h3>" placement="bottom">
+  <Tooltip title="<h3> Tag" placement="bottom">
     <ToolbarButton
-      // eslint-disable-next-line
-      onClick={e => {
+      onClick={() => {
         onChange(headingH3(value.change()))
       }}>
       <strong>H3</strong>

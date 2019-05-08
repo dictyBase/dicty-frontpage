@@ -1,6 +1,6 @@
+// @flow
 import React from "react"
 import Tooltip from "@material-ui/core/Tooltip"
-
 import ToolbarButton from "../toolbar/ToolbarButton"
 import { isMod } from "../utils/utils"
 
@@ -22,10 +22,9 @@ const DividerNode = ({ attributes }) => <hr {...attributes} />
  * Button components that use click handlers to connect to the editor.
  */
 const DividerButton = ({ value, onChange }) => (
-  <Tooltip title="⌘ + ]" placement="bottom">
+  <Tooltip title="Divider" placement="bottom">
     <ToolbarButton
-      // eslint-disable-next-line
-      onClick={e => {
+      onClick={() => {
         onChange(dividerStrategy(value.change()))
       }}>
       <strong>HR</strong>

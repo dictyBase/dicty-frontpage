@@ -1,3 +1,4 @@
+// @flow
 import React, { useState } from "react"
 import Tooltip from "@material-ui/core/Tooltip"
 import TextField from "@material-ui/core/TextField"
@@ -8,7 +9,6 @@ import DialogContent from "@material-ui/core/DialogContent"
 import DialogContentText from "@material-ui/core/DialogContentText"
 import DialogTitle from "@material-ui/core/DialogTitle"
 import LinkIcon from "@material-ui/icons/Link"
-
 import ToolbarButton from "../toolbar/ToolbarButton"
 import { isMod } from "../utils/utils"
 
@@ -93,7 +93,7 @@ const LinkButton = ({ value, onChange }) => {
 
   return (
     <>
-      <Tooltip title="Link (ctrl + k)" placement="bottom">
+      <Tooltip title="Link" placement="bottom">
         <ToolbarButton
           onClick={e => {
             setLinkModalOpen(true)

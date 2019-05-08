@@ -1,3 +1,4 @@
+// @flow
 import React from "react"
 import Tooltip from "@material-ui/core/Tooltip"
 import FormatAlignLeftIcon from "@material-ui/icons/FormatAlignLeft"
@@ -34,9 +35,9 @@ const AlignmentNode = ({ children, attributes, node: { data } }) => (
  * Button components that use click handlers to connect the buttons to the editor.
  */
 const AlignmentLeftButton = ({ value, onChange }) => (
-  <Tooltip title="⌘ + shift + l" placement="bottom">
+  <Tooltip title="Align Left" placement="bottom">
     <ToolbarButton
-      onClick={e => {
+      onClick={() => {
         onChange(alignmentMarkStrategy(value.change(), "left"))
       }}>
       <FormatAlignLeftIcon />
@@ -45,9 +46,9 @@ const AlignmentLeftButton = ({ value, onChange }) => (
 )
 
 const AlignmentCenterButton = ({ value, onChange }) => (
-  <Tooltip title="⌘ + shift + c" placement="bottom">
+  <Tooltip title="Center Text" placement="bottom">
     <ToolbarButton
-      onClick={e => {
+      onClick={() => {
         onChange(alignmentMarkStrategy(value.change(), "center"))
       }}>
       <FormatAlignCenterIcon />
@@ -56,9 +57,9 @@ const AlignmentCenterButton = ({ value, onChange }) => (
 )
 
 const AlignmentRightButton = ({ value, onChange }) => (
-  <Tooltip title="⌘ + shift + r" placement="bottom">
+  <Tooltip title="Align Right" placement="bottom">
     <ToolbarButton
-      onClick={e => {
+      onClick={() => {
         onChange(alignmentMarkStrategy(value.change(), "right"))
       }}>
       <FormatAlignRightIcon />
@@ -67,9 +68,9 @@ const AlignmentRightButton = ({ value, onChange }) => (
 )
 
 const AlignmentJustifyButton = ({ value, onChange }) => (
-  <Tooltip title="Justify Alignment (⌘+shift+j)" placement="bottom">
+  <Tooltip title="Justify" placement="bottom">
     <ToolbarButton
-      onClick={e => {
+      onClick={() => {
         onChange(alignmentMarkStrategy(value.change(), "justify"))
       }}>
       <FormatAlignJustifyIcon />

@@ -1,9 +1,9 @@
+// @flow
 import React from "react"
 import { connect } from "react-redux"
 import MenuItem from "@material-ui/core/MenuItem"
 import FormControl from "@material-ui/core/FormControl"
 import Select from "@material-ui/core/Select"
-
 import { changeFontSelect } from "actions/editorToolbar"
 
 /**
@@ -76,7 +76,6 @@ const Dropdown = ({
   <FormControl className={classes.fontFamilyDropdown}>
     <Select
       value={editorToolbar.currentFont}
-      // eslint-disable-next-line
       onChange={({ target: { value: fontFamilyIndex } }) => {
         changeFontSelect(fontFamilyIndex)
         onChange(fontFamilyMarkStrategy({ value, fontFamilyIndex }))

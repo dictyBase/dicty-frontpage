@@ -1,7 +1,7 @@
+// @flow
 import React from "react"
 import Tooltip from "@material-ui/core/Tooltip"
 import FontAwesome from "react-fontawesome"
-
 import ToolbarButton from "../toolbar/ToolbarButton"
 import { isMod } from "../utils/utils"
 
@@ -19,9 +19,9 @@ const SubscriptMark = ({ children }) => <sub>{children}</sub>
  * Subscript button that uses a click handler to connect the button to the editor.
  */
 const SubscriptButton = ({ value, onChange }) => (
-  <Tooltip title="subscript (ctrl+=)" placement="bottom">
+  <Tooltip title="Subscript" placement="bottom">
     <ToolbarButton
-      onClick={e => {
+      onClick={() => {
         onChange(subscriptMarkStrategy(value.change()))
       }}>
       <FontAwesome name="subscript" />

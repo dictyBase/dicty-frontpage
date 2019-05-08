@@ -1,9 +1,9 @@
+// @flow
 import React from "react"
 import EditList from "slate-edit-list"
 import Tooltip from "@material-ui/core/Tooltip"
 import FormatListBulletedIcon from "@material-ui/icons/FormatListBulleted"
 import FormatListNumberedIcon from "@material-ui/icons/FormatListNumbered"
-
 import ToolbarButton from "../toolbar/ToolbarButton"
 
 /**
@@ -37,20 +37,17 @@ const handleClick = (value, onChange, type) => {
  * Button components that use click handlers to connect the buttons to the editor.
  */
 const OrderedListButton = ({ value, onChange }) => (
-  <Tooltip title="ordered list" placement="bottom">
-    <ToolbarButton
-      // eslint-disable-next-line
-      onClick={e => handleClick(value, onChange, "ordered-list")}>
+  <Tooltip title="Ordered List" placement="bottom">
+    <ToolbarButton onClick={() => handleClick(value, onChange, "ordered-list")}>
       <FormatListNumberedIcon />
     </ToolbarButton>
   </Tooltip>
 )
 
 const UnorderedListButton = ({ value, onChange }) => (
-  <Tooltip title="unordered list" placement="bottom">
+  <Tooltip title="Unordered List" placement="bottom">
     <ToolbarButton
-      // eslint-disable-next-line
-      onClick={e => handleClick(value, onChange, "unordered-list")}>
+      onClick={() => handleClick(value, onChange, "unordered-list")}>
       <FormatListBulletedIcon />
     </ToolbarButton>
   </Tooltip>

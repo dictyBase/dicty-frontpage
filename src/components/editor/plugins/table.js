@@ -1,3 +1,4 @@
+// @flow
 import React from "react"
 import { connect } from "react-redux"
 import EditTable from "slate-edit-table"
@@ -33,7 +34,7 @@ const InsertInitialTable = ({
   editorToolbar,
   showTableOptions,
 }) => (
-  <Tooltip title="toggle table options" placement="bottom">
+  <Tooltip title="Table" placement="bottom">
     <ToolbarButton
       onClick={e => {
         showTableOptions(!editorToolbar.showTableOptions)
@@ -49,10 +50,10 @@ const InsertInitialTableButton = connect(
 )(InsertInitialTable)
 
 const InsertTableButton = ({ value, onChange, classes }) => (
-  <Tooltip title="insert table" placement="bottom">
+  <Tooltip title="Insert Table" placement="bottom">
     <ToolbarButton
       className={classes.button}
-      onClick={e => {
+      onClick={() => {
         onChange(TablePlugin.changes.insertTable(value.change()))
       }}>
       <AddIcon /> Add Table
@@ -61,10 +62,10 @@ const InsertTableButton = ({ value, onChange, classes }) => (
 )
 
 const InsertTableColumnButton = ({ value, onChange, classes }) => (
-  <Tooltip title="insert table column" placement="bottom">
+  <Tooltip title="Insert Column" placement="bottom">
     <ToolbarButton
       className={classes.button}
-      onClick={e => {
+      onClick={() => {
         onChange(TablePlugin.changes.insertColumn(value.change()))
       }}>
       <AddIcon /> &nbsp;Add Column
@@ -73,10 +74,10 @@ const InsertTableColumnButton = ({ value, onChange, classes }) => (
 )
 
 const InsertTableRowButton = ({ value, onChange, classes }) => (
-  <Tooltip title="insert table row" placement="bottom">
+  <Tooltip title="Insert Row" placement="bottom">
     <ToolbarButton
       className={classes.button}
-      onClick={e => {
+      onClick={() => {
         onChange(TablePlugin.changes.insertRow(value.change()))
       }}>
       <AddIcon /> &nbsp;Add Row
@@ -85,10 +86,10 @@ const InsertTableRowButton = ({ value, onChange, classes }) => (
 )
 
 const RemoveTableColumnButton = ({ value, onChange, classes }) => (
-  <Tooltip title="remove table column" placement="bottom">
+  <Tooltip title="Remove Column" placement="bottom">
     <ToolbarButton
       className={classes.button}
-      onClick={e => {
+      onClick={() => {
         onChange(TablePlugin.changes.removeColumn(value.change()))
       }}>
       <RemoveIcon /> &nbsp;Remove Column
@@ -97,10 +98,10 @@ const RemoveTableColumnButton = ({ value, onChange, classes }) => (
 )
 
 const RemoveTableRowButton = ({ value, onChange, classes }) => (
-  <Tooltip title="remove table row" placement="bottom">
+  <Tooltip title="Remove Row" placement="bottom">
     <ToolbarButton
       className={classes.button}
-      onClick={e => {
+      onClick={() => {
         onChange(TablePlugin.changes.removeRow(value.change()))
       }}>
       <RemoveIcon /> &nbsp;Remove Row
@@ -109,10 +110,10 @@ const RemoveTableRowButton = ({ value, onChange, classes }) => (
 )
 
 const RemoveTableButton = ({ value, onChange, classes }) => (
-  <Tooltip title="remove table" placement="bottom">
+  <Tooltip title="Remove Table" placement="bottom">
     <ToolbarButton
       className={classes.button}
-      onClick={e => {
+      onClick={() => {
         onChange(TablePlugin.changes.removeTable(value.change()))
       }}>
       <DeleteIcon /> &nbsp;Remove Table

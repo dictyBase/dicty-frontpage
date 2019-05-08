@@ -1,7 +1,7 @@
+// @flow
 import React from "react"
 import Tooltip from "@material-ui/core/Tooltip"
 import FormatBoldIcon from "@material-ui/icons/FormatBold"
-
 import ToolbarButton from "../toolbar/ToolbarButton"
 import { isMod } from "../utils/utils"
 
@@ -19,10 +19,9 @@ const BoldMark = ({ children }) => <strong>{children}</strong>
  * Bold button that uses a click handler to connect the button to the editor.
  */
 const BoldButton = ({ value, onChange }) => (
-  <Tooltip title="ctrl + b" placement="bottom">
+  <Tooltip title="Bold" placement="bottom">
     <ToolbarButton
-      // eslint-disable-next-line
-      onClick={e => {
+      onClick={() => {
         onChange(boldMarkStrategy(value.change()))
       }}>
       <FormatBoldIcon />

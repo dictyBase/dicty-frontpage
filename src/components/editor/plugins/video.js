@@ -1,3 +1,4 @@
+// @flow
 import React, { useState } from "react"
 import { withStyles } from "@material-ui/core/styles"
 import Tooltip from "@material-ui/core/Tooltip"
@@ -9,7 +10,6 @@ import DialogContent from "@material-ui/core/DialogContent"
 import DialogTitle from "@material-ui/core/DialogTitle"
 import VideoIcon from "@material-ui/icons/Videocam"
 import getVideoId from "get-video-id"
-
 import ToolbarButton from "../toolbar/ToolbarButton"
 
 /**
@@ -108,9 +108,9 @@ const VideoButton = ({ value, onChange, classes }) => {
 
   return (
     <>
-      <Tooltip title="video" placement="bottom">
+      <Tooltip title="Video" placement="bottom">
         <ToolbarButton
-          onClick={e => {
+          onClick={() => {
             setVideoModalOpen(true)
           }}>
           <VideoIcon />

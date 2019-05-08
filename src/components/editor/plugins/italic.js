@@ -1,3 +1,4 @@
+// @flow
 import React from "react"
 import Tooltip from "@material-ui/core/Tooltip"
 import FormatItalicIcon from "@material-ui/icons/FormatItalic"
@@ -19,10 +20,9 @@ const ItalicMark = ({ children }) => <em>{children}</em>
  * Italic button that uses a click handler to connect the button to the editor.
  */
 const ItalicButton = ({ value, onChange }) => (
-  <Tooltip title="ctrl + i" placement="bottom">
+  <Tooltip title="Italic" placement="bottom">
     <ToolbarButton
-      // eslint-disable-next-line
-      onClick={e => {
+      onClick={() => {
         onChange(italicMarkStrategy(value.change()))
       }}>
       <FormatItalicIcon />

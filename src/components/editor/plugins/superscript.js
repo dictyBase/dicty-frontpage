@@ -1,7 +1,7 @@
+// @flow
 import React from "react"
 import Tooltip from "@material-ui/core/Tooltip"
 import FontAwesome from "react-fontawesome"
-
 import ToolbarButton from "../toolbar/ToolbarButton"
 import { isMod } from "../utils/utils"
 
@@ -19,9 +19,9 @@ const SuperscriptMark = ({ children }) => <sup>{children}</sup>
  * Superscript button that uses a click handler to connect the button to the editor.
  */
 const SuperscriptButton = ({ value, onChange }) => (
-  <Tooltip title="superscript (ctrl+/)" placement="bottom">
+  <Tooltip title="Superscript" placement="bottom">
     <ToolbarButton
-      onClick={e => {
+      onClick={() => {
         onChange(superscriptMarkStrategy(value.change()))
       }}>
       <FontAwesome name="superscript" />
