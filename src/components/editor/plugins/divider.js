@@ -1,6 +1,7 @@
 // @flow
 import React from "react"
 import Tooltip from "@material-ui/core/Tooltip"
+import Divider from "@material-ui/core/Divider"
 import ToolbarButton from "../toolbar/ToolbarButton"
 import { isMod } from "../utils/utils"
 
@@ -16,7 +17,7 @@ const dividerStrategy = change =>
 /**
  * Rendering components that provide the actual HTML to use inside the editor.
  */
-const DividerNode = ({ attributes }) => <hr {...attributes} />
+const DividerNode = ({ attributes }) => <Divider {...attributes} />
 
 /**
  * Button components that use click handlers to connect to the editor.
@@ -27,7 +28,7 @@ const DividerButton = ({ value, onChange }) => (
       onClick={() => {
         onChange(dividerStrategy(value.change()))
       }}>
-      <strong>HR</strong>
+      <strong>—</strong>
     </ToolbarButton>
   </Tooltip>
 )
