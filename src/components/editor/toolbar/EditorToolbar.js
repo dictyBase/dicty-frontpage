@@ -23,6 +23,7 @@ import {
   AlignmentLeftButton,
   AlignmentCenterButton,
   AlignmentRightButton,
+  AlignmentJustifyButton,
 } from "../plugins/alignment"
 import { DividerButton } from "../plugins/divider"
 import { FontColorButton, FontColorPicker } from "../plugins/fontcolor"
@@ -109,6 +110,7 @@ export const EditorToolbar = props => {
               <AlignmentLeftButton {...props} />
               <AlignmentCenterButton {...props} />
               <AlignmentRightButton {...props} />
+              <AlignmentJustifyButton {...props} />
               <DividerButton {...props} />
               <UnorderedListButton {...props} />
               <OrderedListButton {...props} />

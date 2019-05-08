@@ -2,6 +2,7 @@ import React from "react"
 import Tooltip from "@material-ui/core/Tooltip"
 import FormatAlignLeftIcon from "@material-ui/icons/FormatAlignLeft"
 import FormatAlignCenterIcon from "@material-ui/icons/FormatAlignCenter"
+import FormatAlignJustifyIcon from "@material-ui/icons/FormatAlignJustify"
 import FormatAlignRightIcon from "@material-ui/icons/FormatAlignRight"
 
 import ToolbarButton from "../toolbar/ToolbarButton"
@@ -18,6 +19,7 @@ const alignmentMarkStrategy = (change, align) =>
 const alignLeft = change => alignmentMarkStrategy(change, "left")
 const alignCenter = change => alignmentMarkStrategy(change, "center")
 const alignRight = change => alignmentMarkStrategy(change, "right")
+const alignJustify = change => alignmentMarkStrategy(change, "justify")
 
 /**
  * Rendering component that provides the actual HTML to use inside the editor.
@@ -34,7 +36,6 @@ const AlignmentNode = ({ children, attributes, node: { data } }) => (
 const AlignmentLeftButton = ({ value, onChange }) => (
   <Tooltip title="⌘ + shift + l" placement="bottom">
     <ToolbarButton
-      // eslint-disable-next-line
       onClick={e => {
         onChange(alignmentMarkStrategy(value.change(), "left"))
       }}>
@@ -46,7 +47,6 @@ const AlignmentLeftButton = ({ value, onChange }) => (
 const AlignmentCenterButton = ({ value, onChange }) => (
   <Tooltip title="⌘ + shift + c" placement="bottom">
     <ToolbarButton
-      // eslint-disable-next-line
       onClick={e => {
         onChange(alignmentMarkStrategy(value.change(), "center"))
       }}>
@@ -58,11 +58,21 @@ const AlignmentCenterButton = ({ value, onChange }) => (
 const AlignmentRightButton = ({ value, onChange }) => (
   <Tooltip title="⌘ + shift + r" placement="bottom">
     <ToolbarButton
-      // eslint-disable-next-line
       onClick={e => {
         onChange(alignmentMarkStrategy(value.change(), "right"))
       }}>
       <FormatAlignRightIcon />
+    </ToolbarButton>
+  </Tooltip>
+)
+
+const AlignmentJustifyButton = ({ value, onChange }) => (
+  <Tooltip title="Justify Alignment (⌘+shift+j)" placement="bottom">
+    <ToolbarButton
+      onClick={e => {
+        onChange(alignmentMarkStrategy(value.change(), "justify"))
+      }}>
+      <FormatAlignJustifyIcon />
     </ToolbarButton>
   </Tooltip>
 )
@@ -93,6 +103,13 @@ const AlignmentKeyboardShortcut = (event, change) => {
     return alignRight(change)
   }
 
+  const keyJustify = event.key === "j"
+  const justifyFullKeyPress = event.metaKey && event.shiftKey && keyJustify
+  if (justifyFullKeyPress) {
+    event.preventDefault()
+    return alignJustify(change)
+  }
+
   return
 }
 
@@ -112,4 +129,5 @@ export {
   AlignmentLeftButton,
   AlignmentCenterButton,
   AlignmentRightButton,
+  AlignmentJustifyButton,
 }
