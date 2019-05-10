@@ -26,6 +26,9 @@ const styles = theme => ({
     top: "0px",
     left: "0px",
   },
+  btn: {
+    backgroundColor: "#15317e",
+  },
 })
 
 /**
@@ -94,7 +97,7 @@ const VideoNode = withStyles(styles)(Video)
 /**
  * Button components that use click handlers to connect to the editor.
  */
-const VideoButton = ({ value, onChange, classes }) => {
+const VideoButtonUnconnected = ({ value, onChange, classes }) => {
   const [videoModalOpen, setVideoModalOpen] = useState(false)
   const [url, setURL] = useState("")
   const [width, setWidth] = useState("")
@@ -155,6 +158,8 @@ const VideoButton = ({ value, onChange, classes }) => {
                 setVideoModalOpen(false)
                 onChange(insertVideoStrategy(value.change(), data))
               }}
+              className={classes.btn}
+              variant="contained"
               color="primary">
               Add Video
             </Button>
@@ -164,6 +169,8 @@ const VideoButton = ({ value, onChange, classes }) => {
     </>
   )
 }
+
+const VideoButton = withStyles(styles)(VideoButtonUnconnected)
 
 /**
  * Export everything needed for the editor.

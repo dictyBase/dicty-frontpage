@@ -1,5 +1,6 @@
 // @flow
 import React, { useState } from "react"
+import { withStyles } from "@material-ui/core/styles"
 import Tooltip from "@material-ui/core/Tooltip"
 import TextField from "@material-ui/core/TextField"
 import Button from "@material-ui/core/Button"
@@ -9,6 +10,12 @@ import DialogContent from "@material-ui/core/DialogContent"
 import DialogTitle from "@material-ui/core/DialogTitle"
 import ImageIcon from "@material-ui/icons/Image"
 import ToolbarButton from "../toolbar/ToolbarButton"
+
+const styles = theme => ({
+  btn: {
+    backgroundColor: "#15317e",
+  },
+})
 
 /**
  * Functions to set the image blocks.
@@ -59,7 +66,7 @@ const ImageNode = ({ attributes, node: { data } }) => {
 /**
  * Button component that uses a click handler to connect to the editor.
  */
-const ImageButton = ({ value, onChange }) => {
+const ImageButtonUnconnected = ({ value, onChange, classes }) => {
   const [imageModalOpen, setImageModalOpen] = useState(false)
   const [url, setURL] = useState("")
   const [description, setDescription] = useState("")
@@ -130,6 +137,8 @@ const ImageButton = ({ value, onChange }) => {
                 setImageModalOpen(false)
                 onChange(insertImageStrategy(value.change(), data))
               }}
+              className={classes.btn}
+              variant="contained"
               color="primary">
               Add Image
             </Button>
@@ -139,6 +148,8 @@ const ImageButton = ({ value, onChange }) => {
     </>
   )
 }
+
+const ImageButton = withStyles(styles)(ImageButtonUnconnected)
 
 /**
  * Function that specifies the keyboard shortcuts to use for images.

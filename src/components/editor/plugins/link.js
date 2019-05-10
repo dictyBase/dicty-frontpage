@@ -1,5 +1,6 @@
 // @flow
 import React, { useState } from "react"
+import { withStyles } from "@material-ui/core/styles"
 import Tooltip from "@material-ui/core/Tooltip"
 import TextField from "@material-ui/core/TextField"
 import Button from "@material-ui/core/Button"
@@ -11,6 +12,12 @@ import DialogTitle from "@material-ui/core/DialogTitle"
 import LinkIcon from "@material-ui/icons/Link"
 import ToolbarButton from "../toolbar/ToolbarButton"
 import { isMod } from "../utils/utils"
+
+const styles = theme => ({
+  btn: {
+    backgroundColor: "#15317e",
+  },
+})
 
 /**
  * Functions to set the link blocks.
@@ -81,7 +88,7 @@ const LinkNode = ({ attributes, children, node: { data } }) => (
 /**
  * Button components that use click handlers to connect to the editor.
  */
-const LinkButton = ({ value, onChange }) => {
+const LinkButtonUnconnected = ({ classes, value, onChange }) => {
   const [linkModalOpen, setLinkModalOpen] = useState(false)
   const [url, setURL] = useState("")
   const [text, setText] = useState("")
@@ -138,6 +145,8 @@ const LinkButton = ({ value, onChange }) => {
                 setLinkModalOpen(false)
                 onChange(insertLinkStrategy(value.change(), data))
               }}
+              className={classes.btn}
+              variant="contained"
               color="primary">
               Add Link
             </Button>
@@ -147,6 +156,8 @@ const LinkButton = ({ value, onChange }) => {
     </>
   )
 }
+
+const LinkButton = withStyles(styles)(LinkButtonUnconnected)
 
 /**
  * Function that specifies the keyboard shortcuts to use for links.
