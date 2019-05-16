@@ -85,7 +85,7 @@ const Video = ({ children, attributes, node: { data }, classes }) => {
         height={height}
         src={src}
         frameBorder="0"
-        allowfullscreen
+        allowFullScreen
         className={classes.iframe}
       />
     </div>

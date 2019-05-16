@@ -93,7 +93,13 @@ const styles = theme => ({
  */
 
 export const EditorToolbar = props => {
-  const { classes, editorToolbar, showHelpModal, showTableOptions } = props
+  const {
+    classes,
+    editorToolbar,
+    showHelpModal,
+    showTableOptions,
+    ...other
+  } = props
 
   return (
     <Fragment>
@@ -117,15 +123,15 @@ export const EditorToolbar = props => {
               <H1Button {...props} />
               <H2Button {...props} />
               <H3Button {...props} />
-              <LinkButton {...props} />
+              <LinkButton {...other} />
               <InsertInitialTableButton
                 {...props}
                 onClick={e => {
                   showTableOptions(true)
                 }}
               />
-              <ImageButton {...props} />
-              <VideoButton {...props} />
+              <ImageButton {...other} />
+              <VideoButton {...other} />
               <FontColorButton {...props} />
               &nbsp;&nbsp;
               <span className={classes.colorPicker}>
