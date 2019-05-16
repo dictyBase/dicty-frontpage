@@ -10,7 +10,7 @@ describe("editor/plugins/image", () => {
 
     describe("initial render", () => {
       it("always renders a ToolbarButton", () => {
-        expect(wrapper.find(ToolbarButton).length).toBe(1)
+        expect(wrapper.dive().find(ToolbarButton).length).toBe(1)
       })
     })
   })
