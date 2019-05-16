@@ -31,6 +31,7 @@ import { FontFamilyDropdown } from "../plugins/fontfamily"
 import { FontSizeDropdown } from "../plugins/fontsize"
 import { H1Button, H2Button, H3Button } from "../plugins/heading"
 import { ImageButton } from "../plugins/image"
+import { LineSpacingButton } from "../plugins/linespacing"
 import { LinkButton } from "../plugins/link"
 import { OrderedListButton, UnorderedListButton } from "../plugins/list"
 import {
@@ -120,6 +121,7 @@ export const EditorToolbar = props => {
               <DividerButton {...props} />
               <UnorderedListButton {...props} />
               <OrderedListButton {...props} />
+              <LineSpacingButton {...props} />
               <H1Button {...props} />
               <H2Button {...props} />
               <H3Button {...props} />

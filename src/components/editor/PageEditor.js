@@ -35,6 +35,7 @@ import { AlignmentNode } from "./plugins/alignment"
 import { DividerNode } from "./plugins/divider"
 import { H1Node, H2Node, H3Node } from "./plugins/heading"
 import { ImageNode } from "./plugins/image"
+import { LineSpacingNode } from "./plugins/linespacing"
 import { LinkNode } from "./plugins/link"
 import {
   ListItemNode,
@@ -153,6 +154,8 @@ export const renderNode = (props: nodeProps) => {
       return <H3Node {...props} />
     case "image":
       return <ImageNode {...props} />
+    case "line-spacing":
+      return <LineSpacingNode {...props} />
     case "link":
       return <LinkNode {...props} />
     case "list-item":
