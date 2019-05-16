@@ -6,11 +6,16 @@ import ToolbarButton from "../toolbar/ToolbarButton"
 /**
  * Functions to set the heading blocks.
  */
-const headingStrategy = (change, heading) => change.setBlocks(heading)
+const headingStrategy = (value, heading) => {
+  const isActive = hasBlock(value, heading)
+  return value.change().setBlocks(isActive ? "paragraph" : heading)
+}
 
-const headingH1 = change => headingStrategy(change, "h1")
-const headingH2 = change => headingStrategy(change, "h2")
-const headingH3 = change => headingStrategy(change, "h3")
+const headingH1 = value => headingStrategy(value, "h1")
+const headingH2 = value => headingStrategy(value, "h2")
+const headingH3 = value => headingStrategy(value, "h3")
+
+const hasBlock = (value, type) => value.blocks.some(node => node.type === type)
 
 /**
  * Rendering components that provide the actual HTML to use inside the editor.
@@ -26,7 +31,7 @@ const H1Button = ({ value, onChange }) => (
   <Tooltip title="<h1> Tag" placement="bottom">
     <ToolbarButton
       onClick={() => {
-        onChange(headingH1(value.change()))
+        onChange(headingH1(value))
       }}>
       <strong>H1</strong>
     </ToolbarButton>
@@ -37,7 +42,7 @@ const H2Button = ({ value, onChange }) => (
   <Tooltip title="<h2> Tag" placement="bottom">
     <ToolbarButton
       onClick={() => {
-        onChange(headingH2(value.change()))
+        onChange(headingH2(value))
       }}>
       <strong>H2</strong>
     </ToolbarButton>
@@ -48,7 +53,7 @@ const H3Button = ({ value, onChange }) => (
   <Tooltip title="<h3> Tag" placement="bottom">
     <ToolbarButton
       onClick={() => {
-        onChange(headingH3(value.change()))
+        onChange(headingH3(value))
       }}>
       <strong>H3</strong>
     </ToolbarButton>
