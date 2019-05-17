@@ -2,9 +2,9 @@
 import React from "react"
 import Tooltip from "@material-ui/core/Tooltip"
 import FormatItalicIcon from "@material-ui/icons/FormatItalic"
-
 import ToolbarButton from "../toolbar/ToolbarButton"
 import { isMod } from "../utils/utils"
+import { ButtonProps } from "../flow/types"
 
 /**
  * Function that toggles the mark type.
@@ -14,12 +14,12 @@ const italicMarkStrategy = change => change.toggleMark("italic")
 /**
  * Rendering component that provides the actual HTML to use inside the editor.
  */
-const ItalicMark = ({ children }) => <em>{children}</em>
+const ItalicMark = ({ children }: any) => <em>{children}</em>
 
 /**
  * Italic button that uses a click handler to connect the button to the editor.
  */
-const ItalicButton = ({ value, onChange }) => (
+const ItalicButton = ({ value, onChange }: ButtonProps) => (
   <Tooltip title="Italic" placement="bottom">
     <ToolbarButton
       onClick={() => {
@@ -45,8 +45,8 @@ const ItalicKeyboardShortcut = (event, change) => {
  * Function that represents our actual plugin.
  * It takes options in case we want to add more to it in the future.
  */
-const ItalicPlugin = options => ({
-  onKeyDown(...args) {
+const ItalicPlugin = (options?: Object) => ({
+  onKeyDown(...args: Array<Object>) {
     return ItalicKeyboardShortcut(...args)
   },
 })

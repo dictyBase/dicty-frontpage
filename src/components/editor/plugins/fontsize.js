@@ -5,6 +5,7 @@ import MenuItem from "@material-ui/core/MenuItem"
 import FormControl from "@material-ui/core/FormControl"
 import Select from "@material-ui/core/Select"
 import { changeFontSize } from "actions/editorToolbar"
+import { NodeProps } from "../flow/types"
 
 /**
  * List of font sizes
@@ -57,7 +58,7 @@ const fontSizeMarkStrategy = attributes => {
 /**
  * Rendering components that provide the actual HTML to use inside the editor.
  */
-const FontSizeMark = ({ children, mark: { data } }) => (
+const FontSizeMark = ({ children, mark: { data } }: NodeProps) => (
   <span
     style={{
       fontSize: FontSizeList[data.get("fontSizeIndex")].size,

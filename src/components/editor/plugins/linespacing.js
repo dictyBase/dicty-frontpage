@@ -5,6 +5,7 @@ import Menu from "@material-ui/core/Menu"
 import MenuItem from "@material-ui/core/MenuItem"
 import ToolbarButton from "../toolbar/ToolbarButton"
 import LineSpacingIcon from "@material-ui/icons/FormatLineSpacing"
+import { ButtonProps, NodeProps } from "../flow/types"
 
 /**
  * Functions to set the line spacing blocks.
@@ -21,7 +22,11 @@ const lineSpacingNodeStrategy = (value, size) =>
 /**
  * Rendering components that provide the actual HTML to use inside the editor.
  */
-const LineSpacingNode = ({ children, attributes, node: { data } }) => (
+const LineSpacingNode = ({
+  children,
+  attributes,
+  node: { data },
+}: NodeProps) => (
   <div style={{ lineHeight: `${data.get("size")}` }} {...attributes}>
     {children}
   </div>
@@ -30,7 +35,7 @@ const LineSpacingNode = ({ children, attributes, node: { data } }) => (
 /**
  * Dropdown component that connects to the editor.
  */
-const LineSpacingButton = ({ value, onChange }) => {
+const LineSpacingButton = ({ value, onChange }: ButtonProps) => {
   const [anchorEl, setAnchorEl] = React.useState(null)
 
   const handleMenuOpen = event => {

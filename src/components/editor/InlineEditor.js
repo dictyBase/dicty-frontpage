@@ -46,7 +46,6 @@ import { DividerPlugin } from "./plugins/divider"
 import { HeadingPlugin } from "./plugins/heading"
 import { ImagePlugin } from "./plugins/image"
 import { ItalicPlugin } from "./plugins/italic"
-import { LinkPlugin } from "./plugins/link"
 import { ListPlugin } from "./plugins/list"
 import { StrikethroughPlugin } from "./plugins/strikethrough"
 import { TablePlugin } from "./plugins/table"
@@ -81,7 +80,6 @@ const plugins = [
   HeadingPlugin(),
   ImagePlugin(),
   ItalicPlugin(),
-  LinkPlugin(),
   ListPlugin,
   StrikethroughPlugin(),
   TablePlugin,

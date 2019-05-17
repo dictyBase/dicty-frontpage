@@ -4,6 +4,7 @@ import Tooltip from "@material-ui/core/Tooltip"
 import FontAwesome from "react-fontawesome"
 import ToolbarButton from "../toolbar/ToolbarButton"
 import { isMod } from "../utils/utils"
+import { ButtonProps } from "../flow/types"
 
 /**
  * Function that toggles the mark type.
@@ -13,12 +14,12 @@ const subscriptMarkStrategy = change => change.toggleMark("subscript")
 /**
  * Rendering component that provides the actual HTML to use inside the editor.
  */
-const SubscriptMark = ({ children }) => <sub>{children}</sub>
+const SubscriptMark = ({ children }: any) => <sub>{children}</sub>
 
 /**
  * Subscript button that uses a click handler to connect the button to the editor.
  */
-const SubscriptButton = ({ value, onChange }) => (
+const SubscriptButton = ({ value, onChange }: ButtonProps) => (
   <Tooltip title="Subscript" placement="bottom">
     <ToolbarButton
       onClick={() => {
@@ -44,8 +45,8 @@ const SubscriptKeyboardShortcut = (event, change) => {
  * Function that represents our actual plugin.
  * It takes options in case we want to add more to it in the future.
  */
-const SubscriptPlugin = options => ({
-  onKeyDown(...args) {
+const SubscriptPlugin = (options?: Object) => ({
+  onKeyDown(...args: Array<Object>) {
     return SubscriptKeyboardShortcut(...args)
   },
 })

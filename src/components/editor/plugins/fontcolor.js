@@ -6,6 +6,7 @@ import Tooltip from "@material-ui/core/Tooltip"
 import FormatColorTextIcon from "@material-ui/icons/FormatColorText"
 import ToolbarButton from "../toolbar/ToolbarButton"
 import { showColorPicker } from "actions/editorToolbar"
+import { ButtonProps, NodeProps } from "../flow/types"
 
 /**
  * Functions to set the font color marks.
@@ -40,7 +41,7 @@ const fontColorMarkStrategy = (value, color) => {
 /**
  * Rendering components that provide the actual HTML to use inside the editor.
  */
-const FontColorMark = ({ children, mark: { data } }) => (
+const FontColorMark = ({ children, mark: { data } }: NodeProps) => (
   <span style={{ color: data.get("color") }}>{children}</span>
 )
 
@@ -61,7 +62,7 @@ const FontColor = ({ showColorPicker, editorToolbar }) => (
 /**
  * The font color picker widget-style component
  */
-const FontColorPicker = ({ value, onChange }) => {
+const FontColorPicker = ({ value, onChange }: ButtonProps) => {
   let color = "#000"
   if (hasMark(value)) {
     color = getMark(value).data.get("color")

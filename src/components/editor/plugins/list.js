@@ -5,17 +5,18 @@ import Tooltip from "@material-ui/core/Tooltip"
 import FormatListBulletedIcon from "@material-ui/icons/FormatListBulleted"
 import FormatListNumberedIcon from "@material-ui/icons/FormatListNumbered"
 import ToolbarButton from "../toolbar/ToolbarButton"
+import { ButtonProps, NodeProps } from "../flow/types"
 
 /**
  * Rendering components that provide the actual HTML to use inside the editor.
  */
-const ListItemNode = ({ attributes, children }) => (
+const ListItemNode = ({ attributes, children }: NodeProps) => (
   <li {...attributes}>{children}</li>
 )
-const OrderedListNode = ({ attributes, children }) => (
+const OrderedListNode = ({ attributes, children }: NodeProps) => (
   <ol {...attributes}>{children}</ol>
 )
-const UnorderedListNode = ({ attributes, children }) => (
+const UnorderedListNode = ({ attributes, children }: NodeProps) => (
   <ul {...attributes}>{children}</ul>
 )
 
@@ -36,7 +37,7 @@ const handleClick = (value, onChange, type) => {
 /**
  * Button components that use click handlers to connect the buttons to the editor.
  */
-const OrderedListButton = ({ value, onChange }) => (
+const OrderedListButton = ({ value, onChange }: ButtonProps) => (
   <Tooltip title="Ordered List" placement="bottom">
     <ToolbarButton onClick={() => handleClick(value, onChange, "ordered-list")}>
       <FormatListNumberedIcon />
@@ -44,7 +45,7 @@ const OrderedListButton = ({ value, onChange }) => (
   </Tooltip>
 )
 
-const UnorderedListButton = ({ value, onChange }) => (
+const UnorderedListButton = ({ value, onChange }: ButtonProps) => (
   <Tooltip title="Unordered List" placement="bottom">
     <ToolbarButton
       onClick={() => handleClick(value, onChange, "unordered-list")}>

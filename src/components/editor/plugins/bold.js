@@ -4,6 +4,7 @@ import Tooltip from "@material-ui/core/Tooltip"
 import FormatBoldIcon from "@material-ui/icons/FormatBold"
 import ToolbarButton from "../toolbar/ToolbarButton"
 import { isMod } from "../utils/utils"
+import { ButtonProps } from "../flow/types"
 
 /**
  * Function that toggles the mark type.
@@ -13,12 +14,12 @@ const boldMarkStrategy = change => change.toggleMark("bold")
 /**
  * Rendering component that provides the actual HTML to use inside the editor.
  */
-const BoldMark = ({ children }) => <strong>{children}</strong>
+const BoldMark = ({ children }: any) => <strong>{children}</strong>
 
 /**
  * Bold button that uses a click handler to connect the button to the editor.
  */
-const BoldButton = ({ value, onChange }) => (
+const BoldButton = ({ value, onChange }: ButtonProps) => (
   <Tooltip title="Bold" placement="bottom">
     <ToolbarButton
       onClick={() => {
@@ -44,8 +45,8 @@ const BoldKeyboardShortcut = (event, change) => {
  * Function that represents our actual plugin.
  * It takes options in case we want to add more to it in the future.
  */
-const BoldPlugin = options => ({
-  onKeyDown(...args) {
+const BoldPlugin = (options?: Object) => ({
+  onKeyDown(...args: Array<Object>) {
     return BoldKeyboardShortcut(...args)
   },
 })

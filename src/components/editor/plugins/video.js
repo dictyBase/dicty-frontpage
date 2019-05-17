@@ -11,6 +11,7 @@ import DialogTitle from "@material-ui/core/DialogTitle"
 import VideoIcon from "@material-ui/icons/Videocam"
 import getVideoId from "get-video-id"
 import ToolbarButton from "../toolbar/ToolbarButton"
+import { ButtonProps, NodeProps } from "../flow/types"
 
 /**
  * Material-UI styling
@@ -34,7 +35,7 @@ const styles = theme => ({
 /**
  * Functions to set the video blocks.
  */
-const insertVideo = (change, data) => {
+const insertVideo = (change: Object, data: Object) => {
   const url = data.url
   const videoId = getVideoId(url).id
   let src
@@ -54,7 +55,7 @@ const insertVideo = (change, data) => {
   })
 }
 
-const insertVideoStrategy = (change, data) => {
+const insertVideoStrategy = (change: Object, data: Object) => {
   const { value } = change
 
   return value.change().call(insertVideo, data)
@@ -63,7 +64,12 @@ const insertVideoStrategy = (change, data) => {
 /**
  * Rendering components that provide the actual HTML to use inside the editor.
  */
-const Video = ({ children, attributes, node: { data }, classes }) => {
+const Video = ({
+  children,
+  attributes,
+  node: { data },
+  classes,
+}: NodeProps) => {
   const src = data.get("src")
   let height = data.get("height")
   let width = data.get("width")
@@ -97,7 +103,7 @@ const VideoNode = withStyles(styles)(Video)
 /**
  * Button components that use click handlers to connect to the editor.
  */
-const VideoButtonUnconnected = ({ value, onChange, classes }) => {
+const VideoButtonUnconnected = ({ value, onChange, classes }: ButtonProps) => {
   const [videoModalOpen, setVideoModalOpen] = useState(false)
   const [url, setURL] = useState("")
   const [width, setWidth] = useState("")

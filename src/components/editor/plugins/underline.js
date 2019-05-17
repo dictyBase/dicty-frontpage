@@ -4,6 +4,7 @@ import Tooltip from "@material-ui/core/Tooltip"
 import FormatUnderlinedIcon from "@material-ui/icons/FormatUnderlined"
 import ToolbarButton from "../toolbar/ToolbarButton"
 import { isMod } from "../utils/utils"
+import { ButtonProps } from "../flow/types"
 
 /**
  * Function that toggles the mark type.
@@ -13,12 +14,12 @@ const underlineMarkStrategy = change => change.toggleMark("underline")
 /**
  * Rendering component that provides the actual HTML to use inside the editor.
  */
-const UnderlineMark = ({ children }) => <u>{children}</u>
+const UnderlineMark = ({ children }: any) => <u>{children}</u>
 
 /**
  * Underline button that uses a click handler to connect the button to the editor.
  */
-const UnderlineButton = ({ value, onChange }) => (
+const UnderlineButton = ({ value, onChange }: ButtonProps) => (
   <Tooltip title="Underline" placement="bottom">
     <ToolbarButton
       onClick={() => {
@@ -44,8 +45,8 @@ const UnderlineKeyboardShortcut = (event, change) => {
  * Function that represents our actual plugin.
  * It takes options in case we want to add more to it in the future.
  */
-const UnderlinePlugin = options => ({
-  onKeyDown(...args) {
+const UnderlinePlugin = (options?: Object) => ({
+  onKeyDown(...args: Array<Object>) {
     return UnderlineKeyboardShortcut(...args)
   },
 })

@@ -5,8 +5,8 @@ import FormatAlignLeftIcon from "@material-ui/icons/FormatAlignLeft"
 import FormatAlignCenterIcon from "@material-ui/icons/FormatAlignCenter"
 import FormatAlignJustifyIcon from "@material-ui/icons/FormatAlignJustify"
 import FormatAlignRightIcon from "@material-ui/icons/FormatAlignRight"
-
 import ToolbarButton from "../toolbar/ToolbarButton"
+import { ButtonProps, NodeProps } from "../flow/types"
 
 /**
  * Functions to set the alignment blocks.
@@ -25,7 +25,7 @@ const alignJustify = change => alignmentMarkStrategy(change, "justify")
 /**
  * Rendering component that provides the actual HTML to use inside the editor.
  */
-const AlignmentNode = ({ children, attributes, node: { data } }) => (
+const AlignmentNode = ({ children, attributes, node: { data } }: NodeProps) => (
   <div style={{ textAlign: `${data.get("align")}` }} {...attributes}>
     {children}
   </div>
@@ -34,7 +34,7 @@ const AlignmentNode = ({ children, attributes, node: { data } }) => (
 /**
  * Button components that use click handlers to connect the buttons to the editor.
  */
-const AlignmentLeftButton = ({ value, onChange }) => (
+const AlignmentLeftButton = ({ value, onChange }: ButtonProps) => (
   <Tooltip title="Align Left" placement="bottom">
     <ToolbarButton
       onClick={() => {
@@ -45,7 +45,7 @@ const AlignmentLeftButton = ({ value, onChange }) => (
   </Tooltip>
 )
 
-const AlignmentCenterButton = ({ value, onChange }) => (
+const AlignmentCenterButton = ({ value, onChange }: ButtonProps) => (
   <Tooltip title="Center Text" placement="bottom">
     <ToolbarButton
       onClick={() => {
@@ -56,7 +56,7 @@ const AlignmentCenterButton = ({ value, onChange }) => (
   </Tooltip>
 )
 
-const AlignmentRightButton = ({ value, onChange }) => (
+const AlignmentRightButton = ({ value, onChange }: ButtonProps) => (
   <Tooltip title="Align Right" placement="bottom">
     <ToolbarButton
       onClick={() => {
@@ -67,7 +67,7 @@ const AlignmentRightButton = ({ value, onChange }) => (
   </Tooltip>
 )
 
-const AlignmentJustifyButton = ({ value, onChange }) => (
+const AlignmentJustifyButton = ({ value, onChange }: ButtonProps) => (
   <Tooltip title="Justify" placement="bottom">
     <ToolbarButton
       onClick={() => {
@@ -118,8 +118,8 @@ const AlignmentKeyboardShortcut = (event, change) => {
  * Function that represents our actual plugin.
  * It takes options in case we want to add more to it in the future.
  */
-const AlignmentPlugin = options => ({
-  onKeyDown(...args) {
+const AlignmentPlugin = (options?: Object) => ({
+  onKeyDown(...args: Array<Object>) {
     return AlignmentKeyboardShortcut(...args)
   },
 })

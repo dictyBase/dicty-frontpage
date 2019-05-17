@@ -5,6 +5,7 @@ import MenuItem from "@material-ui/core/MenuItem"
 import FormControl from "@material-ui/core/FormControl"
 import Select from "@material-ui/core/Select"
 import { changeFontSelect } from "actions/editorToolbar"
+import { NodeProps } from "../flow/types"
 
 /**
  * List of fonts available
@@ -56,7 +57,7 @@ const fontFamilyMarkStrategy = attributes => {
 /**
  * Rendering components that provide the actual HTML to use inside the editor.
  */
-const FontFamilyMark = ({ children, mark: { data } }) => (
+const FontFamilyMark = ({ children, mark: { data } }: NodeProps) => (
   <span
     style={{ fontFamily: FontFamilyList[data.get("fontFamilyIndex")].name }}>
     {children}

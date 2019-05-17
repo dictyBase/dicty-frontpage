@@ -10,6 +10,7 @@ import DialogContent from "@material-ui/core/DialogContent"
 import DialogTitle from "@material-ui/core/DialogTitle"
 import ImageIcon from "@material-ui/icons/Image"
 import ToolbarButton from "../toolbar/ToolbarButton"
+import { ButtonProps, NodeProps } from "../flow/types"
 
 const styles = theme => ({
   btn: {
@@ -20,7 +21,7 @@ const styles = theme => ({
 /**
  * Functions to set the image blocks.
  */
-const insertImage = (change, data, target) => {
+const insertImage = (change: Object, data: Object, target: string) => {
   if (target) {
     change.select(target)
   }
@@ -46,7 +47,7 @@ const insertImageStrategy = (change, data) => {
 /**
  * Rendering components that provide the actual HTML to use inside the editor.
  */
-const ImageNode = ({ attributes, node: { data } }) => {
+const ImageNode = ({ attributes, node: { data } }: NodeProps) => {
   const src = data.get("src")
   const description = data.get("description")
   const height = data.get("height")
@@ -66,7 +67,7 @@ const ImageNode = ({ attributes, node: { data } }) => {
 /**
  * Button component that uses a click handler to connect to the editor.
  */
-const ImageButtonUnconnected = ({ value, onChange, classes }) => {
+const ImageButtonUnconnected = ({ value, onChange, classes }: ButtonProps) => {
   const [imageModalOpen, setImageModalOpen] = useState(false)
   const [url, setURL] = useState("")
   const [description, setDescription] = useState("")
@@ -171,8 +172,8 @@ const ImageKeyboardShortcut = (event, change) => {
  * Function that represents our actual plugin.
  * It takes options in case we want to add more to it in the future.
  */
-const ImagePlugin = options => ({
-  onKeyDown(...args) {
+const ImagePlugin = (options?: Object) => ({
+  onKeyDown(...args: Array<Object>) {
     return ImageKeyboardShortcut(...args)
   },
 })

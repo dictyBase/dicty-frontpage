@@ -4,6 +4,7 @@ import Tooltip from "@material-ui/core/Tooltip"
 import Divider from "@material-ui/core/Divider"
 import ToolbarButton from "../toolbar/ToolbarButton"
 import { isMod } from "../utils/utils"
+import { ButtonProps } from "../flow/types"
 
 /**
  * Functions to set the divider blocks.
@@ -17,12 +18,12 @@ const dividerStrategy = change =>
 /**
  * Rendering components that provide the actual HTML to use inside the editor.
  */
-const DividerNode = ({ attributes }) => <Divider {...attributes} />
+const DividerNode = ({ attributes }: any) => <Divider {...attributes} />
 
 /**
  * Button components that use click handlers to connect to the editor.
  */
-const DividerButton = ({ value, onChange }) => (
+const DividerButton = ({ value, onChange }: ButtonProps) => (
   <Tooltip title="Divider" placement="bottom">
     <ToolbarButton
       onClick={() => {
@@ -46,8 +47,8 @@ const DividerKeyboardShortcut = (event, change) => {
  * Function that represents our actual plugin.
  * It takes options in case we want to add more to it in the future.
  */
-const DividerPlugin = options => ({
-  onKeyDown(...args) {
+const DividerPlugin = (options?: Object) => ({
+  onKeyDown(...args: Array<Object>) {
     return DividerKeyboardShortcut(...args)
   },
 })

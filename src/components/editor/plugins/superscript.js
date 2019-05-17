@@ -4,6 +4,7 @@ import Tooltip from "@material-ui/core/Tooltip"
 import FontAwesome from "react-fontawesome"
 import ToolbarButton from "../toolbar/ToolbarButton"
 import { isMod } from "../utils/utils"
+import { ButtonProps } from "../flow/types"
 
 /**
  * Function that toggles the mark type.
@@ -13,12 +14,12 @@ const superscriptMarkStrategy = change => change.toggleMark("superscript")
 /**
  * Rendering component that provides the actual HTML to use inside the editor.
  */
-const SuperscriptMark = ({ children }) => <sup>{children}</sup>
+const SuperscriptMark = ({ children }: any) => <sup>{children}</sup>
 
 /**
  * Superscript button that uses a click handler to connect the button to the editor.
  */
-const SuperscriptButton = ({ value, onChange }) => (
+const SuperscriptButton = ({ value, onChange }: ButtonProps) => (
   <Tooltip title="Superscript" placement="bottom">
     <ToolbarButton
       onClick={() => {
@@ -44,8 +45,8 @@ const SuperscriptKeyboardShortcut = (event, change) => {
  * Function that represents our actual plugin.
  * It takes options in case we want to add more to it in the future.
  */
-const SuperscriptPlugin = options => ({
-  onKeyDown(...args) {
+const SuperscriptPlugin = (options?: Object) => ({
+  onKeyDown(...args: Array<Object>) {
     return SuperscriptKeyboardShortcut(...args)
   },
 })

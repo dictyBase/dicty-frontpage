@@ -2,6 +2,7 @@
 import React from "react"
 import Tooltip from "@material-ui/core/Tooltip"
 import ToolbarButton from "../toolbar/ToolbarButton"
+import { ButtonProps, NodeProps } from "../flow/types"
 
 /**
  * Functions to set the heading blocks.
@@ -20,14 +21,20 @@ const hasBlock = (value, type) => value.blocks.some(node => node.type === type)
 /**
  * Rendering components that provide the actual HTML to use inside the editor.
  */
-const H1Node = ({ attributes, children }) => <h1 {...attributes}>{children}</h1>
-const H2Node = ({ attributes, children }) => <h2 {...attributes}>{children}</h2>
-const H3Node = ({ attributes, children }) => <h3 {...attributes}>{children}</h3>
+const H1Node = ({ attributes, children }: NodeProps) => (
+  <h1 {...attributes}>{children}</h1>
+)
+const H2Node = ({ attributes, children }: NodeProps) => (
+  <h2 {...attributes}>{children}</h2>
+)
+const H3Node = ({ attributes, children }: NodeProps) => (
+  <h3 {...attributes}>{children}</h3>
+)
 
 /**
  * Button components that use click handlers to connect the buttons to the editor.
  */
-const H1Button = ({ value, onChange }) => (
+const H1Button = ({ value, onChange }: ButtonProps) => (
   <Tooltip title="<h1> Tag" placement="bottom">
     <ToolbarButton
       onClick={() => {
@@ -38,7 +45,7 @@ const H1Button = ({ value, onChange }) => (
   </Tooltip>
 )
 
-const H2Button = ({ value, onChange }) => (
+const H2Button = ({ value, onChange }: ButtonProps) => (
   <Tooltip title="<h2> Tag" placement="bottom">
     <ToolbarButton
       onClick={() => {
@@ -49,7 +56,7 @@ const H2Button = ({ value, onChange }) => (
   </Tooltip>
 )
 
-const H3Button = ({ value, onChange }) => (
+const H3Button = ({ value, onChange }: ButtonProps) => (
   <Tooltip title="<h3> Tag" placement="bottom">
     <ToolbarButton
       onClick={() => {
@@ -86,8 +93,8 @@ const HeadingKeyboardShortcut = (event, change) => {
  * Function that represents our actual plugin.
  * It takes options in case we want to add more to it in the future.
  */
-const HeadingPlugin = options => ({
-  onKeyDown(...args) {
+const HeadingPlugin = (options?: Object) => ({
+  onKeyDown(...args: Array<Object>) {
     return HeadingKeyboardShortcut(...args)
   },
 })

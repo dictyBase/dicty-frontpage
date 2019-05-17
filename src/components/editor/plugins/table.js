@@ -9,19 +9,20 @@ import RemoveIcon from "@material-ui/icons/Remove"
 import DeleteIcon from "@material-ui/icons/Delete"
 import ToolbarButton from "../toolbar/ToolbarButton"
 import { showTableOptions } from "actions/editorToolbar"
+import { ButtonProps, NodeProps } from "../flow/types"
 
 /**
  * Rendering components that provide the actual HTML to use inside the editor.
  */
-const TableNode = ({ attributes, children }) => (
+const TableNode = ({ attributes, children }: NodeProps) => (
   <table>
     <tbody {...attributes}>{children}</tbody>
   </table>
 )
-const TableRowNode = ({ attributes, children }) => (
+const TableRowNode = ({ attributes, children }: NodeProps) => (
   <tr {...attributes}>{children}</tr>
 )
-const TableCellNode = ({ attributes, children }) => (
+const TableCellNode = ({ attributes, children }: NodeProps) => (
   <td {...attributes}>{children}</td>
 )
 
@@ -49,7 +50,7 @@ const InsertInitialTableButton = connect(
   { showTableOptions },
 )(InsertInitialTable)
 
-const InsertTableButton = ({ value, onChange, classes }) => (
+const InsertTableButton = ({ value, onChange, classes }: ButtonProps) => (
   <Tooltip title="Insert Table" placement="bottom">
     <ToolbarButton
       className={classes.button}
@@ -61,7 +62,7 @@ const InsertTableButton = ({ value, onChange, classes }) => (
   </Tooltip>
 )
 
-const InsertTableColumnButton = ({ value, onChange, classes }) => (
+const InsertTableColumnButton = ({ value, onChange, classes }: ButtonProps) => (
   <Tooltip title="Insert Column" placement="bottom">
     <ToolbarButton
       className={classes.button}
@@ -73,7 +74,7 @@ const InsertTableColumnButton = ({ value, onChange, classes }) => (
   </Tooltip>
 )
 
-const InsertTableRowButton = ({ value, onChange, classes }) => (
+const InsertTableRowButton = ({ value, onChange, classes }: ButtonProps) => (
   <Tooltip title="Insert Row" placement="bottom">
     <ToolbarButton
       className={classes.button}
@@ -85,7 +86,7 @@ const InsertTableRowButton = ({ value, onChange, classes }) => (
   </Tooltip>
 )
 
-const RemoveTableColumnButton = ({ value, onChange, classes }) => (
+const RemoveTableColumnButton = ({ value, onChange, classes }: ButtonProps) => (
   <Tooltip title="Remove Column" placement="bottom">
     <ToolbarButton
       className={classes.button}
@@ -97,7 +98,7 @@ const RemoveTableColumnButton = ({ value, onChange, classes }) => (
   </Tooltip>
 )
 
-const RemoveTableRowButton = ({ value, onChange, classes }) => (
+const RemoveTableRowButton = ({ value, onChange, classes }: ButtonProps) => (
   <Tooltip title="Remove Row" placement="bottom">
     <ToolbarButton
       className={classes.button}
@@ -109,7 +110,7 @@ const RemoveTableRowButton = ({ value, onChange, classes }) => (
   </Tooltip>
 )
 
-const RemoveTableButton = ({ value, onChange, classes }) => (
+const RemoveTableButton = ({ value, onChange, classes }: ButtonProps) => (
   <Tooltip title="Remove Table" placement="bottom">
     <ToolbarButton
       className={classes.button}

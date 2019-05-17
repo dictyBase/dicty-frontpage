@@ -11,7 +11,7 @@ import DialogContentText from "@material-ui/core/DialogContentText"
 import DialogTitle from "@material-ui/core/DialogTitle"
 import LinkIcon from "@material-ui/icons/Link"
 import ToolbarButton from "../toolbar/ToolbarButton"
-import { isMod } from "../utils/utils"
+import { ButtonProps, NodeProps } from "../flow/types"
 
 const styles = theme => ({
   btn: {
@@ -31,7 +31,7 @@ const wrapLink = (change, href) => {
   change.collapseToEnd()
 }
 
-const insertLink = (change, url) => {
+const insertLink = (change: Object, url: string) => {
   if (change.value.isCollapsed) {
     change
       .insertText(url)
@@ -53,7 +53,7 @@ const insertLink = (change, url) => {
 
 const hasLinks = value => value.inlines.some(inline => inline.type === "link")
 
-const insertLinkStrategy = (change, data) => {
+const insertLinkStrategy = (change: Object, data: Object) => {
   const { value } = change
   const href = data.url
   const text = data.text
@@ -79,7 +79,7 @@ const insertLinkStrategy = (change, data) => {
 /**
  * Rendering components that provide the actual HTML to use inside the editor.
  */
-const LinkNode = ({ attributes, children, node: { data } }) => (
+const LinkNode = ({ attributes, children, node: { data } }: NodeProps) => (
   <a href={data.get("href")} {...attributes}>
     {children}
   </a>
@@ -88,7 +88,7 @@ const LinkNode = ({ attributes, children, node: { data } }) => (
 /**
  * Button components that use click handlers to connect to the editor.
  */
-const LinkButtonUnconnected = ({ classes, value, onChange }) => {
+const LinkButtonUnconnected = ({ classes, value, onChange }: ButtonProps) => {
   const [linkModalOpen, setLinkModalOpen] = useState(false)
   const [url, setURL] = useState("")
   const [text, setText] = useState("")
@@ -160,25 +160,6 @@ const LinkButtonUnconnected = ({ classes, value, onChange }) => {
 const LinkButton = withStyles(styles)(LinkButtonUnconnected)
 
 /**
- * Function that specifies the keyboard shortcuts to use for links.
- * It accepts event and change as arguments.
- */
-const LinkKeyboardShortcut = (event, change) => {
-  if (isMod(event) && event.key === "k") return insertLinkStrategy(change)
-  return
-}
-
-/**
- * Function that represents our actual plugin.
- * It takes options in case we want to add more to it in the future.
- */
-const LinkPlugin = options => ({
-  onKeyDown(...args) {
-    return LinkKeyboardShortcut(...args)
-  },
-})
-
-/**
  * Export everything needed for the editor.
  */
-export { LinkNode, LinkButton, LinkPlugin, insertLink }
+export { LinkNode, LinkButton, insertLink }
