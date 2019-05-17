@@ -50,7 +50,6 @@ const insertVideo = (change: Object, data: Object) => {
 
   change.insertBlock({
     type: "video",
-    isVoid: true,
     data: { src, height: data.height, width: data.width },
   })
 }

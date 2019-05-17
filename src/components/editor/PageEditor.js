@@ -8,6 +8,7 @@ import Grid from "@material-ui/core/Grid"
 import Button from "@material-ui/core/Button"
 
 import EditorToolbar from "./toolbar/EditorToolbar"
+import schema from "./schema/schema"
 import { insertImage } from "./plugins/image"
 import { onPasteHtml, onPasteText } from "./utils/utils"
 import {
@@ -367,6 +368,7 @@ class PageEditor extends Component<Props, State> {
           renderNode={renderNode}
           readOnly={readOnly}
           plugins={plugins}
+          schema={schema}
         />
 
         <Grid container justify="flex-end">

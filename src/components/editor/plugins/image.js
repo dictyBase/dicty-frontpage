@@ -28,7 +28,6 @@ const insertImage = (change: Object, data: Object, target: string) => {
 
   change.insertBlock({
     type: "image",
-    isVoid: true, // makes this content a black box that Slate doesn't control editing for
     data: {
       src: data.url,
       description: data.description,

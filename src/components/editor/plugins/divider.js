@@ -12,7 +12,6 @@ import { ButtonProps } from "../flow/types"
 const dividerStrategy = change =>
   change.setBlocks({
     type: "divider",
-    isVoid: true,
   })
 
 /**

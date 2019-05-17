@@ -35,7 +35,7 @@ const insertLink = (change: Object, url: string) => {
   if (change.value.isCollapsed) {
     change
       .insertText(url)
-      .extend(0 - url.length)
+      .moveFocusForward(0 - url.length)
       .wrapInline({
         type: "link",
         data: { url },
@@ -68,7 +68,7 @@ const insertLinkStrategy = (change: Object, data: Object) => {
     } else {
       change
         .insertText(text)
-        .extend(0 - text.length)
+        .moveFocusForward(0 - text.length)
         .call(wrapLink, href)
     }
   }
