@@ -28,7 +28,7 @@ const wrapLink = (change, href) => {
     data: { href },
   })
 
-  change.collapseToEnd()
+  change.moveToEnd()
 }
 
 const insertLink = (change: Object, url: string) => {
@@ -40,14 +40,14 @@ const insertLink = (change: Object, url: string) => {
         type: "link",
         data: { url },
       })
-      .collapseToEnd()
+      .moveToEnd()
   } else {
     change.wrapInline({
       type: "link",
       data: { url },
     })
 
-    change.collapseToEnd()
+    change.moveToEnd()
   }
 }
 
@@ -60,7 +60,7 @@ const insertLinkStrategy = (change: Object, data: Object) => {
 
   if (hasLinks(value)) {
     change.unwrapInline("link")
-  } else if (value.isExpanded) {
+  } else if (value.selection.isExpanded) {
     change.call(wrapLink, href)
   } else {
     if (!href || !text) {
@@ -124,7 +124,7 @@ const LinkButtonUnconnected = ({ classes, value, onChange }: ButtonProps) => {
               onChange={e => setURL(e.target.value)}
               fullWidth
             />
-            {!value.change().value.isExpanded && (
+            {!value.change().value.selection.isExpanded && (
               <TextField
                 margin="dense"
                 id="text"

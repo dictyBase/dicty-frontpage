@@ -119,19 +119,19 @@ export const EditorToolbar = props => {
               <AlignmentRightButton {...props} />
               <AlignmentJustifyButton {...props} />
               <DividerButton {...props} />
-              <UnorderedListButton {...props} />
-              <OrderedListButton {...props} />
+              {/* <UnorderedListButton {...props} />
+              <OrderedListButton {...props} /> */}
               <LineSpacingButton {...props} />
               <H1Button {...props} />
               <H2Button {...props} />
               <H3Button {...props} />
               <LinkButton {...other} />
-              <InsertInitialTableButton
+              {/* <InsertInitialTableButton
                 {...props}
                 onClick={e => {
                   showTableOptions(true)
                 }}
-              />
+              /> */}
               <ImageButton {...other} />
               <VideoButton {...other} />
               <FontColorButton {...props} />
@@ -145,7 +145,7 @@ export const EditorToolbar = props => {
             <Grid item xs={12}>
               <Grid container>
                 <Grid item xs={10}>
-                  {editorToolbar.showTableOptions && (
+                  {/* {editorToolbar.showTableOptions && (
                     <div className={classes.tableButtons}>
                       <InsertTableButton {...props} />
                       <InsertTableColumnButton {...props} />
@@ -156,7 +156,7 @@ export const EditorToolbar = props => {
                       <RemoveTableButton {...props} />
                       <br />
                     </div>
-                  )}
+                  )} */}
                   <FontFamilyDropdown {...props} />
                   <FontSizeDropdown {...props} />
                   <Tooltip title="Editor Help">

@@ -42,11 +42,11 @@ const fontFamilyMarkStrategy = attributes => {
   const { value, fontFamilyIndex } = attributes
 
   if (hasMark(value)) {
-    if (value.isExpanded) {
+    if (value.selection.isExpanded) {
       return reapplyMark({ change: value.change(), fontFamilyIndex })
     }
   } else {
-    if (value.isExpanded) {
+    if (value.selection.isExpanded) {
       return applyMark({ change: value.change(), fontFamilyIndex })
     }
   }

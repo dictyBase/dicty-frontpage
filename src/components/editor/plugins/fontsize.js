@@ -43,11 +43,11 @@ const fontSizeMarkStrategy = attributes => {
   const { value, fontSizeIndex } = attributes
 
   if (hasMark(value)) {
-    if (value.isExpanded) {
+    if (value.selection.isExpanded) {
       return reapplyMark({ change: value.change(), fontSizeIndex })
     }
   } else {
-    if (value.isExpanded) {
+    if (value.selection.isExpanded) {
       return applyMark({ change: value.change(), fontSizeIndex })
     }
   }

@@ -27,11 +27,11 @@ const applyMark = ({ change, color }) => change.addMark(createMark(color))
 
 const fontColorMarkStrategy = (value, color) => {
   if (hasMark(value)) {
-    if (value.isExpanded) {
+    if (value.selection.isExpanded) {
       return reapplyMark({ change: value.change(), color })
     }
   } else {
-    if (value.isExpanded) {
+    if (value.selection.isExpanded) {
       return applyMark({ change: value.change(), color })
     }
   }
