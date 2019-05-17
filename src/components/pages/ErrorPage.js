@@ -143,7 +143,6 @@ export const ErrorPage = (props: Props) => {
             </RouterLink>
 
             <Authorization
-              // eslint-disable-next-line
               render={({ canEditPages, verifiedToken }) => (
                 <Grid item>
                   {canEditPages && verifiedToken && (
