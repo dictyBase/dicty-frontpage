@@ -49,13 +49,10 @@ import { VideoNode } from "./plugins/video"
 import { AlignmentPlugin } from "./plugins/alignment"
 import { BoldPlugin } from "./plugins/bold"
 import { DividerPlugin } from "./plugins/divider"
-import { HeadingPlugin } from "./plugins/heading"
 import { ImagePlugin } from "./plugins/image"
 import { ItalicPlugin } from "./plugins/italic"
 import { ListPlugin } from "./plugins/list"
 import { StrikethroughPlugin } from "./plugins/strikethrough"
-import { SubscriptPlugin } from "./plugins/subscript"
-import { SuperscriptPlugin } from "./plugins/superscript"
 import { TablePlugin } from "./plugins/table"
 import { UnderlinePlugin } from "./plugins/underline"
 
@@ -81,13 +78,10 @@ const plugins = [
   AlignmentPlugin(),
   BoldPlugin(),
   DividerPlugin(),
-  HeadingPlugin(),
   ImagePlugin(),
   ItalicPlugin(),
   ListPlugin,
   StrikethroughPlugin(),
-  SubscriptPlugin(),
-  SuperscriptPlugin(),
   TablePlugin,
   UnderlinePlugin(),
 ]

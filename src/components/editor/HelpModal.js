@@ -61,27 +61,21 @@ const HelpMuiModal = props => {
                 new table with the applicable toolbar buttons (i.e. create
                 table, add row, etc.), then paste in the content cell by cell.
               </p>
-              <p>
-                Links can easily be added by highlighting text and pasting a
-                URL.
-              </p>
-              <p>
-                Images can be added by simply copying and pasting an image URL.
-              </p>
-              <p>
-                Videos can be added by copying and pasting the video URL (either
-                YouTube or Vimeo). This will automatically embed the video.
-              </p>
               <h3>Keyboard Shortcuts</h3>
-              <p>
-                Some features have keyboard shortcuts. These can be found by
-                hovering over a button in the toolbar. These tooltips will show
-                any available shortcuts. For example, <strong>bold</strong> is
-                CTRL + B.
-              </p>
+              <ul>
+                <li>Align Left: CTRL + SHIFT + L</li>
+                <li>Align Center: CTRL + SHIFT + C</li>
+                <li>Align Right: CTRL + SHIFT + R</li>
+                <li>Align Justify: CTRL + SHIFT + J</li>
+                <li>Bold: CTRL + B</li>
+                <li>Divider: CTRL + ]</li>
+                <li>Italic: CTRL + I</li>
+                <li>Strikethrough: CTRL + SHIFT + S</li>
+                <li>Underline: CTRL + U</li>
+              </ul>
               <h3>Found a bug? Got a request?</h3>
               <p>
-                Send an email and/or post an issue in the{" "}
+                Post an issue in the{" "}
                 <em>
                   <a
                     className={classes.link}

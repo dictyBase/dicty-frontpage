@@ -43,7 +43,6 @@ import { VideoNode } from "./plugins/video"
 import { AlignmentPlugin } from "./plugins/alignment"
 import { BoldPlugin } from "./plugins/bold"
 import { DividerPlugin } from "./plugins/divider"
-import { HeadingPlugin } from "./plugins/heading"
 import { ImagePlugin } from "./plugins/image"
 import { ItalicPlugin } from "./plugins/italic"
 import { ListPlugin } from "./plugins/list"
@@ -77,7 +76,6 @@ const plugins = [
   AlignmentPlugin(),
   BoldPlugin(),
   DividerPlugin(),
-  HeadingPlugin(),
   ImagePlugin(),
   ItalicPlugin(),
   ListPlugin,

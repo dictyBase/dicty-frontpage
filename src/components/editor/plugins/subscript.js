@@ -3,7 +3,6 @@ import React from "react"
 import Tooltip from "@material-ui/core/Tooltip"
 import FontAwesome from "react-fontawesome"
 import ToolbarButton from "../toolbar/ToolbarButton"
-import { isMod } from "../utils/utils"
 import { ButtonProps } from "../flow/types"
 
 /**
@@ -30,25 +29,4 @@ const SubscriptButton = ({ value, onChange }: ButtonProps) => (
   </Tooltip>
 )
 
-/**
- * Function that specifies the keyboard shortcut to use for subscript.
- * It accepts event and change as arguments.
- */
-const SubscriptKeyboardShortcut = (event, change) => {
-  if (isMod(event) && event.key === "=") {
-    return subscriptMarkStrategy(change)
-  }
-  return
-}
-
-/**
- * Function that represents our actual plugin.
- * It takes options in case we want to add more to it in the future.
- */
-const SubscriptPlugin = (options?: Object) => ({
-  onKeyDown(...args: Array<Object>) {
-    return SubscriptKeyboardShortcut(...args)
-  },
-})
-
-export { SubscriptPlugin, SubscriptMark, SubscriptButton }
+export { SubscriptMark, SubscriptButton }

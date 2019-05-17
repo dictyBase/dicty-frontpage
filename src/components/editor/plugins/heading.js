@@ -68,38 +68,6 @@ const H3Button = ({ value, onChange }: ButtonProps) => (
 )
 
 /**
- * Function that specifies the keyboard shortcuts to use for headings.
- * It accepts event and change as arguments.
- */
-const HeadingKeyboardShortcut = (event, change) => {
-  const h1Key = event.key === "1"
-  const h1KeyPress = event.metaKey && event.shiftKey && h1Key
-  if (h1KeyPress) {
-    event.preventDefault()
-    return headingH1(change)
-  }
-
-  const h2Key = event.key === "2"
-  const h2KeyPress = event.metaKey && event.shiftKey && h2Key
-  if (h2KeyPress) {
-    event.preventDefault()
-    return headingH2(change)
-  }
-
-  return
-}
-
-/**
- * Function that represents our actual plugin.
- * It takes options in case we want to add more to it in the future.
- */
-const HeadingPlugin = (options?: Object) => ({
-  onKeyDown(...args: Array<Object>) {
-    return HeadingKeyboardShortcut(...args)
-  },
-})
-
-/**
  * Export everything needed for the editor.
  */
-export { H1Node, H2Node, H3Node, H1Button, H2Button, H3Button, HeadingPlugin }
+export { H1Node, H2Node, H3Node, H1Button, H2Button, H3Button }

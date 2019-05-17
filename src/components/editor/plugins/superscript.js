@@ -3,7 +3,6 @@ import React from "react"
 import Tooltip from "@material-ui/core/Tooltip"
 import FontAwesome from "react-fontawesome"
 import ToolbarButton from "../toolbar/ToolbarButton"
-import { isMod } from "../utils/utils"
 import { ButtonProps } from "../flow/types"
 
 /**
@@ -30,25 +29,4 @@ const SuperscriptButton = ({ value, onChange }: ButtonProps) => (
   </Tooltip>
 )
 
-/**
- * Function that specifies the keyboard shortcut to use for superscript.
- * It accepts event and change as arguments.
- */
-const SuperscriptKeyboardShortcut = (event, change) => {
-  if (isMod(event) && event.key === "/") {
-    return superscriptMarkStrategy(change)
-  }
-  return
-}
-
-/**
- * Function that represents our actual plugin.
- * It takes options in case we want to add more to it in the future.
- */
-const SuperscriptPlugin = (options?: Object) => ({
-  onKeyDown(...args: Array<Object>) {
-    return SuperscriptKeyboardShortcut(...args)
-  },
-})
-
-export { SuperscriptPlugin, SuperscriptMark, SuperscriptButton }
+export { SuperscriptMark, SuperscriptButton }
