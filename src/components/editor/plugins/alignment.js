@@ -25,11 +25,28 @@ const alignJustify = change => alignmentMarkStrategy(change, "justify")
 /**
  * Rendering component that provides the actual HTML to use inside the editor.
  */
-const AlignmentNode = ({ children, attributes, node: { data } }: NodeProps) => (
-  <div style={{ textAlign: `${data.get("align")}` }} {...attributes}>
-    {children}
-  </div>
-)
+const AlignmentNode = ({ children, attributes, node: { data } }: NodeProps) => {
+  if (data.get("align") === "justify") {
+    return (
+      <div
+        style={{
+          textAlign: "justify",
+          whiteSpace: "normal",
+        }}
+        {...attributes}>
+        {children}
+      </div>
+    )
+  } else {
+    return (
+      <div
+        style={{ textAlign: `${data.get("align")}`, whiteSpace: "pre-wrap" }}
+        {...attributes}>
+        {children}
+      </div>
+    )
+  }
+}
 
 /**
  * Button components that use click handlers to connect the buttons to the editor.
