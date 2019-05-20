@@ -135,7 +135,7 @@ type markProps = {
  * Necessary renderMark function that receives the mark type then renders the HTML
  * In our case, we are returning custom components
  */
-export const renderMark = (props: markProps, editor, next) => {
+export const renderMark = (props: markProps, next) => {
   const { mark } = props
 
   switch (mark.type) {
@@ -171,8 +171,9 @@ type nodeProps = {
 /**
  * Similar to renderMark above, except now we are working with nodes.
  */
-export const renderNode = (props: nodeProps, editor, next) => {
+export const renderNode = (props: nodeProps, next) => {
   const { node } = props
+
   switch (node.type) {
     case "alignment":
       return <AlignmentNode {...props} />

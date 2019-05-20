@@ -92,7 +92,7 @@ type markProps = {
  * Necessary renderMark function that receives the mark type then renders the HTML
  * In our case, we are returning custom components
  */
-export const renderMark = (props: markProps) => {
+export const renderMark = (props: markProps, next) => {
   const { mark } = props
 
   switch (mark.type) {
@@ -112,7 +112,7 @@ export const renderMark = (props: markProps) => {
       return <UnderlineMark {...props} />
 
     default:
-      return null
+      return next()
   }
 }
 
@@ -125,8 +125,9 @@ type nodeProps = {
 /**
  * Similar to renderMark above, except now we are working with nodes.
  */
-export const renderNode = (props: nodeProps) => {
-  const { node, attributes, children } = props
+export const renderNode = (props: nodeProps, next) => {
+  const { node } = props
+
   switch (node.type) {
     case "alignment":
       return <AlignmentNode {...props} />
@@ -158,7 +159,7 @@ export const renderNode = (props: nodeProps) => {
       return <VideoNode {...props} />
 
     default:
-      return <div {...attributes}>{children}</div>
+      return next()
   }
 }
 
@@ -209,6 +210,8 @@ class InlineEditor extends Component<Props, State> {
         readOnly: props.readOnly,
       }
     }
+
+    this.editor = React.createRef()
   }
 
   onChange = ({ value }: Object) => {
@@ -299,7 +302,12 @@ class InlineEditor extends Component<Props, State> {
     return (
       <div>
         {!readOnly && (
-          <EditorToolbar value={value} onChange={this.onChange} page={page} />
+          <EditorToolbar
+            editor={this.editor.current}
+            value={value}
+            onChange={this.onChange}
+            page={page}
+          />
         )}
 
         <StyledEditor
@@ -311,6 +319,7 @@ class InlineEditor extends Component<Props, State> {
           renderNode={renderNode}
           readOnly={readOnly}
           plugins={plugins}
+          ref={this.editor}
         />
 
         <Authorization
