@@ -19,11 +19,11 @@ const ItalicMark = ({ children }: any) => <em>{children}</em>
 /**
  * Italic button that uses a click handler to connect the button to the editor.
  */
-const ItalicButton = ({ value, onChange }: ButtonProps) => (
+const ItalicButton = ({ editor }: ButtonProps) => (
   <Tooltip title="Italic" placement="bottom">
     <ToolbarButton
       onClick={() => {
-        onChange(italicMarkStrategy(value.change()))
+        editor.change(italicMarkStrategy)
       }}>
       <FormatItalicIcon />
     </ToolbarButton>
@@ -34,11 +34,11 @@ const ItalicButton = ({ value, onChange }: ButtonProps) => (
  * Function that specifies the keyboard shortcut to use for italic.
  * It accepts event and change as arguments.
  */
-const ItalicKeyboardShortcut = (event, change) => {
+const ItalicKeyboardShortcut = (event, editor, next) => {
   if (isMod(event) && event.key === "i") {
-    return italicMarkStrategy(change)
+    return editor.change(italicMarkStrategy)
   }
-  return
+  return next()
 }
 
 /**

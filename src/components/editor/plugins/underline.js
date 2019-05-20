@@ -19,11 +19,11 @@ const UnderlineMark = ({ children }: any) => <u>{children}</u>
 /**
  * Underline button that uses a click handler to connect the button to the editor.
  */
-const UnderlineButton = ({ value, onChange }: ButtonProps) => (
+const UnderlineButton = ({ editor }: ButtonProps) => (
   <Tooltip title="Underline" placement="bottom">
     <ToolbarButton
       onClick={() => {
-        onChange(underlineMarkStrategy(value.change()))
+        editor.change(underlineMarkStrategy)
       }}>
       <FormatUnderlinedIcon />
     </ToolbarButton>
@@ -34,11 +34,11 @@ const UnderlineButton = ({ value, onChange }: ButtonProps) => (
  * Function that specifies the keyboard shortcut to use for underline.
  * It accepts event and change as arguments.
  */
-const UnderlineKeyboardShortcut = (event, change) => {
+const UnderlineKeyboardShortcut = (event, editor, next) => {
   if (isMod(event) && event.key === "u") {
-    return underlineMarkStrategy(change)
+    return editor.change(underlineMarkStrategy)
   }
-  return
+  return next()
 }
 
 /**

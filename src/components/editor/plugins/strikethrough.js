@@ -19,11 +19,11 @@ const StrikethroughMark = ({ children }: any) => <del>{children}</del>
 /**
  * Strikethrough button that uses a click handler to connect the button to the editor.
  */
-const StrikethroughButton = ({ value, onChange }: ButtonProps) => (
+const StrikethroughButton = ({ editor }: ButtonProps) => (
   <Tooltip title="Strikethrough" placement="bottom">
     <ToolbarButton
       onClick={() => {
-        onChange(strikethroughMarkStrategy(value.change()))
+        editor.change(strikethroughMarkStrategy)
       }}>
       <FormatStrikethroughIcon />
     </ToolbarButton>
@@ -34,11 +34,11 @@ const StrikethroughButton = ({ value, onChange }: ButtonProps) => (
  * Function that specifies the keyboard shortcut to use for strikethrough.
  * It accepts event and change as arguments.
  */
-const StrikethroughKeyboardShortcut = (event, change) => {
+const StrikethroughKeyboardShortcut = (event, editor, next) => {
   if (isMod(event) && event.key === "s") {
-    return strikethroughMarkStrategy(change)
+    return editor.change(strikethroughMarkStrategy)
   }
-  return
+  return next()
 }
 
 /**

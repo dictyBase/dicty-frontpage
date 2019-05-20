@@ -19,11 +19,11 @@ const BoldMark = ({ children }: any) => <strong>{children}</strong>
 /**
  * Bold button that uses a click handler to connect the button to the editor.
  */
-const BoldButton = ({ value, onChange }: ButtonProps) => (
+const BoldButton = ({ editor }: ButtonProps) => (
   <Tooltip title="Bold" placement="bottom">
     <ToolbarButton
       onClick={() => {
-        onChange(boldMarkStrategy(value.change()))
+        editor.change(boldMarkStrategy)
       }}>
       <FormatBoldIcon />
     </ToolbarButton>
@@ -34,11 +34,11 @@ const BoldButton = ({ value, onChange }: ButtonProps) => (
  * Function that specifies the keyboard shortcut to use for bold.
  * It accepts event and change as arguments.
  */
-const BoldKeyboardShortcut = (event, change) => {
+const BoldKeyboardShortcut = (event, editor, next) => {
   if (isMod(event) && event.key === "b") {
-    return boldMarkStrategy(change)
+    return editor.change(boldMarkStrategy)
   }
-  return
+  return next()
 }
 
 /**

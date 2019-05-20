@@ -18,11 +18,11 @@ const SubscriptMark = ({ children }: any) => <sub>{children}</sub>
 /**
  * Subscript button that uses a click handler to connect the button to the editor.
  */
-const SubscriptButton = ({ value, onChange }: ButtonProps) => (
+const SubscriptButton = ({ editor }: ButtonProps) => (
   <Tooltip title="Subscript" placement="bottom">
     <ToolbarButton
       onClick={() => {
-        onChange(subscriptMarkStrategy(value.change()))
+        editor.change(subscriptMarkStrategy)
       }}>
       <FontAwesome name="subscript" />
     </ToolbarButton>

@@ -54,12 +54,6 @@ const insertVideo = (change: Object, data: Object) => {
   })
 }
 
-const insertVideoStrategy = (change: Object, data: Object) => {
-  const { value } = change
-
-  return value.change().call(insertVideo, data)
-}
-
 /**
  * Rendering components that provide the actual HTML to use inside the editor.
  */
@@ -102,7 +96,7 @@ const VideoNode = withStyles(styles)(Video)
 /**
  * Button components that use click handlers to connect to the editor.
  */
-const VideoButtonUnconnected = ({ value, onChange, classes }: ButtonProps) => {
+const VideoButtonUnconnected = ({ editor, classes }: ButtonProps) => {
   const [videoModalOpen, setVideoModalOpen] = useState(false)
   const [url, setURL] = useState("")
   const [width, setWidth] = useState("")
@@ -161,7 +155,7 @@ const VideoButtonUnconnected = ({ value, onChange, classes }: ButtonProps) => {
             <Button
               onClick={() => {
                 setVideoModalOpen(false)
-                onChange(insertVideoStrategy(value.change(), data))
+                editor.change(change => change.call(insertVideo, data))
               }}
               className={classes.btn}
               variant="contained"

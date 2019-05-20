@@ -155,16 +155,16 @@ const ImageButton = withStyles(styles)(ImageButtonUnconnected)
  * Function that specifies the keyboard shortcuts to use for images.
  * It accepts event and change as arguments.
  */
-const ImageKeyboardShortcut = (event, change) => {
+const ImageKeyboardShortcut = (event, editor, next) => {
   const key = event.key === "i"
   const macKey = event.metaKey && event.shiftKey && key
   const winKey = event.altKey && event.shiftKey && key
   const isLeft = macKey || winKey
   if (isLeft) {
     event.preventDefault()
-    return insertImageStrategy(change)
+    return editor.change(insertImageStrategy)
   }
-  return
+  return next()
 }
 
 /**

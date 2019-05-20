@@ -1,7 +1,7 @@
 // @flow
 import React, { Component } from "react"
 import { connect } from "react-redux"
-import { getEventTransfer, getEventRange } from "slate-react"
+import { Editor, getEventTransfer, getEventRange } from "slate-react"
 import { Value, type Change } from "slate"
 import { withStyles } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
@@ -16,7 +16,6 @@ import {
   cancelEditing,
   addEditablePage,
 } from "actions/editablePages"
-import { StyledEditor } from "styles/EditablePageStyles"
 import existingPagePlaceholder from "./data/existingPagePlaceholder.json"
 import newPagePlaceholder from "./data/newPagePlaceholder.json"
 
@@ -69,6 +68,47 @@ const styles = theme => ({
   cancelButton: {
     width: "100%",
   },
+  editor: {
+    padding: "15px",
+    minHeight: "200px",
+    minWidth: "800px",
+    lineHeight: 1.6,
+    color: "rgba(0, 0, 0, 0.87)",
+
+    "& a": {
+      color: "#428bca",
+      textDecoration: "none",
+    },
+
+    "& table": {
+      width: "100%",
+      borderCollapse: "collapse",
+      borderTop: "1px solid #ccc",
+    },
+
+    "& table tr": {
+      border: "none",
+      borderBottom: "1px solid #ccc",
+      borderRight: "1px solid #ccc",
+      display: "flex",
+      flexDirection: "row",
+      flexWrap: "nowrap",
+    },
+
+    "& table td": {
+      padding: "0.4rem 1.4rem 0.4rem 0.8rem",
+      border: "1px solid #ccc",
+      borderTop: "none",
+      borderBottom: "none",
+      borderRight: "none",
+      flex: 1,
+      position: "relative",
+    },
+
+    "& table td p": {
+      margin: 0,
+    },
+  },
 })
 
 /**
@@ -95,7 +135,7 @@ type markProps = {
  * Necessary renderMark function that receives the mark type then renders the HTML
  * In our case, we are returning custom components
  */
-export const renderMark = (props: markProps) => {
+export const renderMark = (props: markProps, editor, next) => {
   const { mark } = props
 
   switch (mark.type) {
@@ -117,9 +157,8 @@ export const renderMark = (props: markProps) => {
       return <SuperscriptMark {...props} />
     case "underline":
       return <UnderlineMark {...props} />
-
     default:
-      return null
+      return next()
   }
 }
 
@@ -132,8 +171,8 @@ type nodeProps = {
 /**
  * Similar to renderMark above, except now we are working with nodes.
  */
-export const renderNode = (props: nodeProps) => {
-  const { node, attributes, children } = props
+export const renderNode = (props: nodeProps, editor, next) => {
+  const { node } = props
   switch (node.type) {
     case "alignment":
       return <AlignmentNode {...props} />
@@ -165,9 +204,8 @@ export const renderNode = (props: nodeProps) => {
     //   return <TableCellNode {...props} />
     case "video":
       return <VideoNode {...props} />
-
     default:
-      return <div {...attributes}>{children}</div>
+      return next()
   }
 }
 
@@ -240,6 +278,7 @@ class PageEditor extends Component<Props, State> {
         readOnly: props.readOnly,
       }
     }
+    this.editor = React.createRef()
   }
 
   onChange = ({ value }: Object) => {
@@ -352,6 +391,7 @@ class PageEditor extends Component<Props, State> {
       <div>
         {!readOnly && (
           <EditorToolbar
+            editor={this.editor.current}
             value={value}
             onChange={this.onChange}
             page={page}
@@ -359,7 +399,8 @@ class PageEditor extends Component<Props, State> {
           />
         )}
 
-        <StyledEditor
+        <Editor
+          className={classes.editor}
           value={value}
           onChange={this.onChange}
           onPaste={this.onPaste}
@@ -369,6 +410,7 @@ class PageEditor extends Component<Props, State> {
           readOnly={readOnly}
           plugins={plugins}
           schema={schema}
+          ref={this.editor}
         />
 
         <Grid container justify="flex-end">

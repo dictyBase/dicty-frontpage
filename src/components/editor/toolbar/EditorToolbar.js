@@ -1,4 +1,4 @@
-import React, { Fragment } from "react"
+import React from "react"
 import { connect } from "react-redux"
 import AppBar from "@material-ui/core/AppBar"
 import Toolbar from "@material-ui/core/Toolbar"
@@ -103,7 +103,7 @@ export const EditorToolbar = props => {
   } = props
 
   return (
-    <Fragment>
+    <>
       <AppBar className={classes.toolbar} position="static" color="default">
         <Toolbar>
           <Grid container>
@@ -184,7 +184,7 @@ export const EditorToolbar = props => {
           </Grid>
         </Toolbar>
       </AppBar>
-    </Fragment>
+    </>
   )
 }
 

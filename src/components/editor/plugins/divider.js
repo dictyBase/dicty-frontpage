@@ -22,11 +22,11 @@ const DividerNode = ({ attributes }: any) => <Divider {...attributes} />
 /**
  * Button components that use click handlers to connect to the editor.
  */
-const DividerButton = ({ value, onChange }: ButtonProps) => (
+const DividerButton = ({ editor }: ButtonProps) => (
   <Tooltip title="Divider" placement="bottom">
     <ToolbarButton
       onClick={() => {
-        onChange(dividerStrategy(value.change()))
+        editor.change(dividerStrategy)
       }}>
       <strong>—</strong>
     </ToolbarButton>
@@ -37,9 +37,9 @@ const DividerButton = ({ value, onChange }: ButtonProps) => (
  * Function that specifies the keyboard shortcuts to use for dividers.
  * It accepts event and change as arguments.
  */
-const DividerKeyboardShortcut = (event, change) => {
-  if (isMod(event) && event.key === "]") return dividerStrategy(change)
-  return
+const DividerKeyboardShortcut = (event, editor, next) => {
+  if (isMod(event) && event.key === "]") return editor.change(dividerStrategy)
+  return next()
 }
 
 /**

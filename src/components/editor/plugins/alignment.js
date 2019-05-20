@@ -51,44 +51,44 @@ const AlignmentNode = ({ children, attributes, node: { data } }: NodeProps) => {
 /**
  * Button components that use click handlers to connect the buttons to the editor.
  */
-const AlignmentLeftButton = ({ value, onChange }: ButtonProps) => (
+const AlignmentLeftButton = ({ editor }: ButtonProps) => (
   <Tooltip title="Align Left" placement="bottom">
     <ToolbarButton
       onClick={() => {
-        onChange(alignmentMarkStrategy(value.change(), "left"))
+        editor.change(alignLeft)
       }}>
       <FormatAlignLeftIcon />
     </ToolbarButton>
   </Tooltip>
 )
 
-const AlignmentCenterButton = ({ value, onChange }: ButtonProps) => (
+const AlignmentCenterButton = ({ editor }: ButtonProps) => (
   <Tooltip title="Center Text" placement="bottom">
     <ToolbarButton
       onClick={() => {
-        onChange(alignmentMarkStrategy(value.change(), "center"))
+        editor.change(alignCenter)
       }}>
       <FormatAlignCenterIcon />
     </ToolbarButton>
   </Tooltip>
 )
 
-const AlignmentRightButton = ({ value, onChange }: ButtonProps) => (
+const AlignmentRightButton = ({ editor }: ButtonProps) => (
   <Tooltip title="Align Right" placement="bottom">
     <ToolbarButton
       onClick={() => {
-        onChange(alignmentMarkStrategy(value.change(), "right"))
+        editor.change(alignRight)
       }}>
       <FormatAlignRightIcon />
     </ToolbarButton>
   </Tooltip>
 )
 
-const AlignmentJustifyButton = ({ value, onChange }: ButtonProps) => (
+const AlignmentJustifyButton = ({ editor }: ButtonProps) => (
   <Tooltip title="Justify" placement="bottom">
     <ToolbarButton
       onClick={() => {
-        onChange(alignmentMarkStrategy(value.change(), "justify"))
+        editor.change(alignJustify)
       }}>
       <FormatAlignJustifyIcon />
     </ToolbarButton>
@@ -99,36 +99,36 @@ const AlignmentJustifyButton = ({ value, onChange }: ButtonProps) => (
  * Function that specifies the keyboard shortcuts to use for alignment.
  * It accepts event and change as arguments.
  */
-const AlignmentKeyboardShortcut = (event, change) => {
+const AlignmentKeyboardShortcut = (event, editor, next) => {
   const keyLeft = event.key === "l"
   const leftFullKeyPress = event.metaKey && event.shiftKey && keyLeft
   if (leftFullKeyPress) {
     event.preventDefault()
-    return alignLeft(change)
+    return editor.change(alignLeft)
   }
 
   const keyCenter = event.key === "c"
   const centerFullKeyPress = event.metaKey && event.shiftKey && keyCenter
   if (centerFullKeyPress) {
     event.preventDefault()
-    return alignCenter(change)
+    return editor.change(alignCenter)
   }
 
   const keyRight = event.key === "r"
   const rightFullKeyPress = event.metaKey && event.shiftKey && keyRight
   if (rightFullKeyPress) {
     event.preventDefault()
-    return alignRight(change)
+    return editor.change(alignRight)
   }
 
   const keyJustify = event.key === "j"
   const justifyFullKeyPress = event.metaKey && event.shiftKey && keyJustify
   if (justifyFullKeyPress) {
     event.preventDefault()
-    return alignJustify(change)
+    return editor.change(alignJustify)
   }
 
-  return
+  return next()
 }
 
 /**
