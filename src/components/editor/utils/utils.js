@@ -24,34 +24,39 @@ const isMod = event => (event.metaKey && !event.ctrlKey) || event.ctrlKey
 /**
  * Function to handle any pasted HTML
  */
-const onPasteHtml = (e, change) => {
+const onPasteHtml = (e, editor, next) => {
   if (e.shiftKey) return
   const transfer = getEventTransfer(e)
   const { html, rich, text } = transfer
   if (rich) {
-    return change.insertText(text)
+    return editor.insertText(text)
   }
   const { document } = deserializer.deserialize(html)
-  change.insertFragment(document)
+  editor.insertFragment(document)
   return true
 }
 
 /**
  * Function to handle any pasted text
  */
-const onPasteText = (e, change) => {
-  const target = getEventRange(e, change.value)
+const onPasteText = (e, editor, next) => {
+  const target = getEventRange(e, editor)
 
   const transfer = getEventTransfer(e)
   const { text } = transfer
-  if (!isUrl(text)) return null
+  if (!isUrl(text)) return next()
 
   if (text.slice(-3) === "png" || text.slice(-3) === "jpg") {
-    return change.call(insertImage, text, target)
+    const data = {
+      src: text,
+    }
+    console.log(data)
+    return editor.command(insertImage, data, target)
   } else if (text.match(/youtube\.com|vimeo\.com/)) {
-    return change.call(insertVideo, text)
+    return editor.command(insertVideo, text)
   }
-  return change.call(insertLink, text)
+  console.log(text)
+  return editor.command(insertLink, text)
 }
 
 /**

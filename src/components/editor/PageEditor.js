@@ -347,16 +347,16 @@ class PageEditor extends Component<Props, State> {
     }
   }
 
-  onPaste = (e: SyntheticEvent<>, change: Change) => {
+  onPaste = (e: SyntheticEvent<>, editor, next) => {
     const transfer = getEventTransfer(e)
     const { type } = transfer
     switch (type) {
       case "text":
-        return onPasteText(e, change)
+        return onPasteText(e, this.editor.current, next)
       case "html":
-        return onPasteHtml(e, change)
+        return onPasteHtml(e, this.editor.current, next)
       default:
-        break
+        return next()
     }
   }
 
