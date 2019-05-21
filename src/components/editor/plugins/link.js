@@ -88,7 +88,7 @@ const LinkNode = ({ attributes, children, node: { data } }: NodeProps) => (
 /**
  * Button components that use click handlers to connect to the editor.
  */
-const LinkButtonUnconnected = ({ classes, value, onChange }: ButtonProps) => {
+const LinkButtonUnconnected = ({ classes, editor, value }: ButtonProps) => {
   const [linkModalOpen, setLinkModalOpen] = useState(false)
   const [url, setURL] = useState("")
   const [text, setText] = useState("")
@@ -124,7 +124,7 @@ const LinkButtonUnconnected = ({ classes, value, onChange }: ButtonProps) => {
               onChange={e => setURL(e.target.value)}
               fullWidth
             />
-            {!value.change().value.selection.isExpanded && (
+            {!editor.value.selection.isExpanded && (
               <TextField
                 margin="dense"
                 id="text"
@@ -143,7 +143,7 @@ const LinkButtonUnconnected = ({ classes, value, onChange }: ButtonProps) => {
             <Button
               onClick={() => {
                 setLinkModalOpen(false)
-                onChange(insertLinkStrategy(value.change(), data))
+                editor.change(change => insertLinkStrategy(change, data))
               }}
               className={classes.btn}
               variant="contained"

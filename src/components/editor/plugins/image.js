@@ -37,16 +37,12 @@ const insertImage = (change: Object, data: Object, target: string) => {
   })
 }
 
-const insertImageStrategy = (change, data) => {
-  const { value } = change
-
-  return value.change().call(insertImage, data)
-}
+const insertImageStrategy = (change, data) => change.call(insertImage, data)
 
 /**
  * Rendering components that provide the actual HTML to use inside the editor.
  */
-const ImageNode = ({ attributes, node: { data } }: NodeProps) => {
+const ImageNode = ({ attributes, isFocused, node: { data } }: NodeProps) => {
   const src = data.get("src")
   const description = data.get("description")
   const height = data.get("height")
@@ -58,6 +54,7 @@ const ImageNode = ({ attributes, node: { data } }: NodeProps) => {
       height={height}
       width={width}
       alt={description}
+      style={{ boxShadow: `${isFocused ? "0 0 0 2px #15317e" : "none"}` }}
       {...attributes}
     />
   )
@@ -66,7 +63,7 @@ const ImageNode = ({ attributes, node: { data } }: NodeProps) => {
 /**
  * Button component that uses a click handler to connect to the editor.
  */
-const ImageButtonUnconnected = ({ value, onChange, classes }: ButtonProps) => {
+const ImageButtonUnconnected = ({ editor, classes }: ButtonProps) => {
   const [imageModalOpen, setImageModalOpen] = useState(false)
   const [url, setURL] = useState("")
   const [description, setDescription] = useState("")
@@ -135,7 +132,7 @@ const ImageButtonUnconnected = ({ value, onChange, classes }: ButtonProps) => {
             <Button
               onClick={() => {
                 setImageModalOpen(false)
-                onChange(insertImageStrategy(value.change(), data))
+                editor.change(change => insertImageStrategy(change, data))
               }}
               className={classes.btn}
               variant="contained"

@@ -39,20 +39,20 @@ const reapplyMark = ({ change, fontSizeIndex }) =>
 const applyMark = ({ change, fontSizeIndex }) =>
   change.addMark(createMark(fontSizeIndex))
 
-const fontSizeMarkStrategy = attributes => {
-  const { value, fontSizeIndex } = attributes
+const fontSizeMarkStrategy = (change, fontSizeIndex) => {
+  const { value } = change
 
   if (hasMark(value)) {
     if (value.selection.isExpanded) {
-      return reapplyMark({ change: value.change(), fontSizeIndex })
+      return reapplyMark({ change: change, fontSizeIndex })
     }
   } else {
     if (value.selection.isExpanded) {
-      return applyMark({ change: value.change(), fontSizeIndex })
+      return applyMark({ change: change, fontSizeIndex })
     }
   }
 
-  return value.change()
+  return change
 }
 
 /**
@@ -70,19 +70,13 @@ const FontSizeMark = ({ children, mark: { data } }: NodeProps) => (
 /**
  * Button components that use click handlers to connect to the editor.
  */
-const Dropdown = ({
-  value,
-  onChange,
-  classes,
-  editorToolbar,
-  changeFontSize,
-}) => (
+const Dropdown = ({ editor, classes, editorToolbar, changeFontSize }) => (
   <FormControl className={classes.fontSizeDropdown}>
     <Select
       value={editorToolbar.currentFontSize}
       onChange={({ target: { value: fontSizeIndex } }) => {
         changeFontSize(fontSizeIndex)
-        onChange(fontSizeMarkStrategy({ value, fontSizeIndex }))
+        editor.change(change => fontSizeMarkStrategy(change, fontSizeIndex))
       }}>
       {FontSizeList.map((font, index) => (
         <MenuItem key={`font-size-${index}`} value={index}>

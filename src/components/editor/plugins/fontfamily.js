@@ -38,20 +38,20 @@ const reapplyMark = ({ change, fontFamilyIndex }) =>
 const applyMark = ({ change, fontFamilyIndex }) =>
   change.addMark(createMark(fontFamilyIndex))
 
-const fontFamilyMarkStrategy = attributes => {
-  const { value, fontFamilyIndex } = attributes
+const fontFamilyMarkStrategy = (change, fontFamilyIndex) => {
+  const { value } = change
 
   if (hasMark(value)) {
     if (value.selection.isExpanded) {
-      return reapplyMark({ change: value.change(), fontFamilyIndex })
+      return reapplyMark({ change: change, fontFamilyIndex })
     }
   } else {
     if (value.selection.isExpanded) {
-      return applyMark({ change: value.change(), fontFamilyIndex })
+      return applyMark({ change: change, fontFamilyIndex })
     }
   }
 
-  return value.change()
+  return change
 }
 
 /**
@@ -67,19 +67,13 @@ const FontFamilyMark = ({ children, mark: { data } }: NodeProps) => (
 /**
  * Dropdown component that connects to the editor.
  */
-const Dropdown = ({
-  value,
-  onChange,
-  classes,
-  editorToolbar,
-  changeFontSelect,
-}) => (
+const Dropdown = ({ editor, classes, editorToolbar, changeFontSelect }) => (
   <FormControl className={classes.fontFamilyDropdown}>
     <Select
       value={editorToolbar.currentFont}
       onChange={({ target: { value: fontFamilyIndex } }) => {
         changeFontSelect(fontFamilyIndex)
-        onChange(fontFamilyMarkStrategy({ value, fontFamilyIndex }))
+        editor.change(change => fontFamilyMarkStrategy(change, fontFamilyIndex))
       }}>
       {FontFamilyList.map((font, index) => (
         <MenuItem key={`font-family-${index}`} value={index}>

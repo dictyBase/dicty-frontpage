@@ -7,14 +7,15 @@ import { ButtonProps, NodeProps } from "../flow/types"
 /**
  * Functions to set the heading blocks.
  */
-const headingStrategy = (value, heading) => {
+const headingStrategy = (change, heading) => {
+  const { value } = change
   const isActive = hasBlock(value, heading)
-  return value.change().setBlocks(isActive ? "paragraph" : heading)
+  return change.setBlocks(isActive ? "paragraph" : heading)
 }
 
-const headingH1 = value => headingStrategy(value, "h1")
-const headingH2 = value => headingStrategy(value, "h2")
-const headingH3 = value => headingStrategy(value, "h3")
+const headingH1 = change => headingStrategy(change, "h1")
+const headingH2 = change => headingStrategy(change, "h2")
+const headingH3 = change => headingStrategy(change, "h3")
 
 const hasBlock = (value, type) => value.blocks.some(node => node.type === type)
 
@@ -34,33 +35,33 @@ const H3Node = ({ attributes, children }: NodeProps) => (
 /**
  * Button components that use click handlers to connect the buttons to the editor.
  */
-const H1Button = ({ value, onChange }: ButtonProps) => (
+const H1Button = ({ editor }: ButtonProps) => (
   <Tooltip title="<h1> Tag" placement="bottom">
     <ToolbarButton
       onClick={() => {
-        onChange(headingH1(value))
+        editor.change(headingH1)
       }}>
       <strong>H1</strong>
     </ToolbarButton>
   </Tooltip>
 )
 
-const H2Button = ({ value, onChange }: ButtonProps) => (
+const H2Button = ({ editor }: ButtonProps) => (
   <Tooltip title="<h2> Tag" placement="bottom">
     <ToolbarButton
       onClick={() => {
-        onChange(headingH2(value))
+        editor.change(headingH2)
       }}>
       <strong>H2</strong>
     </ToolbarButton>
   </Tooltip>
 )
 
-const H3Button = ({ value, onChange }: ButtonProps) => (
+const H3Button = ({ editor }: ButtonProps) => (
   <Tooltip title="<h3> Tag" placement="bottom">
     <ToolbarButton
       onClick={() => {
-        onChange(headingH3(value))
+        editor.change(headingH3)
       }}>
       <strong>H3</strong>
     </ToolbarButton>
