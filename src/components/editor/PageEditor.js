@@ -2,7 +2,7 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
 import { Editor, getEventTransfer, getEventRange } from "slate-react"
-import { Value, type Change } from "slate"
+import { Value } from "slate"
 import { withStyles } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
 import Button from "@material-ui/core/Button"
@@ -135,7 +135,7 @@ type markProps = {
  * Necessary renderMark function that receives the mark type then renders the HTML
  * In our case, we are returning custom components
  */
-export const renderMark = (props: markProps, next) => {
+export const renderMark = (props: markProps, editor, next) => {
   const { mark } = props
 
   switch (mark.type) {
@@ -171,7 +171,7 @@ type nodeProps = {
 /**
  * Similar to renderMark above, except now we are working with nodes.
  */
-export const renderNode = (props: nodeProps, next) => {
+export const renderNode = (props: nodeProps, editor, next) => {
   const { node } = props
 
   switch (node.type) {
