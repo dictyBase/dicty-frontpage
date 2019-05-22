@@ -42,7 +42,7 @@ import {
   OrderedListNode,
   UnorderedListNode,
 } from "./plugins/list"
-// import { TableNode, TableRowNode, TableCellNode } from "./plugins/table"
+import { TableNode, TableRowNode, TableCellNode } from "./plugins/table"
 import { VideoNode } from "./plugins/video"
 
 /** Import custom plugins */
@@ -53,7 +53,7 @@ import { ImagePlugin } from "./plugins/image"
 import { ItalicPlugin } from "./plugins/italic"
 import { ListPlugin } from "./plugins/list"
 import { StrikethroughPlugin } from "./plugins/strikethrough"
-// import { TablePlugin } from "./plugins/table"
+import { TablePlugin } from "./plugins/table"
 import { UnderlinePlugin } from "./plugins/underline"
 
 const styles = theme => ({
@@ -123,7 +123,7 @@ const plugins = [
   ItalicPlugin(),
   ListPlugin,
   StrikethroughPlugin(),
-  // TablePlugin,
+  TablePlugin,
   UnderlinePlugin(),
 ]
 
@@ -197,12 +197,12 @@ export const renderNode = (props: nodeProps, editor, next) => {
       return <UnorderedListNode {...props} />
     case "ordered-list":
       return <OrderedListNode {...props} />
-    // case "table":
-    //   return <TableNode {...props} />
-    // case "table-row":
-    //   return <TableRowNode {...props} />
-    // case "table-cell":
-    //   return <TableCellNode {...props} />
+    case "table":
+      return <TableNode {...props} />
+    case "table-row":
+      return <TableRowNode {...props} />
+    case "table-cell":
+      return <TableCellNode {...props} />
     case "video":
       return <VideoNode {...props} />
     default:

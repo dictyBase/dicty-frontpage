@@ -119,6 +119,7 @@ export const EditorToolbar = props => {
               <StrikethroughButton {...props} />
               <SubscriptButton {...props} />
               <SuperscriptButton {...props} />
+              |
               <AlignmentLeftButton {...props} />
               <AlignmentCenterButton {...props} />
               <AlignmentRightButton {...props} />
@@ -128,17 +129,19 @@ export const EditorToolbar = props => {
               <OrderedListButton {...props} />
               <ListIncreaseIndentButton {...props} />
               <ListDecreaseIndentButton {...props} />
-              <LineSpacingButton {...props} />
+            </Grid>
+            <Grid item xs={12}>
               <H1Button {...props} />
               <H2Button {...props} />
               <H3Button {...props} />
+              <LineSpacingButton {...props} />
               <LinkButton {...other} />
-              {/* <InsertInitialTableButton
+              <InsertInitialTableButton
                 {...props}
-                onClick={e => {
+                onClick={() => {
                   showTableOptions(true)
                 }}
-              /> */}
+              />
               <ImageButton {...other} />
               <VideoButton {...other} />
               <FontColorButton {...props} />
@@ -152,7 +155,7 @@ export const EditorToolbar = props => {
             <Grid item xs={12}>
               <Grid container>
                 <Grid item xs={10}>
-                  {/* {editorToolbar.showTableOptions && (
+                  {editorToolbar.showTableOptions && (
                     <div className={classes.tableButtons}>
                       <InsertTableButton {...props} />
                       <InsertTableColumnButton {...props} />
@@ -163,7 +166,7 @@ export const EditorToolbar = props => {
                       <RemoveTableButton {...props} />
                       <br />
                     </div>
-                  )} */}
+                  )}
                   <FontFamilyDropdown {...props} />
                   <FontSizeDropdown {...props} />
                   <Tooltip title="Editor Help">
