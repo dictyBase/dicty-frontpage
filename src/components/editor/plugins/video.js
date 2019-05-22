@@ -32,10 +32,16 @@ const styles = theme => ({
   },
 })
 
+type VideoData = {
+  height: string,
+  width: string,
+  url: string,
+}
+
 /**
  * Functions to set the video blocks.
  */
-const insertVideo = (editor: Object, data: Object) => {
+const insertVideo = (editor: Object, data: VideoData) => {
   const url = data.url
   const videoId = getVideoId(url).id
   let src
@@ -48,10 +54,12 @@ const insertVideo = (editor: Object, data: Object) => {
     return
   }
 
-  editor.insertBlock({
-    type: "video",
-    data: { src, height: data.height, width: data.width },
-  })
+  editor
+    .insertBlock({
+      type: "video",
+      data: { src, height: data.height, width: data.width },
+    })
+    .insertBlock("\n")
 }
 
 /**

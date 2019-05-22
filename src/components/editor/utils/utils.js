@@ -46,16 +46,23 @@ const onPasteText = (e, editor, next) => {
   const { text } = transfer
   if (!isUrl(text)) return next()
 
-  if (text.slice(-3) === "png" || text.slice(-3) === "jpg") {
+  if (
+    text.slice(-3) === "png" ||
+    text.slice(-3) === "jpg" ||
+    text.slice(-3) === "gif"
+  ) {
     const data = {
       src: text,
     }
-    console.log(data)
     return editor.command(insertImage, data, target)
   } else if (text.match(/youtube\.com|vimeo\.com/)) {
-    return editor.command(insertVideo, text)
+    const data = {
+      url: text,
+      height: "100%",
+      width: "100%",
+    }
+    return editor.command(insertVideo, data)
   }
-  console.log(text)
   return editor.command(insertLink, text)
 }
 
