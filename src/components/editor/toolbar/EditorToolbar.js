@@ -92,6 +92,14 @@ const styles = theme => ({
     width: "100%",
     backgroundColor: "#15317e",
   },
+  separator: {
+    borderLeftColor: "#c1c1c1",
+    borderLeftStyle: "solid",
+    borderLeftWidth: "1px",
+    display: "inline-block",
+    height: "20px",
+    verticalAlign: "middle",
+  },
 })
 
 /**
@@ -119,22 +127,25 @@ export const EditorToolbar = props => {
               <StrikethroughButton {...props} />
               <SubscriptButton {...props} />
               <SuperscriptButton {...props} />
-              |
+              <div className={classes.separator} />
               <AlignmentLeftButton {...props} />
               <AlignmentCenterButton {...props} />
               <AlignmentRightButton {...props} />
               <AlignmentJustifyButton {...props} />
+              <div className={classes.separator} />
               <DividerButton {...props} />
+              <div className={classes.separator} />
               <UnorderedListButton {...props} />
               <OrderedListButton {...props} />
               <ListIncreaseIndentButton {...props} />
               <ListDecreaseIndentButton {...props} />
-            </Grid>
-            <Grid item xs={12}>
+              <div className={classes.separator} />
               <H1Button {...props} />
               <H2Button {...props} />
               <H3Button {...props} />
+              <div className={classes.separator} />
               <LineSpacingButton {...props} />
+              <div className={classes.separator} />
               <LinkButton {...other} />
               <InsertInitialTableButton
                 {...props}
@@ -144,6 +155,7 @@ export const EditorToolbar = props => {
               />
               <ImageButton {...other} />
               <VideoButton {...other} />
+              <div className={classes.separator} />
               <FontColorButton {...props} />
               &nbsp;&nbsp;
               <span className={classes.colorPicker}>
@@ -168,7 +180,9 @@ export const EditorToolbar = props => {
                     </div>
                   )}
                   <FontFamilyDropdown {...props} />
+                  <div className={classes.separator} />
                   <FontSizeDropdown {...props} />
+                  <div className={classes.separator} />
                   <Tooltip title="Editor Help">
                     <ToolbarButton
                       onClick={e => {

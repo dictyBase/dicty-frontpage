@@ -56,7 +56,11 @@ const HelpMuiModal = props => {
               <p>
                 Until we develop an image uploading backend, please put any
                 images you want to use in{" "}
-                <a href="https://github.com/dictyBase/migration-data/issues/9">
+                <a
+                  className={classes.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://github.com/dictyBase/migration-data/issues/9">
                   this issue
                 </a>
                 .
