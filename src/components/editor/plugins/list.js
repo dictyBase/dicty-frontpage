@@ -4,24 +4,31 @@ import Lists from "@convertkit/slate-lists"
 import Tooltip from "@material-ui/core/Tooltip"
 import FormatListBulletedIcon from "@material-ui/icons/FormatListBulleted"
 import FormatListNumberedIcon from "@material-ui/icons/FormatListNumbered"
+import FormatIndentDecreaseIcon from "@material-ui/icons/FormatIndentDecrease"
+import FormatIndentIncreaseIcon from "@material-ui/icons/FormatIndentIncrease"
 import ToolbarButton from "../toolbar/ToolbarButton"
 import { ButtonProps, NodeProps } from "../flow/types"
 
 /**
  * Functions to help with list blocks.
  */
-
-const isList = editor =>
-  editor.value.blocks.some(node => node.type === "list-item-child")
-
 const toggleList = (event, editor, type) => {
   event.preventDefault()
-
-  if (isList(editor)) {
-    editor.unwrapList()
+  if (type === "ordered-list") {
+    editor.toggleList({ type: "ordered-list" })
   } else {
-    editor.wrapList({ type })
+    editor.toggleList()
   }
+}
+
+const decreaseIndent = (event, editor) => {
+  event.preventDefault()
+  editor.decreaseListItemDepth()
+}
+
+const increaseIndent = (event, editor) => {
+  event.preventDefault()
+  editor.increaseListItemDepth()
 }
 
 /**
@@ -57,6 +64,22 @@ const UnorderedListButton = ({ editor }: ButtonProps) => (
   </Tooltip>
 )
 
+const ListDecreaseIndentButton = ({ editor }: ButtonProps) => (
+  <Tooltip title="Decrease List Indent" placement="bottom">
+    <ToolbarButton onClick={event => decreaseIndent(event, editor)}>
+      <FormatIndentDecreaseIcon />
+    </ToolbarButton>
+  </Tooltip>
+)
+
+const ListIncreaseIndentButton = ({ editor }: ButtonProps) => (
+  <Tooltip title="Increase List Indent" placement="bottom">
+    <ToolbarButton onClick={event => increaseIndent(event, editor)}>
+      <FormatIndentIncreaseIcon />
+    </ToolbarButton>
+  </Tooltip>
+)
+
 /**
  * Function that represents our actual plugin.
  * It takes options in case we want to add more in the future.
@@ -84,4 +107,6 @@ export {
   UnorderedListNode,
   UnorderedListButton,
   OrderedListButton,
+  ListDecreaseIndentButton,
+  ListIncreaseIndentButton,
 }

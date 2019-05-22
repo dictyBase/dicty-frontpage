@@ -33,7 +33,12 @@ import { H1Button, H2Button, H3Button } from "../plugins/heading"
 import { ImageButton } from "../plugins/image"
 import { LineSpacingButton } from "../plugins/linespacing"
 import { LinkButton } from "../plugins/link"
-import { OrderedListButton, UnorderedListButton } from "../plugins/list"
+import {
+  OrderedListButton,
+  UnorderedListButton,
+  ListDecreaseIndentButton,
+  ListIncreaseIndentButton,
+} from "../plugins/list"
 import {
   InsertInitialTableButton,
   InsertTableButton,
@@ -121,6 +126,8 @@ export const EditorToolbar = props => {
               <DividerButton {...props} />
               <UnorderedListButton {...props} />
               <OrderedListButton {...props} />
+              <ListIncreaseIndentButton {...props} />
+              <ListDecreaseIndentButton {...props} />
               <LineSpacingButton {...props} />
               <H1Button {...props} />
               <H2Button {...props} />
