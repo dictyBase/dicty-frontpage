@@ -32,7 +32,7 @@ const H3Node = ({ attributes, children }: NodeProps) => (
  * Button components that use click handlers to connect the buttons to the editor.
  */
 const H1Button = ({ editor }: ButtonProps) => (
-  <Tooltip title="<h1> Tag" placement="bottom">
+  <Tooltip title="Heading 1" placement="bottom">
     <ToolbarButton
       onClick={() => {
         headingStrategy(editor, "h1")
@@ -43,7 +43,7 @@ const H1Button = ({ editor }: ButtonProps) => (
 )
 
 const H2Button = ({ editor }: ButtonProps) => (
-  <Tooltip title="<h2> Tag" placement="bottom">
+  <Tooltip title="Heading 2" placement="bottom">
     <ToolbarButton
       onClick={() => {
         headingStrategy(editor, "h2")
@@ -54,7 +54,7 @@ const H2Button = ({ editor }: ButtonProps) => (
 )
 
 const H3Button = ({ editor }: ButtonProps) => (
-  <Tooltip title="<h3> Tag" placement="bottom">
+  <Tooltip title="Heading 3" placement="bottom">
     <ToolbarButton
       onClick={() => {
         headingStrategy(editor, "h3")
