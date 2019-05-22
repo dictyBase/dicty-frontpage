@@ -42,6 +42,8 @@ const onPasteHtml = (e, editor, next) => {
 const onPasteText = (e, editor, next) => {
   const transfer = getEventTransfer(e)
   const { text } = transfer
+
+  // if text isn't a URL, then no need for special use case
   if (!isUrl(text)) return next()
 
   if (
@@ -53,7 +55,9 @@ const onPasteText = (e, editor, next) => {
       src: text,
     }
     return editor.command(insertImage, data)
-  } else if (text.match(/youtube\.com|vimeo\.com/)) {
+  }
+
+  if (text.match(/youtube\.com|vimeo\.com/)) {
     const data = {
       url: text,
       height: "100%",
@@ -61,6 +65,7 @@ const onPasteText = (e, editor, next) => {
     }
     return editor.command(insertVideo, data)
   }
+
   return editor.command(insertLink, text)
 }
 

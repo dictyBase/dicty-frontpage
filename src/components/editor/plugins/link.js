@@ -32,22 +32,14 @@ const wrapLink = (editor, href) => {
 }
 
 const insertLink = (editor: Object, url: string) => {
-  if (editor.value.isCollapsed) {
+  if (editor.value.selection.isCollapsed) {
     editor
       .insertText(url)
       .moveFocusForward(0 - url.length)
-      .wrapInline({
-        type: "link",
-        data: { url },
-      })
+      .command(wrapLink, url)
       .moveToEnd()
   } else {
-    editor.wrapInline({
-      type: "link",
-      data: { url },
-    })
-
-    editor.moveToEnd()
+    editor.command(wrapLink, url).moveToEnd()
   }
 }
 
