@@ -22,18 +22,18 @@ const styles = theme => ({
 /**
  * Functions to set the link blocks.
  */
-const wrapLink = (change, href) => {
-  change.wrapInline({
+const wrapLink = (editor, href) => {
+  editor.wrapInline({
     type: "link",
     data: { href },
   })
 
-  change.moveToEnd()
+  editor.moveToEnd()
 }
 
-const insertLink = (change: Object, url: string) => {
-  if (change.value.isCollapsed) {
-    change
+const insertLink = (editor: Object, url: string) => {
+  if (editor.value.isCollapsed) {
+    editor
       .insertText(url)
       .moveFocusForward(0 - url.length)
       .wrapInline({
@@ -42,38 +42,38 @@ const insertLink = (change: Object, url: string) => {
       })
       .moveToEnd()
   } else {
-    change.wrapInline({
+    editor.wrapInline({
       type: "link",
       data: { url },
     })
 
-    change.moveToEnd()
+    editor.moveToEnd()
   }
 }
 
 const hasLinks = value => value.inlines.some(inline => inline.type === "link")
 
-const insertLinkStrategy = (change: Object, data: Object) => {
-  const { value } = change
+const insertLinkStrategy = (editor: Object, data: Object) => {
+  const { value } = editor
   const href = data.url
   const text = data.text
 
   if (hasLinks(value)) {
-    change.unwrapInline("link")
+    editor.unwrapInline("link")
   } else if (value.selection.isExpanded) {
-    change.call(wrapLink, href)
+    editor.command(wrapLink, href)
   } else {
     if (!href || !text) {
       return
     } else {
-      change
+      editor
         .insertText(text)
         .moveFocusForward(0 - text.length)
-        .call(wrapLink, href)
+        .command(wrapLink, href)
     }
   }
 
-  return change
+  return editor
 }
 
 /**
@@ -143,7 +143,7 @@ const LinkButtonUnconnected = ({ classes, editor, value }: ButtonProps) => {
             <Button
               onClick={() => {
                 setLinkModalOpen(false)
-                editor.change(change => insertLinkStrategy(change, data))
+                insertLinkStrategy(editor, data)
               }}
               className={classes.btn}
               variant="contained"

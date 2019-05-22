@@ -33,26 +33,26 @@ const createMark = fontSizeIndex => ({
   data: { fontSizeIndex },
 })
 
-const reapplyMark = ({ change, fontSizeIndex }) =>
-  change.removeMark(getMark(change.value)).addMark(createMark(fontSizeIndex))
+const reapplyMark = ({ editor, fontSizeIndex }) =>
+  editor.removeMark(getMark(editor.value)).addMark(createMark(fontSizeIndex))
 
-const applyMark = ({ change, fontSizeIndex }) =>
-  change.addMark(createMark(fontSizeIndex))
+const applyMark = ({ editor, fontSizeIndex }) =>
+  editor.addMark(createMark(fontSizeIndex))
 
-const fontSizeMarkStrategy = (change, fontSizeIndex) => {
-  const { value } = change
+const fontSizeMarkStrategy = (editor, fontSizeIndex) => {
+  const { value } = editor
 
   if (hasMark(value)) {
     if (value.selection.isExpanded) {
-      return reapplyMark({ change: change, fontSizeIndex })
+      return reapplyMark({ editor: editor, fontSizeIndex })
     }
   } else {
     if (value.selection.isExpanded) {
-      return applyMark({ change: change, fontSizeIndex })
+      return applyMark({ editor: editor, fontSizeIndex })
     }
   }
 
-  return change
+  return editor
 }
 
 /**
@@ -76,7 +76,7 @@ const Dropdown = ({ editor, classes, editorToolbar, changeFontSize }) => (
       value={editorToolbar.currentFontSize}
       onChange={({ target: { value: fontSizeIndex } }) => {
         changeFontSize(fontSizeIndex)
-        editor.change(change => fontSizeMarkStrategy(change, fontSizeIndex))
+        fontSizeMarkStrategy(editor, fontSizeIndex)
       }}>
       {FontSizeList.map((font, index) => (
         <MenuItem key={`font-size-${index}`} value={index}>

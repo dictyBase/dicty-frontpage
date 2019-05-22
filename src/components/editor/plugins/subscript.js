@@ -6,11 +6,6 @@ import ToolbarButton from "../toolbar/ToolbarButton"
 import { ButtonProps } from "../flow/types"
 
 /**
- * Function that toggles the mark type.
- */
-const subscriptMarkStrategy = change => change.toggleMark("subscript")
-
-/**
  * Rendering component that provides the actual HTML to use inside the editor.
  */
 const SubscriptMark = ({ children }: any) => <sub>{children}</sub>
@@ -22,7 +17,7 @@ const SubscriptButton = ({ editor }: ButtonProps) => (
   <Tooltip title="Subscript" placement="bottom">
     <ToolbarButton
       onClick={() => {
-        editor.change(subscriptMarkStrategy)
+        editor.toggleMark("subscript")
       }}>
       <FontAwesome name="subscript" />
     </ToolbarButton>

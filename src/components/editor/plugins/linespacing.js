@@ -10,8 +10,8 @@ import { ButtonProps, NodeProps } from "../flow/types"
 /**
  * Functions to set the line spacing blocks.
  */
-const lineSpacingNodeStrategy = (change, size) =>
-  change.unwrapBlock("line-spacing").wrapBlock({
+const lineSpacingNodeStrategy = (editor, size) =>
+  editor.unwrapBlock("line-spacing").wrapBlock({
     type: "line-spacing",
     data: { size },
   })
@@ -40,7 +40,7 @@ const LineSpacingButton = ({ editor }: ButtonProps) => {
   }
   const handleItemClick = size => {
     setAnchorEl(null)
-    editor.change(change => lineSpacingNodeStrategy(change, size))
+    lineSpacingNodeStrategy(editor, size)
   }
 
   const renderMenu = (

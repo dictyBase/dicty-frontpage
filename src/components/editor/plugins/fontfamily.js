@@ -32,26 +32,26 @@ const createMark = fontFamilyIndex => ({
   data: { fontFamilyIndex },
 })
 
-const reapplyMark = ({ change, fontFamilyIndex }) =>
-  change.removeMark(getMark(change.value)).addMark(createMark(fontFamilyIndex))
+const reapplyMark = ({ editor, fontFamilyIndex }) =>
+  editor.removeMark(getMark(editor.value)).addMark(createMark(fontFamilyIndex))
 
-const applyMark = ({ change, fontFamilyIndex }) =>
-  change.addMark(createMark(fontFamilyIndex))
+const applyMark = ({ editor, fontFamilyIndex }) =>
+  editor.addMark(createMark(fontFamilyIndex))
 
-const fontFamilyMarkStrategy = (change, fontFamilyIndex) => {
-  const { value } = change
+const fontFamilyMarkStrategy = (editor, fontFamilyIndex) => {
+  const { value } = editor
 
   if (hasMark(value)) {
     if (value.selection.isExpanded) {
-      return reapplyMark({ change: change, fontFamilyIndex })
+      return reapplyMark({ editor: editor, fontFamilyIndex })
     }
   } else {
     if (value.selection.isExpanded) {
-      return applyMark({ change: change, fontFamilyIndex })
+      return applyMark({ editor: editor, fontFamilyIndex })
     }
   }
 
-  return change
+  return editor
 }
 
 /**
@@ -73,7 +73,7 @@ const Dropdown = ({ editor, classes, editorToolbar, changeFontSelect }) => (
       value={editorToolbar.currentFont}
       onChange={({ target: { value: fontFamilyIndex } }) => {
         changeFontSelect(fontFamilyIndex)
-        editor.change(change => fontFamilyMarkStrategy(change, fontFamilyIndex))
+        fontFamilyMarkStrategy(editor, fontFamilyIndex)
       }}>
       {FontFamilyList.map((font, index) => (
         <MenuItem key={`font-family-${index}`} value={index}>

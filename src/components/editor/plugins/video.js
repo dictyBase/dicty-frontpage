@@ -35,7 +35,7 @@ const styles = theme => ({
 /**
  * Functions to set the video blocks.
  */
-const insertVideo = (change: Object, data: Object) => {
+const insertVideo = (editor: Object, data: Object) => {
   const url = data.url
   const videoId = getVideoId(url).id
   let src
@@ -48,7 +48,7 @@ const insertVideo = (change: Object, data: Object) => {
     return
   }
 
-  change.insertBlock({
+  editor.insertBlock({
     type: "video",
     data: { src, height: data.height, width: data.width },
   })
@@ -155,7 +155,7 @@ const VideoButtonUnconnected = ({ editor, classes }: ButtonProps) => {
             <Button
               onClick={() => {
                 setVideoModalOpen(false)
-                editor.change(change => change.call(insertVideo, data))
+                editor.command(insertVideo, data)
               }}
               className={classes.btn}
               variant="contained"

@@ -7,15 +7,11 @@ import { ButtonProps, NodeProps } from "../flow/types"
 /**
  * Functions to set the heading blocks.
  */
-const headingStrategy = (change, heading) => {
-  const { value } = change
+const headingStrategy = (editor, heading) => {
+  const { value } = editor
   const isActive = hasBlock(value, heading)
-  return change.setBlocks(isActive ? "paragraph" : heading)
+  return editor.setBlocks(isActive ? "paragraph" : heading)
 }
-
-const headingH1 = change => headingStrategy(change, "h1")
-const headingH2 = change => headingStrategy(change, "h2")
-const headingH3 = change => headingStrategy(change, "h3")
 
 const hasBlock = (value, type) => value.blocks.some(node => node.type === type)
 
@@ -39,7 +35,7 @@ const H1Button = ({ editor }: ButtonProps) => (
   <Tooltip title="<h1> Tag" placement="bottom">
     <ToolbarButton
       onClick={() => {
-        editor.change(headingH1)
+        headingStrategy(editor, "h1")
       }}>
       <strong>H1</strong>
     </ToolbarButton>
@@ -50,7 +46,7 @@ const H2Button = ({ editor }: ButtonProps) => (
   <Tooltip title="<h2> Tag" placement="bottom">
     <ToolbarButton
       onClick={() => {
-        editor.change(headingH2)
+        headingStrategy(editor, "h2")
       }}>
       <strong>H2</strong>
     </ToolbarButton>
@@ -61,7 +57,7 @@ const H3Button = ({ editor }: ButtonProps) => (
   <Tooltip title="<h3> Tag" placement="bottom">
     <ToolbarButton
       onClick={() => {
-        editor.change(headingH3)
+        headingStrategy(editor, "h3")
       }}>
       <strong>H3</strong>
     </ToolbarButton>

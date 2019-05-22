@@ -7,11 +7,6 @@ import { isMod } from "../utils/utils"
 import { ButtonProps } from "../flow/types"
 
 /**
- * Function that toggles the mark type.
- */
-const boldMarkStrategy = change => change.toggleMark("bold")
-
-/**
  * Rendering component that provides the actual HTML to use inside the editor.
  */
 const BoldMark = ({ children }: any) => <strong>{children}</strong>
@@ -23,7 +18,7 @@ const BoldButton = ({ editor }: ButtonProps) => (
   <Tooltip title="Bold" placement="bottom">
     <ToolbarButton
       onClick={() => {
-        editor.change(boldMarkStrategy)
+        editor.toggleMark("bold")
       }}>
       <FormatBoldIcon />
     </ToolbarButton>
@@ -36,7 +31,7 @@ const BoldButton = ({ editor }: ButtonProps) => (
  */
 const BoldKeyboardShortcut = (event, editor, next) => {
   if (isMod(event) && event.key === "b") {
-    return editor.change(boldMarkStrategy)
+    return editor.toggleMark("bold")
   }
   return next()
 }

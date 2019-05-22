@@ -7,11 +7,6 @@ import { isMod } from "../utils/utils"
 import { ButtonProps } from "../flow/types"
 
 /**
- * Function that toggles the mark type.
- */
-const italicMarkStrategy = change => change.toggleMark("italic")
-
-/**
  * Rendering component that provides the actual HTML to use inside the editor.
  */
 const ItalicMark = ({ children }: any) => <em>{children}</em>
@@ -23,7 +18,7 @@ const ItalicButton = ({ editor }: ButtonProps) => (
   <Tooltip title="Italic" placement="bottom">
     <ToolbarButton
       onClick={() => {
-        editor.change(italicMarkStrategy)
+        editor.toggleMark("italic")
       }}>
       <FormatItalicIcon />
     </ToolbarButton>
@@ -36,7 +31,7 @@ const ItalicButton = ({ editor }: ButtonProps) => (
  */
 const ItalicKeyboardShortcut = (event, editor, next) => {
   if (isMod(event) && event.key === "i") {
-    return editor.change(italicMarkStrategy)
+    return editor.toggleMark("italic")
   }
   return next()
 }

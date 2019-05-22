@@ -7,11 +7,6 @@ import { isMod } from "../utils/utils"
 import { ButtonProps } from "../flow/types"
 
 /**
- * Function that toggles the mark type.
- */
-const underlineMarkStrategy = change => change.toggleMark("underline")
-
-/**
  * Rendering component that provides the actual HTML to use inside the editor.
  */
 const UnderlineMark = ({ children }: any) => <u>{children}</u>
@@ -23,7 +18,7 @@ const UnderlineButton = ({ editor }: ButtonProps) => (
   <Tooltip title="Underline" placement="bottom">
     <ToolbarButton
       onClick={() => {
-        editor.change(underlineMarkStrategy)
+        editor.toggleMark("underline")
       }}>
       <FormatUnderlinedIcon />
     </ToolbarButton>
@@ -36,7 +31,7 @@ const UnderlineButton = ({ editor }: ButtonProps) => (
  */
 const UnderlineKeyboardShortcut = (event, editor, next) => {
   if (isMod(event) && event.key === "u") {
-    return editor.change(underlineMarkStrategy)
+    return editor.toggleMark("underline")
   }
   return next()
 }

@@ -7,11 +7,6 @@ import { isMod } from "../utils/utils"
 import { ButtonProps } from "../flow/types"
 
 /**
- * Function that toggles the mark type.
- */
-const strikethroughMarkStrategy = change => change.toggleMark("strikethrough")
-
-/**
  * Rendering component that provides the actual HTML to use inside the editor.
  */
 const StrikethroughMark = ({ children }: any) => <del>{children}</del>
@@ -23,7 +18,7 @@ const StrikethroughButton = ({ editor }: ButtonProps) => (
   <Tooltip title="Strikethrough" placement="bottom">
     <ToolbarButton
       onClick={() => {
-        editor.change(strikethroughMarkStrategy)
+        editor.toggleMark("strikethrough")
       }}>
       <FormatStrikethroughIcon />
     </ToolbarButton>
@@ -36,7 +31,7 @@ const StrikethroughButton = ({ editor }: ButtonProps) => (
  */
 const StrikethroughKeyboardShortcut = (event, editor, next) => {
   if (isMod(event) && event.key === "s") {
-    return editor.change(strikethroughMarkStrategy)
+    return editor.toggleMark("strikethrough")
   }
   return next()
 }

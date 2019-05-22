@@ -7,14 +7,6 @@ import { isMod } from "../utils/utils"
 import { ButtonProps } from "../flow/types"
 
 /**
- * Functions to set the divider blocks.
- */
-const dividerStrategy = change =>
-  change.setBlocks({
-    type: "divider",
-  })
-
-/**
  * Rendering components that provide the actual HTML to use inside the editor.
  */
 const DividerNode = ({ attributes }: any) => <Divider {...attributes} />
@@ -26,7 +18,9 @@ const DividerButton = ({ editor }: ButtonProps) => (
   <Tooltip title="Divider" placement="bottom">
     <ToolbarButton
       onClick={() => {
-        editor.change(dividerStrategy)
+        editor.setBlocks({
+          type: "divider",
+        })
       }}>
       <strong>—</strong>
     </ToolbarButton>
@@ -38,7 +32,10 @@ const DividerButton = ({ editor }: ButtonProps) => (
  * It accepts event and change as arguments.
  */
 const DividerKeyboardShortcut = (event, editor, next) => {
-  if (isMod(event) && event.key === "]") return editor.change(dividerStrategy)
+  if (isMod(event) && event.key === "]")
+    return editor.setBlocks({
+      type: "divider",
+    })
   return next()
 }
 

@@ -21,12 +21,12 @@ const styles = theme => ({
 /**
  * Functions to set the image blocks.
  */
-const insertImage = (change: Object, data: Object, target: string) => {
+const insertImage = (editor: Object, data: Object, target: string) => {
   if (target) {
-    change.select(target)
+    editor.select(target)
   }
 
-  change.insertBlock({
+  editor.insertBlock({
     type: "image",
     data: {
       src: data.url,
@@ -37,7 +37,7 @@ const insertImage = (change: Object, data: Object, target: string) => {
   })
 }
 
-const insertImageStrategy = (change, data) => change.call(insertImage, data)
+const insertImageStrategy = (editor, data) => editor.command(insertImage, data)
 
 /**
  * Rendering components that provide the actual HTML to use inside the editor.
@@ -132,7 +132,7 @@ const ImageButtonUnconnected = ({ editor, classes }: ButtonProps) => {
             <Button
               onClick={() => {
                 setImageModalOpen(false)
-                editor.change(change => insertImageStrategy(change, data))
+                insertImageStrategy(editor, data)
               }}
               className={classes.btn}
               variant="contained"
