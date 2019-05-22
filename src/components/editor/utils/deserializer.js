@@ -38,7 +38,6 @@ const rules = [
         return {
           object: "block",
           type: "image",
-          isVoid: true,
           nodes: next(el.childNodes),
           data: {
             src: el.getAttribute("src"),
@@ -54,7 +53,7 @@ const rules = [
             href: el.getAttribute("href"),
           },
         }
-      } else if (el.tagName.toLowerCase() === "br") {
+      } else if (tagName === "br") {
         return {
           object: "text",
           text: "\n",

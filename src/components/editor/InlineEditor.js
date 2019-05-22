@@ -31,23 +31,22 @@ import { DividerNode } from "./plugins/divider"
 import { H1Node, H2Node, H3Node } from "./plugins/heading"
 import { ImageNode } from "./plugins/image"
 import { LinkNode } from "./plugins/link"
-// import {
-//   ListItemNode,
-//   OrderedListNode,
-//   UnorderedListNode,
-// } from "./plugins/list"
-// import { TableNode, TableRowNode, TableCellNode } from "./plugins/table"
+import {
+  ListItemNode,
+  OrderedListNode,
+  UnorderedListNode,
+} from "./plugins/list"
+import { TableNode, TableRowNode, TableCellNode } from "./plugins/table"
 import { VideoNode } from "./plugins/video"
 
 /** Import custom plugins */
 import { AlignmentPlugin } from "./plugins/alignment"
 import { BoldPlugin } from "./plugins/bold"
 import { DividerPlugin } from "./plugins/divider"
-import { ImagePlugin } from "./plugins/image"
 import { ItalicPlugin } from "./plugins/italic"
-// import { ListPlugin } from "./plugins/list"
+import { ListPlugin } from "./plugins/list"
 import { StrikethroughPlugin } from "./plugins/strikethrough"
-// import { TablePlugin } from "./plugins/table"
+import { TablePlugin } from "./plugins/table"
 import { UnderlinePlugin } from "./plugins/underline"
 
 const styles = theme => ({
@@ -76,11 +75,10 @@ const plugins = [
   AlignmentPlugin(),
   BoldPlugin(),
   DividerPlugin(),
-  ImagePlugin(),
   ItalicPlugin(),
-  // ListPlugin,
+  ListPlugin,
   StrikethroughPlugin(),
-  // TablePlugin,
+  TablePlugin,
   UnderlinePlugin(),
 ]
 
@@ -143,18 +141,18 @@ export const renderNode = (props: nodeProps, next) => {
       return <ImageNode {...props} />
     case "link":
       return <LinkNode {...props} />
-    // case "list-item":
-    //   return <ListItemNode {...props} />
-    // case "unordered-list":
-    //   return <UnorderedListNode {...props} />
-    // case "ordered-list":
-    //   return <OrderedListNode {...props} />
-    // case "table":
-    //   return <TableNode {...props} />
-    // case "table-row":
-    //   return <TableRowNode {...props} />
-    // case "table-cell":
-    //   return <TableCellNode {...props} />
+    case "list-item":
+      return <ListItemNode {...props} />
+    case "unordered-list":
+      return <UnorderedListNode {...props} />
+    case "ordered-list":
+      return <OrderedListNode {...props} />
+    case "table":
+      return <TableNode {...props} />
+    case "table-row":
+      return <TableRowNode {...props} />
+    case "table-cell":
+      return <TableCellNode {...props} />
     case "video":
       return <VideoNode {...props} />
 

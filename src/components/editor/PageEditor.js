@@ -49,7 +49,6 @@ import { VideoNode } from "./plugins/video"
 import { AlignmentPlugin } from "./plugins/alignment"
 import { BoldPlugin } from "./plugins/bold"
 import { DividerPlugin } from "./plugins/divider"
-import { ImagePlugin } from "./plugins/image"
 import { ItalicPlugin } from "./plugins/italic"
 import { ListPlugin } from "./plugins/list"
 import { StrikethroughPlugin } from "./plugins/strikethrough"
@@ -119,7 +118,6 @@ const plugins = [
   AlignmentPlugin(),
   BoldPlugin(),
   DividerPlugin(),
-  ImagePlugin(),
   ItalicPlugin(),
   ListPlugin,
   StrikethroughPlugin(),

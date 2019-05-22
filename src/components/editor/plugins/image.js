@@ -18,26 +18,27 @@ const styles = theme => ({
   },
 })
 
+type ImageData = {
+  src: string,
+  description: string,
+  height: string,
+  width: string,
+}
+
 /**
  * Functions to set the image blocks.
  */
-const insertImage = (editor: Object, data: Object, target: string) => {
-  if (target) {
-    editor.select(target)
-  }
-
+const insertImage = (editor: Object, data: ImageData) => {
   editor.insertBlock({
     type: "image",
     data: {
-      src: data.url,
+      src: data.src,
       description: data.description,
       height: data.height,
       width: data.width,
     },
   })
 }
-
-const insertImageStrategy = (editor, data) => editor.command(insertImage, data)
 
 /**
  * Rendering components that provide the actual HTML to use inside the editor.
@@ -71,7 +72,7 @@ const ImageButtonUnconnected = ({ editor, classes }: ButtonProps) => {
   const [height, setHeight] = useState("")
 
   const data = {
-    url,
+    src: url,
     description,
     width,
     height,
@@ -132,7 +133,7 @@ const ImageButtonUnconnected = ({ editor, classes }: ButtonProps) => {
             <Button
               onClick={() => {
                 setImageModalOpen(false)
-                insertImageStrategy(editor, data)
+                editor.command(insertImage, data)
               }}
               className={classes.btn}
               variant="contained"
@@ -149,32 +150,6 @@ const ImageButtonUnconnected = ({ editor, classes }: ButtonProps) => {
 const ImageButton = withStyles(styles)(ImageButtonUnconnected)
 
 /**
- * Function that specifies the keyboard shortcuts to use for images.
- * It accepts event and change as arguments.
- */
-const ImageKeyboardShortcut = (event, editor, next) => {
-  const key = event.key === "i"
-  const macKey = event.metaKey && event.shiftKey && key
-  const winKey = event.altKey && event.shiftKey && key
-  const isLeft = macKey || winKey
-  if (isLeft) {
-    event.preventDefault()
-    return editor.change(insertImageStrategy)
-  }
-  return next()
-}
-
-/**
- * Function that represents our actual plugin.
- * It takes options in case we want to add more to it in the future.
- */
-const ImagePlugin = (options?: Object) => ({
-  onKeyDown(...args: Array<Object>) {
-    return ImageKeyboardShortcut(...args)
-  },
-})
-
-/**
  * Export everything needed for the editor.
  */
-export { ImageNode, ImageButton, ImagePlugin, insertImage }
+export { ImageNode, ImageButton, insertImage }

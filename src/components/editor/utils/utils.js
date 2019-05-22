@@ -1,4 +1,4 @@
-import { getEventTransfer, getEventRange } from "slate-react"
+import { getEventTransfer } from "slate-react"
 import isUrl from "is-url"
 import deserializer from "./deserializer"
 import { insertImage } from "../plugins/image"
@@ -40,8 +40,6 @@ const onPasteHtml = (e, editor, next) => {
  * Function to handle any pasted text
  */
 const onPasteText = (e, editor, next) => {
-  const target = getEventRange(e, editor)
-
   const transfer = getEventTransfer(e)
   const { text } = transfer
   if (!isUrl(text)) return next()
@@ -54,7 +52,7 @@ const onPasteText = (e, editor, next) => {
     const data = {
       src: text,
     }
-    return editor.command(insertImage, data, target)
+    return editor.command(insertImage, data)
   } else if (text.match(/youtube\.com|vimeo\.com/)) {
     const data = {
       url: text,
