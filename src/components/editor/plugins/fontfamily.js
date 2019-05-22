@@ -11,13 +11,13 @@ import { NodeProps } from "../flow/types"
  * List of fonts available
  */
 const FontFamilyList = [
+  { name: "Lato", options: "400,700" },
+  { name: "Merriweather", options: "400,700" },
+  { name: "Montserrat", options: "400,700" },
   { name: "Roboto", options: "400,400i,700,700i" },
   { name: "Roboto Condensed", options: "400,400i,700,700i" },
   { name: "Roboto Mono", options: "400,400i,700,700i" },
   { name: "Roboto Slab", options: "400,700" },
-  { name: "Lato", options: "400,700" },
-  { name: "Merriweather", options: "400,700" },
-  { name: "Montserrat", options: "400,700" },
 ]
 
 /**
@@ -76,7 +76,10 @@ const Dropdown = ({ editor, classes, editorToolbar, changeFontSelect }) => (
         fontFamilyMarkStrategy(editor, fontFamilyIndex)
       }}>
       {FontFamilyList.map((font, index) => (
-        <MenuItem key={`font-family-${index}`} value={index}>
+        <MenuItem
+          key={`font-family-${index}`}
+          value={index}
+          style={{ fontFamily: font.name }}>
           {font.name}
         </MenuItem>
       ))}

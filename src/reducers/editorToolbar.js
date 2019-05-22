@@ -8,7 +8,7 @@ import {
 } from "constants/types"
 
 const initialState = {
-  currentFont: 0,
+  currentFont: 3,
   currentFontSize: 2,
   showHelpModal: false,
   showColorPicker: false,

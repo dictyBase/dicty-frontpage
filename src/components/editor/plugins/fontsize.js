@@ -79,7 +79,10 @@ const Dropdown = ({ editor, classes, editorToolbar, changeFontSize }) => (
         fontSizeMarkStrategy(editor, fontSizeIndex)
       }}>
       {FontSizeList.map((font, index) => (
-        <MenuItem key={`font-size-${index}`} value={index}>
+        <MenuItem
+          key={`font-size-${index}`}
+          value={index}
+          style={{ fontSize: font.size }}>
           {font.size}
         </MenuItem>
       ))}
