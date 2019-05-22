@@ -37,11 +37,11 @@ import { H1Node, H2Node, H3Node } from "./plugins/heading"
 import { ImageNode } from "./plugins/image"
 import { LineSpacingNode } from "./plugins/linespacing"
 import { LinkNode } from "./plugins/link"
-// import {
-//   ListItemNode,
-//   OrderedListNode,
-//   UnorderedListNode,
-// } from "./plugins/list"
+import {
+  ListItemNode,
+  OrderedListNode,
+  UnorderedListNode,
+} from "./plugins/list"
 // import { TableNode, TableRowNode, TableCellNode } from "./plugins/table"
 import { VideoNode } from "./plugins/video"
 
@@ -51,7 +51,7 @@ import { BoldPlugin } from "./plugins/bold"
 import { DividerPlugin } from "./plugins/divider"
 import { ImagePlugin } from "./plugins/image"
 import { ItalicPlugin } from "./plugins/italic"
-// import { ListPlugin } from "./plugins/list"
+import { ListPlugin } from "./plugins/list"
 import { StrikethroughPlugin } from "./plugins/strikethrough"
 // import { TablePlugin } from "./plugins/table"
 import { UnderlinePlugin } from "./plugins/underline"
@@ -121,7 +121,7 @@ const plugins = [
   DividerPlugin(),
   ImagePlugin(),
   ItalicPlugin(),
-  // ListPlugin,
+  ListPlugin,
   StrikethroughPlugin(),
   // TablePlugin,
   UnderlinePlugin(),
@@ -191,12 +191,12 @@ export const renderNode = (props: nodeProps, editor, next) => {
       return <LineSpacingNode {...props} />
     case "link":
       return <LinkNode {...props} />
-    // case "list-item":
-    //   return <ListItemNode {...props} />
-    // case "unordered-list":
-    //   return <UnorderedListNode {...props} />
-    // case "ordered-list":
-    //   return <OrderedListNode {...props} />
+    case "list-item":
+      return <ListItemNode {...props} />
+    case "unordered-list":
+      return <UnorderedListNode {...props} />
+    case "ordered-list":
+      return <OrderedListNode {...props} />
     // case "table":
     //   return <TableNode {...props} />
     // case "table-row":

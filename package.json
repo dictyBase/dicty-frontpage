@@ -21,6 +21,7 @@
     "analyze": "source-map-explorer 'build/static/js/*.js'"
   },
   "dependencies": {
+    "@convertkit/slate-lists": "^0.2.2",
     "@material-ui/core": "^1.4.0",
     "@material-ui/icons": "^1.1.1",
     "connected-react-router": "^6.4.0",

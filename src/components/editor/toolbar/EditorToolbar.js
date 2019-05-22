@@ -119,8 +119,8 @@ export const EditorToolbar = props => {
               <AlignmentRightButton {...props} />
               <AlignmentJustifyButton {...props} />
               <DividerButton {...props} />
-              {/* <UnorderedListButton {...props} />
-              <OrderedListButton {...props} /> */}
+              <UnorderedListButton {...props} />
+              <OrderedListButton {...props} />
               <LineSpacingButton {...props} />
               <H1Button {...props} />
               <H2Button {...props} />
