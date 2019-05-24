@@ -1,6 +1,5 @@
 type ButtonProps = {
-  value: Object,
-  onChange: Function,
+  editor: Object,
   /** Material-UI styling */
   classes?: Object,
 }

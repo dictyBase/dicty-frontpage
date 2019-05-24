@@ -44,7 +44,7 @@ const DividerKeyboardShortcut = (event, editor, next) => {
  * It takes options in case we want to add more to it in the future.
  */
 const DividerPlugin = (options?: Object) => ({
-  onKeyDown(...args: Array<Object>) {
+  onKeyDown(...args: Array<any>) {
     return DividerKeyboardShortcut(...args)
   },
 })

@@ -41,7 +41,7 @@ const StrikethroughKeyboardShortcut = (event, editor, next) => {
  * It takes options in case we want to add more to it in the future.
  */
 const StrikethroughPlugin = (options?: Object) => ({
-  onKeyDown(...args: Array<Object>) {
+  onKeyDown(...args: Array<any>) {
     return StrikethroughKeyboardShortcut(...args)
   },
 })

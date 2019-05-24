@@ -41,7 +41,7 @@ const ItalicKeyboardShortcut = (event, editor, next) => {
  * It takes options in case we want to add more to it in the future.
  */
 const ItalicPlugin = (options?: Object) => ({
-  onKeyDown(...args: Array<Object>) {
+  onKeyDown(...args: Array<any>) {
     return ItalicKeyboardShortcut(...args)
   },
 })

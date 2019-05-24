@@ -129,11 +129,17 @@ type markProps = {
   mark: Object,
 }
 
+type Ref = { current: React.createRef<any> | null }
+
 /**
  * Necessary renderMark function that receives the mark type then renders the HTML
  * In our case, we are returning custom components
  */
-export const renderMark = (props: markProps, editor, next) => {
+export const renderMark = (
+  props: markProps,
+  editor: Object,
+  next: Function,
+) => {
   const { mark } = props
 
   switch (mark.type) {
@@ -169,7 +175,11 @@ type nodeProps = {
 /**
  * Similar to renderMark above, except now we are working with nodes.
  */
-export const renderNode = (props: nodeProps, editor, next) => {
+export const renderNode = (
+  props: nodeProps,
+  editor: Object,
+  next: Function,
+) => {
   const { node } = props
 
   switch (node.type) {
@@ -256,6 +266,7 @@ type State = {
  */
 
 class PageEditor extends Component<Props, State> {
+  editor: Ref // necessary for Flow
   constructor(props: Props) {
     super(props)
 
