@@ -13,10 +13,11 @@ const BLOCK_TAGS = {
   h6: "h6",
   hr: "divider",
   table: "table",
-  th: "table-head",
+  th: "table-cell",
   tr: "table-row",
   td: "table-cell",
   center: "center",
+  div: "div",
 }
 
 const MARK_TAGS = {
@@ -27,54 +28,62 @@ const MARK_TAGS = {
   u: "underline",
   s: "strikethrough",
   del: "strikethrough",
+  sub: "subscript",
+  sup: "superscript",
 }
 
 const rules = [
   {
     deserialize(el, next) {
-      const tagName = el.tagName.toLowerCase()
-      if (tagName === "img") {
-        // special case for images, to grab their src
+      const tag = el.tagName.toLowerCase()
+      const block = BLOCK_TAGS[tag]
+      if (block) {
+        return {
+          object: "block",
+          type: block,
+          nodes: next(el.childNodes),
+        }
+      }
+    },
+  },
+  {
+    deserialize(el, next) {
+      const mark = MARK_TAGS[el.tagName.toLowerCase()]
+      if (mark) {
+        return {
+          object: "mark",
+          type: mark,
+          nodes: next(el.childNodes),
+        }
+      }
+    },
+  },
+  {
+    // Special case for images, to grab their src.
+    deserialize(el, next) {
+      if (el.tagName.toLowerCase() === "img") {
         return {
           object: "block",
           type: "image",
-          isVoid: true,
           nodes: next(el.childNodes),
           data: {
             src: el.getAttribute("src"),
           },
         }
-      } else if (tagName === "a") {
-        // special case for links, to grab their href
+      }
+    },
+  },
+  {
+    // Special case for links, to grab their href.
+    deserialize(el, next) {
+      if (el.tagName.toLowerCase() === "a") {
         return {
-          object: "inline",
+          object: "mark",
           type: "link",
           nodes: next(el.childNodes),
           data: {
             href: el.getAttribute("href"),
           },
-        }
-      } else if (el.tagName.toLowerCase() === "br") {
-        return {
-          object: "text",
-          text: "\n",
-        }
-      } else if (BLOCK_TAGS[tagName]) {
-        // rule to handle blocks
-        return {
-          object: "block",
-          type: BLOCK_TAGS[tagName],
-          data: {
-            className: el.getAttribute("class"),
-          },
-          nodes: next(el.childNodes),
-        }
-      } else if (MARK_TAGS[tagName]) {
-        // rule to handle marks
-        return {
-          object: "mark",
-          type: MARK_TAGS[tagName],
-          nodes: next(el.childNodes),
         }
       }
     },

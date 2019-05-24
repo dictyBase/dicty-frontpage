@@ -11,16 +11,11 @@ import { ButtonProps, NodeProps } from "../flow/types"
 /**
  * Functions to set the alignment blocks.
  */
-const alignmentMarkStrategy = (change, align) =>
-  change.unwrapBlock("alignment").wrapBlock({
+const alignmentMarkStrategy = (editor, align) =>
+  editor.unwrapBlock("alignment").wrapBlock({
     type: "alignment",
     data: { align },
   })
-
-const alignLeft = change => alignmentMarkStrategy(change, "left")
-const alignCenter = change => alignmentMarkStrategy(change, "center")
-const alignRight = change => alignmentMarkStrategy(change, "right")
-const alignJustify = change => alignmentMarkStrategy(change, "justify")
 
 /**
  * Rendering component that provides the actual HTML to use inside the editor.
@@ -51,44 +46,44 @@ const AlignmentNode = ({ children, attributes, node: { data } }: NodeProps) => {
 /**
  * Button components that use click handlers to connect the buttons to the editor.
  */
-const AlignmentLeftButton = ({ value, onChange }: ButtonProps) => (
+const AlignmentLeftButton = ({ editor }: ButtonProps) => (
   <Tooltip title="Align Left" placement="bottom">
     <ToolbarButton
       onClick={() => {
-        onChange(alignmentMarkStrategy(value.change(), "left"))
+        alignmentMarkStrategy(editor, "left")
       }}>
       <FormatAlignLeftIcon />
     </ToolbarButton>
   </Tooltip>
 )
 
-const AlignmentCenterButton = ({ value, onChange }: ButtonProps) => (
+const AlignmentCenterButton = ({ editor }: ButtonProps) => (
   <Tooltip title="Center Text" placement="bottom">
     <ToolbarButton
       onClick={() => {
-        onChange(alignmentMarkStrategy(value.change(), "center"))
+        alignmentMarkStrategy(editor, "center")
       }}>
       <FormatAlignCenterIcon />
     </ToolbarButton>
   </Tooltip>
 )
 
-const AlignmentRightButton = ({ value, onChange }: ButtonProps) => (
+const AlignmentRightButton = ({ editor }: ButtonProps) => (
   <Tooltip title="Align Right" placement="bottom">
     <ToolbarButton
       onClick={() => {
-        onChange(alignmentMarkStrategy(value.change(), "right"))
+        alignmentMarkStrategy(editor, "right")
       }}>
       <FormatAlignRightIcon />
     </ToolbarButton>
   </Tooltip>
 )
 
-const AlignmentJustifyButton = ({ value, onChange }: ButtonProps) => (
+const AlignmentJustifyButton = ({ editor }: ButtonProps) => (
   <Tooltip title="Justify" placement="bottom">
     <ToolbarButton
       onClick={() => {
-        onChange(alignmentMarkStrategy(value.change(), "justify"))
+        alignmentMarkStrategy(editor, "justify")
       }}>
       <FormatAlignJustifyIcon />
     </ToolbarButton>
@@ -99,36 +94,36 @@ const AlignmentJustifyButton = ({ value, onChange }: ButtonProps) => (
  * Function that specifies the keyboard shortcuts to use for alignment.
  * It accepts event and change as arguments.
  */
-const AlignmentKeyboardShortcut = (event, change) => {
+const AlignmentKeyboardShortcut = (event, editor, next) => {
   const keyLeft = event.key === "l"
   const leftFullKeyPress = event.metaKey && event.shiftKey && keyLeft
   if (leftFullKeyPress) {
     event.preventDefault()
-    return alignLeft(change)
+    return alignmentMarkStrategy(editor, "left")
   }
 
   const keyCenter = event.key === "c"
   const centerFullKeyPress = event.metaKey && event.shiftKey && keyCenter
   if (centerFullKeyPress) {
     event.preventDefault()
-    return alignCenter(change)
+    return alignmentMarkStrategy(editor, "center")
   }
 
   const keyRight = event.key === "r"
   const rightFullKeyPress = event.metaKey && event.shiftKey && keyRight
   if (rightFullKeyPress) {
     event.preventDefault()
-    return alignRight(change)
+    return alignmentMarkStrategy(editor, "right")
   }
 
   const keyJustify = event.key === "j"
   const justifyFullKeyPress = event.metaKey && event.shiftKey && keyJustify
   if (justifyFullKeyPress) {
     event.preventDefault()
-    return alignJustify(change)
+    return alignmentMarkStrategy(editor, "justify")
   }
 
-  return
+  return next()
 }
 
 /**
@@ -136,7 +131,7 @@ const AlignmentKeyboardShortcut = (event, change) => {
  * It takes options in case we want to add more to it in the future.
  */
 const AlignmentPlugin = (options?: Object) => ({
-  onKeyDown(...args: Array<Object>) {
+  onKeyDown(...args: Array<any>) {
     return AlignmentKeyboardShortcut(...args)
   },
 })

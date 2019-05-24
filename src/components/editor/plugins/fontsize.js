@@ -33,26 +33,26 @@ const createMark = fontSizeIndex => ({
   data: { fontSizeIndex },
 })
 
-const reapplyMark = ({ change, fontSizeIndex }) =>
-  change.removeMark(getMark(change.value)).addMark(createMark(fontSizeIndex))
+const reapplyMark = ({ editor, fontSizeIndex }) =>
+  editor.removeMark(getMark(editor.value)).addMark(createMark(fontSizeIndex))
 
-const applyMark = ({ change, fontSizeIndex }) =>
-  change.addMark(createMark(fontSizeIndex))
+const applyMark = ({ editor, fontSizeIndex }) =>
+  editor.addMark(createMark(fontSizeIndex))
 
-const fontSizeMarkStrategy = attributes => {
-  const { value, fontSizeIndex } = attributes
+const fontSizeMarkStrategy = (editor, fontSizeIndex) => {
+  const { value } = editor
 
   if (hasMark(value)) {
-    if (value.isExpanded) {
-      return reapplyMark({ change: value.change(), fontSizeIndex })
+    if (value.selection.isExpanded) {
+      return reapplyMark({ editor: editor, fontSizeIndex })
     }
   } else {
-    if (value.isExpanded) {
-      return applyMark({ change: value.change(), fontSizeIndex })
+    if (value.selection.isExpanded) {
+      return applyMark({ editor: editor, fontSizeIndex })
     }
   }
 
-  return value.change()
+  return editor
 }
 
 /**
@@ -70,22 +70,19 @@ const FontSizeMark = ({ children, mark: { data } }: NodeProps) => (
 /**
  * Button components that use click handlers to connect to the editor.
  */
-const Dropdown = ({
-  value,
-  onChange,
-  classes,
-  editorToolbar,
-  changeFontSize,
-}) => (
+const Dropdown = ({ editor, classes, editorToolbar, changeFontSize }) => (
   <FormControl className={classes.fontSizeDropdown}>
     <Select
       value={editorToolbar.currentFontSize}
       onChange={({ target: { value: fontSizeIndex } }) => {
         changeFontSize(fontSizeIndex)
-        onChange(fontSizeMarkStrategy({ value, fontSizeIndex }))
+        fontSizeMarkStrategy(editor, fontSizeIndex)
       }}>
       {FontSizeList.map((font, index) => (
-        <MenuItem key={`font-size-${index}`} value={index}>
+        <MenuItem
+          key={`font-size-${index}`}
+          value={index}
+          style={{ fontSize: font.size }}>
           {font.size}
         </MenuItem>
       ))}

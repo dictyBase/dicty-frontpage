@@ -7,11 +7,6 @@ import { isMod } from "../utils/utils"
 import { ButtonProps } from "../flow/types"
 
 /**
- * Function that toggles the mark type.
- */
-const boldMarkStrategy = change => change.toggleMark("bold")
-
-/**
  * Rendering component that provides the actual HTML to use inside the editor.
  */
 const BoldMark = ({ children }: any) => <strong>{children}</strong>
@@ -19,11 +14,11 @@ const BoldMark = ({ children }: any) => <strong>{children}</strong>
 /**
  * Bold button that uses a click handler to connect the button to the editor.
  */
-const BoldButton = ({ value, onChange }: ButtonProps) => (
+const BoldButton = ({ editor }: ButtonProps) => (
   <Tooltip title="Bold" placement="bottom">
     <ToolbarButton
       onClick={() => {
-        onChange(boldMarkStrategy(value.change()))
+        editor.toggleMark("bold")
       }}>
       <FormatBoldIcon />
     </ToolbarButton>
@@ -34,11 +29,11 @@ const BoldButton = ({ value, onChange }: ButtonProps) => (
  * Function that specifies the keyboard shortcut to use for bold.
  * It accepts event and change as arguments.
  */
-const BoldKeyboardShortcut = (event, change) => {
+const BoldKeyboardShortcut = (event, editor, next) => {
   if (isMod(event) && event.key === "b") {
-    return boldMarkStrategy(change)
+    return editor.toggleMark("bold")
   }
-  return
+  return next()
 }
 
 /**
@@ -46,7 +41,7 @@ const BoldKeyboardShortcut = (event, change) => {
  * It takes options in case we want to add more to it in the future.
  */
 const BoldPlugin = (options?: Object) => ({
-  onKeyDown(...args: Array<Object>) {
+  onKeyDown(...args: Array<any>) {
     return BoldKeyboardShortcut(...args)
   },
 })

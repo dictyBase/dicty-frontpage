@@ -18,19 +18,21 @@ const styles = theme => ({
   },
 })
 
+type ImageData = {
+  src: string,
+  description: string,
+  height: string,
+  width: string,
+}
+
 /**
  * Functions to set the image blocks.
  */
-const insertImage = (change: Object, data: Object, target: string) => {
-  if (target) {
-    change.select(target)
-  }
-
-  change.insertBlock({
+const insertImage = (editor: Object, data: ImageData) => {
+  editor.insertBlock({
     type: "image",
-    isVoid: true, // makes this content a black box that Slate doesn't control editing for
     data: {
-      src: data.url,
+      src: data.src,
       description: data.description,
       height: data.height,
       width: data.width,
@@ -38,16 +40,10 @@ const insertImage = (change: Object, data: Object, target: string) => {
   })
 }
 
-const insertImageStrategy = (change, data) => {
-  const { value } = change
-
-  return value.change().call(insertImage, data)
-}
-
 /**
  * Rendering components that provide the actual HTML to use inside the editor.
  */
-const ImageNode = ({ attributes, node: { data } }: NodeProps) => {
+const ImageNode = ({ attributes, isFocused, node: { data } }: NodeProps) => {
   const src = data.get("src")
   const description = data.get("description")
   const height = data.get("height")
@@ -59,6 +55,7 @@ const ImageNode = ({ attributes, node: { data } }: NodeProps) => {
       height={height}
       width={width}
       alt={description}
+      style={{ boxShadow: `${isFocused ? "0 0 0 2px #15317e" : "none"}` }}
       {...attributes}
     />
   )
@@ -67,7 +64,7 @@ const ImageNode = ({ attributes, node: { data } }: NodeProps) => {
 /**
  * Button component that uses a click handler to connect to the editor.
  */
-const ImageButtonUnconnected = ({ value, onChange, classes }: ButtonProps) => {
+const ImageButtonUnconnected = ({ editor, classes }: ButtonProps) => {
   const [imageModalOpen, setImageModalOpen] = useState(false)
   const [url, setURL] = useState("")
   const [description, setDescription] = useState("")
@@ -75,7 +72,7 @@ const ImageButtonUnconnected = ({ value, onChange, classes }: ButtonProps) => {
   const [height, setHeight] = useState("")
 
   const data = {
-    url,
+    src: url,
     description,
     width,
     height,
@@ -136,7 +133,7 @@ const ImageButtonUnconnected = ({ value, onChange, classes }: ButtonProps) => {
             <Button
               onClick={() => {
                 setImageModalOpen(false)
-                onChange(insertImageStrategy(value.change(), data))
+                editor.command(insertImage, data)
               }}
               className={classes.btn}
               variant="contained"
@@ -153,32 +150,6 @@ const ImageButtonUnconnected = ({ value, onChange, classes }: ButtonProps) => {
 const ImageButton = withStyles(styles)(ImageButtonUnconnected)
 
 /**
- * Function that specifies the keyboard shortcuts to use for images.
- * It accepts event and change as arguments.
- */
-const ImageKeyboardShortcut = (event, change) => {
-  const key = event.key === "i"
-  const macKey = event.metaKey && event.shiftKey && key
-  const winKey = event.altKey && event.shiftKey && key
-  const isLeft = macKey || winKey
-  if (isLeft) {
-    event.preventDefault()
-    return insertImageStrategy(change)
-  }
-  return
-}
-
-/**
- * Function that represents our actual plugin.
- * It takes options in case we want to add more to it in the future.
- */
-const ImagePlugin = (options?: Object) => ({
-  onKeyDown(...args: Array<Object>) {
-    return ImageKeyboardShortcut(...args)
-  },
-})
-
-/**
  * Export everything needed for the editor.
  */
-export { ImageNode, ImageButton, ImagePlugin, insertImage }
+export { ImageNode, ImageButton, insertImage }

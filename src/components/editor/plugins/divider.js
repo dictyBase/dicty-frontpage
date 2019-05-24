@@ -7,15 +7,6 @@ import { isMod } from "../utils/utils"
 import { ButtonProps } from "../flow/types"
 
 /**
- * Functions to set the divider blocks.
- */
-const dividerStrategy = change =>
-  change.setBlocks({
-    type: "divider",
-    isVoid: true,
-  })
-
-/**
  * Rendering components that provide the actual HTML to use inside the editor.
  */
 const DividerNode = ({ attributes }: any) => <Divider {...attributes} />
@@ -23,11 +14,13 @@ const DividerNode = ({ attributes }: any) => <Divider {...attributes} />
 /**
  * Button components that use click handlers to connect to the editor.
  */
-const DividerButton = ({ value, onChange }: ButtonProps) => (
+const DividerButton = ({ editor }: ButtonProps) => (
   <Tooltip title="Divider" placement="bottom">
     <ToolbarButton
       onClick={() => {
-        onChange(dividerStrategy(value.change()))
+        editor.setBlocks({
+          type: "divider",
+        })
       }}>
       <strong>—</strong>
     </ToolbarButton>
@@ -38,9 +31,12 @@ const DividerButton = ({ value, onChange }: ButtonProps) => (
  * Function that specifies the keyboard shortcuts to use for dividers.
  * It accepts event and change as arguments.
  */
-const DividerKeyboardShortcut = (event, change) => {
-  if (isMod(event) && event.key === "]") return dividerStrategy(change)
-  return
+const DividerKeyboardShortcut = (event, editor, next) => {
+  if (isMod(event) && event.key === "]")
+    return editor.setBlocks({
+      type: "divider",
+    })
+  return next()
 }
 
 /**
@@ -48,7 +44,7 @@ const DividerKeyboardShortcut = (event, change) => {
  * It takes options in case we want to add more to it in the future.
  */
 const DividerPlugin = (options?: Object) => ({
-  onKeyDown(...args: Array<Object>) {
+  onKeyDown(...args: Array<any>) {
     return DividerKeyboardShortcut(...args)
   },
 })

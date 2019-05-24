@@ -43,7 +43,6 @@ import { VideoNode } from "./plugins/video"
 import { AlignmentPlugin } from "./plugins/alignment"
 import { BoldPlugin } from "./plugins/bold"
 import { DividerPlugin } from "./plugins/divider"
-import { ImagePlugin } from "./plugins/image"
 import { ItalicPlugin } from "./plugins/italic"
 import { ListPlugin } from "./plugins/list"
 import { StrikethroughPlugin } from "./plugins/strikethrough"
@@ -76,7 +75,6 @@ const plugins = [
   AlignmentPlugin(),
   BoldPlugin(),
   DividerPlugin(),
-  ImagePlugin(),
   ItalicPlugin(),
   ListPlugin,
   StrikethroughPlugin(),
@@ -88,11 +86,13 @@ type markProps = {
   mark: Object,
 }
 
+type Ref = { current: React.createRef<any> | null }
+
 /**
  * Necessary renderMark function that receives the mark type then renders the HTML
  * In our case, we are returning custom components
  */
-export const renderMark = (props: markProps) => {
+export const renderMark = (props: markProps, next: Function) => {
   const { mark } = props
 
   switch (mark.type) {
@@ -112,7 +112,7 @@ export const renderMark = (props: markProps) => {
       return <UnderlineMark {...props} />
 
     default:
-      return null
+      return next()
   }
 }
 
@@ -125,8 +125,9 @@ type nodeProps = {
 /**
  * Similar to renderMark above, except now we are working with nodes.
  */
-export const renderNode = (props: nodeProps) => {
-  const { node, attributes, children } = props
+export const renderNode = (props: nodeProps, next: Function) => {
+  const { node } = props
+
   switch (node.type) {
     case "alignment":
       return <AlignmentNode {...props} />
@@ -158,7 +159,7 @@ export const renderNode = (props: nodeProps) => {
       return <VideoNode {...props} />
 
     default:
-      return <div {...attributes}>{children}</div>
+      return next()
   }
 }
 
@@ -193,6 +194,7 @@ type State = {
  */
 
 class InlineEditor extends Component<Props, State> {
+  editor: Ref // necessary for Flow
   constructor(props: Props) {
     super(props)
 
@@ -209,6 +211,8 @@ class InlineEditor extends Component<Props, State> {
         readOnly: props.readOnly,
       }
     }
+
+    this.editor = React.createRef()
   }
 
   onChange = ({ value }: Object) => {
@@ -299,7 +303,12 @@ class InlineEditor extends Component<Props, State> {
     return (
       <div>
         {!readOnly && (
-          <EditorToolbar value={value} onChange={this.onChange} page={page} />
+          <EditorToolbar
+            editor={this.editor.current}
+            value={value}
+            onChange={this.onChange}
+            page={page}
+          />
         )}
 
         <StyledEditor
@@ -311,10 +320,10 @@ class InlineEditor extends Component<Props, State> {
           renderNode={renderNode}
           readOnly={readOnly}
           plugins={plugins}
+          ref={this.editor}
         />
 
         <Authorization
-          // eslint-disable-next-line
           render={({ canEditPages, verifiedToken }) => (
             <div>
               {canEditPages && verifiedToken && readOnly && (

@@ -1,7 +1,7 @@
 // @flow
 import React from "react"
 import { connect } from "react-redux"
-import EditTable from "slate-edit-table"
+import DeepTable from "slate-deep-table"
 import Tooltip from "@material-ui/core/Tooltip"
 import TableIcon from "@material-ui/icons/BorderAll"
 import AddIcon from "@material-ui/icons/Add"
@@ -29,12 +29,7 @@ const TableCellNode = ({ attributes, children }: NodeProps) => (
 /**
  * Button components that use click handlers to connect the buttons to the editor.
  */
-const InsertInitialTable = ({
-  value,
-  onChange,
-  editorToolbar,
-  showTableOptions,
-}) => (
+const InsertInitialTable = ({ editorToolbar, showTableOptions }) => (
   <Tooltip title="Table" placement="bottom">
     <ToolbarButton
       onClick={e => {
@@ -50,72 +45,72 @@ const InsertInitialTableButton = connect(
   { showTableOptions },
 )(InsertInitialTable)
 
-const InsertTableButton = ({ value, onChange, classes }: ButtonProps) => (
+const InsertTableButton = ({ editor, classes }: ButtonProps) => (
   <Tooltip title="Insert Table" placement="bottom">
     <ToolbarButton
       className={classes.button}
       onClick={() => {
-        onChange(TablePlugin.changes.insertTable(value.change()))
+        editor.insertTable()
       }}>
       <AddIcon /> Add Table
     </ToolbarButton>
   </Tooltip>
 )
 
-const InsertTableColumnButton = ({ value, onChange, classes }: ButtonProps) => (
+const InsertTableColumnButton = ({ editor, classes }: ButtonProps) => (
   <Tooltip title="Insert Column" placement="bottom">
     <ToolbarButton
       className={classes.button}
       onClick={() => {
-        onChange(TablePlugin.changes.insertColumn(value.change()))
+        editor.insertColumn()
       }}>
       <AddIcon /> &nbsp;Add Column
     </ToolbarButton>
   </Tooltip>
 )
 
-const InsertTableRowButton = ({ value, onChange, classes }: ButtonProps) => (
+const InsertTableRowButton = ({ editor, classes }: ButtonProps) => (
   <Tooltip title="Insert Row" placement="bottom">
     <ToolbarButton
       className={classes.button}
       onClick={() => {
-        onChange(TablePlugin.changes.insertRow(value.change()))
+        editor.insertRow()
       }}>
       <AddIcon /> &nbsp;Add Row
     </ToolbarButton>
   </Tooltip>
 )
 
-const RemoveTableColumnButton = ({ value, onChange, classes }: ButtonProps) => (
+const RemoveTableColumnButton = ({ editor, classes }: ButtonProps) => (
   <Tooltip title="Remove Column" placement="bottom">
     <ToolbarButton
       className={classes.button}
       onClick={() => {
-        onChange(TablePlugin.changes.removeColumn(value.change()))
+        editor.removeColumn()
       }}>
       <RemoveIcon /> &nbsp;Remove Column
     </ToolbarButton>
   </Tooltip>
 )
 
-const RemoveTableRowButton = ({ value, onChange, classes }: ButtonProps) => (
+const RemoveTableRowButton = ({ editor, classes }: ButtonProps) => (
   <Tooltip title="Remove Row" placement="bottom">
     <ToolbarButton
       className={classes.button}
       onClick={() => {
-        onChange(TablePlugin.changes.removeRow(value.change()))
+        editor.removeRow()
       }}>
       <RemoveIcon /> &nbsp;Remove Row
     </ToolbarButton>
   </Tooltip>
 )
 
-const RemoveTableButton = ({ value, onChange, classes }: ButtonProps) => (
+const RemoveTableButton = ({ editor, classes }: ButtonProps) => (
   <Tooltip title="Remove Table" placement="bottom">
     <ToolbarButton
       className={classes.button}
       onClick={() => {
-        onChange(TablePlugin.changes.removeTable(value.change()))
+        editor.removeTable()
       }}>
       <DeleteIcon /> &nbsp;Remove Table
     </ToolbarButton>
@@ -126,7 +121,7 @@ const RemoveTableButton = ({ value, onChange, classes }: ButtonProps) => (
  * Function that represents our actual plugin.
  * It takes options in case we want to add more in the future.
  */
-const TablePlugin = EditTable({
+const TablePlugin = DeepTable({
   typeTable: "table",
   typeRow: "table-row",
   typeCell: "table-cell",

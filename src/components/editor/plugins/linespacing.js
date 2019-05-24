@@ -10,14 +10,11 @@ import { ButtonProps, NodeProps } from "../flow/types"
 /**
  * Functions to set the line spacing blocks.
  */
-const lineSpacingNodeStrategy = (value, size) =>
-  value
-    .change()
-    .unwrapBlock("line-spacing")
-    .wrapBlock({
-      type: "line-spacing",
-      data: { size },
-    })
+const lineSpacingNodeStrategy = (editor, size) =>
+  editor.unwrapBlock("line-spacing").wrapBlock({
+    type: "line-spacing",
+    data: { size },
+  })
 
 /**
  * Rendering components that provide the actual HTML to use inside the editor.
@@ -35,7 +32,7 @@ const LineSpacingNode = ({
 /**
  * Dropdown component that connects to the editor.
  */
-const LineSpacingButton = ({ value, onChange }: ButtonProps) => {
+const LineSpacingButton = ({ editor }: ButtonProps) => {
   const [anchorEl, setAnchorEl] = React.useState(null)
 
   const handleMenuOpen = event => {
@@ -43,7 +40,7 @@ const LineSpacingButton = ({ value, onChange }: ButtonProps) => {
   }
   const handleItemClick = size => {
     setAnchorEl(null)
-    onChange(lineSpacingNodeStrategy(value, size))
+    lineSpacingNodeStrategy(editor, size)
   }
 
   const renderMenu = (

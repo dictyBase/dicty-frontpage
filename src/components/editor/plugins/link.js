@@ -22,58 +22,50 @@ const styles = theme => ({
 /**
  * Functions to set the link blocks.
  */
-const wrapLink = (change, href) => {
-  change.wrapInline({
+const wrapLink = (editor, href) => {
+  editor.wrapInline({
     type: "link",
     data: { href },
   })
 
-  change.collapseToEnd()
+  editor.moveToEnd()
 }
 
-const insertLink = (change: Object, url: string) => {
-  if (change.value.isCollapsed) {
-    change
+const insertLink = (editor: Object, url: string) => {
+  if (editor.value.selection.isCollapsed) {
+    editor
       .insertText(url)
-      .extend(0 - url.length)
-      .wrapInline({
-        type: "link",
-        data: { url },
-      })
-      .collapseToEnd()
+      .moveFocusForward(0 - url.length)
+      .command(wrapLink, url)
+      .moveToEnd()
   } else {
-    change.wrapInline({
-      type: "link",
-      data: { url },
-    })
-
-    change.collapseToEnd()
+    editor.command(wrapLink, url).moveToEnd()
   }
 }
 
 const hasLinks = value => value.inlines.some(inline => inline.type === "link")
 
-const insertLinkStrategy = (change: Object, data: Object) => {
-  const { value } = change
+const insertLinkStrategy = (editor: Object, data: Object) => {
+  const { value } = editor
   const href = data.url
   const text = data.text
 
   if (hasLinks(value)) {
-    change.unwrapInline("link")
-  } else if (value.isExpanded) {
-    change.call(wrapLink, href)
+    editor.unwrapInline("link")
+  } else if (value.selection.isExpanded) {
+    editor.command(wrapLink, href)
   } else {
     if (!href || !text) {
       return
     } else {
-      change
+      editor
         .insertText(text)
-        .extend(0 - text.length)
-        .call(wrapLink, href)
+        .moveFocusForward(0 - text.length)
+        .command(wrapLink, href)
     }
   }
 
-  return change
+  return editor
 }
 
 /**
@@ -88,7 +80,7 @@ const LinkNode = ({ attributes, children, node: { data } }: NodeProps) => (
 /**
  * Button components that use click handlers to connect to the editor.
  */
-const LinkButtonUnconnected = ({ classes, value, onChange }: ButtonProps) => {
+const LinkButtonUnconnected = ({ classes, editor, value }: ButtonProps) => {
   const [linkModalOpen, setLinkModalOpen] = useState(false)
   const [url, setURL] = useState("")
   const [text, setText] = useState("")
@@ -124,7 +116,7 @@ const LinkButtonUnconnected = ({ classes, value, onChange }: ButtonProps) => {
               onChange={e => setURL(e.target.value)}
               fullWidth
             />
-            {!value.change().value.isExpanded && (
+            {!editor.value.selection.isExpanded && (
               <TextField
                 margin="dense"
                 id="text"
@@ -143,7 +135,7 @@ const LinkButtonUnconnected = ({ classes, value, onChange }: ButtonProps) => {
             <Button
               onClick={() => {
                 setLinkModalOpen(false)
-                onChange(insertLinkStrategy(value.change(), data))
+                insertLinkStrategy(editor, data)
               }}
               className={classes.btn}
               variant="contained"

@@ -7,11 +7,6 @@ import { isMod } from "../utils/utils"
 import { ButtonProps } from "../flow/types"
 
 /**
- * Function that toggles the mark type.
- */
-const underlineMarkStrategy = change => change.toggleMark("underline")
-
-/**
  * Rendering component that provides the actual HTML to use inside the editor.
  */
 const UnderlineMark = ({ children }: any) => <u>{children}</u>
@@ -19,11 +14,11 @@ const UnderlineMark = ({ children }: any) => <u>{children}</u>
 /**
  * Underline button that uses a click handler to connect the button to the editor.
  */
-const UnderlineButton = ({ value, onChange }: ButtonProps) => (
+const UnderlineButton = ({ editor }: ButtonProps) => (
   <Tooltip title="Underline" placement="bottom">
     <ToolbarButton
       onClick={() => {
-        onChange(underlineMarkStrategy(value.change()))
+        editor.toggleMark("underline")
       }}>
       <FormatUnderlinedIcon />
     </ToolbarButton>
@@ -34,11 +29,11 @@ const UnderlineButton = ({ value, onChange }: ButtonProps) => (
  * Function that specifies the keyboard shortcut to use for underline.
  * It accepts event and change as arguments.
  */
-const UnderlineKeyboardShortcut = (event, change) => {
+const UnderlineKeyboardShortcut = (event, editor, next) => {
   if (isMod(event) && event.key === "u") {
-    return underlineMarkStrategy(change)
+    return editor.toggleMark("underline")
   }
-  return
+  return next()
 }
 
 /**
@@ -46,7 +41,7 @@ const UnderlineKeyboardShortcut = (event, change) => {
  * It takes options in case we want to add more to it in the future.
  */
 const UnderlinePlugin = (options?: Object) => ({
-  onKeyDown(...args: Array<Object>) {
+  onKeyDown(...args: Array<any>) {
     return UnderlineKeyboardShortcut(...args)
   },
 })

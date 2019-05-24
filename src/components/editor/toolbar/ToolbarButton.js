@@ -7,8 +7,8 @@ import { isFunction } from "../utils/utils"
 const styles = theme => ({
   button: {
     color: "rgba(0, 0, 0, 0.87)",
-    padding: "10px",
-    minWidth: "25px",
+    padding: "7px",
+    minWidth: "20px",
   },
 })
 
@@ -19,8 +19,8 @@ const styles = theme => ({
 const ToolbarButton = ({ children, onClick, classes, ...props }) => (
   <Button
     className={classes.button}
-    onClick={e => {
-      isFunction(onClick) && onClick(e)
+    onClick={event => {
+      isFunction(onClick) && onClick(event)
     }}
     {...props}>
     {children}

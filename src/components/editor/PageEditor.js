@@ -1,13 +1,14 @@
 // @flow
 import React, { Component } from "react"
 import { connect } from "react-redux"
-import { getEventTransfer, getEventRange } from "slate-react"
-import { Value, type Change } from "slate"
+import { Editor, getEventTransfer, getEventRange } from "slate-react"
+import { Value } from "slate"
 import { withStyles } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
 import Button from "@material-ui/core/Button"
 
 import EditorToolbar from "./toolbar/EditorToolbar"
+import schema from "./schema/schema"
 import { insertImage } from "./plugins/image"
 import { onPasteHtml, onPasteText } from "./utils/utils"
 import {
@@ -15,7 +16,6 @@ import {
   cancelEditing,
   addEditablePage,
 } from "actions/editablePages"
-import { StyledEditor } from "styles/EditablePageStyles"
 import existingPagePlaceholder from "./data/existingPagePlaceholder.json"
 import newPagePlaceholder from "./data/newPagePlaceholder.json"
 
@@ -49,7 +49,6 @@ import { VideoNode } from "./plugins/video"
 import { AlignmentPlugin } from "./plugins/alignment"
 import { BoldPlugin } from "./plugins/bold"
 import { DividerPlugin } from "./plugins/divider"
-import { ImagePlugin } from "./plugins/image"
 import { ItalicPlugin } from "./plugins/italic"
 import { ListPlugin } from "./plugins/list"
 import { StrikethroughPlugin } from "./plugins/strikethrough"
@@ -68,6 +67,47 @@ const styles = theme => ({
   cancelButton: {
     width: "100%",
   },
+  editor: {
+    padding: "15px",
+    minHeight: "200px",
+    minWidth: "800px",
+    lineHeight: 1.6,
+    color: "rgba(0, 0, 0, 0.87)",
+
+    "& a": {
+      color: "#428bca",
+      textDecoration: "none",
+    },
+
+    "& table": {
+      width: "100%",
+      borderCollapse: "collapse",
+      borderTop: "1px solid #ccc",
+    },
+
+    "& table tr": {
+      border: "none",
+      borderBottom: "1px solid #ccc",
+      borderRight: "1px solid #ccc",
+      display: "flex",
+      flexDirection: "row",
+      flexWrap: "nowrap",
+    },
+
+    "& table td": {
+      padding: "0.4rem 1.4rem 0.4rem 0.8rem",
+      border: "1px solid #ccc",
+      borderTop: "none",
+      borderBottom: "none",
+      borderRight: "none",
+      flex: 1,
+      position: "relative",
+    },
+
+    "& table td p": {
+      margin: 0,
+    },
+  },
 })
 
 /**
@@ -78,7 +118,6 @@ const plugins = [
   AlignmentPlugin(),
   BoldPlugin(),
   DividerPlugin(),
-  ImagePlugin(),
   ItalicPlugin(),
   ListPlugin,
   StrikethroughPlugin(),
@@ -90,11 +129,17 @@ type markProps = {
   mark: Object,
 }
 
+type Ref = { current: React.createRef<any> | null }
+
 /**
  * Necessary renderMark function that receives the mark type then renders the HTML
  * In our case, we are returning custom components
  */
-export const renderMark = (props: markProps) => {
+export const renderMark = (
+  props: markProps,
+  editor: Object,
+  next: Function,
+) => {
   const { mark } = props
 
   switch (mark.type) {
@@ -116,9 +161,8 @@ export const renderMark = (props: markProps) => {
       return <SuperscriptMark {...props} />
     case "underline":
       return <UnderlineMark {...props} />
-
     default:
-      return null
+      return next()
   }
 }
 
@@ -131,8 +175,13 @@ type nodeProps = {
 /**
  * Similar to renderMark above, except now we are working with nodes.
  */
-export const renderNode = (props: nodeProps) => {
-  const { node, attributes, children } = props
+export const renderNode = (
+  props: nodeProps,
+  editor: Object,
+  next: Function,
+) => {
+  const { node } = props
+
   switch (node.type) {
     case "alignment":
       return <AlignmentNode {...props} />
@@ -164,9 +213,8 @@ export const renderNode = (props: nodeProps) => {
       return <TableCellNode {...props} />
     case "video":
       return <VideoNode {...props} />
-
     default:
-      return <div {...attributes}>{children}</div>
+      return next()
   }
 }
 
@@ -218,6 +266,7 @@ type State = {
  */
 
 class PageEditor extends Component<Props, State> {
+  editor: Ref // necessary for Flow
   constructor(props: Props) {
     super(props)
 
@@ -239,6 +288,7 @@ class PageEditor extends Component<Props, State> {
         readOnly: props.readOnly,
       }
     }
+    this.editor = React.createRef()
   }
 
   onChange = ({ value }: Object) => {
@@ -306,16 +356,16 @@ class PageEditor extends Component<Props, State> {
     }
   }
 
-  onPaste = (e: SyntheticEvent<>, change: Change) => {
+  onPaste = (e: SyntheticEvent<>, editor, next) => {
     const transfer = getEventTransfer(e)
     const { type } = transfer
     switch (type) {
       case "text":
-        return onPasteText(e, change)
+        return onPasteText(e, this.editor.current, next)
       case "html":
-        return onPasteHtml(e, change)
+        return onPasteHtml(e, this.editor.current, next)
       default:
-        break
+        return next()
     }
   }
 
@@ -351,6 +401,7 @@ class PageEditor extends Component<Props, State> {
       <div>
         {!readOnly && (
           <EditorToolbar
+            editor={this.editor.current}
             value={value}
             onChange={this.onChange}
             page={page}
@@ -358,7 +409,8 @@ class PageEditor extends Component<Props, State> {
           />
         )}
 
-        <StyledEditor
+        <Editor
+          className={classes.editor}
           value={value}
           onChange={this.onChange}
           onPaste={this.onPaste}
@@ -367,6 +419,8 @@ class PageEditor extends Component<Props, State> {
           renderNode={renderNode}
           readOnly={readOnly}
           plugins={plugins}
+          schema={schema}
+          ref={this.editor}
         />
 
         <Grid container justify="flex-end">

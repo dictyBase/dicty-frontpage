@@ -1,4 +1,4 @@
-import React, { Fragment } from "react"
+import React from "react"
 import { connect } from "react-redux"
 import AppBar from "@material-ui/core/AppBar"
 import Toolbar from "@material-ui/core/Toolbar"
@@ -33,7 +33,12 @@ import { H1Button, H2Button, H3Button } from "../plugins/heading"
 import { ImageButton } from "../plugins/image"
 import { LineSpacingButton } from "../plugins/linespacing"
 import { LinkButton } from "../plugins/link"
-import { OrderedListButton, UnorderedListButton } from "../plugins/list"
+import {
+  OrderedListButton,
+  UnorderedListButton,
+  ListDecreaseIndentButton,
+  ListIncreaseIndentButton,
+} from "../plugins/list"
 import {
   InsertInitialTableButton,
   InsertTableButton,
@@ -87,6 +92,14 @@ const styles = theme => ({
     width: "100%",
     backgroundColor: "#15317e",
   },
+  separator: {
+    borderLeftColor: "#c1c1c1",
+    borderLeftStyle: "solid",
+    borderLeftWidth: "1px",
+    display: "inline-block",
+    height: "20px",
+    verticalAlign: "middle",
+  },
 })
 
 /**
@@ -103,7 +116,7 @@ export const EditorToolbar = props => {
   } = props
 
   return (
-    <Fragment>
+    <>
       <AppBar className={classes.toolbar} position="static" color="default">
         <Toolbar>
           <Grid container>
@@ -114,26 +127,35 @@ export const EditorToolbar = props => {
               <StrikethroughButton {...props} />
               <SubscriptButton {...props} />
               <SuperscriptButton {...props} />
+              <div className={classes.separator} />
               <AlignmentLeftButton {...props} />
               <AlignmentCenterButton {...props} />
               <AlignmentRightButton {...props} />
               <AlignmentJustifyButton {...props} />
+              <div className={classes.separator} />
               <DividerButton {...props} />
+              <div className={classes.separator} />
               <UnorderedListButton {...props} />
               <OrderedListButton {...props} />
-              <LineSpacingButton {...props} />
+              <ListIncreaseIndentButton {...props} />
+              <ListDecreaseIndentButton {...props} />
+              <div className={classes.separator} />
               <H1Button {...props} />
               <H2Button {...props} />
               <H3Button {...props} />
+              <div className={classes.separator} />
+              <LineSpacingButton {...props} />
+              <div className={classes.separator} />
               <LinkButton {...other} />
               <InsertInitialTableButton
                 {...props}
-                onClick={e => {
+                onClick={() => {
                   showTableOptions(true)
                 }}
               />
               <ImageButton {...other} />
               <VideoButton {...other} />
+              <div className={classes.separator} />
               <FontColorButton {...props} />
               &nbsp;&nbsp;
               <span className={classes.colorPicker}>
@@ -158,7 +180,9 @@ export const EditorToolbar = props => {
                     </div>
                   )}
                   <FontFamilyDropdown {...props} />
+                  <div className={classes.separator} />
                   <FontSizeDropdown {...props} />
+                  <div className={classes.separator} />
                   <Tooltip title="Editor Help">
                     <ToolbarButton
                       onClick={e => {
@@ -184,7 +208,7 @@ export const EditorToolbar = props => {
           </Grid>
         </Toolbar>
       </AppBar>
-    </Fragment>
+    </>
   )
 }
 

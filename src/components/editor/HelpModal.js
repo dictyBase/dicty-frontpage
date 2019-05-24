@@ -54,6 +54,18 @@ const HelpMuiModal = props => {
                 copy then paste it into the editor.
               </p>
               <p>
+                Until we develop an image uploading backend, please put any
+                images you want to use in{" "}
+                <a
+                  className={classes.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://github.com/dictyBase/migration-data/issues/9">
+                  this issue
+                </a>
+                .
+              </p>
+              <p>
                 <strong>Known bugs:</strong> Lists and tables sometimes do not
                 work as expected when pasted into the editor. For lists, your
                 best bet is to copy item by item (or a few items at once), then

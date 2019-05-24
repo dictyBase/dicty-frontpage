@@ -7,14 +7,11 @@ import { ButtonProps, NodeProps } from "../flow/types"
 /**
  * Functions to set the heading blocks.
  */
-const headingStrategy = (value, heading) => {
+const headingStrategy = (editor, heading) => {
+  const { value } = editor
   const isActive = hasBlock(value, heading)
-  return value.change().setBlocks(isActive ? "paragraph" : heading)
+  return editor.setBlocks(isActive ? "paragraph" : heading)
 }
-
-const headingH1 = value => headingStrategy(value, "h1")
-const headingH2 = value => headingStrategy(value, "h2")
-const headingH3 = value => headingStrategy(value, "h3")
 
 const hasBlock = (value, type) => value.blocks.some(node => node.type === type)
 
@@ -34,33 +31,33 @@ const H3Node = ({ attributes, children }: NodeProps) => (
 /**
  * Button components that use click handlers to connect the buttons to the editor.
  */
-const H1Button = ({ value, onChange }: ButtonProps) => (
-  <Tooltip title="<h1> Tag" placement="bottom">
+const H1Button = ({ editor }: ButtonProps) => (
+  <Tooltip title="Heading 1" placement="bottom">
     <ToolbarButton
       onClick={() => {
-        onChange(headingH1(value))
+        headingStrategy(editor, "h1")
       }}>
       <strong>H1</strong>
     </ToolbarButton>
   </Tooltip>
 )
 
-const H2Button = ({ value, onChange }: ButtonProps) => (
-  <Tooltip title="<h2> Tag" placement="bottom">
+const H2Button = ({ editor }: ButtonProps) => (
+  <Tooltip title="Heading 2" placement="bottom">
     <ToolbarButton
       onClick={() => {
-        onChange(headingH2(value))
+        headingStrategy(editor, "h2")
       }}>
       <strong>H2</strong>
     </ToolbarButton>
   </Tooltip>
 )
 
-const H3Button = ({ value, onChange }: ButtonProps) => (
-  <Tooltip title="<h3> Tag" placement="bottom">
+const H3Button = ({ editor }: ButtonProps) => (
+  <Tooltip title="Heading 3" placement="bottom">
     <ToolbarButton
       onClick={() => {
-        onChange(headingH3(value))
+        headingStrategy(editor, "h3")
       }}>
       <strong>H3</strong>
     </ToolbarButton>

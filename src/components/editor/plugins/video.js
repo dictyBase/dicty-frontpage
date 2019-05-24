@@ -32,10 +32,16 @@ const styles = theme => ({
   },
 })
 
+type VideoData = {
+  height: string,
+  width: string,
+  url: string,
+}
+
 /**
  * Functions to set the video blocks.
  */
-const insertVideo = (change: Object, data: Object) => {
+const insertVideo = (editor: Object, data: VideoData) => {
   const url = data.url
   const videoId = getVideoId(url).id
   let src
@@ -48,17 +54,12 @@ const insertVideo = (change: Object, data: Object) => {
     return
   }
 
-  change.insertBlock({
-    type: "video",
-    isVoid: true,
-    data: { src, height: data.height, width: data.width },
-  })
-}
-
-const insertVideoStrategy = (change: Object, data: Object) => {
-  const { value } = change
-
-  return value.change().call(insertVideo, data)
+  editor
+    .insertBlock({
+      type: "video",
+      data: { src, height: data.height, width: data.width },
+    })
+    .insertBlock("\n")
 }
 
 /**
@@ -103,7 +104,7 @@ const VideoNode = withStyles(styles)(Video)
 /**
  * Button components that use click handlers to connect to the editor.
  */
-const VideoButtonUnconnected = ({ value, onChange, classes }: ButtonProps) => {
+const VideoButtonUnconnected = ({ editor, classes }: ButtonProps) => {
   const [videoModalOpen, setVideoModalOpen] = useState(false)
   const [url, setURL] = useState("")
   const [width, setWidth] = useState("")
@@ -162,7 +163,7 @@ const VideoButtonUnconnected = ({ value, onChange, classes }: ButtonProps) => {
             <Button
               onClick={() => {
                 setVideoModalOpen(false)
-                onChange(insertVideoStrategy(value.change(), data))
+                editor.command(insertVideo, data)
               }}
               className={classes.btn}
               variant="contained"

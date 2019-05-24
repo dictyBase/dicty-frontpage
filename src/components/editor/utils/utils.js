@@ -1,4 +1,4 @@
-import { getEventTransfer, getEventRange } from "slate-react"
+import { getEventTransfer } from "slate-react"
 import isUrl from "is-url"
 import deserializer from "./deserializer"
 import { insertImage } from "../plugins/image"
@@ -22,36 +22,76 @@ const isFunction = v => {
 const isMod = event => (event.metaKey && !event.ctrlKey) || event.ctrlKey
 
 /**
+ * fixHTML receives pasted HTML and wraps inlines with blocks. This is
+ * necessary due to the way Slate handles mixed inline and block level
+ * content. If we didn't parse the pasted HTML, all of the mixed
+ * content would be stripped (i.e. lists would completely disappear).
+ * https://github.com/ianstormtaylor/slate/issues/1497
+ */
+const fixHTML = html => {
+  const dom = document.createElement("div")
+  html = html.replace(/\s+/g, " ").replace(/> </g, "><") // removes white space
+
+  while (html.match(/<(h[1-6]|p|strong|div|u|em|a|b|i) ?[^>]*>\s?<\/\1>/g)) {
+    html = html.replace(
+      /<(h[1-6]|p|strong|div|u|em|a|b|i) ?[^>]*>\s?<\/\1>/g,
+      "",
+    ) //removes empty tags recursively
+  }
+  dom.innerHTML = html
+  return dom.innerHTML
+    .replace(/\s+/g, " ") // replace whitespace
+    .replace(/> </g, "><") // remove space between tags
+}
+
+/**
  * Function to handle any pasted HTML
  */
-const onPasteHtml = (e, change) => {
-  if (e.shiftKey) return
-  const transfer = getEventTransfer(e)
+const onPasteHtml = (event, editor, next) => {
+  if (event.shiftKey) return
+
+  const transfer = getEventTransfer(event)
   const { html, rich, text } = transfer
   if (rich) {
-    return change.insertText(text)
+    return editor.insertText(text)
   }
-  const { document } = deserializer.deserialize(html)
-  change.insertFragment(document)
+  const fixedHTML = fixHTML(html)
+  const { document } = deserializer.deserialize(fixedHTML)
+  editor.insertFragment(document)
   return true
 }
 
 /**
  * Function to handle any pasted text
  */
-const onPasteText = (e, change) => {
-  const target = getEventRange(e, change.value)
-
-  const transfer = getEventTransfer(e)
+const onPasteText = (event, editor, next) => {
+  const transfer = getEventTransfer(event)
   const { text } = transfer
-  if (!isUrl(text)) return null
 
-  if (text.slice(-3) === "png" || text.slice(-3) === "jpg") {
-    return change.call(insertImage, text, target)
-  } else if (text.match(/youtube\.com|vimeo\.com/)) {
-    return change.call(insertVideo, text)
+  // if text isn't a URL, then no need for special use case
+  if (!isUrl(text)) return next()
+
+  if (
+    text.slice(-3) === "png" ||
+    text.slice(-3) === "jpg" ||
+    text.slice(-3) === "gif"
+  ) {
+    const data = {
+      src: text,
+    }
+    return editor.command(insertImage, data)
   }
-  return change.call(insertLink, text)
+
+  if (text.match(/youtube\.com|vimeo\.com/)) {
+    const data = {
+      url: text,
+      height: "100%",
+      width: "100%",
+    }
+    return editor.command(insertVideo, data)
+  }
+
+  return editor.command(insertLink, text)
 }
 
 /**

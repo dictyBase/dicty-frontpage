@@ -7,11 +7,6 @@ import { isMod } from "../utils/utils"
 import { ButtonProps } from "../flow/types"
 
 /**
- * Function that toggles the mark type.
- */
-const italicMarkStrategy = change => change.toggleMark("italic")
-
-/**
  * Rendering component that provides the actual HTML to use inside the editor.
  */
 const ItalicMark = ({ children }: any) => <em>{children}</em>
@@ -19,11 +14,11 @@ const ItalicMark = ({ children }: any) => <em>{children}</em>
 /**
  * Italic button that uses a click handler to connect the button to the editor.
  */
-const ItalicButton = ({ value, onChange }: ButtonProps) => (
+const ItalicButton = ({ editor }: ButtonProps) => (
   <Tooltip title="Italic" placement="bottom">
     <ToolbarButton
       onClick={() => {
-        onChange(italicMarkStrategy(value.change()))
+        editor.toggleMark("italic")
       }}>
       <FormatItalicIcon />
     </ToolbarButton>
@@ -34,11 +29,11 @@ const ItalicButton = ({ value, onChange }: ButtonProps) => (
  * Function that specifies the keyboard shortcut to use for italic.
  * It accepts event and change as arguments.
  */
-const ItalicKeyboardShortcut = (event, change) => {
+const ItalicKeyboardShortcut = (event, editor, next) => {
   if (isMod(event) && event.key === "i") {
-    return italicMarkStrategy(change)
+    return editor.toggleMark("italic")
   }
-  return
+  return next()
 }
 
 /**
@@ -46,7 +41,7 @@ const ItalicKeyboardShortcut = (event, change) => {
  * It takes options in case we want to add more to it in the future.
  */
 const ItalicPlugin = (options?: Object) => ({
-  onKeyDown(...args: Array<Object>) {
+  onKeyDown(...args: Array<any>) {
     return ItalicKeyboardShortcut(...args)
   },
 })

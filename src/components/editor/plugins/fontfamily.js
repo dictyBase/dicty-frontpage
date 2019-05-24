@@ -11,13 +11,13 @@ import { NodeProps } from "../flow/types"
  * List of fonts available
  */
 const FontFamilyList = [
+  { name: "Lato", options: "400,700" },
+  { name: "Merriweather", options: "400,700" },
+  { name: "Montserrat", options: "400,700" },
   { name: "Roboto", options: "400,400i,700,700i" },
   { name: "Roboto Condensed", options: "400,400i,700,700i" },
   { name: "Roboto Mono", options: "400,400i,700,700i" },
   { name: "Roboto Slab", options: "400,700" },
-  { name: "Lato", options: "400,700" },
-  { name: "Merriweather", options: "400,700" },
-  { name: "Montserrat", options: "400,700" },
 ]
 
 /**
@@ -32,26 +32,26 @@ const createMark = fontFamilyIndex => ({
   data: { fontFamilyIndex },
 })
 
-const reapplyMark = ({ change, fontFamilyIndex }) =>
-  change.removeMark(getMark(change.value)).addMark(createMark(fontFamilyIndex))
+const reapplyMark = ({ editor, fontFamilyIndex }) =>
+  editor.removeMark(getMark(editor.value)).addMark(createMark(fontFamilyIndex))
 
-const applyMark = ({ change, fontFamilyIndex }) =>
-  change.addMark(createMark(fontFamilyIndex))
+const applyMark = ({ editor, fontFamilyIndex }) =>
+  editor.addMark(createMark(fontFamilyIndex))
 
-const fontFamilyMarkStrategy = attributes => {
-  const { value, fontFamilyIndex } = attributes
+const fontFamilyMarkStrategy = (editor, fontFamilyIndex) => {
+  const { value } = editor
 
   if (hasMark(value)) {
-    if (value.isExpanded) {
-      return reapplyMark({ change: value.change(), fontFamilyIndex })
+    if (value.selection.isExpanded) {
+      return reapplyMark({ editor: editor, fontFamilyIndex })
     }
   } else {
-    if (value.isExpanded) {
-      return applyMark({ change: value.change(), fontFamilyIndex })
+    if (value.selection.isExpanded) {
+      return applyMark({ editor: editor, fontFamilyIndex })
     }
   }
 
-  return value.change()
+  return editor
 }
 
 /**
@@ -67,22 +67,19 @@ const FontFamilyMark = ({ children, mark: { data } }: NodeProps) => (
 /**
  * Dropdown component that connects to the editor.
  */
-const Dropdown = ({
-  value,
-  onChange,
-  classes,
-  editorToolbar,
-  changeFontSelect,
-}) => (
+const Dropdown = ({ editor, classes, editorToolbar, changeFontSelect }) => (
   <FormControl className={classes.fontFamilyDropdown}>
     <Select
       value={editorToolbar.currentFont}
       onChange={({ target: { value: fontFamilyIndex } }) => {
         changeFontSelect(fontFamilyIndex)
-        onChange(fontFamilyMarkStrategy({ value, fontFamilyIndex }))
+        fontFamilyMarkStrategy(editor, fontFamilyIndex)
       }}>
       {FontFamilyList.map((font, index) => (
-        <MenuItem key={`font-family-${index}`} value={index}>
+        <MenuItem
+          key={`font-family-${index}`}
+          value={index}
+          style={{ fontFamily: font.name }}>
           {font.name}
         </MenuItem>
       ))}

@@ -20,22 +20,24 @@ const createMark = color => ({
   data: { color },
 })
 
-const reapplyMark = ({ change, color }) =>
-  change.removeMark(getMark(change.value)).addMark(createMark(color))
+const reapplyMark = ({ editor, color }) =>
+  editor.removeMark(getMark(editor.value)).addMark(createMark(color))
 
-const applyMark = ({ change, color }) => change.addMark(createMark(color))
+const applyMark = ({ editor, color }) => editor.addMark(createMark(color))
 
-const fontColorMarkStrategy = (value, color) => {
+const fontColorMarkStrategy = (editor, color) => {
+  const { value } = editor
+
   if (hasMark(value)) {
-    if (value.isExpanded) {
-      return reapplyMark({ change: value.change(), color })
+    if (value.selection.isExpanded) {
+      return reapplyMark({ editor: editor, color })
     }
   } else {
-    if (value.isExpanded) {
-      return applyMark({ change: value.change(), color })
+    if (value.selection.isExpanded) {
+      return applyMark({ editor: editor, color })
     }
   }
-  return value.change()
+  return editor
 }
 
 /**
@@ -62,7 +64,7 @@ const FontColor = ({ showColorPicker, editorToolbar }) => (
 /**
  * The font color picker widget-style component
  */
-const FontColorPicker = ({ value, onChange }: ButtonProps) => {
+const FontColorPicker = ({ value, editor }: ButtonProps) => {
   let color = "#000"
   if (hasMark(value)) {
     color = getMark(value).data.get("color")
@@ -72,7 +74,7 @@ const FontColorPicker = ({ value, onChange }: ButtonProps) => {
       disableAlpha
       color={color}
       onChangeComplete={(color, e) => {
-        onChange(fontColorMarkStrategy(value, color.hex))
+        fontColorMarkStrategy(editor, color.hex)
       }}
     />
   )
