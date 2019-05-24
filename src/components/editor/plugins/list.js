@@ -15,9 +15,15 @@ import { ButtonProps, NodeProps } from "../flow/types"
 const toggleList = (event, editor, type) => {
   event.preventDefault()
   if (type === "ordered-list") {
-    editor.toggleList({ type: "ordered-list" })
+    editor
+      .toggleList({ type: "ordered-list" })
+      .moveToEnd()
+      .focus()
   } else {
-    editor.toggleList()
+    editor
+      .toggleList()
+      .moveToEnd()
+      .focus()
   }
 }
 

@@ -22,16 +22,41 @@ const isFunction = v => {
 const isMod = event => (event.metaKey && !event.ctrlKey) || event.ctrlKey
 
 /**
+ * fixHTML receives pasted HTML and wraps inlines with blocks. This is
+ * necessary due to the way Slate handles mixed inline and block level
+ * content. If we didn't parse the pasted HTML, all of the mixed
+ * content would be stripped (i.e. lists would completely disappear).
+ * https://github.com/ianstormtaylor/slate/issues/1497
+ */
+const fixHTML = html => {
+  const dom = document.createElement("div")
+  html = html.replace(/\s+/g, " ").replace(/> </g, "><") // removes white space
+
+  while (html.match(/<(h[1-6]|p|strong|div|u|em|a|b|i) ?[^>]*>\s?<\/\1>/g)) {
+    html = html.replace(
+      /<(h[1-6]|p|strong|div|u|em|a|b|i) ?[^>]*>\s?<\/\1>/g,
+      "",
+    ) //removes empty tags recursively
+  }
+  dom.innerHTML = html
+  return dom.innerHTML
+    .replace(/\s+/g, " ") // replace whitespace
+    .replace(/> </g, "><") // remove space between tags
+}
+
+/**
  * Function to handle any pasted HTML
  */
-const onPasteHtml = (e, editor, next) => {
-  if (e.shiftKey) return
-  const transfer = getEventTransfer(e)
+const onPasteHtml = (event, editor, next) => {
+  if (event.shiftKey) return
+
+  const transfer = getEventTransfer(event)
   const { html, rich, text } = transfer
   if (rich) {
     return editor.insertText(text)
   }
-  const { document } = deserializer.deserialize(html)
+  const fixedHTML = fixHTML(html)
+  const { document } = deserializer.deserialize(fixedHTML)
   editor.insertFragment(document)
   return true
 }
@@ -39,8 +64,8 @@ const onPasteHtml = (e, editor, next) => {
 /**
  * Function to handle any pasted text
  */
-const onPasteText = (e, editor, next) => {
-  const transfer = getEventTransfer(e)
+const onPasteText = (event, editor, next) => {
+  const transfer = getEventTransfer(event)
   const { text } = transfer
 
   // if text isn't a URL, then no need for special use case
