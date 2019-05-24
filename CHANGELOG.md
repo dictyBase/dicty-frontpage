@@ -1,3 +1,30 @@
+# [3.0.0](https://github.com/dictyBase/dicty-frontpage/compare/2.5.0...3.0.0) (2019-05-24)
+
+
+### Bug Fixes
+
+* allow video links to be pasted in ([06b44d4](https://github.com/dictyBase/dicty-frontpage/commit/06b44d4))
+* fix bug where images were not being added on paste ([5db1a0b](https://github.com/dictyBase/dicty-frontpage/commit/5db1a0b)), closes [#117](https://github.com/dictyBase/dicty-frontpage/issues/117)
+* fix bug where links were not getting pasted in correctly ([7185473](https://github.com/dictyBase/dicty-frontpage/commit/7185473)), closes [#117](https://github.com/dictyBase/dicty-frontpage/issues/117)
+
+
+### Features
+
+* add buttons to increase/decrease list item identation ([034aa6a](https://github.com/dictyBase/dicty-frontpage/commit/034aa6a)), closes [#133](https://github.com/dictyBase/dicty-frontpage/issues/133)
+* add dockerfile for ericdev ([88bb4fd](https://github.com/dictyBase/dicty-frontpage/commit/88bb4fd))
+* add function to parse pasted html, fixing issue where content would be missing ([f86e0e0](https://github.com/dictyBase/dicty-frontpage/commit/f86e0e0)), closes [#117](https://github.com/dictyBase/dicty-frontpage/issues/117)
+* add link to upload images in help modal ([9d45cd1](https://github.com/dictyBase/dicty-frontpage/commit/9d45cd1))
+* add separators to toolbar, make buttons slightly smaller ([d53a5bf](https://github.com/dictyBase/dicty-frontpage/commit/d53a5bf))
+* display the actual font families and sizes inside the toolbar dropdowns ([9a678d7](https://github.com/dictyBase/dicty-frontpage/commit/9a678d7))
+* implement new list plugin ([9734eb4](https://github.com/dictyBase/dicty-frontpage/commit/9734eb4)), closes [#133](https://github.com/dictyBase/dicty-frontpage/issues/133)
+* implement new table plugin ([9e4d8a8](https://github.com/dictyBase/dicty-frontpage/commit/9e4d8a8)), closes [#117](https://github.com/dictyBase/dicty-frontpage/issues/117)
+
+
+### BREAKING CHANGES
+
+* this changes the behavior of pasting HTML, removing links in favor of allowing for
+lists, tables, etc
+
 # [2.5.0](https://github.com/dictyBase/dicty-frontpage/compare/2.4.0...2.5.0) (2019-05-17)
 
 
