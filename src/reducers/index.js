@@ -4,7 +4,6 @@ import authReducer from "reducers/auth"
 import downloadsReducer from "reducers/downloads"
 import editablePagesReducer from "reducers/editablePages"
 import footerReducer from "reducers/footer"
-import newsReducer from "reducers/news"
 import navbarReducer from "reducers/navbar"
 
 export default history =>
@@ -15,5 +14,4 @@ export default history =>
     editablePages: editablePagesReducer,
     footer: footerReducer,
     navbar: navbarReducer,
-    news: newsReducer,
   })
