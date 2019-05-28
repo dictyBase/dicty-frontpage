@@ -12,7 +12,6 @@ import Authorization from "components/authentication/Authorization"
 import { RouterLink } from "styles"
 import sadDicty from "images/sad-dicty.png"
 
-// eslint-disable-next-line
 const styles = theme => ({
   error400: {
     backgroundColor: "#eff8fb",
@@ -73,7 +72,7 @@ type Props = {
  */
 
 export const ErrorPage = (props: Props) => {
-  const { page, news, auth, classes, match } = props
+  const { page, auth, classes, match } = props
 
   let errorStatus = 0
   let errorMsg
@@ -81,11 +80,6 @@ export const ErrorPage = (props: Props) => {
   if (page.error) {
     errorStatus = page.error.status
     errorMsg = page.error.title
-  }
-
-  if (news.error) {
-    errorStatus = news.error.status
-    errorMsg = news.error.title
   }
 
   if (auth.error) {
@@ -210,7 +204,6 @@ export const ErrorPage = (props: Props) => {
 
 const mapStateToProps = state => ({
   page: state.editablePages,
-  news: state.news,
   auth: state.auth,
 })
 
