@@ -7,7 +7,6 @@ import Button from "@material-ui/core/Button"
 import Dialog from "@material-ui/core/Dialog"
 import DialogActions from "@material-ui/core/DialogActions"
 import DialogContent from "@material-ui/core/DialogContent"
-import DialogContentText from "@material-ui/core/DialogContentText"
 import DialogTitle from "@material-ui/core/DialogTitle"
 import LinkIcon from "@material-ui/icons/Link"
 import ToolbarButton from "../toolbar/ToolbarButton"
@@ -22,15 +21,16 @@ const styles = theme => ({
 /**
  * Functions to set the link blocks.
  */
-const wrapLink = (editor, href) => {
-  editor.wrapInline({
-    type: "link",
-    data: { href },
-  })
-
-  editor.moveToEnd()
+const wrapLink = (editor, url) => {
+  editor
+    .wrapInline({
+      type: "link",
+      data: { href: url },
+    })
+    .moveToEnd()
 }
 
+// used for pasting links on top of text
 const insertLink = (editor: Object, url: string) => {
   if (editor.value.selection.isCollapsed) {
     editor
@@ -39,29 +39,29 @@ const insertLink = (editor: Object, url: string) => {
       .command(wrapLink, url)
       .moveToEnd()
   } else {
-    editor.command(wrapLink, url).moveToEnd()
+    editor.command(wrapLink, url)
   }
 }
 
-const hasLinks = value => value.inlines.some(inline => inline.type === "link")
-
 const insertLinkStrategy = (editor: Object, data: Object) => {
   const { value } = editor
-  const href = data.url
+  const url = data.url
   const text = data.text
 
-  if (hasLinks(value)) {
-    editor.unwrapInline("link")
-  } else if (value.selection.isExpanded) {
-    editor.command(wrapLink, href)
+  if (value.selection.isExpanded) {
+    editor
+      .unwrapInline("link")
+      .insertText(text)
+      .moveFocusForward(0 - text.length)
+      .command(wrapLink, url)
   } else {
-    if (!href || !text) {
+    if (!url || !text) {
       return
     } else {
       editor
         .insertText(text)
         .moveFocusForward(0 - text.length)
-        .command(wrapLink, href)
+        .command(wrapLink, url)
     }
   }
 
@@ -90,6 +90,75 @@ const LinkButtonUnconnected = ({ classes, editor, value }: ButtonProps) => {
     text,
   }
 
+  // if the user has highlighted some text for a link,
+  // then use this logic
+  if (editor && editor.value.selection.isExpanded) {
+    let existingURL = editor.value.inlines.find(el => el.data.get("href"))
+    let defaultURL
+    if (existingURL !== undefined) {
+      defaultURL = existingURL.data.get("href")
+    } else {
+      defaultURL = ""
+    }
+
+    return (
+      <>
+        <Tooltip title="Link" placement="bottom">
+          <ToolbarButton
+            onClick={e => {
+              setLinkModalOpen(true)
+              setURL(defaultURL)
+              setText(editor.value.fragment.text)
+            }}>
+            <LinkIcon />
+          </ToolbarButton>
+        </Tooltip>
+        {linkModalOpen && (
+          <Dialog
+            open={linkModalOpen}
+            onClose={() => setLinkModalOpen(false)}
+            aria-labelledby="link-dialog-title">
+            <DialogTitle id="link-dialog-title">Link Details</DialogTitle>
+            <DialogContent>
+              <TextField
+                autoFocus
+                margin="dense"
+                id="url"
+                label="URL"
+                type="url"
+                defaultValue={url}
+                onChange={e => setURL(e.target.value)}
+                fullWidth
+              />
+              <TextField
+                margin="dense"
+                id="text"
+                label="Text"
+                type="text"
+                defaultValue={text}
+                onChange={e => setText(e.target.value)}
+                fullWidth
+              />
+            </DialogContent>
+            <DialogActions>
+              <Button
+                onClick={() => {
+                  setLinkModalOpen(false)
+                  insertLinkStrategy(editor, data)
+                }}
+                className={classes.btn}
+                variant="contained"
+                color="primary">
+                Add Link
+              </Button>
+            </DialogActions>
+          </Dialog>
+        )}
+      </>
+    )
+  }
+
+  // otherwise, use an empty form
   return (
     <>
       <Tooltip title="Link" placement="bottom">
@@ -116,21 +185,15 @@ const LinkButtonUnconnected = ({ classes, editor, value }: ButtonProps) => {
               onChange={e => setURL(e.target.value)}
               fullWidth
             />
-            {!editor.value.selection.isExpanded && (
-              <TextField
-                margin="dense"
-                id="text"
-                label="Text"
-                type="text"
-                onChange={e => setText(e.target.value)}
-                fullWidth
-              />
-            )}
+            <TextField
+              margin="dense"
+              id="text"
+              label="Text"
+              type="text"
+              onChange={e => setText(e.target.value)}
+              fullWidth
+            />
           </DialogContent>
-          <DialogContentText style={{ padding: "20px" }}>
-            <strong>Tip:</strong> if you want to remove an existing link, just
-            keep these fields empty and click Add Link.
-          </DialogContentText>
           <DialogActions>
             <Button
               onClick={() => {

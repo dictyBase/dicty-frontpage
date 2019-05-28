@@ -1,6 +1,5 @@
 // @flow
 import React from "react"
-import { connect } from "react-redux"
 import DeepTable from "slate-deep-table"
 import Tooltip from "@material-ui/core/Tooltip"
 import TableIcon from "@material-ui/icons/BorderAll"
@@ -8,7 +7,6 @@ import AddIcon from "@material-ui/icons/Add"
 import RemoveIcon from "@material-ui/icons/Remove"
 import DeleteIcon from "@material-ui/icons/Delete"
 import ToolbarButton from "../toolbar/ToolbarButton"
-import { showTableOptions } from "actions/editorToolbar"
 import { ButtonProps, NodeProps } from "../flow/types"
 
 /**
@@ -29,21 +27,19 @@ const TableCellNode = ({ attributes, children }: NodeProps) => (
 /**
  * Button components that use click handlers to connect the buttons to the editor.
  */
-const InsertInitialTable = ({ editorToolbar, showTableOptions }) => (
+const InsertInitialTableButton = ({
+  showTableOptions,
+  setShowTableOptions,
+}) => (
   <Tooltip title="Table" placement="bottom">
     <ToolbarButton
-      onClick={e => {
-        showTableOptions(!editorToolbar.showTableOptions)
+      onClick={() => {
+        setShowTableOptions(!showTableOptions)
       }}>
       <TableIcon />
     </ToolbarButton>
   </Tooltip>
 )
-
-const InsertInitialTableButton = connect(
-  null,
-  { showTableOptions },
-)(InsertInitialTable)
 
 const InsertTableButton = ({ editor, classes }: ButtonProps) => (
   <Tooltip title="Insert Table" placement="bottom">

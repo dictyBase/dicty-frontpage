@@ -1,10 +1,8 @@
 // @flow
-import React from "react"
-import { connect } from "react-redux"
+import React, { useState } from "react"
 import MenuItem from "@material-ui/core/MenuItem"
 import FormControl from "@material-ui/core/FormControl"
 import Select from "@material-ui/core/Select"
-import { changeFontSize } from "actions/editorToolbar"
 import { NodeProps } from "../flow/types"
 
 /**
@@ -70,30 +68,29 @@ const FontSizeMark = ({ children, mark: { data } }: NodeProps) => (
 /**
  * Button components that use click handlers to connect to the editor.
  */
-const Dropdown = ({ editor, classes, editorToolbar, changeFontSize }) => (
-  <FormControl className={classes.fontSizeDropdown}>
-    <Select
-      value={editorToolbar.currentFontSize}
-      onChange={({ target: { value: fontSizeIndex } }) => {
-        changeFontSize(fontSizeIndex)
-        fontSizeMarkStrategy(editor, fontSizeIndex)
-      }}>
-      {FontSizeList.map((font, index) => (
-        <MenuItem
-          key={`font-size-${index}`}
-          value={index}
-          style={{ fontSize: font.size }}>
-          {font.size}
-        </MenuItem>
-      ))}
-    </Select>
-  </FormControl>
-)
+const FontSizeDropdown = ({ editor, classes }) => {
+  const [currentFontSize, setCurrentFontSize] = useState(2)
 
-const FontSizeDropdown = connect(
-  null,
-  { changeFontSize },
-)(Dropdown)
+  return (
+    <FormControl className={classes.fontSizeDropdown}>
+      <Select
+        value={currentFontSize}
+        onChange={({ target: { value: fontSizeIndex } }) => {
+          setCurrentFontSize(fontSizeIndex)
+          fontSizeMarkStrategy(editor, fontSizeIndex)
+        }}>
+        {FontSizeList.map((font, index) => (
+          <MenuItem
+            key={`font-size-${index}`}
+            value={index}
+            style={{ fontSize: font.size }}>
+            {font.size}
+          </MenuItem>
+        ))}
+      </Select>
+    </FormControl>
+  )
+}
 
 /**
  * Export everything needed for the editor.
