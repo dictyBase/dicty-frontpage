@@ -40,7 +40,6 @@ const mapStateToProps = (state, ownProps) => {
   }
   return {
     page: state.editablePages[slugName],
-    editorToolbar: state.editorToolbar,
   }
 }
 
