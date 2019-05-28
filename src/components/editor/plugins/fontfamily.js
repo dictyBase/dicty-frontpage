@@ -1,10 +1,8 @@
 // @flow
-import React from "react"
-import { connect } from "react-redux"
+import React, { useState } from "react"
 import MenuItem from "@material-ui/core/MenuItem"
 import FormControl from "@material-ui/core/FormControl"
 import Select from "@material-ui/core/Select"
-import { changeFontSelect } from "actions/editorToolbar"
 import { NodeProps } from "../flow/types"
 
 /**
@@ -67,30 +65,29 @@ const FontFamilyMark = ({ children, mark: { data } }: NodeProps) => (
 /**
  * Dropdown component that connects to the editor.
  */
-const Dropdown = ({ editor, classes, editorToolbar, changeFontSelect }) => (
-  <FormControl className={classes.fontFamilyDropdown}>
-    <Select
-      value={editorToolbar.currentFont}
-      onChange={({ target: { value: fontFamilyIndex } }) => {
-        changeFontSelect(fontFamilyIndex)
-        fontFamilyMarkStrategy(editor, fontFamilyIndex)
-      }}>
-      {FontFamilyList.map((font, index) => (
-        <MenuItem
-          key={`font-family-${index}`}
-          value={index}
-          style={{ fontFamily: font.name }}>
-          {font.name}
-        </MenuItem>
-      ))}
-    </Select>
-  </FormControl>
-)
+const FontFamilyDropdown = ({ editor, classes }) => {
+  const [currentFont, setCurrentFont] = useState(3)
 
-const FontFamilyDropdown = connect(
-  null,
-  { changeFontSelect },
-)(Dropdown)
+  return (
+    <FormControl className={classes.fontFamilyDropdown}>
+      <Select
+        value={currentFont}
+        onChange={({ target: { value: fontFamilyIndex } }) => {
+          setCurrentFont(fontFamilyIndex)
+          fontFamilyMarkStrategy(editor, fontFamilyIndex)
+        }}>
+        {FontFamilyList.map((font, index) => (
+          <MenuItem
+            key={`font-family-${index}`}
+            value={index}
+            style={{ fontFamily: font.name }}>
+            {font.name}
+          </MenuItem>
+        ))}
+      </Select>
+    </FormControl>
+  )
+}
 
 /**
  * Export everything needed for the editor.

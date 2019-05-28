@@ -1,7 +1,9 @@
+// @flow
 import React from "react"
 import { withStyles } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
 import Modal from "@material-ui/core/Modal"
+import DialogContent from "@material-ui/core/DialogContent"
 import ClickAwayListener from "@material-ui/core/ClickAwayListener"
 import { SaveButton } from "styles/EditablePageStyles"
 
@@ -33,13 +35,22 @@ const styles = theme => ({
   },
 })
 
-const HelpMuiModal = props => {
+type Props = {
+  /** Boolean representing whether the help modal is open */
+  showHelpModal: boolean,
+  /** Material-UI styling */
+  classes: Object,
+  /** Function to handle closing of the modal */
+  handleClose: Function,
+}
+
+const HelpMuiModal = (props: Props) => {
   const { showHelpModal, classes, handleClose } = props
 
   return (
     <Modal className={classes.modal} open={showHelpModal}>
-      <ClickAwayListener onClickAway={handleClose}>
-        <div className={classes.paper}>
+      <DialogContent className={classes.paper}>
+        <ClickAwayListener onClickAway={handleClose}>
           <Grid container justify="center" direction="column">
             <Grid item xs={12}>
               <center>
@@ -104,8 +115,8 @@ const HelpMuiModal = props => {
               </SaveButton>
             </Grid>
           </Grid>
-        </div>
-      </ClickAwayListener>
+        </ClickAwayListener>
+      </DialogContent>
     </Modal>
   )
 }

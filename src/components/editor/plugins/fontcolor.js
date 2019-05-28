@@ -1,11 +1,9 @@
 // @flow
 import React from "react"
-import { connect } from "react-redux"
 import { SketchPicker } from "react-color"
 import Tooltip from "@material-ui/core/Tooltip"
 import FormatColorTextIcon from "@material-ui/icons/FormatColorText"
 import ToolbarButton from "../toolbar/ToolbarButton"
-import { showColorPicker } from "actions/editorToolbar"
 import { ButtonProps, NodeProps } from "../flow/types"
 
 /**
@@ -50,11 +48,11 @@ const FontColorMark = ({ children, mark: { data } }: NodeProps) => (
 /**
  * Button component that uses a click handler to connect to the ColorPicker component.
  */
-const FontColor = ({ showColorPicker, editorToolbar }) => (
+const FontColorButton = ({ showColorPicker, setShowColorPicker }) => (
   <Tooltip title="Font Color" placement="bottom">
     <ToolbarButton
       onClick={() => {
-        showColorPicker(!editorToolbar.showColorPicker)
+        setShowColorPicker(!showColorPicker)
       }}>
       <FormatColorTextIcon />
     </ToolbarButton>
@@ -79,10 +77,5 @@ const FontColorPicker = ({ value, editor }: ButtonProps) => {
     />
   )
 }
-
-const FontColorButton = connect(
-  null,
-  { showColorPicker },
-)(FontColor)
 
 export { FontColorMark, FontColorButton, FontColorPicker }

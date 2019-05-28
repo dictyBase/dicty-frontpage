@@ -1,5 +1,5 @@
-import React from "react"
-import { connect } from "react-redux"
+// @flow
+import React, { useState } from "react"
 import AppBar from "@material-ui/core/AppBar"
 import Toolbar from "@material-ui/core/Toolbar"
 import Tooltip from "@material-ui/core/Tooltip"
@@ -7,9 +7,8 @@ import Grid from "@material-ui/core/Grid"
 import Button from "@material-ui/core/Button"
 import HelpIcon from "@material-ui/icons/Help"
 import { withStyles } from "@material-ui/core/styles"
-
 import ToolbarButton from "components/editor/toolbar/ToolbarButton"
-import { showHelpModal, showTableOptions } from "actions/editorToolbar"
+import HelpModal from "components/editor/HelpModal"
 
 /** import toolbar buttons */
 import { BoldButton } from "../plugins/bold"
@@ -107,13 +106,10 @@ const styles = theme => ({
  */
 
 export const EditorToolbar = props => {
-  const {
-    classes,
-    editorToolbar,
-    showHelpModal,
-    showTableOptions,
-    ...other
-  } = props
+  const [showColorPicker, setShowColorPicker] = useState(false)
+  const [showTableOptions, setShowTableOptions] = useState(false)
+  const [showHelpModal, setShowHelpModal] = useState(false)
+  const { classes, ...other } = props
 
   return (
     <>
@@ -148,26 +144,30 @@ export const EditorToolbar = props => {
               <div className={classes.separator} />
               <LinkButton {...other} />
               <InsertInitialTableButton
+                showTableOptions={showTableOptions}
+                setShowTableOptions={setShowTableOptions}
                 {...props}
                 onClick={() => {
-                  showTableOptions(true)
+                  setShowTableOptions(true)
                 }}
               />
               <ImageButton {...other} />
               <VideoButton {...other} />
               <div className={classes.separator} />
-              <FontColorButton {...props} />
+              <FontColorButton
+                showColorPicker={showColorPicker}
+                setShowColorPicker={setShowColorPicker}
+                {...props}
+              />
               &nbsp;&nbsp;
               <span className={classes.colorPicker}>
-                {editorToolbar.showColorPicker && (
-                  <FontColorPicker {...props} />
-                )}
+                {showColorPicker && <FontColorPicker {...props} />}
               </span>
             </Grid>
             <Grid item xs={12}>
               <Grid container>
                 <Grid item xs={10}>
-                  {editorToolbar.showTableOptions && (
+                  {showTableOptions && (
                     <div className={classes.tableButtons}>
                       <InsertTableButton {...props} />
                       <InsertTableColumnButton {...props} />
@@ -185,12 +185,21 @@ export const EditorToolbar = props => {
                   <div className={classes.separator} />
                   <Tooltip title="Editor Help">
                     <ToolbarButton
-                      onClick={e => {
-                        showHelpModal(true)
+                      onClick={() => {
+                        setShowHelpModal(true)
                       }}>
                       <HelpIcon className={classes.largeIcon} />
                     </ToolbarButton>
                   </Tooltip>
+                  {showHelpModal && (
+                    <HelpModal
+                      showHelpModal={showHelpModal}
+                      handleClose={() => {
+                        setShowHelpModal(false)
+                      }}
+                      onClick={() => window.scrollTo(0, 0)}
+                    />
+                  )}
                 </Grid>
                 <Grid item xs={1} />
                 <Grid item xs={1}>
@@ -212,9 +221,4 @@ export const EditorToolbar = props => {
   )
 }
 
-const mapStateToProps = ({ editorToolbar }) => ({ editorToolbar })
-
-export default connect(
-  mapStateToProps,
-  { showHelpModal, showTableOptions },
-)(withStyles(styles)(EditorToolbar))
+export default withStyles(styles)(EditorToolbar)
