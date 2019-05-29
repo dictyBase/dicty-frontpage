@@ -8,6 +8,9 @@ import Dialog from "@material-ui/core/Dialog"
 import DialogActions from "@material-ui/core/DialogActions"
 import DialogContent from "@material-ui/core/DialogContent"
 import DialogTitle from "@material-ui/core/DialogTitle"
+import FormGroup from "@material-ui/core/FormGroup"
+import FormControlLabel from "@material-ui/core/FormControlLabel"
+import Checkbox from "@material-ui/core/Checkbox"
 import LinkIcon from "@material-ui/icons/Link"
 import ToolbarButton from "../toolbar/ToolbarButton"
 import { ButtonProps, NodeProps } from "../flow/types"
@@ -45,8 +48,18 @@ const insertLink = (editor: Object, url: string) => {
 
 const insertLinkStrategy = (editor: Object, data: Object) => {
   const { value } = editor
-  const url = data.url
+  let url = data.url
   const text = data.text
+
+  // if user left in "mailto:", remove it
+  if (url.includes("mailto:")) {
+    url = url.replace("mailto:", "")
+  }
+
+  // if the email box is checked, make it an email link
+  if (data.emailChecked) {
+    url = `mailto:${url}`
+  }
 
   if (value.selection.isExpanded) {
     editor
@@ -84,10 +97,12 @@ const LinkButtonUnconnected = ({ classes, editor, value }: ButtonProps) => {
   const [linkModalOpen, setLinkModalOpen] = useState(false)
   const [url, setURL] = useState("")
   const [text, setText] = useState("")
+  const [emailChecked, setEmailChecked] = useState(false)
 
   const data = {
     url,
     text,
+    emailChecked,
   }
 
   // if the user has highlighted some text for a link,
@@ -105,7 +120,7 @@ const LinkButtonUnconnected = ({ classes, editor, value }: ButtonProps) => {
       <>
         <Tooltip title="Link" placement="bottom">
           <ToolbarButton
-            onClick={e => {
+            onClick={() => {
               setLinkModalOpen(true)
               setURL(defaultURL)
               setText(editor.value.fragment.text)
@@ -124,7 +139,7 @@ const LinkButtonUnconnected = ({ classes, editor, value }: ButtonProps) => {
                 autoFocus
                 margin="dense"
                 id="url"
-                label="URL"
+                label={emailChecked ? "Email Address" : "URL"}
                 type="url"
                 defaultValue={url}
                 onChange={e => setURL(e.target.value)}
@@ -139,6 +154,18 @@ const LinkButtonUnconnected = ({ classes, editor, value }: ButtonProps) => {
                 onChange={e => setText(e.target.value)}
                 fullWidth
               />
+              <FormGroup row>
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={emailChecked}
+                      onChange={() => setEmailChecked(!emailChecked)}
+                      value="email"
+                    />
+                  }
+                  label="Is this an email link?"
+                />
+              </FormGroup>
             </DialogContent>
             <DialogActions>
               <Button
@@ -180,7 +207,7 @@ const LinkButtonUnconnected = ({ classes, editor, value }: ButtonProps) => {
               autoFocus
               margin="dense"
               id="url"
-              label="URL"
+              label={emailChecked ? "Email Address" : "URL"}
               type="url"
               onChange={e => setURL(e.target.value)}
               fullWidth
@@ -193,6 +220,18 @@ const LinkButtonUnconnected = ({ classes, editor, value }: ButtonProps) => {
               onChange={e => setText(e.target.value)}
               fullWidth
             />
+            <FormGroup row>
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={emailChecked}
+                    onChange={() => setEmailChecked(!emailChecked)}
+                    value="email"
+                  />
+                }
+                label="Is this an email link?"
+              />
+            </FormGroup>
           </DialogContent>
           <DialogActions>
             <Button
