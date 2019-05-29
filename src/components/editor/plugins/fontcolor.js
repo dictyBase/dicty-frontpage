@@ -6,6 +6,11 @@ import FormatColorTextIcon from "@material-ui/icons/FormatColorText"
 import ToolbarButton from "../toolbar/ToolbarButton"
 import { ButtonProps, NodeProps } from "../flow/types"
 
+type colorProps = {
+  showColorPicker: boolean,
+  setShowColorPicker: Function,
+}
+
 /**
  * Functions to set the font color marks.
  */
@@ -48,7 +53,10 @@ const FontColorMark = ({ children, mark: { data } }: NodeProps) => (
 /**
  * Button component that uses a click handler to connect to the ColorPicker component.
  */
-const FontColorButton = ({ showColorPicker, setShowColorPicker }) => (
+const FontColorButton = ({
+  showColorPicker,
+  setShowColorPicker,
+}: colorProps) => (
   <Tooltip title="Font Color" placement="bottom">
     <ToolbarButton
       onClick={() => {

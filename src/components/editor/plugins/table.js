@@ -9,6 +9,11 @@ import DeleteIcon from "@material-ui/icons/Delete"
 import ToolbarButton from "../toolbar/ToolbarButton"
 import { ButtonProps, NodeProps } from "../flow/types"
 
+type tableProps = {
+  showTableOptions: boolean,
+  setShowTableOptions: Function,
+}
+
 /**
  * Rendering components that provide the actual HTML to use inside the editor.
  */
@@ -30,7 +35,7 @@ const TableCellNode = ({ attributes, children }: NodeProps) => (
 const InsertInitialTableButton = ({
   showTableOptions,
   setShowTableOptions,
-}) => (
+}: tableProps) => (
   <Tooltip title="Table" placement="bottom">
     <ToolbarButton
       onClick={() => {

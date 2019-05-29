@@ -101,15 +101,22 @@ const styles = theme => ({
   },
 })
 
+type Props = {
+  /** Material-UI styling */
+  classes: Object,
+  /** Function for saving page content */
+  onSave: Function,
+}
+
 /**
  * The toolbar for the page editor. It uses Material-UI's AppBar component as the foundation, then displays individual buttons inside of it.
  */
 
-export const EditorToolbar = props => {
+export const EditorToolbar = (props: Props) => {
   const [showColorPicker, setShowColorPicker] = useState(false)
   const [showTableOptions, setShowTableOptions] = useState(false)
   const [showHelpModal, setShowHelpModal] = useState(false)
-  const { classes, ...other } = props
+  const { classes, onSave, ...other } = props
 
   return (
     <>
@@ -208,7 +215,7 @@ export const EditorToolbar = props => {
                     size="small"
                     variant="contained"
                     color="primary"
-                    onClick={props.onSave}>
+                    onClick={onSave}>
                     Save
                   </Button>
                 </Grid>
