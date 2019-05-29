@@ -4,13 +4,12 @@ import { Helmet } from "react-helmet"
 import Grid from "@material-ui/core/Grid"
 import { withStyles } from "@material-ui/core/styles"
 import Slideshow from "components/frontpage/Slideshow"
-import News from "components/frontpage/News"
+import Tweets from "components/frontpage/Tweets"
 import Papers from "components/frontpage/Papers"
 import Popular from "components/frontpage/Popular"
 import Annotations from "components/frontpage/Annotations"
 import StockCenter from "components/frontpage/StockCenter"
 import papers from "data/papers"
-import news from "data/news"
 import annotations from "data/annotations"
 import stockcenter from "data/stockcenter"
 
@@ -53,7 +52,7 @@ const Front = (props: Props) => {
           <Slideshow />
         </Grid>
         <Grid item className={classes.topItem} xs={12} sm={6}>
-          <News posts={news.slice(0, 5)} />
+          <Tweets />
         </Grid>
         <Grid item className={classes.topItem} xs={12} lg={6}>
           <Papers papers={papers.slice(0, 4)} />
