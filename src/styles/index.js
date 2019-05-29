@@ -1,4 +1,3 @@
-export { default as NewsContainer } from "./NewsContainer"
 export { default as PaperContainer } from "./PaperContainer"
 export { default as AnnotationContainer } from "./AnnotationContainer"
 export { default as StockContainer } from "./StockContainer"

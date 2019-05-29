@@ -2,11 +2,20 @@
 import React from "react"
 import { withRouter } from "react-router-dom"
 import Grid from "@material-ui/core/Grid"
-
+import { withStyles } from "@material-ui/core/styles"
 import PageEditor from "components/editor/PageEditor"
 import Authorization from "components/authentication/Authorization"
 import ErrorNotification from "components/authentication/ErrorNotification"
-import { Banner } from "styles/NewsStyles"
+
+const styles = theme => ({
+  banner: {
+    minHeight: "45px",
+    textAlign: "center",
+    padding: "40px 20px 20px 20px",
+    backgroundColor: "#eee",
+    marginBottom: "20px",
+  },
+})
 
 const error =
   "Your login token is expired. Please log out and then log back in to regain full user access."
@@ -25,6 +34,8 @@ type Props = {
   },
   /** React-Router object */
   match: Object,
+  /** Material-UI styling */
+  classes: Object,
 }
 
 /**
@@ -37,6 +48,7 @@ const AddPage = (props: Props) => {
       state: { name, subname, url },
     },
     match,
+    classes,
   } = props
 
   let slug
@@ -56,10 +68,10 @@ const AddPage = (props: Props) => {
           {canEditPages && (
             <Grid container wrap="wrap" justify="center">
               <Grid item xs={12}>
-                <Banner>
+                <div className={classes.banner}>
                   <h2>Add Editable Page for Route:</h2>
                   <h3>{url}</h3>
-                </Banner>
+                </div>
               </Grid>
               <br />
               <Grid item xs={9}>
@@ -81,4 +93,4 @@ const AddPage = (props: Props) => {
   )
 }
 
-export default withRouter(AddPage)
+export default withRouter(withStyles(styles)(AddPage))

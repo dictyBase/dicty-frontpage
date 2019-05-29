@@ -7,7 +7,6 @@ import About from "components/pages/About/About"
 import InfoPage from "components/pages/EditablePages/InfoPage"
 import EditInfoPage from "components/pages/EditablePages/EditInfoPage"
 import AddPage from "components/pages/EditablePages/AddPage"
-import NewsArchive from "components/pages/News/NewsArchive"
 import PapersArchive from "components/pages/Papers/PapersArchive"
 import Login from "components/authentication/Login"
 import OauthCallback from "components/authentication/OauthCallback"
@@ -24,8 +23,6 @@ const Routes = () => (
     <Route exact path="/about" component={About} />
     <Route exact path="/papers" component={PapersArchive} />
     <Route exact path="/downloads" component={Downloads} />
-    {/* News page routes */}
-    <Route exact path="/news" component={NewsArchive} />
     {/* Authentication routes */}
     <LoginRoute exact path="/login" component={Login} />
     <Route exact path="/:provider/callback" component={OauthCallback} />

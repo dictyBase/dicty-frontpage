@@ -3,7 +3,7 @@ import React, { useState } from "react"
 import MenuItem from "@material-ui/core/MenuItem"
 import FormControl from "@material-ui/core/FormControl"
 import Select from "@material-ui/core/Select"
-import { NodeProps } from "../flow/types"
+import { NodeProps, ButtonProps } from "../flow/types"
 
 /**
  * List of fonts available
@@ -65,7 +65,7 @@ const FontFamilyMark = ({ children, mark: { data } }: NodeProps) => (
 /**
  * Dropdown component that connects to the editor.
  */
-const FontFamilyDropdown = ({ editor, classes }) => {
+const FontFamilyDropdown = ({ editor, classes }: ButtonProps) => {
   const [currentFont, setCurrentFont] = useState(3)
 
   return (

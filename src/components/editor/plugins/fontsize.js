@@ -3,7 +3,7 @@ import React, { useState } from "react"
 import MenuItem from "@material-ui/core/MenuItem"
 import FormControl from "@material-ui/core/FormControl"
 import Select from "@material-ui/core/Select"
-import { NodeProps } from "../flow/types"
+import { NodeProps, ButtonProps } from "../flow/types"
 
 /**
  * List of font sizes
@@ -68,7 +68,7 @@ const FontSizeMark = ({ children, mark: { data } }: NodeProps) => (
 /**
  * Button components that use click handlers to connect to the editor.
  */
-const FontSizeDropdown = ({ editor, classes }) => {
+const FontSizeDropdown = ({ editor, classes }: ButtonProps) => {
   const [currentFontSize, setCurrentFontSize] = useState(2)
 
   return (
