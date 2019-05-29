@@ -22,7 +22,7 @@ const EditInfoPage = (props: Props) => {
 
   return (
     <Grid container justify="center">
-      <Grid item xs={11} lg={7}>
+      <Grid item xs={11} lg={8}>
         <EditorStyle>
           <PageEditor page={page} match={match} />
         </EditorStyle>
