@@ -1,3 +1,23 @@
+# [4.0.0](https://github.com/dictyBase/dicty-frontpage/compare/3.0.0...4.0.0) (2019-05-29)
+
+
+### Bug Fixes
+
+* lower width of homepage on xl resolutions ([6905691](https://github.com/dictyBase/dicty-frontpage/commit/6905691)), closes [#123](https://github.com/dictyBase/dicty-frontpage/issues/123)
+
+
+### Features
+
+* **link:** add checkbox for creating email links ([867911a](https://github.com/dictyBase/dicty-frontpage/commit/867911a)), closes [#144](https://github.com/dictyBase/dicty-frontpage/issues/144)
+* **link:** update link modal to prefill text and URL data if selected ([00a3a0c](https://github.com/dictyBase/dicty-frontpage/commit/00a3a0c)), closes [#143](https://github.com/dictyBase/dicty-frontpage/issues/143)
+* replace dictyNews with twitter feed ([08e2f84](https://github.com/dictyBase/dicty-frontpage/commit/08e2f84)), closes [#91](https://github.com/dictyBase/dicty-frontpage/issues/91)
+* update latest papers ([6445cad](https://github.com/dictyBase/dicty-frontpage/commit/6445cad))
+
+
+### BREAKING CHANGES
+
+* this changes the design of the front page
+
 # [3.0.0](https://github.com/dictyBase/dicty-frontpage/compare/2.5.0...3.0.0) (2019-05-24)
 
 
