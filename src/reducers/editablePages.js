@@ -13,9 +13,6 @@ const initialState = {
   content: null,
   isFetching: false,
   error: null,
-  currentFont: 0,
-  currentFontSize: 2,
-  currentFontColor: "#000",
 }
 
 const editablePagesReducer = (state: Object = initialState, action: Object) => {
@@ -25,7 +22,6 @@ const editablePagesReducer = (state: Object = initialState, action: Object) => {
         ...state,
         isFetching: true,
       }
-    // eslint-disable-next-line
     case FETCH_PAGE_SUCCESS:
       const slugName = action.payload.json.data.attributes.slug
       return {
@@ -53,6 +49,7 @@ const editablePagesReducer = (state: Object = initialState, action: Object) => {
       return {
         ...state,
         isFetching: false,
+        error: null,
       }
     case SAVE_PAGE_FAILURE:
       return {
