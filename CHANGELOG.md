@@ -1,3 +1,10 @@
+## [4.0.1](https://github.com/dictyBase/dicty-frontpage/compare/4.0.0...4.0.1) (2019-05-29)
+
+
+### Bug Fixes
+
+* remove error page flickering when new page added ([7b56ac7](https://github.com/dictyBase/dicty-frontpage/commit/7b56ac7)), closes [#119](https://github.com/dictyBase/dicty-frontpage/issues/119)
+
 # [4.0.0](https://github.com/dictyBase/dicty-frontpage/compare/3.0.0...4.0.0) (2019-05-29)
 
 
