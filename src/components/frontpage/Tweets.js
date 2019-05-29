@@ -3,7 +3,7 @@ import React from "react"
 import Grid from "@material-ui/core/Grid"
 import { Timeline } from "react-twitter-widgets"
 
-/** Widget that displays the most recent Dicty news */
+/** Widget that displays the most recent dictybase tweets */
 
 const Tweets = () => (
   <Grid container wrap="wrap" direction="column">

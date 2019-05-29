@@ -17,6 +17,10 @@ const styles = theme => ({
   container: {
     paddingLeft: "30px",
     paddingRight: "30px",
+    [theme.breakpoints.up("xl")]: {
+      paddingLeft: 0,
+      paddingRight: 0,
+    },
   },
   topItem: {
     padding: "8px 16px 8px 16px",
@@ -47,14 +51,14 @@ const Front = (props: Props) => {
           content="dictyBase is a central resource for Dictyostelid genomics"
         />
       </Helmet>
-      <Grid container wrap="wrap" className={classes.container}>
-        <Grid item className={classes.topItem} xs={12} sm={6}>
+      <Grid container justify="center" className={classes.container}>
+        <Grid item className={classes.topItem} xs={12} sm={6} xl={5}>
           <Slideshow />
         </Grid>
-        <Grid item className={classes.topItem} xs={12} sm={6}>
+        <Grid item className={classes.topItem} xs={12} sm={6} xl={5}>
           <Tweets />
         </Grid>
-        <Grid item className={classes.topItem} xs={12} lg={6}>
+        <Grid item className={classes.topItem} xs={12} lg={6} xl={4}>
           <Papers papers={papers.slice(0, 4)} />
         </Grid>
         <Grid item className={classes.topItem} xs={12} sm={6} lg={3}>
