@@ -10,13 +10,8 @@ import DialogContent from "@material-ui/core/DialogContent"
 import DialogTitle from "@material-ui/core/DialogTitle"
 import ImageIcon from "@material-ui/icons/Image"
 import ToolbarButton from "../toolbar/ToolbarButton"
+import styles from "components/editor/toolbar/toolbarStyles"
 import { ButtonProps, NodeProps } from "../flow/types"
-
-const styles = theme => ({
-  btn: {
-    backgroundColor: "#15317e",
-  },
-})
 
 type ImageData = {
   src: string,
@@ -135,7 +130,7 @@ const ImageButtonUnconnected = ({ editor, classes }: ButtonProps) => {
                 setImageModalOpen(false)
                 editor.command(insertImage, data)
               }}
-              className={classes.btn}
+              className={classes.basicButton}
               variant="contained"
               color="primary">
               Add Image

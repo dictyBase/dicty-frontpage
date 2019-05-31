@@ -11,26 +11,8 @@ import DialogTitle from "@material-ui/core/DialogTitle"
 import VideoIcon from "@material-ui/icons/Videocam"
 import getVideoId from "get-video-id"
 import ToolbarButton from "../toolbar/ToolbarButton"
+import styles from "components/editor/toolbar/toolbarStyles"
 import { ButtonProps, NodeProps } from "../flow/types"
-
-/**
- * Material-UI styling
- */
-const styles = theme => ({
-  wrapper: {
-    position: "relative",
-    paddingBottom: "50.66%",
-    height: "0",
-  },
-  iframe: {
-    position: "absolute",
-    top: "0px",
-    left: "0px",
-  },
-  btn: {
-    backgroundColor: "#15317e",
-  },
-})
 
 type VideoData = {
   height: string,
@@ -83,7 +65,7 @@ const Video = ({
   }
 
   return (
-    <div {...attributes} className={classes.wrapper}>
+    <div {...attributes} className={classes.videoWrapper}>
       <iframe
         title="video-embed"
         id="ytplayer"
@@ -165,7 +147,7 @@ const VideoButtonUnconnected = ({ editor, classes }: ButtonProps) => {
                 setVideoModalOpen(false)
                 editor.command(insertVideo, data)
               }}
-              className={classes.btn}
+              className={classes.basicButton}
               variant="contained"
               color="primary">
               Add Video

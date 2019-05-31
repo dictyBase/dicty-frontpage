@@ -6,11 +6,11 @@ import { InsertInitialTableButton } from "components/editor/plugins/table"
 import { VideoButton } from "components/editor/plugins/video"
 
 const FeatureButtons = props => {
-  const { showTableOptions, setShowTableOptions, ...other } = props
+  const { showTableOptions, setShowTableOptions } = props
 
   return (
     <>
-      <LinkButton {...other} />
+      <LinkButton {...props} />
       <InsertInitialTableButton
         showTableOptions={showTableOptions}
         setShowTableOptions={setShowTableOptions}
@@ -19,8 +19,8 @@ const FeatureButtons = props => {
           setShowTableOptions(true)
         }}
       />
-      <ImageButton {...other} />
-      <VideoButton {...other} />
+      <ImageButton {...props} />
+      <VideoButton {...props} />
     </>
   )
 }

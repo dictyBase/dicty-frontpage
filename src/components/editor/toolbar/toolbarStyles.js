@@ -49,6 +49,19 @@ const styles = theme => ({
     height: "20px",
     verticalAlign: "middle",
   },
+  basicButton: {
+    backgroundColor: "#15317e",
+  },
+  videoWrapper: {
+    position: "relative",
+    paddingBottom: "50.66%",
+    height: "0",
+  },
+  iframe: {
+    position: "absolute",
+    top: "0px",
+    left: "0px",
+  },
 })
 
 export default styles

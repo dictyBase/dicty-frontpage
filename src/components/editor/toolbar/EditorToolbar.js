@@ -39,7 +39,7 @@ export const EditorToolbar = (props: Props) => {
   const [showColorPicker, setShowColorPicker] = useState(false)
   const [showTableOptions, setShowTableOptions] = useState(false)
   const [showHelpModal, setShowHelpModal] = useState(false)
-  const { classes, onSave, ...other } = props
+  const { classes, onSave } = props
 
   return (
     <>
@@ -63,7 +63,6 @@ export const EditorToolbar = (props: Props) => {
                 showTableOptions={showTableOptions}
                 setShowTableOptions={setShowTableOptions}
                 {...props}
-                {...other}
               />
               <div className={classes.separator} />
               <FontColorButton

@@ -13,13 +13,8 @@ import FormControlLabel from "@material-ui/core/FormControlLabel"
 import Checkbox from "@material-ui/core/Checkbox"
 import LinkIcon from "@material-ui/icons/Link"
 import ToolbarButton from "../toolbar/ToolbarButton"
+import styles from "components/editor/toolbar/toolbarStyles"
 import { ButtonProps, NodeProps } from "../flow/types"
-
-const styles = theme => ({
-  btn: {
-    backgroundColor: "#15317e",
-  },
-})
 
 /**
  * Functions to set the link blocks.
@@ -173,7 +168,7 @@ const LinkButtonUnconnected = ({ classes, editor, value }: ButtonProps) => {
                   setLinkModalOpen(false)
                   insertLinkStrategy(editor, data)
                 }}
-                className={classes.btn}
+                className={classes.basicButton}
                 variant="contained"
                 color="primary">
                 Add Link
@@ -239,7 +234,7 @@ const LinkButtonUnconnected = ({ classes, editor, value }: ButtonProps) => {
                 setLinkModalOpen(false)
                 insertLinkStrategy(editor, data)
               }}
-              className={classes.btn}
+              className={classes.basicButton}
               variant="contained"
               color="primary">
               Add Link
