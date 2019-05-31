@@ -10,8 +10,9 @@ import {
   RemoveTableButton,
 } from "components/editor/plugins/table"
 import styles from "components/editor/toolbar/toolbarStyles"
+import { ToolbarProps } from "components/editor/flow/types"
 
-const TableButtons = props => {
+const TableButtons = (props: ToolbarProps) => {
   const { classes } = props
   return (
     <div className={classes.tableButtons}>

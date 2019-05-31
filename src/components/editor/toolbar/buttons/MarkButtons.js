@@ -6,8 +6,9 @@ import { StrikethroughButton } from "components/editor/plugins/strikethrough"
 import { SubscriptButton } from "components/editor/plugins/subscript"
 import { SuperscriptButton } from "components/editor/plugins/superscript"
 import { UnderlineButton } from "components/editor/plugins/underline"
+import { ToolbarProps } from "components/editor/flow/types"
 
-const MarkButtons = props => (
+const MarkButtons = (props: ToolbarProps) => (
   <>
     <BoldButton {...props} />
     <ItalicButton {...props} />

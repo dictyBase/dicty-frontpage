@@ -4,8 +4,9 @@ import { withStyles } from "@material-ui/core/styles"
 import { FontFamilyDropdown } from "components/editor/plugins/fontfamily"
 import { FontSizeDropdown } from "components/editor/plugins/fontsize"
 import styles from "components/editor/toolbar/toolbarStyles"
+import { ToolbarProps } from "components/editor/flow/types"
 
-const TableButtons = props => {
+const TableButtons = (props: ToolbarProps) => {
   const { classes } = props
   return (
     <>

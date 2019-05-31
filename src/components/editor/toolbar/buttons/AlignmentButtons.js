@@ -6,8 +6,9 @@ import {
   AlignmentRightButton,
   AlignmentJustifyButton,
 } from "components/editor/plugins/alignment"
+import { ToolbarProps } from "components/editor/flow/types"
 
-const AlignmentButtons = props => (
+const AlignmentButtons = (props: ToolbarProps) => (
   <>
     <AlignmentLeftButton {...props} />
     <AlignmentCenterButton {...props} />
