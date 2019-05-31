@@ -75,7 +75,7 @@
     "cz-conventional-changelog": "^2.1.0",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.12.1",
-    "flow-bin": "^0.80.0",
+    "flow-bin": "^0.81.0",
     "flow-typed": "^2.5.1",
     "husky": "^2.1.0",
     "jest-enzyme": "^7.0.2",
