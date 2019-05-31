@@ -6,7 +6,7 @@ import { FontSizeDropdown } from "components/editor/plugins/fontsize"
 import styles from "components/editor/toolbar/toolbarStyles"
 import { ToolbarProps } from "components/editor/flow/types"
 
-const TableButtons = (props: ToolbarProps) => {
+const FontDropdowns = (props: ToolbarProps) => {
   const { classes } = props
   return (
     <>
@@ -17,4 +17,4 @@ const TableButtons = (props: ToolbarProps) => {
   )
 }
 
-export default withStyles(styles)(TableButtons)
+export default withStyles(styles)(FontDropdowns)
