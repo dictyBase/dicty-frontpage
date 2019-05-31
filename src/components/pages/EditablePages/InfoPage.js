@@ -9,6 +9,7 @@ import InfoPageView from "components/pages/EditablePages/InfoPageView"
 import ErrorPage from "components/pages/ErrorPage"
 import { fetchPage } from "actions/editablePages"
 import { NAMESPACE } from "constants/namespace"
+import { pageTitleLookup } from "utils/pageTitleConversions"
 
 type Props = {
   /** Checks if data is currently being fetched */
@@ -52,15 +53,13 @@ class InfoPage extends Component<Props> {
 
   render() {
     const { isFetching, page, match, error } = this.props
-    const name = page.data.attributes.name
+    const name = pageTitleLookup(page.data.attributes.name)
 
     if (!isFetching && page.data.attributes.content) {
       return (
         <Grid container justify="center">
           <Helmet>
-            <title>
-              {name.charAt(0).toUpperCase() + name.slice(1)} Page - dictyBase
-            </title>
+            <title>{name} - dictyBase</title>
           </Helmet>
           <Grid item xs={8}>
             <InfoPageView page={page} match={match} />
