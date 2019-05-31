@@ -8,7 +8,7 @@ import Button from "@material-ui/core/Button"
 import HelpIcon from "@material-ui/icons/Help"
 import { withStyles } from "@material-ui/core/styles"
 import ToolbarButton from "components/editor/toolbar/ToolbarButton"
-import HelpModal from "components/editor/HelpModal"
+import HelpModal from "components/editor/toolbar/HelpModal"
 
 /** import toolbar button groups */
 import MarkButtons from "./buttons/MarkButtons"
@@ -91,7 +91,6 @@ export const EditorToolbar = (props: Props) => {
                   </Tooltip>
                   {showHelpModal && (
                     <HelpModal
-                      showHelpModal={showHelpModal}
                       handleClose={() => {
                         setShowHelpModal(false)
                       }}
