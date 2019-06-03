@@ -1,3 +1,15 @@
+# [4.1.0](https://github.com/dictyBase/dicty-frontpage/compare/4.0.1...4.1.0) (2019-06-03)
+
+
+### Bug Fixes
+
+* **deserializer:** add additional check to get all list item descendents on paste ([3331825](https://github.com/dictyBase/dicty-frontpage/commit/3331825)), closes [#148](https://github.com/dictyBase/dicty-frontpage/issues/148)
+
+
+### Features
+
+* use more appropriate page titles for info subpages ([142e7de](https://github.com/dictyBase/dicty-frontpage/commit/142e7de)), closes [#134](https://github.com/dictyBase/dicty-frontpage/issues/134)
+
 ## [4.0.1](https://github.com/dictyBase/dicty-frontpage/compare/4.0.0...4.0.1) (2019-05-29)
 
 
