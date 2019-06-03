@@ -21,6 +21,7 @@ import FontDropdowns from "./buttons/FontDropdowns"
 import { DividerButton } from "../plugins/divider"
 import { FontColorButton, FontColorPicker } from "../plugins/fontcolor"
 import { LineSpacingButton } from "../plugins/linespacing"
+import Separator from "./Separator"
 
 import styles from "./toolbarStyles"
 
@@ -48,23 +49,23 @@ export const EditorToolbar = (props: Props) => {
           <Grid container>
             <Grid item xs={12}>
               <MarkButtons {...props} />
-              <div className={classes.separator} />
+              <Separator />
               <AlignmentButtons {...props} />
-              <div className={classes.separator} />
+              <Separator />
               <DividerButton {...props} />
-              <div className={classes.separator} />
+              <Separator />
               <ListButtons {...props} />
-              <div className={classes.separator} />
+              <Separator />
               <HeadingButtons {...props} />
-              <div className={classes.separator} />
+              <Separator />
               <LineSpacingButton {...props} />
-              <div className={classes.separator} />
+              <Separator />
               <FeatureButtons
                 showTableOptions={showTableOptions}
                 setShowTableOptions={setShowTableOptions}
                 {...props}
               />
-              <div className={classes.separator} />
+              <Separator />
               <FontColorButton
                 showColorPicker={showColorPicker}
                 setShowColorPicker={setShowColorPicker}
@@ -80,7 +81,7 @@ export const EditorToolbar = (props: Props) => {
                 <Grid item xs={10}>
                   {showTableOptions && <TableButtons {...props} />}
                   <FontDropdowns {...props} />
-                  <div className={classes.separator} />
+                  <Separator />
                   <Tooltip title="Editor Help">
                     <ToolbarButton
                       onClick={() => {
