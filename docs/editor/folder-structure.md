@@ -8,6 +8,8 @@ _/editor_ - main folder containing all editor features
 
 _/editor/data_ - any placeholder json files go here
 
+_/editor/flow_ - contains all reusable Flow type checking for the editor
+
 _/editor/plugins_ - this is the home of all of our plugins
 
 - each plugin has its own file (i.e. `bold.js`, `italic.js`, etc.)
@@ -17,6 +19,8 @@ _/editor/plugins_ - this is the home of all of our plugins
   2. `BoldMark` - the React component that handles rendering (needs to be placed into `renderMark` for use in the editor)
   3. `BoldButton` - the React component that displays a button and uses a click handler to connect to the editor (used in our toolbar)
 - any variations of a specific plugin will be placed into nested folders (i.e. for categorized video upload, `plugins/video/youtube.js plugins/video/vimeo.js`)
+
+_/editor/schema_ - contains any [schema](https://docs.slatejs.org/guides/schemas) used for the editor
 
 _/editor/toolbar_ - everything related to the toolbar
 
