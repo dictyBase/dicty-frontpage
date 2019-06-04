@@ -1,8 +1,8 @@
 // @flow
 import React, { Component } from "react"
 import { connect } from "react-redux"
-import { getEventTransfer, getEventRange } from "slate-react"
-import { Value, type Change } from "slate"
+import { Editor, getEventTransfer, getEventRange } from "slate-react"
+import { Value } from "slate"
 import { withStyles } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
 import Button from "@material-ui/core/Button"
@@ -10,10 +10,11 @@ import CreateIcon from "@material-ui/icons/Create"
 
 import Authorization from "components/authentication/Authorization"
 import EditorToolbar from "./toolbar/EditorToolbar"
+import schema from "./schema/schema"
 import { insertImage } from "./plugins/image"
 import { onPasteHtml, onPasteText } from "./utils/utils"
 import { editInline, saveInlineEditing } from "actions/editablePages"
-import { StyledEditor, InlineLink, TextInfo } from "styles/EditablePageStyles"
+import styles from "./editorStyles"
 import placeholder from "./data/existingPagePlaceholder.json"
 
 /** Import mark renderers */
@@ -49,24 +50,6 @@ import { StrikethroughPlugin } from "./plugins/strikethrough"
 import { TablePlugin } from "./plugins/table"
 import { UnderlinePlugin } from "./plugins/underline"
 
-const styles = theme => ({
-  buttonGrid: {
-    marginRight: "8px",
-    marginTop: "8px",
-  },
-  saveButton: {
-    width: "100%",
-    backgroundColor: "#15317e",
-  },
-  cancelButton: {
-    width: "100%",
-  },
-  icon: {
-    height: "17px",
-    width: "17px",
-  },
-})
-
 /**
  * All of the plugins that go into our editor
  * These are generally keyboard shortcuts
@@ -92,7 +75,11 @@ type Ref = { current: React.createRef<any> | null }
  * Necessary renderMark function that receives the mark type then renders the HTML
  * In our case, we are returning custom components
  */
-export const renderMark = (props: markProps, next: Function) => {
+export const renderMark = (
+  props: markProps,
+  editor: Object,
+  next: Function,
+) => {
   const { mark } = props
 
   switch (mark.type) {
@@ -125,7 +112,11 @@ type nodeProps = {
 /**
  * Similar to renderMark above, except now we are working with nodes.
  */
-export const renderNode = (props: nodeProps, next: Function) => {
+export const renderNode = (
+  props: nodeProps,
+  editor: Object,
+  next: Function,
+) => {
   const { node } = props
 
   switch (node.type) {
@@ -259,16 +250,16 @@ class InlineEditor extends Component<Props, State> {
     this.setState(value)
   }
 
-  onPaste = (e: SyntheticEvent<>, change: Change) => {
+  onPaste = (e: SyntheticEvent<>, editor, next) => {
     const transfer = getEventTransfer(e)
     const { type } = transfer
     switch (type) {
       case "text":
-        return onPasteText(e, change)
+        return onPasteText(e, this.editor.current, next)
       case "html":
-        return onPasteHtml(e, change)
+        return onPasteHtml(e, this.editor.current, next)
       default:
-        break
+        return next()
     }
   }
 
@@ -308,10 +299,12 @@ class InlineEditor extends Component<Props, State> {
             value={value}
             onChange={this.onChange}
             page={page}
+            onSave={this.onSave}
           />
         )}
 
-        <StyledEditor
+        <Editor
+          className={classes.editor}
           value={value}
           onChange={this.onChange}
           onPaste={this.onPaste}
@@ -320,6 +313,7 @@ class InlineEditor extends Component<Props, State> {
           renderNode={renderNode}
           readOnly={readOnly}
           plugins={plugins}
+          schema={schema}
           ref={this.editor}
         />
 
@@ -327,11 +321,15 @@ class InlineEditor extends Component<Props, State> {
           render={({ canEditPages, verifiedToken }) => (
             <div>
               {canEditPages && verifiedToken && readOnly && (
-                <TextInfo>
-                  <InlineLink onClick={this.onEdit} title="Edit">
+                <span>
+                  <Button
+                    className={classes.editButton}
+                    color="primary"
+                    onClick={this.onEdit}
+                    title="Edit">
                     <CreateIcon className={classes.icon} /> Edit
-                  </InlineLink>
-                </TextInfo>
+                  </Button>
+                </span>
               )}
             </div>
           )}
