@@ -29,7 +29,7 @@ export class InfoPageView extends Component<Props> {
     fetchUserInfo(fetchedUser)
   }
 
-  handleClick = e => {
+  handleClick = (e: SyntheticEvent<>) => {
     const { editPage, match, page } = this.props
     e.preventDefault()
     editPage(page.data.attributes.content, match.url)

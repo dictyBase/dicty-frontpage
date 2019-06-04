@@ -73,7 +73,9 @@ type Props = {
   classes: Object,
 }
 
-/** Displays the page data that was fetched from the InfoPage component */
+/** InfoPageViewToolbar displays information about who updated the page last,
+ * as well as an edit button if the user is authorized to edit pages.
+ */
 
 const InfoPageViewToolbar = (props: Props) => {
   const { handleClick, classes, updated_at } = props
