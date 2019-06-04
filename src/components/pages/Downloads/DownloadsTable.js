@@ -89,7 +89,11 @@ const DownloadsTable = (props: Props) => {
                     {row.title}
                   </TableCell>
                   <TableCell>
-                    <a className={classes.link} href={row.url}>
+                    <a
+                      className={classes.link}
+                      href={row.url}
+                      target="_blank"
+                      rel="noopener noreferrer">
                       <Button
                         className={classes.button}
                         size="small"
