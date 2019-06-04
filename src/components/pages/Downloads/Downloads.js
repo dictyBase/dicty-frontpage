@@ -55,7 +55,9 @@ export class Downloads extends Component<Props> {
         return (
           <Typography component="div" key={item.id}>
             <Citations citation={item.attributes.citation} />
-            {downloads[item.id] && <DownloadsTable data={downloads[item.id]} />}
+            {downloads[item.id] && (
+              <DownloadsTable data={downloads[item.id].data} />
+            )}
           </Typography>
         )
       }
