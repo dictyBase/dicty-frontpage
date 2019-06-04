@@ -2,17 +2,18 @@
 import React from "react"
 import { withStyles } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
+import Button from "@material-ui/core/Button"
 import Dialog from "@material-ui/core/Dialog"
 import DialogActions from "@material-ui/core/DialogActions"
 import DialogContent from "@material-ui/core/DialogContent"
 import DialogTitle from "@material-ui/core/DialogTitle"
 import HelpModalContent from "./HelpModalContent"
-import { SaveButton } from "styles/EditablePageStyles"
 
 const styles = theme => ({
-  save: {
+  closeBtn: {
     width: "50%",
     color: "#fff",
+    backgroundColor: "#15317e",
 
     "&:hover": {
       backgroundColor: "#3f51b5",
@@ -44,9 +45,9 @@ const HelpMuiModal = (props: Props) => {
         </Grid>
       </DialogContent>
       <DialogActions>
-        <SaveButton className={classes.save} onClick={handleClose}>
+        <Button className={classes.closeBtn} onClick={handleClose}>
           Close
-        </SaveButton>
+        </Button>
       </DialogActions>
     </Dialog>
   )

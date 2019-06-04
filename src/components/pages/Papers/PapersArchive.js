@@ -3,13 +3,29 @@ import React from "react"
 import Grid from "@material-ui/core/Grid"
 import { withStyles } from "@material-ui/core"
 import FontAwesome from "react-fontawesome"
-import { Banner, Header, Hdrtxt } from "styles/EditablePageStyles"
 import { Link } from "styles"
 import papers from "data/papers"
 
 const styles = theme => ({
   item: {
     paddingBottom: "10px",
+  },
+  banner: {
+    minHeight: "150px",
+    textAlign: "center",
+    padding: "48px 30px 48px 30px",
+    backgroundColor: "#E0F2F7",
+  },
+  header: {
+    backgroundColor: "#E0F2F7",
+    "@media (minWidth: 768px)": {
+      fontSize: "63px",
+      padding: "2px",
+      margin: "2px",
+    },
+  },
+  headerText: {
+    fontSize: "21px",
   },
 })
 
@@ -44,20 +60,20 @@ const PapersArchive = (props: Props) => {
   ))
 
   return (
-    <div>
-      <Banner style={{ backgroundColor: "#E0F2F7" }}>
-        <Header style={{ backgroundColor: "#E0F2F7" }}>
+    <>
+      <div className={classes.banner}>
+        <h1 className={classes.header}>
           <FontAwesome name="paperclip" /> Dicty Papers
-        </Header>
-        <Hdrtxt>
+        </h1>
+        <p className={classes.headerText}>
           Papers on <em>Dictyostelium</em> in the last 5 years
-        </Hdrtxt>
-      </Banner>
+        </p>
+      </div>
       <br />
       <Grid container justify="center">
         <Grid item>{paperList}</Grid>
       </Grid>
-    </div>
+    </>
   )
 }
 

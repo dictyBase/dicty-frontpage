@@ -1,16 +1,28 @@
 // @flow
 import React from "react"
 import { connect } from "react-redux"
+import { withStyles } from "@material-ui/core"
 import Grid from "@material-ui/core/Grid"
 import PageEditor from "components/editor/PageEditor"
-import { EditorStyle } from "styles/EditablePageStyles"
 import { NAMESPACE } from "constants/namespace"
+
+const styles = theme => ({
+  editor: {
+    border: "1px solid #ddd",
+    cursor: "text",
+    borderRadius: "2px",
+    margin: "10px auto",
+    paddingBottom: "5px",
+  },
+})
 
 type Props = {
   /** React Router's match object */
   match: Object,
   /** The object holding the fetched page content */
   page: Object,
+  /** Material-UI styling */
+  classes: Object,
 }
 
 /**
@@ -18,14 +30,14 @@ type Props = {
  */
 
 const EditInfoPage = (props: Props) => {
-  const { page, match } = props
+  const { page, match, classes } = props
 
   return (
     <Grid container justify="center">
       <Grid item xs={11} lg={8}>
-        <EditorStyle>
+        <div className={classes.editor}>
           <PageEditor page={page} match={match} />
-        </EditorStyle>
+        </div>
       </Grid>
     </Grid>
   )
@@ -46,4 +58,4 @@ const mapStateToProps = (state, ownProps) => {
 export default connect(
   mapStateToProps,
   null,
-)(EditInfoPage)
+)(withStyles(styles)(EditInfoPage))
