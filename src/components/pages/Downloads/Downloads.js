@@ -6,11 +6,10 @@ import Grid from "@material-ui/core/Grid"
 import AppBar from "@material-ui/core/AppBar"
 import Tabs from "@material-ui/core/Tabs"
 import Tab from "@material-ui/core/Tab"
+import Typography from "@material-ui/core/Typography"
 import { MuiThemeProvider } from "@material-ui/core/styles"
-
 import Citations from "./Citations"
 import DownloadsTable from "./DownloadsTable"
-import TabContainer from "./TabContainer"
 import DownloadsHeader from "./DownloadsHeader"
 import DownloadsLoader from "./DownloadsLoader"
 import withDataFetching from "components/common/withDataFetching"
@@ -54,10 +53,10 @@ export class Downloads extends Component<Props> {
     const tabContent = json.data.map(item => {
       if (item.id === json.currentTab) {
         return (
-          <TabContainer key={item.id}>
+          <Typography component="div" key={item.id}>
             <Citations citation={item.attributes.citation} />
             {downloads[item.id] && <DownloadsTable data={downloads[item.id]} />}
-          </TabContainer>
+          </Typography>
         )
       }
       return null

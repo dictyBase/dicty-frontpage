@@ -4,10 +4,13 @@ import { withStyles } from "@material-ui/core/styles"
 
 const styles = theme => ({
   root: {
-    fontSize: "0.85em",
+    fontSize: "0.9em",
   },
   topLine: {
     color: "#a7221e",
+  },
+  link: {
+    textDecoration: "none",
   },
 })
 
@@ -44,7 +47,7 @@ const Citations = (props: Props) => {
           href={citation.link}
           target="_blank"
           rel="noopener noreferrer"
-          style={{ textDecoration: "none" }}>
+          className={classes.link}>
           [Pubmed]
         </a>
       </p>
