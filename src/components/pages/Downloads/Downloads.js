@@ -67,6 +67,11 @@ export class Downloads extends Component<Props> {
   render() {
     const { downloads } = this.props
 
+    // return null until downloads data is not empty
+    if (Object.entries(downloads).length === 0) {
+      return null
+    }
+
     return (
       <MuiThemeProvider theme={MuiTheme}>
         <Helmet>
@@ -85,10 +90,10 @@ export class Downloads extends Component<Props> {
                 onChange={this.handleChange}
                 scrollable
                 scrollButtons="auto">
-                {downloads.data && this.generateTabs(downloads)}
+                {this.generateTabs(downloads)}
               </Tabs>
             </AppBar>
-            {downloads.data && this.generateTabContainers(downloads)}
+            {this.generateTabContainers(downloads)}
           </Grid>
         </Grid>
       </MuiThemeProvider>
