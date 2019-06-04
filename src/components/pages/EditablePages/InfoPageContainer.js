@@ -27,10 +27,10 @@ type Props = {
 }
 
 /**
- * Fetches the data for the desired editable page
+ * InfoPageContainer fetches the data for the desired editable page
  */
 
-class InfoPage extends Component<Props> {
+class InfoPageContainer extends Component<Props> {
   // set defaultProps to prevent console warnings
   static defaultProps = {
     page: {
@@ -112,4 +112,4 @@ const mapStateToProps = (state, ownProps) => {
 export default connect(
   mapStateToProps,
   { fetchPage },
-)(InfoPage)
+)(InfoPageContainer)
