@@ -55,7 +55,7 @@ export class Downloads extends Component<Props> {
       if (item.id === json.currentTab) {
         return (
           <TabContainer key={item.id}>
-            <Citations data={item} />
+            <Citations citation={item.attributes.citation} />
             {downloads[item.id] && <DownloadsTable data={downloads[item.id]} />}
           </TabContainer>
         )
