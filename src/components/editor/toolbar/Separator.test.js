@@ -4,7 +4,7 @@ import Separator from "./Separator"
 
 describe("editor/toolbar/Separator", () => {
   const wrapper = shallow(<Separator />)
-  console.log(wrapper.debug())
+
   describe("initial render", () => {
     it("renders without crashing", () => {
       expect(wrapper).toHaveLength(1)

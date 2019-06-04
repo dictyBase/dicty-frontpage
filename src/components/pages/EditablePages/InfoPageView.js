@@ -3,10 +3,10 @@ import React, { Component } from "react"
 import { connect } from "react-redux"
 import Grid from "@material-ui/core/Grid"
 import PageEditor from "components/editor/PageEditor"
+import InfoPageViewToolbar from "./InfoPageViewToolbar"
 import { ContentAPI } from "utils/apiClasses"
 import { editPage } from "actions/editablePages"
 import { fetchUserInfo } from "actions/auth"
-import InfoPageViewToolbar from "./InfoPageViewToolbar"
 
 type Props = {
   /** React Router's match object */
@@ -21,7 +21,7 @@ type Props = {
 
 /** InfoPageView displays the page data that was fetched from the InfoPage component */
 
-class InfoPageView extends Component<Props> {
+export class InfoPageView extends Component<Props> {
   componentDidMount() {
     const { page, fetchUserInfo } = this.props
 
