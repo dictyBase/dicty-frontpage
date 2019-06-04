@@ -30,6 +30,10 @@ type Props = {
   },
 }
 
+/**
+ * Displays the citation above the downloads table.
+ */
+
 const Citations = (props: Props) => {
   const { classes, citation } = props
 
