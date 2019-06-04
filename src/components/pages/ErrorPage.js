@@ -77,12 +77,12 @@ export const ErrorPage = (props: Props) => {
   let errorStatus = 0
   let errorMsg
 
-  if (page.error) {
+  if (page && page.error) {
     errorStatus = page.error.status
     errorMsg = page.error.title
   }
 
-  if (auth.error) {
+  if (auth && auth.error) {
     errorStatus = auth.error.status
     errorMsg = auth.error.title
   }
