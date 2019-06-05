@@ -1,13 +1,12 @@
 // @flow
 import React from "react"
+import { Link } from "react-router-dom"
 import { withStyles } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
 import Button from "@material-ui/core/Button"
 import FontAwesome from "react-fontawesome"
-import { RouterLink } from "styles"
 import sadDicty from "images/sad-dicty.png"
 
-// eslint-disable-next-line
 const styles = theme => ({
   container: {
     backgroundColor: "#eff8fb",
@@ -27,6 +26,10 @@ const styles = theme => ({
   paragraph: {
     paddingLeft: "10px",
     paddingRight: "10px",
+  },
+  link: {
+    color: "#428bca",
+    textDecoration: "none",
   },
 })
 
@@ -49,7 +52,7 @@ const PageNotReady = props => {
             We are constantly adding content to our new website so check back
             soon!
           </p>
-          <RouterLink to="/">
+          <Link className={classes.link} to="/">
             <Button
               className={classes.button}
               size="small"
@@ -57,7 +60,7 @@ const PageNotReady = props => {
               color="primary">
               Back to homepage
             </Button>
-          </RouterLink>
+          </Link>
         </div>
       </Grid>
     </Grid>

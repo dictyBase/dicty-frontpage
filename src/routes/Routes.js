@@ -7,7 +7,6 @@ import About from "components/pages/About/About"
 import InfoPageContainer from "components/pages/EditablePages/InfoPageContainer"
 import EditInfoPage from "components/pages/EditablePages/EditInfoPage"
 import AddPage from "components/pages/EditablePages/AddPage"
-import PapersArchive from "components/pages/Papers/PapersArchive"
 import Login from "components/authentication/Login"
 import OauthCallback from "components/authentication/OauthCallback"
 import AuthLoader from "components/authentication/AuthLoader"
@@ -21,7 +20,6 @@ const Routes = () => (
   <Switch>
     <Route exact path="/" component={Front} />
     <Route exact path="/about" component={About} />
-    <Route exact path="/papers" component={PapersArchive} />
     <Route exact path="/downloads" component={Downloads} />
     {/* Authentication routes */}
     <LoginRoute exact path="/login" component={Login} />

@@ -1,15 +1,13 @@
 // @flow
 import React from "react"
 import { connect } from "react-redux"
-import { withRouter } from "react-router-dom"
+import { withRouter, Link } from "react-router-dom"
 import { withStyles } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
 import Button from "@material-ui/core/Button"
 import AddIcon from "@material-ui/icons/Add"
 import FontAwesome from "react-fontawesome"
-
 import Authorization from "components/authentication/Authorization"
-import { RouterLink } from "styles"
 import sadDicty from "images/sad-dicty.png"
 
 const styles = theme => ({
@@ -51,6 +49,10 @@ const styles = theme => ({
   },
   paragraph: {
     padding: "10px",
+  },
+  link: {
+    color: "#428bca",
+    textDecoration: "none",
   },
 })
 
@@ -97,7 +99,7 @@ export const ErrorPage = (props: Props) => {
               If the problem persists, please email us at{" "}
               dictybase@northwestern.edu
             </p>
-            <RouterLink to="/">
+            <Link className={classes.link} to="/">
               <Button
                 className={classes.backButton}
                 size="small"
@@ -105,7 +107,7 @@ export const ErrorPage = (props: Props) => {
                 color="default">
                 Back to homepage
               </Button>
-            </RouterLink>
+            </Link>
           </div>
         </Grid>
       </Grid>
@@ -126,7 +128,7 @@ export const ErrorPage = (props: Props) => {
               You can try one of the links in our navbar above, or head back to
               the homepage.
             </p>
-            <RouterLink to="/">
+            <Link className={classes.link} to="/">
               <Button
                 className={classes.backButton}
                 size="small"
@@ -134,7 +136,7 @@ export const ErrorPage = (props: Props) => {
                 color="primary">
                 Back to homepage
               </Button>
-            </RouterLink>
+            </Link>
 
             <Authorization
               render={({ canEditPages, verifiedToken }) => (
@@ -142,7 +144,8 @@ export const ErrorPage = (props: Props) => {
                   {canEditPages && verifiedToken && (
                     <div>
                       <br />
-                      <RouterLink
+                      <Link
+                        className={classes.link}
                         to={{
                           pathname: "/addpage",
                           state: {
@@ -159,7 +162,7 @@ export const ErrorPage = (props: Props) => {
                           <AddIcon />
                           &nbsp; Add a page to this route
                         </Button>
-                      </RouterLink>
+                      </Link>
                     </div>
                   )}
                 </Grid>
@@ -187,7 +190,7 @@ export const ErrorPage = (props: Props) => {
             </a>
             .
           </p>
-          <RouterLink to="/">
+          <Link className={classes.link} to="/">
             <Button
               className={classes.backButton}
               size="small"
@@ -195,7 +198,7 @@ export const ErrorPage = (props: Props) => {
               color="primary">
               Back to Homepage
             </Button>
-          </RouterLink>
+          </Link>
         </div>
       </Grid>
     </Grid>
