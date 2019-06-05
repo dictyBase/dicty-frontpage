@@ -6,6 +6,8 @@ import InlineEditor from "components/editor/InlineEditor"
 import { fetchPage } from "actions/editablePages"
 import { NAMESPACE } from "constants/namespace"
 
+const slugName = `${NAMESPACE}-specialthanks`
+
 type Props = {
   /** Represents whether component is loading or not */
   isFetching: boolean,
@@ -28,7 +30,7 @@ class SpecialThanks extends Component<Props> {
     },
   }
   componentDidMount() {
-    this.props.fetchPage(`${NAMESPACE}-specialthanks`)
+    this.props.fetchPage(slugName)
   }
   render() {
     const { isFetching, page } = this.props
@@ -47,13 +49,10 @@ class SpecialThanks extends Component<Props> {
   }
 }
 
-const mapStateToProps = state => {
-  const slugName = `${NAMESPACE}-specialthanks`
-  return {
-    isFetching: state.editablePages.isFetching,
-    page: state.editablePages[slugName],
-  }
-}
+const mapStateToProps = state => ({
+  isFetching: state.editablePages.isFetching,
+  page: state.editablePages[slugName],
+})
 
 export default connect(
   mapStateToProps,
