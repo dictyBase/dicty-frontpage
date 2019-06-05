@@ -4,12 +4,12 @@ import { connect } from "react-redux"
 import { Editor, getEventTransfer, getEventRange } from "slate-react"
 import { Value } from "slate"
 import { withStyles } from "@material-ui/core/styles"
-import Grid from "@material-ui/core/Grid"
 import Button from "@material-ui/core/Button"
 import CreateIcon from "@material-ui/icons/Create"
 
 import Authorization from "components/authentication/Authorization"
 import EditorToolbar from "./toolbar/EditorToolbar"
+import PageEditorBottomButtons from "./PageEditorBottomButtons"
 import schema from "./schema/schema"
 import { insertImage } from "./plugins/image"
 import { onPasteHtml, onPasteText } from "./utils/utils"
@@ -291,18 +291,52 @@ class InlineEditor extends Component<Props, State> {
     const { readOnly, value } = this.state
     const { classes, page } = this.props
 
-    return (
-      <div>
-        {!readOnly && (
-          <EditorToolbar
-            editor={this.editor.current}
+    if (readOnly) {
+      return (
+        <>
+          <Editor
+            className={classes.editor}
             value={value}
             onChange={this.onChange}
-            page={page}
-            onSave={this.onSave}
+            onPaste={this.onPaste}
+            onDrop={this.onDrop}
+            renderMark={renderMark}
+            renderNode={renderNode}
+            readOnly={readOnly}
+            plugins={plugins}
+            schema={schema}
+            ref={this.editor}
           />
-        )}
+          <Authorization
+            render={({ canEditPages, verifiedToken }) => (
+              <div>
+                {canEditPages && verifiedToken && readOnly && (
+                  <span>
+                    <Button
+                      className={classes.editButton}
+                      color="primary"
+                      onClick={this.onEdit}
+                      title="Edit">
+                      <CreateIcon className={classes.icon} /> Edit
+                    </Button>
+                  </span>
+                )}
+              </div>
+            )}
+          />
+        </>
+      )
+    }
 
+    return (
+      <>
+        <EditorToolbar
+          editor={this.editor.current}
+          value={value}
+          onChange={this.onChange}
+          page={page}
+          onSave={this.onSave}
+        />
         <Editor
           className={classes.editor}
           value={value}
@@ -316,51 +350,11 @@ class InlineEditor extends Component<Props, State> {
           schema={schema}
           ref={this.editor}
         />
-
-        <Authorization
-          render={({ canEditPages, verifiedToken }) => (
-            <div>
-              {canEditPages && verifiedToken && readOnly && (
-                <span>
-                  <Button
-                    className={classes.editButton}
-                    color="primary"
-                    onClick={this.onEdit}
-                    title="Edit">
-                    <CreateIcon className={classes.icon} /> Edit
-                  </Button>
-                </span>
-              )}
-            </div>
-          )}
+        <PageEditorBottomButtons
+          onSave={this.onSave}
+          onCancel={this.onCancel}
         />
-
-        <Grid container justify="flex-end">
-          <Grid item xs={2} className={classes.buttonGrid}>
-            {!readOnly && (
-              <Button
-                className={classes.cancelButton}
-                size="small"
-                variant="contained"
-                onClick={this.onCancel}>
-                Cancel
-              </Button>
-            )}
-          </Grid>
-          <Grid item xs={2} className={classes.buttonGrid}>
-            {!readOnly && (
-              <Button
-                className={classes.saveButton}
-                size="small"
-                variant="contained"
-                color="primary"
-                onClick={this.onSave}>
-                Save
-              </Button>
-            )}
-          </Grid>
-        </Grid>
-      </div>
+      </>
     )
   }
 }
