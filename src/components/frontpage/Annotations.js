@@ -4,23 +4,71 @@ import { withStyles } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
 import FontAwesome from "react-fontawesome"
 
-import {
-  AnnotationTitle,
-  AnnotationSubTitle,
-  AnnotationHeader,
-  ListBox,
-  AnnotationListItems,
-  AnnotationContainer,
-  MoreLink,
-} from "styles"
-
 const styles = theme => ({
-  container: {
+  mainContainer: {
+    textAlign: "center",
+    color: "#084b8a",
+    backgroundColor: "#e6f2ff",
+    padding: "5px 5px 0 5px",
+    borderTopLeftRadius: "4px",
+    borderTopRightRadius: "4px",
+    marginBottom: "10px",
+  },
+  innerContainer: {
     margin: "auto",
   },
   box: {
     padding: "1px 2px 1px 2px",
     marginTop: "-2px",
+  },
+  listItem: {
+    listStyle: "none",
+  },
+  title: {
+    paddingLeft: "5px",
+    fontWeight: "bold",
+  },
+  header: {
+    color: "#0489b1",
+    fontSize: "16px",
+    borderTopLeftRadius: "5px",
+    borderTopRightRadius: "5px",
+    backgroundColor: "#fff",
+    verticalAlign: "middle",
+    textAlign: "center",
+    padding: "10px 0 10px 0",
+    marginBottom: "10px",
+
+    "@media (maxWidth: 767px)": {
+      fontSize: "18px",
+      textAlign: "center",
+    },
+  },
+  listBox: {
+    padding: "0px 25px 10px 25px",
+    fontSize: "12px",
+    marginBottom: "5px",
+    paddingBottom: "0px",
+    marginTop: "0px",
+    "@media (max-width: 992px) and (min-width: 767px)": {
+      fontSize: "10px",
+    },
+    "@media (max-width: 768px)": {
+      fontSize: "16px",
+    },
+  },
+  plusSign: {
+    color: "#0b3861",
+    fontSize: "11px",
+    fontStyle: "italic",
+    fontWeight: "normal",
+    textAlign: "center",
+    paddingBottom: "0px",
+
+    "@media (min-width: 1400px)": {
+      paddingTop: "30px",
+      fontSize: "12px",
+    },
   },
 })
 
@@ -37,40 +85,40 @@ const Annotations = (props: Props) => {
   const { annotations, classes } = props
 
   const genelist = annotations.genes.map((gene, index) => (
-    <AnnotationListItems key={index}>{gene}</AnnotationListItems>
+    <li className={classes.listItem} key={index}>
+      {gene}
+    </li>
   ))
 
   const paperlist = annotations.papers.map((paper, index) => (
-    <AnnotationListItems key={index}>{paper}</AnnotationListItems>
+    <li className={classes.listItem} key={index}>
+      {paper}
+    </li>
   ))
 
   return (
-    <AnnotationContainer>
-      <AnnotationHeader>
+    <div className={classes.mainContainer}>
+      <div className={classes.header}>
         <FontAwesome name="pencil fa-md" />
-        <AnnotationTitle>RECENT ANNOTATIONS</AnnotationTitle>
-      </AnnotationHeader>
-      <Grid container className={classes.container} wrap="wrap">
+        <span className={classes.title}>RECENT ANNOTATIONS</span>
+      </div>
+      <Grid container className={classes.innerContainer}>
         <Grid item className={classes.box} xs={6}>
-          <AnnotationSubTitle>Genes</AnnotationSubTitle>
-          <ListBox margintop="0px" padbottom="0px">
-            {genelist}
-          </ListBox>
-          <MoreLink padbottom="0px">
+          <span className={classes.title}>Genes</span>
+          <ul className={classes.listBox}>{genelist}</ul>
+          <div className={classes.plusSign}>
             <FontAwesome name="plus fa-xs" />
-          </MoreLink>
+          </div>
         </Grid>
         <Grid item className={classes.box} xs={6}>
-          <AnnotationSubTitle>Papers</AnnotationSubTitle>
-          <ListBox margintop="0px" padbottom="0px">
-            {paperlist}
-          </ListBox>
-          <MoreLink padbottom="0px">
+          <span className={classes.title}>Papers</span>
+          <ul className={classes.listBox}>{paperlist}</ul>
+          <div className={classes.plusSign}>
             <FontAwesome name="plus fa-xs" />
-          </MoreLink>
+          </div>
         </Grid>
       </Grid>
-    </AnnotationContainer>
+    </div>
   )
 }
 
