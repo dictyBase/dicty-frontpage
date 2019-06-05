@@ -1,26 +1,95 @@
 // @flow
 import React from "react"
+import { withStyles } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
 import FontAwesome from "react-fontawesome"
 
-import {
-  PaperContainer,
-  PaperTitle,
-  Header,
-  ListBox,
-  ListItems,
-  LeadText,
-  MainContent,
-  SourceContent,
-  SourceTitle,
-  Link,
-  MoreLink,
-  // RouterLink,
-} from "styles"
+const styles = theme => ({
+  container: {
+    textAlign: "left",
+    paddingLeft: "10px",
+    paddingRight: "10px",
+    paddingBottom: "10px",
+    backgroundColor: "#eff8fb",
+    borderRadius: "15px",
+    marginBottom: "10px",
+    maxHeight: "440px",
+    overflow: "auto",
+    "@media (max-width: 768px)": {
+      height: "350px",
+    },
+  },
+  title: {
+    paddingLeft: "5px",
+    color: "#086a87",
+    fontSize: "20px",
+    verticalAlign: "top",
+    textAlign: "left",
+  },
+  header: {
+    color: "black",
+    fontSize: "20px",
+    padding: "15px 30px 0px 35px",
+    verticalAlign: "top",
+    textAlign: "right",
 
-/** Widget that displays the latest Dicty papers */
+    "@media (max-width: 767px)": {
+      fontSize: "24px",
+      textAlign: "right",
+      padding: "20px 5px 20px 15px",
+    },
+  },
+  listBox: {
+    padding: "0px 25px 10px 25px",
+    fontSize: "12px",
+    marginBottom: "5px",
+    marginTop: "12px",
+    "@media (max-width: 992px) and (min-width: 767px)": {
+      fontSize: "10px",
+    },
+    "@media (max-width: 768px)": {
+      fontSize: "16px",
+    },
+  },
+  listItem: {
+    listStyle: "none",
+    marginBottom: "10px",
+  },
+  leadText: {
+    color: "#0b3861",
+    paddingRight: "10px",
+  },
+  mainContent: {
+    paddingRight: "10px",
+  },
+  sourceContent: {
+    color: "#0b3861",
+  },
+  sourceTitle: {
+    paddingTop: "7px",
+    fontWeight: "bold",
+    textAlign: "center",
+  },
+  link: {
+    textDecoration: "none",
+    color: "#428bca",
+  },
+  bottomLink: {
+    color: "#0b3861",
+    fontSize: "11px",
+    fontStyle: "italic",
+    fontWeight: "normal",
+    textAlign: "center",
+    paddingBottom: "10px",
 
-const Papers = (props: {
+    "@media (min-width: 1400px)": {
+      paddingTop: "30px",
+      fontSize: "12px",
+    },
+  },
+})
+
+type Props = {
   /** List of paper items */
   papers: Array<{
     id: number,
@@ -29,47 +98,59 @@ const Papers = (props: {
     journal: string,
     link: string,
   }>,
-}) => {
-  const text = props.papers.map((paper, index) => (
-    <ListItems key={index}>
-      <LeadText>{paper.author}</LeadText>
-      <MainContent>
+  /** Material-UI styling */
+  classes: Object,
+}
+
+/** Widget that displays the latest Dicty papers */
+
+const Papers = (props: Props) => {
+  const { papers, classes } = props
+
+  const text = papers.map((paper, index) => (
+    <li className={classes.listItem} key={index}>
+      <span className={classes.leadText}>{paper.author}</span>
+      <span className={classes.mainContent}>
         <strong>
           <em>{paper.title}</em>
         </strong>
-      </MainContent>
+      </span>
       <br />
-      <SourceContent>
-        <SourceTitle>Journal: </SourceTitle>
+      <span className={classes.sourceContent}>
+        <span className={classes.sourceTitle}>Journal: </span>
         {paper.journal}
-        <Link href={paper.link} target="new">
+        <a
+          className={classes.link}
+          href={paper.link}
+          target="_blank"
+          rel="noopener noreferrer">
           {" "}
           Pubmed
-        </Link>
-      </SourceContent>
-    </ListItems>
+        </a>
+      </span>
+    </li>
   ))
 
   return (
-    <PaperContainer>
-      <Header>
-        <Grid container wrap="wrap">
-          <PaperTitle>
+    <div className={classes.container}>
+      <div className={classes.header}>
+        <Grid container>
+          <span className={classes.title}>
             <FontAwesome name="paperclip fa-lg" />
-          </PaperTitle>
-          <PaperTitle>LATEST PAPERS</PaperTitle>
+          </span>
+          <span className={classes.title}>LATEST PAPERS</span>
         </Grid>
-      </Header>
-      <ListBox>{text}</ListBox>
-      <MoreLink>
+      </div>
+      <ul className={classes.listBox}>{text}</ul>
+      <div className={classes.bottomLink}>
         {/* <FontAwesome name="plus" />
-        <RouterLink to="/papers" alt="more papers">
+        <Link to="/papers" alt="more papers">
           {" "}
           more papers{" "}
-        </RouterLink> */}
-      </MoreLink>
-    </PaperContainer>
+        </Link> */}
+      </div>
+    </div>
   )
 }
 
-export default Papers
+export default withStyles(styles)(Papers)

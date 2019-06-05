@@ -1,12 +1,24 @@
 import React, { Component } from "react"
 import Grid from "@material-ui/core/Grid"
 import { withStyles } from "@material-ui/core/styles"
-import { PaperContainer } from "styles"
 
-// eslint-disable-next-line
 const styles = theme => ({
   gridContainer: {
     marginTop: "33px",
+  },
+  innerContainer: {
+    textAlign: "left",
+    paddingLeft: "10px",
+    paddingRight: "10px",
+    paddingBottom: "10px",
+    backgroundColor: "#eff8fb",
+    borderRadius: "15px",
+    marginBottom: "10px",
+    maxHeight: "440px",
+    overflow: "auto",
+    "@media (max-width: 768px)": {
+      height: "350px",
+    },
   },
 })
 
@@ -38,7 +50,7 @@ class ErrorBoundary extends Component {
       return (
         <Grid className={classes.gridContainer} container justify="center">
           <Grid item xs={6}>
-            <PaperContainer>
+            <div className={classes.innerContainer}>
               <center>
                 <h2>Sorry! There was an error loading this page.</h2>
                 <p>Something went wrong behind the scenes.</p>
@@ -51,7 +63,7 @@ class ErrorBoundary extends Component {
                   .
                 </p>
               </center>
-            </PaperContainer>
+            </div>
           </Grid>
         </Grid>
       )
