@@ -1,6 +1,7 @@
 // @flow
 import React from "react"
 import Grid from "@material-ui/core/Grid"
+import Tooltip from "@material-ui/core/Tooltip"
 import IconButton from "@material-ui/core/IconButton"
 import { withStyles } from "@material-ui/core/styles"
 import Authorization from "components/authentication/Authorization"
@@ -105,12 +106,13 @@ const InfoPageViewToolbar = (props: Props) => {
                     {fetchedUserData.getRoles()}
                   </span>
                   {verifiedToken && (
-                    <IconButton
-                      className={classes.editButton}
-                      onClick={handleClick}
-                      title="Edit">
-                      <FontAwesome name="pencil" title="Edit page" />
-                    </IconButton>
+                    <Tooltip title="Edit Page" placement="bottom">
+                      <IconButton
+                        className={classes.editButton}
+                        onClick={handleClick}>
+                        <FontAwesome name="pencil" />
+                      </IconButton>
+                    </Tooltip>
                   )}
                 </Grid>
               </Grid>
