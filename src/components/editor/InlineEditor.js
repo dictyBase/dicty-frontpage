@@ -10,35 +10,14 @@ import CreateIcon from "@material-ui/icons/Create"
 import Authorization from "components/authentication/Authorization"
 import EditorToolbar from "./toolbar/EditorToolbar"
 import PageEditorBottomButtons from "./PageEditorBottomButtons"
+import renderMark from "./renderers/renderMark"
+import renderNode from "./renderers/renderNode"
 import schema from "./schema/schema"
 import { insertImage } from "./plugins/image"
 import { onPasteHtml, onPasteText } from "./utils/utils"
 import { editInline, saveInlineEditing } from "actions/editablePages"
 import styles from "./editorStyles"
 import placeholder from "./data/existingPagePlaceholder.json"
-
-/** Import mark renderers */
-import { BoldMark } from "./plugins/bold"
-import { FontColorMark } from "./plugins/fontcolor"
-import { FontFamilyMark } from "./plugins/fontfamily"
-import { FontSizeMark } from "./plugins/fontsize"
-import { ItalicMark } from "./plugins/italic"
-import { StrikethroughMark } from "./plugins/strikethrough"
-import { UnderlineMark } from "./plugins/underline"
-
-/** Import node renderers */
-import { AlignmentNode } from "./plugins/alignment"
-import { DividerNode } from "./plugins/divider"
-import { H1Node, H2Node, H3Node } from "./plugins/heading"
-import { ImageNode } from "./plugins/image"
-import { LinkNode } from "./plugins/link"
-import {
-  ListItemNode,
-  OrderedListNode,
-  UnorderedListNode,
-} from "./plugins/list"
-import { TableNode, TableRowNode, TableCellNode } from "./plugins/table"
-import { VideoNode } from "./plugins/video"
 
 /** Import custom plugins */
 import { AlignmentPlugin } from "./plugins/alignment"
@@ -65,94 +44,7 @@ const plugins = [
   UnderlinePlugin(),
 ]
 
-type markProps = {
-  mark: Object,
-}
-
 type Ref = { current: React.createRef<any> | null }
-
-/**
- * Necessary renderMark function that receives the mark type then renders the HTML
- * In our case, we are returning custom components
- */
-export const renderMark = (
-  props: markProps,
-  editor: Object,
-  next: Function,
-) => {
-  const { mark } = props
-
-  switch (mark.type) {
-    case "bold":
-      return <BoldMark {...props} />
-    case "font-color":
-      return <FontColorMark {...props} />
-    case "font-family":
-      return <FontFamilyMark {...props} />
-    case "font-size":
-      return <FontSizeMark {...props} />
-    case "italic":
-      return <ItalicMark {...props} />
-    case "strikethrough":
-      return <StrikethroughMark {...props} />
-    case "underline":
-      return <UnderlineMark {...props} />
-
-    default:
-      return next()
-  }
-}
-
-type nodeProps = {
-  node: Object,
-  attributes: Object,
-  children: any,
-}
-
-/**
- * Similar to renderMark above, except now we are working with nodes.
- */
-export const renderNode = (
-  props: nodeProps,
-  editor: Object,
-  next: Function,
-) => {
-  const { node } = props
-
-  switch (node.type) {
-    case "alignment":
-      return <AlignmentNode {...props} />
-    case "divider":
-      return <DividerNode {...props} />
-    case "h1":
-      return <H1Node {...props} />
-    case "h2":
-      return <H2Node {...props} />
-    case "h3":
-      return <H3Node {...props} />
-    case "image":
-      return <ImageNode {...props} />
-    case "link":
-      return <LinkNode {...props} />
-    case "list-item":
-      return <ListItemNode {...props} />
-    case "unordered-list":
-      return <UnorderedListNode {...props} />
-    case "ordered-list":
-      return <OrderedListNode {...props} />
-    case "table":
-      return <TableNode {...props} />
-    case "table-row":
-      return <TableRowNode {...props} />
-    case "table-cell":
-      return <TableCellNode {...props} />
-    case "video":
-      return <VideoNode {...props} />
-
-    default:
-      return next()
-  }
-}
 
 type Props = {
   /** The object holding the fetched page content */

@@ -28,7 +28,7 @@ const BoldPlugin = options => ({
 })
 ```
 
-4. Implement this use case into the `renderMark` function. This is a switch statement that receives the mark type (in this case, "bold" as specified by `editor.toggleMark("bold`) then renders the HTML. This is not inside the plugin directory itself; it is used by the editor.
+4. Implement this use case into the `renderMark` function (inside the `renderer` folder). This is a switch statement that receives the mark type (in this case, "bold" as specified by `editor.toggleMark("bold`) then renders the HTML. This is not inside the plugin directory itself; it is used by the editor.
 
 ```
 const renderMark = (props: Props) => {
