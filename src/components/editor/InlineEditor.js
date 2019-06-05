@@ -99,8 +99,8 @@ export class InlineEditor extends Component<Props, State> {
     this.setState({ value })
   }
 
-  onEdit = e => {
-    e.preventDefault()
+  onEdit = (event: SyntheticEvent<>) => {
+    event.preventDefault()
     this.setState({
       readOnly: false,
     })

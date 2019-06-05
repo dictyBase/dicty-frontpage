@@ -186,20 +186,20 @@ export class PageEditor extends Component<Props, State> {
     }
   }
 
-  onPaste = (e: SyntheticEvent<>, editor, next) => {
-    const transfer = getEventTransfer(e)
+  onPaste = (event: SyntheticEvent<>, editor: Object, next: Function) => {
+    const transfer = getEventTransfer(event)
     const { type } = transfer
     switch (type) {
       case "text":
-        return onPasteText(e, this.editor.current, next)
+        return onPasteText(event, this.editor.current, next)
       case "html":
-        return onPasteHtml(e, this.editor.current, next)
+        return onPasteHtml(event, this.editor.current, next)
       default:
         return next()
     }
   }
 
-  onDrop = (event, change, editor) => {
+  onDrop = (event: SyntheticEvent<>, change: Object, editor: Object) => {
     const target = getEventRange(event, change.value)
     if (!target && event.type === "drop") return
 
