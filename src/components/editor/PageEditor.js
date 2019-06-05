@@ -210,7 +210,7 @@ type State = {
  * This is a reusable Slate page editor component.
  */
 
-class PageEditor extends Component<Props, State> {
+export class PageEditor extends Component<Props, State> {
   editor: Ref // necessary for Flow
   constructor(props: Props) {
     super(props)
