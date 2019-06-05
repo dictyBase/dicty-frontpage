@@ -75,7 +75,7 @@ type State = {
  * with specific inline editing functions and authorization.
  */
 
-class InlineEditor extends Component<Props, State> {
+export class InlineEditor extends Component<Props, State> {
   editor: Ref // necessary for Flow
   constructor(props: Props) {
     super(props)
