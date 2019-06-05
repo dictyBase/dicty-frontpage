@@ -22,6 +22,9 @@ const styles = theme => ({
   link: {
     textDecoration: "none",
   },
+  container: {
+    fontFamily: "Roboto, sans-serif",
+  },
 })
 
 type Props = {
@@ -35,7 +38,7 @@ const HelpMuiModal = (props: Props) => {
   const { classes, handleClose } = props
 
   return (
-    <Dialog open={true} onClose={handleClose}>
+    <Dialog className={classes.container} open={true} onClose={handleClose}>
       <DialogTitle id="help-dialog-title">Editor Help</DialogTitle>
       <DialogContent>
         <Grid container justify="center" direction="column">
