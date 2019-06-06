@@ -88,7 +88,7 @@ const LinkNode = ({ attributes, children, node: { data } }: NodeProps) => (
 /**
  * Button components that use click handlers to connect to the editor.
  */
-const LinkButtonUnconnected = ({ classes, editor, value }: ButtonProps) => {
+const LinkButtonUnconnected = ({ classes, editor }: ButtonProps) => {
   const [linkModalOpen, setLinkModalOpen] = useState(false)
   const [url, setURL] = useState("")
   const [text, setText] = useState("")
@@ -100,148 +100,95 @@ const LinkButtonUnconnected = ({ classes, editor, value }: ButtonProps) => {
     emailChecked,
   }
 
-  // if the user has highlighted some text for a link,
-  // then use this logic
-  if (editor && editor.value.selection.isExpanded) {
-    let existingURL = editor.value.inlines.find(el => el.data.get("href"))
-    let defaultURL
-    if (existingURL !== undefined) {
-      defaultURL = existingURL.data.get("href")
+  const handleToolbarButtonLink = () => {
+    if (editor && editor.value.selection.isExpanded) {
+      let existingURL = editor.value.inlines.find(el => el.data.get("href"))
+      let defaultURL
+      if (existingURL !== undefined) {
+        defaultURL = existingURL.data.get("href")
+      } else {
+        defaultURL = ""
+      }
+      setLinkModalOpen(true)
+      setURL(defaultURL)
+      setText(editor.value.fragment.text)
     } else {
-      defaultURL = ""
+      setURL("")
+      setText("")
+      setLinkModalOpen(true)
     }
-
-    return (
-      <>
-        <Tooltip title="Link" placement="bottom">
-          <ToolbarButton
-            onClick={() => {
-              setLinkModalOpen(true)
-              setURL(defaultURL)
-              setText(editor.value.fragment.text)
-            }}>
-            <LinkIcon />
-          </ToolbarButton>
-        </Tooltip>
-        {linkModalOpen && (
-          <Dialog
-            open={linkModalOpen}
-            onClose={() => setLinkModalOpen(false)}
-            aria-labelledby="link-dialog-title">
-            <DialogTitle id="link-dialog-title">Link Details</DialogTitle>
-            <DialogContent>
-              <TextField
-                autoFocus
-                margin="dense"
-                id="url"
-                label={emailChecked ? "Email Address" : "URL"}
-                type="url"
-                defaultValue={url}
-                onChange={e => setURL(e.target.value)}
-                fullWidth
-              />
-              <TextField
-                margin="dense"
-                id="text"
-                label="Text"
-                type="text"
-                defaultValue={text}
-                onChange={e => setText(e.target.value)}
-                fullWidth
-              />
-              <FormGroup row>
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      checked={emailChecked}
-                      onChange={() => setEmailChecked(!emailChecked)}
-                      value="email"
-                    />
-                  }
-                  label="Is this an email link?"
-                />
-              </FormGroup>
-            </DialogContent>
-            <DialogActions>
-              <Button
-                onClick={() => {
-                  setLinkModalOpen(false)
-                  insertLinkStrategy(editor, data)
-                }}
-                className={classes.basicButton}
-                variant="contained"
-                color="primary">
-                Add Link
-              </Button>
-            </DialogActions>
-          </Dialog>
-        )}
-      </>
-    )
   }
 
-  // otherwise, use an empty form
-  return (
-    <>
+  const handleAddButtonClick = () => {
+    setLinkModalOpen(false)
+    insertLinkStrategy(editor, data)
+  }
+
+  if (!linkModalOpen) {
+    return (
       <Tooltip title="Link" placement="bottom">
-        <ToolbarButton
-          onClick={e => {
-            setLinkModalOpen(true)
-          }}>
+        <ToolbarButton onClick={handleToolbarButtonLink}>
           <LinkIcon />
         </ToolbarButton>
       </Tooltip>
-      {linkModalOpen && (
-        <Dialog
-          open={linkModalOpen}
-          onClose={() => setLinkModalOpen(false)}
-          aria-labelledby="link-dialog-title">
-          <DialogTitle id="link-dialog-title">Link Details</DialogTitle>
-          <DialogContent>
-            <TextField
-              autoFocus
-              margin="dense"
-              id="url"
-              label={emailChecked ? "Email Address" : "URL"}
-              type="url"
-              onChange={e => setURL(e.target.value)}
-              fullWidth
+    )
+  }
+
+  return (
+    <>
+      <Tooltip title="Link" placement="bottom">
+        <ToolbarButton onClick={handleToolbarButtonLink}>
+          <LinkIcon />
+        </ToolbarButton>
+      </Tooltip>
+      <Dialog
+        open={linkModalOpen}
+        onClose={() => setLinkModalOpen(false)}
+        aria-labelledby="link-dialog-title">
+        <DialogTitle id="link-dialog-title">Link Details</DialogTitle>
+        <DialogContent>
+          <TextField
+            autoFocus
+            margin="dense"
+            id="url"
+            label={emailChecked ? "Email Address" : "URL"}
+            type="url"
+            defaultValue={url}
+            onChange={e => setURL(e.target.value)}
+            fullWidth
+          />
+          <TextField
+            margin="dense"
+            id="text"
+            label="Text"
+            type="text"
+            defaultValue={text ? text : ""}
+            onChange={e => setText(e.target.value)}
+            fullWidth
+          />
+          <FormGroup row>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={emailChecked}
+                  onChange={() => setEmailChecked(!emailChecked)}
+                  value="email"
+                />
+              }
+              label="Is this an email link?"
             />
-            <TextField
-              margin="dense"
-              id="text"
-              label="Text"
-              type="text"
-              onChange={e => setText(e.target.value)}
-              fullWidth
-            />
-            <FormGroup row>
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    checked={emailChecked}
-                    onChange={() => setEmailChecked(!emailChecked)}
-                    value="email"
-                  />
-                }
-                label="Is this an email link?"
-              />
-            </FormGroup>
-          </DialogContent>
-          <DialogActions>
-            <Button
-              onClick={() => {
-                setLinkModalOpen(false)
-                insertLinkStrategy(editor, data)
-              }}
-              className={classes.basicButton}
-              variant="contained"
-              color="primary">
-              Add Link
-            </Button>
-          </DialogActions>
-        </Dialog>
-      )}
+          </FormGroup>
+        </DialogContent>
+        <DialogActions>
+          <Button
+            onClick={handleAddButtonClick}
+            className={classes.basicButton}
+            variant="contained"
+            color="primary">
+            Add Link
+          </Button>
+        </DialogActions>
+      </Dialog>
     </>
   )
 }

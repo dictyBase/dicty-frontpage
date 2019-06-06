@@ -126,7 +126,7 @@ export class PageEditor extends Component<Props, State> {
 
   render() {
     const { readOnly, value } = this.state
-    const { classes, page, onSave, onCancel } = this.props
+    const { classes, onSave, onCancel } = this.props
 
     if (readOnly) {
       return (
@@ -149,7 +149,6 @@ export class PageEditor extends Component<Props, State> {
       <>
         <EditorToolbar
           editor={this.editor.current}
-          page={page}
           onSave={() => onSave(value)}
         />
         <Editor
