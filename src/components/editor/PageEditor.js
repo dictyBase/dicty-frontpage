@@ -249,8 +249,6 @@ export class PageEditor extends Component<Props, State> {
       <>
         <EditorToolbar
           editor={this.editor.current}
-          value={value}
-          onChange={this.onChange}
           page={page}
           onSave={this.onSave}
         />
