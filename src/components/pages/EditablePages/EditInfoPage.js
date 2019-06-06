@@ -60,17 +60,17 @@ class EditInfoPage extends React.Component<Props, null> {
   }
 
   render() {
-    const { page, match, classes } = this.props
+    const { page, classes } = this.props
 
     return (
       <Grid container justify="center">
         <Grid item xs={11} lg={8}>
           <div className={classes.editor}>
             <PageEditor
-              page={page}
-              match={match}
+              pageContent={page.data.attributes.content}
               onCancel={this.onCancel}
               onSave={this.onSave}
+              readOnly={false}
             />
           </div>
         </Grid>

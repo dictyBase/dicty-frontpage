@@ -89,7 +89,6 @@ class AddPage extends React.Component<Props> {
       location: {
         state: { url },
       },
-      match,
       classes,
     } = this.props
 
@@ -113,15 +112,10 @@ class AddPage extends React.Component<Props> {
                   <PageEditor
                     onCancel={this.onCancel}
                     onSave={this.onSave}
-                    match={match}
-                    readOnly={false}
                     newPage={true}
                   />
                 </Grid>
               </Grid>
-            )}
-            {!canEditPages && (
-              <ErrorNotification error="You have reached this page in error." />
             )}
           </div>
         )}

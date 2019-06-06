@@ -42,20 +42,7 @@ type Ref = { current: React.createRef<any> | null }
 
 type Props = {
   /** The fetched page content */
-  page: {
-    /** All data related to this content */
-    data: {
-      /** ID of content from API server */
-      id: string,
-      /** Data attributes for piece of content */
-      attributes: {
-        /** Slate-compatible JSON */
-        content: string,
-      },
-    },
-  },
-  /** React Router's match object */
-  match: Object,
+  pageContent?: string,
   /** Whether the editor is in read-only mode or not */
   readOnly: boolean,
   /** ID of current logged in user */
@@ -86,10 +73,9 @@ export class PageEditor extends Component<Props, State> {
   constructor(props: Props) {
     super(props)
 
-    if (props.page) {
+    if (props.pageContent) {
       this.state = {
-        // Initial value of editor
-        value: Value.fromJSON(JSON.parse(props.page.data.attributes.content)),
+        value: Value.fromJSON(JSON.parse(props.pageContent)),
         readOnly: props.readOnly,
       }
     } else if (props.newPage) {

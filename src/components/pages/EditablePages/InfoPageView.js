@@ -24,19 +24,18 @@ type Props = {
 export class InfoPageView extends Component<Props> {
   componentDidMount() {
     const { page, fetchUserInfo } = this.props
-
     const fetchedUser = new ContentAPI(page).getUser()
     fetchUserInfo(fetchedUser)
   }
 
-  handleClick = (e: SyntheticEvent<>) => {
+  handleClick = (event: SyntheticEvent<>) => {
     const { editPage, match, page } = this.props
-    e.preventDefault()
+    event.preventDefault()
     editPage(page.data.attributes.content, match.url)
   }
 
   render() {
-    const { page, match } = this.props
+    const { page } = this.props
 
     return (
       <Grid container justify="center">
@@ -45,7 +44,7 @@ export class InfoPageView extends Component<Props> {
             handleClick={this.handleClick}
             updated_at={page.data.attributes.updated_at}
           />
-          <PageEditor page={page} readOnly match={match} />
+          <PageEditor pageContent={page.data.attributes.content} readOnly />
         </Grid>
       </Grid>
     )
