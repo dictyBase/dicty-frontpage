@@ -1,22 +1,14 @@
 // @flow
 import React, { Component } from "react"
-import { connect } from "react-redux"
-import { Editor, getEventTransfer, getEventRange } from "slate-react"
+import { Editor, getEventTransfer } from "slate-react"
 import { Value } from "slate"
 import { withStyles } from "@material-ui/core/styles"
-
 import EditorToolbar from "./toolbar/EditorToolbar"
 import PageEditorBottomButtons from "./PageEditorBottomButtons"
 import renderMark from "./renderers/renderMark"
 import renderNode from "./renderers/renderNode"
 import schema from "./schema/schema"
-import { insertImage } from "./plugins/image"
 import { onPasteHtml, onPasteText } from "./utils/utils"
-import {
-  saveEditing,
-  cancelEditing,
-  addEditablePage,
-} from "actions/editablePages"
 import styles from "./editorStyles"
 import existingPagePlaceholder from "./data/existingPagePlaceholder.json"
 import newPagePlaceholder from "./data/newPagePlaceholder.json"
@@ -32,8 +24,8 @@ import { TablePlugin } from "./plugins/table"
 import { UnderlinePlugin } from "./plugins/underline"
 
 /**
- * All of the plugins that go into our editor
- * These are generally keyboard shortcuts
+ * All of the plugins that go into our editor.
+ * These are generally keyboard shortcuts.
  */
 const plugins = [
   AlignmentPlugin(),
@@ -62,12 +54,6 @@ type Props = {
       },
     },
   },
-  /** Action to fetch page content from API server */
-  fetchPage: Function,
-  /** Action that saves page editor content to API server */
-  saveEditing: Function,
-  /** Action that cancels page editing and redirects to main route */
-  cancelEditing: Function,
   /** React Router's match object */
   match: Object,
   /** Whether the editor is in read-only mode or not */
@@ -76,12 +62,12 @@ type Props = {
   userId: string,
   /** Material-UI styling */
   classes: Object,
-  /** Slug name to be used in page creation */
-  slug?: string,
-  /** URL path for which a new page will be created */
-  url?: string,
-  /** Action for posting new page content to the API server */
-  addEditablePage: Function,
+  /** Identifier for when user is trying to create a new page */
+  newPage?: string,
+  /** Function called when user clicks save button */
+  onSave: Function,
+  /** Function called when user clicks cancel button */
+  onCancel: Function,
 }
 
 type State = {
@@ -106,7 +92,7 @@ export class PageEditor extends Component<Props, State> {
         value: Value.fromJSON(JSON.parse(props.page.data.attributes.content)),
         readOnly: props.readOnly,
       }
-    } else if (props.slug) {
+    } else if (props.newPage) {
       this.state = {
         value: Value.fromJSON(newPagePlaceholder),
         readOnly: props.readOnly,
@@ -125,67 +111,6 @@ export class PageEditor extends Component<Props, State> {
     this.setState({ value })
   }
 
-  onCancel = () => {
-    const { value } = this.state
-    const { slug } = this.props
-
-    this.setState({
-      value,
-      readOnly: true,
-    })
-    const { cancelEditing, match } = this.props
-    if (slug) {
-      cancelEditing(match.url.slice(0, -7))
-    } else {
-      cancelEditing(match.url.slice(0, -5))
-    }
-  }
-
-  // on save, save the value to the content API server
-  onSave = () => {
-    const { value } = this.state
-    const {
-      page,
-      saveEditing,
-      match,
-      userId,
-      slug,
-      url,
-      addEditablePage,
-    } = this.props
-    const content = JSON.stringify(value.toJSON())
-
-    if (slug) {
-      const body = {
-        data: {
-          type: "contents",
-          attributes: {
-            name: slug,
-            created_by: userId,
-            content,
-            namespace: "dfp",
-          },
-        },
-      }
-      addEditablePage(body, url)
-      this.setState(value)
-    } else {
-      const body = {
-        id: page.data.id,
-        data: {
-          id: page.data.id,
-          type: "contents",
-          attributes: {
-            updated_by: userId,
-            content,
-          },
-        },
-      }
-      saveEditing(page.data.id, body, match.url)
-      this.setState(value)
-    }
-  }
-
   onPaste = (event: SyntheticEvent<>, editor: Object, next: Function) => {
     const transfer = getEventTransfer(event)
     const { type } = transfer
@@ -199,33 +124,9 @@ export class PageEditor extends Component<Props, State> {
     }
   }
 
-  onDrop = (event: SyntheticEvent<>, change: Object, editor: Object) => {
-    const target = getEventRange(event, change.value)
-    if (!target && event.type === "drop") return
-
-    const transfer = getEventTransfer(event)
-    const { type, files } = transfer
-
-    if (type === "files") {
-      for (const file of files) {
-        const reader = new FileReader()
-        const [mime] = file.type.split("/")
-        if (mime !== "image") continue
-
-        reader.addEventListener("load", () => {
-          editor.change(c => {
-            c.call(insertImage, reader.result, target)
-          })
-        })
-
-        reader.readAsDataURL(file)
-      }
-    }
-  }
-
   render() {
     const { readOnly, value } = this.state
-    const { classes, page } = this.props
+    const { classes, page, onSave, onCancel } = this.props
 
     if (readOnly) {
       return (
@@ -234,7 +135,6 @@ export class PageEditor extends Component<Props, State> {
           value={value}
           onChange={this.onChange}
           onPaste={this.onPaste}
-          onDrop={this.onDrop}
           renderMark={renderMark}
           renderNode={renderNode}
           readOnly={readOnly}
@@ -250,14 +150,13 @@ export class PageEditor extends Component<Props, State> {
         <EditorToolbar
           editor={this.editor.current}
           page={page}
-          onSave={this.onSave}
+          onSave={() => onSave(value)}
         />
         <Editor
           className={classes.editor}
           value={value}
           onChange={this.onChange}
           onPaste={this.onPaste}
-          onDrop={this.onDrop}
           renderMark={renderMark}
           renderNode={renderNode}
           readOnly={readOnly}
@@ -266,24 +165,12 @@ export class PageEditor extends Component<Props, State> {
           ref={this.editor}
         />
         <PageEditorBottomButtons
-          onSave={this.onSave}
-          onCancel={this.onCancel}
+          onSave={() => onSave(value)}
+          onCancel={onCancel}
         />
       </>
     )
   }
 }
 
-const mapStateToProps = state => {
-  if (state.auth.user) {
-    return {
-      userId: state.auth.user.data.id,
-    }
-  }
-  return {}
-}
-
-export default connect(
-  mapStateToProps,
-  { saveEditing, cancelEditing, addEditablePage },
-)(withStyles(styles)(PageEditor))
+export default withStyles(styles)(PageEditor)

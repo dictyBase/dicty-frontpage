@@ -31,7 +31,6 @@ type Props = {
  */
 
 class InfoPageContainer extends Component<Props> {
-  // set defaultProps to prevent console warnings
   static defaultProps = {
     page: {
       data: {
@@ -69,11 +68,7 @@ class InfoPageContainer extends Component<Props> {
     }
 
     if (error) {
-      return (
-        <div>
-          <ErrorPage />
-        </div>
-      )
+      return <ErrorPage />
     }
 
     return (
