@@ -10,7 +10,6 @@ import renderNode from "./renderers/renderNode"
 import schema from "./schema/schema"
 import { onPasteHtml, onPasteText } from "./utils/utils"
 import styles from "./editorStyles"
-import existingPagePlaceholder from "./data/existingPagePlaceholder.json"
 import newPagePlaceholder from "./data/newPagePlaceholder.json"
 
 /** Import custom plugins */
@@ -78,15 +77,10 @@ export class PageEditor extends Component<Props, State> {
         value: Value.fromJSON(JSON.parse(props.pageContent)),
         readOnly: props.readOnly,
       }
-    } else if (props.newPage) {
+    }
+    if (props.newPage) {
       this.state = {
         value: Value.fromJSON(newPagePlaceholder),
-        readOnly: props.readOnly,
-      }
-    } else {
-      this.state = {
-        // set default value for any page route refreshing
-        value: Value.fromJSON(existingPagePlaceholder),
         readOnly: props.readOnly,
       }
     }
