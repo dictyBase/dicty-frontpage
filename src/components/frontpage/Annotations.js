@@ -47,7 +47,6 @@ const styles = theme => ({
   listBox: {
     padding: "0px 25px 10px 25px",
     fontSize: "12px",
-    marginBottom: "5px",
     paddingBottom: "0px",
     marginTop: "0px",
     "@media (max-width: 992px) and (min-width: 767px)": {
@@ -57,18 +56,21 @@ const styles = theme => ({
       fontSize: "16px",
     },
   },
-  plusSign: {
-    color: "#0b3861",
+  updateNotice: {
+    color: "rgb(195, 4, 27)",
     fontSize: "11px",
     fontStyle: "italic",
     fontWeight: "normal",
     textAlign: "center",
-    paddingBottom: "0px",
+    paddingBottom: "5px",
 
     "@media (min-width: 1400px)": {
       paddingTop: "30px",
       fontSize: "12px",
     },
+  },
+  link: {
+    textDecoration: "none",
   },
 })
 
@@ -86,13 +88,23 @@ const Annotations = (props: Props) => {
 
   const genelist = annotations.genes.map((gene, index) => (
     <li className={classes.listItem} key={index}>
-      {gene}
+      <a
+        className={classes.link}
+        href={`https://testdb.dictybase.org/gene/${gene}`}>
+        {gene}
+      </a>
     </li>
   ))
 
   const paperlist = annotations.papers.map((paper, index) => (
     <li className={classes.listItem} key={index}>
-      {paper}
+      <a
+        className={classes.link}
+        href={`https://pubmed.gov/${paper}`}
+        target="_blank"
+        rel="noopener noreferrer">
+        {paper}
+      </a>
     </li>
   ))
 
@@ -106,16 +118,13 @@ const Annotations = (props: Props) => {
         <Grid item className={classes.box} xs={6}>
           <span className={classes.title}>Genes</span>
           <ul className={classes.listBox}>{genelist}</ul>
-          <div className={classes.plusSign}>
-            <FontAwesome name="plus fa-xs" />
-          </div>
         </Grid>
         <Grid item className={classes.box} xs={6}>
           <span className={classes.title}>Papers</span>
           <ul className={classes.listBox}>{paperlist}</ul>
-          <div className={classes.plusSign}>
-            <FontAwesome name="plus fa-xs" />
-          </div>
+        </Grid>
+        <Grid item xs={12}>
+          <div className={classes.updateNotice}>updates coming soon</div>
         </Grid>
       </Grid>
     </div>

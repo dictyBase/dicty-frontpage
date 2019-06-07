@@ -1,4 +1,4 @@
 export default {
-  plasmids: ["DBS0304455", "DSB0350408", "DBS0350326", "DBS0350435"],
-  strains: ["DBS0304455", "DSB0350408", "DBS0350326", "DBS0350435"],
+  plasmids: ["pTgrR1/LacZ", "pBeiB/YFP", "pSigK", "pExpl7/lacZ"],
+  strains: ["Mad52", "grlD-/[act15]:grlD", "grlD-", "ase1A-"],
 }
