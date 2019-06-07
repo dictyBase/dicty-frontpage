@@ -11,3 +11,7 @@
 ### Component Structure
 
 ![editable page components](/docs/images/editable-pages.png)
+
+## Page Editor
+
+![page editor components](/docs/images/page-editor.png)
