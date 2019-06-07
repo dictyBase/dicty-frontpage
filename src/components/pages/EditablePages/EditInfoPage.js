@@ -1,6 +1,7 @@
 // @flow
 import React from "react"
 import { connect } from "react-redux"
+import { Link } from "react-router-dom"
 import { withStyles } from "@material-ui/core"
 import Grid from "@material-ui/core/Grid"
 import PageEditor from "components/editor/PageEditor"
@@ -14,6 +15,10 @@ const styles = theme => ({
     borderRadius: "2px",
     margin: "10px auto",
     paddingBottom: "5px",
+  },
+  error: {
+    textAlign: "center",
+    marginTop: 50,
   },
 })
 
@@ -60,7 +65,16 @@ class EditInfoPage extends React.Component<Props, null> {
   }
 
   render() {
-    const { page, classes } = this.props
+    const { page, classes, match } = this.props
+
+    if (!page) {
+      return (
+        <div className={classes.error}>
+          Please <Link to={`${match.url.slice(0, -5)}`}>go back</Link> and click
+          on the "edit" button again to directly edit this page.
+        </div>
+      )
+    }
 
     return (
       <Grid container justify="center">
