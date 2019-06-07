@@ -1,27 +1,25 @@
 import React from "react"
 import { shallow } from "enzyme"
-import { BoldButton, BoldMark } from "./bold"
+import { StrikethroughButton, StrikethroughMark } from "./Strikethrough"
 import ToolbarButton from "../toolbar/ToolbarButton"
 
-describe("editor/plugins/bold", () => {
-  describe("BoldMark", () => {
-    const wrapper = shallow(<BoldMark>test</BoldMark>)
+describe("editor/plugins/Strikethrough", () => {
+  describe("StrikethroughMark", () => {
+    const wrapper = shallow(<StrikethroughMark>test</StrikethroughMark>)
 
-    it("should make text bold", () => {
-      expect(wrapper.find("strong").length).toBe(1)
+    it("should make text Strikethrough", () => {
+      expect(wrapper.find("del").length).toBe(1)
     })
-
     it("should render correct children", () => {
       expect(wrapper.contains("test")).toBe(true)
     })
   })
 
-  describe("BoldButton", () => {
+  describe("StrikethroughButton", () => {
     const props = {
       editor: {},
     }
-    const wrapper = shallow(<BoldButton {...props} />)
-
+    const wrapper = shallow(<StrikethroughButton {...props} />)
     describe("initial render", () => {
       it("always renders a ToolbarButton", () => {
         expect(wrapper.find(ToolbarButton)).toHaveLength(1)

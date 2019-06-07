@@ -1,27 +1,25 @@
 import React from "react"
 import { shallow } from "enzyme"
-import { BoldButton, BoldMark } from "./bold"
+import { SuperscriptButton, SuperscriptMark } from "./Superscript"
 import ToolbarButton from "../toolbar/ToolbarButton"
 
-describe("editor/plugins/bold", () => {
-  describe("BoldMark", () => {
-    const wrapper = shallow(<BoldMark>test</BoldMark>)
+describe("editor/plugins/Superscript", () => {
+  describe("SuperscriptMark", () => {
+    const wrapper = shallow(<SuperscriptMark>test</SuperscriptMark>)
 
-    it("should make text bold", () => {
-      expect(wrapper.find("strong").length).toBe(1)
+    it("should make text Superscript", () => {
+      expect(wrapper.find("sup").length).toBe(1)
     })
-
     it("should render correct children", () => {
       expect(wrapper.contains("test")).toBe(true)
     })
   })
 
-  describe("BoldButton", () => {
+  describe("SuperscriptButton", () => {
     const props = {
       editor: {},
     }
-    const wrapper = shallow(<BoldButton {...props} />)
-
+    const wrapper = shallow(<SuperscriptButton {...props} />)
     describe("initial render", () => {
       it("always renders a ToolbarButton", () => {
         expect(wrapper.find(ToolbarButton)).toHaveLength(1)

@@ -1,27 +1,25 @@
 import React from "react"
 import { shallow } from "enzyme"
-import { BoldButton, BoldMark } from "./bold"
+import { ItalicButton, ItalicMark } from "./Italic"
 import ToolbarButton from "../toolbar/ToolbarButton"
 
-describe("editor/plugins/bold", () => {
-  describe("BoldMark", () => {
-    const wrapper = shallow(<BoldMark>test</BoldMark>)
+describe("editor/plugins/Italic", () => {
+  describe("ItalicMark", () => {
+    const wrapper = shallow(<ItalicMark>test</ItalicMark>)
 
-    it("should make text bold", () => {
-      expect(wrapper.find("strong").length).toBe(1)
+    it("should make text Italic", () => {
+      expect(wrapper.find("em").length).toBe(1)
     })
-
     it("should render correct children", () => {
       expect(wrapper.contains("test")).toBe(true)
     })
   })
 
-  describe("BoldButton", () => {
+  describe("ItalicButton", () => {
     const props = {
       editor: {},
     }
-    const wrapper = shallow(<BoldButton {...props} />)
-
+    const wrapper = shallow(<ItalicButton {...props} />)
     describe("initial render", () => {
       it("always renders a ToolbarButton", () => {
         expect(wrapper.find(ToolbarButton)).toHaveLength(1)
