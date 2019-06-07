@@ -7,6 +7,7 @@ module.exports = {
     "src/styles/*.js",
     "src/components/authentication/Authorization.js",
     "src/components/common/*.js",
+    "src/components/editor/editorStyles.js",
     "src/components/editor/schema/*.js",
     "src/components/editor/flow/types.js",
     "src/components/editor/toolbar/toolbarStyles.js",
