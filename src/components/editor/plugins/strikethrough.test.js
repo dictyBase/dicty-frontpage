@@ -1,9 +1,9 @@
 import React from "react"
 import { shallow } from "enzyme"
-import { StrikethroughButton, StrikethroughMark } from "./Strikethrough"
+import { StrikethroughButton, StrikethroughMark } from "./strikethrough"
 import ToolbarButton from "../toolbar/ToolbarButton"
 
-describe("editor/plugins/Strikethrough", () => {
+describe("editor/plugins/strikethrough", () => {
   describe("StrikethroughMark", () => {
     const wrapper = shallow(<StrikethroughMark>test</StrikethroughMark>)
 

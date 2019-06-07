@@ -1,9 +1,9 @@
 import React from "react"
 import { shallow } from "enzyme"
-import { ItalicButton, ItalicMark } from "./Italic"
+import { ItalicButton, ItalicMark } from "./italic"
 import ToolbarButton from "../toolbar/ToolbarButton"
 
-describe("editor/plugins/Italic", () => {
+describe("editor/plugins/italic", () => {
   describe("ItalicMark", () => {
     const wrapper = shallow(<ItalicMark>test</ItalicMark>)
 

@@ -1,9 +1,9 @@
 import React from "react"
 import { shallow } from "enzyme"
-import { UnderlineButton, UnderlineMark } from "./Underline"
+import { UnderlineButton, UnderlineMark } from "./underline"
 import ToolbarButton from "../toolbar/ToolbarButton"
 
-describe("editor/plugins/Underline", () => {
+describe("editor/plugins/underline", () => {
   describe("UnderlineMark", () => {
     const wrapper = shallow(<UnderlineMark>test</UnderlineMark>)
 

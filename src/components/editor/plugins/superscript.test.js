@@ -1,9 +1,9 @@
 import React from "react"
 import { shallow } from "enzyme"
-import { SuperscriptButton, SuperscriptMark } from "./Superscript"
+import { SuperscriptButton, SuperscriptMark } from "./superscript"
 import ToolbarButton from "../toolbar/ToolbarButton"
 
-describe("editor/plugins/Superscript", () => {
+describe("editor/plugins/superscript", () => {
   describe("SuperscriptMark", () => {
     const wrapper = shallow(<SuperscriptMark>test</SuperscriptMark>)
 

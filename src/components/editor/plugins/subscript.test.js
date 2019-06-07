@@ -1,9 +1,9 @@
 import React from "react"
 import { shallow } from "enzyme"
-import { SubscriptButton, SubscriptMark } from "./Subscript"
+import { SubscriptButton, SubscriptMark } from "./subscript"
 import ToolbarButton from "../toolbar/ToolbarButton"
 
-describe("editor/plugins/Subscript", () => {
+describe("editor/plugins/subscript", () => {
   describe("SubscriptMark", () => {
     const wrapper = shallow(<SubscriptMark>test</SubscriptMark>)
 
