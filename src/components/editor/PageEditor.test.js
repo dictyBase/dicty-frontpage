@@ -11,6 +11,7 @@ describe("frontpage/components/editor/PageEditor", () => {
       classes: {
         editor: "editor",
       },
+      pageContent: true,
       readOnly: true,
     }
     const wrapper = shallow(<PageEditor {...props} />)
@@ -30,6 +31,7 @@ describe("frontpage/components/editor/PageEditor", () => {
       classes: {
         editor: "editor",
       },
+      newPage: true,
       readOnly: false,
     }
     const wrapper = shallow(<PageEditor {...props} />)

@@ -19,16 +19,13 @@ describe("editor/plugins/bold", () => {
 
   describe("BoldButton", () => {
     const props = {
-      value: {
-        change: () => {},
-      },
-      onChange: () => {},
+      editor: {},
     }
     const wrapper = shallow(<BoldButton {...props} />)
 
     describe("initial render", () => {
       it("always renders a ToolbarButton", () => {
-        expect(wrapper.find(ToolbarButton).length).toBe(1)
+        expect(wrapper.find(ToolbarButton)).toHaveLength(1)
       })
     })
   })

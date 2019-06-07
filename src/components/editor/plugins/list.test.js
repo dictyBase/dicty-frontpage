@@ -23,7 +23,7 @@ describe("editor/plugins/list", () => {
 
     describe("initial render", () => {
       it("always renders a ToolbarButton", () => {
-        expect(wrapper.find(ToolbarButton).length).toBe(1)
+        expect(wrapper.find(ToolbarButton)).toHaveLength(1)
       })
     })
   })
