@@ -61,10 +61,6 @@
     isFetching: false,
     links: []
   },
-  news: {
-    isFetching: false,
-    content: ""
-  },
   router: {
     location: {},
     action: "PUSH"

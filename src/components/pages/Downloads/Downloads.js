@@ -6,11 +6,10 @@ import Grid from "@material-ui/core/Grid"
 import AppBar from "@material-ui/core/AppBar"
 import Tabs from "@material-ui/core/Tabs"
 import Tab from "@material-ui/core/Tab"
+import Typography from "@material-ui/core/Typography"
 import { MuiThemeProvider } from "@material-ui/core/styles"
-
 import Citations from "./Citations"
 import DownloadsTable from "./DownloadsTable"
-import TabContainer from "./TabContainer"
 import DownloadsHeader from "./DownloadsHeader"
 import DownloadsLoader from "./DownloadsLoader"
 import withDataFetching from "components/common/withDataFetching"
@@ -54,10 +53,12 @@ export class Downloads extends Component<Props> {
     const tabContent = json.data.map(item => {
       if (item.id === json.currentTab) {
         return (
-          <TabContainer key={item.id}>
-            <Citations data={item} />
-            {downloads[item.id] && <DownloadsTable data={downloads[item.id]} />}
-          </TabContainer>
+          <Typography component="div" key={item.id}>
+            <Citations citation={item.attributes.citation} />
+            {downloads[item.id] && (
+              <DownloadsTable data={downloads[item.id].data} />
+            )}
+          </Typography>
         )
       }
       return null
@@ -67,6 +68,11 @@ export class Downloads extends Component<Props> {
 
   render() {
     const { downloads } = this.props
+
+    // return null until downloads data is not empty
+    if (Object.entries(downloads).length === 0) {
+      return null
+    }
 
     return (
       <MuiThemeProvider theme={MuiTheme}>
@@ -86,10 +92,10 @@ export class Downloads extends Component<Props> {
                 onChange={this.handleChange}
                 scrollable
                 scrollButtons="auto">
-                {downloads.data && this.generateTabs(downloads)}
+                {this.generateTabs(downloads)}
               </Tabs>
             </AppBar>
-            {downloads.data && this.generateTabContainers(downloads)}
+            {this.generateTabContainers(downloads)}
           </Grid>
         </Grid>
       </MuiThemeProvider>

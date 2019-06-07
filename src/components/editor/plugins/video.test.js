@@ -1,6 +1,5 @@
 import React from "react"
 import { shallow } from "enzyme"
-
 import { VideoButton } from "./video"
 import ToolbarButton from "../toolbar/ToolbarButton"
 

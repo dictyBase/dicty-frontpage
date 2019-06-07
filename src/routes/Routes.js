@@ -4,10 +4,9 @@ import { Route, Switch } from "react-router-dom"
 import Front from "components/pages/Front"
 import Downloads from "components/pages/Downloads/Downloads"
 import About from "components/pages/About/About"
-import InfoPage from "components/pages/EditablePages/InfoPage"
+import InfoPageContainer from "components/pages/EditablePages/InfoPageContainer"
 import EditInfoPage from "components/pages/EditablePages/EditInfoPage"
 import AddPage from "components/pages/EditablePages/AddPage"
-import PapersArchive from "components/pages/Papers/PapersArchive"
 import Login from "components/authentication/Login"
 import OauthCallback from "components/authentication/OauthCallback"
 import AuthLoader from "components/authentication/AuthLoader"
@@ -21,7 +20,6 @@ const Routes = () => (
   <Switch>
     <Route exact path="/" component={Front} />
     <Route exact path="/about" component={About} />
-    <Route exact path="/papers" component={PapersArchive} />
     <Route exact path="/downloads" component={Downloads} />
     {/* Authentication routes */}
     <LoginRoute exact path="/login" component={Login} />
@@ -29,9 +27,13 @@ const Routes = () => (
     <Route exact path="/load/auth" component={AuthLoader} />
     <PrivateRoute exact path="/logout" component={Logout} />
     {/* Editable page routes */}
-    <Route exact path="/:section/:name" component={InfoPage} />
+    <Route exact path="/:section/:name" component={InfoPageContainer} />
     <PrivateRoute exact path="/:section/:name/edit" component={EditInfoPage} />
-    <Route exact path="/:section/:name/:subname" component={InfoPage} />
+    <Route
+      exact
+      path="/:section/:name/:subname"
+      component={InfoPageContainer}
+    />
     <PrivateRoute
       exact
       path="/:section/:name/:subname/edit"

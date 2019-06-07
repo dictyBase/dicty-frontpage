@@ -43,10 +43,11 @@ const savePageRequest = () => ({
   },
 })
 
-const savePageSuccess = () => ({
+const savePageSuccess = (json: Object) => ({
   type: SAVE_PAGE_SUCCESS,
   payload: {
     isFetching: false,
+    json,
   },
 })
 
@@ -133,7 +134,7 @@ export const saveEditing = (id: string, body: Object, path: string) => async (
     if (contentType && contentType.includes("application/vnd.api+json")) {
       const json = await res.json()
       if (res.ok) {
-        dispatch(savePageSuccess())
+        dispatch(savePageSuccess(json))
         setTimeout(() => {
           dispatch(push(`${path.slice(0, -5)}`))
         }, 1000)
@@ -177,7 +178,7 @@ export const saveInlineEditing = (id: string, body: Object) => async (
     if (contentType && contentType.includes("application/vnd.api+json")) {
       const json = await res.json()
       if (res.ok) {
-        dispatch(savePageSuccess())
+        dispatch(savePageSuccess(json))
       } else {
         if (process.env.NODE_ENV !== "production") {
           printError(res, json)
@@ -218,7 +219,7 @@ export const addEditablePage = (body: Object, url: string) => async (
     if (contentType && contentType.includes("application/vnd.api+json")) {
       const json = await res.json()
       if (res.ok) {
-        dispatch(savePageSuccess())
+        dispatch(savePageSuccess(json))
         setTimeout(() => {
           dispatch(push(url))
         }, 1000)

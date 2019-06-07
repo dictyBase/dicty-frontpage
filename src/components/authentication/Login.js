@@ -65,6 +65,7 @@ class Login extends Component<Props> {
     const { auth } = this.props
     const { state = {} } = this.props.location
     const { error } = state
+
     return (
       <Grid container justify="center">
         <Grid item xs={8}>
@@ -72,7 +73,7 @@ class Login extends Component<Props> {
             <h1>Log in</h1>
           </center>
           {error && <ErrorNotification error={error} />}
-          {auth.error && <ErrorNotification error={auth.error} />}
+          {auth && auth.error && <ErrorNotification error={auth.error} />}
           <Grid container justify="center">
             <Grid item xs={1} />
             <Grid item xs={4}>

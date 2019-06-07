@@ -46,10 +46,12 @@ const editablePagesReducer = (state: Object = initialState, action: Object) => {
         isFetching: true,
       }
     case SAVE_PAGE_SUCCESS:
+      const slug = action.payload.json.data.attributes.slug
       return {
         ...state,
         isFetching: false,
         error: null,
+        [slug]: action.payload.json,
       }
     case SAVE_PAGE_FAILURE:
       return {

@@ -5,6 +5,10 @@ import { createStore } from "redux"
 import rootReducer from "./mockReducers"
 
 let store = createStore(rootReducer)
+
+/**
+ * This is a wrapper component used for all styleguidist documentation.
+ */
 export default class Wrapper extends Component {
   render() {
     return (

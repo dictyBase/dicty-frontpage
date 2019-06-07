@@ -1,6 +1,5 @@
 import React from "react"
 import { shallow } from "enzyme"
-
 import { OrderedListNode, OrderedListButton } from "./list"
 import ToolbarButton from "../toolbar/ToolbarButton"
 
@@ -12,7 +11,6 @@ describe("editor/plugins/list", () => {
     it("should render an ol", () => {
       expect(wrapper.find("ol").length).toBe(1)
     })
-
     it("should render correct children", () => {
       expect(wrapper.contains("test")).toBe(true)
     })
@@ -20,11 +18,8 @@ describe("editor/plugins/list", () => {
 
   describe("OrderedListButton", () => {
     const wrapper = shallow(<OrderedListButton />)
-
-    describe("initial render", () => {
-      it("always renders a ToolbarButton", () => {
-        expect(wrapper.find(ToolbarButton).length).toBe(1)
-      })
+    it("always renders a ToolbarButton", () => {
+      expect(wrapper.find(ToolbarButton)).toHaveLength(1)
     })
   })
 })

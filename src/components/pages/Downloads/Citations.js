@@ -4,10 +4,13 @@ import { withStyles } from "@material-ui/core/styles"
 
 const styles = theme => ({
   root: {
-    fontSize: "0.85em",
+    fontSize: "0.9em",
   },
   topLine: {
     color: "#a7221e",
+  },
+  link: {
+    textDecoration: "none",
   },
 })
 
@@ -15,27 +18,40 @@ type Props = {
   /** Material-UI styling */
   classes: Object,
   /** Citations data */
-  data: Object,
+  citation: {
+    /** Authors of paper */
+    authors: String,
+    /** Title of paper */
+    title: String,
+    /** Journal for this citation */
+    journal: String,
+    /** Link to PubMed */
+    link: String,
+  },
 }
 
+/**
+ * Displays the citation above the downloads table.
+ */
+
 const Citations = (props: Props) => {
-  const { classes } = props
+  const { classes, citation } = props
 
   return (
     <div className={classes.root}>
       <h3 className={classes.topLine}>Please cite:</h3>
       <p>
-        <strong>{props.data.attributes.citation.authors}</strong>
+        <strong>{citation.authors}</strong>
         {"  "}
-        {props.data.attributes.citation.title}
+        {citation.title}
         {"  "}
-        <em>{props.data.attributes.citation.journal}</em>
+        <em>{citation.journal}</em>
         {"  "}
         <a
-          href={props.data.attributes.citation.link}
+          href={citation.link}
           target="_blank"
           rel="noopener noreferrer"
-          style={{ textDecoration: "none" }}>
+          className={classes.link}>
           [Pubmed]
         </a>
       </p>

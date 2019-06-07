@@ -1,11 +1,13 @@
 // @flow
 import React from "react"
+import { connect } from "react-redux"
 import { withRouter } from "react-router-dom"
 import Grid from "@material-ui/core/Grid"
 import { withStyles } from "@material-ui/core/styles"
 import PageEditor from "components/editor/PageEditor"
 import Authorization from "components/authentication/Authorization"
 import ErrorNotification from "components/authentication/ErrorNotification"
+import { addEditablePage, cancelEditing } from "actions/editablePages"
 
 const styles = theme => ({
   banner: {
@@ -36,61 +38,102 @@ type Props = {
   match: Object,
   /** Material-UI styling */
   classes: Object,
+  /** Action called when user attempts to save a new page */
+  addEditablePage: Function,
+  /** Action called when user cancels editing */
+  cancelEditing: Function,
+  /** User ID of person editing */
+  userId: string,
 }
 
 /**
  * This is the view component so an authorized user can add a new page.
  */
 
-const AddPage = (props: Props) => {
-  const {
-    location: {
-      state: { name, subname, url },
-    },
-    match,
-    classes,
-  } = props
-
-  let slug
-  if (subname) {
-    slug = subname
-  } else {
-    slug = name
+class AddPage extends React.Component<Props> {
+  onCancel = () => {
+    const { cancelEditing, match } = this.props
+    cancelEditing(match.url.slice(0, -7))
   }
 
-  return (
-    <Authorization
-      render={({ canEditPages, verifiedToken }) => (
-        <div>
-          {canEditPages && verifiedToken === false && (
-            <ErrorNotification error={error} />
-          )}
-          {canEditPages && (
-            <Grid container wrap="wrap" justify="center">
-              <Grid item xs={12}>
-                <div className={classes.banner}>
-                  <h2>Add Editable Page for Route:</h2>
-                  <h3>{url}</h3>
-                </div>
+  onSave = value => {
+    const {
+      userId,
+      addEditablePage,
+      location: {
+        state: { subname, name, url },
+      },
+    } = this.props
+    let slug
+    if (subname) {
+      slug = subname
+    } else {
+      slug = name
+    }
+    const body = {
+      data: {
+        type: "contents",
+        attributes: {
+          name: slug,
+          created_by: userId,
+          content: JSON.stringify(value.toJSON()),
+          namespace: "dfp",
+        },
+      },
+    }
+    addEditablePage(body, url)
+  }
+
+  render() {
+    const {
+      location: {
+        state: { url },
+      },
+      classes,
+    } = this.props
+
+    return (
+      <Authorization
+        render={({ canEditPages, verifiedToken }) => (
+          <div>
+            {canEditPages && verifiedToken === false && (
+              <ErrorNotification error={error} />
+            )}
+            {canEditPages && (
+              <Grid container wrap="wrap" justify="center">
+                <Grid item xs={12}>
+                  <div className={classes.banner}>
+                    <h2>Add Editable Page for Route:</h2>
+                    <h3>{url}</h3>
+                  </div>
+                </Grid>
+                <br />
+                <Grid item xs={9}>
+                  <PageEditor
+                    onCancel={this.onCancel}
+                    onSave={this.onSave}
+                    newPage={true}
+                  />
+                </Grid>
               </Grid>
-              <br />
-              <Grid item xs={9}>
-                <PageEditor
-                  slug={slug}
-                  url={url}
-                  match={match}
-                  readOnly={false}
-                />
-              </Grid>
-            </Grid>
-          )}
-          {!canEditPages && (
-            <ErrorNotification error="You have reached this page in error." />
-          )}
-        </div>
-      )}
-    />
-  )
+            )}
+          </div>
+        )}
+      />
+    )
+  }
 }
 
-export default withRouter(withStyles(styles)(AddPage))
+const mapStateToProps = state => {
+  if (state.auth.user) {
+    return {
+      userId: state.auth.user.data.id,
+    }
+  }
+  return {}
+}
+
+export default connect(
+  mapStateToProps,
+  { cancelEditing, addEditablePage },
+)(withRouter(withStyles(styles)(AddPage)))

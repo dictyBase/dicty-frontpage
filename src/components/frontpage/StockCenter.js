@@ -1,64 +1,156 @@
 // @flow
 import React from "react"
+import { withStyles } from "@material-ui/core/styles"
+import Grid from "@material-ui/core/Grid"
 import FontAwesome from "react-fontawesome"
 
-import {
-  StockTitle,
-  StockHeader,
-  StockSubHeader,
-  ListBox,
-  StockBox,
-  AnnotationListItems,
-  StockContainer,
-  MoreLink,
-  NewsStockTitle,
-} from "styles"
+const styles = theme => ({
+  listItem: {
+    listStyle: "none",
+    fontSize: "12px",
+  },
+  listBox: {
+    padding: "0px 25px 10px 25px",
+    fontSize: "12px",
+    marginBottom: "5px",
+    paddingBottom: "0px",
+    marginTop: "5px",
+    "@media (max-width: 992px) and (min-width: 767px)": {
+      fontSize: "10px",
+    },
+    "@media (max-width: 768px)": {
+      fontSize: "16px",
+    },
+  },
+  plusSign: {
+    color: "#0b3861",
+    fontSize: "11px",
+    fontStyle: "italic",
+    fontWeight: "normal",
+    textAlign: "center",
+    paddingBottom: "0px",
+
+    "@media (min-width: 1400px)": {
+      paddingTop: "30px",
+      fontSize: "12px",
+    },
+  },
+  title: {
+    paddingTop: "5px",
+    paddingLeft: "5px",
+  },
+  subheader: {
+    backgroundColor: "#effbfb",
+    color: "black",
+    fontSize: "12px",
+    letterSpacing: "5px",
+    padding: "1px 0px 1px 0px",
+
+    "@media (max-width: 767px)": {
+      fontSize: "12px",
+      textAlign: "center",
+    },
+  },
+  header: {
+    backgroundColor: "#004080",
+    color: "#efeffb",
+    fontSize: "18px",
+    textAlign: "center",
+    padding: "10px 0px 10px 0px",
+    border: "1px dotted #f5f6ce",
+    borderTopLeftRadius: "4px",
+    borderTopRightRadius: "4px",
+    "@media (max-width: 767px)": {
+      fontSize: "18px",
+      textAlign: "center",
+    },
+  },
+  container: {
+    textAlign: "center",
+    padding: "5px 5px 0 5px",
+    marginBottom: "10px",
+  },
+  plasmidBox: {
+    color: "#fff",
+    backgroundColor: "#0073e6",
+    textAlign: "center",
+    paddingBottom: "5px",
+    borderBottomLeftRadius: "4px",
+    borderBottomRightRadius: "4px",
+    "@media (max-width: 992px) and (min-width: 767px)": {
+      fontSize: "10px",
+    },
+    "@media (max-width: 767px)": {
+      fontSize: "12px",
+    },
+  },
+  strainBox: {
+    color: "#242124",
+    backgroundColor: "#80c1ff",
+    textAlign: "center",
+    paddingBottom: "5px",
+    borderBottomLeftRadius: "4px",
+    borderBottomRightRadius: "4px",
+    "@media (max-width: 992px) and (min-width: 767px)": {
+      fontSize: "10px",
+    },
+    "@media (max-width: 767px)": {
+      fontSize: "12px",
+    },
+  },
+})
 
 type Props = {
   /** The Stock Center data in object form */
   stockcenter: Object,
+  /** Material-UI styling */
+  classes: Object,
 }
 
 /** Widget that displays the most recent plasmids and strains in the Stock Center */
 
 const StockCenter = (props: Props) => {
-  const plasmidlist = props.stockcenter.plasmids.map((plasmid, index) => (
-    <AnnotationListItems key={index}>{plasmid}</AnnotationListItems>
+  const { classes, stockcenter } = props
+
+  const plasmidlist = stockcenter.plasmids.map((plasmid, index) => (
+    <li className={classes.listItem} key={index}>
+      {plasmid}
+    </li>
   ))
 
-  const strainlist = props.stockcenter.strains.map((strain, index) => (
-    <AnnotationListItems key={index}>{strain}</AnnotationListItems>
+  const strainlist = stockcenter.strains.map((strain, index) => (
+    <li className={classes.listItem} key={index}>
+      {strain}
+    </li>
   ))
 
   return (
-    <StockContainer>
-      <StockHeader>
+    <div className={classes.container}>
+      <div className={classes.header}>
         <FontAwesome name="shopping-cart fa-md" />
-        <NewsStockTitle>DICTY STOCK CENTER</NewsStockTitle>
-      </StockHeader>
-      <StockSubHeader>
+        <span className={classes.title}>DICTY STOCK CENTER</span>
+      </div>
+      <div className={classes.subheader}>
         <strong>New items</strong>
-      </StockSubHeader>
-      <StockBox color="#fff" background="#0073e6">
-        <StockTitle>PLASMIDS</StockTitle>
-        <ListBox margintop="5px" padbottom="0px">
-          {plasmidlist}
-        </ListBox>
-        <MoreLink padbottom="0px">
-          <FontAwesome name="plus fa-xs" />
-        </MoreLink>
-      </StockBox>
-      <StockBox color="#242124" background="#80c1ff">
-        <StockTitle>STRAINS</StockTitle>
-        <ListBox margintop="5px" padbottom="0px">
-          {strainlist}
-        </ListBox>
-        <MoreLink padbottom="0px">
-          <FontAwesome name="plus fa-xs" />
-        </MoreLink>
-      </StockBox>
-    </StockContainer>
+      </div>
+      <Grid container>
+        <Grid item xs={6} className={classes.plasmidBox}>
+          <div className={classes.title}>PLASMIDS</div>
+          <ul className={classes.listBox}>{plasmidlist}</ul>
+          <div className={classes.plusSign}>
+            <FontAwesome name="plus fa-xs" />
+          </div>
+        </Grid>
+        <Grid item xs={6} className={classes.strainBox}>
+          <div className={classes.title}>STRAINS</div>
+          <ul className={classes.listBox}>{strainlist}</ul>
+          <div className={classes.plusSign}>
+            <FontAwesome name="plus fa-xs" />
+          </div>
+        </Grid>
+      </Grid>
+    </div>
   )
 }
 
-export default StockCenter
+export default withStyles(styles)(StockCenter)

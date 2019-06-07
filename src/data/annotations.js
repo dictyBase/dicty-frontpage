@@ -1,4 +1,4 @@
 export default {
-  genes: ["abprtA", "trgrB1", "tgrC1", "tacA"],
-  papers: ["25609090", "25546705", "25540127", "25596489"],
+  genes: ["erkB", "kif8", "cln3", "tpp1"],
+  papers: ["30612939", "31067156", "30771446", "31100984"],
 }

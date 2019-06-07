@@ -45,8 +45,22 @@ type Props = {
   /** Material-UI styling */
   classes: Object,
   /** Downloads data */
-  data: Object,
+  data: Array<{
+    id: string,
+    type: string,
+    attributes: {
+      title: string,
+      items: Array<{
+        title: string,
+        url: string,
+      }>,
+    },
+  }>,
 }
+
+/**
+ * Displays the table on the downloads page.
+ */
 
 const DownloadsTable = (props: Props) => {
   const { classes, data } = props
@@ -58,7 +72,7 @@ const DownloadsTable = (props: Props) => {
           <col style={{ width: "90%" }} />
           <col style={{ width: "10%" }} />
         </colgroup>
-        {data.data.map(section => (
+        {data.map(section => (
           <Fragment key={section.attributes.title}>
             <TableHead className={classes.head}>
               <TableRow>
@@ -75,7 +89,11 @@ const DownloadsTable = (props: Props) => {
                     {row.title}
                   </TableCell>
                   <TableCell>
-                    <a className={classes.link} href={row.url}>
+                    <a
+                      className={classes.link}
+                      href={row.url}
+                      target="_blank"
+                      rel="noopener noreferrer">
                       <Button
                         className={classes.button}
                         size="small"

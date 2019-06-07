@@ -4,6 +4,10 @@ import Skeleton, { SkeletonTheme } from "react-loading-skeleton"
 import Grid from "@material-ui/core/Grid"
 import DownloadsHeader from "./DownloadsHeader"
 
+/**
+ * Skeleton loading component displayed while downloads data is being fetched.
+ */
+
 const DownloadsLoader = () => (
   <Grid container justify="center">
     <Grid item xs={8}>

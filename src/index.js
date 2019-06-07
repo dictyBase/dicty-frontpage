@@ -4,12 +4,18 @@ import ReactDOM from "react-dom"
 import { Provider } from "react-redux"
 import { ConnectedRouter } from "connected-react-router"
 import { hydrateStore } from "dicty-components-redux"
+import CssBaseline from "@material-ui/core/CssBaseline"
 import configureStore from "./store/configureStore"
 import history from "utils/routerHistory"
-import "./index.css"
 import App from "./App"
 import registerServiceWorker from "./registerServiceWorker"
-import "styles/Body"
+import "typeface-roboto"
+import "typeface-roboto-condensed"
+import "typeface-roboto-mono"
+import "typeface-roboto-slab"
+import "typeface-lato"
+import "typeface-merriweather"
+import "typeface-montserrat"
 
 // load state from localStorage(if any) to set the initial state for the store
 const initialState = hydrateStore({ key: "auth", namespace: "auth" })
@@ -37,6 +43,7 @@ if (process.env.NODE_ENV === "production") {
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
+      <CssBaseline />
       <App />
     </ConnectedRouter>
   </Provider>,

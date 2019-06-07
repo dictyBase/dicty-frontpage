@@ -70,8 +70,9 @@ const FontColorButton = ({
 /**
  * The font color picker widget-style component
  */
-const FontColorPicker = ({ value, editor }: ButtonProps) => {
+const FontColorPicker = ({ editor }: ButtonProps) => {
   let color = "#000"
+  const value = editor.value
   if (hasMark(value)) {
     color = getMark(value).data.get("color")
   }

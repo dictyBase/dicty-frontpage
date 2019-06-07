@@ -2,13 +2,12 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
 import { withRouter } from "react-router-dom"
+import { withStyles } from "@material-ui/core/styles"
 import { Header, Footer } from "dicty-components-header-footer"
 import { Navbar } from "dicty-components-navbar"
-
 import Routes from "routes/Routes"
 import ErrorBoundary from "components/pages/ErrorBoundary"
-import fetchNavbar from "actions/navbar"
-import fetchFooter from "actions/footer"
+import fetchNavbarAndFooter from "actions/navbar"
 import footerItems from "constants/footer"
 import navItems from "constants/navbar"
 import {
@@ -16,12 +15,30 @@ import {
   loggedHeaderItems,
   generateLinks,
 } from "utils/headerItems"
-import MainBodyContainer from "styles/MainBodyContainer"
 
 const navTheme = {
   primary: "#004080",
   secondary: "#0059b3",
 }
+
+const styles = theme => ({
+  container: {
+    lineHeight: 1.6,
+    marginBottom: "50px",
+  },
+  body: {
+    margin: "auto",
+    height: "100%",
+    width: "100%",
+    fontFamily: "Roboto, sans-serif",
+    fontSize: "16px",
+    color: "#333",
+    backgroundColor: "#fff",
+    boxSizing: "content-box",
+    WebkitFontSmoothing: "auto",
+    MozOsxFontSmoothing: "auto",
+  },
+})
 
 type Props = {
   /** Object representing auth part of state */
@@ -30,26 +47,25 @@ type Props = {
   navbar: Object,
   /** Object representing footer part of state */
   footer: Object,
-  /** Action creator to fetch navbar content */
-  fetchNavbar: Function,
-  /** Action creator to fetch footer content */
-  fetchFooter: Function,
+  /** Action creator to fetch navbar and footer content */
+  fetchNavbarAndFooter: Function,
+  /** Material-UI styling */
+  classes: Object,
 }
 
 export class App extends Component<Props> {
   componentDidMount() {
-    const { fetchNavbar, fetchFooter } = this.props
-    fetchNavbar()
-    fetchFooter()
+    const { fetchNavbarAndFooter } = this.props
+    fetchNavbarAndFooter()
   }
 
   render() {
-    const { auth, navbar, footer } = this.props
+    const { auth, navbar, footer, classes } = this.props
 
     // if any errors, fall back to old link setup
-    if (navbar.error || !navbar.links || footer.error || !footer.links) {
+    if (!navbar.links || !footer.links) {
       return (
-        <div>
+        <div className={classes.body}>
           {auth.isAuthenticated ? (
             <Header items={loggedHeaderItems}>
               {items => items.map(generateLinks)}
@@ -60,20 +76,18 @@ export class App extends Component<Props> {
             </Header>
           )}
           <Navbar items={navItems} theme={navTheme} />
-          <MainBodyContainer>
-            <main>
-              <ErrorBoundary>
-                <Routes {...this.props} />
-              </ErrorBoundary>
-            </main>
-          </MainBodyContainer>
+          <main className={classes.container}>
+            <ErrorBoundary>
+              <Routes {...this.props} />
+            </ErrorBoundary>
+          </main>
           <Footer items={footerItems} />
         </div>
       )
     }
 
     return (
-      <div>
+      <div className={classes.body}>
         {auth.isAuthenticated ? (
           <Header items={loggedHeaderItems}>
             {items => items.map(generateLinks)}
@@ -84,13 +98,11 @@ export class App extends Component<Props> {
           </Header>
         )}
         <Navbar items={navbar.links} theme={navTheme} />
-        <MainBodyContainer>
-          <main>
-            <ErrorBoundary>
-              <Routes {...this.props} />
-            </ErrorBoundary>
-          </main>
-        </MainBodyContainer>
+        <main className={classes.container}>
+          <ErrorBoundary>
+            <Routes {...this.props} />
+          </ErrorBoundary>
+        </main>
         <Footer items={footer.links} />
       </div>
     )
@@ -102,6 +114,6 @@ const mapStateToProps = ({ auth, navbar, footer }) => ({ auth, navbar, footer })
 export default withRouter(
   connect(
     mapStateToProps,
-    { fetchNavbar, fetchFooter },
-  )(App),
+    { fetchNavbarAndFooter },
+  )(withStyles(styles)(App)),
 )
