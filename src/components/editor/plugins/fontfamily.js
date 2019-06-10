@@ -68,14 +68,14 @@ const FontFamilyMark = ({ children, mark: { data } }: NodeProps) => (
 const FontFamilyDropdown = ({ editor, classes }: ButtonProps) => {
   const [currentFont, setCurrentFont] = useState(3)
 
+  const handleChange = ({ target: { value: fontFamilyIndex } }) => {
+    setCurrentFont(fontFamilyIndex)
+    fontFamilyMarkStrategy(editor, fontFamilyIndex)
+  }
+
   return (
     <FormControl className={classes.fontFamilyDropdown}>
-      <Select
-        value={currentFont}
-        onChange={({ target: { value: fontFamilyIndex } }) => {
-          setCurrentFont(fontFamilyIndex)
-          fontFamilyMarkStrategy(editor, fontFamilyIndex)
-        }}>
+      <Select value={currentFont} onChange={handleChange}>
         {FontFamilyList.map((font, index) => (
           <MenuItem
             key={`font-family-${index}`}

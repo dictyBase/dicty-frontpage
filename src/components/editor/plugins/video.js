@@ -98,6 +98,11 @@ const VideoButtonUnconnected = ({ editor, classes }: ButtonProps) => {
     height,
   }
 
+  const handleAddVideoClick = () => {
+    setVideoModalOpen(false)
+    editor.command(insertVideo, data)
+  }
+
   return (
     <>
       <Tooltip title="Video" placement="bottom">
@@ -143,10 +148,7 @@ const VideoButtonUnconnected = ({ editor, classes }: ButtonProps) => {
           </DialogContent>
           <DialogActions>
             <Button
-              onClick={() => {
-                setVideoModalOpen(false)
-                editor.command(insertVideo, data)
-              }}
+              onClick={handleAddVideoClick}
               className={classes.basicButton}
               variant="contained"
               color="primary">

@@ -73,6 +73,11 @@ const ImageButtonUnconnected = ({ editor, classes }: ButtonProps) => {
     height,
   }
 
+  const handleAddImageClick = () => {
+    setImageModalOpen(false)
+    editor.command(insertImage, data)
+  }
+
   return (
     <>
       <Tooltip title="Image" placement="bottom">
@@ -126,10 +131,7 @@ const ImageButtonUnconnected = ({ editor, classes }: ButtonProps) => {
           </DialogContent>
           <DialogActions>
             <Button
-              onClick={() => {
-                setImageModalOpen(false)
-                editor.command(insertImage, data)
-              }}
+              onClick={handleAddImageClick}
               className={classes.basicButton}
               variant="contained"
               color="primary">

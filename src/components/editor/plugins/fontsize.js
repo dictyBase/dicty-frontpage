@@ -71,14 +71,14 @@ const FontSizeMark = ({ children, mark: { data } }: NodeProps) => (
 const FontSizeDropdown = ({ editor, classes }: ButtonProps) => {
   const [currentFontSize, setCurrentFontSize] = useState(2)
 
+  const handleChange = ({ target: { value: fontSizeIndex } }) => {
+    setCurrentFontSize(fontSizeIndex)
+    fontSizeMarkStrategy(editor, fontSizeIndex)
+  }
+
   return (
     <FormControl className={classes.fontSizeDropdown}>
-      <Select
-        value={currentFontSize}
-        onChange={({ target: { value: fontSizeIndex } }) => {
-          setCurrentFontSize(fontSizeIndex)
-          fontSizeMarkStrategy(editor, fontSizeIndex)
-        }}>
+      <Select value={currentFontSize} onChange={handleChange}>
         {FontSizeList.map((font, index) => (
           <MenuItem
             key={`font-size-${index}`}
