@@ -1,3 +1,4 @@
+import "react-app-polyfill/ie11"
 import "utils/polyfills"
 import React from "react"
 import ReactDOM from "react-dom"

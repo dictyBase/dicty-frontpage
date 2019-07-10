@@ -30,13 +30,11 @@
     "dicty-components-login": "github:dictyBase/dicty-components-login#v1.4.0",
     "dicty-components-navbar": "github:dictyBase/dicty-components-navbar#v0.2.0",
     "dicty-components-redux": "github:dictybase-playground/dicty-components-redux#v2.3.0",
-    "es6-promise": "^4.2.6",
     "font-awesome": "^4.7.0",
     "get-video-id": "^3.1.0",
     "history": "^4.7.2",
     "immutable": "^3.8.2",
     "is-url": "^1.2.4",
-    "isomorphic-fetch": "^2.2.1",
     "jwt-decode": "^2.2.0",
     "react": "^16.8.6",
     "react-color": "^2.14.1",
@@ -53,7 +51,6 @@
     "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.5",
     "redux-thunk": "^2.3.0",
-    "regenerator-runtime": "^0.13.2",
     "slate": "^0.44.13",
     "slate-deep-table": "^0.8.0",
     "slate-html-serializer": "^0.7.39",
@@ -117,9 +114,9 @@
       "not op_mini all"
     ],
     "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
     ]
   }
 }
