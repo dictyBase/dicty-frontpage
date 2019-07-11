@@ -92,7 +92,7 @@ const Popular = (props: Props) => {
         </a>
       </li>
       <li className={classes.listItem}>
-        <a className={classes.link} href="/gene/DDB_G0283267">
+        <a className={classes.link} href="/gene/gflB">
           <Button
             className={classes.button}
             size="small"
