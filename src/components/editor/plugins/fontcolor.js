@@ -1,6 +1,6 @@
 // @flow
 import React from "react"
-import { SketchPicker } from "react-color"
+import SketchPicker from "react-color/lib/Sketch"
 import Tooltip from "@material-ui/core/Tooltip"
 import FormatColorTextIcon from "@material-ui/icons/FormatColorText"
 import ToolbarButton from "../toolbar/ToolbarButton"
