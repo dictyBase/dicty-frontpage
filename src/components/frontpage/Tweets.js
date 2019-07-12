@@ -10,24 +10,39 @@ const styles = theme => ({
     borderBottom: "1px solid rgba(15,70,100,.12)",
     display: "inline-block",
     width: "100%",
+
+    "& h2": {
+      marginTop: "2px",
+      marginBottom: "2px",
+    },
+
     "& img": {
       marginLeft: "5px",
     },
   },
   tweets: {
-    height: 380,
+    height: 400,
     overflow: "auto",
     paddingLeft: "10px",
+
     "& a": {
       textDecoration: "none",
       color: "#428bca",
     },
+
     "& ul": {
-      padding: 0,
+      padding: "0px",
+      marginTop: "5px",
     },
+
     "& li": {
       listStyle: "none",
       borderBottom: "1px solid rgba(15,70,100,.12)",
+    },
+
+    "& p": {
+      marginTop: "9px",
+      marginBottom: "9px",
     },
   },
 })
