@@ -37,6 +37,7 @@
     "is-url": "^1.2.4",
     "jwt-decode": "^2.2.0",
     "react": "^16.8.6",
+    "react-app-polyfill": "^1.0.1",
     "react-color": "^2.14.1",
     "react-dom": "^16.8.6",
     "react-fontawesome": "^1.6.1",
