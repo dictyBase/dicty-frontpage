@@ -9,7 +9,6 @@ import CssBaseline from "@material-ui/core/CssBaseline"
 import configureStore from "./store/configureStore"
 import history from "utils/routerHistory"
 import App from "./App"
-import registerServiceWorker from "./registerServiceWorker"
 import "typeface-roboto"
 import "typeface-roboto-condensed"
 import "typeface-roboto-mono"
@@ -17,6 +16,7 @@ import "typeface-roboto-slab"
 import "typeface-lato"
 import "typeface-merriweather"
 import "typeface-montserrat"
+import * as serviceWorker from "./serviceWorker"
 
 // load state from localStorage(if any) to set the initial state for the store
 const initialState = hydrateStore({ key: "auth", namespace: "auth" })
@@ -50,4 +50,8 @@ ReactDOM.render(
   </Provider>,
   document.getElementById("root"),
 )
-registerServiceWorker()
+
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: https://bit.ly/CRA-PWA
+serviceWorker.register()
