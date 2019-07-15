@@ -10,7 +10,6 @@ describe("frontpage/Tweets", () => {
     })
     it("always renders initial components", () => {
       expect(wrapper.dive().find("span")).toHaveLength(1)
-      expect(wrapper.dive().find("img")).toHaveLength(1)
       expect(wrapper.dive().find("div")).toHaveLength(1)
     })
   })
