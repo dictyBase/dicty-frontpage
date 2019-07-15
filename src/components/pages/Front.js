@@ -52,10 +52,10 @@ const Front = (props: Props) => {
         />
       </Helmet>
       <Grid container justify="center" className={classes.container}>
-        <Grid item className={classes.topItem} xs={12} sm={6} xl={5}>
+        <Grid item className={classes.topItem} sm={12} md={6} xl={5}>
           <Slideshow />
         </Grid>
-        <Grid item className={classes.topItem} xs={12} sm={6} xl={5}>
+        <Grid item className={classes.topItem} sm={12} md={6} xl={5}>
           <Tweets />
         </Grid>
         <Grid item className={classes.topItem} xs={12} lg={6} xl={4}>
