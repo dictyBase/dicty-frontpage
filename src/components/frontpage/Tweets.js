@@ -22,7 +22,8 @@ const styles = theme => ({
   },
   tweets: {
     height: 400,
-    overflow: "auto",
+    overflowX: "hidden",
+    overflowY: "auto",
     paddingLeft: "10px",
 
     "& a": {
