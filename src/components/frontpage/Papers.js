@@ -41,7 +41,7 @@ const styles = theme => ({
   },
   listBox: {
     padding: "0px 25px 10px 25px",
-    fontSize: "12px",
+    fontSize: "13px",
     marginBottom: "5px",
     marginTop: "12px",
     "@media (max-width: 992px) and (min-width: 767px)": {
