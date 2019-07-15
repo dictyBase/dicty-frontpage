@@ -2,7 +2,6 @@
 import React, { useEffect } from "react"
 import { withStyles } from "@material-ui/core/styles"
 import TwitterFetcher from "twitter-fetcher"
-import twitterLogo from "images/twitterLogo.png"
 
 const styles = theme => ({
   header: {
@@ -80,12 +79,7 @@ const Tweets = (props: Props) => {
   return (
     <>
       <span className={classes.header}>
-        <h2>
-          Dicty News{" "}
-          <a href="https://twitter.com/dictybase">
-            <img alt="Twitter logo" src={twitterLogo} />
-          </a>
-        </h2>
+        <h2>Dicty News</h2>
       </span>
       <div className={classes.tweets} id="twitter-news" />
     </>
