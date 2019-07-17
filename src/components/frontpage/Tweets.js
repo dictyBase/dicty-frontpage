@@ -38,6 +38,17 @@ const styles = theme => ({
     "& li": {
       listStyle: "none",
       borderBottom: "1px solid rgba(15,70,100,.12)",
+      display: "flex",
+      flexDirection: "column",
+
+      "& .timePosted": {
+        order: 1,
+        fontWeight: 600,
+      },
+
+      "& .tweet": {
+        order: 2,
+      },
     },
 
     "& p": {
@@ -65,7 +76,7 @@ const Tweets = (props: Props) => {
       domId: "twitter-news",
       maxTweets: 20,
       enableLinks: true,
-      showPermalinks: true,
+      showPermalinks: false,
       showUser: false,
       showRetweet: false,
       showInteraction: false,
