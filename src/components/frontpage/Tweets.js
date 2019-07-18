@@ -58,6 +58,28 @@ const styles = theme => ({
   },
 })
 
+const dateFormatter = date => {
+  const monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ]
+  const month = date.getMonth()
+  const day = date.getDate()
+  const year = date.getFullYear()
+
+  return `${monthNames[month]} ${day}, ${year}`
+}
+
 type Props = {
   /** Material-UI styling */
   classes: Object,
@@ -82,6 +104,7 @@ const Tweets = (props: Props) => {
       showInteraction: false,
       linksInNewWindow: true,
       showImages: true,
+      dateFunction: dateFormatter,
     })
   }, [])
 
