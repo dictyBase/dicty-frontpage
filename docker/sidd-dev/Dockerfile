@@ -9,7 +9,7 @@ RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
 # copy only necessary files
-COPY package-lock.json
+COPY package-lock.json ./
 COPY jsconfig.json ./
 COPY package.json ./
 
