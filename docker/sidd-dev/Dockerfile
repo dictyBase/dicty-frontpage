@@ -19,6 +19,9 @@ RUN npm ci
 ADD src src
 ADD public public
 
+# overwrite the client key file
+ADD $CLIENT_KEYS /usr/src/app/src/utils/clientConfig.js
+
 # standard install/build commands
 RUN npm run build
 
