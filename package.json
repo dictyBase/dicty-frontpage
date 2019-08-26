@@ -3,7 +3,7 @@
   "version": "0.0.0-semantically-released",
   "private": true,
   "engines": {
-    "node": "10.4.0"
+    "node": "10.16.0"
   },
   "scripts": {
     "prettier": "prettier --version",
@@ -18,7 +18,10 @@
     "eject": "react-scripts eject",
     "cz": "git-cz",
     "semantic-release": "semantic-release",
-    "analyze": "source-map-explorer 'build/static/js/*.js'"
+    "analyze": "source-map-explorer 'build/static/js/*.js'",
+    "local-ci-eric": "IMAGE_TAG=$(git symbolic-ref -q HEAD | sed -e 's|^refs/heads/||' -e 's~/~-~')-$(git rev-parse --short HEAD) skaffold run -p ericdev",
+    "local-ci-sidd": "IMAGE_TAG=$(git symbolic-ref -q HEAD | sed -e 's|^refs/heads/||' -e 's~/~-~')-$(git rev-parse --short HEAD) skaffold run -p devsidd",
+    "local-ci-staging": "IMAGE_TAG=staging-$(git rev-parse --short HEAD) skaffold run"
   },
   "dependencies": {
     "@convertkit/slate-lists": "^0.2.2",

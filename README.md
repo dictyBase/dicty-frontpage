@@ -26,6 +26,7 @@ The React based frontpage web application of new dictybase
   - [Running the application (dev version)](#running-the-application-dev-version)
   - [Application Structure](#application-structure)
 - [Deployment](#deployment)
+- [Developers](#developers)
 
 # Development
 
@@ -100,3 +101,8 @@ Component wireframes, Redux shape of state and information on developing for the
 The application is deployed by [building a Docker
 image](https://docs.docker.com/engine/reference/commandline/build/) and running
 it through [Kubernetes](https://k8s.io).
+
+# Developers
+
+<a href="https://sourcerer.io/cybersiddhu"><img src="https://sourcerer.io/assets/avatar/cybersiddhu" height="80px" alt="Sourcerer"></a>
+<a href="https://sourcerer.io/wildlifehexagon"><img src="https://sourcerer.io/assets/avatar/wildlifehexagon" height="80px" alt="Sourcerer"></a>
