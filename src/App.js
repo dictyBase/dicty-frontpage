@@ -63,19 +63,9 @@ export class App extends Component<Props> {
     const { auth, navbar, footer, classes } = this.props
 
     // if any errors, fall back to old link setup
-    if (!navbar.links || !footer.links) {
+    if (!footer.links) {
       return (
         <div className={classes.body}>
-          {auth.isAuthenticated ? (
-            <Header items={loggedHeaderItems}>
-              {items => items.map(generateLinks)}
-            </Header>
-          ) : (
-            <Header items={headerItems}>
-              {items => items.map(generateLinks)}
-            </Header>
-          )}
-          <Navbar items={navItems} theme={navTheme} />
           <main className={classes.container}>
             <ErrorBoundary>
               <Routes {...this.props} />
@@ -88,7 +78,7 @@ export class App extends Component<Props> {
 
     return (
       <div className={classes.body}>
-        {auth.isAuthenticated ? (
+        {/* {auth.isAuthenticated ? (
           <Header items={loggedHeaderItems}>
             {items => items.map(generateLinks)}
           </Header>
@@ -97,7 +87,7 @@ export class App extends Component<Props> {
             {items => items.map(generateLinks)}
           </Header>
         )}
-        <Navbar items={navbar.links} theme={navTheme} />
+        <Navbar items={navbar.links} theme={navTheme} /> */}
         <main className={classes.container}>
           <ErrorBoundary>
             <Routes {...this.props} />

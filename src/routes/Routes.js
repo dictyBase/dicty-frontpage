@@ -15,10 +15,18 @@ import ErrorPage from "components/pages/ErrorPage"
 import PageNotReady from "components/pages/PageNotReady"
 import LoginRoute from "./LoginRoute"
 import PrivateRoute from "./PrivateRoute"
+import MockupGrayBelow from "components/mockups/MockupGrayBelow"
+import MockupBlueBelow from "components/mockups/MockupBlueBelow"
+import MockupGrayRight from "components/mockups/MockupGrayRight"
+import MockupBlueRight from "components/mockups/MockupBlueRight"
 
 const Routes = () => (
   <Switch>
     <Route exact path="/" component={Front} />
+    <Route exact path="/mockup-gray-below" component={MockupGrayBelow} />
+    <Route exact path="/mockup-blue-below" component={MockupBlueBelow} />
+    <Route exact path="/mockup-gray-right" component={MockupGrayRight} />
+    <Route exact path="/mockup-blue-right" component={MockupBlueRight} />
     <Route exact path="/about" component={About} />
     <Route exact path="/downloads" component={Downloads} />
     {/* Authentication routes */}
