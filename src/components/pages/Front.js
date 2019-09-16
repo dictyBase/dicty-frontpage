@@ -3,7 +3,7 @@ import React from "react"
 import { Helmet } from "react-helmet"
 import Grid from "@material-ui/core/Grid"
 import { withStyles } from "@material-ui/core/styles"
-import { Header, Footer } from "dicty-components-header-footer"
+import { Header } from "dicty-components-header-footer"
 import { Navbar } from "dicty-components-navbar"
 import Slideshow from "components/frontpage/Slideshow"
 import Tweets from "components/frontpage/Tweets"
@@ -14,11 +14,7 @@ import StockCenter from "components/frontpage/StockCenter"
 import papers from "data/papers"
 import annotations from "data/annotations"
 import stockcenter from "data/stockcenter"
-import {
-  headerItems,
-  loggedHeaderItems,
-  generateLinks,
-} from "utils/headerItems"
+import { headerItems, generateLinks } from "utils/headerItems"
 import navItems from "constants/navbar"
 
 const styles = theme => ({

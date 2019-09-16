@@ -3,23 +3,23 @@ import React, { Component } from "react"
 import { connect } from "react-redux"
 import { withRouter } from "react-router-dom"
 import { withStyles } from "@material-ui/core/styles"
-import { Header, Footer } from "dicty-components-header-footer"
-import { Navbar } from "dicty-components-navbar"
+import { Footer } from "dicty-components-header-footer"
+// import { Navbar } from "dicty-components-navbar"
 import Routes from "routes/Routes"
 import ErrorBoundary from "components/pages/ErrorBoundary"
 import fetchNavbarAndFooter from "actions/navbar"
 import footerItems from "constants/footer"
-import navItems from "constants/navbar"
-import {
-  headerItems,
-  loggedHeaderItems,
-  generateLinks,
-} from "utils/headerItems"
+// import navItems from "constants/navbar"
+// import {
+//   headerItems,
+//   loggedHeaderItems,
+//   generateLinks,
+// } from "utils/headerItems"
 
-const navTheme = {
-  primary: "#004080",
-  secondary: "#0059b3",
-}
+// const navTheme = {
+//   primary: "#004080",
+//   secondary: "#0059b3",
+// }
 
 const styles = theme => ({
   container: {
@@ -60,7 +60,7 @@ export class App extends Component<Props> {
   }
 
   render() {
-    const { auth, navbar, footer, classes } = this.props
+    const { footer, classes } = this.props
 
     // if any errors, fall back to old link setup
     if (!footer.links) {
