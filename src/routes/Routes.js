@@ -20,6 +20,7 @@ import MockupBlueBelow from "components/mockups/MockupBlueBelow"
 import MockupGrayRight from "components/mockups/MockupGrayRight"
 import MockupBlueRight from "components/mockups/MockupBlueRight"
 import MockupBlueLeft from "components/mockups/MockupBlueLeft"
+import MockupBlueAbove from "components/mockups/MockupBlueAbove"
 
 const Routes = () => (
   <Switch>
@@ -29,6 +30,7 @@ const Routes = () => (
     <Route exact path="/mockup-gray-right" component={MockupGrayRight} />
     <Route exact path="/mockup-blue-right" component={MockupBlueRight} />
     <Route exact path="/mockup-blue-left" component={MockupBlueLeft} />
+    <Route exact path="/mockup-blue-above" component={MockupBlueAbove} />
     <Route exact path="/about" component={About} />
     <Route exact path="/downloads" component={Downloads} />
     {/* Authentication routes */}

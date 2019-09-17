@@ -29,6 +29,7 @@
     "@material-ui/icons": "^1.1.1",
     "connected-react-router": "^6.5.0",
     "core-js": "^3.1.4",
+    "dicty-above-header": "github:dictyBase/dicty-components-header-footer#feat/dcr-above-logo",
     "dicty-blue-header": "github:dictyBase/dicty-components-header-footer#feat/dcr-blue-below",
     "dicty-blue-left-header": "github:dictyBase/dicty-components-header-footer#feat/dcr-blue-left",
     "dicty-blue-right-header": "github:dictyBase/dicty-components-header-footer#feat/dcr-blue-right",
