@@ -30,6 +30,7 @@
     "connected-react-router": "^6.5.0",
     "core-js": "^3.1.4",
     "dicty-blue-header": "github:dictyBase/dicty-components-header-footer#feat/dcr-blue-below",
+    "dicty-blue-left-header": "github:dictyBase/dicty-components-header-footer#feat/dcr-blue-left",
     "dicty-blue-right-header": "github:dictyBase/dicty-components-header-footer#feat/dcr-blue-right",
     "dicty-components-header-footer": "github:dictyBase/dicty-components-header-footer#feat/dcr-mockups",
     "dicty-components-login": "github:dictyBase/dicty-components-login#v1.4.0",
