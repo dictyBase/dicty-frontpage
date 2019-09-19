@@ -37,7 +37,7 @@ const plugins = [
   UnderlinePlugin(),
 ]
 
-type Ref = { current: React.createRef<any> | null }
+type Ref = { current: any | null }
 
 type Props = {
   /** The fetched page content */

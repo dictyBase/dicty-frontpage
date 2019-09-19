@@ -1,3 +1,5 @@
+[![License](https://img.shields.io/badge/License-BSD%202--Clause-blue.svg)](LICENSE)
+
 ## Master branch
 
 [![Build Status](https://travis-ci.org/dictyBase/dicty-frontpage.svg?branch=master)](https://travis-ci.org/dictyBase/dicty-frontpage)
@@ -102,7 +104,7 @@ The application is deployed by [building a Docker
 image](https://docs.docker.com/engine/reference/commandline/build/) and running
 it through [Kubernetes](https://k8s.io).
 
-# Developers
+# Active Developers
 
 <a href="https://sourcerer.io/cybersiddhu"><img src="https://sourcerer.io/assets/avatar/cybersiddhu" height="80px" alt="Sourcerer"></a>
 <a href="https://sourcerer.io/wildlifehexagon"><img src="https://sourcerer.io/assets/avatar/wildlifehexagon" height="80px" alt="Sourcerer"></a>
