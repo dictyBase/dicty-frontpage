@@ -25,11 +25,11 @@
   },
   "dependencies": {
     "@convertkit/slate-lists": "^0.2.2",
-    "@material-ui/core": "^1.4.0",
-    "@material-ui/icons": "^1.1.1",
+    "@material-ui/core": "^4.2.1",
+    "@material-ui/icons": "^4.2.1",
     "connected-react-router": "^6.5.0",
     "core-js": "^3.1.4",
-    "dicty-components-header-footer": "github:dictyBase/dicty-components-header-footer#v7.0.0",
+    "dicty-components-header-footer": "github:dictyBase/dicty-components-header-footer#9.0.0",
     "dicty-components-login": "github:dictyBase/dicty-components-login#v1.4.0",
     "dicty-components-navbar": "github:dictyBase/dicty-components-navbar#v0.2.0",
     "dicty-components-redux": "github:dictybase-playground/dicty-components-redux#v2.3.0",
@@ -82,7 +82,7 @@
     "prettier": "^1.18.2",
     "react-styleguidist": "^9.1.11",
     "react-test-renderer": "^16.8.6",
-    "semantic-release": "^15.13.18",
+    "semantic-release": "^15.13.24",
     "source-map-explorer": "^2.0.1"
   },
   "husky": {
