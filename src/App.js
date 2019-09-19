@@ -111,7 +111,7 @@ export class App extends Component<Props> {
 
 const mapStateToProps = ({ auth, navbar, footer }) => ({ auth, navbar, footer })
 
-export default withRouter(
+export default withRouter<*>(
   connect(
     mapStateToProps,
     { fetchNavbarAndFooter },

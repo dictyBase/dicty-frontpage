@@ -210,6 +210,6 @@ const mapStateToProps = state => ({
   auth: state.auth,
 })
 
-export default withRouter(
+export default withRouter<*>(
   withStyles(styles)(connect(mapStateToProps)(ErrorPage)),
 )
