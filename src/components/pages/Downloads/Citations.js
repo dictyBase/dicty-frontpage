@@ -18,43 +18,43 @@ type Props = {
   /** Material-UI styling */
   classes: Object,
   /** Citations data */
-  citation: {
+  citations: Array<{
     /** Authors of paper */
-    authors: String,
+    authors: string,
     /** Title of paper */
-    title: String,
+    title: string,
     /** Journal for this citation */
-    journal: String,
+    journal: string,
     /** Link to PubMed */
-    link: String,
-  },
+    link: string,
+  }>,
 }
 
 /**
  * Displays the citation above the downloads table.
  */
 
-const Citations = (props: Props) => {
-  const { classes, citation } = props
-
+const Citations = ({ classes, citations }: Props) => {
   return (
     <div className={classes.root}>
       <h3 className={classes.topLine}>Please cite:</h3>
-      <p>
-        <strong>{citation.authors}</strong>
-        {"  "}
-        {citation.title}
-        {"  "}
-        <em>{citation.journal}</em>
-        {"  "}
-        <a
-          href={citation.link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={classes.link}>
-          [Pubmed]
-        </a>
-      </p>
+      {citations.map(citation => (
+        <p key={citation.title}>
+          <strong>{citation.authors}</strong>
+          {"  "}
+          {citation.title}
+          {"  "}
+          <em>{citation.journal}</em>
+          {"  "}
+          <a
+            href={citation.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={classes.link}>
+            [Pubmed]
+          </a>
+        </p>
+      ))}
     </div>
   )
 }
