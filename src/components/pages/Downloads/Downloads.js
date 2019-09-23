@@ -54,7 +54,7 @@ export class Downloads extends Component<Props> {
       if (item.id === json.currentTab) {
         return (
           <Typography component="div" key={item.id}>
-            <Citations citation={item.attributes.citation} />
+            <Citations citations={item.attributes.citations} />
             {downloads[item.id] && (
               <DownloadsTable data={downloads[item.id].data} />
             )}
@@ -90,7 +90,7 @@ export class Downloads extends Component<Props> {
               <Tabs
                 value={downloads.currentTab}
                 onChange={this.handleChange}
-                scrollable
+                variant="scrollable"
                 scrollButtons="auto">
                 {this.generateTabs(downloads)}
               </Tabs>

@@ -70,7 +70,7 @@ const normalizeData = json =>
     attributes: {
       taxon_id: r.attributes.taxon_id,
       scientific_name: r.attributes.scientific_name,
-      citation: r.attributes.citation,
+      citations: r.attributes.citations,
     },
   }))
 
