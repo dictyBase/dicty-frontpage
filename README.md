@@ -1,9 +1,9 @@
 # dicty-frontpage
 
 [![License](https://img.shields.io/badge/License-BSD%202--Clause-blue.svg)](LICENSE)  
-![GitHub tag](https://img.shields.io/github/v/tag/dictyBase/dicty-frontpage)
 [![Dependency Status](https://david-dm.org/dictybase/dicty-frontpage/develop.svg?style=flat-square)](https://david-dm.org/dictybase/dicty-frontpage/develop)
 [![devDependency Status](https://david-dm.org/dictybase/dicty-frontpage/develop/dev-status.svg?style=flat-square)](https://david-dm.org/dictybase/dicty-frontpage/develop?type=dev)
+![GitHub tag](https://img.shields.io/github/v/tag/dictyBase/dicty-frontpage)  
 ![Commits](https://badgen.net/github/commits/dictyBase/dicty-frontpage/develop)
 ![Last commit](https://badgen.net/github/last-commit/dictyBase/dicty-frontpage/develop)
 ![Branches](https://badgen.net/github/branches/dictyBase/dicty-frontpage)
