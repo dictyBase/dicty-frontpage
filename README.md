@@ -25,61 +25,44 @@
 [![Funding](https://badgen.net/badge/NIGMS/Rex%20L%20Chisholm,dictyBase/yellow?list=|)](https://projectreporter.nih.gov/project_info_description.cfm?aid=9476993)
 [![Funding](https://badgen.net/badge/NIGMS/Rex%20L%20Chisholm,DSC/yellow?list=|)](https://projectreporter.nih.gov/project_info_description.cfm?aid=9438930)
 
-- [Development](#development)
-  - [Configuration](#configuration)
-    - [Providers](#providers)
-    - [Auth server](#auth-server)
-    - [API server](#api-server)
-    - [Navbar and footer](#navbar-and-footer)
-  - [Semantic Versioning](#semantic-versioning)
-  - [Running the application (dev version)](#running-the-application-dev-version)
-  - [Application Structure](#application-structure)
-- [Deployment](#deployment)
-- [Developers](#developers)
+This is the repository for the new [dictyBase frontpage](https://testdb.dictybase.org).
 
-# Development
+# Cloud Native Development
 
-- First clone this repository.
-- Next configure the application as described below.
+All dictyBase development is now done with cloud native development in mind. It is expected
+that you have your own [Kubernetes](https://kubernetes.io/) cluster running. Documentation
+for the cloud deployment process can be found [here](https://github.com/dictyBase/Migration/tree/master/deployment).
 
-## Configuration
+The general idea is that after every git commit a new Docker image is built based on that commit,
+pushed to Docker Hub, then the corresponding Helm chart is upgraded with that image tag
+inside your cluster.
 
-### Providers
+# Local Development
 
-- This is the most important part and it is absolutely needed to run the application.
+In order for this application to work locally, you will need to configure the list of
+login providers.
+
 - Copy the provided sample [clientConfig.sample.js](src/utils/clientConfig.sample.js) file
   to **clientConfig.js** in the same folder.
-- Then add providers name and their corresponding client ids.
-- All the providers should have a matching counterpart in the
-  [oauthConfig.js](src/utils/oauthConfig.js) file. Fill up all the
+- Add any provider names and their corresponding client IDs.
+- All providers should have a matching counterpart in the
+  [oauthConfig.js](src/utils/oauthConfig.js) file. Fill up all of the
   configuration parameters for every new provider in that file.
-- For each of the provider name a corresponding login button will be shown up
-  in the login route. The list of supported buttons are given
-  [here](http://fontawesome.io/icons/#brand)
 
-### Auth server
+After setting up the login providers, you can run `npm install` and `npm start` as usual.
+There are also [husky](https://github.com/typicode/husky) scripts set up to run unit tests
+on `pre-commit` and run [Skaffold](https://github.com/GoogleContainerTools/skaffold) on `post-commit`.
 
-- By default, the application expects it to run on `http://localhost:9999`
-- The URL of the auth server can be configured by **REACT_APP_AUTH_SERVER** environmental variable.
-- The binaries for the auth server can be downloaded from its release
-  [page](https://github.com/dictyBase/authserver/releases). Download the one that is
-  suitable for your OS and make sure you always use the latest one.
-- The **REACT_APP_AUTH_SERVER** env variable can also be customized by modifying the
-  global variable in the [env](.env.development) file.
+# Backend Requirements
 
-### API server
+This app requires the following services to be running:
 
-- By default, the application expects it to run on `http://localhost:8080`
-- The URL of the auth server can be configured by **REACT_APP_API_SERVER** environmental variable.
-- An API server to **test** the strain/plasmid catalog inside the application can be found [here](https://github.com/dictyBase/fake-dsc-server)
-- The API server to manage data from the rich text editor frontend is available [here](https://github.com/dictyBase/modware-content).
-- The **REACT_APP_API_SERVER** env variable can also be customize by modifying the
-  global variable in the [env](.env.development) file.
+- [modware-content](https://github.com/dictyBase/modware-content) (`REACT_APP_API_SERVER`)
+- [authserver](https://github.com/dictyBase/authserver) (`REACT_APP_AUTH_SERVER`)
 
-### Navbar and Footer
-
-- The application has env variables for `REACT_APP_NAVBAR_JSON` and `REACT_APP_FOOTER_JSON` that are set to
-  the corresponding URLs where the JSON data is stored on GitHub.
+It also relies on the navbar, footer and download tabs JSON files found in the
+[migration-data](https://github.com/dictyBase/migration-data) repository. An example
+of the necessary environmental variables can be found [here](.env.development).
 
 ## Semantic Versioning
 
@@ -93,23 +76,6 @@ When you are ready to push to prod, you can use `semantic-release` to automate t
 **Important:** you MUST have an env variable stored for `GH_TOKEN` or `GITHUB_TOKEN` that contains a GitHub [personal access token](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/). You can either pass this in manually when you run the script (i.e. `GH_TOKEN=XXX npx semantic-release`) or you can [store your env variable locally](https://www.schrodinger.com/kb/1842).
 
 This will look at your most recent commits since the last `git tag` and automatically determine the appropriate version number for your release. It also updates the [CHANGELOG](./CHANGELOD.md) documentation.
-
-## Running the application (dev version)
-
-- `npm install`
-- `npm start`
-
-## Application Structure
-
-This was built using [create-react-app](https://github.com/facebook/create-react-app). Please read their [User Guide](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md) for more detailed information.
-
-Component wireframes, Redux shape of state and information on developing for the [Slate.js](https://github.com/ianstormtaylor/slate) page editor can be found in the [docs](./docs) folder.
-
-# Deployment
-
-The application is deployed by [building a Docker
-image](https://docs.docker.com/engine/reference/commandline/build/) and running
-it through [Kubernetes](https://k8s.io).
 
 # Active Developers
 
