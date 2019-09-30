@@ -1,8 +1,9 @@
 # dicty-frontpage
 
 [![License](https://img.shields.io/badge/License-BSD%202--Clause-blue.svg)](LICENSE)  
-[![Dependency Status](https://david-dm.org/dictybase/dicty-frontpage/develop.svg?style=flat-square)](https://david-dm.org/dictybase/dicty-frontpage/develop)
-[![devDependency Status](https://david-dm.org/dictybase/dicty-frontpage/develop/dev-status.svg?style=flat-square)](https://david-dm.org/dictybase/dicty-frontpage/develop?type=dev)
+![GitHub action](https://github.com/dictyBase/dicty-frontpage/workflows/Node%20CI/badge.svg)
+[![Dependency Status](https://david-dm.org/dictyBase/dicty-frontpage/develop.svg?style=flat-square)](https://david-dm.org/dictyBase/dicty-frontpage/develop)
+[![devDependency Status](https://david-dm.org/dictyBase/dicty-frontpage/develop/dev-status.svg?style=flat-square)](https://david-dm.org/dictyBase/dicty-frontpage/develop?type=dev)
 ![GitHub tag](https://img.shields.io/github/v/tag/dictyBase/dicty-frontpage)  
 ![Commits](https://badgen.net/github/commits/dictyBase/dicty-frontpage/develop)
 ![Last commit](https://badgen.net/github/last-commit/dictyBase/dicty-frontpage/develop)
@@ -27,7 +28,7 @@
 
 This is the repository for the new [dictyBase frontpage](https://testdb.dictybase.org).
 
-# Cloud Native Development
+## Cloud Native Development
 
 All dictyBase development is now done with cloud native development in mind. It is expected
 that you have your own [Kubernetes](https://kubernetes.io/) cluster running. Documentation
@@ -37,7 +38,7 @@ The general idea is that after every git commit a new Docker image is built base
 pushed to Docker Hub, then the corresponding Helm chart is upgraded with that image tag
 inside your cluster.
 
-# Local Development
+## Local Development
 
 In order for this application to work locally, you will need to configure the list of
 login providers.
@@ -53,7 +54,7 @@ After setting up the login providers, you can run `npm install` and `npm start` 
 There are also [husky](https://github.com/typicode/husky) scripts set up to run unit tests
 on `pre-commit` and run [Skaffold](https://github.com/GoogleContainerTools/skaffold) on `post-commit`.
 
-# Backend Requirements
+## Backend Requirements
 
 This app requires the following services to be running:
 
@@ -77,7 +78,7 @@ When you are ready to push to prod, you can use `semantic-release` to automate t
 
 This will look at your most recent commits since the last `git tag` and automatically determine the appropriate version number for your release. It also updates the [CHANGELOG](./CHANGELOD.md) documentation.
 
-# Active Developers
+## Active Developers
 
 <a href="https://sourcerer.io/cybersiddhu"><img src="https://sourcerer.io/assets/avatar/cybersiddhu" height="80px" alt="Sourcerer"></a>
 <a href="https://sourcerer.io/wildlifehexagon"><img src="https://sourcerer.io/assets/avatar/wildlifehexagon" height="80px" alt="Sourcerer"></a>
