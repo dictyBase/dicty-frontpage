@@ -1,78 +1,69 @@
-[![License](https://img.shields.io/badge/License-BSD%202--Clause-blue.svg)](LICENSE)
+# dicty-frontpage
 
-## Master branch
+[![License](https://img.shields.io/badge/License-BSD%202--Clause-blue.svg)](LICENSE)  
+![GitHub action](https://github.com/dictyBase/dicty-frontpage/workflows/Node%20CI/badge.svg)
+[![Dependency Status](https://david-dm.org/dictyBase/dicty-frontpage/develop.svg?style=flat-square)](https://david-dm.org/dictyBase/dicty-frontpage/develop)
+[![devDependency Status](https://david-dm.org/dictyBase/dicty-frontpage/develop/dev-status.svg?style=flat-square)](https://david-dm.org/dictyBase/dicty-frontpage/develop?type=dev)
+![GitHub tag](https://img.shields.io/github/v/tag/dictyBase/dicty-frontpage)  
+![Commits](https://badgen.net/github/commits/dictyBase/dicty-frontpage/develop)
+![Last commit](https://badgen.net/github/last-commit/dictyBase/dicty-frontpage/develop)
+![Branches](https://badgen.net/github/branches/dictyBase/dicty-frontpage)
+![Tags](https://badgen.net/github/tags/dictyBase/dicty-frontpage)
+![GitHub repo size](https://img.shields.io/github/repo-size/dictyBase/dicty-frontpage?style=plastic)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/dictyBase/dicty-frontpage?style=plastic)
+[![Lines of Code](https://badgen.net/codeclimate/loc/dictyBase/dicty-frontpage)](https://codeclimate.com/github/dictyBase/dicty-frontpage/code)  
+![Issues](https://badgen.net/github/issues/dictyBase/dicty-frontpage)
+![Open Issues](https://badgen.net/github/open-issues/dictyBase/dicty-frontpage)
+![Closed Issues](https://badgen.net/github/closed-issues/dictyBase/dicty-frontpage)
+![Total PRS](https://badgen.net/github/prs/dictyBase/dicty-frontpage)
+![Open PRS](https://badgen.net/github/open-prs/dictyBase/dicty-frontpage)
+![Closed PRS](https://badgen.net/github/closed-prs/dictyBase/dicty-frontpage)
+![Merged PRS](https://badgen.net/github/merged-prs/dictyBase/dicty-frontpage)  
+[![Technical debt](https://badgen.net/codeclimate/tech-debt/dictyBase/dicty-frontpage)](https://codeclimate.com/github/dictyBase/dicty-frontpage/trends/technical_debt)
+[![Issues](https://badgen.net/codeclimate/issues/dictyBase/dicty-frontpage)](https://codeclimate.com/github/dictyBase/dicty-frontpage/issues)
+[![Maintainability percentage](https://badgen.net/codeclimate/maintainability-percentage/dictyBase/dicty-frontpage)](https://codeclimate.com/github/dictyBase/dicty-frontpage)
+[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=dictyBase/dicty-frontpage)](https://dependabot.com)  
+[![Funding](https://badgen.net/badge/NIGMS/Rex%20L%20Chisholm,dictyBase/yellow?list=|)](https://projectreporter.nih.gov/project_info_description.cfm?aid=9476993)
+[![Funding](https://badgen.net/badge/NIGMS/Rex%20L%20Chisholm,DSC/yellow?list=|)](https://projectreporter.nih.gov/project_info_description.cfm?aid=9438930)
 
-[![Build Status](https://travis-ci.org/dictyBase/dicty-frontpage.svg?branch=master)](https://travis-ci.org/dictyBase/dicty-frontpage)
-[![Dependency Status](https://david-dm.org/dictybase/dicty-frontpage/master.svg?style=flat-square)](https://david-dm.org/dictybase/dicty-frontpage/master)
-[![devDependency Status](https://david-dm.org/dictybase/dicty-frontpage/master/dev-status.svg?style=flat-square)](https://david-dm.org/dictybase/dicty-frontpage/master?type=dev)
-[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+This is the repository for the new [dictyBase frontpage](https://testdb.dictybase.org).
 
-## Develop branch
+## Cloud Native Development
 
-[![Build Status](https://travis-ci.org/dictyBase/dicty-frontpage.svg?branch=develop)](https://travis-ci.org/dictyBase/dicty-frontpage)
-[![Dependency Status](https://david-dm.org/dictybase/dicty-frontpage/develop.svg?style=flat-square)](https://david-dm.org/dictybase/dicty-frontpage/develop)
-[![devDependency Status](https://david-dm.org/dictybase/dicty-frontpage/develop/dev-status.svg?style=flat-square)](https://david-dm.org/dictybase/dicty-frontpage/develop?type=dev)
-[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+All dictyBase development is now done with cloud native development in mind. It is expected
+that you have your own [Kubernetes](https://kubernetes.io/) cluster running. Documentation
+for the cloud deployment process can be found [here](https://github.com/dictyBase/Migration/tree/master/deployment).
 
-# Dicty Frontpage
+The general idea is that after every git commit a new Docker image is built based on that commit,
+pushed to Docker Hub, then the corresponding Helm chart is upgraded with that image tag
+inside your cluster.
 
-The React based frontpage web application of new dictybase
+## Local Development
 
-- [Development](#development)
-  - [Configuration](#configuration)
-    - [Providers](#providers)
-    - [Auth server](#auth-server)
-    - [API server](#api-server)
-    - [Navbar and footer](#navbar-and-footer)
-  - [Semantic Versioning](#semantic-versioning)
-  - [Running the application (dev version)](#running-the-application-dev-version)
-  - [Application Structure](#application-structure)
-- [Deployment](#deployment)
-- [Developers](#developers)
+In order for this application to work locally, you will need to configure the list of
+login providers.
 
-# Development
-
-- First clone this repository.
-- Next configure the application as described below.
-
-## Configuration
-
-### Providers
-
-- This is the most important part and it is absolutely needed to run the application.
 - Copy the provided sample [clientConfig.sample.js](src/utils/clientConfig.sample.js) file
   to **clientConfig.js** in the same folder.
-- Then add providers name and their corresponding client ids.
-- All the providers should have a matching counterpart in the
-  [oauthConfig.js](src/utils/oauthConfig.js) file. Fill up all the
+- Add any provider names and their corresponding client IDs.
+- All providers should have a matching counterpart in the
+  [oauthConfig.js](src/utils/oauthConfig.js) file. Fill up all of the
   configuration parameters for every new provider in that file.
-- For each of the provider name a corresponding login button will be shown up
-  in the login route. The list of supported buttons are given
-  [here](http://fontawesome.io/icons/#brand)
 
-### Auth server
+After setting up the login providers, you can run `npm install` and `npm start` as usual.
+There are also [husky](https://github.com/typicode/husky) scripts set up to run unit tests
+on `pre-commit` and run [Skaffold](https://github.com/GoogleContainerTools/skaffold) on `post-commit`.
 
-- By default, the application expects it to run on `http://localhost:9999`
-- The URL of the auth server can be configured by **REACT_APP_AUTH_SERVER** environmental variable.
-- The binaries for the auth server can be downloaded from its release
-  [page](https://github.com/dictyBase/authserver/releases). Download the one that is
-  suitable for your OS and make sure you always use the latest one.
-- The **REACT_APP_AUTH_SERVER** env variable can also be customized by modifying the
-  global variable in the [env](.env.development) file.
+## Backend Requirements
 
-### API server
+This app requires the following services to be running:
 
-- By default, the application expects it to run on `http://localhost:8080`
-- The URL of the auth server can be configured by **REACT_APP_API_SERVER** environmental variable.
-- An API server to **test** the strain/plasmid catalog inside the application can be found [here](https://github.com/dictyBase/fake-dsc-server)
-- The API server to manage data from the rich text editor frontend is available [here](https://github.com/dictyBase/modware-content).
-- The **REACT_APP_API_SERVER** env variable can also be customize by modifying the
-  global variable in the [env](.env.development) file.
+- [modware-content](https://github.com/dictyBase/modware-content) (`REACT_APP_API_SERVER`)
+- [authserver](https://github.com/dictyBase/authserver) (`REACT_APP_AUTH_SERVER`)
 
-### Navbar and Footer
-
-- The application has env variables for `REACT_APP_NAVBAR_JSON` and `REACT_APP_FOOTER_JSON` that are set to
-  the corresponding URLs where the JSON data is stored on GitHub.
+It also relies on the navbar, footer and download tabs JSON files found in the
+[migration-data](https://github.com/dictyBase/migration-data) repository. An example
+of the necessary environmental variables can be found [here](.env.development).
 
 ## Semantic Versioning
 
@@ -87,24 +78,7 @@ When you are ready to push to prod, you can use `semantic-release` to automate t
 
 This will look at your most recent commits since the last `git tag` and automatically determine the appropriate version number for your release. It also updates the [CHANGELOG](./CHANGELOD.md) documentation.
 
-## Running the application (dev version)
-
-- `npm install`
-- `npm start`
-
-## Application Structure
-
-This was built using [create-react-app](https://github.com/facebook/create-react-app). Please read their [User Guide](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md) for more detailed information.
-
-Component wireframes, Redux shape of state and information on developing for the [Slate.js](https://github.com/ianstormtaylor/slate) page editor can be found in the [docs](./docs) folder.
-
-# Deployment
-
-The application is deployed by [building a Docker
-image](https://docs.docker.com/engine/reference/commandline/build/) and running
-it through [Kubernetes](https://k8s.io).
-
-# Active Developers
+## Active Developers
 
 <a href="https://sourcerer.io/cybersiddhu"><img src="https://sourcerer.io/assets/avatar/cybersiddhu" height="80px" alt="Sourcerer"></a>
 <a href="https://sourcerer.io/wildlifehexagon"><img src="https://sourcerer.io/assets/avatar/wildlifehexagon" height="80px" alt="Sourcerer"></a>
