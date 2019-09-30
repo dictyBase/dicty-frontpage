@@ -1,16 +1,26 @@
 [![License](https://img.shields.io/badge/License-BSD%202--Clause-blue.svg)](LICENSE)
-
-## Master branch
-
-[![Dependency Status](https://david-dm.org/dictybase/dicty-frontpage/master.svg?style=flat-square)](https://david-dm.org/dictybase/dicty-frontpage/master)
-[![devDependency Status](https://david-dm.org/dictybase/dicty-frontpage/master/dev-status.svg?style=flat-square)](https://david-dm.org/dictybase/dicty-frontpage/master?type=dev)
-[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
-
-## Develop branch
-
+![GitHub repo size](https://img.shields.io/github/repo-size/dictyBase/dicty-frontpage?style=plastic)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/dictyBase/dicty-frontpage?style=plastic)
+[![Lines of Code](https://badgen.net/codeclimate/loc/dictyBase/dicty-frontpage)](https://codeclimate.com/github/dictyBase/dicty-frontpage/code)  
+![Commits](https://badgen.net/github/commits/dictyBase/dicty-frontpage/develop)
+![Last commit](https://badgen.net/github/last-commit/dictyBase/dicty-frontpage/develop)
+![Branches](https://badgen.net/github/branches/dictyBase/dicty-frontpage)
+![Tags](https://badgen.net/github/tags/dictyBase/dicty-frontpage)  
+![Issues](https://badgen.net/github/issues/dictyBase/dicty-frontpage)
+![Open Issues](https://badgen.net/github/open-issues/dictyBase/dicty-frontpage)
+![Closed Issues](https://badgen.net/github/closed-issues/dictyBase/dicty-frontpage)
+![Total PRS](https://badgen.net/github/prs/dictyBase/dicty-frontpage)
+![Open PRS](https://badgen.net/github/open-prs/dictyBase/dicty-frontpage)
+![Closed PRS](https://badgen.net/github/closed-prs/dictyBase/dicty-frontpage)
+![Merged PRS](https://badgen.net/github/merged-prs/dictyBase/dicty-frontpage)  
+[![Technical debt](https://badgen.net/codeclimate/tech-debt/dictyBase/dicty-frontpage)](https://codeclimate.com/github/dictyBase/dicty-frontpage/trends/technical_debt)
+[![Issues](https://badgen.net/codeclimate/issues/dictyBase/dicty-frontpage)](https://codeclimate.com/github/dictyBase/dicty-frontpage/issues)
+[![Maintainability percentage](https://badgen.net/codeclimate/maintainability-percentage/dictyBase/dicty-frontpage)](https://codeclimate.com/github/dictyBase/dicty-frontpage)
+[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=dictyBase/dicty-frontpage)](https://dependabot.com)  
+[![Funding](https://badgen.net/badge/NIGMS/Rex%20L%20Chisholm,dictyBase/yellow?list=|)](https://projectreporter.nih.gov/project_info_description.cfm?aid=9476993)
+[![Funding](https://badgen.net/badge/NIGMS/Rex%20L%20Chisholm,DSC/yellow?list=|)](https://projectreporter.nih.gov/project_info_description.cfm?aid=9438930)
 [![Dependency Status](https://david-dm.org/dictybase/dicty-frontpage/develop.svg?style=flat-square)](https://david-dm.org/dictybase/dicty-frontpage/develop)
 [![devDependency Status](https://david-dm.org/dictybase/dicty-frontpage/develop/dev-status.svg?style=flat-square)](https://david-dm.org/dictybase/dicty-frontpage/develop?type=dev)
-[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
 # Dicty Frontpage
 
