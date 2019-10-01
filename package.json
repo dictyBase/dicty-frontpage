@@ -38,7 +38,7 @@
     "immutable": "^3.8.2",
     "is-url": "^1.2.4",
     "jwt-decode": "^2.2.0",
-    "react": "^16.8.6",
+    "react": "^16.10.1",
     "react-app-polyfill": "^1.0.1",
     "react-color": "^2.14.1",
     "react-dom": "^16.8.6",
