@@ -4,7 +4,7 @@ import { connect } from "react-redux"
 import { Link } from "react-router-dom"
 import { withStyles } from "@material-ui/core"
 import Grid from "@material-ui/core/Grid"
-import PageEditor from "components/editor/PageEditor"
+import { PageEditor } from "dicty-components-page-editor"
 import { NAMESPACE } from "constants/namespace"
 import { saveEditing, cancelEditing } from "actions/editablePages"
 

@@ -4,7 +4,6 @@ import { Helmet } from "react-helmet"
 import { connect } from "react-redux"
 import Grid from "@material-ui/core/Grid"
 import Skeleton from "react-loading-skeleton"
-
 import InfoPageView from "components/pages/EditablePages/InfoPageView"
 import ErrorPage from "components/pages/ErrorPage"
 import { fetchPage } from "actions/editablePages"

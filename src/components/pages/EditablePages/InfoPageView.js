@@ -2,7 +2,7 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
 import Grid from "@material-ui/core/Grid"
-import PageEditor from "components/editor/PageEditor"
+import { PageEditor } from "dicty-components-page-editor"
 import InfoPageViewToolbar from "./InfoPageViewToolbar"
 import { ContentAPI } from "utils/apiClasses"
 import { editPage } from "actions/editablePages"
