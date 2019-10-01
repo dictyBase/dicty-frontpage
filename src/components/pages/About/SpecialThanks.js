@@ -2,7 +2,7 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
 import Skeleton from "react-loading-skeleton"
-import { PageEditor } from "dicty-components-page-editor"
+import InlineEditor from "components/pages/EditablePages/InlineEditor"
 import { fetchPage } from "actions/editablePages"
 import { NAMESPACE } from "constants/namespace"
 
@@ -35,7 +35,7 @@ class SpecialThanks extends Component<Props> {
   render() {
     const { isFetching, page } = this.props
     if (!isFetching && page.data.attributes.content) {
-      return <PageEditor page={this.props.page} />
+      return <InlineEditor page={this.props.page} />
     }
     return (
       <div>
