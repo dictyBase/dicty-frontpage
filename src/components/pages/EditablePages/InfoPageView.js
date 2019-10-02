@@ -39,12 +39,14 @@ export class InfoPageView extends Component<Props> {
 
     return (
       <Grid container justify="center">
-        <Grid item>
+        <Grid item xs={12}>
           <InfoPageViewToolbar
             handleClick={this.handleClick}
             updated_at={page.data.attributes.updated_at}
           />
-          <PageEditor pageContent={page.data.attributes.content} readOnly />
+          <div>
+            <PageEditor pageContent={page.data.attributes.content} readOnly />
+          </div>
         </Grid>
       </Grid>
     )
