@@ -5,7 +5,6 @@ import { withRouter, Link } from "react-router-dom"
 import { withStyles } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
 import Button from "@material-ui/core/Button"
-import AddIcon from "@material-ui/icons/Add"
 import FontAwesome from "react-fontawesome"
 import Authorization from "components/authentication/Authorization"
 import sadDicty from "images/sad-dicty.png"
@@ -159,7 +158,7 @@ export const ErrorPage = (props: Props) => {
                           size="small"
                           variant="contained"
                           color="primary">
-                          <AddIcon />
+                          <FontAwesome name="plus" />
                           &nbsp; Add a page to this route
                         </Button>
                       </Link>

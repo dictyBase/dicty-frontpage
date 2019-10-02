@@ -2,7 +2,7 @@ import React from "react"
 import { shallow } from "enzyme"
 import { InfoPageView } from "./InfoPageView"
 import Grid from "@material-ui/core/Grid"
-import PageEditor from "components/editor/PageEditor"
+import { PageEditor } from "dicty-components-page-editor"
 import InfoPageViewToolbar from "./InfoPageViewToolbar"
 
 describe("frontpage/pages/EditablePages/InfoPageView", () => {

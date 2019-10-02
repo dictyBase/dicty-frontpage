@@ -10,12 +10,6 @@ import configureStore from "./store/configureStore"
 import history from "utils/routerHistory"
 import App from "./App"
 import "typeface-roboto"
-import "typeface-roboto-condensed"
-import "typeface-roboto-mono"
-import "typeface-roboto-slab"
-import "typeface-lato"
-import "typeface-merriweather"
-import "typeface-montserrat"
 import * as serviceWorker from "./serviceWorker"
 
 // load state from localStorage(if any) to set the initial state for the store
