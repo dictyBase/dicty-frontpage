@@ -4,7 +4,7 @@ import { connect } from "react-redux"
 import { PageEditor } from "dicty-components-page-editor"
 import { makeStyles } from "@material-ui/styles"
 import Button from "@material-ui/core/Button"
-import CreateIcon from "@material-ui/icons/Create"
+import FontAwesome from "react-fontawesome"
 import Authorization from "components/authentication/Authorization"
 import { editInline, saveInlineEditing } from "actions/editablePages"
 
@@ -94,7 +94,7 @@ const InlineEditor = (props: Props) => {
                     color="primary"
                     onClick={onEdit}
                     title="Edit">
-                    <CreateIcon className={classes.icon} /> Edit
+                    <FontAwesome name="pencil" className={classes.icon} /> Edit
                   </Button>
                 </span>
               )}
