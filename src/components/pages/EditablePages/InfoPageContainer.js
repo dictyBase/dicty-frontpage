@@ -72,7 +72,7 @@ class InfoPageContainer extends Component<Props> {
 
     return (
       <Grid container justify="center">
-        <Grid item xs={7}>
+        <Grid item xs={8}>
           <h1>
             <Skeleton />
           </h1>
