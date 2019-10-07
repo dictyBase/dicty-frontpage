@@ -51,7 +51,7 @@
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
     "twitter-fetcher": "^18.0.2",
-    "typeface-roboto": "0.0.54"
+    "typeface-roboto": "0.0.75"
   },
   "devDependencies": {
     "@semantic-release/git": "^7.0.16",
