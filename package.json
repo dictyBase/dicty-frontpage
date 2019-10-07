@@ -35,7 +35,7 @@
     "font-awesome": "^4.7.0",
     "history": "^4.9.0",
     "jwt-decode": "^2.2.0",
-    "react": "^16.10.1",
+    "react": "^16.10.2",
     "react-app-polyfill": "^1.0.1",
     "react-dom": "^16.8.6",
     "react-fontawesome": "^1.6.1",
