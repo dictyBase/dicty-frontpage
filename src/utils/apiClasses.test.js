@@ -129,8 +129,10 @@ describe("API Classes", () => {
     describe("verifyToken()", () => {
       afterAll(() => {
         // unlock time
+        /*eslint-disable */
         dateNowSpy.mockReset()
         dateNowSpy.mockRestore()
+        /*eslint-enable */
       })
 
       it("verifies token", () => {
