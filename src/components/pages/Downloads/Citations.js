@@ -34,29 +34,27 @@ type Props = {
  * Displays the citation above the downloads table.
  */
 
-const Citations = ({ classes, citations }: Props) => {
-  return (
-    <div className={classes.root}>
-      <h3 className={classes.topLine}>Please cite:</h3>
-      {citations.map(citation => (
-        <p key={citation.title}>
-          <strong>{citation.authors}</strong>
-          {"  "}
-          {citation.title}
-          {"  "}
-          <em>{citation.journal}</em>
-          {"  "}
-          <a
-            href={citation.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={classes.link}>
-            [Pubmed]
-          </a>
-        </p>
-      ))}
-    </div>
-  )
-}
+const Citations = ({ classes, citations }: Props) => (
+  <div className={classes.root}>
+    <h3 className={classes.topLine}>Please cite:</h3>
+    {citations.map(citation => (
+      <p key={citation.title}>
+        <strong>{citation.authors}</strong>
+        {"  "}
+        {citation.title}
+        {"  "}
+        <em>{citation.journal}</em>
+        {"  "}
+        <a
+          href={citation.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={classes.link}>
+          [Pubmed]
+        </a>
+      </p>
+    ))}
+  </div>
+)
 
 export default withStyles(styles)(Citations)
