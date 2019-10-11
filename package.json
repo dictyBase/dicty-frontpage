@@ -15,6 +15,7 @@
     "test": "react-scripts test --env=jsdom",
     "test-coverage": "react-scripts test --env=jsdom --coverage",
     "eject": "react-scripts eject",
+    "eslint": "eslint --ext .jsx,.js src/",
     "cz": "git-cz",
     "semantic-release": "semantic-release",
     "analyze": "source-map-explorer 'build/static/js/*.js'",

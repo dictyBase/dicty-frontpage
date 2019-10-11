@@ -3,14 +3,18 @@
   "rules": {
     "quotes": ["error", "double"],
     "semi": ["error", "never"],
-    "no-console": ["error", { "allow": ["log", "warn", "error"] }],
+    "no-console": [
+      "error",
+      {
+        "allow": ["log", "warn", "error"]
+      }
+    ],
     "arrow-body-style": ["error", "as-needed"],
     "arrow-parens": ["error", "as-needed"],
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-    "react/prop-types": [0],
-    "jsx-a11y/href-no-hash": [0],
-    "jsx-a11y/label-has-associated-control": [0],
-    "react/jsx-no-bind": [0],
-    "import/no-unresolved": "off"
+    "react/jsx-filename-extension": ["off"],
+    "react/prop-types": ["off"],
+    "jsx-a11y/href-no-hash": ["off"],
+    "jsx-a11y/label-has-associated-control": ["off"],
+    "import/no-unresolved": ["off"]
   }
 }
