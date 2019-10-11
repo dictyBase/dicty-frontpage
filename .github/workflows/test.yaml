@@ -1,0 +1,23 @@
+name: Testing
+on: pull_request
+jobs:
+  test:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: set up node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 10.x
+      - name: check out code
+        uses: actions/checkout@v1
+      - name: npm install and test
+        run: |
+          mv src/utils/clientConfig.sample.js src/utils/clientConfig.js
+          npm ci
+          npm test -- --coverage
+        env:
+          CI: true
+      - name: upload coverage to codecov
+        uses: codecov/codecov-action@v1.0.2
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}

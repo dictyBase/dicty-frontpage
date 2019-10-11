@@ -1,0 +1,101 @@
+name: Node CI Develop
+on:
+  push:
+    branches:
+      - develop
+jobs:
+  test:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: set up node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 10.x
+      - name: check out code
+        uses: actions/checkout@v1
+      - name: npm install and test
+        run: |
+          mv src/utils/clientConfig.sample.js src/utils/clientConfig.js
+          npm ci
+          npm test -- --coverage
+        env:
+          CI: true
+      - name: upload coverage to codecov
+        uses: codecov/codecov-action@v1.0.2
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+  build:
+    needs: test
+    runs-on: ubuntu-18.04
+    steps:
+      - name: set up node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 10.x
+      - name: check out code
+        uses: actions/checkout@v1
+      - name: build ericdev docker image
+        run: docker build -t dictybase/frontpage:ericdev-develop-$(git rev-parse --short HEAD) -f docker/eric-dev/Dockerfile .
+      - name: build devsidd docker image
+        run: docker build -t dictybase/frontpage:devsidd-develop-$(git rev-parse --short HEAD) -f docker/sidd-dev/Dockerfile .
+      - name: login to docker hub
+        run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
+      - name: push ericdev to docker hub
+        run: docker push dictybase/frontpage:ericdev-develop-$(git rev-parse --short HEAD)
+      - name: push devsidd to docker hub
+        run: docker push dictybase/frontpage:devsidd-develop-$(git rev-parse --short HEAD)
+  audit:
+    needs: build
+    runs-on: ubuntu-18.04
+    steps:
+      - name: audit live URL
+        uses: docker://dictybase/lighthouse-audit:latest
+        with:
+          url: "https://eric.dictybase.dev"
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN}}
+          BUCKET_PATH: https://ericstorage.dictybase.dev/lighthouse
+      - name: upload results as an artifact
+        uses: actions/upload-artifact@master
+        with:
+          name: report
+          path: "./report"
+      - name: upload results to minio
+        uses: docker://dictybase/file-uploader:latest
+        with:
+          args: "minio --folder report --minio-bucket lighthouse"
+        env:
+          MINIO_ACCESS_KEY: ${{ secrets.MINIO_ACCESS_KEY }}
+          MINIO_SECRET_KEY: ${{ secrets.MINIO_SECRET_KEY }}
+  # snapshots:
+  #   needs: build
+  #   runs-on: ubuntu-18.04
+  #   steps:
+  #     - name: set up node.js
+  #       uses: actions/setup-node@v1
+  #       with:
+  #         node-version: 10.x
+  #     - name: check out code
+  #       uses: actions/checkout@v1
+  #     - name: generate snapshots
+  #       run: |
+  #         npm i nightwatch chromedriver geckodriver
+  #         npm run nightwatch
+  #     - name: upload snapshots as artifact
+  #       uses: actions/upload-artifact@master
+  #       with:
+  #         name: snapshots
+  #         path: "./nightwatch/reports"
+  #     - name: upload snapshots to minio
+  #       uses: docker://dictybase/file-uploader:latest
+  #       with:
+  #         args: "minio --folder ./nightwatch/reports --minio-bucket snapshots"
+  #       env:
+  #         MINIO_ACCESS_KEY: ${{ secrets.MINIO_ACCESS_KEY }}
+  #         MINIO_SECRET_KEY: ${{ secrets.MINIO_SECRET_KEY }}
+  #     - name: add snapshots to github issue
+  #       uses: docker://dictybase/snapshot-issue-creator:latest
+  #       env:
+  #         GH_TOKEN: ${{ secrets.GH_TOKEN}}
+  #         BUCKET_PATH: https://ericstorage.dictybase.dev/snapshots
+  #         FILE_PATH: "./nightwatch/reports"

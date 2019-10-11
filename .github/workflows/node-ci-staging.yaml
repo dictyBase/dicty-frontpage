@@ -1,0 +1,21 @@
+name: Node CI Staging
+on:
+  push:
+    branches:
+      - staging
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: set up node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 10.x
+      - name: check out code
+        uses: actions/checkout@v1
+      - name: build staging docker image
+        run: docker build -t dictybase/frontpage:staging-$(git rev-parse --short HEAD) -f docker/staging/Dockerfile .
+      - name: login to docker hub
+        run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
+      - name: push staging image to docker hub
+        run: docker push dictybase/frontpage:staging-$(git rev-parse --short HEAD)
