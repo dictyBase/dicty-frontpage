@@ -38,7 +38,7 @@
     "jwt-decode": "^2.2.0",
     "react": "^16.10.1",
     "react-app-polyfill": "^1.0.4",
-    "react-dom": "^16.8.6",
+    "react-dom": "^16.11.0",
     "react-fontawesome": "^1.6.1",
     "react-ga": "^2.7.0",
     "react-helmet": "^5.2.1",
