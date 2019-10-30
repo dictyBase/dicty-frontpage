@@ -60,7 +60,7 @@
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "flow-bin": "^0.109.0",
-    "flow-typed": "^2.6.1",
+    "flow-typed": "^2.6.2",
     "husky": "^3.0.9",
     "jest-enzyme": "^7.1.1",
     "jss": "^9.8.7",
