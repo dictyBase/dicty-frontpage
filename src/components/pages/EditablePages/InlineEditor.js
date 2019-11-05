@@ -2,7 +2,7 @@
 import React, { useState } from "react"
 import { connect } from "react-redux"
 import { PageEditor } from "dicty-components-page-editor"
-import { makeStyles } from "@material-ui/styles"
+import { makeStyles } from "@material-ui/core/styles"
 import Button from "@material-ui/core/Button"
 import FontAwesome from "react-fontawesome"
 import Authorization from "components/authentication/Authorization"
