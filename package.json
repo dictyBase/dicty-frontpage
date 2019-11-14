@@ -67,7 +67,7 @@
     "react-styleguidist": "^10.2.0",
     "react-test-renderer": "^16.11.0",
     "semantic-release": "^15.13.30",
-    "source-map-explorer": "^2.1.0"
+    "source-map-explorer": "^2.1.1"
   },
   "husky": {
     "hooks": {
