@@ -44,29 +44,29 @@ jobs:
         run: docker push dictybase/frontpage:ericdev-develop-$(git rev-parse --short HEAD)
       - name: push devsidd to docker hub
         run: docker push dictybase/frontpage:devsidd-develop-$(git rev-parse --short HEAD)
-  audit:
-    needs: build
-    runs-on: ubuntu-18.04
-    steps:
-      - name: audit live URL
-        uses: docker://dictybase/lighthouse-audit:latest
-        with:
-          url: "https://eric.dictybase.dev"
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN}}
-          BUCKET_PATH: https://ericstorage.dictybase.dev/lighthouse
-      - name: upload results as an artifact
-        uses: actions/upload-artifact@master
-        with:
-          name: report
-          path: "./report"
-      - name: upload results to minio
-        uses: docker://dictybase/file-uploader:latest
-        with:
-          args: "minio --folder report --minio-bucket lighthouse"
-        env:
-          MINIO_ACCESS_KEY: ${{ secrets.MINIO_ACCESS_KEY }}
-          MINIO_SECRET_KEY: ${{ secrets.MINIO_SECRET_KEY }}
+  # audit:
+  #   needs: build
+  #   runs-on: ubuntu-18.04
+  #   steps:
+  #     - name: audit live URL
+  #       uses: docker://dictybase/lighthouse-audit:latest
+  #       with:
+  #         url: "https://eric.dictybase.dev"
+  #       env:
+  #         GH_TOKEN: ${{ secrets.GH_TOKEN}}
+  #         BUCKET_PATH: https://ericstorage.dictybase.dev/lighthouse
+  #     - name: upload results as an artifact
+  #       uses: actions/upload-artifact@master
+  #       with:
+  #         name: report
+  #         path: "./report"
+  #     - name: upload results to minio
+  #       uses: docker://dictybase/file-uploader:latest
+  #       with:
+  #         args: "minio --folder report --minio-bucket lighthouse"
+  #       env:
+  #         MINIO_ACCESS_KEY: ${{ secrets.MINIO_ACCESS_KEY }}
+  #         MINIO_SECRET_KEY: ${{ secrets.MINIO_SECRET_KEY }}
   # snapshots:
   #   needs: build
   #   runs-on: ubuntu-18.04
