@@ -126,7 +126,6 @@ const mapStateToProps = state => {
   return {}
 }
 
-export default connect(
-  mapStateToProps,
-  { editInline, saveInlineEditing },
-)(InlineEditor)
+export default connect(mapStateToProps, { editInline, saveInlineEditing })(
+  InlineEditor,
+)

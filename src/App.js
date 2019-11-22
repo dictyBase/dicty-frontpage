@@ -53,7 +53,7 @@ type Props = {
   classes: Object,
 }
 
-export class App extends Component<Props> {
+class App extends Component<Props> {
   componentDidMount() {
     const { fetchNavbarAndFooter } = this.props
     fetchNavbarAndFooter()
@@ -111,9 +111,7 @@ export class App extends Component<Props> {
 
 const mapStateToProps = ({ auth, navbar, footer }) => ({ auth, navbar, footer })
 
+export { App }
 export default withRouter<*>(
-  connect(
-    mapStateToProps,
-    { fetchNavbarAndFooter },
-  )(withStyles(styles)(App)),
+  connect(mapStateToProps, { fetchNavbarAndFooter })(withStyles(styles)(App)),
 )

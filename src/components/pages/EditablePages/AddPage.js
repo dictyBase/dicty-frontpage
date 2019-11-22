@@ -133,7 +133,6 @@ const mapStateToProps = state => {
   return {}
 }
 
-export default connect(
-  mapStateToProps,
-  { cancelEditing, addEditablePage },
-)(withRouter(withStyles(styles)(AddPage)))
+export default connect(mapStateToProps, { cancelEditing, addEditablePage })(
+  withRouter(withStyles(styles)(AddPage)),
+)

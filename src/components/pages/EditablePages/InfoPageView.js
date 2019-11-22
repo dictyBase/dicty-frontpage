@@ -53,7 +53,4 @@ export class InfoPageView extends Component<Props> {
   }
 }
 
-export default connect(
-  null,
-  { editPage, fetchUserInfo },
-)(InfoPageView)
+export default connect(null, { editPage, fetchUserInfo })(InfoPageView)

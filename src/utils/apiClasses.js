@@ -76,9 +76,7 @@ export class AuthenticatedUser extends JsonAPI {
 
   // gets the first and last name of logged in user
   getFullName() {
-    return `${this.json.data.attributes.first_name} ${
-      this.json.data.attributes.last_name
-    }`
+    return `${this.json.data.attributes.first_name} ${this.json.data.attributes.last_name}`
   }
 
   // gets capitalized version of user's role
