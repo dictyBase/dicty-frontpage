@@ -103,7 +103,4 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  { fetchPage },
-)(InfoPageContainer)
+export default connect(mapStateToProps, { fetchPage })(InfoPageContainer)

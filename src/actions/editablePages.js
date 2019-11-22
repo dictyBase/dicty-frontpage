@@ -60,7 +60,7 @@ const savePageFailure = error => ({
 
 // fetch page function that fetches data using async/await
 // checks if header is correct, then either grabs data or displays error
-export const fetchPage = (slug: string) => async (dispatch: Function) => {
+const fetchPage = (slug: string) => async (dispatch: Function) => {
   try {
     dispatch(fetchPageRequest())
     const res = await fetch(`${fetchBySlugResource}/${slug}`)
@@ -105,18 +105,16 @@ const doEdit = (content: Object) => ({
   },
 })
 
-export const editPage = (content: Object, url: string) => (
-  dispatch: Function,
-) => {
+const editPage = (content: Object, url: string) => (dispatch: Function) => {
   dispatch(doEdit(content))
   dispatch(push(`${url}/edit`))
 }
 
-export const editInline = (content: Object) => (dispatch: Function) => {
+const editInline = (content: Object) => (dispatch: Function) => {
   dispatch(doEdit(content))
 }
 
-export const saveEditing = (id: string, body: Object, path: string) => async (
+const saveEditing = (id: string, body: Object, path: string) => async (
   dispatch: Function,
   getState: Function,
 ) => {
@@ -160,7 +158,7 @@ export const saveEditing = (id: string, body: Object, path: string) => async (
   }
 }
 
-export const saveInlineEditing = (id: string, body: Object) => async (
+const saveInlineEditing = (id: string, body: Object) => async (
   dispatch: Function,
   getState: Function,
 ) => {
@@ -201,7 +199,7 @@ export const saveInlineEditing = (id: string, body: Object) => async (
   }
 }
 
-export const addEditablePage = (body: Object, url: string) => async (
+const addEditablePage = (body: Object, url: string) => async (
   dispatch: Function,
   getState: Function,
 ) => {
@@ -245,6 +243,16 @@ export const addEditablePage = (body: Object, url: string) => async (
   }
 }
 
-export const cancelEditing = (url: string) => (dispatch: Function) => {
+const cancelEditing = (url: string) => (dispatch: Function) => {
   dispatch(push(url))
+}
+
+export {
+  fetchPage,
+  editPage,
+  editInline,
+  saveEditing,
+  saveInlineEditing,
+  addEditablePage,
+  cancelEditing,
 }

@@ -57,10 +57,7 @@ const WithDataFetching = (
     data: state[key].data,
   })
 
-  return connect(
-    mapStateToProps,
-    { action },
-  )(WithDataFetchingComponent)
+  return connect(mapStateToProps, { action })(WithDataFetchingComponent)
 }
 
 export default WithDataFetching

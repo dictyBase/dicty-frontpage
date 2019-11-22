@@ -112,7 +112,6 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  { cancelEditing, saveEditing },
-)(withStyles(styles)(EditInfoPage))
+export default connect(mapStateToProps, { cancelEditing, saveEditing })(
+  withStyles(styles)(EditInfoPage),
+)

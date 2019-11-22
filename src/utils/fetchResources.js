@@ -15,24 +15,16 @@ if (process.env.REACT_APP_API_SERVER) {
   fetchByIdResource = `${process.env.REACT_APP_API_SERVER}${fetchByIdBase}`
   // set URL base for fetching user by ID
   const fetchUserByIdBase = "/users"
-  fetchUserByIdResource = `${
-    process.env.REACT_APP_API_SERVER
-  }${fetchUserByIdBase}`
+  fetchUserByIdResource = `${process.env.REACT_APP_API_SERVER}${fetchUserByIdBase}`
   // set URL base for fetching user by email
   const fetchUserByEmailBase = "/users/email"
-  fetchUserByEmailResource = `${
-    process.env.REACT_APP_API_SERVER
-  }${fetchUserByEmailBase}`
+  fetchUserByEmailResource = `${process.env.REACT_APP_API_SERVER}${fetchUserByEmailBase}`
   // set URL base for fetching role by ID
   const fetchRoleByIdBase = "/roles"
-  fetchRoleByIdResource = `${
-    process.env.REACT_APP_API_SERVER
-  }${fetchRoleByIdBase}`
+  fetchRoleByIdResource = `${process.env.REACT_APP_API_SERVER}${fetchRoleByIdBase}`
   // set URL base for fetching permission by ID
   const fetchPermissionByIdBase = "/permissions"
-  fetchPermissionByIdResource = `${
-    process.env.REACT_APP_API_SERVER
-  }${fetchPermissionByIdBase}`
+  fetchPermissionByIdResource = `${process.env.REACT_APP_API_SERVER}${fetchPermissionByIdBase}`
 } else {
   fetchBySlugResource = "http://betaapi.dictybase.local/contents/slug"
   fetchByIdResource = "http://betaapi.dictybase.local/contents"
@@ -44,9 +36,7 @@ if (process.env.REACT_APP_API_SERVER) {
 
 if (process.env.REACT_APP_AUTH_SERVER) {
   const oauthEndpointBase = "/tokens"
-  oauthEndpointResource = `${
-    process.env.REACT_APP_AUTH_SERVER
-  }${oauthEndpointBase}`
+  oauthEndpointResource = `${process.env.REACT_APP_AUTH_SERVER}${oauthEndpointBase}`
 } else {
   oauthEndpointResource = "http://betaauth.dictybase.local/tokens"
 }

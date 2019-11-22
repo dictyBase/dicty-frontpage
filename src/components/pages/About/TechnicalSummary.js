@@ -54,7 +54,4 @@ const mapStateToProps = state => ({
   page: state.editablePages[slugName],
 })
 
-export default connect(
-  mapStateToProps,
-  { fetchPage },
-)(TechnicalSummary)
+export default connect(mapStateToProps, { fetchPage })(TechnicalSummary)

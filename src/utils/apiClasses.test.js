@@ -136,6 +136,7 @@ describe("API Classes", () => {
       })
 
       it("verifies token", () => {
+        /*eslint-disable-next-line */
         let dateNowSpy = jest
           .spyOn(Date, "now")
           .mockImplementation(() => 1487076708000) // 2017-02-14
@@ -144,6 +145,7 @@ describe("API Classes", () => {
         expect(token).toBe(true)
       })
       it("says token is invalid", () => {
+        /*eslint-disable-next-line */
         let dateNowSpy = jest
           .spyOn(Date, "now")
           .mockImplementation(() => 1932701199000) // 2031-03-31

@@ -56,7 +56,7 @@ const fetchDownloadContentFailure = error => ({
   },
 })
 
-export const changeTab = (tab: string) => ({
+const changeTab = (tab: string) => ({
   type: CHANGE_TAB,
   payload: {
     tab,
@@ -74,7 +74,7 @@ const normalizeData = json =>
     },
   }))
 
-export const fetchDownloadTabs = () => async (dispatch: Function) => {
+const fetchDownloadTabs = () => async (dispatch: Function) => {
   try {
     dispatch(fetchDownloadTabsRequest())
     const res = await fetch(downloadTabsJson)
@@ -91,7 +91,7 @@ export const fetchDownloadTabs = () => async (dispatch: Function) => {
   }
 }
 
-export const fetchDownloadContent = (id: string, url: string) => async (
+const fetchDownloadContent = (id: string, url: string) => async (
   dispatch: Function,
 ) => {
   try {
@@ -121,3 +121,5 @@ const getDownloadLinks = data => dispatch => {
 
   return fetchContent
 }
+
+export { changeTab, fetchDownloadTabs, fetchDownloadContent }

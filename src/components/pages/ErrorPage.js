@@ -72,7 +72,7 @@ type Props = {
  * General error handling page
  */
 
-export const ErrorPage = (props: Props) => {
+const ErrorPage = (props: Props) => {
   const { page, auth, classes, match } = props
 
   let errorStatus = 0
@@ -209,6 +209,7 @@ const mapStateToProps = state => ({
   auth: state.auth,
 })
 
+export { ErrorPage }
 export default withRouter<*>(
   withStyles(styles)(connect(mapStateToProps)(ErrorPage)),
 )

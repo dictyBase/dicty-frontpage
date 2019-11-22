@@ -29,7 +29,7 @@ type Props = {
  * This displays the Dicty downloads page.
  */
 
-export class Downloads extends Component<Props> {
+class Downloads extends Component<Props> {
   handleChange = (event: SyntheticEvent<>, value: string) => {
     const { changeTab } = this.props
 
@@ -111,7 +111,5 @@ const DownloadsWithFetch = withDataFetching(
   DownloadsLoader,
 )(Downloads)
 
-export default connect(
-  mapStateToProps,
-  { changeTab },
-)(DownloadsWithFetch)
+export { Downloads }
+export default connect(mapStateToProps, { changeTab })(DownloadsWithFetch)

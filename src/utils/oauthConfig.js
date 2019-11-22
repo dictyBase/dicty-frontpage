@@ -22,7 +22,10 @@ const oauthConfig = {
     redirectUrl: `${window.location.origin}/linkedin/callback`,
     scopes: ["r_emailaddress"],
     scopeDelimiter: " ",
-    requiredUrlParams: [["state", "linkedin"], ["response_type", "code"]],
+    requiredUrlParams: [
+      ["state", "linkedin"],
+      ["response_type", "code"],
+    ],
     popupOptions: { width: 1028, height: 640 },
   },
   orcid: {
