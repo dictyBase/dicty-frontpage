@@ -40,7 +40,6 @@ const styles = theme => ({
       borderBottom: "1px solid rgba(15,70,100,.12)",
       display: "flex",
       flexDirection: "column",
-
       "& .timePosted": {
         order: 1,
         fontWeight: 600,
@@ -89,7 +88,7 @@ type Props = {
  * Tweets displays a Twitter timeline for our dictybase account.
  */
 
-const Tweets = (props: Props) => {
+const Tweets = ({ classes }: Props) => {
   useEffect(() => {
     // see here for all options:
     // https://github.com/jasonmayes/Twitter-Post-Fetcher/blob/master/js/exampleUsage.js
@@ -103,12 +102,10 @@ const Tweets = (props: Props) => {
       showRetweet: false,
       showInteraction: false,
       linksInNewWindow: true,
-      showImages: true,
+      showImages: false,
       dateFunction: dateFormatter,
     })
   }, [])
-
-  const { classes } = props
 
   return (
     <>
