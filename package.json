@@ -6,16 +6,16 @@
     "node": "10.17.0"
   },
   "scripts": {
-    "prettier": "prettier --version",
-    "flow": "flow",
-    "styleguide": "styleguidist server",
-    "styleguide:build": "styleguidist build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "test-coverage": "react-scripts test --env=jsdom --coverage",
     "eject": "react-scripts eject",
     "eslint": "eslint --ext .jsx,.js src/",
+    "prettier": "prettier --version",
+    "flow": "flow",
+    "styleguide": "styleguidist server",
+    "styleguide:build": "styleguidist build",
     "cz": "git-cz",
     "semantic-release": "semantic-release",
     "analyze": "source-map-explorer 'build/static/js/*.js'",
@@ -69,6 +69,11 @@
     "semantic-release": "^15.13.31",
     "source-map-explorer": "^2.1.1"
   },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/components/**/*.{js,jsx,ts,tsx}"
+    ]
+  },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
@@ -87,11 +92,38 @@
   },
   "release": {
     "plugins": [
-      "@semantic-release/commit-analyzer",
+      [
+        "@semantic-release/commit-analyzer",
+        {
+          "preset": "angular",
+          "releaseRules": [
+            {
+              "type": "docs",
+              "release": "patch"
+            },
+            {
+              "type": "perf",
+              "release": "patch"
+            },
+            {
+              "type": "test",
+              "release": "patch"
+            },
+            {
+              "type": "chore",
+              "release": "patch"
+            },
+            {
+              "type": "refactor",
+              "release": "patch"
+            }
+          ]
+        }
+      ],
       "@semantic-release/release-notes-generator",
       "@semantic-release/github"
     ],
-    "ci": false,
+    "ci": true,
     "tagFormat": "${version}",
     "verifyConditions": [
       "@semantic-release/git"
