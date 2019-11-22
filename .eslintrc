@@ -1,5 +1,6 @@
 {
-  "extends": "react-app",
+  "extends": ["react-app", "prettier"],
+  "plugins": ["prettier", "import"],
   "rules": {
     "quotes": ["error", "double"],
     "semi": ["error", "never"],
@@ -15,6 +16,8 @@
     "react/prop-types": ["off"],
     "jsx-a11y/href-no-hash": ["off"],
     "jsx-a11y/label-has-associated-control": ["off"],
-    "import/no-unresolved": ["off"]
+    "import/no-unresolved": ["off"],
+    "import/exports-last": ["error"],
+    "prettier/prettier": ["error"]
   }
 }
