@@ -70,7 +70,7 @@
     "react-styleguidist": "^10.4.0",
     "react-test-renderer": "^16.12.0",
     "semantic-release": "^15.14.0",
-    "source-map-explorer": "^2.1.2"
+    "source-map-explorer": "^2.2.1"
   },
   "jest": {
     "collectCoverageFrom": [
