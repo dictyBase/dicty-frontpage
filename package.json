@@ -48,7 +48,7 @@
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
-    "twitter-fetcher": "^18.0.2",
+    "twitter-fetcher": "^18.0.4",
     "typeface-roboto": "0.0.75"
   },
   "devDependencies": {
