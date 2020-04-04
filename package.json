@@ -65,7 +65,7 @@
     "husky": "^4.2.3",
     "jest-enzyme": "^7.1.2",
     "jss": "^10.0.4",
-    "lint-staged": "^10.0.9",
+    "lint-staged": "^10.1.1",
     "prettier": "^1.19.1",
     "react-styleguidist": "^11.0.4",
     "react-test-renderer": "^16.13.1",
