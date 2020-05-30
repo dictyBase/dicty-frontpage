@@ -67,7 +67,7 @@
     "jss": "^10.0.4",
     "lint-staged": "^10.2.7",
     "prettier": "^1.19.1",
-    "react-styleguidist": "^11.0.6",
+    "react-styleguidist": "^11.0.8",
     "react-test-renderer": "^16.13.1",
     "semantic-release": "^17.0.8",
     "source-map-explorer": "^2.4.2"
