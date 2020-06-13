@@ -64,7 +64,7 @@
     "flow-typed": "^3.1.0",
     "husky": "^4.2.5",
     "jest-enzyme": "^7.1.2",
-    "jss": "^10.2.0",
+    "jss": "^10.3.0",
     "lint-staged": "^10.2.9",
     "prettier": "^1.19.1",
     "react-styleguidist": "^11.0.8",
