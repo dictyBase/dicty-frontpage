@@ -11,7 +11,7 @@
     "test": "react-scripts test --env=jsdom",
     "test-coverage": "CI=true react-scripts test --env=jsdom --coverage",
     "eject": "react-scripts eject",
-    "eslint": "eslint --ext .jsx,.js src/",
+    "lint": "eslint --ext .jsx,.js src/",
     "prettier": "prettier --version",
     "flow": "flow",
     "styleguide": "styleguidist server",
