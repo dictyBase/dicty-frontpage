@@ -9,6 +9,7 @@ WORKDIR /usr/src/app
 COPY package.json ./
 COPY yarn.lock ./
 COPY jsconfig.json ./
+COPY .snyk ./
 
 RUN yarn install
 
