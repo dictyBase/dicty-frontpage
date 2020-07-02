@@ -24,7 +24,7 @@ const fetchNavbarSuccess = (json: Object) => ({
   },
 })
 
-const fetchNavbarFailure = error => ({
+const fetchNavbarFailure = (error) => ({
   type: FETCH_NAVBAR_FAILURE,
   payload: {
     error,
@@ -38,8 +38,8 @@ export const fetchNavbarAndFooter = () => async (dispatch: Function) => {
     const res = await fetch(navbarJson)
     const json = await res.json()
     if (res.ok) {
-      const navbarArr = json.data.map(item => {
-        const menuItemsArr = item.attributes.items.map(c => ({
+      const navbarArr = json.data.map((item) => {
+        const menuItemsArr = item.attributes.items.map((c) => ({
           name: c.label,
           href: c.link,
         }))

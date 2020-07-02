@@ -13,7 +13,7 @@ import papers from "data/papers"
 import annotations from "data/annotations"
 import stockcenter from "data/stockcenter"
 
-const styles = theme => ({
+const styles = (theme) => ({
   container: {
     paddingLeft: "30px",
     paddingRight: "30px",

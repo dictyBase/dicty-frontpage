@@ -8,7 +8,7 @@ import { PageEditor } from "dicty-components-page-editor"
 import { NAMESPACE } from "constants/namespace"
 import { saveEditing, cancelEditing } from "actions/editablePages"
 
-const styles = theme => ({
+const styles = (theme) => ({
   editor: {
     border: "1px solid #ddd",
     cursor: "text",
@@ -47,7 +47,7 @@ class EditInfoPage extends React.Component<Props, null> {
     cancelEditing(match.url.slice(0, -5))
   }
 
-  onSave = value => {
+  onSave = (value) => {
     const { page, saveEditing, match, userId } = this.props
     const pageId = page.data.id
     const body = {

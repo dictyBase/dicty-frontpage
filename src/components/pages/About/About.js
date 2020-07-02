@@ -6,7 +6,7 @@ import { withStyles } from "@material-ui/core/styles"
 import TechnicalSummary from "./TechnicalSummary"
 import SpecialThanks from "./SpecialThanks"
 
-const styles = theme => ({
+const styles = (theme) => ({
   container: {
     display: "flex",
     flexDirection: "row",

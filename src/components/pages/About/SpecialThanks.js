@@ -49,7 +49,7 @@ class SpecialThanks extends Component<Props> {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   isFetching: state.editablePages.isFetching,
   page: state.editablePages[slugName],
 })

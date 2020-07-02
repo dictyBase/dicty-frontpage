@@ -7,7 +7,7 @@ import slug from "images/frontCarousel/dicty-slug.jpg"
 import tubulin from "images/frontCarousel/dicty-tubulin-centrosom.png"
 import "react-responsive-carousel/lib/styles/carousel.min.css"
 
-const styles = theme => ({
+const styles = (theme) => ({
   container: {
     marginTop: "10px",
     marginBottom: "10px",

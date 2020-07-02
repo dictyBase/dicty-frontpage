@@ -8,7 +8,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
   // renders a <Route /> and passes all props
   <Route
     {...rest}
-    render={props =>
+    render={(props) =>
       // checks for authentication, then redirects if not logged in
       rest.auth.isAuthenticated ? (
         <Component {...props} />

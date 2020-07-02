@@ -37,7 +37,7 @@ class Downloads extends Component<Props> {
   }
 
   generateTabs = (json: Object) => {
-    const tabs = json.data.map(item => (
+    const tabs = json.data.map((item) => (
       <Tab
         value={item.id}
         label={item.attributes.scientific_name}
@@ -50,7 +50,7 @@ class Downloads extends Component<Props> {
   generateTabContainers = (json: Object) => {
     const { downloads } = this.props
 
-    const tabContent = json.data.map(item => {
+    const tabContent = json.data.map((item) => {
       if (item.id === json.currentTab) {
         return (
           <Typography component="div" key={item.id}>

@@ -29,7 +29,7 @@ const fetchPageSuccess = (json: Object) => ({
   },
 })
 
-const fetchPageFailure = error => ({
+const fetchPageFailure = (error) => ({
   type: FETCH_PAGE_FAILURE,
   payload: {
     error,
@@ -51,7 +51,7 @@ const savePageSuccess = (json: Object) => ({
   },
 })
 
-const savePageFailure = error => ({
+const savePageFailure = (error) => ({
   type: SAVE_PAGE_FAILURE,
   payload: {
     error,

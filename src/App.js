@@ -21,7 +21,7 @@ const navTheme = {
   secondary: "#0059b3",
 }
 
-const styles = theme => ({
+const styles = (theme) => ({
   container: {
     lineHeight: 1.6,
     marginBottom: "50px",
@@ -68,11 +68,11 @@ class App extends Component<Props> {
         <div className={classes.body}>
           {auth.isAuthenticated ? (
             <Header items={loggedHeaderItems}>
-              {items => items.map(generateLinks)}
+              {(items) => items.map(generateLinks)}
             </Header>
           ) : (
             <Header items={headerItems}>
-              {items => items.map(generateLinks)}
+              {(items) => items.map(generateLinks)}
             </Header>
           )}
           <Navbar items={navItems} theme={navTheme} />
@@ -90,11 +90,11 @@ class App extends Component<Props> {
       <div className={classes.body}>
         {auth.isAuthenticated ? (
           <Header items={loggedHeaderItems}>
-            {items => items.map(generateLinks)}
+            {(items) => items.map(generateLinks)}
           </Header>
         ) : (
           <Header items={headerItems}>
-            {items => items.map(generateLinks)}
+            {(items) => items.map(generateLinks)}
           </Header>
         )}
         <Navbar items={navbar.links} theme={navTheme} />

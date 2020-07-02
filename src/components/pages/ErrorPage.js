@@ -9,7 +9,7 @@ import FontAwesome from "react-fontawesome"
 import Authorization from "components/authentication/Authorization"
 import sadDicty from "images/sad-dicty.png"
 
-const styles = theme => ({
+const styles = (theme) => ({
   error400: {
     backgroundColor: "#eff8fb",
     textAlign: "center",
@@ -204,7 +204,7 @@ const ErrorPage = (props: Props) => {
   )
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   page: state.editablePages,
   auth: state.auth,
 })
