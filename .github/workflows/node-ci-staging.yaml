@@ -6,13 +6,15 @@ on:
 jobs:
   build:
     runs-on: ubuntu-18.04
+    env:
+      DOCKER_BUILDKIT: "1"
     steps:
       - name: set up node.js
         uses: actions/setup-node@v1
         with:
-          node-version: 10.x
+          node-version: 12.x
       - name: check out code
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
       - name: build staging docker image
         run: docker build -t dictybase/frontpage:staging-$(git rev-parse --short HEAD) -f docker/staging/Dockerfile .
       - name: login to docker hub
