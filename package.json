@@ -19,7 +19,9 @@
     "semantic-release": "semantic-release",
     "analyze": "source-map-explorer 'build/static/js/*.js'",
     "local-ci-eric": "IMAGE_TAG=$(git symbolic-ref -q HEAD | sed -e 's|^refs/heads/||' -e 's~/~-~')-$(git rev-parse --short HEAD) skaffold run -p ericdev",
-    "local-ci-sidd": "IMAGE_TAG=$(git symbolic-ref -q HEAD | sed -e 's|^refs/heads/||' -e 's~/~-~')-$(git rev-parse --short HEAD) skaffold run -p devsidd"
+    "local-ci-sidd": "IMAGE_TAG=$(git symbolic-ref -q HEAD | sed -e 's|^refs/heads/||' -e 's~/~-~')-$(git rev-parse --short HEAD) skaffold run -p devsidd",
+    "snyk-protect": "snyk protect",
+    "prepare": "yarn run snyk-protect"
   },
   "dependencies": {
     "@material-ui/core": "^4.10.2",
@@ -47,7 +49,8 @@
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
     "twitter-fetcher": "^18.0.4",
-    "typeface-roboto": "0.0.75"
+    "typeface-roboto": "0.0.75",
+    "snyk": "^1.359.1"
   },
   "devDependencies": {
     "@semantic-release/git": "^9.0.0",
@@ -97,5 +100,6 @@
       "not dead",
       "not op_mini all"
     ]
-  }
+  },
+  "snyk": true
 }
