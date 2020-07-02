@@ -7,12 +7,10 @@ jobs:
       - name: set up node.js
         uses: actions/setup-node@v1
         with:
-          node-version: 10.x
+          node-version: 12.x
       - name: check out code
-        uses: actions/checkout@v1
-      - name: run eslint
-        run: |
-          npm ci
-          npm run eslint
-        env:
-          CI: true
+        uses: actions/checkout@v2
+      - name: yarn install
+        run: yarn install
+      - name: eslint
+        run: yarn lint
