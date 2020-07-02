@@ -26,7 +26,7 @@ const fetchDownloadTabsSuccess = (json: Object) => ({
   },
 })
 
-const fetchDownloadTabsFailure = error => ({
+const fetchDownloadTabsFailure = (error) => ({
   type: FETCH_DOWNLOAD_TABS_FAILURE,
   payload: {
     error,
@@ -49,7 +49,7 @@ const fetchDownloadContentSuccess = (id: string, json: Object) => ({
   },
 })
 
-const fetchDownloadContentFailure = error => ({
+const fetchDownloadContentFailure = (error) => ({
   type: FETCH_DOWNLOAD_CONTENT_FAILURE,
   payload: {
     error,
@@ -63,8 +63,8 @@ const changeTab = (tab: string) => ({
   },
 })
 
-const normalizeData = json =>
-  json.data.map(r => ({
+const normalizeData = (json) =>
+  json.data.map((r) => ({
     type: r.type,
     id: r.id,
     attributes: {
@@ -109,13 +109,13 @@ const fetchDownloadContent = (id: string, url: string) => async (
 }
 
 // get the download relationship links to fetch individual data
-const getDownloadLinks = data => dispatch => {
-  const links = data.map(item => {
+const getDownloadLinks = (data) => (dispatch) => {
+  const links = data.map((item) => {
     const url = item.relationships.downloads.links.related
     const id = item.id
     return [id, url]
   })
-  const fetchContent = links.forEach(item => {
+  const fetchContent = links.forEach((item) => {
     dispatch(fetchDownloadContent(item[0], item[1]))
   })
 

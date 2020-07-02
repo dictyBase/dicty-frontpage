@@ -3,7 +3,7 @@ import React from "react"
 import { withStyles } from "@material-ui/core/styles"
 import SnackbarContent from "@material-ui/core/SnackbarContent"
 
-const styles = theme => ({
+const styles = (theme) => ({
   snackbar: {
     backgroundColor: "#cc0000",
   },

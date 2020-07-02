@@ -30,7 +30,7 @@ const Authorization = (props: Props) => {
   })
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   if (state.auth.user && state.auth.fetchedUserData) {
     const loggedInUser = new RolesPermissionsAPI(state.auth.user)
     const fetchedUserData = new AuthenticatedUser(state.auth.fetchedUserData)

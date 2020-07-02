@@ -7,7 +7,7 @@ import Button from "@material-ui/core/Button"
 import FontAwesome from "react-fontawesome"
 import sadDicty from "images/sad-dicty.png"
 
-const styles = theme => ({
+const styles = (theme) => ({
   container: {
     backgroundColor: "#eff8fb",
     textAlign: "center",
@@ -37,7 +37,7 @@ const styles = theme => ({
  * Fallback component for non-existent routes -- "Page Not Ready"/"Under Construction"
  */
 
-const PageNotReady = props => {
+const PageNotReady = (props) => {
   const { classes } = props
   return (
     <Grid container className={classes.mainGrid} justify="center">

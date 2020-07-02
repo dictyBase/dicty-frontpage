@@ -9,7 +9,7 @@ import Authorization from "components/authentication/Authorization"
 import ErrorNotification from "components/authentication/ErrorNotification"
 import { addEditablePage, cancelEditing } from "actions/editablePages"
 
-const styles = theme => ({
+const styles = (theme) => ({
   banner: {
     minHeight: "45px",
     textAlign: "center",
@@ -56,7 +56,7 @@ class AddPage extends React.Component<Props> {
     cancelEditing(match.url.slice(0, -7))
   }
 
-  onSave = value => {
+  onSave = (value) => {
     const {
       userId,
       addEditablePage,
@@ -124,7 +124,7 @@ class AddPage extends React.Component<Props> {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   if (state.auth.user) {
     return {
       userId: state.auth.user.data.id,

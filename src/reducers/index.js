@@ -6,7 +6,7 @@ import editablePagesReducer from "reducers/editablePages"
 import footerReducer from "reducers/footer"
 import navbarReducer from "reducers/navbar"
 
-export default history =>
+export default (history) =>
   combineReducers({
     router: connectRouter(history),
     auth: authReducer,

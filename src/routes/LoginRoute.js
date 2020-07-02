@@ -13,7 +13,7 @@ const LoginRoute = ({ component: Component, ...rest }) => (
   // renders a <Route /> and passes all props
   <Route
     {...rest}
-    render={props =>
+    render={(props) =>
       // checks for authentication and redirects if logged in
       rest.auth.isAuthenticated ? (
         <Redirect

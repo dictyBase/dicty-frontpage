@@ -4,7 +4,7 @@ import { withStyles } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
 import FontAwesome from "react-fontawesome"
 
-const styles = theme => ({
+const styles = (theme) => ({
   mainContainer: {
     textAlign: "center",
     color: "#084b8a",

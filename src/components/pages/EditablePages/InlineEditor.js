@@ -57,7 +57,7 @@ const InlineEditor = (props: Props) => {
     setReadOnly(true)
   }
 
-  const onSave = value => {
+  const onSave = (value) => {
     const { page, saveInlineEditing, userId } = props
     const content = JSON.stringify(value.toJSON())
     const body = {
@@ -117,7 +117,7 @@ const InlineEditor = (props: Props) => {
   )
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   if (state.auth.user) {
     return {
       userId: state.auth.user.data.id,

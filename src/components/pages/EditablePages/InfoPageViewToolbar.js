@@ -9,7 +9,7 @@ import ErrorNotification from "components/authentication/ErrorNotification"
 import timeSince from "utils/timeSince"
 import FontAwesome from "react-fontawesome"
 
-const styles = theme => ({
+const styles = (theme) => ({
   grid: {
     alignItems: "center",
   },

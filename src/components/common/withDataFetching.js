@@ -2,12 +2,9 @@ import React, { Component } from "react"
 import { connect } from "react-redux"
 import Skeleton from "react-loading-skeleton"
 
-const WithDataFetching = (
-  action,
-  key,
-  LoadingComponent,
-  ErrorComponent,
-) => WrappedComponent => {
+const WithDataFetching = (action, key, LoadingComponent, ErrorComponent) => (
+  WrappedComponent,
+) => {
   class WithDataFetchingComponent extends Component {
     componentDidMount() {
       const { action } = this.props
@@ -51,7 +48,7 @@ const WithDataFetching = (
       return <WrappedComponent {...this.props} />
     }
   }
-  const mapStateToProps = state => ({
+  const mapStateToProps = (state) => ({
     error: state[key].error,
     isFetching: state[key].isFetching,
     data: state[key].data,

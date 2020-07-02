@@ -9,7 +9,7 @@ import TableRow from "@material-ui/core/TableRow"
 import Button from "@material-ui/core/Button"
 import Paper from "@material-ui/core/Paper"
 
-const styles = theme => ({
+const styles = (theme) => ({
   root: {
     width: "100%",
     overflowX: "auto",
@@ -72,7 +72,7 @@ const DownloadsTable = (props: Props) => {
           <col style={{ width: "90%" }} />
           <col style={{ width: "10%" }} />
         </colgroup>
-        {data.map(section => (
+        {data.map((section) => (
           <Fragment key={section.attributes.title}>
             <TableHead className={classes.head}>
               <TableRow>
@@ -83,7 +83,7 @@ const DownloadsTable = (props: Props) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {section.attributes.items.map(row => (
+              {section.attributes.items.map((row) => (
                 <TableRow className={classes.row} key={row.title}>
                   <TableCell component="th" scope="row">
                     {row.title}

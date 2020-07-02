@@ -2,7 +2,7 @@
 import React from "react"
 import { withStyles } from "@material-ui/core/styles"
 
-const styles = theme => ({
+const styles = (theme) => ({
   root: {
     fontSize: "0.9em",
   },
@@ -37,7 +37,7 @@ type Props = {
 const Citations = ({ classes, citations }: Props) => (
   <div className={classes.root}>
     <h3 className={classes.topLine}>Please cite:</h3>
-    {citations.map(citation => (
+    {citations.map((citation) => (
       <p key={citation.title}>
         <strong>{citation.authors}</strong>
         {"  "}

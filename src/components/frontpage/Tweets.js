@@ -3,7 +3,7 @@ import React, { useEffect } from "react"
 import { withStyles } from "@material-ui/core/styles"
 import TwitterFetcher from "twitter-fetcher"
 
-const styles = theme => ({
+const styles = (theme) => ({
   header: {
     paddingLeft: "10px",
     borderBottom: "1px solid rgba(15,70,100,.12)",
@@ -57,7 +57,7 @@ const styles = theme => ({
   },
 })
 
-const dateFormatter = date => {
+const dateFormatter = (date) => {
   const monthNames = [
     "January",
     "February",
