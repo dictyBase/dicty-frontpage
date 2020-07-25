@@ -50,7 +50,7 @@
     "redux-thunk": "^2.3.0",
     "twitter-fetcher": "^18.0.4",
     "typeface-roboto": "0.0.75",
-    "snyk": "^1.362.1"
+    "snyk": "^1.366.2"
   },
   "devDependencies": {
     "@semantic-release/git": "^9.0.0",
