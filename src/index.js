@@ -1,7 +1,7 @@
-import "react-app-polyfill/ie11"
 import "utils/polyfills"
 import React from "react"
 import ReactDOM from "react-dom"
+import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client"
 import { Provider } from "react-redux"
 import { ConnectedRouter } from "connected-react-router"
 import CssBaseline from "@material-ui/core/CssBaseline"
@@ -10,6 +10,15 @@ import history from "utils/routerHistory"
 import App from "./App"
 import "typeface-roboto"
 import * as serviceWorker from "./serviceWorker"
+
+const client = new ApolloClient({
+  uri: `${process.env.REACT_APP_GRAPHQL_SERVER}/graphql`,
+  cache: new InMemoryCache(),
+  credentials: "include",
+  headers: {
+    "X-GraphQL-Method": "Query",
+  },
+})
 
 const store = configureStore({})
 
@@ -32,12 +41,14 @@ if (process.env.NODE_ENV === "production") {
 }
 
 ReactDOM.render(
-  <Provider store={store}>
-    <ConnectedRouter history={history}>
-      <CssBaseline />
-      <App />
-    </ConnectedRouter>
-  </Provider>,
+  <ApolloProvider client={client}>
+    <Provider store={store}>
+      <ConnectedRouter history={history}>
+        <CssBaseline />
+        <App />
+      </ConnectedRouter>
+    </Provider>
+  </ApolloProvider>,
   document.getElementById("root"),
 )
 
