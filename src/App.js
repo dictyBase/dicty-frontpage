@@ -1,4 +1,3 @@
-// @flow
 import React, { Component } from "react"
 import { connect } from "react-redux"
 import { withRouter } from "react-router-dom"
@@ -40,20 +39,7 @@ const styles = (theme) => ({
   },
 })
 
-type Props = {
-  /** Object representing auth part of state */
-  auth: Object,
-  /** Object representing navbar part of state */
-  navbar: Object,
-  /** Object representing footer part of state */
-  footer: Object,
-  /** Action creator to fetch navbar and footer content */
-  fetchNavbarAndFooter: Function,
-  /** Material-UI styling */
-  classes: Object,
-}
-
-class App extends Component<Props> {
+class App extends Component {
   componentDidMount() {
     const { fetchNavbarAndFooter } = this.props
     fetchNavbarAndFooter()
@@ -112,6 +98,6 @@ class App extends Component<Props> {
 const mapStateToProps = ({ auth, navbar, footer }) => ({ auth, navbar, footer })
 
 export { App }
-export default withRouter<*>(
+export default withRouter(
   connect(mapStateToProps, { fetchNavbarAndFooter })(withStyles(styles)(App)),
 )

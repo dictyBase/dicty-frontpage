@@ -1,4 +1,3 @@
-// @flow
 import React, { Fragment } from "react"
 import { withStyles } from "@material-ui/core/styles"
 import Table from "@material-ui/core/Table"
@@ -41,28 +40,11 @@ const styles = (theme) => ({
   },
 })
 
-type Props = {
-  /** Material-UI styling */
-  classes: Object,
-  /** Downloads data */
-  data: Array<{
-    id: string,
-    type: string,
-    attributes: {
-      title: string,
-      items: Array<{
-        title: string,
-        url: string,
-      }>,
-    },
-  }>,
-}
-
 /**
  * Displays the table on the downloads page.
  */
 
-const DownloadsTable = (props: Props) => {
+const DownloadsTable = (props) => {
   const { classes, data } = props
 
   return (

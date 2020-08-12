@@ -1,4 +1,3 @@
-// @flow
 import React from "react"
 import { connect } from "react-redux"
 import { withRouter } from "react-router-dom"
@@ -22,35 +21,11 @@ const styles = (theme) => ({
 const error =
   "Your login token is expired. Please log out and then log back in to regain full user access."
 
-type Props = {
-  // the location object passed in by React Router
-  location: {
-    state: {
-      /** Route params for section name (i.e. "techniques" in "/research/techniques") */
-      name: string,
-      /** Route params for section subname (i.e. "media" in "/research/techniques/media") */
-      subname: string,
-      /** Full URL of expected new page */
-      url: string,
-    },
-  },
-  /** React-Router object */
-  match: Object,
-  /** Material-UI styling */
-  classes: Object,
-  /** Action called when user attempts to save a new page */
-  addEditablePage: Function,
-  /** Action called when user cancels editing */
-  cancelEditing: Function,
-  /** User ID of person editing */
-  userId: string,
-}
-
 /**
  * This is the view component so an authorized user can add a new page.
  */
 
-class AddPage extends React.Component<Props> {
+class AddPage extends React.Component {
   onCancel = () => {
     const { cancelEditing, match } = this.props
     cancelEditing(match.url.slice(0, -7))

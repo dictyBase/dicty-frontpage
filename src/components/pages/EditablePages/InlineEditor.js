@@ -1,4 +1,3 @@
-// @flow
 import React, { useState } from "react"
 import { connect } from "react-redux"
 import { PageEditor } from "dicty-components-page-editor"
@@ -21,25 +20,12 @@ const useStyles = makeStyles({
   },
 })
 
-type Props = {
-  /** The object holding the fetched page content */
-  page: Object,
-  /** Action to fetch page content from API server */
-  fetchPage: Function,
-  /** Action that saves inline editor content to API server */
-  saveInlineEditing: Function,
-  /** Action creator to edit inline content */
-  editInline: Function,
-  /** ID of current logged in user */
-  userId: string,
-}
-
 /**
  * This provides an inline editing tool using the external
  * page-editor library.
  */
 
-const InlineEditor = (props: Props) => {
+const InlineEditor = (props) => {
   const [readOnly, setReadOnly] = useState(true)
   const [value, setValue] = useState(props.page.data.attributes.content)
   const classes = useStyles()

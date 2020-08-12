@@ -1,4 +1,3 @@
-// @flow
 import clientConfig from "utils/clientConfig"
 
 const oauthConfig = {

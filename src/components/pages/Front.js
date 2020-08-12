@@ -1,4 +1,3 @@
-// @flow
 import React from "react"
 import { Helmet } from "react-helmet"
 import Grid from "@material-ui/core/Grid"
@@ -34,14 +33,9 @@ const styles = (theme) => ({
   },
 })
 
-type Props = {
-  /** Material-UI styling */
-  classes: Object,
-}
-
 /** This is the frontpage component that appears when the user hits the "/" route. */
 
-const Front = (props: Props) => {
+const Front = (props) => {
   const { classes } = props
 
   return (

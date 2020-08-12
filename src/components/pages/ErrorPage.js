@@ -1,4 +1,3 @@
-// @flow
 import React from "react"
 import { connect } from "react-redux"
 import { withRouter, Link } from "react-router-dom"
@@ -55,24 +54,11 @@ const styles = (theme) => ({
   },
 })
 
-type Props = {
-  /** Material-UI styling */
-  classes: Object,
-  /** The page object in the state */
-  page: Object,
-  /** The news object in the state */
-  news: Object,
-  /** The auth object in the state */
-  auth: Object,
-  /** React-Router's match object */
-  match: Object,
-}
-
 /**
  * General error handling page
  */
 
-const ErrorPage = (props: Props) => {
+const ErrorPage = (props) => {
   const { page, auth, classes, match } = props
 
   let errorStatus = 0
@@ -210,6 +196,6 @@ const mapStateToProps = (state) => ({
 })
 
 export { ErrorPage }
-export default withRouter<*>(
+export default withRouter(
   withStyles(styles)(connect(mapStateToProps)(ErrorPage)),
 )

@@ -1,4 +1,3 @@
-// @flow
 import React from "react"
 import { withStyles } from "@material-ui/core/styles"
 
@@ -14,27 +13,11 @@ const styles = (theme) => ({
   },
 })
 
-type Props = {
-  /** Material-UI styling */
-  classes: Object,
-  /** Citations data */
-  citations: Array<{
-    /** Authors of paper */
-    authors: string,
-    /** Title of paper */
-    title: string,
-    /** Journal for this citation */
-    journal: string,
-    /** Link to PubMed */
-    link: string,
-  }>,
-}
-
 /**
  * Displays the citation above the downloads table.
  */
 
-const Citations = ({ classes, citations }: Props) => (
+const Citations = ({ classes, citations }) => (
   <div className={classes.root}>
     <h3 className={classes.topLine}>Please cite:</h3>
     {citations.map((citation) => (

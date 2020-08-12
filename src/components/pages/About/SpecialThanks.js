@@ -1,4 +1,3 @@
-// @flow
 import React, { Component } from "react"
 import { connect } from "react-redux"
 import Skeleton from "react-loading-skeleton"
@@ -8,20 +7,11 @@ import { NAMESPACE } from "constants/namespace"
 
 const slugName = `${NAMESPACE}-specialthanks`
 
-type Props = {
-  /** Represents whether component is loading or not */
-  isFetching: boolean,
-  /** The object holding the fetched page content */
-  page: Object,
-  /** Action to fetch page content from API server */
-  fetchPage: Function,
-}
-
 /**
  * This is the view component for the Special Thanks section of the About page.
  */
 
-class SpecialThanks extends Component<Props> {
+class SpecialThanks extends Component {
   static defaultProps = {
     page: {
       data: {

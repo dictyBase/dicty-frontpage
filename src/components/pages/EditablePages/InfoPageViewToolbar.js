@@ -1,4 +1,3 @@
-// @flow
 import React from "react"
 import Grid from "@material-ui/core/Grid"
 import Tooltip from "@material-ui/core/Tooltip"
@@ -65,20 +64,11 @@ const styles = (theme) => ({
 const error =
   "Your login token is expired. Please log out and then log back in to regain full user access."
 
-type Props = {
-  /** Event handler for when use clicks edit button */
-  handleClick: Function,
-  /** The time the page was last updated */
-  updated_at: string,
-  /** Material-UI styling */
-  classes: Object,
-}
-
 /** InfoPageViewToolbar displays information about who updated the page last,
  * as well as an edit button if the user is authorized to edit pages.
  */
 
-const InfoPageViewToolbar = (props: Props) => {
+const InfoPageViewToolbar = (props) => {
   const { handleClick, classes, updated_at } = props
 
   return (

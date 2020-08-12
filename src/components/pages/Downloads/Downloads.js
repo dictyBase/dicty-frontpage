@@ -1,4 +1,3 @@
-// @flow
 import React, { Component } from "react"
 import { Helmet } from "react-helmet"
 import { connect } from "react-redux"
@@ -16,20 +15,11 @@ import withDataFetching from "components/common/withDataFetching"
 import MuiTheme from "components/common/MuiTheme"
 import { fetchDownloadTabs, changeTab } from "actions/downloads"
 
-type Props = {
-  /** The downloads slice of the state */
-  downloads: Object,
-  /** Action creator to fetch the download tabs data */
-  fetchDownloadTabs: Function,
-  /** Action that changes the value of the selected tab */
-  changeTab: Function,
-}
-
 /**
  * This displays the Dicty downloads page.
  */
 
-class Downloads extends Component<Props> {
+class Downloads extends Component {
   handleChange = (event: SyntheticEvent<>, value: string) => {
     const { changeTab } = this.props
 

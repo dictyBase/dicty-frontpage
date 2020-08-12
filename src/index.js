@@ -4,7 +4,6 @@ import React from "react"
 import ReactDOM from "react-dom"
 import { Provider } from "react-redux"
 import { ConnectedRouter } from "connected-react-router"
-import { hydrateStore } from "dicty-components-redux"
 import CssBaseline from "@material-ui/core/CssBaseline"
 import configureStore from "./store/configureStore"
 import history from "utils/routerHistory"
@@ -12,10 +11,7 @@ import App from "./App"
 import "typeface-roboto"
 import * as serviceWorker from "./serviceWorker"
 
-// load state from localStorage(if any) to set the initial state for the store
-const initialState = hydrateStore({ key: "auth", namespace: "auth" })
-
-const store = configureStore(initialState)
+const store = configureStore({})
 
 const setGoogleAnalytics = async (location, action) => {
   try {

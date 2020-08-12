@@ -1,4 +1,3 @@
-// @flow
 import {
   EDIT_PAGE,
   SAVE_PAGE_REQUEST,
@@ -15,7 +14,7 @@ const initialState = {
   error: null,
 }
 
-const editablePagesReducer = (state: Object = initialState, action: Object) => {
+const editablePagesReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_PAGE_REQUEST:
       return {

@@ -1,4 +1,3 @@
-// @flow
 import {
   FETCH_DOWNLOAD_TABS_REQUEST,
   FETCH_DOWNLOAD_TABS_SUCCESS,
@@ -11,7 +10,7 @@ import {
 
 const initialState = {}
 
-const downloadsReducer = (state: Object = initialState, action: Object) => {
+const downloadsReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_DOWNLOAD_TABS_REQUEST:
       return {

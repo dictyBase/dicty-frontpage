@@ -1,4 +1,3 @@
-// @flow
 import {
   FETCH_FOOTER_REQUEST,
   FETCH_FOOTER_SUCCESS,
@@ -7,7 +6,7 @@ import {
 
 const initialState = {}
 
-const footerReducer = (state: Object = initialState, action: Object) => {
+const footerReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_FOOTER_REQUEST:
       return {
