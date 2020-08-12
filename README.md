@@ -8,8 +8,7 @@
 [![devDependency Status](https://david-dm.org/dictyBase/dicty-frontpage/develop/dev-status.svg?style=flat-square)](https://david-dm.org/dictyBase/dicty-frontpage/develop?type=dev)  
 [![Technical debt](https://badgen.net/codeclimate/tech-debt/dictyBase/dicty-frontpage)](https://codeclimate.com/github/dictyBase/dicty-frontpage/trends/technical_debt)
 [![Issues](https://badgen.net/codeclimate/issues/dictyBase/dicty-frontpage)](https://codeclimate.com/github/dictyBase/dicty-frontpage/issues)
-[![Maintainability percentage](https://badgen.net/codeclimate/maintainability-percentage/dictyBase/dicty-frontpage)](https://codeclimate.com/github/dictyBase/dicty-frontpage)
-[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=dictyBase/dicty-frontpage)](https://dependabot.com)  
+[![Maintainability percentage](https://badgen.net/codeclimate/maintainability-percentage/dictyBase/dicty-frontpage)](https://codeclimate.com/github/dictyBase/dicty-frontpage)  
 ![Issues](https://badgen.net/github/issues/dictyBase/dicty-frontpage)
 ![Open Issues](https://badgen.net/github/open-issues/dictyBase/dicty-frontpage)
 ![Closed Issues](https://badgen.net/github/closed-issues/dictyBase/dicty-frontpage)
@@ -59,35 +58,16 @@ on `pre-commit` and run [Skaffold](https://github.com/GoogleContainerTools/skaff
 
 This app requires the following services to be running:
 
+- [graphql-server](https://github.com/dictyBase/graphql-server)
+- [graphql-authserver](https://github.com/dictyBase/graphql-authserver)
+- [modware-auth](https://github.com/dictyBase/modware-auth)
 - [modware-content](https://github.com/dictyBase/modware-content)
-- [modware-user](https://github.com/dictyBase/modware-user) (used for login)
-- [authserver](https://github.com/dictyBase/authserver)
+- [modware-identity](https://github.com/dictyBase/modware-identity)
+- [modware-user](https://github.com/dictyBase/modware-user)
 
 It also relies on the navbar, footer and download tabs JSON files found in the
 [migration-data](https://github.com/dictyBase/migration-data) repository. An example
 of the necessary environmental variables can be found [here](.env.development).
-
-## Semantic Versioning
-
-This app has been set up to use [semantic-release](https://github.com/semantic-release/semantic-release)
-and [commitizen](https://github.com/commitizen/cz-cli). After adding a new commit
-(`git add ...`), use `npm run cz` and follow the prompts to categorize and provide
-more details about your commit. Once complete, push your changes to whatever branch
-you are working on.
-
-When you are ready to push to prod, you can use `semantic-release` to automate the
-release process:
-
-- Merge your changes into `master`
-- Run `npx semantic-release`
-
-**Important:** you MUST have an env variable stored for `GH_TOKEN` or `GITHUB_TOKEN`
-that contains a GitHub [personal access token](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/).
-You can either pass this in manually when you run the script (i.e. `GH_TOKEN=XXX npx semantic-release`)
-or you can [store your env variable locally](https://www.schrodinger.com/kb/1842).
-
-This will look at your most recent commits since the last `git tag` and automatically
-determine the appropriate version number for your release.
 
 ## Active Developers
 
