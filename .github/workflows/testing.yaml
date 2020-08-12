@@ -24,7 +24,7 @@ jobs:
         run: yarn install
       - name: yarn test
         run: |
-          mv src/utils/clientConfig.sample.js src/utils/clientConfig.js
+          mv src/common/utils/clientConfig.sample.ts src/common/utils/clientConfig.ts
           yarn test-coverage
         env:
           CI: true

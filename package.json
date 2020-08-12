@@ -12,6 +12,7 @@
     "test-coverage": "CI=true react-scripts test --env=jsdom --coverage",
     "eject": "react-scripts eject",
     "lint": "eslint --ext .jsx,.js,.ts,.tsx src/",
+    "tsc": "tsc",
     "styleguide": "styleguidist server",
     "styleguide:build": "styleguidist build",
     "semantic-release": "semantic-release",
