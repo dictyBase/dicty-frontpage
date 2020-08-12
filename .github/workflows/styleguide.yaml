@@ -21,7 +21,7 @@ jobs:
             ${{ runner.os }}-yarn-
       - name: install and build styleguide
         run: |
-          mv src/utils/clientConfig.sample.js src/utils/clientConfig.js
+          mv src/common/utils/clientConfig.sample.ts src/common/utils/clientConfig.ts
           yarn install
           yarn styleguide:build
       - name: deploy to gh-pages

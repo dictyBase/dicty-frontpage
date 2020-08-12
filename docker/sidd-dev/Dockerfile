@@ -8,7 +8,7 @@ WORKDIR /usr/src/app
 # copy only necessary files
 COPY package.json ./
 COPY yarn.lock ./
-COPY jsconfig.json ./
+COPY tsconfig.json ./
 COPY .snyk ./
 
 RUN yarn install
@@ -18,7 +18,7 @@ ADD src src
 ADD public public
 
 # overwrite the client key file
-ADD $CLIENT_KEYS /usr/src/app/src/utils/clientConfig.js
+ADD $CLIENT_KEYS /usr/src/app/src/common/utils/clientConfig.ts
 
 RUN yarn build
 
