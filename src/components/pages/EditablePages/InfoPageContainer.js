@@ -1,4 +1,3 @@
-// @flow
 import React, { Component } from "react"
 import { Helmet } from "react-helmet"
 import { connect } from "react-redux"
@@ -10,26 +9,11 @@ import { fetchPage } from "actions/editablePages"
 import { NAMESPACE } from "constants/namespace"
 import { pageTitleLookup } from "utils/pageTitleConversions"
 
-type Props = {
-  /** Checks if data is currently being fetched */
-  isFetching: boolean,
-  /** the Page object taken from the current state  */
-  page: Object,
-  /** React Router's match object */
-  match: Object,
-  /** Action creator that fetches data from API */
-  fetchPage: Function,
-  /** Error from page fetching */
-  error: Object,
-  /** Material-UI styling */
-  classes: Object,
-}
-
 /**
  * InfoPageContainer fetches the data for the desired editable page
  */
 
-class InfoPageContainer extends Component<Props> {
+class InfoPageContainer extends Component {
   static defaultProps = {
     page: {
       data: {

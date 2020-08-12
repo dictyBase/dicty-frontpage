@@ -1,4 +1,3 @@
-// @flow
 import {
   FETCH_NAVBAR_REQUEST,
   FETCH_NAVBAR_SUCCESS,
@@ -7,7 +6,7 @@ import {
 
 const initialState = {}
 
-const navbarReducer = (state: Object = initialState, action: Object) => {
+const navbarReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_NAVBAR_REQUEST:
       return {

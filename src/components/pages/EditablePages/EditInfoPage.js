@@ -1,4 +1,3 @@
-// @flow
 import React from "react"
 import { connect } from "react-redux"
 import { Link } from "react-router-dom"
@@ -22,26 +21,11 @@ const styles = (theme) => ({
   },
 })
 
-type Props = {
-  /** React Router's match object */
-  match: Object,
-  /** The object holding the fetched page content */
-  page: Object,
-  /** Material-UI styling */
-  classes: Object,
-  /** Action called when editing is cancelled */
-  cancelEditing: Function,
-  /** Action called when user wants to save edited content */
-  saveEditing: Function,
-  /** User ID of person editing */
-  userId: string,
-}
-
 /**
  * Allows page editing
  */
 
-class EditInfoPage extends React.Component<Props, null> {
+class EditInfoPage extends React.Component {
   onCancel = () => {
     const { cancelEditing, match } = this.props
     cancelEditing(match.url.slice(0, -5))

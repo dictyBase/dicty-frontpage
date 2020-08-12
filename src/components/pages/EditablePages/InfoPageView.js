@@ -1,4 +1,3 @@
-// @flow
 import React, { Component } from "react"
 import { connect } from "react-redux"
 import Grid from "@material-ui/core/Grid"
@@ -8,20 +7,9 @@ import { ContentAPI } from "utils/apiClasses"
 import { editPage } from "actions/editablePages"
 import { fetchUserInfo } from "actions/auth"
 
-type Props = {
-  /** React Router's match object */
-  match: Object,
-  /** action creator for editing the current page content */
-  editPage: Function,
-  /** action creator to fetch a non-authenticated user's information */
-  fetchUserInfo: Function,
-  /** the object that contains page data from current state */
-  page: Object,
-}
-
 /** InfoPageView displays the page data that was fetched from the InfoPage component */
 
-export class InfoPageView extends Component<Props> {
+export class InfoPageView extends Component {
   componentDidMount() {
     const { page, fetchUserInfo } = this.props
     const fetchedUser = new ContentAPI(page).getUser()

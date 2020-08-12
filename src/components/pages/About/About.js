@@ -1,4 +1,3 @@
-// @flow
 import React from "react"
 import { Helmet } from "react-helmet"
 import FontAwesome from "react-fontawesome"
@@ -49,16 +48,11 @@ const styles = (theme) => ({
   },
 })
 
-type Props = {
-  /** Material-UI styling */
-  classes: Object,
-}
-
 /**
  * This is the About page component. It is set up to accept two Items, both of which are 50% width, below the main Header.
  */
 
-const About = (props: Props) => {
+const About = (props) => {
   const { classes } = props
 
   return (
