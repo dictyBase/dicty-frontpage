@@ -31,7 +31,7 @@ const InlineEditor = (props) => {
   const classes = useStyles()
   const content = props.page.data.attributes.content
 
-  const onEdit = (event: SyntheticEvent<>) => {
+  const onEdit = (event) => {
     event.preventDefault()
     setReadOnly(false)
     const { editInline } = props

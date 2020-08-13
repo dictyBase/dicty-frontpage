@@ -16,7 +16,7 @@ export class InfoPageView extends Component {
     fetchUserInfo(fetchedUser)
   }
 
-  handleClick = (event: SyntheticEvent<>) => {
+  handleClick = (event) => {
     const { editPage, match, page } = this.props
     event.preventDefault()
     editPage(page.data.attributes.content, match.url)
