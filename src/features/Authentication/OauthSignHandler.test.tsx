@@ -2,7 +2,7 @@ import React from "react"
 import { render, waitFor } from "@testing-library/react"
 import OauthSignHandler from "./OauthSignHandler"
 import { LOGIN } from "common/graphql/mutation"
-import MockAuthProvider from "common/mocks/MockAuthProvider"
+import { MockAuthProvider } from "common/mocks/MockAuthProvider"
 import clientConfig from "common/utils/clientConfig"
 
 const mockHistoryPush = jest.fn()
@@ -143,7 +143,7 @@ describe("authentication/OauthSignHandler", () => {
 
       await waitFor(() => {
         expect(mockHistoryPush).toHaveBeenCalledWith("/load/auth")
-        expect(mockHistoryPush).toHaveBeenCalledWith("/mydsc")
+        expect(mockHistoryPush).toHaveBeenCalledWith("/")
       })
     })
   })
