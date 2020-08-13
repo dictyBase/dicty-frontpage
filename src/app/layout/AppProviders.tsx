@@ -3,14 +3,13 @@ import {
   ApolloProvider,
   ApolloClient,
   InMemoryCache,
-  createHttpLink,
+  HttpLink,
 } from "@apollo/client"
 import { setContext } from "@apollo/client/link/context"
 import { BrowserRouter } from "react-router-dom"
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles"
 import { useAuthStore } from "features/Authentication/AuthStore"
 import { mutationList } from "common/graphql/mutation"
-import "typeface-roboto"
 
 const isMutation = (value: string) => {
   if (mutationList.includes(value)) {
@@ -30,22 +29,15 @@ const createClient = async (token: string) => {
       },
     }
   })
-  const link = authLink.concat(
-    createHttpLink({
-      uri: `${process.env.REACT_APP_GRAPHQL_SERVER}/graphql`,
-      credentials: "include",
-    }),
-  )
+
+  const httpLink = new HttpLink({
+    uri: `${process.env.REACT_APP_GRAPHQL_SERVER}/graphql`,
+    credentials: "include",
+  })
 
   return new ApolloClient({
-    cache: new InMemoryCache({
-      typePolicies: {
-        Extension: {
-          keyFields: ["id", "relation"],
-        },
-      },
-    }),
-    link,
+    cache: new InMemoryCache(),
+    link: authLink.concat(httpLink),
   })
 }
 
