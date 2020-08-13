@@ -36,7 +36,7 @@ const Routes = () => (
       path="/:section/:name/:subname/edit"
       component={EditInfoPage}
     />
-    {/* <PrivateRoute exact path="/addpage" component={AddPage} /> */}
+    <PrivateRoute exact path="/addpage" component={AddPage} />
     {/* Page not found routes */}
     <Route exact path="*" component={PageNotReady} />
   </Switch>
