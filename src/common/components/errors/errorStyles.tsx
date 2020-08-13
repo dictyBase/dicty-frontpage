@@ -32,6 +32,20 @@ const useStyles = makeStyles((theme) => ({
     margin: "0 auto",
     display: "table",
   },
+  addPageButton: {
+    width: "25%",
+    marginTop: "25px",
+    padding: "25px",
+    textTransform: "none",
+    backgroundColor: "#FF6347",
+    "&:hover": {
+      backgroundColor: "#cc381e",
+    },
+  },
+  link: {
+    color: "#428bca",
+    textDecoration: "none",
+  },
 }))
 
 export default useStyles
