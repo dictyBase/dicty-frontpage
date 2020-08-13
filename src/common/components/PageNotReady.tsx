@@ -1,12 +1,11 @@
 import React from "react"
-import { Link } from "react-router-dom"
-import { withStyles } from "@material-ui/core/styles"
+import { makeStyles } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
 import Button from "@material-ui/core/Button"
 import FontAwesome from "react-fontawesome"
 import sadDicty from "common/assets/sad-dicty.png"
 
-const styles = (theme) => ({
+const useStyles = makeStyles({
   container: {
     backgroundColor: "#eff8fb",
     textAlign: "center",
@@ -26,7 +25,7 @@ const styles = (theme) => ({
     paddingLeft: "10px",
     paddingRight: "10px",
   },
-  link: {
+  routerLink: {
     color: "#428bca",
     textDecoration: "none",
   },
@@ -36,8 +35,9 @@ const styles = (theme) => ({
  * Fallback component for non-existent routes -- "Page Not Ready"/"Under Construction"
  */
 
-const PageNotReady = (props) => {
-  const { classes } = props
+const PageNotReady = () => {
+  const classes = useStyles()
+
   return (
     <Grid container className={classes.mainGrid} justify="center">
       <Grid item xs={10} md={8}>
@@ -51,7 +51,7 @@ const PageNotReady = (props) => {
             We are constantly adding content to our new website so check back
             soon!
           </p>
-          <Link className={classes.link} to="/">
+          <a href="/" className={classes.routerLink}>
             <Button
               className={classes.button}
               size="small"
@@ -59,11 +59,11 @@ const PageNotReady = (props) => {
               color="primary">
               Back to homepage
             </Button>
-          </Link>
+          </a>
         </div>
       </Grid>
     </Grid>
   )
 }
 
-export default withStyles(styles)(PageNotReady)
+export default PageNotReady
