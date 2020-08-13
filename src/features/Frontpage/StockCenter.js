@@ -1,7 +1,7 @@
 import React from "react"
 import { withStyles } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
-import FontAwesome from "react-fontawesome"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 const styles = (theme) => ({
   listItem: {
@@ -119,8 +119,8 @@ const StockCenter = (props) => {
   return (
     <div className={classes.container}>
       <div className={classes.header}>
-        <FontAwesome name="shopping-cart fa-md" />
-        <span className={classes.title}>DICTY STOCK CENTER</span>
+        <FontAwesomeIcon icon="shopping-cart" size="sm" />
+        <span className={classes.title}> DICTY STOCK CENTER</span>
       </div>
       <div className={classes.subheader}>
         <strong>New items</strong>
@@ -130,14 +130,14 @@ const StockCenter = (props) => {
           <div className={classes.title}>PLASMIDS</div>
           <ul className={classes.listBox}>{plasmidlist}</ul>
           <div className={classes.plusSign}>
-            <FontAwesome name="plus fa-xs" />
+            <FontAwesomeIcon icon="plus" />
           </div>
         </Grid>
         <Grid item xs={6} className={classes.strainBox}>
           <div className={classes.title}>STRAINS</div>
           <ul className={classes.listBox}>{strainlist}</ul>
           <div className={classes.plusSign}>
-            <FontAwesome name="plus fa-xs" />
+            <FontAwesomeIcon icon="plus" />
           </div>
         </Grid>
       </Grid>

@@ -1,7 +1,7 @@
 import React from "react"
 import { withStyles } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
-import FontAwesome from "react-fontawesome"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 const styles = (theme) => ({
   container: {
@@ -122,9 +122,9 @@ const Papers = (props) => {
       <div className={classes.header}>
         <Grid container>
           <span className={classes.title}>
-            <FontAwesome name="paperclip fa-lg" />
+            <FontAwesomeIcon icon="paperclip" size="sm" />
           </span>
-          <span className={classes.title}>LATEST PAPERS</span>
+          <span className={classes.title}> LATEST PAPERS</span>
         </Grid>
       </div>
       <ul className={classes.listBox}>{text}</ul>

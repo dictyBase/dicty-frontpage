@@ -1,7 +1,7 @@
 import React from "react"
 import { withStyles } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
-import FontAwesome from "react-fontawesome"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 const styles = (theme) => ({
   mainContainer: {
@@ -103,8 +103,8 @@ const Annotations = (props) => {
   return (
     <div className={classes.mainContainer}>
       <div className={classes.header}>
-        <FontAwesome name="pencil fa-md" />
-        <span className={classes.title}>RECENT ANNOTATIONS</span>
+        <FontAwesomeIcon icon="pencil-alt" size="sm" />
+        <span className={classes.title}> RECENT ANNOTATIONS</span>
       </div>
       <Grid container className={classes.innerContainer}>
         <Grid item className={classes.box} xs={6}>
