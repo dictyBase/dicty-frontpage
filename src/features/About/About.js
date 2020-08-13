@@ -1,6 +1,6 @@
 import React from "react"
 import { Helmet } from "react-helmet"
-import FontAwesome from "react-fontawesome"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { withStyles } from "@material-ui/core/styles"
 import TechnicalSummary from "./TechnicalSummary"
 import SpecialThanks from "./SpecialThanks"
@@ -65,7 +65,7 @@ const About = (props) => {
         <h1 className={classes.header}>About Us</h1>
         <p className={classes.headerText}>
           We{"  "}
-          <FontAwesome name="heart fa-2x" />
+          <FontAwesomeIcon icon="heart" size="2x" />
           {"  "}dictyBase
         </p>
       </div>
