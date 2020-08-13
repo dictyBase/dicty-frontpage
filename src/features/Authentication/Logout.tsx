@@ -1,6 +1,6 @@
 import React from "react"
 import { Redirect } from "react-router-dom"
-import { useMutation } from "@apollo/client"
+import { useMutation } from "@apollo/react-hooks"
 import { useAuthStore, ActionType } from "features/Authentication/AuthStore"
 import { LOGOUT } from "common/graphql/mutation"
 

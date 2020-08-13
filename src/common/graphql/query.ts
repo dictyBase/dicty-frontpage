@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client"
+import gql from "graphql-tag"
 
 const GET_CONTENT_BY_SLUG = gql`
   query contentBySlug($slug: String!) {
