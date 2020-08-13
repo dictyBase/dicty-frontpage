@@ -32,6 +32,31 @@ const LOGOUT = gql`
   }
 `
 
-const mutationList = ["Logout"]
+const CREATE_CONTENT = gql`
+  mutation CreateContent($input: CreateContentInput!) {
+    createContent(input: $input) {
+      name
+      created_by {
+        id
+      }
+      content
+      namespace
+    }
+  }
+`
 
-export { LOGIN, LOGOUT, mutationList }
+const UPDATE_CONTENT = gql`
+  mutation UpdateContent($input: UpdateContentInput!) {
+    updateContent(input: $input) {
+      id
+      updated_by {
+        id
+      }
+      content
+    }
+  }
+`
+
+const mutationList = ["Logout", "CreateContent", "UpdateContent"]
+
+export { LOGIN, LOGOUT, CREATE_CONTENT, UPDATE_CONTENT, mutationList }

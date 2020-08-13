@@ -4,7 +4,7 @@ import { withRouter } from "react-router-dom"
 import Grid from "@material-ui/core/Grid"
 import { withStyles } from "@material-ui/core/styles"
 import { PageEditor } from "dicty-components-page-editor"
-import Authorization from "features/Authentication/Authorization"
+// import Authorization from "features/Authentication/Authorization"
 import ErrorNotification from "features/Authentication/ErrorNotification"
 import { addEditablePage, cancelEditing } from "common/actions/editablePages"
 
@@ -68,33 +68,33 @@ class AddPage extends React.Component {
     } = this.props
 
     return (
-      <Authorization
-        render={({ canEditPages, verifiedToken }) => (
-          <div>
-            {canEditPages && verifiedToken === false && (
-              <ErrorNotification error={error} />
-            )}
-            {canEditPages && (
-              <Grid container wrap="wrap" justify="center">
-                <Grid item xs={12}>
-                  <div className={classes.banner}>
-                    <h2>Add Editable Page for Route:</h2>
-                    <h3>{url}</h3>
-                  </div>
-                </Grid>
-                <br />
-                <Grid item xs={9}>
-                  <PageEditor
-                    onCancel={this.onCancel}
-                    onSave={this.onSave}
-                    newPage={true}
-                  />
-                </Grid>
-              </Grid>
-            )}
+      // <Authorization
+      //   render={({ canEditPages, verifiedToken }) => (
+      //     <div>
+      //       {canEditPages && verifiedToken === false && (
+      //         <ErrorNotification error={error} />
+      //       )}
+      //       {canEditPages && (
+      <Grid container wrap="wrap" justify="center">
+        <Grid item xs={12}>
+          <div className={classes.banner}>
+            <h2>Add Editable Page for Route:</h2>
+            <h3>{url}</h3>
           </div>
-        )}
-      />
+        </Grid>
+        <br />
+        <Grid item xs={9}>
+          <PageEditor
+            onCancel={this.onCancel}
+            onSave={this.onSave}
+            newPage={true}
+          />
+        </Grid>
+      </Grid>
+      //       )}
+      //     </div>
+      //   )}
+      // />
     )
   }
 }
