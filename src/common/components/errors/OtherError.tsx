@@ -1,13 +1,12 @@
 import React from "react"
 import Grid from "@material-ui/core/Grid"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import BackToHomepageButton from "common/components/BackToHomepageButton"
 import ErrorMessage from "./ErrorMessage"
 import sadDicty from "common/assets/sad-dicty.png"
 import useStyles from "./errorStyles"
 
 /**
- * OtherError is the UI display when there is a general error.
+ * UI display when there is a general error.
  */
 
 const OtherError = () => {
@@ -22,7 +21,6 @@ const OtherError = () => {
             <FontAwesomeIcon icon="exclamation-circle" /> Error
           </h1>
           <ErrorMessage />
-          <BackToHomepageButton />
         </div>
       </Grid>
     </Grid>

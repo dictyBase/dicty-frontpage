@@ -10,8 +10,8 @@ type Props = {
 }
 
 /**
- * GraphQLErrorPage is used to display any errors found when issuing a
- * GraphQL query or mutation.
+ * Displays any errors found when issuing a GraphQL query or mutation.
+ * Returns one of the other error components based on the error code.
  */
 
 const GraphQLErrorPage = ({ error }: Props) => {
@@ -29,18 +29,11 @@ const GraphQLErrorPage = ({ error }: Props) => {
     errorMsg = error.graphQLErrors[0].message
   }
 
-  const printError = `
-  error: ${errorMsg}
-  code: ${errorCode}
-  `
-
   if (errorCode === "Unavailable") {
-    console.error(printError)
     return <ServerError />
   }
 
   if (errorCode === "NotFound" && errorMsg) {
-    console.error(printError)
     return (
       <NotFoundError
         error={errorMsg.charAt(0).toUpperCase() + errorMsg.slice(1)}
@@ -48,7 +41,6 @@ const GraphQLErrorPage = ({ error }: Props) => {
     )
   }
 
-  console.error(printError)
   return <OtherError />
 }
 

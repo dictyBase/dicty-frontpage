@@ -7,7 +7,7 @@ import jwtDecode from "jwt-decode"
 import { IconProp } from "@fortawesome/fontawesome-svg-core"
 import { useFetchRefreshToken, useFooter, useNavbar } from "dicty-hooks"
 import { useAuthStore } from "features/Authentication/AuthStore"
-import ErrorBoundary from "common/components/ErrorBoundary"
+import ErrorBoundary from "common/components/errors/ErrorBoundary"
 import {
   headerItems,
   loggedHeaderItems,

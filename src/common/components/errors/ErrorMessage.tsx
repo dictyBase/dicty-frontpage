@@ -1,7 +1,7 @@
 import React from "react"
 
 /**
- * ErrorMessage is the "contact us" message displayed on most error pages.
+ * Displays the "contact us" message used on most error pages.
  */
 
 const ErrorMessage = () => (
