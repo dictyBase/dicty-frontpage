@@ -1,11 +1,9 @@
 import React from "react"
-import {
-  ApolloProvider,
-  ApolloClient,
-  InMemoryCache,
-  HttpLink,
-} from "@apollo/client"
-import { setContext } from "@apollo/client/link/context"
+import { ApolloProvider } from "@apollo/react-hooks"
+import { ApolloClient } from "apollo-client"
+import { InMemoryCache } from "apollo-cache-inmemory"
+import { createHttpLink } from "apollo-link-http"
+import { setContext } from "apollo-link-context"
 import { BrowserRouter } from "react-router-dom"
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles"
 import { useAuthStore } from "features/Authentication/AuthStore"
@@ -30,7 +28,7 @@ const createClient = async (token: string) => {
     }
   })
 
-  const httpLink = new HttpLink({
+  const httpLink = createHttpLink({
     uri: `${process.env.REACT_APP_GRAPHQL_SERVER}/graphql`,
     credentials: "include",
   })
@@ -78,6 +76,7 @@ const AppProviders = ({ children }: { children: React.ReactNode }) => {
   const [{ token }] = useAuthStore()
   React.useEffect(() => {
     createClient(token).then((apollo) => setClient(apollo))
+
     return () => {}
   }, [token])
 

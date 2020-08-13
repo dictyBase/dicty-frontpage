@@ -1,6 +1,6 @@
 import React from "react"
 import { BrowserRouter } from "react-router-dom"
-import { MockedProvider, MockedResponse } from "@apollo/client/testing"
+import { MockedProvider, MockedResponse } from "@apollo/react-testing"
 import { AuthContext, authReducer } from "features/Authentication/AuthStore"
 
 type AuthProps = {
