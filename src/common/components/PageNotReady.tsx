@@ -1,8 +1,9 @@
 import React from "react"
+import { Link } from "react-router-dom"
 import { makeStyles } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
 import Button from "@material-ui/core/Button"
-import FontAwesome from "react-fontawesome"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import sadDicty from "common/assets/sad-dicty.png"
 
 const useStyles = makeStyles({
@@ -25,10 +26,6 @@ const useStyles = makeStyles({
     paddingLeft: "10px",
     paddingRight: "10px",
   },
-  routerLink: {
-    color: "#428bca",
-    textDecoration: "none",
-  },
 })
 
 /**
@@ -44,14 +41,14 @@ const PageNotReady = () => {
         <div className={classes.container}>
           <img src={sadDicty} alt="Sad Dicty Logo" />
           <h1>
-            <FontAwesome name="wrench" /> Content Not Ready
+            <FontAwesomeIcon icon="wrench" /> Content Not Ready
           </h1>
           <p className={classes.paragraph}>This page is not ready yet.</p>
           <p className={classes.paragraph}>
             We are constantly adding content to our new website so check back
             soon!
           </p>
-          <a href="/" className={classes.routerLink}>
+          <Link to="/">
             <Button
               className={classes.button}
               size="small"
@@ -59,7 +56,7 @@ const PageNotReady = () => {
               color="primary">
               Back to homepage
             </Button>
-          </a>
+          </Link>
         </div>
       </Grid>
     </Grid>

@@ -1,6 +1,5 @@
 import React from "react"
 import Grid from "@material-ui/core/Grid"
-import BackToHomepageButton from "common/components/BackToHomepageButton"
 import ErrorMessage from "./ErrorMessage"
 import sadDicty from "common/assets/sad-dicty.png"
 import useStyles from "./errorStyles"
@@ -11,7 +10,7 @@ type Props = {
 }
 
 /**
- * NotFoundError is the UI display when an item was not found.
+ * UI display when an item was not found.
  */
 
 const NotFoundError = ({ error }: Props) => {
@@ -30,7 +29,6 @@ const NotFoundError = ({ error }: Props) => {
             </ul>
           </div>
           <ErrorMessage />
-          <BackToHomepageButton />
         </div>
       </Grid>
     </Grid>
