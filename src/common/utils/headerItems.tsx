@@ -1,53 +1,58 @@
 import { HeaderLink } from "dicty-components-header-footer"
 import { Link } from "react-router-dom"
 import React from "react"
-import FontAwesome from "react-fontawesome"
-import "font-awesome/css/font-awesome.min.css"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { IconProp } from "@fortawesome/fontawesome-svg-core"
 
-const generateLinks = (link, i) =>
+type LinkIconProps = {
+  link: LinkProps
+}
+
+type LinkProps = {
+  isRouter?: boolean
+  text: string
+  icon: IconProp
+  url: string
+}
+
+const LinkIcon = ({ link }: LinkIconProps) => (
+  <div style={{ textAlign: "center" }}>
+    <FontAwesomeIcon icon={link.icon} size="2x" />
+    <br />
+    {link.text}
+  </div>
+)
+
+const generateLinks = (link: LinkProps, i: number) =>
   link.isRouter ? (
-    <Link
-      key={i}
-      to={link.url}
-      style={{ color: "#15317e", padding: "15px", textDecoration: "none" }}>
-      <center>
-        <FontAwesome name={link.icon} size="2x" />
-        <br />
-        {link.text}
-      </center>
+    <Link style={{ padding: "15px" }} key={i} to={link.url}>
+      <LinkIcon link={link} />
     </Link>
   ) : (
     <HeaderLink key={i} href={link.url}>
-      <center>
-        <FontAwesome name={link.icon} size="2x" />
-        <br />
-        {link.text}
-      </center>
+      <LinkIcon link={link} />
     </HeaderLink>
   )
 
 const headerItems = [
   {
-    url: "/community/citation",
+    url: "/cite",
     icon: "plus",
     text: "Cite Us",
-    isRouter: true,
   },
   {
     url: "/downloads",
     icon: "download",
     text: "Downloads",
-    isRouter: true,
   },
   {
     url: "/about",
     icon: "info-circle",
     text: "About dictyBase",
-    isRouter: true,
   },
   {
     url: "/login",
-    icon: "sign-in",
+    icon: "sign-in-alt",
     text: "Login",
     isRouter: true,
   },
@@ -55,26 +60,23 @@ const headerItems = [
 
 const loggedHeaderItems = [
   {
-    url: "/community/citation",
+    url: "/cite",
     icon: "plus",
     text: "Cite Us",
-    isRouter: true,
   },
   {
     url: "/downloads",
     icon: "download",
     text: "Downloads",
-    isRouter: true,
   },
   {
     url: "/about",
     icon: "info-circle",
     text: "About dictyBase",
-    isRouter: true,
   },
   {
     url: "/logout",
-    icon: "sign-out",
+    icon: "sign-out-alt",
     text: "Logout",
     isRouter: true,
   },
