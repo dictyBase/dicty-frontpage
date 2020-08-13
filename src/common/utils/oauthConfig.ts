@@ -1,12 +1,37 @@
 import clientConfig from "common/utils/clientConfig"
 
-const oauthConfig = {
+type Config = {
+  name: string
+  url: string
+  authorizationEndpoint: string
+  clientId: string
+  redirectUrl: string
+  requiredUrlParams: Array<Array<string>>
+  scopes: Array<string>
+  scopeDelimiter: string
+  optionalUrlParams?: Array<Array<string>>
+  popupOptions: {
+    width: number
+    height: number
+  }
+}
+
+type Auth = {
+  google: Config
+  linkedin: Config
+  orcid: Config
+  [index: string]: any
+}
+
+const basename = process.env.REACT_APP_BASENAME
+
+const oauthConfig: Auth = {
   google: {
     name: "Google",
     url: "/auth/google",
     authorizationEndpoint: "https://accounts.google.com/o/oauth2/v2/auth",
     clientId: clientConfig.google.clientId,
-    redirectUrl: `${window.location.origin}/google/callback`,
+    redirectUrl: `${window.location.origin}${basename}/google/callback`,
     requiredUrlParams: [["response_type", "code"]],
     scopes: ["email"],
     scopeDelimiter: " ",
@@ -16,9 +41,9 @@ const oauthConfig = {
   linkedin: {
     name: "LinkedIn",
     url: "/auth/linkedin",
-    authorizationEndpoint: "https://www.linkedin.com/uas/oauth2/authorization",
+    authorizationEndpoint: "https://www.linkedin.com/oauth/v2/authorization",
     clientId: clientConfig.linkedin.clientId,
-    redirectUrl: `${window.location.origin}/linkedin/callback`,
+    redirectUrl: `${window.location.origin}${basename}/linkedin/callback`,
     scopes: ["r_emailaddress"],
     scopeDelimiter: " ",
     requiredUrlParams: [
@@ -32,7 +57,7 @@ const oauthConfig = {
     url: "/auth/orcid",
     authorizationEndpoint: "https://orcid.org/oauth/authorize",
     clientId: clientConfig.orcid.clientId,
-    redirectUrl: `${window.location.origin}/orcid/callback`,
+    redirectUrl: `${window.location.origin}${basename}/orcid/callback`,
     scopes: ["/authenticate"],
     scopeDelimiter: " ",
     requiredUrlParams: [["response_type", "code"]],
