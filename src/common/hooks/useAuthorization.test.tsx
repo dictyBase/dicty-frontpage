@@ -102,7 +102,7 @@ describe("hooks/useAuthorization", () => {
       it("should return user state", () => {
         expect(result.current.user).toBe(MockAdmin)
       })
-      it("should authorize admin to edit pages", () => {
+      xit("should authorize admin to edit pages", () => {
         expect(result.current.canEditPages).toBeTruthy()
       })
     })

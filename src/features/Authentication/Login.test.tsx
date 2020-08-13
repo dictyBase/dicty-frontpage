@@ -5,7 +5,7 @@ import Login, {
   openOauthWindow,
   generateErrorDisplayMessage,
 } from "./Login"
-import MockAuthProvider from "common/mocks/MockAuthProvider"
+import { MockAuthProvider } from "common/mocks/MockAuthProvider"
 
 describe("authentication/Login", () => {
   const globalAny = global as any

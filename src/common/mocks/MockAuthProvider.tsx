@@ -66,4 +66,4 @@ const MockAuthProvider = ({
   )
 }
 
-export default MockAuthProvider
+export { MockAuthProvider, MockSuperuser }
