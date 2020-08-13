@@ -1,7 +1,19 @@
 {
   "parser": "@typescript-eslint/parser",
-  "extends": ["react-app", "prettier"],
-  "plugins": ["@typescript-eslint", "prettier", "import"],
+  "extends": [
+    "react-app",
+    "prettier",
+    "plugin:jest-dom/recommended",
+    "plugin:testing-library/recommended",
+    "plugin:testing-library/react"
+  ],
+  "plugins": [
+    "@typescript-eslint",
+    "prettier",
+    "import",
+    "jest-dom",
+    "testing-library"
+  ],
   "rules": {
     "quotes": ["error", "double"],
     "semi": ["error", "never"],
