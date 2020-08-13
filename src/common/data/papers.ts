@@ -1,4 +1,4 @@
-module.exports = [
+const papers = [
   {
     author: "Tanaka, Jahan, Kondo, Nakano & Yumura (2019)",
     title:
@@ -36,3 +36,5 @@ module.exports = [
     link: "https://www.ncbi.nlm.nih.gov/pubmed/31002205",
   },
 ]
+
+export default papers
