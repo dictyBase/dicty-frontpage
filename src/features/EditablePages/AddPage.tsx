@@ -1,6 +1,6 @@
 import React from "react"
 import { useMutation } from "@apollo/react-hooks"
-import { useHistory, useLocation, useParams } from "react-router-dom"
+import { useHistory } from "react-router-dom"
 import Grid from "@material-ui/core/Grid"
 import { makeStyles } from "@material-ui/core/styles"
 import { PageEditor } from "dicty-components-page-editor"
@@ -22,22 +22,33 @@ const useStyles = makeStyles(() => ({
 const error =
   "Your login token is expired. Please log out and then log back in to regain full user access."
 
+type Props = {
+  location: {
+    state: {
+      name: string
+      subname?: string
+      url: string
+    }
+    pathname: string
+  }
+}
+
 /**
  * This is the view component so an authorized user can add a new page.
  */
 
-const AddPage = () => {
+const AddPage = ({ location }: Props) => {
   const { user, canEditPages, verifiedToken } = useAuthorization()
-  const { name, subname } = useParams()
   const history = useHistory()
-  const location = useLocation()
   const classes = useStyles()
   const [createContent] = useMutation(CREATE_CONTENT)
 
-  const prevURL = location.pathname.slice(0, -7)
+  const prevURL = location.state.url
 
   const onSave = (value: any) => {
-    const slug = subname ? subname : name
+    const slug = location.state.subname
+      ? location.state.subname
+      : location.state.name
 
     createContent({
       variables: {
@@ -63,7 +74,7 @@ const AddPage = () => {
         <Grid item xs={12}>
           <div className={classes.banner}>
             <h2>Add Editable Page for Route:</h2>
-            <h3>{location.pathname}</h3>
+            <h3>{location.state.url}</h3>
           </div>
         </Grid>
         <br />
