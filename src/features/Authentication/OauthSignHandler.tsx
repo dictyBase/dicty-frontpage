@@ -63,7 +63,7 @@ const OauthSignHandler = () => {
             provider: data.login.identity.provider,
           },
         })
-        history.push("/mydsc")
+        history.push("/")
       } catch (error) {
         dispatch({
           type: ActionType.LOGIN_ERROR,

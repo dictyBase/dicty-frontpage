@@ -1,5 +1,30 @@
 import { gql } from "@apollo/client"
 
+const GET_CONTENT_BY_SLUG = gql`
+  query contentBySlug($slug: String!) {
+    contentBySlug(slug: $slug) {
+      id
+      content
+      name
+      slug
+      updated_by {
+        id
+        email
+        first_name
+        last_name
+        updated_at
+        roles {
+          role
+          permissions {
+            permission
+            resource
+          }
+        }
+      }
+    }
+  }
+`
+
 const GET_REFRESH_TOKEN = gql`
   query GetRefreshToken($token: String!) {
     getRefreshToken(token: $token) {
@@ -24,4 +49,12 @@ const GET_REFRESH_TOKEN = gql`
   }
 `
 
-export { GET_REFRESH_TOKEN }
+const GET_USER_BY_EMAIL = gql`
+  query UserByEmail($email: String!) {
+    userByEmail(email: $email) {
+      id
+    }
+  }
+`
+
+export { GET_CONTENT_BY_SLUG, GET_REFRESH_TOKEN, GET_USER_BY_EMAIL }
