@@ -26,7 +26,7 @@ const TechnicalSummary = () => {
         <Skeleton count={5} />
       </div>
     )
-  console.log(data)
+
   if (error) return <div>Error retrieving technical summary information</div>
 
   return <InlineEditor data={data.contentBySlug} />
