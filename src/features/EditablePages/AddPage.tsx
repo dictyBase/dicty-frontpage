@@ -46,24 +46,7 @@ const AddPage = ({ location }: Props) => {
   const { user, canEditPages, verifiedToken } = useAuthorization()
   const history = useHistory()
   const classes = useStyles()
-  const [createContent] = useMutation(CREATE_CONTENT, {
-    update(cache, { data: { createContent } }) {
-      cache.writeQuery({
-        query: GET_CONTENT_BY_SLUG,
-        variables: {
-          slug,
-        },
-        data: {
-          contentBySlug: {
-            content: createContent.content,
-            updated_by: createContent.created_by,
-            name: createContent.name,
-            slug: slug,
-          },
-        },
-      })
-    },
-  })
+  const [createContent] = useMutation(CREATE_CONTENT)
 
   const prevURL = location.state.url
 
@@ -78,7 +61,9 @@ const AddPage = ({ location }: Props) => {
         },
       },
     })
-    history.push(prevURL)
+    setTimeout(() => {
+      history.push(prevURL)
+    }, 800)
   }
 
   const onCancel = () => {
