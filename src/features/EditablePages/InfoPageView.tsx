@@ -44,8 +44,8 @@ const InfoPageView = ({ data }: Content) => {
 
   return (
     <div className={classes.container} key={data.content}>
-      <Grid container>
-        <Grid item className={classes.editor}>
+      <Grid container justify="center">
+        <Grid item xs={12} className={classes.editor}>
           <InfoPageViewToolbar
             handleClick={handleClick}
             data={data.updated_by}
