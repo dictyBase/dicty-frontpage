@@ -6,6 +6,7 @@ import { makeStyles } from "@material-ui/core/styles"
 import { PageEditor } from "dicty-components-page-editor"
 import ErrorNotification from "features/Authentication/ErrorNotification"
 import useAuthorization from "common/hooks/useAuthorization"
+import { GET_CONTENT_BY_SLUG } from "common/graphql/query"
 import { CREATE_CONTENT } from "common/graphql/mutation"
 import { NAMESPACE } from "common/constants/namespace"
 
@@ -38,18 +39,35 @@ type Props = {
  */
 
 const AddPage = ({ location }: Props) => {
+  const slug = location.state.subname
+    ? location.state.subname
+    : location.state.name
+
   const { user, canEditPages, verifiedToken } = useAuthorization()
   const history = useHistory()
   const classes = useStyles()
-  const [createContent] = useMutation(CREATE_CONTENT)
+  const [createContent] = useMutation(CREATE_CONTENT, {
+    update(cache, { data: { createContent } }) {
+      cache.writeQuery({
+        query: GET_CONTENT_BY_SLUG,
+        variables: {
+          slug,
+        },
+        data: {
+          contentBySlug: {
+            content: createContent.content,
+            updated_by: createContent.created_by,
+            name: createContent.name,
+            slug: slug,
+          },
+        },
+      })
+    },
+  })
 
   const prevURL = location.state.url
 
   const onSave = (value: any) => {
-    const slug = location.state.subname
-      ? location.state.subname
-      : location.state.name
-
     createContent({
       variables: {
         input: {
