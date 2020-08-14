@@ -6,7 +6,6 @@ import { makeStyles } from "@material-ui/core/styles"
 import { PageEditor } from "dicty-components-page-editor"
 import ErrorNotification from "features/Authentication/ErrorNotification"
 import useAuthorization from "common/hooks/useAuthorization"
-import { GET_CONTENT_BY_SLUG } from "common/graphql/query"
 import { CREATE_CONTENT } from "common/graphql/mutation"
 import { NAMESPACE } from "common/constants/namespace"
 
