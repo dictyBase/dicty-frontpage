@@ -83,9 +83,32 @@ const GET_USER_BY_EMAIL = gql`
   }
 `
 
+const GET_DOWNLOADS = gql`
+  query ListOrganisms {
+    listOrganisms {
+      taxon_id
+      scientific_name
+      citations {
+        title
+        authors
+        pubmed_id
+        journal
+      }
+      downloads {
+        title
+        items {
+          title
+          url
+        }
+      }
+    }
+  }
+`
+
 export {
   GET_CONTENT_BY_SLUG,
   GET_CONTENT_BY_ID,
   GET_REFRESH_TOKEN,
   GET_USER_BY_EMAIL,
+  GET_DOWNLOADS,
 }

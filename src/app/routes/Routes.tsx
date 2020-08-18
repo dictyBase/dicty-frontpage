@@ -1,7 +1,7 @@
 import React from "react"
 import { Route, Switch } from "react-router-dom"
 import Front from "features/Frontpage/Front"
-import Downloads from "features/Downloads/Downloads"
+import DownloadsContainer from "features/Downloads/DownloadsContainer"
 import About from "features/About/About"
 import InfoPageContainer from "features/EditablePages/InfoPageContainer"
 import EditInfoPage from "features/EditablePages/EditInfoPage"
@@ -17,7 +17,7 @@ const Routes = () => (
   <Switch>
     <Route exact path="/" component={Front} />
     <Route exact path="/about" component={About} />
-    <Route exact path="/downloads" component={Downloads} />
+    <Route exact path="/downloads" component={DownloadsContainer} />
     {/* Authentication routes */}
     <Route exact path="/login" component={Login} />
     <Route exact path="/:provider/callback" component={OauthCallback} />
