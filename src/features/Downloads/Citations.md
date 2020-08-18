@@ -1,4 +1,4 @@
 ```js
-import { citation } from "./mockData"
+import { citation } from "common/data/mockDownloadsData"
 ;<Citations citation={citation} />
 ```
