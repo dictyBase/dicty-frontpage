@@ -1,5 +1,5 @@
-import React, { Fragment } from "react"
-import { withStyles } from "@material-ui/core/styles"
+import React from "react"
+import { makeStyles, Theme } from "@material-ui/core/styles"
 import Table from "@material-ui/core/Table"
 import TableBody from "@material-ui/core/TableBody"
 import TableCell from "@material-ui/core/TableCell"
@@ -7,8 +7,9 @@ import TableHead from "@material-ui/core/TableHead"
 import TableRow from "@material-ui/core/TableRow"
 import Button from "@material-ui/core/Button"
 import Paper from "@material-ui/core/Paper"
+import { Download, DownloadItem } from "common/@types/downloads-data"
 
-const styles = (theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   root: {
     width: "100%",
     overflowX: "auto",
@@ -17,7 +18,7 @@ const styles = (theme) => ({
     backgroundColor: "#004080",
   },
   headerCell: {
-    fontWeight: "400",
+    fontWeight: 400,
     fontSize: "1.2em",
     color: "#fff",
   },
@@ -38,34 +39,38 @@ const styles = (theme) => ({
   link: {
     textDecoration: "none",
   },
-})
+}))
+
+type Props = {
+  data: Array<Download>
+}
 
 /**
  * Displays the table on the downloads page.
  */
 
-const DownloadsTable = (props) => {
-  const { classes, data } = props
-
+const DownloadsTable = ({ data }: Props) => {
+  const classes = useStyles()
+  console.log(data)
   return (
     <Paper className={classes.root}>
-      <Table className={classes.table}>
+      <Table>
         <colgroup>
           <col style={{ width: "90%" }} />
           <col style={{ width: "10%" }} />
         </colgroup>
-        {data.map((section) => (
-          <Fragment key={section.attributes.title}>
+        {data.map((section: Download) => (
+          <React.Fragment key={section.title}>
             <TableHead className={classes.head}>
               <TableRow>
                 <TableCell className={classes.headerCell}>
-                  {section.attributes.title}
+                  {section.title}
                 </TableCell>
                 <TableCell className={classes.headerCell} />
               </TableRow>
             </TableHead>
             <TableBody>
-              {section.attributes.items.map((row) => (
+              {section.items.map((row: DownloadItem) => (
                 <TableRow className={classes.row} key={row.title}>
                   <TableCell component="th" scope="row">
                     {row.title}
@@ -88,11 +93,11 @@ const DownloadsTable = (props) => {
                 </TableRow>
               ))}
             </TableBody>
-          </Fragment>
+          </React.Fragment>
         ))}
       </Table>
     </Paper>
   )
 }
 
-export default withStyles(styles)(DownloadsTable)
+export default DownloadsTable
