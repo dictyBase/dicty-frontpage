@@ -80,10 +80,11 @@ const pageTitles = {
  * This is helpful for SEO purposes.
  */
 
-const pageTitleLookup = (title) => {
+const pageTitleLookup = (title: string) => {
   let name
 
   if (title in pageTitles) {
+    // @ts-ignore
     name = pageTitles[title]
   } else {
     name = "Information Page"

@@ -1,10 +1,7 @@
 import "common/utils/polyfills"
 import React from "react"
 import ReactDOM from "react-dom"
-import { Provider } from "react-redux"
-import { ConnectedRouter } from "connected-react-router"
 import CssBaseline from "@material-ui/core/CssBaseline"
-import configureStore from "common/store/configureStore"
 import history from "common/utils/routerHistory"
 import { AuthProvider } from "features/Authentication/AuthStore"
 import App from "app/layout/App"
@@ -20,8 +17,6 @@ declare var process: {
     REACT_APP_BASENAME: string
   }
 }
-
-const store = configureStore({})
 
 const setGoogleAnalytics = async (location: any) => {
   try {
@@ -45,12 +40,8 @@ if (process.env.NODE_ENV === "production") {
 ReactDOM.render(
   <AuthProvider>
     <AppProviders>
-      <Provider store={store}>
-        <ConnectedRouter history={history}>
-          <CssBaseline />
-          <App />
-        </ConnectedRouter>
-      </Provider>
+      <CssBaseline />
+      <App />
     </AppProviders>
   </AuthProvider>,
   document.getElementById("root"),
