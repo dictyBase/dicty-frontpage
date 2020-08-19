@@ -1,7 +1,7 @@
 {
   "files": {
     "build/0.56a6cb07.js": "/build/0.56a6cb07.js",
-    "main.js": "/build/main.06040d20.js",
+    "main.js": "/build/main.964d9d7b.js",
     "runtime-main.js": "/build/bundle.105de5e2.js",
     "index.html": "/index.html",
     "static/media/dicty-life-cycle.jpg": "/static/media/dicty-life-cycle.4aad9cd4.jpg",
@@ -157,6 +157,6 @@
   "entrypoints": [
     "build/bundle.105de5e2.js",
     "build/0.56a6cb07.js",
-    "build/main.06040d20.js"
+    "build/main.964d9d7b.js"
   ]
 }
