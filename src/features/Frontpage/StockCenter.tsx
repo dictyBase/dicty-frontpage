@@ -1,9 +1,9 @@
 import React from "react"
-import { withStyles } from "@material-ui/core/styles"
+import { makeStyles } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
-const styles = (theme) => ({
+const useStyles = makeStyles({
   listItem: {
     listStyle: "none",
     fontSize: "12px",
@@ -99,22 +99,33 @@ const styles = (theme) => ({
   },
 })
 
+type Props = {
+  stockcenter: {
+    strains: string[]
+    plasmids: string[]
+  }
+}
+
 /** Widget that displays the most recent plasmids and strains in the Stock Center */
 
-const StockCenter = (props) => {
-  const { classes, stockcenter } = props
+const StockCenter = ({ stockcenter }: Props) => {
+  const classes = useStyles()
 
-  const plasmidlist = stockcenter.plasmids.map((plasmid, index) => (
-    <li className={classes.listItem} key={index}>
-      {plasmid}
-    </li>
-  ))
+  const plasmidlist = stockcenter.plasmids.map(
+    (plasmid: string, index: number) => (
+      <li className={classes.listItem} key={index}>
+        {plasmid}
+      </li>
+    ),
+  )
 
-  const strainlist = stockcenter.strains.map((strain, index) => (
-    <li className={classes.listItem} key={index}>
-      {strain}
-    </li>
-  ))
+  const strainlist = stockcenter.strains.map(
+    (strain: string, index: number) => (
+      <li className={classes.listItem} key={index}>
+        {strain}
+      </li>
+    ),
+  )
 
   return (
     <div className={classes.container}>
@@ -145,4 +156,4 @@ const StockCenter = (props) => {
   )
 }
 
-export default withStyles(styles)(StockCenter)
+export default StockCenter

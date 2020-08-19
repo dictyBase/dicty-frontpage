@@ -1,9 +1,9 @@
 import React from "react"
-import { withStyles } from "@material-ui/core/styles"
+import { makeStyles } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
 import Button from "@material-ui/core/Button"
 
-const styles = (theme) => ({
+const useStyles = makeStyles({
   button: {
     width: "100%",
     marginBottom: "5px",
@@ -49,6 +49,9 @@ const styles = (theme) => ({
       textAlign: "left",
     },
   },
+  innerHeader: {
+    textAlign: "center",
+  },
   listBox: {
     padding: "0px",
     marginBottom: "5px",
@@ -57,8 +60,9 @@ const styles = (theme) => ({
 
 /** Widget that displays the most popular tools and sections */
 
-const Popular = (props) => {
-  const { classes } = props
+const Popular = () => {
+  const classes = useStyles()
+
   const widgetlist = (
     <>
       <li className={classes.listItem}>
@@ -114,7 +118,7 @@ const Popular = (props) => {
     <Grid container justify="center" className={classes.grid}>
       <Grid item xs={12}>
         <div className={classes.header}>
-          <center>New features and pages</center>
+          <div className={classes.innerHeader}>New features and pages</div>
         </div>
         <ul className={classes.listBox}>{widgetlist}</ul>
       </Grid>
@@ -122,4 +126,4 @@ const Popular = (props) => {
   )
 }
 
-export default withStyles(styles)(Popular)
+export default Popular
