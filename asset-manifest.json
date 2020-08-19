@@ -1,13 +1,9 @@
 {
   "files": {
-    "build/0.56afe8a7.js": "/build/0.56afe8a7.js",
-    "main.js": "/build/main.94c81a03.js",
+    "build/0.56a6cb07.js": "/build/0.56a6cb07.js",
+    "main.js": "/build/main.06040d20.js",
     "runtime-main.js": "/build/bundle.105de5e2.js",
     "index.html": "/index.html",
-    "static/media/academicons.ttf?v=1.8.6": "/static/media/academicons.1afcbd6a.ttf",
-    "static/media/academicons.woff?v=1.8.6": "/static/media/academicons.2552b354.woff",
-    "static/media/academicons.svg?v=1.8.6": "/static/media/academicons.406b38d2.svg",
-    "static/media/academicons.eot?v=1.8.6": "/static/media/academicons.ea3755c3.eot",
     "static/media/dicty-life-cycle.jpg": "/static/media/dicty-life-cycle.4aad9cd4.jpg",
     "static/media/dicty-slug.jpg": "/static/media/dicty-slug.4ad7acb4.jpg",
     "static/media/dicty-tubulin-centrosom.png": "/static/media/dicty-tubulin-centrosom.1dc3642f.png",
@@ -160,7 +156,7 @@
   },
   "entrypoints": [
     "build/bundle.105de5e2.js",
-    "build/0.56afe8a7.js",
-    "build/main.94c81a03.js"
+    "build/0.56a6cb07.js",
+    "build/main.06040d20.js"
   ]
 }
