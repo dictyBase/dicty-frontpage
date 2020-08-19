@@ -37,7 +37,7 @@ const Citations = ({ citations }: Props) => {
           <em>{citation.journal}</em>
           {"  "}
           <a
-            href={`/publication/${citation.pubmedID}`}
+            href={`/publication/${citation.pubmed_id}`}
             target="_blank"
             rel="noopener noreferrer"
             className={classes.link}>
