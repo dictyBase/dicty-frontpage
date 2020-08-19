@@ -1,5 +1,4 @@
-```js
-import stockcenter from "data/stockcenter"
-
+```jsx
+import stockcenter from "common/data/stockcenter"
 ;<StockCenter stockcenter={stockcenter} />
 ```

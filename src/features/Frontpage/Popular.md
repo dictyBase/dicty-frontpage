@@ -1,3 +1,3 @@
-```js
+```jsx
 <Popular />
 ```
