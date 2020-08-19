@@ -1,5 +1,4 @@
-```js
-import papers from "data/papers"
-
+```jsx
+import papers from "common/data/papers"
 ;<Papers papers={papers} />
 ```
