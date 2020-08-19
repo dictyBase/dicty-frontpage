@@ -1,4 +1,4 @@
-```js
-import { citation } from "common/data/mockDownloadsData"
-;<Citations citation={citation} />
+```jsx
+import { citations } from "common/data/mockDownloadsData"
+;<Citations citations={citations} />
 ```
