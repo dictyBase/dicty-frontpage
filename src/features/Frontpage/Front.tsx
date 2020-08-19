@@ -1,7 +1,7 @@
 import React from "react"
 import { Helmet } from "react-helmet"
 import Grid from "@material-ui/core/Grid"
-import { withStyles } from "@material-ui/core/styles"
+import { makeStyles, Theme } from "@material-ui/core/styles"
 import Slideshow from "./Slideshow"
 import Tweets from "./Tweets"
 import Papers from "./Papers"
@@ -12,7 +12,7 @@ import papers from "common/data/papers"
 import annotations from "common/data/annotations"
 import stockcenter from "common/data/stockcenter"
 
-const styles = (theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   container: {
     paddingLeft: "30px",
     paddingRight: "30px",
@@ -31,12 +31,12 @@ const styles = (theme) => ({
     padding: "8px 16px 8px 16px",
     width: "100%",
   },
-})
+}))
 
 /** This is the frontpage component that appears when the user hits the "/" route. */
 
-const Front = (props) => {
-  const { classes } = props
+const Front = () => {
+  const classes = useStyles()
 
   return (
     <div>
@@ -71,4 +71,4 @@ const Front = (props) => {
   )
 }
 
-export default withStyles(styles)(Front)
+export default Front

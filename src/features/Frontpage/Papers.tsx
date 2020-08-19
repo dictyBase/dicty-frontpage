@@ -1,9 +1,9 @@
 import React from "react"
-import { withStyles } from "@material-ui/core/styles"
+import { makeStyles } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
-const styles = (theme) => ({
+const useStyles = makeStyles({
   container: {
     textAlign: "left",
     paddingLeft: "10px",
@@ -88,10 +88,21 @@ const styles = (theme) => ({
   },
 })
 
+type Paper = {
+  author: string
+  title: string
+  journal: string
+  link: string
+}
+
+type Props = {
+  papers: Paper[]
+}
+
 /** Widget that displays the latest Dicty papers */
 
-const Papers = (props) => {
-  const { papers, classes } = props
+const Papers = ({ papers }: Props) => {
+  const classes = useStyles()
 
   const text = papers.map((paper, index) => (
     <li className={classes.listItem} key={index}>
@@ -139,4 +150,4 @@ const Papers = (props) => {
   )
 }
 
-export default withStyles(styles)(Papers)
+export default Papers

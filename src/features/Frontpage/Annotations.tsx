@@ -1,9 +1,9 @@
 import React from "react"
-import { withStyles } from "@material-ui/core/styles"
+import { makeStyles } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
-const styles = (theme) => ({
+const useStyles = makeStyles({
   mainContainer: {
     textAlign: "center",
     color: "#084b8a",
@@ -73,10 +73,17 @@ const styles = (theme) => ({
   },
 })
 
+type Props = {
+  annotations: {
+    genes: string[]
+    papers: string[]
+  }
+}
+
 /** Widget that displays the most recent annotations for genes and papers */
 
-const Annotations = (props) => {
-  const { annotations, classes } = props
+const Annotations = ({ annotations }: Props) => {
+  const classes = useStyles()
 
   const genelist = annotations.genes.map((gene, index) => (
     <li className={classes.listItem} key={index}>
@@ -123,4 +130,4 @@ const Annotations = (props) => {
   )
 }
 
-export default withStyles(styles)(Annotations)
+export default Annotations

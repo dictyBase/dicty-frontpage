@@ -1,8 +1,8 @@
 import React, { useEffect } from "react"
-import { withStyles } from "@material-ui/core/styles"
+import { makeStyles } from "@material-ui/core/styles"
 import TwitterFetcher from "twitter-fetcher"
 
-const styles = (theme) => ({
+const useStyles = makeStyles({
   header: {
     paddingLeft: "10px",
     borderBottom: "1px solid rgba(15,70,100,.12)",
@@ -56,7 +56,7 @@ const styles = (theme) => ({
   },
 })
 
-const dateFormatter = (date) => {
+const dateFormatter = (date: Date) => {
   const monthNames = [
     "January",
     "February",
@@ -79,10 +79,12 @@ const dateFormatter = (date) => {
 }
 
 /**
- * Tweets displays a Twitter timeline for our dictybase account.
+ * Displays a Twitter timeline for our dictybase account.
  */
 
-const Tweets = ({ classes }) => {
+const Tweets = () => {
+  const classes = useStyles()
+
   useEffect(() => {
     // see here for all options:
     // https://github.com/jasonmayes/Twitter-Post-Fetcher/blob/master/js/exampleUsage.js
@@ -111,4 +113,4 @@ const Tweets = ({ classes }) => {
   )
 }
 
-export default withStyles(styles)(Tweets)
+export default Tweets

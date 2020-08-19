@@ -1,11 +1,11 @@
 import React from "react"
 import { Helmet } from "react-helmet"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { withStyles } from "@material-ui/core/styles"
+import { makeStyles } from "@material-ui/core/styles"
 import TechnicalSummary from "./TechnicalSummary"
 import SpecialThanks from "./SpecialThanks"
 
-const styles = (theme) => ({
+const useStyles = makeStyles({
   container: {
     display: "flex",
     flexDirection: "row",
@@ -49,11 +49,11 @@ const styles = (theme) => ({
 })
 
 /**
- * This is the About page component. It is set up to accept two Items, both of which are 50% width, below the main Header.
+ * This is the About page component. It is the wrapper for two individual components.
  */
 
-const About = (props) => {
-  const { classes } = props
+const About = () => {
+  const classes = useStyles()
 
   return (
     <div>
@@ -82,4 +82,4 @@ const About = (props) => {
   )
 }
 
-export default withStyles(styles)(About)
+export default About
