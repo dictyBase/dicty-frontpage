@@ -4,6 +4,7 @@ import { ApolloClient } from "apollo-client"
 import { InMemoryCache } from "apollo-cache-inmemory"
 import { createHttpLink } from "apollo-link-http"
 import { BrowserRouter } from "react-router-dom"
+import { AuthProvider } from "features/Authentication/AuthStore"
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
@@ -19,7 +20,9 @@ const client = new ApolloClient({
 
 const Wrapper = ({ children }: any) => (
   <ApolloProvider client={client}>
-    <BrowserRouter>{children}</BrowserRouter>
+    <AuthProvider>
+      <BrowserRouter>{children}</BrowserRouter>
+    </AuthProvider>
   </ApolloProvider>
 )
 
