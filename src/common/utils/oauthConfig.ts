@@ -23,15 +23,13 @@ type Auth = {
   [index: string]: any
 }
 
-const basename = process.env.REACT_APP_BASENAME
-
 const oauthConfig: Auth = {
   google: {
     name: "Google",
     url: "/auth/google",
     authorizationEndpoint: "https://accounts.google.com/o/oauth2/v2/auth",
     clientId: clientConfig.google.clientId,
-    redirectUrl: `${window.location.origin}${basename}/google/callback`,
+    redirectUrl: `${window.location.origin}/google/callback`,
     requiredUrlParams: [["response_type", "code"]],
     scopes: ["email"],
     scopeDelimiter: " ",
@@ -43,7 +41,7 @@ const oauthConfig: Auth = {
     url: "/auth/linkedin",
     authorizationEndpoint: "https://www.linkedin.com/oauth/v2/authorization",
     clientId: clientConfig.linkedin.clientId,
-    redirectUrl: `${window.location.origin}${basename}/linkedin/callback`,
+    redirectUrl: `${window.location.origin}/linkedin/callback`,
     scopes: ["r_emailaddress"],
     scopeDelimiter: " ",
     requiredUrlParams: [
@@ -57,7 +55,7 @@ const oauthConfig: Auth = {
     url: "/auth/orcid",
     authorizationEndpoint: "https://orcid.org/oauth/authorize",
     clientId: clientConfig.orcid.clientId,
-    redirectUrl: `${window.location.origin}${basename}/orcid/callback`,
+    redirectUrl: `${window.location.origin}/orcid/callback`,
     scopes: ["/authenticate"],
     scopeDelimiter: " ",
     requiredUrlParams: [["response_type", "code"]],
