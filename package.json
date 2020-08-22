@@ -86,7 +86,7 @@
     "react-test-renderer": "^16.13.1",
     "semantic-release": "^17.1.1",
     "snyk": "^1.371.1",
-    "source-map-explorer": "^2.4.2",
+    "source-map-explorer": "^2.5.0",
     "typescript": "^3.9.7"
   },
   "jest": {
