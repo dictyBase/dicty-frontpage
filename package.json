@@ -85,7 +85,7 @@
     "react-styleguidist": "^11.0.8",
     "react-test-renderer": "^16.13.1",
     "semantic-release": "^17.1.1",
-    "snyk": "^1.371.1",
+    "snyk": "^1.381.1",
     "source-map-explorer": "^2.4.2",
     "typescript": "^3.9.7"
   },
