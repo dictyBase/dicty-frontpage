@@ -78,7 +78,7 @@
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-testing-library": "^3.6.0",
     "husky": "^4.2.5",
-    "lint-staged": "^10.2.11",
+    "lint-staged": "^10.2.13",
     "prettier": "^2.0.5",
     "react-docgen-typescript": "^1.20.2",
     "react-scripts": "^3.4.0",
