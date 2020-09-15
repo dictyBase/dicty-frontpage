@@ -44,7 +44,22 @@ jobs:
       github.actor == 'dependabot[bot]' && 
       startsWith(github.event.pull_request.title, 'build(deps-dev):')
     steps:
+      - name: wait for code cov project to pass
+        uses: fountainhead/action-wait-for-check@v1.0.0
+        id: wait-for-codecov-project
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          checkName: codecov/project
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - name: wait for codecov patch to pass
+        uses: fountainhead/action-wait-for-check@v1.0.0
+        id: wait-for-codecov-patch
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          checkName: codecov/patch
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
       - name: merge
+        if: steps.wait-for-codecov-project.outputs.conclusion == 'success' && steps.wait-for-codecov-patch.outputs.conclusion == 'success'
         uses: actions/github-script@v3
         with:
           script: |
