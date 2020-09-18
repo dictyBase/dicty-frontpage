@@ -1,4 +1,4 @@
-name: Testing
+name: Pull Request Testing
 on: pull_request
 jobs:
   test:
@@ -25,10 +25,6 @@ jobs:
         run: mv src/common/utils/clientConfig.sample.ts src/common/utils/clientConfig.ts
       - name: install
         run: yarn install
-      - name: lint
-        run: yarn lint
-      - name: tsc
-        run: yarn tsc
       - name: unit tests
         run: yarn test-coverage
         env:

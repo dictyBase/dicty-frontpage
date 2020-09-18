@@ -1,0 +1,35 @@
+name: Slash Command Dispatch
+on:
+  issue_comment:
+    types: [created]
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dispatch deploy slash command
+        id: deploy
+        uses: peter-evans/slash-command-dispatch@v2
+        with:
+          token: ${{ secrets.REPO_ACCESS_TOKEN }}
+          reaction-token: ${{ secrets.REPO_ACCESS_TOKEN }}
+          commands: deploy
+          dispatch-type: workflow
+          repository: dictybase/slash-command-processor-frontend
+          static-args: |
+            repository-name=${{ github.event.repository.name }}
+            repository-owner=${{ github.repository_owner }}
+            issue-number=${{ github.event.issue.number }}
+            html-url=${{ github.event.comment.html_url }}
+            comment-id=${{ github.event.comment.id }}
+      - name: Edit comment with error message
+        if: steps.deploy.outputs.error-message
+        uses: peter-evans/create-or-update-comment@v1
+        with:
+          comment-id: ${{ github.event.comment.id }}
+          body: |
+            > ${{ steps.deploy.outputs.error-message }}
+            > For /deploy commands used in GitHub Issues, you need to specify either specify a `commit` or `branch` to deploy.
+
+            > Example: `/deploy cluster=erickube branch=feature/new-command`
+
+            > For /deploy commands used in pull requests, you can optionally specify a `commit`.
