@@ -50,7 +50,8 @@
     "react-responsive-carousel": "^3.2.9",
     "react-router-dom": "^5.2.0",
     "twitter-fetcher": "^18.0.4",
-    "typeface-roboto": "0.0.75"
+    "typeface-roboto": "0.0.75",
+    "typescript": "^3.9.7"
   },
   "devDependencies": {
     "@apollo/react-testing": "^3.1.4",
@@ -84,8 +85,7 @@
     "react-test-renderer": "^16.13.1",
     "semantic-release": "^17.1.1",
     "snyk": "^1.397.1",
-    "source-map-explorer": "^2.5.0",
-    "typescript": "^3.9.7"
+    "source-map-explorer": "^2.5.0"
   },
   "jest": {
     "collectCoverageFrom": [
