@@ -3,7 +3,7 @@
 # Declare variables to be passed into your templates.
 replicaCount: 1
 image:
-  repository: dictybase/frontpage
+  repository: dictybase/dicty-frontpage
   tag: 0.1.0
   pullPolicy: IfNotPresent
 

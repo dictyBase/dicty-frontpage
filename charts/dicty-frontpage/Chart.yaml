@@ -2,4 +2,4 @@ apiVersion: v1
 appVersion: "0.0.1"
 description: A Helm chart for the Dicty frontpage frontend application
 name: dicty-frontpage
-version: 0.0.1
+version: 1.0.0
