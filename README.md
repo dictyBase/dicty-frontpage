@@ -43,16 +43,14 @@ inside your cluster.
 In order for this application to work locally, you will need to configure the list of
 login providers.
 
-- Copy the provided sample [clientConfig.sample.js](src/utils/clientConfig.sample.js) file
+- Copy the provided sample [clientConfig.sample.ts](src/utils/clientConfig.sample.ts) file
   to **clientConfig.js** in the same folder.
 - Add any provider names and their corresponding client IDs.
 - All providers should have a matching counterpart in the
-  [oauthConfig.js](src/utils/oauthConfig.js) file. Fill up all of the
+  [oauthConfig.ts](src/utils/oauthConfig.ts) file. Fill up all of the
   configuration parameters for every new provider in that file.
 
-After setting up the login providers, you can run `npm install` and `npm start` as usual.
-There are also [husky](https://github.com/typicode/husky) scripts set up to run unit tests
-on `pre-commit` and run [Skaffold](https://github.com/GoogleContainerTools/skaffold) on `post-commit`.
+After setting up the login providers, you can run `yarn install` and `yarn start` as usual.
 
 ## Backend Requirements
 
@@ -60,14 +58,6 @@ This app requires the following services to be running:
 
 - [graphql-server](https://github.com/dictyBase/graphql-server)
 - [graphql-authserver](https://github.com/dictyBase/graphql-authserver)
-- [modware-auth](https://github.com/dictyBase/modware-auth)
-- [modware-content](https://github.com/dictyBase/modware-content)
-- [modware-identity](https://github.com/dictyBase/modware-identity)
-- [modware-user](https://github.com/dictyBase/modware-user)
-
-It also relies on the navbar, footer and download tabs JSON files found in the
-[migration-data](https://github.com/dictyBase/migration-data) repository. An example
-of the necessary environmental variables can be found [here](.env.development).
 
 ## Active Developers
 
