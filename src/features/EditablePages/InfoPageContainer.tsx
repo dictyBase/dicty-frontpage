@@ -9,12 +9,19 @@ import { GET_CONTENT_BY_SLUG } from "common/graphql/query"
 import { NAMESPACE } from "common/constants/namespace"
 import { pageTitleLookup } from "common/utils/pageTitleConversions"
 
+type Params = {
+  /** Name param in URL */
+  name: string
+  /** Subname param in URL */
+  subname: string
+}
+
 /**
  * InfoPageContainer fetches the data for the desired editable page.
  */
 
 const InfoPageContainer = () => {
-  const { name, subname } = useParams()
+  const { name, subname } = useParams<Params>()
   // fetch by subname if it exists
   const params = subname ? subname : name
   const { loading, error, data } = useQuery(GET_CONTENT_BY_SLUG, {
