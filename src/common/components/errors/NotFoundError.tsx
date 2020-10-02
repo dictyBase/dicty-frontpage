@@ -13,12 +13,19 @@ type Props = {
   error: string
 }
 
+type Params = {
+  /** Name param in URL */
+  name: string
+  /** Subname param in URL */
+  subname: string
+}
+
 /**
  * UI display when an item was not found.
  */
 
 const NotFoundError = ({ error }: Props) => {
-  const { name, subname } = useParams()
+  const { name, subname } = useParams<Params>()
   const location = useLocation()
   const { canEditPages, verifiedToken } = useAuthorization()
   const classes = useStyles()

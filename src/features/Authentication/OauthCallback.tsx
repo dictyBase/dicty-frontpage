@@ -2,12 +2,17 @@ import React from "react"
 import { useLocation, useParams } from "react-router-dom"
 import Grid from "@material-ui/core/Grid"
 
+type Params = {
+  /** Provider param in URL (google, orcid, etc) */
+  provider: string
+}
+
 /**
  * Callback that transfers the user to the login system
  */
 
 const OauthCallback = () => {
-  const { provider } = useParams()
+  const { provider } = useParams<Params>()
   const location = useLocation()
 
   React.useEffect(() => {
