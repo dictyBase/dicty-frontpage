@@ -7,12 +7,12 @@ const GET_CONTENT_BY_SLUG = gql`
       content
       name
       slug
+      updated_at
       updated_by {
         id
         email
         first_name
         last_name
-        updated_at
         roles {
           role
           permissions {
@@ -33,12 +33,12 @@ const GET_CONTENT_BY_ID = gql`
       name
       slug
       namespace
+      updated_at
       updated_by {
         id
         email
         first_name
         last_name
-        updated_at
         roles {
           role
           permissions {

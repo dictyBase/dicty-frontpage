@@ -25,9 +25,14 @@ const useStyles = makeStyles(() => ({
   },
 }))
 
+type Props = {
+  /** Page content object */
+  data: Content
+}
+
 /** Displays the info page data that was fetched from the InfoPage component */
 
-const InfoPageView = ({ data }: Content) => {
+const InfoPageView = ({ data }: Props) => {
   const classes = useStyles()
   const history = useHistory()
   const location = useLocation()
@@ -48,7 +53,8 @@ const InfoPageView = ({ data }: Content) => {
         <Grid item xs={12} className={classes.editor}>
           <InfoPageViewToolbar
             handleClick={handleClick}
-            data={data.updated_by}
+            lastUpdate={data.updated_at}
+            user={data.updated_by}
           />
           <div>
             <PageEditor pageContent={data.content} readOnly />
