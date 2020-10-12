@@ -8,7 +8,7 @@ import ErrorNotification from "features/Authentication/ErrorNotification"
 import timeSince from "common/utils/timeSince"
 import { useAuthStore } from "features/Authentication/AuthStore"
 import useAuthorization from "common/hooks/useAuthorization"
-import { UpdatedByUser } from "./types"
+import { User } from "./types"
 
 const useStyles = makeStyles(() => ({
   grid: {
@@ -70,7 +70,7 @@ type Props = {
   /** Timestamp for when this content was last updated */
   lastUpdate: string
   /** User object for who last updated this content */
-  user: UpdatedByUser
+  user: User
   /** Function to execute when user clicks edit icon */
   handleClick: (event: React.MouseEvent<HTMLButtonElement>) => void
 }
