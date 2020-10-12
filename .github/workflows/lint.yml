@@ -4,6 +4,7 @@ on:
     branches:
       - develop
   pull_request:
+    types: [edited, labeled, opened, synchronize, reopened]
     branches:
       - develop
 jobs:
