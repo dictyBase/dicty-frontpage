@@ -34,7 +34,9 @@ const useStyles = makeStyles(() => ({
 
 type Props = {
   location: {
-    state: Content
+    state: {
+      data: Content
+    }
   }
 }
 
