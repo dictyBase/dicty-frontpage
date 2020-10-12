@@ -4,19 +4,11 @@ type Content = {
   slug: string
   name: string
   updated_at: string
-  created_by?: {
-    id: string
-    first_name: string
-    last_name: string
-    roles: Array<{
-      role: string
-    }>
-  }
-  /** User data for last person to update page */
-  updated_by: UpdatedByUser
+  created_by?: User
+  updated_by: User
 }
 
-type UpdatedByUser = {
+type User = {
   id: string
   first_name: string
   last_name: string
@@ -25,4 +17,4 @@ type UpdatedByUser = {
   }>
 }
 
-export type { Content, UpdatedByUser }
+export type { Content, User }
