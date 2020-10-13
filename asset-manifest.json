@@ -1,6 +1,6 @@
 {
   "files": {
-    "build/0.4240f176.js": "/build/0.4240f176.js",
+    "build/0.c19545df.js": "/build/0.c19545df.js",
     "main.js": "/build/main.04ab396a.js",
     "runtime-main.js": "/build/bundle.105de5e2.js",
     "index.html": "/index.html",
@@ -156,7 +156,7 @@
   },
   "entrypoints": [
     "build/bundle.105de5e2.js",
-    "build/0.4240f176.js",
+    "build/0.c19545df.js",
     "build/main.04ab396a.js"
   ]
 }
