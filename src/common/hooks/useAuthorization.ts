@@ -58,9 +58,11 @@ const useAuthorization = () => {
   const verifiedToken = verifyToken(state.token)
 
   if (state.user.id) {
-    const permissions = state.user.roles
-      .map((item: RoleItem) => item.permissions)
-      .flat() // need to flatten since it initially comes back as nested array
+    const nestedPermissions = state.user.roles.map(
+      (item: RoleItem) => item.permissions,
+    )
+    // need to flatten since permissions initially comes back as nested array
+    const permissions = nestedPermissions.concat.apply([], nestedPermissions)
     canEditPages = verifyPermissions(permissions, "write", frontpagecontent)
     const roles = state.user.roles.map((item: RoleItem) => item.role)
     if (roles.includes("superuser")) {
