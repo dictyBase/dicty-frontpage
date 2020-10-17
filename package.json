@@ -34,7 +34,7 @@
     "dicty-components-header-footer": "github:dictyBase/dicty-components-header-footer#10.1.0",
     "dicty-components-login": "github:dictyBase/dicty-components-login#3.0.1",
     "dicty-components-navbar": "github:dictyBase/dicty-components-navbar#2.0.0",
-    "dicty-components-page-editor": "github:dictyBase/dicty-components-page-editor#1.3.0",
+    "dicty-components-page-editor": "github:dictyBase/dicty-components-page-editor#1.3.1",
     "dicty-hooks": "dictyBase/dicty-hooks#1.1.0",
     "font-awesome": "^4.7.0",
     "graphql": "^15.3.0",
