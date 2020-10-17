@@ -1557,7 +1557,7 @@
     react-is "^16.8.0"
     react-transition-group "^4.4.0"
 
-"@material-ui/icons@^4.2.1":
+"@material-ui/icons@^4.9.1":
   version "4.9.1"
   resolved "https://registry.yarnpkg.com/@material-ui/icons/-/icons-4.9.1.tgz#fdeadf8cb3d89208945b33dbc50c7c616d0bd665"
   integrity sha512-GBitL3oBWO0hzBhvA9KxqcowRUsA0qzwKkURyC8nppnC3fw54KPKZ+d4V1Eeg/UnDRSzDaI9nGCdel/eh9AQMg==
@@ -5670,11 +5670,12 @@ dezalgo@^1.0.0, dezalgo@~1.0.3:
     asap "^2.0.0"
     wrappy "1"
 
-"dicty-components-header-footer@github:dictyBase/dicty-components-header-footer#10.1.0":
+"dicty-components-header-footer@github:dictyBase/dicty-components-header-footer#10.2.1":
   version "0.0.0-semantically-released"
-  resolved "https://codeload.github.com/dictyBase/dicty-components-header-footer/tar.gz/be4e8ad199dfa57b4f95b69328cb42ee9c1c497f"
+  uid "843303cba6e7d88cedb52c5e070932770ae52bc0"
+  resolved "https://codeload.github.com/dictyBase/dicty-components-header-footer/tar.gz/843303cba6e7d88cedb52c5e070932770ae52bc0"
   dependencies:
-    "@material-ui/icons" "^4.2.1"
+    "@material-ui/icons" "^4.9.1"
 
 "dicty-components-login@github:dictyBase/dicty-components-login#3.0.1":
   version "0.0.0-semantically-released"
