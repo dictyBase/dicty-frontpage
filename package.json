@@ -83,7 +83,7 @@
     "react-scripts": "^3.4.0",
     "react-styleguidist": "^11.1.0",
     "react-test-renderer": "^16.13.1",
-    "semantic-release": "^17.1.1",
+    "semantic-release": "^17.2.1",
     "snyk": "^1.414.1",
     "source-map-explorer": "^2.5.0"
   },
