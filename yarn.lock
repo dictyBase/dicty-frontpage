@@ -5715,9 +5715,10 @@ dezalgo@^1.0.0, dezalgo@~1.0.3:
     typeface-roboto-mono "0.0.75"
     typeface-roboto-slab "1.1.4"
 
-dicty-hooks@dictyBase/dicty-hooks#1.1.0:
+dicty-hooks@dictyBase/dicty-hooks#1.1.1:
   version "0.0.0-semantically-released"
-  resolved "https://codeload.github.com/dictyBase/dicty-hooks/tar.gz/d086853b9c86e8eeaef460ab67ce7fc17d4b4492"
+  uid "505f0a063b4252996e40dee80872198a09a20a16"
+  resolved "https://codeload.github.com/dictyBase/dicty-hooks/tar.gz/505f0a063b4252996e40dee80872198a09a20a16"
 
 diff-sequences@^24.9.0:
   version "24.9.0"
