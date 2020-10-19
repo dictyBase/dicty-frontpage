@@ -17,17 +17,6 @@ jobs:
           node-version: 12.x
       - name: check out code
         uses: actions/checkout@v2
-      - name: get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - name: check yarn cache
-        uses: actions/cache@v2
-        id: yarn-cache
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
       - name: rename config file
         run: mv src/common/utils/clientConfig.sample.ts src/common/utils/clientConfig.ts
       - name: install
