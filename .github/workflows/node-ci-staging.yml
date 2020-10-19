@@ -37,5 +37,7 @@ jobs:
             graphql_server=https://betagraphql.dictybase.org
             client_keys=https://raw.githubusercontent.com/dictybase-playground/client-keys/2.0.1/clientConfig.js
             ga_tracking_id=-UA-16352781-8
+            deploy_env=staging
+            alt_graphql_server=https://betagraphql.dictycr.org
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache

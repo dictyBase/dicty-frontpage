@@ -11,6 +11,13 @@ const isMutation = (value: string) => {
   return false
 }
 
+const getGraphQLServer = (url: string, deployEnv: string, origin: string) => {
+  if (deployEnv === "staging" && origin === "https://dictycr.org") {
+    return process.env.REACT_APP_ALT_GRAPHQL_SERVER
+  }
+  return url
+}
+
 const useApolloClient = () => {
   const authLink = setContext((request, { headers }) => {
     const mutation = isMutation(request.operationName || "")
@@ -22,9 +29,15 @@ const useApolloClient = () => {
     }
   })
 
+  const server = getGraphQLServer(
+    process.env.REACT_APP_GRAPHQL_SERVER,
+    process.env.DEPLOY_ENV,
+    window.location.origin,
+  )
+
   const link = authLink.concat(
     createHttpLink({
-      uri: `${process.env.REACT_APP_GRAPHQL_SERVER}/graphql`,
+      uri: `${server}/graphql`,
       credentials: "include",
     }),
   )
@@ -37,5 +50,5 @@ const useApolloClient = () => {
   })
 }
 
-export { isMutation }
+export { isMutation, getGraphQLServer }
 export default useApolloClient

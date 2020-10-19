@@ -9,6 +9,12 @@ ENV REACT_APP_GA_TRACKING_ID ${ga_tracking_id}
 ARG client_keys
 ENV CLIENT_KEYS ${client_keys}
 
+ARG deploy_env
+ENV DEPLOY_ENV ${deploy_env}
+
+ARG alt_graphql_server
+ENV REACT_APP_ALT_GRAPHQL_SERVER ${alt_graphql_server:-https://betagraphql.dictycr.org}
+
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
