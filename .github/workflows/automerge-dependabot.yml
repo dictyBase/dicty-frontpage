@@ -12,7 +12,7 @@ jobs:
         id: wait-for-unit-tests
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          checkName: Unit tests (PR ${{ github.event.number }})
+          checkName: Unit tests
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
       - name: merge
         if: steps.wait-for-unit-tests.outputs.conclusion == 'success'

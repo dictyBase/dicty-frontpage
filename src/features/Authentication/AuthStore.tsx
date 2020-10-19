@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useReducer } from "react"
+import React, { createContext, ReactNode, useContext, useReducer } from "react"
 
 enum ActionType {
   LOGIN = "LOGIN",
@@ -87,7 +87,7 @@ const authReducer = (state: AuthState, action: Action) => {
 /**
  * AuthProvider contains global state used for the shopping auth.
  */
-const AuthProvider = ({ children }: any) => {
+const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [state, dispatch] = useReducer(authReducer, initialState)
 
   return (

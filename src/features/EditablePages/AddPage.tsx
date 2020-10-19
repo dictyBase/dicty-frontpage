@@ -5,6 +5,7 @@ import Grid from "@material-ui/core/Grid"
 import { makeStyles } from "@material-ui/core/styles"
 import { PageEditor } from "dicty-components-page-editor"
 import ErrorNotification from "features/Authentication/ErrorNotification"
+import { useAuthStore } from "features/Authentication/AuthStore"
 import useAuthorization from "common/hooks/useAuthorization"
 import { CREATE_CONTENT } from "common/graphql/mutation"
 import { NAMESPACE } from "common/constants/namespace"
@@ -42,10 +43,17 @@ const AddPage = ({ location }: Props) => {
     ? location.state.subname
     : location.state.name
 
+  const [{ token }] = useAuthStore()
   const { user, canEditPages, verifiedToken } = useAuthorization()
   const history = useHistory()
   const classes = useStyles()
-  const [createContent] = useMutation(CREATE_CONTENT)
+  const [createContent] = useMutation(CREATE_CONTENT, {
+    context: {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    },
+  })
 
   const prevURL = location.state.url
 
