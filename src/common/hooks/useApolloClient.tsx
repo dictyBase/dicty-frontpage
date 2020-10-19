@@ -11,6 +11,14 @@ const isMutation = (value: string) => {
   return false
 }
 
+declare var process: {
+  env: {
+    REACT_APP_ALT_GRAPHQL_SERVER: string
+    REACT_APP_GRAPHQL_SERVER: string
+    DEPLOY_ENV: string
+  }
+}
+
 const getGraphQLServer = (url: string, deployEnv: string, origin: string) => {
   if (deployEnv === "staging" && origin === "https://dictycr.org") {
     return process.env.REACT_APP_ALT_GRAPHQL_SERVER
