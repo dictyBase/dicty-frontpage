@@ -4,7 +4,7 @@ on:
     types: [edited, labeled, opened, synchronize, reopened]
 jobs:
   test:
-    name: Unit tests (PR ${{ github.event.number }})
+    name: Unit tests
     runs-on: ubuntu-latest
     steps:
       - name: set up node.js
