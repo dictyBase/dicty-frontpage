@@ -4,6 +4,7 @@ import { makeStyles } from "@material-ui/core/styles"
 import Button from "@material-ui/core/Button"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { PageEditor } from "dicty-components-page-editor"
+import { useAuthStore } from "features/Authentication/AuthStore"
 import useAuthorization from "common/hooks/useAuthorization"
 import { UPDATE_CONTENT } from "common/graphql/mutation"
 
@@ -47,8 +48,15 @@ type Props = {
 const InlineEditor = ({ data }: Props) => {
   const [readOnly, setReadOnly] = React.useState(true)
   const [value, setValue] = useState(data.content)
+  const [{ token }] = useAuthStore()
   const { canEditPages, verifiedToken, user } = useAuthorization()
-  const [updateContent] = useMutation(UPDATE_CONTENT)
+  const [updateContent] = useMutation(UPDATE_CONTENT, {
+    context: {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    },
+  })
   const classes = useStyles()
 
   const onSave = (value: any) => {

@@ -4,6 +4,7 @@ import { useHistory, useLocation } from "react-router-dom"
 import { makeStyles } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
 import { PageEditor } from "dicty-components-page-editor"
+import { useAuthStore } from "features/Authentication/AuthStore"
 import useAuthorization from "common/hooks/useAuthorization"
 import { UPDATE_CONTENT } from "common/graphql/mutation"
 import { Content } from "./types"
@@ -45,11 +46,18 @@ type Props = {
  */
 const EditInfoPage = ({ location }: Props) => {
   const classes = useStyles()
+  const [{ token }] = useAuthStore()
   const {
     state: { data },
   } = location
   const { user } = useAuthorization()
-  const [updateContent] = useMutation(UPDATE_CONTENT)
+  const [updateContent] = useMutation(UPDATE_CONTENT, {
+    context: {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    },
+  })
   const history = useHistory()
   const routerLocation = useLocation()
 
