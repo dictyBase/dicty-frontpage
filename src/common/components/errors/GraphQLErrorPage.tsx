@@ -2,7 +2,7 @@ import React from "react"
 import ServerError from "./ServerError"
 import NotFoundError from "./NotFoundError"
 import OtherError from "./OtherError"
-import { ApolloError } from "apollo-client"
+import { ApolloError } from "@apollo/client"
 
 type Props = {
   /** GraphQL error object */
