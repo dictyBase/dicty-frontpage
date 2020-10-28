@@ -1,5 +1,5 @@
 import React from "react"
-import { useQuery } from "@apollo/react-hooks"
+import { useQuery } from "@apollo/client"
 import Skeleton from "react-loading-skeleton"
 import InlineEditor from "features/EditablePages/InlineEditor"
 import { GET_CONTENT_BY_SLUG } from "common/graphql/query"

@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import { useMutation } from "@apollo/react-hooks"
+import { useMutation } from "@apollo/client"
 import { useHistory } from "react-router-dom"
 import querystring from "querystring"
 import { useAuthStore, ActionType } from "features/Authentication/AuthStore"
