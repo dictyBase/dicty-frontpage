@@ -30,6 +30,7 @@
     "jsx-a11y/label-has-associated-control": ["off"],
     "import/no-unresolved": ["off"],
     "import/exports-last": ["error"],
-    "prettier/prettier": ["error"]
+    "prettier/prettier": ["error"],
+    "@typescript-eslint/no-redeclare": ["off"]
   }
 }
