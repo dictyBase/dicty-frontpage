@@ -1,8 +1,8 @@
 const mockNotFoundError = {
   errors: [
     {
-      message: "could not find gene with ID banana",
-      path: ["gene"],
+      message: "could not find content with ID banana",
+      path: ["content"],
       extensions: { code: "NotFound" },
       locations: undefined,
       nodes: undefined,

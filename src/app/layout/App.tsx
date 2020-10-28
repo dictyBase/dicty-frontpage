@@ -1,5 +1,5 @@
 import React from "react"
-import { useQuery } from "@apollo/react-hooks"
+import { useQuery } from "@apollo/client"
 import { makeStyles } from "@material-ui/core/styles"
 import { Header, Footer } from "dicty-components-header-footer"
 import { Navbar } from "dicty-components-navbar"

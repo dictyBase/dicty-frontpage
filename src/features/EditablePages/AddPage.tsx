@@ -1,5 +1,5 @@
 import React from "react"
-import { useMutation } from "@apollo/react-hooks"
+import { useMutation } from "@apollo/client"
 import { useHistory } from "react-router-dom"
 import Grid from "@material-ui/core/Grid"
 import { makeStyles } from "@material-ui/core/styles"

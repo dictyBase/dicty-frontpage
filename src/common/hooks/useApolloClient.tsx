@@ -1,7 +1,5 @@
-import { ApolloClient } from "apollo-client"
-import { InMemoryCache } from "apollo-cache-inmemory"
-import { createHttpLink } from "apollo-link-http"
-import { setContext } from "apollo-link-context"
+import { ApolloClient, InMemoryCache, createHttpLink } from "@apollo/client"
+import { setContext } from "@apollo/client/link/context"
 import { mutationList } from "common/graphql/mutation"
 
 const isMutation = (value: string) => {
