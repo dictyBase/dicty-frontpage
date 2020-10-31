@@ -47,7 +47,7 @@
     "react-router-dom": "^5.2.0",
     "twitter-fetcher": "^18.0.4",
     "typeface-roboto": "1.1.13",
-    "typescript": "4.0.3"
+    "typescript": "4.0.5"
   },
   "devDependencies": {
     "@semantic-release/git": "^9.0.0",
