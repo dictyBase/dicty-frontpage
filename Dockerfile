@@ -31,7 +31,7 @@ ADD $CLIENT_KEYS /usr/src/app/src/common/utils/clientConfig.js
 
 RUN yarn build
 
-FROM dictybase/static-server:2.1.0
+FROM dictybase/static-server:2.2.1
 RUN mkdir /www
 WORKDIR /www
 COPY --from=0 /usr/src/app/build ./
