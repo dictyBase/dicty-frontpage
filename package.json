@@ -79,7 +79,7 @@
     "react-styleguidist": "^11.1.1",
     "react-test-renderer": "^16.13.1",
     "semantic-release": "^17.2.2",
-    "snyk": "^1.424.4",
+    "snyk": "^1.426.0",
     "source-map-explorer": "^2.5.0"
   },
   "jest": {
