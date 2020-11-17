@@ -10,13 +10,17 @@ jobs:
       - name: set up node.js
         uses: actions/setup-node@v1
         with:
-          node-version: 12.x
+          node-version: 14.15.0
       - name: check out code
         uses: actions/checkout@v2
       - name: rename config file
         run: mv src/common/utils/clientConfig.sample.ts src/common/utils/clientConfig.ts
       - name: install
         run: yarn install
+      - name: run eslint
+        run: yarn lint
+      - name: run typescript build 
+        run: yarn tsc
       - name: unit tests
         run: yarn test-coverage
         env:
