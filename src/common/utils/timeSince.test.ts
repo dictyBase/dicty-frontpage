@@ -4,7 +4,9 @@ describe("utils/timeSince", () => {
   // Setup
   const currentDate = new Date("2020-01-02T11:01:58.135Z")
   // @ts-ignore
-  global.Date = class extends Date {
+  global.Date = class extends (
+    Date
+  ) {
     constructor(date: any) {
       if (date) {
         // @ts-ignore

@@ -1,4 +1,4 @@
-export default [
+const widgets = [
   {
     link: "/dictyaccess",
     name: "dictyAccess",
@@ -17,3 +17,5 @@ export default [
     name: "Dicty Stock Center",
   },
 ]
+
+export default widgets
