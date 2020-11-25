@@ -7,7 +7,7 @@ import Grid from "@material-ui/core/Grid"
  */
 
 const Loader = () => (
-  <Grid container justify="center">
+  <Grid container justify="center" data-testid="skeleton-loader">
     <Grid item xs={12}>
       <SkeletonTheme color="#fff	" highlightColor="#fff">
         <Skeleton count={10} />

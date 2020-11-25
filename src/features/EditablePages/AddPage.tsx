@@ -30,7 +30,6 @@ type Props = {
       subname?: string
       url: string
     }
-    pathname: string
   }
 }
 
