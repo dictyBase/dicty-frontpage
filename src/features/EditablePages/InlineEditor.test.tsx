@@ -4,7 +4,7 @@ import userEvent from "@testing-library/user-event"
 import waitForExpect from "wait-for-expect"
 import InlineEditor from "./InlineEditor"
 import { UPDATE_CONTENT } from "common/graphql/mutation"
-import { MockAuthProvider } from "common/utils/testing"
+import { MockAuthProvider } from "common/mocks/MockAuthProvider"
 
 window.getSelection = jest.fn()
 

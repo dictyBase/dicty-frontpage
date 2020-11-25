@@ -4,7 +4,7 @@ import userEvent from "@testing-library/user-event"
 import { BrowserRouter, useHistory } from "react-router-dom"
 import waitForExpect from "wait-for-expect"
 import EditInfoPage from "./EditInfoPage"
-import { MockAuthProvider } from "common/utils/testing"
+import { MockAuthProvider } from "common/mocks/MockAuthProvider"
 import { UPDATE_CONTENT } from "common/graphql/mutation"
 
 const mockHistoryPush = jest.fn()

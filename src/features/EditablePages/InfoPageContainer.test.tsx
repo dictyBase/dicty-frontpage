@@ -2,7 +2,7 @@ import React from "react"
 import { render, screen } from "@testing-library/react"
 import InfoPageContainer from "./InfoPageContainer"
 import { GET_CONTENT_BY_SLUG } from "common/graphql/query"
-import { MockAuthProvider } from "common/utils/testing"
+import { MockAuthProvider } from "common/mocks/MockAuthProvider"
 
 window.getSelection = jest.fn()
 const mockName = "payment"

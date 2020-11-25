@@ -5,7 +5,7 @@ import { BrowserRouter, useHistory } from "react-router-dom"
 import AddPage from "./AddPage"
 import waitForExpect from "wait-for-expect"
 import { CREATE_CONTENT } from "common/graphql/mutation"
-import { MockAuthProvider } from "common/utils/testing"
+import { MockAuthProvider } from "common/mocks/MockAuthProvider"
 
 const mockHistoryPush = jest.fn()
 
