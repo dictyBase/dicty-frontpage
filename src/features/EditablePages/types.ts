@@ -1,5 +1,5 @@
 type Content = {
-  id: string
+  id: number
   content: string
   slug: string
   name: string
@@ -9,7 +9,7 @@ type Content = {
 }
 
 type User = {
-  id: string
+  id: number
   first_name: string
   last_name: string
   roles: Array<{

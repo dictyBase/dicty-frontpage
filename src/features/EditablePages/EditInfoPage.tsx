@@ -59,9 +59,9 @@ const EditInfoPage = ({ location }: Props) => {
     },
   })
   const history = useHistory()
-  const routerLocation = useLocation()
+  const { pathname } = useLocation()
 
-  const prevURL = routerLocation.pathname.slice(0, -5)
+  const prevURL = pathname.slice(0, -5)
 
   const onSave = (value: any) => {
     updateContent({

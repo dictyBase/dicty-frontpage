@@ -95,7 +95,7 @@ const InfoPageViewToolbar = ({ handleClick, lastUpdate, user }: Props) => {
         {validUserExpiredToken && <ErrorNotification error={error} />}
         <br />
         {validUser && (
-          <div className={classes.toolbar}>
+          <div className={classes.toolbar} data-testid="info-page-toolbar">
             <Grid container alignItems="center">
               <Grid item>
                 <span className={classes.textInfo}>
