@@ -80,7 +80,7 @@
     "react-styleguidist": "^11.1.4",
     "react-test-renderer": "^16.13.1",
     "semantic-release": "^17.3.0",
-    "snyk": "^1.431.2",
+    "snyk": "^1.434.2",
     "source-map-explorer": "^2.5.1",
     "wait-for-expect": "^3.0.2"
   },
