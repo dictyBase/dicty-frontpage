@@ -28,6 +28,7 @@ const InfoPageContainer = () => {
     variables: {
       slug: `${NAMESPACE}-${params}`,
     },
+    fetchPolicy: "cache-and-network",
   })
 
   if (loading) {

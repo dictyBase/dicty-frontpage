@@ -75,7 +75,7 @@ type Props = {
   handleClick: (event: React.MouseEvent<HTMLButtonElement>) => void
 }
 
-/** Displays the info page data that was fetched from the InfoPage component */
+/** Displays the info page data that was fetched from the InfoPageContainer component */
 
 const InfoPageViewToolbar = ({ handleClick, lastUpdate, user }: Props) => {
   const classes = useStyles()
@@ -106,7 +106,7 @@ const InfoPageViewToolbar = ({ handleClick, lastUpdate, user }: Props) => {
                     />
                     &nbsp; {fullName}
                   </strong>
-                  &nbsp; edited {timeSince(lastUpdate)} ago
+                  &nbsp;edited {timeSince(lastUpdate)} ago
                 </span>
               </Grid>
               <Grid item className={classes.content}>
