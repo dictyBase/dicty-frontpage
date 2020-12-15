@@ -19,20 +19,12 @@ import { User } from "common/types"
 
 const useStyles = makeStyles({
   main: {
-    lineHeight: 1.6,
     marginBottom: "50px",
   },
   body: {
-    margin: "auto",
-    height: "100%",
-    width: "100%",
-    fontFamily: "Roboto, sans-serif",
     fontSize: "16px",
     color: "#333",
     backgroundColor: "#fff",
-    boxSizing: "content-box",
-    WebkitFontSmoothing: "auto",
-    MozOsxFontSmoothing: "auto",
   },
 })
 
