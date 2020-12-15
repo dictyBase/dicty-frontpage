@@ -1,4 +1,5 @@
 import React from "react"
+import Container from "@material-ui/core/Container"
 import { useQuery } from "@apollo/client"
 import { useParams } from "react-router-dom"
 import { Helmet } from "react-helmet"
@@ -40,12 +41,12 @@ const InfoPageContainer = () => {
   }
 
   return (
-    <>
+    <Container maxWidth="lg">
       <Helmet>
         <title>{pageTitleLookup(name)} - dictyBase</title>
       </Helmet>
       <InfoPageView data={data.contentBySlug} />
-    </>
+    </Container>
   )
 }
 
