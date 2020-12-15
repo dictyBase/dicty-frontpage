@@ -9,20 +9,10 @@ import useAuthorization from "common/hooks/useAuthorization"
 import { UPDATE_CONTENT } from "common/graphql/mutation"
 import { Content } from "./types"
 
-const useStyles = makeStyles(() => ({
-  container: {
-    paddingRight: "15px",
-    paddingLeft: "15px",
-    marginRight: "auto",
-    marginLeft: "auto",
-    width: "90%",
-    "@media (min-width: 1300px)": {
-      width: "80%",
-    },
-  },
+const useStyles = makeStyles(({ palette }) => ({
   editor: {
     "& a": {
-      color: "#004080",
+      color: palette.primary.main,
       textDecoration: "none",
       cursor: "pointer",
     },
@@ -82,7 +72,7 @@ const EditInfoPage = ({ location }: Props) => {
 
   return (
     <Grid container justify="center">
-      <Grid item xs={11} lg={8}>
+      <Grid item>
         <div className={classes.editor}>
           <PageEditor
             pageContent={data.content}
