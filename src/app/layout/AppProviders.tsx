@@ -5,6 +5,29 @@ import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles"
 import useApolloClient from "common/hooks/useApolloClient"
 
 const theme = createMuiTheme({
+  // use color tool for palette -- https://material.io/resources/color/
+  palette: {
+    primary: {
+      main: "#004080",
+      light: "#476ab0",
+      dark: "#001b53",
+    },
+    secondary: {
+      main: "#43a047",
+      light: "#76d275",
+      dark: "#00701a",
+    },
+    error: {
+      main: "#b2102f",
+      light: "#ea4f58",
+      dark: "#7b0008",
+    },
+  },
+  typography: {
+    button: {
+      textTransform: "none",
+    },
+  },
   overrides: {
     MuiTab: {
       root: {
