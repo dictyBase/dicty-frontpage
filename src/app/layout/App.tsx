@@ -15,7 +15,7 @@ import {
 } from "common/utils/headerItems"
 import Routes from "app/routes/Routes"
 import { GET_REFRESH_TOKEN } from "common/graphql/query"
-import { User } from "common/types/user"
+import { User } from "common/types"
 
 const useStyles = makeStyles({
   main: {

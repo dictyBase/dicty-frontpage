@@ -7,7 +7,7 @@ import TableHead from "@material-ui/core/TableHead"
 import TableRow from "@material-ui/core/TableRow"
 import Button from "@material-ui/core/Button"
 import Paper from "@material-ui/core/Paper"
-import { Download, DownloadItem } from "common/@types/downloads-data"
+import { Download, DownloadItem } from "common/types"
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {

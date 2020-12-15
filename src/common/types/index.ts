@@ -22,4 +22,20 @@ type DownloadItem = {
   url: string
 }
 
-export type { Organism, Citation, Download, DownloadItem }
+type User = {
+  id: number
+  first_name: string
+  last_name: string
+  email: string
+  roles: Array<{
+    id: number
+    role: string
+    permissions?: Array<{
+      id: number
+      permission: string
+      resource: string
+    }>
+  }>
+}
+
+export type { Organism, Citation, Download, DownloadItem, User }
