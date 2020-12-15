@@ -73,7 +73,7 @@ const EditInfoPage = ({ location }: Props) => {
         },
       },
     })
-    history.push(prevURL)
+    setTimeout(() => history.push(prevURL), 1000)
   }
 
   const onCancel = () => {
