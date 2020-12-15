@@ -3,6 +3,7 @@ import { useMutation } from "@apollo/client"
 import { useHistory, useLocation } from "react-router-dom"
 import { makeStyles } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
+import Container from "@material-ui/core/Container"
 import { PageEditor } from "dicty-components-page-editor"
 import { useAuthStore } from "features/Authentication/AuthStore"
 import useAuthorization from "common/hooks/useAuthorization"
@@ -11,6 +12,7 @@ import { Content } from "./types"
 
 const useStyles = makeStyles(({ palette }) => ({
   editor: {
+    marginTop: "25px",
     "& a": {
       color: palette.primary.main,
       textDecoration: "none",
@@ -19,7 +21,7 @@ const useStyles = makeStyles(({ palette }) => ({
   },
   error: {
     textAlign: "center",
-    marginTop: 50,
+    marginTop: "50px",
   },
 }))
 
@@ -71,18 +73,20 @@ const EditInfoPage = ({ location }: Props) => {
   }
 
   return (
-    <Grid container justify="center">
-      <Grid item>
-        <div className={classes.editor}>
-          <PageEditor
-            pageContent={data.content}
-            onCancel={onCancel}
-            onSave={onSave}
-            readOnly={false}
-          />
-        </div>
+    <Container maxWidth="lg">
+      <Grid container justify="center">
+        <Grid item>
+          <div className={classes.editor}>
+            <PageEditor
+              pageContent={data.content}
+              onCancel={onCancel}
+              onSave={onSave}
+              readOnly={false}
+            />
+          </div>
+        </Grid>
       </Grid>
-    </Grid>
+    </Container>
   )
 }
 
