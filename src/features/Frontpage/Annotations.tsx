@@ -87,9 +87,7 @@ const Annotations = ({ annotations }: Props) => {
 
   const genelist = annotations.genes.map((gene, index) => (
     <li className={classes.listItem} key={index}>
-      <a
-        className={classes.link}
-        href={`https://testdb.dictybase.org/gene/${gene}`}>
+      <a className={classes.link} href={`/gene/${gene}`}>
         {gene}
       </a>
     </li>

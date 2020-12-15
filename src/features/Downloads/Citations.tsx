@@ -1,6 +1,6 @@
 import React from "react"
 import { makeStyles } from "@material-ui/core/styles"
-import { Citation } from "common/@types/downloads-data"
+import { Citation } from "common/types"
 
 const useStyles = makeStyles({
   root: {
