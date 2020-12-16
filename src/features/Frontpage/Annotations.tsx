@@ -95,11 +95,7 @@ const Annotations = ({ annotations }: Props) => {
 
   const paperlist = annotations.papers.map((paper, index) => (
     <li className={classes.listItem} key={index}>
-      <a
-        className={classes.link}
-        href={`https://pubmed.gov/${paper}`}
-        target="_blank"
-        rel="noopener noreferrer">
+      <a className={classes.link} href={`/publication/${paper}`}>
         {paper}
       </a>
     </li>
