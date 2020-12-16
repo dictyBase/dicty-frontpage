@@ -88,4 +88,6 @@ const AppProviders = ({ children }: { children: React.ReactNode }) => {
     </ApolloProvider>
   )
 }
+
+export { theme }
 export default AppProviders
