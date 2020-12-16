@@ -27,6 +27,24 @@ const theme = createMuiTheme({
     button: {
       textTransform: "none",
     },
+    h1: {
+      fontSize: "2.00em",
+    },
+    h2: {
+      fontSize: "1.50em",
+    },
+    h3: {
+      fontSize: "1.17em",
+    },
+    h4: {
+      fontSize: "1.00em",
+    },
+    h5: {
+      fontSize: "0.83em",
+    },
+    h6: {
+      fontSize: "0.67em",
+    },
   },
   overrides: {
     MuiTab: {
