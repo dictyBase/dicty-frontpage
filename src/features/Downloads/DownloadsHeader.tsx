@@ -1,5 +1,6 @@
 import React from "react"
 import { makeStyles } from "@material-ui/core/styles"
+import Typography from "@material-ui/core/Typography"
 
 const useStyles = makeStyles({
   header: {
@@ -12,8 +13,10 @@ const DownloadsHeader = () => {
 
   return (
     <div className={classes.header}>
-      <h1>dictyBase Downloads</h1>
-      <h3>The central collection of downloadable material from dictyBase</h3>
+      <Typography variant="h1">dictyBase Downloads</Typography>
+      <Typography variant="h3">
+        The central collection of downloadable material from dictyBase
+      </Typography>
     </div>
   )
 }
