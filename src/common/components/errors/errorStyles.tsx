@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles"
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(({ palette }) => ({
   error400: {
     backgroundColor: "#eff8fb",
     textAlign: "center",
@@ -37,9 +37,9 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "25px",
     padding: "25px",
     textTransform: "none",
-    backgroundColor: "#FF6347",
+    backgroundColor: palette.secondary.main,
     "&:hover": {
-      backgroundColor: "#cc381e",
+      backgroundColor: palette.secondary.dark,
     },
   },
   link: {
