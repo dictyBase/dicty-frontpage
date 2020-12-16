@@ -9,10 +9,12 @@ import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles"
 import Citations from "./Citations"
 import DownloadsTable from "./DownloadsTable"
 import DownloadsHeader from "./DownloadsHeader"
+import { theme } from "app/layout/AppProviders"
 import { Organism } from "common/types"
 
 // create theme with our standard tab overrides
 const muiTheme = createMuiTheme({
+  ...theme,
   overrides: {
     MuiTab: {
       root: {
