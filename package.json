@@ -51,7 +51,7 @@
   },
   "devDependencies": {
     "@semantic-release/git": "^9.0.0",
-    "@testing-library/jest-dom": "^5.11.6",
+    "@testing-library/jest-dom": "^5.11.8",
     "@testing-library/react": "^11.2.2",
     "@testing-library/react-hooks": "^3.7.0",
     "@testing-library/user-event": "^12.5.0",
