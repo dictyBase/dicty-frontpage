@@ -8,9 +8,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom-fourteen",
-    "test-coverage": "react-scripts test --env=jsdom-fourteen --coverage",
-    "test-coverage-watch": "react-scripts test --env=jsdom-fourteen --coverage --watchAll",
+    "test": "react-scripts test",
+    "test-coverage": "react-scripts test --coverage",
     "eject": "react-scripts eject",
     "lint": "eslint --ext .jsx,.js,.ts,.tsx src/",
     "tsc": "tsc",
@@ -28,7 +27,7 @@
     "@material-ui/core": "^4.11.2",
     "core-js": "^3.8.1",
     "dicty-components-header-footer": "github:dictyBase/dicty-components-header-footer#10.2.1",
-    "dicty-components-login": "github:dictyBase/dicty-components-login#3.0.1",
+    "dicty-components-login": "github:dictyBase/dicty-components-login#3.1.1",
     "dicty-components-navbar": "github:dictyBase/dicty-components-navbar#2.0.0",
     "dicty-components-page-editor": "github:dictyBase/dicty-components-page-editor#1.3.1",
     "dicty-hooks": "dictyBase/dicty-hooks#1.1.1",
@@ -46,6 +45,7 @@
     "react-loading-skeleton": "^2.1.1",
     "react-responsive-carousel": "^3.2.11",
     "react-router-dom": "^5.2.0",
+    "react-scripts": "^4.0.1",
     "twitter-fetcher": "^18.0.4",
     "typescript": "4.1.3"
   },
@@ -64,19 +64,13 @@
     "@types/react-helmet": "^6.1.0",
     "@types/react-redux": "^7.1.15",
     "@types/react-router-dom": "^5.1.7",
-    "@typescript-eslint/eslint-plugin": "^2.33.0",
-    "@typescript-eslint/parser": "^2.33.0",
     "eslint-config-prettier": "^7.1.0",
-    "eslint-config-react-app": "^6.0.0",
-    "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-jest-dom": "^3.6.5",
     "eslint-plugin-prettier": "^3.2.0",
-    "eslint-plugin-testing-library": "^3.10.0",
     "husky": "^4.3.5",
     "lint-staged": "^10.5.3",
     "prettier": "^2.0.5",
     "react-docgen-typescript": "^1.20.2",
-    "react-scripts": "^3.4.0",
     "react-styleguidist": "^11.1.5",
     "react-test-renderer": "^16.13.1",
     "semantic-release": "^17.3.1",
@@ -111,6 +105,23 @@
       "not dead",
       "not op_mini all"
     ]
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest",
+      "prettier",
+      "plugin:jest-dom/recommended"
+    ],
+    "plugins": [
+      "prettier",
+      "jest-dom"
+    ],
+    "rules": {
+      "import/exports-last": [
+        "error"
+      ]
+    }
   },
   "snyk": true
 }
