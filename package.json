@@ -81,7 +81,8 @@
   "jest": {
     "collectCoverageFrom": [
       "src/**/*.{js,jsx,ts,tsx}"
-    ]
+    ],
+    "resetMocks": false
   },
   "husky": {
     "hooks": {
