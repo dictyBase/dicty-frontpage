@@ -87,11 +87,13 @@ describe("authentication/OauthSignHandler", () => {
     },
   ]
 
-  const { container, unmount } = render(
-    <MockAuthProvider mocks={mocks}>
-      <OauthSignHandler />
-    </MockAuthProvider>,
-  )
+  const MockComponent = ({ mocks }: any) => {
+    return (
+      <MockAuthProvider mocks={mocks}>
+        <OauthSignHandler />
+      </MockAuthProvider>
+    )
+  }
 
   beforeEach(() => {
     loginMutationCalled = false
@@ -99,15 +101,18 @@ describe("authentication/OauthSignHandler", () => {
 
   describe("initial render", () => {
     it("renders empty div", () => {
+      const { container } = render(<MockComponent mocks={mocks} />)
       expect(container).toBeEmptyDOMElement()
     })
   })
 
   describe("window behavior", () => {
     it("should add event listener on mount", () => {
+      render(<MockComponent mocks={mocks} />)
       expect(globalAny.addEventListener).toHaveBeenCalled()
     })
     it("should remove event listener on unmount", () => {
+      const { unmount } = render(<MockComponent mocks={mocks} />)
       unmount()
       expect(globalAny.removeEventListener).toHaveBeenCalled()
     })
@@ -115,6 +120,7 @@ describe("authentication/OauthSignHandler", () => {
 
   describe("login mutation", () => {
     it("should return early if no provider included in event data", async () => {
+      render(<MockComponent mocks={mocks} />)
       map.message({
         data: {
           query: `?code=${code}`,
@@ -128,6 +134,7 @@ describe("authentication/OauthSignHandler", () => {
       })
     })
     it("should call login mutation and redirect to urls", async () => {
+      render(<MockComponent mocks={mocks} />)
       map.message({
         data: {
           provider: "google",
