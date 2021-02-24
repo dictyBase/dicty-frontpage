@@ -17,7 +17,8 @@
     "styleguide:build": "styleguidist build",
     "semantic-release": "semantic-release",
     "analyze": "source-map-explorer 'build/static/js/*.js'",
-    "snyk-protect": "snyk protect"
+    "snyk-protect": "snyk protect",
+    "postinstall": "husky install"
   },
   "dependencies": {
     "@apollo/client": "^3.3.11",
@@ -67,7 +68,7 @@
     "eslint-config-prettier": "^7.2.0",
     "eslint-plugin-jest-dom": "^3.6.5",
     "eslint-plugin-prettier": "^3.2.0",
-    "husky": "^5.0.9",
+    "husky": "5",
     "lint-staged": "^10.5.4",
     "prettier": "^2.0.5",
     "react-docgen-typescript": "^1.21.0",
@@ -83,11 +84,6 @@
       "src/**/*.{js,jsx,ts,tsx}"
     ],
     "resetMocks": false
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   },
   "lint-staged": {
     "src/**/*.{js,jsx,json,css}": [
