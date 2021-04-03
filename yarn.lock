@@ -5935,9 +5935,10 @@ dezalgo@^1.0.0, dezalgo@~1.0.3:
     slate-react "^0.21.20"
     slate-schema-violations "^0.1.39"
 
-dicty-hooks@dictyBase/dicty-hooks#1.1.1:
+dicty-hooks@dictyBase/dicty-hooks#2.0.0:
   version "0.0.0-semantically-released"
-  resolved "https://codeload.github.com/dictyBase/dicty-hooks/tar.gz/505f0a063b4252996e40dee80872198a09a20a16"
+  uid "454bfebf21ac3633f76e4e5a73106d3d308f1f2f"
+  resolved "https://codeload.github.com/dictyBase/dicty-hooks/tar.gz/454bfebf21ac3633f76e4e5a73106d3d308f1f2f"
 
 diff-sequences@^26.6.2:
   version "26.6.2"
