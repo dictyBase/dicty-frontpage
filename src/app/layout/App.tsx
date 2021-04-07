@@ -20,11 +20,15 @@ import { User } from "common/types"
 const useStyles = makeStyles({
   main: {
     marginBottom: "50px",
+    flex: 1,
   },
   body: {
     fontSize: "16px",
     color: "#333",
     backgroundColor: "#fff",
+    display: "flex",
+    minHeight: "100vh",
+    flexDirection: "column",
   },
 })
 
