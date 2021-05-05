@@ -1,44 +1,29 @@
 import React, { useState } from "react"
-import { useMutation } from "@apollo/client"
-import { makeStyles } from "@material-ui/core/styles"
+import { makeStyles, Theme } from "@material-ui/core/styles"
 import Button from "@material-ui/core/Button"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { PageEditor } from "dicty-components-page-editor"
+import {
+  useUpdateContentMutation,
+  ContentBySlugQuery,
+} from "dicty-graphql-schema"
 import { useAuthStore } from "features/Authentication/AuthStore"
 import useAuthorization from "common/hooks/useAuthorization"
-import { UPDATE_CONTENT } from "common/graphql/mutation"
 
-const useStyles = makeStyles(() => ({
-  editButton: {
+const useStyles = makeStyles((theme: Theme) => ({
+  button: {
     fontSize: "0.9em",
-    color: "#337ab7",
+    color: theme.palette.primary.light,
     textTransform: "none",
     "&:hover": {
-      color: "#337ab7",
+      color: theme.palette.primary.light,
       backgroundColor: "transparent",
     },
   },
 }))
 
 type Props = {
-  data: {
-    id: number
-    content: string
-    slug: string
-    updated_by: {
-      email: string
-      first_name: string
-      last_name: string
-      updated_at: string
-      roles?: Array<{
-        role: string
-        permissions?: Array<{
-          permission: string
-          resource: string
-        }>
-      }>
-    }
-  }
+  data: ContentBySlugQuery["contentBySlug"]
 }
 
 /**
@@ -47,12 +32,12 @@ type Props = {
 
 const InlineEditor = ({ data }: Props) => {
   const [readOnly, setReadOnly] = React.useState(true)
-  const [value, setValue] = useState(data.content)
+  const [value, setValue] = useState(data?.content)
   const {
     state: { token },
   } = useAuthStore()
   const { canEditPages, verifiedToken, user } = useAuthorization()
-  const [updateContent] = useMutation(UPDATE_CONTENT, {
+  const [updateContent] = useUpdateContentMutation({
     context: {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -63,6 +48,9 @@ const InlineEditor = ({ data }: Props) => {
 
   const onSave = (value: any) => {
     const valueStr = JSON.stringify(value.toJSON())
+    if (data?.id === undefined) {
+      return
+    }
     updateContent({
       variables: {
         input: {
@@ -94,7 +82,7 @@ const InlineEditor = ({ data }: Props) => {
       {validEditor && (
         <span>
           <Button
-            className={classes.editButton}
+            className={classes.button}
             color="primary"
             onClick={() => setReadOnly(false)}
             title="Edit">

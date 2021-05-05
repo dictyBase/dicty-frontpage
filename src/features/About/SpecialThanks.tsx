@@ -1,8 +1,7 @@
 import React from "react"
-import { useQuery } from "@apollo/client"
 import Skeleton from "react-loading-skeleton"
+import { useContentBySlugQuery } from "dicty-graphql-schema"
 import InlineEditor from "features/EditablePages/InlineEditor"
-import { GET_CONTENT_BY_SLUG } from "common/graphql/query"
 import { NAMESPACE } from "common/constants/namespace"
 
 /**
@@ -10,7 +9,7 @@ import { NAMESPACE } from "common/constants/namespace"
  */
 
 const SpecialThanks = () => {
-  const { loading, error, data } = useQuery(GET_CONTENT_BY_SLUG, {
+  const { loading, error, data } = useContentBySlugQuery({
     variables: {
       slug: `${NAMESPACE}-specialthanks`,
     },
@@ -29,7 +28,7 @@ const SpecialThanks = () => {
 
   if (error) return <div>Error retrieving technical summary information</div>
 
-  return <InlineEditor data={data.contentBySlug} />
+  return <InlineEditor data={data?.contentBySlug} />
 }
 
 export default SpecialThanks
