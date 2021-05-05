@@ -9,15 +9,6 @@ import AppProviders from "app/layout/AppProviders"
 import "common/utils/icons" // fontawesome library
 import "fontsource-roboto"
 
-declare var process: {
-  env: {
-    NODE_ENV: string
-    REACT_APP_GA_TRACKING_ID: string
-    REACT_APP_GRAPHQL_SERVER: string
-    REACT_APP_BASENAME: string
-  }
-}
-
 const setGoogleAnalytics = async (location: any) => {
   try {
     const module = await import("react-ga")
