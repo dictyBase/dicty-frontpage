@@ -1599,7 +1599,7 @@
     react-is "^16.8.0 || ^17.0.0"
     react-transition-group "^4.4.0"
 
-"@material-ui/icons@^4.9.1":
+"@material-ui/icons@^4.11.2":
   version "4.11.2"
   resolved "https://registry.yarnpkg.com/@material-ui/icons/-/icons-4.11.2.tgz#b3a7353266519cd743b6461ae9fdfcb1b25eb4c5"
   integrity sha512-fQNsKX2TxBmqIGJCSi3tGTO/gZ+eJgWmMJkgDiOfyNaunNaxcklJQFaFogYcFl0qFuaEz1qaXYXboa/bUXVSOQ==
@@ -2480,6 +2480,20 @@
   version "7.30.3"
   resolved "https://registry.yarnpkg.com/@testing-library/dom/-/dom-7.30.3.tgz#779ea9bbb92d63302461800a388a5a890ac22519"
   integrity sha512-7JhIg2MW6WPwyikH2iL3o7z+FTVgSOd2jqCwTAHqK7Qal2gRRYiUQyURAxtbK9VXm/UTyG9bRihv8C5Tznr2zw==
+  dependencies:
+    "@babel/code-frame" "^7.10.4"
+    "@babel/runtime" "^7.12.5"
+    "@types/aria-query" "^4.2.0"
+    aria-query "^4.2.2"
+    chalk "^4.1.0"
+    dom-accessibility-api "^0.5.4"
+    lz-string "^1.4.4"
+    pretty-format "^26.6.2"
+
+"@testing-library/dom@^7.30.4":
+  version "7.30.4"
+  resolved "https://registry.yarnpkg.com/@testing-library/dom/-/dom-7.30.4.tgz#c6a4a91557e92035fd565246bbbfb8107aa4634d"
+  integrity sha512-GObDVMaI4ARrZEXaRy4moolNAxWPKvEYNV/fa6Uc2eAzR/t4otS6A7EhrntPBIQLeehL9DbVhscvvv7gd6hWqA==
   dependencies:
     "@babel/code-frame" "^7.10.4"
     "@babel/runtime" "^7.12.5"
@@ -6036,11 +6050,9 @@ dezalgo@^1.0.0:
     asap "^2.0.0"
     wrappy "1"
 
-"dicty-components-header-footer@github:dictyBase/dicty-components-header-footer#10.2.1":
-  version "0.0.0-semantically-released"
-  resolved "https://codeload.github.com/dictyBase/dicty-components-header-footer/tar.gz/843303cba6e7d88cedb52c5e070932770ae52bc0"
-  dependencies:
-    "@material-ui/icons" "^4.9.1"
+dicty-components-header-footer@dictybase/dicty-components-header-footer#11.0.0:
+  version "11.0.0"
+  resolved "https://codeload.github.com/dictybase/dicty-components-header-footer/tar.gz/db610823e5c88b1f231aeb9e6df225bd17e63472"
 
 "dicty-components-login@github:dictyBase/dicty-components-login#3.1.1":
   version "0.0.0-semantically-released"
@@ -6081,9 +6093,9 @@ dezalgo@^1.0.0:
     slate-react "^0.21.20"
     slate-schema-violations "^0.1.39"
 
-dicty-hooks@dictyBase/dicty-hooks#2.0.0:
-  version "0.0.0-semantically-released"
-  resolved "https://codeload.github.com/dictyBase/dicty-hooks/tar.gz/454bfebf21ac3633f76e4e5a73106d3d308f1f2f"
+dicty-hooks@dictybase/dicty-hooks#3.0.0:
+  version "3.0.0"
+  resolved "https://codeload.github.com/dictybase/dicty-hooks/tar.gz/ba8c51064bed30bc514d80dc38cb25b12f1db142"
 
 diff-sequences@^26.6.2:
   version "26.6.2"
