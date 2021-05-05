@@ -1,19 +1,7 @@
+import jwtDecode from "jwt-decode"
+import { Role, Permission } from "dicty-graphql-schema"
 import { useAuthStore } from "features/Authentication/AuthStore"
 import { frontpagecontent, MAIN_RESOURCE } from "common/constants/resources"
-import jwtDecode from "jwt-decode"
-
-type RoleItem = {
-  id: string
-  role: string
-  permissions: Array<PermItem>
-}
-
-type PermItem = {
-  id: string
-  permission: string
-  resource: string
-  description?: string
-}
 
 const verifyToken = (token: string) => {
   if (token === "") {
@@ -31,14 +19,15 @@ const verifyToken = (token: string) => {
 }
 
 const verifyPermissions = (
-  permissions: Array<PermItem>,
+  permissions: Permission[],
   perm: string,
   resource: string,
 ) => {
   const allowedResources = [resource, MAIN_RESOURCE]
-  const validPerms = (item: PermItem) =>
+  const validPerms = (item: Permission) =>
     item.permission === "admin" ||
-    (item.permission === perm && allowedResources.includes(item.resource))
+    (item.permission === perm &&
+      allowedResources.includes(item.resource as string))
   const filteredPerms = permissions.filter(validPerms)
   // check if array is empty
   if (!Array.isArray(filteredPerms) || !filteredPerms.length) {
@@ -53,22 +42,27 @@ const verifyPermissions = (
  */
 
 const useAuthorization = () => {
-  const [state] = useAuthStore()
+  const { state } = useAuthStore()
   let canEditPages = false
   const verifiedToken = verifyToken(state.token)
 
   if (state.user.id) {
-    const nestedPermissions = state.user.roles.map(
-      (item: RoleItem) => item.permissions,
+    const nestedPermissions = state?.user?.roles?.map(
+      (item: Role) => item.permissions,
     )
     // need to flatten since permissions initially comes back as nested array
-    const permissions = nestedPermissions.concat.apply([], nestedPermissions)
+    const permissions = (nestedPermissions?.concat.apply(
+      [],
+      nestedPermissions,
+    ) as unknown) as Permission[]
     canEditPages = verifyPermissions(permissions, "write", frontpagecontent)
-    const roles = state.user.roles.map((item: RoleItem) => item.role)
-    if (roles.includes("superuser")) {
+
+    const roles = state?.user?.roles?.map((item: Role) => item.role)
+    if (roles?.includes("superuser")) {
       canEditPages = true
     }
   }
+
   return { user: state.user, canEditPages, verifiedToken }
 }
 

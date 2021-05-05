@@ -1,17 +1,14 @@
 import React from "react"
-import { makeStyles } from "@material-ui/core/styles"
+import { makeStyles, Theme } from "@material-ui/core/styles"
+import Box from "@material-ui/core/Box"
 import SnackbarContent from "@material-ui/core/SnackbarContent"
 
-const useStyles = makeStyles({
-  container: {
-    textAlign: "center",
-    width: "80%",
-    marginBottom: "20px",
-  },
+const useStyles = makeStyles((theme: Theme) => ({
   snackbar: {
-    backgroundColor: "#cc0000",
+    backgroundColor: theme.palette.error.main,
+    color: theme.palette.getContrastText(theme.palette.error.main),
   },
-})
+}))
 
 type Props = {
   /** The error message to display */
@@ -24,9 +21,9 @@ const ErrorNotification = ({ error }: Props) => {
   const classes = useStyles()
 
   return (
-    <div className={classes.container}>
+    <Box mb={2} display="flex" justifyContent="center">
       <SnackbarContent className={classes.snackbar} message={error} />
-    </div>
+    </Box>
   )
 }
 

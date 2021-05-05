@@ -92,7 +92,10 @@ const getTokenIntervalDelayInMS = (token: string) => {
 
 export const App = () => {
   const [skip, setSkip] = React.useState(false)
-  const [{ isAuthenticated, token }, dispatch] = useAuthStore()
+  const {
+    state: { token, isAuthenticated },
+    dispatch,
+  } = useAuthStore()
   const navbar = useFetch<NavbarItems>(navbarURL, navbarItems)
   const footer = useFetch<FooterItems>(footerURL, footerLinks)
   const classes = useStyles()

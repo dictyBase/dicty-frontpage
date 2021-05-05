@@ -1,5 +1,5 @@
 import React from "react"
-import { render, screen, waitFor } from "@testing-library/react"
+import { render, screen } from "@testing-library/react"
 import OauthCallback from "./OauthCallback"
 import { BrowserRouter } from "react-router-dom"
 
@@ -12,40 +12,26 @@ describe("features/Authentication/OauthCallback", () => {
   }
   globalAny.close = closeMock
   process.env.REACT_APP_BASENAME = "/publication"
-
   describe("initial render", () => {
-    it("renders expected text", () => {
+    it("renders text notification", () => {
       render(
         <BrowserRouter>
           <OauthCallback />
         </BrowserRouter>,
       )
       expect(
-        screen.getByText(/Transferring to login system/),
+        screen.getByText(/Transferring to login system ......../),
       ).toBeInTheDocument()
     })
   })
-
   describe("window behavior", () => {
-    it("should call post message on mount", async () => {
+    it("should call post message on mount", () => {
       render(
         <BrowserRouter>
           <OauthCallback />
         </BrowserRouter>,
       )
-      await waitFor(() => {
-        expect(postMessageMock).toHaveBeenCalled()
-      })
-    })
-
-    it("should close on unmount", () => {
-      const { unmount } = render(
-        <BrowserRouter>
-          <OauthCallback />
-        </BrowserRouter>,
-      )
-      unmount()
-      expect(closeMock).toHaveBeenCalled()
+      expect(postMessageMock).toHaveBeenCalled()
     })
   })
 })

@@ -1,12 +1,11 @@
-import { useEffect } from "react"
-import { useMutation } from "@apollo/client"
+import React from "react"
 import { useHistory } from "react-router-dom"
 import querystring from "querystring"
+import { useLoginMutation, User } from "dicty-graphql-schema"
 import { useAuthStore, ActionType } from "features/Authentication/AuthStore"
-import { LOGIN } from "common/graphql/mutation"
 import oauthConfig from "common/utils/oauthConfig"
 
-type LoginEvent = {
+type LoginEventData = {
   /** Third-party provider (orcid, google, linkedin) */
   provider: string
   /** Query containing authorization code and possibly state */
@@ -15,7 +14,7 @@ type LoginEvent = {
   url: string
 }
 
-const getLoginInputVariables = (data: LoginEvent) => {
+const getLoginInputVariables = (data: LoginEventData) => {
   const provider = (oauthConfig as any)[data.provider]
   const parsed = querystring.parse(data.query.replace("?", ""))
 
@@ -23,8 +22,8 @@ const getLoginInputVariables = (data: LoginEvent) => {
     input: {
       client_id: provider.clientId,
       redirect_url: data.url,
-      state: parsed.state || "state",
-      code: parsed.code,
+      state: parsed?.state?.toString() || "state",
+      code: parsed.code as string,
       scopes: provider.scopes[0],
       provider: data.provider,
     },
@@ -40,10 +39,10 @@ const getLoginInputVariables = (data: LoginEvent) => {
 
 const OauthSignHandler = () => {
   const history = useHistory()
-  const [, dispatch] = useAuthStore()
-  const [login, { data }] = useMutation(LOGIN)
+  const { dispatch } = useAuthStore()
+  const [login, { data }] = useLoginMutation()
 
-  useEffect(() => {
+  React.useEffect(() => {
     const onMessage = async (event: MessageEvent) => {
       event.preventDefault()
       event.stopPropagation()
@@ -58,9 +57,9 @@ const OauthSignHandler = () => {
         dispatch({
           type: ActionType.LOGIN,
           payload: {
-            token: data.login.token,
-            user: data.login.user,
-            provider: data.login.identity.provider,
+            token: data?.login?.token as string,
+            user: data?.login?.user as User,
+            provider: data?.login?.identity.provider as string,
           },
         })
         history.push("/")

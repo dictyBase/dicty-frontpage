@@ -1,8 +1,8 @@
 import React from "react"
 import { BrowserRouter } from "react-router-dom"
 import { MockedProvider, MockedResponse } from "@apollo/client/testing"
+import { User } from "dicty-graphql-schema"
 import { AuthContext, authReducer } from "features/Authentication/AuthStore"
-import { User } from "common/types"
 
 type AuthProps = {
   children: React.ReactNode
@@ -13,15 +13,30 @@ type AuthProps = {
 }
 
 const MockSuperuser = {
-  id: 999,
+  id: "999",
   first_name: "Art",
   last_name: "Vandelay",
   email: "george@vandelayindustries.com",
+  is_active: true,
+  created_at: 123456,
+  updated_at: 678900,
   roles: [
     {
-      id: 1,
+      id: "1",
       role: "superuser",
-      permissions: [{ id: 1, permission: "test", resource: "testresource" }],
+      description: "total power!",
+      created_at: 123456,
+      updated_at: 678900,
+      permissions: [
+        {
+          id: "1",
+          permission: "test",
+          description: "a test permission",
+          resource: "testresource",
+          created_at: 123456,
+          updated_at: 678900,
+        },
+      ],
     },
   ],
 }
@@ -43,9 +58,10 @@ const MockAuthProvider = ({
     user: user,
     provider: "google",
     isAuthenticated: true,
+    error: null,
   })
   return (
-    <AuthContext.Provider value={[state, dispatch]}>
+    <AuthContext.Provider value={{ state, dispatch }}>
       <MockedProvider mocks={mocks} addTypename={false}>
         <BrowserRouter>{children}</BrowserRouter>
       </MockedProvider>
@@ -53,4 +69,5 @@ const MockAuthProvider = ({
   )
 }
 
-export { MockAuthProvider, MockSuperuser }
+export { MockSuperuser }
+export default MockAuthProvider

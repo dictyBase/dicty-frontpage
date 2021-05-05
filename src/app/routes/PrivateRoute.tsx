@@ -7,7 +7,9 @@ import { useAuthStore } from "features/Authentication/AuthStore"
  * This uses the same API as <Route/>
  */
 const PrivateRoute = ({ component: Component, ...rest }: any) => {
-  const [{ isAuthenticated }] = useAuthStore()
+  const {
+    state: { isAuthenticated },
+  } = useAuthStore()
 
   return (
     // renders a <Route /> and passes all props

@@ -1,9 +1,11 @@
 import React from "react"
+import { ApolloError } from "@apollo/client"
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles"
 import { Login as LoginContainer } from "dicty-components-login"
 import OauthSignHandler from "features/Authentication/OauthSignHandler"
 import oauthConfig from "common/utils/oauthConfig"
-import Grid from "@material-ui/core/Grid"
+import Box from "@material-ui/core/Box"
+import Typography from "@material-ui/core/Typography"
 import ErrorNotification from "./ErrorNotification"
 import { useAuthStore } from "./AuthStore"
 
@@ -17,20 +19,6 @@ type Config = {
   scopes: Array<string>
   scopeDelimiter: string
   optionalUrlParams?: Array<Array<string>>
-}
-
-/** The returned GraphQL error object */
-type GraphQLError = {
-  message?: string
-  networkError?: object
-  graphQLErrors?: Array<{
-    message: string
-    path: Array<string>
-    extensions?: {
-      code: string
-      timestamp: string
-    }
-  }>
 }
 
 // list of buttons to display
@@ -68,7 +56,7 @@ const openOauthWindow = (name: string) => {
   )
 }
 
-const generateErrorDisplayMessage = (error: GraphQLError) => {
+const generateErrorDisplayMessage = (error: ApolloError) => {
   let message = "Could not log in. Please contact us if the problem persists."
   if (error.networkError) {
     message = "Network Error"
@@ -81,7 +69,7 @@ const generateErrorDisplayMessage = (error: GraphQLError) => {
   ) {
     message = `Could not find user account. 
       
-      Please make sure you are a verified member and try again.`
+      Please make sure you are a verified user and try again.`
   }
   return message
 }
@@ -99,7 +87,9 @@ const theme = createMuiTheme({
  */
 
 const Login = () => {
-  const [{ error }] = useAuthStore()
+  const {
+    state: { error },
+  } = useAuthStore()
   let message = ""
 
   if (error) {
@@ -108,21 +98,18 @@ const Login = () => {
 
   return (
     <MuiThemeProvider theme={theme}>
-      <Grid container justify="center">
-        <Grid item>
-          <div style={{ textAlign: "center" }}>
-            <h1>Log in</h1>
-          </div>
-          <Grid container justify="center">
-            <Grid item xs={2} />
-            <Grid item xs={10}>
-              {error && <ErrorNotification error={message} />}
-              <LoginContainer buttons={buttons} onClick={openOauthWindow} />
-              <OauthSignHandler />
-            </Grid>
-          </Grid>
-        </Grid>
-      </Grid>
+      <Box m="auto" width="50%">
+        <Box mb={3}>
+          <Typography variant="h3" align="center">
+            Log in
+          </Typography>
+        </Box>
+        <Box textAlign="center">
+          {error && <ErrorNotification error={message} />}
+          <LoginContainer buttons={buttons} onClick={openOauthWindow} />
+          <OauthSignHandler />
+        </Box>
+      </Box>
     </MuiThemeProvider>
   )
 }

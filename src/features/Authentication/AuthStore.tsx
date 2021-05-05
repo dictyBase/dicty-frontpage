@@ -1,4 +1,5 @@
-import React, { createContext, ReactNode, useContext, useReducer } from "react"
+import React from "react"
+import { User } from "dicty-graphql-schema"
 
 enum ActionType {
   LOGIN = "LOGIN",
@@ -10,24 +11,25 @@ enum ActionType {
 type AuthState = {
   isAuthenticated: boolean
   token: string
-  user: object
+  user: User
   provider: string
+  error: any
 }
 
 type AuthPayload = {
   token: string
-  user: object
+  user: User
   provider: string
 }
 
 type ErrorPayload = {
-  error: object
+  error: any
 }
 
 const initialState = {
   isAuthenticated: false,
   token: "",
-  user: {},
+  user: {} as User,
   provider: "",
   error: null,
 }
@@ -47,7 +49,12 @@ type Action =
       payload: AuthPayload
     }
 
-const AuthContext = createContext({} as any)
+type AuthStateContextProps = {
+  state: AuthState
+  dispatch: React.Dispatch<Action>
+}
+
+const AuthContext = React.createContext({} as AuthStateContextProps)
 
 const authReducer = (state: AuthState, action: Action) => {
   switch (action.type) {
@@ -87,12 +94,11 @@ const authReducer = (state: AuthState, action: Action) => {
 /**
  * AuthProvider contains global state used for the shopping auth.
  */
-const AuthProvider = ({ children }: { children: ReactNode }) => {
-  const [state, dispatch] = useReducer(authReducer, initialState)
+const AuthProvider = ({ children }: { children: React.ReactNode }) => {
+  const [state, dispatch] = React.useReducer(authReducer, initialState)
 
   return (
-    // @ts-ignore
-    <AuthContext.Provider value={[state, dispatch]}>
+    <AuthContext.Provider value={{ state, dispatch }}>
       {children}
     </AuthContext.Provider>
   )
@@ -102,7 +108,7 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
  * useAuthStore is a hook to easily connect to AuthContext.
  */
 const useAuthStore = () => {
-  const context = useContext(AuthContext)
+  const context = React.useContext(AuthContext)
   if (!context) {
     throw new Error("useAuthStore must be used within a AuthProvider")
   }
