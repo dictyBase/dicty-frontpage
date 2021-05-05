@@ -1,5 +1,4 @@
 import React from "react"
-import { useMutation } from "@apollo/client"
 import { useHistory, useLocation } from "react-router-dom"
 import { makeStyles } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
@@ -7,8 +6,10 @@ import Container from "@material-ui/core/Container"
 import { PageEditor } from "dicty-components-page-editor"
 import { useAuthStore } from "features/Authentication/AuthStore"
 import useAuthorization from "common/hooks/useAuthorization"
-import { UPDATE_CONTENT } from "common/graphql/mutation"
-import { Content } from "./types"
+import {
+  useUpdateContentMutation,
+  ContentBySlugQuery,
+} from "dicty-graphql-schema"
 
 const useStyles = makeStyles(({ palette }) => ({
   editor: {
@@ -28,7 +29,7 @@ const useStyles = makeStyles(({ palette }) => ({
 type Props = {
   location: {
     state: {
-      data: Content
+      data: ContentBySlugQuery["contentBySlug"]
     }
   }
 }
@@ -45,7 +46,7 @@ const EditInfoPage = ({ location }: Props) => {
     state: { data },
   } = location
   const { user } = useAuthorization()
-  const [updateContent] = useMutation(UPDATE_CONTENT, {
+  const [updateContent] = useUpdateContentMutation({
     context: {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -58,6 +59,9 @@ const EditInfoPage = ({ location }: Props) => {
   const prevURL = pathname.slice(0, -5)
 
   const onSave = (value: any) => {
+    if (data?.id === undefined) {
+      return
+    }
     updateContent({
       variables: {
         input: {
@@ -80,7 +84,7 @@ const EditInfoPage = ({ location }: Props) => {
         <Grid item>
           <div className={classes.editor}>
             <PageEditor
-              pageContent={data.content}
+              pageContent={data?.content}
               onCancel={onCancel}
               onSave={onSave}
               readOnly={false}

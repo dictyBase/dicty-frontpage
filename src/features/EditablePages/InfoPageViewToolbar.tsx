@@ -8,7 +8,8 @@ import ErrorNotification from "features/Authentication/ErrorNotification"
 import timeSince from "common/utils/timeSince"
 import { useAuthStore } from "features/Authentication/AuthStore"
 import useAuthorization from "common/hooks/useAuthorization"
-import { User } from "./types"
+import { capitalizeFirstCharacter } from "common/utils/stringCapitalizations"
+import { UpdatedByUser } from "./types"
 
 const useStyles = makeStyles(() => ({
   grid: {
@@ -70,7 +71,7 @@ type Props = {
   /** Timestamp for when this content was last updated */
   lastUpdate: string
   /** User object for who last updated this content */
-  user: User
+  user: UpdatedByUser
   /** Function to execute when user clicks edit icon */
   handleClick: (event: React.MouseEvent<HTMLButtonElement>) => void
 }
@@ -85,8 +86,9 @@ const InfoPageViewToolbar = ({ handleClick, lastUpdate, user }: Props) => {
   const { canEditPages, verifiedToken } = useAuthorization()
 
   const fullName = `${user.first_name} ${user.last_name}`
-  const role = `${user.roles[0].role}`
-  const uppercaseRole = role.charAt(0).toUpperCase() + role.substring(1)
+  const role = user?.roles?.length
+    ? `${capitalizeFirstCharacter(user.roles[0].role)}`
+    : "dictyBase User"
 
   const validUser = isAuthenticated && canEditPages
   const validUserExpiredToken = validUser && !verifiedToken
@@ -112,7 +114,7 @@ const InfoPageViewToolbar = ({ handleClick, lastUpdate, user }: Props) => {
                 </span>
               </Grid>
               <Grid item className={classes.content}>
-                <span className={classes.label}>{uppercaseRole}</span> &nbsp;
+                <span className={classes.label}>{role}</span> &nbsp;
                 {verifiedToken && (
                   <Tooltip title="Edit Page" placement="bottom">
                     <IconButton

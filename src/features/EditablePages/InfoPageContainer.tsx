@@ -1,12 +1,11 @@
 import React from "react"
 import Container from "@material-ui/core/Container"
-import { useQuery } from "@apollo/client"
 import { useParams } from "react-router-dom"
 import { Helmet } from "react-helmet"
+import { useContentBySlugQuery } from "dicty-graphql-schema"
 import Loader from "common/components/Loader"
 import GraphQLErrorPage from "common/components/errors/GraphQLErrorPage"
 import InfoPageView from "./InfoPageView"
-import { GET_CONTENT_BY_SLUG } from "common/graphql/query"
 import { NAMESPACE } from "common/constants/namespace"
 import { pageTitleLookup } from "common/utils/pageTitleConversions"
 
@@ -25,7 +24,7 @@ const InfoPageContainer = () => {
   const { name, subname } = useParams<Params>()
   // fetch by subname if it exists
   const params = subname ? subname : name
-  const { loading, error, data } = useQuery(GET_CONTENT_BY_SLUG, {
+  const { loading, error, data } = useContentBySlugQuery({
     variables: {
       slug: `${NAMESPACE}-${params}`,
     },
@@ -45,7 +44,7 @@ const InfoPageContainer = () => {
       <Helmet>
         <title>{pageTitleLookup(name)} - dictyBase</title>
       </Helmet>
-      <InfoPageView data={data.contentBySlug} />
+      <InfoPageView data={data?.contentBySlug} />
     </Container>
   )
 }
