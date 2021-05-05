@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { makeStyles, Theme } from "@material-ui/core/styles"
+import Box from "@material-ui/core/Box"
 import Button from "@material-ui/core/Button"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { PageEditor } from "dicty-components-page-editor"
@@ -71,7 +72,7 @@ const InlineEditor = ({ data }: Props) => {
   const validEditor = canEditPages && verifiedToken
 
   return (
-    <div>
+    <Box>
       <PageEditor
         key={readOnly}
         pageContent={value}
@@ -80,7 +81,7 @@ const InlineEditor = ({ data }: Props) => {
         onCancel={onCancel}
       />
       {validEditor && (
-        <span>
+        <Box component="span">
           <Button
             className={classes.button}
             color="primary"
@@ -89,9 +90,9 @@ const InlineEditor = ({ data }: Props) => {
             <FontAwesomeIcon icon="pencil-alt" />
             &nbsp; Edit
           </Button>
-        </span>
+        </Box>
       )}
-    </div>
+    </Box>
   )
 }
 

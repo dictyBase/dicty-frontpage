@@ -1,5 +1,4 @@
 import React from "react"
-import Container from "@material-ui/core/Container"
 import { useParams } from "react-router-dom"
 import { Helmet } from "react-helmet"
 import { useContentBySlugQuery } from "dicty-graphql-schema"
@@ -40,12 +39,12 @@ const InfoPageContainer = () => {
   }
 
   return (
-    <Container maxWidth="lg">
+    <React.Fragment>
       <Helmet>
         <title>{pageTitleLookup(name)} - dictyBase</title>
       </Helmet>
       <InfoPageView data={data?.contentBySlug} />
-    </Container>
+    </React.Fragment>
   )
 }
 
