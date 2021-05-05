@@ -5,9 +5,9 @@ import Login, {
   openOauthWindow,
   generateErrorDisplayMessage,
 } from "./Login"
-import { MockAuthProvider } from "common/mocks/MockAuthProvider"
+import MockAuthProvider from "common/mocks/MockAuthProvider"
 
-describe("authentication/Login", () => {
+describe("features/Authentication/Login", () => {
   const globalAny = global as any
   const openMock = jest.fn()
   globalAny.open = openMock
@@ -62,14 +62,36 @@ describe("authentication/Login", () => {
   describe("generateErrorDisplayMessage function", () => {
     it("should return correct network error message", () => {
       const error = {
+        message: "",
         networkError: {
           error: "test error",
+          name: "err",
+          message: "test error msg",
         },
+        extraInfo: {},
+        name: "",
+        graphQLErrors: [
+          {
+            message: "",
+            extensions: {},
+            locations: undefined,
+            nodes: undefined,
+            source: undefined,
+            positions: undefined,
+            originalError: undefined,
+            name: "",
+            path: [""],
+          },
+        ],
       }
       expect(generateErrorDisplayMessage(error)).toBe("Network Error")
     })
     it("should return appropriate error if user not found", () => {
       const error = {
+        message: "",
+        networkError: null,
+        extraInfo: {},
+        name: "",
         graphQLErrors: [
           {
             message: "",
@@ -93,7 +115,23 @@ describe("authentication/Login", () => {
     })
     it("should return generic error if not network or not found error", () => {
       const error = {
-        message: "no object",
+        message: "",
+        networkError: null,
+        extraInfo: {},
+        name: "",
+        graphQLErrors: [
+          {
+            message: "",
+            extensions: {},
+            locations: undefined,
+            nodes: undefined,
+            source: undefined,
+            positions: undefined,
+            originalError: undefined,
+            name: "",
+            path: [""],
+          },
+        ],
       }
       expect(generateErrorDisplayMessage(error)).toContain("Could not log in")
     })

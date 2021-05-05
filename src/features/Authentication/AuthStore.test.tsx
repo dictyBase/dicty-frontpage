@@ -1,24 +1,17 @@
-// import React from "react"
-// import { renderHook } from "@testing-library/react-hooks"
 import { authReducer, ActionType } from "./AuthStore"
+import { User } from "dicty-graphql-schema"
+import { MockSuperuser } from "common/mocks/MockAuthProvider"
 
 const initialState = {
   isAuthenticated: false,
   token: "",
-  user: {},
+  user: {} as User,
   provider: "",
   error: null,
 }
 
 const mockToken = "tiubakjdgnjka"
 const mockProvider = "google"
-const mockUser = {
-  id: "999",
-  email: "forrest@macneil.org",
-  first_name: "forrest",
-  last_name: "macneil",
-  roles: [],
-}
 
 describe("authReducer", () => {
   it("should update state on login", () => {
@@ -28,14 +21,14 @@ describe("authReducer", () => {
         payload: {
           token: mockToken,
           provider: mockProvider,
-          user: mockUser,
+          user: MockSuperuser,
         },
       }),
     ).toStrictEqual({
       isAuthenticated: true,
       token: mockToken,
       provider: mockProvider,
-      user: mockUser,
+      user: MockSuperuser,
       error: null,
     })
   })
@@ -60,10 +53,7 @@ describe("authReducer", () => {
     const state = {
       isAuthenticated: true,
       token: "jwtxyz",
-      user: {
-        id: 999,
-        email: "forrest@macneil.org",
-      },
+      user: MockSuperuser,
       provider: "google",
       error: null,
     }
@@ -78,7 +68,7 @@ describe("authReducer", () => {
       isAuthenticated: true,
       token: mockToken,
       provider: mockProvider,
-      user: mockUser,
+      user: MockSuperuser,
       error: null,
     }
     const newToken = "wthjiowvnfskjkdfsbnkjadb"
@@ -88,14 +78,14 @@ describe("authReducer", () => {
         payload: {
           token: newToken,
           provider: mockProvider,
-          user: mockUser,
+          user: MockSuperuser,
         },
       }),
     ).toStrictEqual({
       isAuthenticated: true,
       token: newToken,
       provider: mockProvider,
-      user: mockUser,
+      user: MockSuperuser,
       error: null,
     })
   })
@@ -104,7 +94,8 @@ describe("authReducer", () => {
       isAuthenticated: true,
       token: mockToken,
       provider: mockProvider,
-      user: mockUser,
+      user: MockSuperuser,
+      error: null,
     }
     expect(
       authReducer(state, {
@@ -114,12 +105,3 @@ describe("authReducer", () => {
     ).toStrictEqual(state)
   })
 })
-
-// describe("useAuthStore", () => {
-//   it("should throw error if not used in Provider", () => {
-//     const wrapper = ({ children }) => <div>{children}</div>
-//     const { result } = renderHook(() => useAuthStore(), { wrapper })
-
-//     expect(() => result.current).toThrow()
-//   })
-// })

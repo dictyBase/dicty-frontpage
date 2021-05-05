@@ -38,7 +38,9 @@ type Props = {
  */
 const EditInfoPage = ({ location }: Props) => {
   const classes = useStyles()
-  const [{ token }] = useAuthStore()
+  const {
+    state: { token },
+  } = useAuthStore()
   const {
     state: { data },
   } = location

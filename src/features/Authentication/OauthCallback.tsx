@@ -1,9 +1,10 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { useLocation, useParams } from "react-router-dom"
-import Grid from "@material-ui/core/Grid"
+import Box from "@material-ui/core/Box"
+import Typography from "@material-ui/core/Typography"
 
 type Params = {
-  /** Provider param in URL (google, orcid, etc) */
+  /** Provider from URL (google, orcid, etc) */
   provider: string
 }
 
@@ -15,12 +16,12 @@ const OauthCallback = () => {
   const { provider } = useParams<Params>()
   const location = useLocation()
 
-  React.useEffect(() => {
+  useEffect(() => {
     window.opener.postMessage(
       {
         query: location.search,
         provider: provider,
-        url: `${window.location.origin}${location.pathname}`,
+        url: `${window.location.origin}/${process.env.REACT_APP_BASENAME}${location.pathname}`,
       },
       window.location,
     )
@@ -28,11 +29,11 @@ const OauthCallback = () => {
   }, [location.pathname, location.search, provider])
 
   return (
-    <Grid container justify="center">
-      <Grid item>
-        <h1>Transferring to login system ........</h1>
-      </Grid>
-    </Grid>
+    <Box textAlign="center">
+      <Typography variant="h1">
+        Transferring to login system ........
+      </Typography>
+    </Box>
   )
 }
 

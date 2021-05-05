@@ -48,7 +48,9 @@ type Props = {
 const InlineEditor = ({ data }: Props) => {
   const [readOnly, setReadOnly] = React.useState(true)
   const [value, setValue] = useState(data.content)
-  const [{ token }] = useAuthStore()
+  const {
+    state: { token },
+  } = useAuthStore()
   const { canEditPages, verifiedToken, user } = useAuthorization()
   const [updateContent] = useMutation(UPDATE_CONTENT, {
     context: {

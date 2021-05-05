@@ -79,7 +79,9 @@ type Props = {
 
 const InfoPageViewToolbar = ({ handleClick, lastUpdate, user }: Props) => {
   const classes = useStyles()
-  const [{ isAuthenticated }] = useAuthStore()
+  const {
+    state: { isAuthenticated },
+  } = useAuthStore()
   const { canEditPages, verifiedToken } = useAuthorization()
 
   const fullName = `${user.first_name} ${user.last_name}`
