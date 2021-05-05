@@ -1,6 +1,6 @@
 import React from "react"
-import { makeStyles } from "@material-ui/core/styles"
-import Grid from "@material-ui/core/Grid"
+import { makeStyles, Theme } from "@material-ui/core/styles"
+import Box from "@material-ui/core/Box"
 import Tooltip from "@material-ui/core/Tooltip"
 import IconButton from "@material-ui/core/IconButton"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -11,10 +11,7 @@ import useAuthorization from "common/hooks/useAuthorization"
 import { capitalizeFirstCharacter } from "common/utils/stringCapitalizations"
 import { UpdatedByUser } from "./types"
 
-const useStyles = makeStyles(() => ({
-  grid: {
-    alignItems: "center",
-  },
+const useStyles = makeStyles((theme: Theme) => ({
   content: {
     marginLeft: "auto",
   },
@@ -22,45 +19,31 @@ const useStyles = makeStyles(() => ({
     backgroundColor: "#fafafa",
     borderRadius: "2px",
     border: "1px solid #ddd",
-    paddingLeft: "9px",
+    padding: theme.spacing(1),
+    marginBottom: theme.spacing(2),
     width: "100%",
-    display: "inline-block",
+    display: "flex",
+    alignItems: "center",
   },
   label: {
-    display: "inline",
-    padding: "0.2em 0.6em 0.3em",
-    fontSize: "75%",
+    marginLeft: "auto",
+    marginRight: theme.spacing(1),
+    padding: theme.spacing(1),
+    fontSize: "0.8rem",
     fontWeight: "bold",
     lineHeight: 1,
     color: "#fff",
-    textAlign: "center",
     whiteSpace: "nowrap",
-    verticalAlign: "baseline",
     borderRadius: "0.25em",
-    backgroundColor: "#337ab7",
-    "&:hover": {
-      backgroundColor: "#337ab7",
-    },
-    "&:focus": {
-      backgroundColor: "#337ab7",
-    },
+    backgroundColor: theme.palette.primary.light,
   },
-  editButton: {
-    color: "#337ab7",
+  icon: {
+    color: theme.palette.primary.light,
     fontSize: "1rem",
-    "&:hover": {
-      color: "#337ab7",
-      backgroundColor: "transparent",
-    },
+    marginRight: theme.spacing(0.5),
   },
-  textInfo: {
-    color: "#31708f",
-    "&:hover": {
-      color: "#245269",
-    },
-    "&:focus": {
-      color: "#245269",
-    },
+  text: {
+    color: theme.palette.primary.light,
   },
 }))
 
@@ -94,42 +77,30 @@ const InfoPageViewToolbar = ({ handleClick, lastUpdate, user }: Props) => {
   const validUserExpiredToken = validUser && !verifiedToken
 
   return (
-    <>
-      <div>
-        {validUserExpiredToken && <ErrorNotification error={error} />}
-        <br />
-        {validUser && (
-          <div className={classes.toolbar} data-testid="info-page-toolbar">
-            <Grid container alignItems="center">
-              <Grid item>
-                <span className={classes.textInfo}>
-                  <strong>
-                    <FontAwesomeIcon
-                      className={classes.editButton}
-                      icon="user"
-                    />
-                    &nbsp; {fullName}
-                  </strong>
-                  &nbsp;edited {timeSince(lastUpdate)} ago
-                </span>
-              </Grid>
-              <Grid item className={classes.content}>
-                <span className={classes.label}>{role}</span> &nbsp;
-                {verifiedToken && (
-                  <Tooltip title="Edit Page" placement="bottom">
-                    <IconButton
-                      className={classes.editButton}
-                      onClick={handleClick}>
-                      <FontAwesomeIcon icon="pencil-alt" />
-                    </IconButton>
-                  </Tooltip>
-                )}
-              </Grid>
-            </Grid>
-          </div>
-        )}
-      </div>
-    </>
+    <Box mt={2}>
+      {validUserExpiredToken && <ErrorNotification error={error} />}
+      {validUser && (
+        <Box className={classes.toolbar} data-testid="info-page-toolbar">
+          <Box component="span" className={classes.text}>
+            <strong>
+              <FontAwesomeIcon className={classes.icon} icon="user" />{" "}
+              {fullName}
+            </strong>{" "}
+            edited {timeSince(lastUpdate)} ago
+          </Box>
+          <Box component="span" className={classes.label}>
+            {role}
+          </Box>{" "}
+          {verifiedToken && (
+            <Tooltip title="Edit Page" placement="bottom">
+              <IconButton className={classes.icon} onClick={handleClick}>
+                <FontAwesomeIcon icon="pencil-alt" />
+              </IconButton>
+            </Tooltip>
+          )}
+        </Box>
+      )}
+    </Box>
   )
 }
 
