@@ -4,8 +4,8 @@ import userEvent from "@testing-library/user-event"
 import { BrowserRouter, useHistory } from "react-router-dom"
 import waitForExpect from "wait-for-expect"
 import EditInfoPage from "./EditInfoPage"
-import { MockAuthProvider } from "common/mocks/MockAuthProvider"
-import { UPDATE_CONTENT } from "common/graphql/mutation"
+import MockAuthProvider from "common/mocks/MockAuthProvider"
+import { UpdateContentDocument } from "dicty-graphql-schema"
 
 const mockHistoryPush = jest.fn()
 // https://stackoverflow.com/questions/58117890/how-to-test-components-using-new-react-router-hooks
@@ -54,15 +54,16 @@ describe("features/EditablePages/EditInfoPage", () => {
     location: {
       state: {
         data: {
-          id: 99,
+          id: "99",
           name: "payment",
           slug: "dsc-payment",
           content: JSON.stringify(mockContent),
           updated_at: "2020-01-01T17:50:12.427Z",
           updated_by: {
-            id: 999,
+            id: "999",
             first_name: "Art",
             last_name: "Vandelay",
+            email: "art@vandelayindustries.com",
             roles: [
               {
                 role: "Latex Salesman",
@@ -96,7 +97,7 @@ describe("features/EditablePages/EditInfoPage", () => {
       const mocks = [
         {
           request: {
-            query: UPDATE_CONTENT,
+            query: UpdateContentDocument,
             variables: {
               input: {
                 id: props.location.state.data.id,

@@ -2,7 +2,7 @@ import React from "react"
 import { render, screen } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
 import InfoPageViewToolbar from "./InfoPageViewToolbar"
-import { MockAuthProvider } from "common/mocks/MockAuthProvider"
+import MockAuthProvider from "common/mocks/MockAuthProvider"
 
 describe("EditablePages/InfoPageViewToolbar", () => {
   describe("user has editing permission and verified token", () => {
@@ -10,9 +10,10 @@ describe("EditablePages/InfoPageViewToolbar", () => {
     const props = {
       lastUpdate: "2020-01-01T17:50:12.427Z",
       user: {
-        id: 1234,
+        id: "1234",
         first_name: "Art",
         last_name: "Vandelay",
+        email: "art@vandelayindustries.com",
         roles: [
           {
             role: "Latex Salesman",
@@ -47,9 +48,10 @@ describe("EditablePages/InfoPageViewToolbar", () => {
     const props = {
       lastUpdate: "2020-01-01T17:50:12.427Z",
       user: {
-        id: 1234,
+        id: "1234",
         first_name: "Art",
         last_name: "Vandelay",
+        email: "art@vandelayindustries.com",
         roles: [
           {
             role: "Latex Salesman",

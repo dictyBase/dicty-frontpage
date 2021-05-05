@@ -4,8 +4,8 @@ import userEvent from "@testing-library/user-event"
 import { BrowserRouter, useHistory } from "react-router-dom"
 import AddPage from "./AddPage"
 import waitForExpect from "wait-for-expect"
-import { CREATE_CONTENT } from "common/graphql/mutation"
-import { MockAuthProvider } from "common/mocks/MockAuthProvider"
+import { CreateContentDocument } from "dicty-graphql-schema"
+import MockAuthProvider from "common/mocks/MockAuthProvider"
 
 const mockHistoryPush = jest.fn()
 
@@ -83,11 +83,11 @@ describe("features/EditablePages/AddPage", () => {
       const mocks = [
         {
           request: {
-            query: CREATE_CONTENT,
+            query: CreateContentDocument,
             variables: {
               input: {
                 name: "shipping",
-                created_by: 999,
+                created_by: "999",
                 content: JSON.stringify(mockContent),
                 namespace: "dfp",
               },
@@ -98,7 +98,7 @@ describe("features/EditablePages/AddPage", () => {
               createContent: {
                 name: "shipping",
                 created_by: {
-                  id: 999,
+                  id: "999",
                 },
                 content: JSON.stringify(mockContent),
                 namespace: "dfp",
