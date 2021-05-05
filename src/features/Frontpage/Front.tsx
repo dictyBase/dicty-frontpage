@@ -13,23 +13,14 @@ import annotations from "common/data/annotations"
 import stockcenter from "common/data/stockcenter"
 
 const useStyles = makeStyles((theme: Theme) => ({
-  container: {
-    paddingLeft: "30px",
-    paddingRight: "30px",
-    [theme.breakpoints.up("xl")]: {
-      paddingLeft: 0,
-      paddingRight: 0,
-    },
-  },
   topItem: {
-    padding: "8px 16px 8px 16px",
+    paddingTop: theme.spacing(1),
+    paddingBottom: theme.spacing(2),
+    paddingLeft: theme.spacing(1),
+    paddingRight: theme.spacing(1),
   },
   bottomItem: {
     padding: "1px 2px 1px 2px",
-  },
-  tweetBox: {
-    padding: "8px 16px 8px 16px",
-    width: "100%",
   },
 }))
 
@@ -49,11 +40,11 @@ const Front = () => {
           content="dictyBase is a central resource for Dictyostelid genomics"
         />
       </Helmet>
-      <Grid container justify="center" className={classes.container}>
+      <Grid container justify="center">
         <Grid item className={classes.topItem} sm={12} md={6} xl={5}>
           <Slideshow />
         </Grid>
-        <Grid item className={classes.tweetBox} sm={12} md={6} xl={5}>
+        <Grid item className={classes.topItem} sm={12} md={6} xl={5}>
           <Tweets />
         </Grid>
         <Grid item className={classes.topItem} xs={12} lg={6} xl={4}>

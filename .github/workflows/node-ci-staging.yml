@@ -5,7 +5,7 @@ on:
       - staging
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - name: check out code
         uses: actions/checkout@v2
@@ -92,7 +92,7 @@ jobs:
         with:
           version: "v2.16.12"
       - name: add dictybase helm repo
-        run: helm init --client-only && helm repo add dictybase https://dictybase-docker.github.io/kubernetes-charts
+        run: helm init --client-only --stable-repo-url https://charts.helm.sh/stable && helm repo add dictybase https://dictybase-docker.github.io/kubernetes-charts
       - name: get gcloud credentials for k8s cluster
         run: gcloud container clusters get-credentials --project ${{ secrets.STAGING_PROJECT_ID }} --zone ${{ steps.deploy_info.outputs.zone }} ${{ steps.deploy_info.outputs.cluster }}
       - name: deploy chart
