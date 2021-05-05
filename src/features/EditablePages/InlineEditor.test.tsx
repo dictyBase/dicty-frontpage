@@ -3,8 +3,8 @@ import { render, screen, act } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
 import waitForExpect from "wait-for-expect"
 import InlineEditor from "./InlineEditor"
-import { UPDATE_CONTENT } from "common/graphql/mutation"
-import { MockAuthProvider } from "common/mocks/MockAuthProvider"
+import { UpdateContentDocument } from "dicty-graphql-schema"
+import MockAuthProvider from "common/mocks/MockAuthProvider"
 
 window.getSelection = jest.fn()
 
@@ -39,11 +39,12 @@ describe("EditablePages/InlineEditor", () => {
   describe("initial render with editing permission and valid token", () => {
     const props = {
       data: {
-        id: 99,
+        id: "99",
         name: "payment",
         slug: "dsc-payment",
+        updated_at: "2020-01-01T17:50:12.427Z",
         updated_by: {
-          id: 999,
+          id: "999",
           first_name: "Art",
           last_name: "Vandelay",
           email: "seven@vandelayindustries.com",
@@ -70,7 +71,7 @@ describe("EditablePages/InlineEditor", () => {
       const mocks = [
         {
           request: {
-            query: UPDATE_CONTENT,
+            query: UpdateContentDocument,
             variables: {
               input: {
                 id: props.data.id,
@@ -115,11 +116,12 @@ describe("EditablePages/InlineEditor", () => {
   describe("initial render with no special permissions", () => {
     const props = {
       data: {
-        id: 99,
+        id: "99",
         name: "payment",
         slug: "dsc-payment",
+        updated_at: "2020-01-01T17:50:12.427Z",
         updated_by: {
-          id: 999,
+          id: "999",
           first_name: "Art",
           last_name: "Vandelay",
           email: "seven@vandelayindustries.com",

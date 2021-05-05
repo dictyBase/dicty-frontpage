@@ -2,9 +2,8 @@ import useAuthorization, {
   verifyToken,
   verifyPermissions,
 } from "./useAuthorization"
-import React from "react"
 import { renderHook } from "@testing-library/react-hooks"
-import { MockAuthProvider, MockSuperuser } from "common/mocks/MockAuthProvider"
+import MockAuthProvider, { MockSuperuser } from "common/mocks/MockAuthProvider"
 
 const mockJWT =
   "eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ1c2VyIiwiZXhwIjoxNTMyNzAxMTk5LCJqdGkiOiJiZDZ2bTN0M2Q3djAwMDlpdGNmZyIsImlhdCI6MTUzMTgzNzE5OSwiaXNzIjoiZGljdHlCYXNlIiwibmJmIjoxNTMxODM3MTk5LCJzdWIiOiJkaWN0eUJhc2UgbG9naW4gdG9rZW4ifQ" // 2018-07-27 expiration time
@@ -37,9 +36,25 @@ describe("hooks/useAuthorization", () => {
 
   describe("verifyPermissions", () => {
     const writePerms = [
-      { id: "1", permission: "write", resource: "dsccontent" },
+      {
+        id: "1",
+        permission: "write",
+        resource: "dsccontent",
+        description: "test permission",
+        created_at: 123,
+        updated_at: 456,
+      },
     ]
-    const adminPerms = [{ id: "1", permission: "admin", resource: "dictybase" }]
+    const adminPerms = [
+      {
+        id: "1",
+        permission: "admin",
+        resource: "dictybase",
+        description: "test permission",
+        created_at: 123,
+        updated_at: 456,
+      },
+    ]
     it("should return true for admin permission even with different permission specified", () => {
       expect(verifyPermissions(adminPerms, "write", "dsccontent")).toBeTruthy()
     })
@@ -77,16 +92,29 @@ describe("hooks/useAuthorization", () => {
 
     describe("useAuthorization with non-superuser logged in", () => {
       const MockAdmin = {
-        id: 999,
+        id: "999",
         first_name: "Art",
         last_name: "Vandelay",
         email: "george@vandelayindustries.com",
+        is_active: true,
+        created_at: "123456",
+        updated_at: "123456",
         roles: [
           {
-            id: 1,
+            id: "1",
             role: "curator",
+            description: "dicty curator",
+            created_at: 123456,
+            updated_at: 678900,
             permissions: [
-              { id: 1, permission: "write", resource: "dsccontent" },
+              {
+                id: "1",
+                permission: "write",
+                description: "a test permission",
+                resource: "dsccontent",
+                created_at: 123456,
+                updated_at: 678900,
+              },
             ],
           },
         ],
