@@ -5,7 +5,7 @@ on:
       - develop
 jobs:
   build-and-deploy-styleguide:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - name: checkout code
         uses: actions/checkout@v2
