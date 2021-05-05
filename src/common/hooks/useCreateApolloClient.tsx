@@ -5,10 +5,10 @@ import { CachePersistor, LocalStorageWrapper } from "apollo3-cache-persist"
 import localForage from "localforage"
 import { version as SCHEMA_VERSION } from "dicty-graphql-schema/package.json"
 
-const SCHEMA_VERSION_KEY = "gene-apollo-schema-version"
-const GENE_CACHE_KEY = "gene-apollo-cache-persist"
+const SCHEMA_VERSION_KEY = "dictyfrontpage-apollo-schema-version"
+const DICTY_FRONTPAGE_CACHE_KEY = "dictyfrontpage-apollo-cache-persist"
 
-const mutationList = ["Logout"]
+const mutationList = ["Logout", "CreateContent", "UpdateContent"]
 
 const isMutation = (value: string) => {
   if (mutationList.includes(value)) {
@@ -57,7 +57,7 @@ const useCreateApolloClient = () => {
       const persistor = new CachePersistor({
         cache,
         storage: new LocalStorageWrapper(localForage),
-        key: GENE_CACHE_KEY,
+        key: DICTY_FRONTPAGE_CACHE_KEY,
       })
       const currentVersion = await localForage.getItem(SCHEMA_VERSION_KEY)
       if (currentVersion === SCHEMA_VERSION) {
