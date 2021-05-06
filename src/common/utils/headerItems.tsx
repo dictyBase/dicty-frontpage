@@ -71,7 +71,7 @@ const headerItems = [
 
 const loggedHeaderItems = [
   {
-    url: "/cite",
+    url: "/community/citation",
     icon: <AddIcon fontSize="large" />,
     text: "Cite Us",
   },
