@@ -36,7 +36,7 @@
     "dicty-graphql-schema": "dictybase/dicty-graphql-schema#1.1.0",
     "dicty-hooks": "dictybase/dicty-hooks#3.0.0",
     "font-awesome": "^4.7.0",
-    "fontsource-roboto": "^3.1.5",
+    "fontsource-roboto": "^4.0.0",
     "graphql": "^15.5.0",
     "graphql-tag": "^2.12.4",
     "history": "^4.10.1",
