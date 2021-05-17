@@ -9,7 +9,9 @@ import GraphQLErrorPage from "common/components/errors/GraphQLErrorPage"
  */
 
 const DownloadsContainer = () => {
-  const { loading, error, data } = useListOrganismsQuery()
+  const { loading, error, data } = useListOrganismsQuery({
+    fetchPolicy: "cache-and-network",
+  })
 
   if (loading) return <DownloadsLoader />
 
