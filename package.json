@@ -62,7 +62,7 @@
     "@semantic-release/github": "^7.2.3",
     "@semantic-release/npm": "^7.1.1",
     "@semantic-release/release-notes-generator": "^9.0.2",
-    "@testing-library/dom": "^7.30.4",
+    "@testing-library/dom": "^7.31.0",
     "@testing-library/jest-dom": "^5.12.0",
     "@testing-library/react": "^11.2.6",
     "@testing-library/react-hooks": "^6.0.0",
