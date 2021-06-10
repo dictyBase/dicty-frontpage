@@ -1,26 +1,62 @@
 import React from "react"
 import { render, screen } from "@testing-library/react"
-import Login, {
-  createOauthURL,
-  openOauthWindow,
-  generateErrorDisplayMessage,
-} from "./Login"
+import Login, { createOauthURL, generateErrorDisplayMessage } from "./Login"
 import MockAuthProvider from "common/mocks/MockAuthProvider"
+import userEvent from "@testing-library/user-event"
 
 describe("features/Authentication/Login", () => {
   const globalAny = global as any
   const openMock = jest.fn()
   globalAny.open = openMock
-  render(
-    <MockAuthProvider mocks={[]}>
-      <Login />
-    </MockAuthProvider>,
-  )
+
   describe("initial render", () => {
     it("displays login header", () => {
+      render(
+        <MockAuthProvider mocks={[]}>
+          <Login />
+        </MockAuthProvider>,
+      )
       expect(screen.getByText(/Log in/)).toBeInTheDocument()
     })
+
+    it("displays expected buttons", () => {
+      render(
+        <MockAuthProvider mocks={[]}>
+          <Login />
+        </MockAuthProvider>,
+      )
+      expect(screen.getAllByRole("button")).toHaveLength(3)
+      expect(screen.getByText(/Sign in with ORCID/)).toBeInTheDocument()
+      expect(screen.getByText(/Sign in with Google/)).toBeInTheDocument()
+      expect(screen.getByText(/Sign in with LinkedIn/)).toBeInTheDocument()
+    })
+
+    it("calls function on button click", () => {
+      render(
+        <MockAuthProvider mocks={[]}>
+          <Login />
+        </MockAuthProvider>,
+      )
+      const orcid = screen.getByRole("button", { name: "Sign in with ORCID" })
+      const google = screen.getByRole("button", { name: "Sign in with Google" })
+      const linkedin = screen.getByRole("button", {
+        name: "Sign in with LinkedIn",
+      })
+      // click orcid button
+      expect(orcid).toBeInTheDocument()
+      userEvent.click(orcid)
+      expect(openMock).toHaveBeenCalledTimes(1)
+      // click google button
+      expect(google).toBeInTheDocument()
+      userEvent.click(google)
+      expect(openMock).toHaveBeenCalledTimes(2)
+      // click linkedin button
+      expect(linkedin).toBeInTheDocument()
+      userEvent.click(linkedin)
+      expect(openMock).toHaveBeenCalledTimes(3)
+    })
   })
+
   describe("createOauthURL function", () => {
     it("should return expected URL for full config object", () => {
       const fullConfig = {
@@ -55,10 +91,7 @@ describe("features/Authentication/Login", () => {
       )
     })
   })
-  describe("openOauthWindow function", () => {
-    openOauthWindow("google")
-    expect(openMock).toHaveBeenCalled()
-  })
+
   describe("generateErrorDisplayMessage function", () => {
     it("should return correct network error message", () => {
       const error = {
@@ -84,7 +117,7 @@ describe("features/Authentication/Login", () => {
           },
         ],
       }
-      expect(generateErrorDisplayMessage(error)).toBe("Network Error")
+      expect(generateErrorDisplayMessage(error)).toEqual("Network Error")
     })
     it("should return appropriate error if user not found", () => {
       const error = {
