@@ -30,7 +30,7 @@
     "apollo3-cache-persist": "^0.9.1",
     "core-js": "^3.14.0",
     "dicty-components-header-footer": "dictybase/dicty-components-header-footer#11.0.0",
-    "dicty-components-login": "github:dictyBase/dicty-components-login#3.1.1",
+    "dicty-components-login": "dictybase/dicty-components-login#4.1.1",
     "dicty-components-navbar": "github:dictyBase/dicty-components-navbar#2.0.0",
     "dicty-components-page-editor": "github:dictyBase/dicty-components-page-editor#1.3.1",
     "dicty-graphql-schema": "dictybase/dicty-graphql-schema#1.1.0",
