@@ -1,11 +1,15 @@
 import React from "react"
 import { ApolloError } from "@apollo/client"
-import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles"
-import { Login as LoginContainer } from "dicty-components-login"
-import OauthSignHandler from "features/Authentication/OauthSignHandler"
-import oauthConfig from "common/utils/oauthConfig"
+import Container from "@material-ui/core/Container"
 import Box from "@material-ui/core/Box"
 import Typography from "@material-ui/core/Typography"
+import {
+  GoogleButton,
+  LinkedInButton,
+  OrcidButton,
+} from "dicty-components-login"
+import OauthSignHandler from "features/Authentication/OauthSignHandler"
+import oauthConfig from "common/utils/oauthConfig"
 import ErrorNotification from "./ErrorNotification"
 import { useAuthStore } from "./AuthStore"
 
@@ -20,9 +24,6 @@ type Config = {
   scopeDelimiter: string
   optionalUrlParams?: Array<Array<string>>
 }
-
-// list of buttons to display
-const buttons = ["orcid", "google", "linkedin"]
 
 const createOauthURL = (config: Config) => {
   let url = `${config.authorizationEndpoint}?client_id=${config.clientId}`
@@ -74,14 +75,6 @@ const generateErrorDisplayMessage = (error: ApolloError) => {
   return message
 }
 
-const theme = createMuiTheme({
-  typography: {
-    button: {
-      textTransform: "uppercase",
-    },
-  },
-})
-
 /**
  * Component that displays all of the social login buttons with click handlers for each one
  */
@@ -97,22 +90,37 @@ const Login = () => {
   }
 
   return (
-    <MuiThemeProvider theme={theme}>
-      <Box m="auto" width="50%">
-        <Box mb={3}>
-          <Typography variant="h3" align="center">
-            Log in
-          </Typography>
-        </Box>
-        <Box textAlign="center">
-          {error && <ErrorNotification error={message} />}
-          <LoginContainer buttons={buttons} onClick={openOauthWindow} />
-          <OauthSignHandler />
-        </Box>
+    <Container maxWidth="xs">
+      <Box mt={2} mb={3}>
+        <Typography variant="h1" align="center">
+          Log in
+        </Typography>
       </Box>
-    </MuiThemeProvider>
+      <Box textAlign="center">
+        {error && <ErrorNotification error={message} />}
+        <Box mb={2} fontWeight={900}>
+          <OrcidButton
+            handleClick={(event: MouseEvent) => openOauthWindow("orcid")}
+            text="Sign in with ORCID"
+          />
+        </Box>
+        <Box mb={2}>
+          <GoogleButton
+            handleClick={(event: MouseEvent) => openOauthWindow("google")}
+            text="Sign in with Google"
+          />
+        </Box>
+        <Box mb={6}>
+          <LinkedInButton
+            handleClick={(event: MouseEvent) => openOauthWindow("linkedin")}
+            text="Sign in with LinkedIn"
+          />
+        </Box>
+        <OauthSignHandler />
+      </Box>
+    </Container>
   )
 }
 
-export { createOauthURL, openOauthWindow, generateErrorDisplayMessage } // for testing purposes
+export { createOauthURL, generateErrorDisplayMessage } // for testing purposes
 export default Login
