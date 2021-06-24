@@ -9,8 +9,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 const AuthLoader = () => {
   return (
-    <Box display="flex" flexDirection="column" justifyContent="center">
-      <Typography variant="h1" align="center">
+    <Box display="flex" flexDirection="column" justifyContent="center" mt={8} mb={12}>
+      <Typography variant="h1" align="center" gutterBottom>
         Logging in...
       </Typography>
       <Box textAlign="center" mt={3}>
