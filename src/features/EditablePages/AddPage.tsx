@@ -1,7 +1,8 @@
 import React from "react"
 import { useHistory } from "react-router-dom"
-import Grid from "@material-ui/core/Grid"
-import { makeStyles } from "@material-ui/core/styles"
+import Box from "@material-ui/core/Box"
+import Typography from "@material-ui/core/Typography"
+import { makeStyles, Theme } from "@material-ui/core/styles"
 import { PageEditor } from "dicty-components-page-editor"
 import { useCreateContentMutation } from "dicty-graphql-schema"
 import ErrorNotification from "features/Authentication/ErrorNotification"
@@ -9,11 +10,14 @@ import { useAuthStore } from "features/Authentication/AuthStore"
 import useAuthorization from "common/hooks/useAuthorization"
 import { NAMESPACE } from "common/constants/namespace"
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme: Theme) => ({
   banner: {
     minHeight: "45px",
     textAlign: "center",
-    padding: "40px 20px 20px 20px",
+    paddingTop: theme.spacing(5),
+    paddingLeft: theme.spacing(2.5),
+    paddingRight: theme.spacing(2.5),
+    paddingBottom: theme.spacing(2.5),
     backgroundColor: "#eee",
     marginBottom: "20px",
   },
@@ -78,21 +82,20 @@ const AddPage = ({ location }: Props) => {
   }
 
   return (
-    <div>
+    <React.Fragment>
       {canEditPages && !verifiedToken && <ErrorNotification error={error} />}
-      <Grid container wrap="wrap" justify="center">
-        <Grid item xs={12}>
-          <div className={classes.banner}>
-            <h2>Add Editable Page for Route:</h2>
-            <h3>{location.state.url}</h3>
-          </div>
-        </Grid>
-        <br />
-        <Grid item xs={9}>
-          <PageEditor onCancel={onCancel} onSave={onSave} newPage={true} />
-        </Grid>
-      </Grid>
-    </div>
+      <Box mb={2} className={classes.banner}>
+        <Box mb={2}>
+          <Typography variant="h2" gutterBottom>
+            Add Editable Page for Route:
+          </Typography>
+        </Box>
+        <Typography variant="h3">{prevURL}</Typography>
+      </Box>
+      <Box width="80%" m="auto">
+        <PageEditor onCancel={onCancel} onSave={onSave} newPage={true} />
+      </Box>
+    </React.Fragment>
   )
 }
 
