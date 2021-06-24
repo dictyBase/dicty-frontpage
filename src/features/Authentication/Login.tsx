@@ -91,7 +91,7 @@ const Login = () => {
 
   return (
     <Container maxWidth="xs">
-      <Box mt={2} mb={3}>
+      <Box mt={6} mb={3}>
         <Typography variant="h1" align="center">
           Log in
         </Typography>
@@ -110,7 +110,7 @@ const Login = () => {
             text="Sign in with Google"
           />
         </Box>
-        <Box mb={6}>
+        <Box mb={9}>
           <LinkedInButton
             handleClick={(event: MouseEvent) => openOauthWindow("linkedin")}
             text="Sign in with LinkedIn"
