@@ -1,6 +1,7 @@
 import React from "react"
 import { useHistory, useLocation } from "react-router-dom"
 import { makeStyles, Theme } from "@material-ui/core/styles"
+import Container from "@material-ui/core/Container"
 import Box from "@material-ui/core/Box"
 import { PageEditor } from "dicty-components-page-editor"
 import { useAuthStore } from "features/Authentication/AuthStore"
@@ -71,14 +72,16 @@ const EditInfoPage = ({ location }: Props) => {
   }
 
   return (
-    <Box mt={2} className={classes.editor}>
-      <PageEditor
-        pageContent={data?.content}
-        onCancel={onCancel}
-        onSave={onSave}
-        readOnly={false}
-      />
-    </Box>
+    <Container maxWidth="lg">
+      <Box mt={2} className={classes.editor}>
+        <PageEditor
+          pageContent={data?.content}
+          onCancel={onCancel}
+          onSave={onSave}
+          readOnly={false}
+        />
+      </Box>
+    </Container>
   )
 }
 
