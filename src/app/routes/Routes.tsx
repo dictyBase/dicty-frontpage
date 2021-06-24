@@ -45,6 +45,7 @@ const Routes = () => {
         component={EditInfoPage}
       />
       <PrivateRoute exact path="/addpage" component={AddPage} />
+      <Route exact path="/privacy-policy" component={InfoPageContainer} />
       {/* Page not found routes */}
       <Route exact path="*" component={PageNotReady} />
     </Switch>
