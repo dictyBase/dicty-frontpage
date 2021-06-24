@@ -22,3 +22,5 @@ yarn-error.log*
 
 clientConfig.js
 clientConfig.ts
+
+.vscode
