@@ -1,5 +1,6 @@
 import React from "react"
 import { useParams, useLocation } from "react-router-dom"
+import { Location } from "history"
 import { Helmet } from "react-helmet"
 import Container from "@material-ui/core/Container"
 import { useContentBySlugQuery } from "dicty-graphql-schema"
@@ -16,17 +17,31 @@ type Params = {
   subname: string
 }
 
+// getSlug will use the route's :subname or :name to fetch page content
+// unless the route is for the privacy policy
+const getSlug = (location: Location, params: Params) => {
+  const { name, subname } = params
+  const { pathname } = location
+
+  if (pathname === "/privacy-policy" || pathname === "/privacy-policy/") {
+    return "privacy-policy"
+  }
+
+  if (subname) {
+    return subname
+  }
+
+  return name
+}
+
 /**
  * InfoPageContainer fetches the data for the desired editable page.
  */
 
 const InfoPageContainer = () => {
   const location = useLocation()
-  const { name, subname } = useParams<Params>()
-  // fetch by subname if it exists
-  const params = subname ? subname : name
-  const slug =
-    location.pathname === "/privacy-policy" ? "privacy-policy" : params
+  const params = useParams<Params>()
+  const slug = getSlug(location, params)
 
   const { loading, error, data } = useContentBySlugQuery({
     variables: {
@@ -46,7 +61,7 @@ const InfoPageContainer = () => {
   return (
     <React.Fragment>
       <Helmet>
-        <title>{pageTitleLookup(name)} - dictyBase</title>
+        <title>{pageTitleLookup(slug)} - dictyBase</title>
       </Helmet>
       <Container maxWidth="lg">
         <InfoPageView data={data?.contentBySlug} />

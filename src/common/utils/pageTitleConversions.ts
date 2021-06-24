@@ -16,6 +16,7 @@ const pageTitles = {
   phenotype: "Phenotypes for Dictyostelium mutants",
   teach: "Teaching Tools Using Dictyostelium discoideum",
   techniques: "Dictyostelium Techniques",
+  "privacy-policy": "Privacy Policy",
   // techniques subpages
   media: "dictyBase Media and Buffers",
   "fm-medium": "Recipe for FM Defined Medium",
