@@ -1,5 +1,5 @@
 import React from "react"
-import { useParams } from "react-router-dom"
+import { useParams, useLocation } from "react-router-dom"
 import { Helmet } from "react-helmet"
 import Container from "@material-ui/core/Container"
 import { useContentBySlugQuery } from "dicty-graphql-schema"
@@ -21,12 +21,16 @@ type Params = {
  */
 
 const InfoPageContainer = () => {
+  const location = useLocation()
   const { name, subname } = useParams<Params>()
   // fetch by subname if it exists
   const params = subname ? subname : name
+  const slug =
+    location.pathname === "/privacy-policy" ? "privacy-policy" : params
+
   const { loading, error, data } = useContentBySlugQuery({
     variables: {
-      slug: `${NAMESPACE}-${params}`,
+      slug: `${NAMESPACE}-${slug}`,
     },
     fetchPolicy: "cache-and-network",
   })
@@ -35,7 +39,7 @@ const InfoPageContainer = () => {
     return <Loader />
   }
 
-  if (error || name === undefined) {
+  if (error) {
     return <GraphQLErrorPage error={error} />
   }
 
