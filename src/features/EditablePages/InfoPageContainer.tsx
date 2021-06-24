@@ -12,9 +12,9 @@ import { pageTitleLookup } from "common/utils/pageTitleConversions"
 
 type Params = {
   /** Name param in URL */
-  name: string
+  name: string | undefined
   /** Subname param in URL */
-  subname: string
+  subname: string | undefined
 }
 
 // getSlug will use the route's :subname or :name to fetch page content
@@ -54,7 +54,7 @@ const InfoPageContainer = () => {
     return <Loader />
   }
 
-  if (error) {
+  if (error || slug === undefined) {
     return <GraphQLErrorPage error={error} />
   }
 
@@ -70,4 +70,5 @@ const InfoPageContainer = () => {
   )
 }
 
+export { getSlug }
 export default InfoPageContainer
