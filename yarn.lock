@@ -13242,7 +13242,7 @@ prettier-linter-helpers@^1.0.0:
   dependencies:
     fast-diff "^1.1.2"
 
-prettier@^2.3.0, prettier@^2.3.2:
+prettier@^2.3.2:
   version "2.3.2"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.3.2.tgz#ef280a05ec253712e486233db5c6f23441e7342d"
   integrity sha512-lnJzDfJ66zkMy58OL5/NY5zp70S7Nz6KqcKkXYzn2tMVrNxvbqaBpg7H3qHaLxCJ5lNMsGuM8+ohS7cZrthdLQ==
@@ -13693,10 +13693,10 @@ react-docgen-displayname-handler@^3.0.0:
   dependencies:
     ast-types "0.14.2"
 
-react-docgen-typescript@^1.22.0:
-  version "1.22.0"
-  resolved "https://registry.yarnpkg.com/react-docgen-typescript/-/react-docgen-typescript-1.22.0.tgz#00232c8e8e47f4437cac133b879b3e9437284bee"
-  integrity sha512-MPLbF8vzRwAG3GcjdL+OHQlhgtWsLTXs+7uJiHfEeT3Ur7IsZaNYqRTLQ9sj2nB6M6jylcPCeCmH7qbszJmecg==
+react-docgen-typescript@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/react-docgen-typescript/-/react-docgen-typescript-2.0.0.tgz#0f684350159ae4d2d556f8bc241a74669753944b"
+  integrity sha512-lPf+KJKAo6a9klKyK4y8WwgaX+6t5/HkVjHOpJDMbmaXfXcV7zP0QgWtnEOc3ccEUXKvlHMGUMIS9f6Zgo1BSw==
 
 react-docgen@^5.0.0:
   version "5.4.0"
