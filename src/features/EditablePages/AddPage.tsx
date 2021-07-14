@@ -93,7 +93,7 @@ const AddPage = ({ location }: Props) => {
         <Typography variant="h3">{prevURL}</Typography>
       </Box>
       <Box width="80%" m="auto">
-        <PageEditor onCancel={onCancel} onSave={onSave} newPage={true} />
+        <PageEditor readOnly={false} />
       </Box>
     </React.Fragment>
   )

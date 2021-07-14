@@ -1,9 +1,11 @@
 import React from "react"
 import { useHistory, useLocation } from "react-router-dom"
 import { PageEditor } from "dicty-components-page-editor"
+import { ThemeProvider } from "@material-ui/core/styles"
 import Box from "@material-ui/core/Box"
 import { ContentBySlugQuery } from "dicty-graphql-schema"
 import InfoPageViewToolbar from "./InfoPageViewToolbar"
+import { theme } from "app/layout/AppProviders"
 
 type Props = {
   /** Page content object */
@@ -35,7 +37,9 @@ const InfoPageView = ({ data }: Props) => {
           user={data.updated_by}
         />
       )}
-      <PageEditor pageContent={data?.content} readOnly />
+      <ThemeProvider theme={theme}>
+        <PageEditor pageContent={data?.content} readOnly theme={theme} />
+      </ThemeProvider>
     </Box>
   )
 }

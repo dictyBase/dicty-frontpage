@@ -74,11 +74,10 @@ const InlineEditor = ({ data }: Props) => {
   return (
     <Box>
       <PageEditor
-        key={readOnly}
+        key={readOnly.toString()}
         pageContent={value}
         readOnly={readOnly}
-        onSave={onSave}
-        onCancel={onCancel}
+        inline
       />
       {validEditor && (
         <Box component="span">

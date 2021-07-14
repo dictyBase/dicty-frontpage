@@ -74,12 +74,7 @@ const EditInfoPage = ({ location }: Props) => {
   return (
     <Container maxWidth="lg">
       <Box mt={2} className={classes.editor}>
-        <PageEditor
-          pageContent={data?.content}
-          onCancel={onCancel}
-          onSave={onSave}
-          readOnly={false}
-        />
+        <PageEditor pageContent={data?.content} readOnly={false} />
       </Box>
     </Container>
   )
