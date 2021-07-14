@@ -3,6 +3,7 @@ import { useHistory, useLocation } from "react-router-dom"
 import { makeStyles, Theme } from "@material-ui/core/styles"
 import Container from "@material-ui/core/Container"
 import Box from "@material-ui/core/Box"
+import Button from "@material-ui/core/Button"
 import { PageEditor } from "dicty-components-page-editor"
 import { useAuthStore } from "features/Authentication/AuthStore"
 import useAuthorization from "common/hooks/useAuthorization"
@@ -16,6 +17,11 @@ const useStyles = makeStyles((theme: Theme) => ({
     "& a": {
       cursor: "pointer",
     },
+  },
+  button: {
+    minWidth: "70px",
+    textTransform: "none",
+    marginRight: theme.spacing(1),
   },
 }))
 
@@ -51,7 +57,7 @@ const EditInfoPage = ({ location }: Props) => {
 
   const prevURL = pathname.slice(0, -5)
 
-  const onSave = (value: any) => {
+  const handleSaveClick = (value: any) => {
     if (data?.id === undefined) {
       return
     }
@@ -67,7 +73,7 @@ const EditInfoPage = ({ location }: Props) => {
     setTimeout(() => history.push(prevURL), 1000)
   }
 
-  const onCancel = () => {
+  const handleCancelClick = () => {
     history.push(prevURL)
   }
 
@@ -75,6 +81,24 @@ const EditInfoPage = ({ location }: Props) => {
     <Container maxWidth="lg">
       <Box mt={2} className={classes.editor}>
         <PageEditor pageContent={data?.content} readOnly={false} />
+      </Box>
+      <Box mt={2} mb={2} display="flex" justifyContent="flex-end">
+        <Button
+          className={classes.button}
+          size="small"
+          variant="contained"
+          color="default"
+          onClick={handleCancelClick}>
+          Cancel
+        </Button>
+        <Button
+          className={classes.button}
+          size="small"
+          variant="contained"
+          color="primary"
+          onClick={handleSaveClick}>
+          Save
+        </Button>
       </Box>
     </Container>
   )
