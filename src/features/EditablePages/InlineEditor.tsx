@@ -47,8 +47,8 @@ const InlineEditor = ({ data }: Props) => {
   })
   const classes = useStyles()
 
-  const onSave = (value: any) => {
-    const valueStr = JSON.stringify(value.toJSON())
+  const handleSaveClick = (value: any) => {
+    const valueStr = JSON.stringify(value)
     if (data?.id === undefined) {
       return
     }
@@ -65,7 +65,7 @@ const InlineEditor = ({ data }: Props) => {
     setReadOnly(true)
   }
 
-  const onCancel = () => {
+  const handleCancelClick = () => {
     setReadOnly(true)
   }
 
@@ -77,6 +77,8 @@ const InlineEditor = ({ data }: Props) => {
         key={readOnly.toString()}
         pageContent={value}
         readOnly={readOnly}
+        handleSave={handleSaveClick}
+        handleCancel={handleCancelClick}
         inline
       />
       {validEditor && (

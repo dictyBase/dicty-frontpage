@@ -38,7 +38,13 @@ const InfoPageView = ({ data }: Props) => {
         />
       )}
       <ThemeProvider theme={theme}>
-        <PageEditor pageContent={data?.content} readOnly theme={theme} />
+        <PageEditor
+          pageContent={data?.content}
+          handleSave={() => {}}
+          handleCancel={() => {}}
+          readOnly
+          theme={theme}
+        />
       </ThemeProvider>
     </Box>
   )
