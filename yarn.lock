@@ -6250,7 +6250,7 @@ dicty-components-login@dictybase/dicty-components-login#4.1.1:
 
 dicty-components-page-editor@dictybase/dicty-components-page-editor#develop:
   version "0.0.0-semantically-released"
-  resolved "https://codeload.github.com/dictybase/dicty-components-page-editor/tar.gz/c09f3f63f9089d7b239b518f971dff9e1c85e16f"
+  resolved "https://codeload.github.com/dictybase/dicty-components-page-editor/tar.gz/e3aa260be259e7b135e9c134ef0fb720ad94d224"
   dependencies:
     "@fontsource/lato" "^4.4.2"
     "@fontsource/merriweather" "^4.4.2"
