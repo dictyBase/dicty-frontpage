@@ -61,13 +61,13 @@ const AddPage = ({ location }: Props) => {
 
   const prevURL = location.state.url
 
-  const onSave = (value: any) => {
+  const handleSaveClick = (value: any) => {
     createContent({
       variables: {
         input: {
           name: slug,
           created_by: user.id,
-          content: JSON.stringify(value.toJSON()),
+          content: JSON.stringify(value),
           namespace: NAMESPACE,
         },
       },
@@ -77,7 +77,7 @@ const AddPage = ({ location }: Props) => {
     }, 800)
   }
 
-  const onCancel = () => {
+  const handleCancelClick = () => {
     history.push(prevURL)
   }
 
@@ -93,7 +93,11 @@ const AddPage = ({ location }: Props) => {
         <Typography variant="h3">{prevURL}</Typography>
       </Box>
       <Box width="80%" m="auto">
-        <PageEditor readOnly={false} />
+        <PageEditor
+          handleSave={handleSaveClick}
+          handleCancel={handleCancelClick}
+          readOnly={false}
+        />
       </Box>
     </React.Fragment>
   )

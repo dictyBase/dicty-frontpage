@@ -66,7 +66,7 @@ const EditInfoPage = ({ location }: Props) => {
         input: {
           id: data.id,
           updated_by: user.id,
-          content: JSON.stringify(value.toJSON()),
+          content: JSON.stringify(value),
         },
       },
     })
@@ -80,25 +80,12 @@ const EditInfoPage = ({ location }: Props) => {
   return (
     <Container maxWidth="lg">
       <Box mt={2} className={classes.editor}>
-        <PageEditor pageContent={data?.content} readOnly={false} />
-      </Box>
-      <Box mt={2} mb={2} display="flex" justifyContent="flex-end">
-        <Button
-          className={classes.button}
-          size="small"
-          variant="contained"
-          color="default"
-          onClick={handleCancelClick}>
-          Cancel
-        </Button>
-        <Button
-          className={classes.button}
-          size="small"
-          variant="contained"
-          color="primary"
-          onClick={handleSaveClick}>
-          Save
-        </Button>
+        <PageEditor
+          pageContent={data?.content}
+          readOnly={false}
+          handleSave={handleSaveClick}
+          handleCancel={handleCancelClick}
+        />
       </Box>
     </Container>
   )
