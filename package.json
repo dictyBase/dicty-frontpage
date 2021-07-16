@@ -32,7 +32,7 @@
     "dicty-components-header-footer": "dictybase/dicty-components-header-footer#11.0.0",
     "dicty-components-login": "dictybase/dicty-components-login#4.1.1",
     "dicty-components-navbar": "github:dictyBase/dicty-components-navbar#2.0.0",
-    "dicty-components-page-editor": "dictybase/dicty-components-page-editor#develop",
+    "dicty-components-page-editor": "dictybase/dicty-components-page-editor#fix/data-nesting",
     "dicty-graphql-schema": "dictybase/dicty-graphql-schema#1.1.0",
     "dicty-hooks": "dictybase/dicty-hooks#3.0.0",
     "font-awesome": "^4.7.0",

@@ -6248,9 +6248,9 @@ dicty-components-login@dictybase/dicty-components-login#4.1.1:
   dependencies:
     polished "^3.4.1"
 
-dicty-components-page-editor@dictybase/dicty-components-page-editor#develop:
+dicty-components-page-editor@dictybase/dicty-components-page-editor#fix/data-nesting:
   version "0.0.0-semantically-released"
-  resolved "https://codeload.github.com/dictybase/dicty-components-page-editor/tar.gz/e3aa260be259e7b135e9c134ef0fb720ad94d224"
+  resolved "https://codeload.github.com/dictybase/dicty-components-page-editor/tar.gz/b50e26641de37653a082ae9c631b6d487ad251e1"
   dependencies:
     "@fontsource/lato" "^4.4.2"
     "@fontsource/merriweather" "^4.4.2"
