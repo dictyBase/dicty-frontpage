@@ -18,32 +18,19 @@ jest.mock("react-router-dom", () => {
   }
 })
 
-const mockContent = {
-  object: "value",
-  document: {
-    object: "document",
-    data: {},
-    nodes: [
+const mockContent = [
+  {
+    type: "paragraph",
+    children: [
       {
-        object: "block",
-        type: "paragraph",
-        data: {},
-        nodes: [
-          {
-            object: "text",
-            leaves: [
-              {
-                object: "leaf",
-                text: "Test Content",
-                marks: [],
-              },
-            ],
-          },
-        ],
+        fontFamily: "inherit",
+        fontSize: "inherit",
+        fontColor: "inherit",
+        text: "Test Content",
       },
     ],
   },
-}
+]
 
 describe("features/EditablePages/InfoPageContainer", () => {
   const MockComponent = ({ mocks }: any) => (

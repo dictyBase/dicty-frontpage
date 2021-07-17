@@ -8,32 +8,19 @@ import MockAuthProvider from "common/mocks/MockAuthProvider"
 
 window.getSelection = jest.fn()
 
-const mockContent = {
-  object: "value",
-  document: {
-    object: "document",
-    data: {},
-    nodes: [
+const mockContent = [
+  {
+    type: "paragraph",
+    children: [
       {
-        object: "block",
-        type: "paragraph",
-        data: {},
-        nodes: [
-          {
-            object: "text",
-            leaves: [
-              {
-                object: "leaf",
-                text: "Test Content",
-                marks: [],
-              },
-            ],
-          },
-        ],
+        fontFamily: "inherit",
+        fontSize: "inherit",
+        fontColor: "inherit",
+        text: "Test Content",
       },
     ],
   },
-}
+]
 
 describe("EditablePages/InlineEditor", () => {
   describe("initial render with editing permission and valid token", () => {
@@ -132,20 +119,7 @@ describe("EditablePages/InlineEditor", () => {
             },
           ],
         },
-        content: JSON.stringify({
-          object: "block",
-          type: "paragraph",
-          nodes: [
-            {
-              object: "text",
-              leaves: [
-                {
-                  text: "Test content",
-                },
-              ],
-            },
-          ],
-        }),
+        content: JSON.stringify(mockContent),
       },
     }
     it("does not display edit button", () => {
