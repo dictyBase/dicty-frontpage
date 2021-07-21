@@ -6248,9 +6248,9 @@ dicty-components-login@dictybase/dicty-components-login#4.1.1:
   dependencies:
     polished "^3.4.1"
 
-dicty-components-page-editor@dictybase/dicty-components-page-editor#3.1.1:
-  version "3.1.1"
-  resolved "https://codeload.github.com/dictybase/dicty-components-page-editor/tar.gz/38feff0db95f35e23ba4f44ecaa858e9d33465d7"
+dicty-components-page-editor@dictybase/dicty-components-page-editor#3.1.2:
+  version "3.1.2"
+  resolved "https://codeload.github.com/dictybase/dicty-components-page-editor/tar.gz/b4c56931aa5978d80dda6dc99fd75f713778be1b"
   dependencies:
     "@fontsource/lato" "^4.4.2"
     "@fontsource/merriweather" "^4.4.2"
