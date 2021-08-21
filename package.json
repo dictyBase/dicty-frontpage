@@ -85,7 +85,7 @@
     "react-docgen-typescript": "^2.0.0",
     "react-styleguidist": "^11.1.7",
     "react-test-renderer": "^16.13.1",
-    "semantic-release": "^17.4.4",
+    "semantic-release": "^17.4.5",
     "snyk": "^1.655.0",
     "source-map-explorer": "^2.5.2",
     "wait-for-expect": "^3.0.2"
