@@ -37,7 +37,7 @@
     "dicty-hooks": "dictybase/dicty-hooks#3.0.0",
     "font-awesome": "^4.7.0",
     "fontsource-roboto": "^4.0.0",
-    "graphql": "^15.5.1",
+    "graphql": "^15.5.3",
     "graphql-tag": "^2.12.5",
     "history": "^4.10.1",
     "jwt-decode": "^3.0.0",
