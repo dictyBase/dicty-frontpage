@@ -5,9 +5,14 @@ module.exports = {
   pagePerSection: true,
   title: "dictyBase Frontpage",
   webpackConfig: require("react-scripts/config/webpack.config")("development"),
-  propsParser: require("react-docgen-typescript").withCustomConfig(
-    "./tsconfig.json",
-  ).parse,
+  propsParser: (filePath, source, resolver, handlers) => {
+    const { ext } = path.parse(filePath)
+    return ext === ".tsx"
+      ? require("react-docgen-typescript")
+          .withCustomConfig(`${process.cwd()}/tsconfig.json`)
+          .parse(filePath, source, resolver, handlers)
+      : require("react-docgen").parse(source, resolver, handlers)
+  },
   ignore: [
     "**/*.test.{js,jsx,ts,tsx}",
     "**/*Styles.{js,jsx,ts,tsx}",
