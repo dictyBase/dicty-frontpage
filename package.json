@@ -82,7 +82,7 @@
     "husky": "7.0.4",
     "lint-staged": "^11.2.4",
     "prettier": "^2.4.1",
-    "react-docgen-typescript": "^2.1.0",
+    "react-docgen-typescript": "^2.1.1",
     "react-styleguidist": "^11.1.7",
     "react-test-renderer": "^16.13.1",
     "semantic-release": "^17.4.7",
