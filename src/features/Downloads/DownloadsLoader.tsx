@@ -11,7 +11,7 @@ const DownloadsLoader = () => (
   <Grid container justify="center">
     <Grid item xs={8}>
       <DownloadsHeader />
-      <SkeletonTheme color="#d1d1d1">
+      <SkeletonTheme baseColor="#d1d1d1">
         <br />
         <Skeleton count={10} />
       </SkeletonTheme>
