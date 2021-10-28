@@ -2,6 +2,21 @@ import React from "react"
 import { makeStyles } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { gql, useQuery } from '@apollo/client';
+
+const GET_RECENT_PAPERS = gql`
+  query GetRecentPapers {
+    publication (first: 4, orderBy: {field: pub_date, direction: DESC}) {
+      journal
+      title
+      pub_date
+      pubmed_id
+      authors {
+        last_name	
+      }
+    }
+  }
+`;
 
 const useStyles = makeStyles({
   container: {
@@ -102,7 +117,16 @@ type Props = {
 /** Widget that displays the latest Dicty papers */
 
 const Papers = ({ papers }: Props) => {
-  const classes = useStyles()
+  const classes = useStyles();
+  const { loading, error, data } = useQuery(GET_RECENT_PAPERS);
+
+  if (loading) {
+    console.log('loading');
+  };
+  if (error){
+    console.log(`Error! ${error.message}`);
+  }
+  
 
   const text = papers.map((paper, index) => (
     <li className={classes.listItem} key={index}>
