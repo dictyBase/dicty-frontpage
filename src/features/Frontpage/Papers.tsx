@@ -5,17 +5,23 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { gql, useQuery } from '@apollo/client';
 
 const GET_RECENT_PAPERS = gql`
-  query GetRecentPapers {
-    publication (first: 4, orderBy: {field: pub_date, direction: DESC}) {
-      journal
-      title
-      pub_date
-      pubmed_id
-      authors {
-        last_name	
-      }
-    }
+query GetRecentPapers {
+  publication (limit: 10, orderBy: {field: pub_date, direction: DESC}) {
+  id
+  doi
+  title
+  abstract
+  journal
+  pub_date
+  pages
+  issue
+  volume
+  authors {
+    initials
+    last_name
   }
+  }
+}
 `;
 
 const useStyles = makeStyles({
