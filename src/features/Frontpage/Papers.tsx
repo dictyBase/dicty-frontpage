@@ -2,27 +2,8 @@ import React from "react"
 import { makeStyles } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { gql, useQuery } from '@apollo/client';
-
-const GET_RECENT_PAPERS = gql`
-query GetRecentPapers {
-  publication (limit: 10, orderBy: {field: pub_date, direction: DESC}) {
-  id
-  doi
-  title
-  abstract
-  journal
-  pub_date
-  pages
-  issue
-  volume
-  authors {
-    initials
-    last_name
-  }
-  }
-}
-`;
+// import { usePublicationQuery } from "dicty-graphql-schema"
+// import { useQuery } from '@apollo/client';
 
 const useStyles = makeStyles({
   container: {
@@ -124,14 +105,21 @@ type Props = {
 
 const Papers = ({ papers }: Props) => {
   const classes = useStyles();
-  const { loading, error, data } = useQuery(GET_RECENT_PAPERS);
+  // const { data, loading, error } = usePublicationQuery(
+  //   {
+  //   variables: {
+  //     id: 
+  //   },
+  // }
+  // );
 
-  if (loading) {
-    console.log('loading');
-  };
-  if (error){
-    console.log(`Error! ${error.message}`);
-  }
+  // if (loading) {
+  //   console.log('loading');
+  //   console.log(data);
+  // };
+  // if (error){
+  //   console.log(`Error! ${error.message}`);
+  // }
   
 
   const text = papers.map((paper, index) => (
