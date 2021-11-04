@@ -13,6 +13,7 @@ const errorFormat = (error: any) => ({
   networkError: null,
   extraInfo: undefined,
   name: "",
+  clientError: []
 })
 
 // jest.mock("react-router-dom", () => {
