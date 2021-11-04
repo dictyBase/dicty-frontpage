@@ -11,6 +11,9 @@ import StockCenter from "./StockCenter"
 import papers from "common/data/papers"
 import annotations from "common/data/annotations"
 import stockcenter from "common/data/stockcenter"
+import Loader from "common/components/Loader"
+import GraphQLErrorPage from "common/components/errors/GraphQLErrorPage"
+import { useListRecentPublicationsQuery } from "dicty-graphql-schema"
 
 const useStyles = makeStyles((theme: Theme) => ({
   topItem: {
@@ -28,6 +31,19 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 const Front = () => {
   const classes = useStyles()
+  const { data, loading, error } = useListRecentPublicationsQuery({
+    variables: {
+       limit: 4
+    },
+ });
+
+ if (loading) {
+   return <Loader />
+ }
+
+ if (error) {
+   return <GraphQLErrorPage error={error} />
+ }
 
   return (
     <div>

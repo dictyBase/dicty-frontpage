@@ -2,8 +2,8 @@ import React from "react"
 import { makeStyles } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-// import { usePublicationQuery } from "dicty-graphql-schema"
-// import { useQuery } from '@apollo/client';
+
+
 
 const useStyles = makeStyles({
   container: {
@@ -105,22 +105,7 @@ type Props = {
 
 const Papers = ({ papers }: Props) => {
   const classes = useStyles();
-  // const { data, loading, error } = usePublicationQuery(
-  //   {
-  //   variables: {
-  //     id: 
-  //   },
-  // }
-  // );
 
-  // if (loading) {
-  //   console.log('loading');
-  //   console.log(data);
-  // };
-  // if (error){
-  //   console.log(`Error! ${error.message}`);
-  // }
-  
 
   const text = papers.map((paper, index) => (
     <li className={classes.listItem} key={index}>
