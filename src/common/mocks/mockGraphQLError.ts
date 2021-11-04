@@ -26,7 +26,6 @@ const mockUnavailableError = {
       positions: undefined,
       originalError: undefined,
       name: "",
-      clientError: []
     },
   ],
 }
@@ -43,7 +42,6 @@ const mockOtherError = {
       positions: undefined,
       originalError: undefined,
       name: "",
-      clientError: []
     },
   ],
 }
