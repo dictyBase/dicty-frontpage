@@ -2,8 +2,9 @@ import React from "react"
 import { makeStyles } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-
-
+import GraphQLErrorPage from "common/components/errors/GraphQLErrorPage"
+import { useListRecentPublicationsQuery } from "dicty-graphql-schema"
+import Loader from "common/components/Loader"
 
 const useStyles = makeStyles({
   container: {
@@ -106,6 +107,19 @@ type Props = {
 const Papers = ({ papers }: Props) => {
   const classes = useStyles();
 
+  const { loading, error } = useListRecentPublicationsQuery({
+    variables: {
+       limit: 4
+    },
+  });
+
+ if (loading) {
+   return <Loader />
+ }
+
+ if (error) {
+   return <GraphQLErrorPage error={error} />
+ }
 
   const text = papers.map((paper, index) => (
     <li className={classes.listItem} key={index}>
