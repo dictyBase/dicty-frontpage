@@ -1,13 +1,13 @@
 import React from "react"
-import { render, screen } from "@testing-library/react"
-import TestRenderer from 'react-test-renderer';
-import { InMemoryCache } from "@apollo/client"
-import { BrowserRouter } from "react-router-dom"
-import Papers from "./Papers"
+// import { render, screen } from "@testing-library/react"
+// import TestRenderer from 'react-test-renderer';
+// import { InMemoryCache } from "@apollo/client"
+// import { BrowserRouter } from "react-router-dom"
+// import Papers from "./Papers"
 import { listOfPublications } from "common/data/mockPublications"
 import { ListRecentPublicationsDocument, useListRecentPublicationsQuery } from "dicty-graphql-schema"
 import { renderHook } from "@testing-library/react-hooks" 
-import { MockedProvider, MockedResponse } from "@apollo/client/testing"
+import { MockedProvider } from "@apollo/client/testing"
 
 
 
