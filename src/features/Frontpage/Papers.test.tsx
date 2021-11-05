@@ -20,7 +20,7 @@ describe("features/Frontpage/Papers", () => {
     },
     result: {
         data: {
-            listPublications: listOfPublications.listPublications
+          listRecentPublications: listOfPublications.listRecentPublications
         },
     }
   }
@@ -50,16 +50,16 @@ describe("features/Frontpage/Papers", () => {
     return { result, waitForNextUpdate };
   }
 
-  // it("Renders fetched data", async () => {
-  //   const { result, waitForNextUpdate } = getHookWrapper([mocks]);
+  it("Renders fetched data", async () => {
+    const { result, waitForNextUpdate } = getHookWrapper([mocks]);
 
-  //   await waitForNextUpdate();
-  //   console.log(result);
+    await waitForNextUpdate();
+    console.log(result.current);
 
-  //   expect(result.current.loading).toBeFalsy();
-  //   expect(result.current.error).toBeUndefined();
-  //   // expect(result.current.data?.listRecentPublications).toEqual();
-  // });
+    expect(result.current.loading).toBeFalsy();
+    expect(result.current.error).toBeUndefined();
+    // expect(result.current.data?.listRecentPublications).toEqual();
+  });
   
   it("Handle Errors as expected", async () => {
     const { result, waitForNextUpdate } = getHookWrapper([ListRecentPublicationsErrorMock]);
