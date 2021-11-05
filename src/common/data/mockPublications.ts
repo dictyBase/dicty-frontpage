@@ -1,5 +1,5 @@
 const listOfPublications = {
-    listPublications: [
+  listRecentPublications: [
         {
           id: '1',
           doi: '/publication/31108912',
