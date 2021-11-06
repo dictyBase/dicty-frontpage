@@ -38,7 +38,7 @@
     "font-awesome": "^4.7.0",
     "fontsource-roboto": "^4.0.0",
     "graphql": "^15.7.2",
-    "graphql-tag": "^2.12.5",
+    "graphql-tag": "^2.12.6",
     "history": "^4.10.1",
     "jwt-decode": "^3.0.0",
     "localforage": "^1.10.0",
