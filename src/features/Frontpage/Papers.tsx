@@ -5,6 +5,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import GraphQLErrorPage from "common/components/errors/GraphQLErrorPage"
 import { useListRecentPublicationsQuery } from "dicty-graphql-schema"
 import Loader from "common/components/Loader"
+import { listOfPublications } from "common/data/mockPublications"
+
 
 const useStyles = makeStyles({
   container: {
@@ -92,58 +94,71 @@ const useStyles = makeStyles({
 })
 
 type Paper = {
-  author: string
+  id: string
+  doi: string
   title: string
+  abstract: string
   journal: string
-  link: string
+  pub_date: string
+  pages: string
+  issue: string
+  volume: string
+  authors: {
+    initials: string
+    last_name: string
+  }
 }
 
-type Props = {
-  papers: Paper[]
-}
+// type DataResponse = {
+//   listRecentPublications: Paper[]
+// }
 
 /** Widget that displays the latest Dicty papers */
 
 const Papers = () => {
   const classes = useStyles();
 
-  const { loading, error } = useListRecentPublicationsQuery({
+  let { loading, error, data } = useListRecentPublicationsQuery({
     variables: {
        limit: 4
     },
   });
+
+
 
  if (loading) {
    return <Loader />
  }
 
  if (error) {
+   console.log(error);
    return <GraphQLErrorPage error={error} />
  }
 
-  // const text = papers.map((paper, index) => (
-  //   <li className={classes.listItem} key={index}>
-  //     <span className={classes.leadText}>{paper.author}</span>
-  //     <span className={classes.mainContent}>
-  //       <strong>
-  //         <em>{paper.title}</em>
-  //       </strong>
-  //     </span>
-  //     <br />
-  //     <span className={classes.sourceContent}>
-  //       <span className={classes.sourceTitle}>Journal: </span>
-  //       {paper.journal}
-  //       <a
-  //         className={classes.link}
-  //         href={paper.link}
-  //         target="_blank"
-  //         rel="noopener noreferrer">
-  //         {" "}
-  //         Pubmed
-  //       </a>
-  //     </span>
-  //   </li>
-  // ))
+  const text = (data?.listRecentPublications)?.map((paper, index) => (
+      <li className={classes.listItem} key={index}>
+        <span className={classes.leadText}>{paper.authors.last_name}</span>
+        <span className={classes.mainContent}>
+          <strong>
+            <em>{paper.title}</em>
+          </strong>
+        </span>
+        <br />
+        <span className={classes.sourceContent}>
+          <span className={classes.sourceTitle}>Journal: </span>
+          {paper.journal}
+          <a
+            className={classes.link}
+            href={paper.doi}
+            target="_blank"
+            rel="noopener noreferrer">
+            {" "}
+            Pubmed
+          </a>
+        </span>
+      </li>
+     ));
+  
 
   return (
     <div className={classes.container}>
@@ -155,7 +170,7 @@ const Papers = () => {
           <span className={classes.title}> LATEST PAPERS</span>
         </Grid>
       </div>
-      <ul className={classes.listBox}></ul>
+      <ul className={classes.listBox}>{text}</ul>
       <div className={classes.bottomLink}>
         {/* <FontAwesome name="plus" />
         <Link to="/papers" alt="more papers">
