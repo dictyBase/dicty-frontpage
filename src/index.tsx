@@ -8,6 +8,12 @@ import AppProviders from "app/layout/AppProviders"
 import "common/utils/icons" // fontawesome library
 import "fontsource-roboto"
 
+
+if (process.env.NODE_ENV === 'development') {
+  const  { worker } = require('./common/mocks/browser')
+  worker.start()
+}
+
 ReactDOM.render(
   <AuthProvider>
     <AppProviders>
