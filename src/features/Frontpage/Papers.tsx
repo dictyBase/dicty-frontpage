@@ -104,7 +104,7 @@ type Props = {
 
 /** Widget that displays the latest Dicty papers */
 
-const Papers = ({ papers }: Props) => {
+const Papers = () => {
   const classes = useStyles();
 
   const { loading, error } = useListRecentPublicationsQuery({
@@ -121,29 +121,29 @@ const Papers = ({ papers }: Props) => {
    return <GraphQLErrorPage error={error} />
  }
 
-  const text = papers.map((paper, index) => (
-    <li className={classes.listItem} key={index}>
-      <span className={classes.leadText}>{paper.author}</span>
-      <span className={classes.mainContent}>
-        <strong>
-          <em>{paper.title}</em>
-        </strong>
-      </span>
-      <br />
-      <span className={classes.sourceContent}>
-        <span className={classes.sourceTitle}>Journal: </span>
-        {paper.journal}
-        <a
-          className={classes.link}
-          href={paper.link}
-          target="_blank"
-          rel="noopener noreferrer">
-          {" "}
-          Pubmed
-        </a>
-      </span>
-    </li>
-  ))
+  // const text = papers.map((paper, index) => (
+  //   <li className={classes.listItem} key={index}>
+  //     <span className={classes.leadText}>{paper.author}</span>
+  //     <span className={classes.mainContent}>
+  //       <strong>
+  //         <em>{paper.title}</em>
+  //       </strong>
+  //     </span>
+  //     <br />
+  //     <span className={classes.sourceContent}>
+  //       <span className={classes.sourceTitle}>Journal: </span>
+  //       {paper.journal}
+  //       <a
+  //         className={classes.link}
+  //         href={paper.link}
+  //         target="_blank"
+  //         rel="noopener noreferrer">
+  //         {" "}
+  //         Pubmed
+  //       </a>
+  //     </span>
+  //   </li>
+  // ))
 
   return (
     <div className={classes.container}>
@@ -155,7 +155,7 @@ const Papers = ({ papers }: Props) => {
           <span className={classes.title}> LATEST PAPERS</span>
         </Grid>
       </div>
-      <ul className={classes.listBox}>{text}</ul>
+      <ul className={classes.listBox}></ul>
       <div className={classes.bottomLink}>
         {/* <FontAwesome name="plus" />
         <Link to="/papers" alt="more papers">
