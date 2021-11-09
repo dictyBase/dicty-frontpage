@@ -8,7 +8,6 @@ import Papers from "./Papers"
 import Popular from "./Popular"
 import Annotations from "./Annotations"
 import StockCenter from "./StockCenter"
-import papers from "common/data/papers"
 import annotations from "common/data/annotations"
 import stockcenter from "common/data/stockcenter"
 
