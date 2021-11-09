@@ -1,17 +1,36 @@
 import React from "react"
-// import { render, screen } from "@testing-library/react"
-// import TestRenderer from 'react-test-renderer';
-// import { InMemoryCache } from "@apollo/client"
-// import { BrowserRouter } from "react-router-dom"
-// import Papers from "./Papers"
+import { render, screen } from "@testing-library/react"
+import { ApolloProvider } from '@apollo/client'
+import { client } from './ApolloPapersClient'
+import TestRenderer from 'react-test-renderer';
+import { InMemoryCache } from "@apollo/client"
+import { BrowserRouter } from "react-router-dom"
+import Papers from "./Papers"
 import { listOfPublications } from "common/data/mockPublications"
 import { ListRecentPublicationsDocument, useListRecentPublicationsQuery } from "dicty-graphql-schema"
 import { renderHook } from "@testing-library/react-hooks" 
 import { MockedProvider } from "@apollo/client/testing"
 
 
-
 describe("features/Frontpage/Papers", () => {
+  it('should render publications', async () => {
+    render(
+      <ApolloProvider client={client}>
+      <Papers />
+    </ApolloProvider>
+    )
+
+    const author = await screen.findByTestId('data-author-1')
+    const title = await screen.findByTestId('paper-title-1')
+    const journal = await screen.findByTestId('paper-journal-1')
+
+    expect(author).toHaveTextContent('Tanaka, Jahan, Kondo, Nakano & Yumura (2019)')
+    expect(title).toHaveTextContent('Cytokinesis D is Mediated by Cortical Flow of Dividing Cells Instead of Chemotaxis.')
+    expect(journal).toHaveTextContent('Cells 8')
+  })
+})
+
+describe("ListRecentPublicationsDocument Query", () => {
   
   const mocks =  {
     request: {
@@ -36,7 +55,10 @@ describe("features/Frontpage/Papers", () => {
 
   const getHookWrapper = (mocks:any) => {
     const wrapper = ({ children }: any) => (
-      <MockedProvider mocks={mocks} addTypename={false}>
+      <MockedProvider mocks={mocks} addTypename={false}                defaultOptions={{
+        watchQuery: { fetchPolicy: 'no-cache' },
+        query: { fetchPolicy: 'no-cache' },
+    }}>
         {children}
       </MockedProvider>
     );

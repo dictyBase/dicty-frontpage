@@ -137,16 +137,16 @@ const Papers = () => {
 
   const text = (data?.listRecentPublications)?.map((paper, index) => (
       <li className={classes.listItem} key={index}>
-        <span className={classes.leadText}>{paper.authors.last_name}</span>
+        <span data-testid={"paper-author-"+index} className={classes.leadText}>{paper.authors.last_name}</span>
         <span className={classes.mainContent}>
           <strong>
-            <em>{paper.title}</em>
+            <em data-testid={"paper-title-"+index}>{paper.title}</em>
           </strong>
         </span>
         <br />
         <span className={classes.sourceContent}>
           <span className={classes.sourceTitle}>Journal: </span>
-          {paper.journal}
+          <span data-testid={"paper-journal-"+index}>{paper.journal}</span>
           <a
             className={classes.link}
             href={paper.doi}
