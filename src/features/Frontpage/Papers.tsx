@@ -104,8 +104,8 @@ type Paper = {
   issue: string
   volume: string
   authors: {
-    initials: string
-    last_name: string
+    initials: string[]
+    last_name: string[]
   }
 }
 
@@ -134,29 +134,40 @@ const Papers = () => {
    return <GraphQLErrorPage error={error} />
  }
 
-  // const text = (data?.listRecentPublications)?.map((paper, index) => (
-  //     <li className={classes.listItem} key={index}>
-  //       <span data-testid={"paper-author-"+index} className={classes.leadText}>{paper.authors.last_name}</span>
-  //       <span className={classes.mainContent}>
-  //         <strong>
-  //           <em data-testid={"paper-title-"+index}>{paper.title}</em>
-  //         </strong>
-  //       </span>
-  //       <br />
-  //       <span className={classes.sourceContent}>
-  //         <span className={classes.sourceTitle}>Journal: </span>
-  //         <span data-testid={"paper-journal-"+index}>{paper.journal}</span>
-  //         <a
-  //           className={classes.link}
-  //           href={paper.doi}
-  //           target="_blank"
-  //           rel="noopener noreferrer">
-  //           {" "}
-  //           Pubmed
-  //         </a>
-  //       </span>
-  //     </li>
-  //    ));
+
+ const text = data?.listRecentPublications?.map((paper, index) => {
+  const authors = paper?.authors
+  const doi = paper?.doi
+  if (!authors) return <></>
+  const lastname = authors[0]?.last_name
+  return (
+    <li className={classes.listItem} key={index}>
+      <span
+        data-testid={"paper-author-" + index}
+        className={classes.leadText}>
+        {lastname ? lastname : ""}
+      </span>
+      <span className={classes.mainContent}>
+        <strong>
+          <em data-testid={"paper-title-" + index}>{paper.title}</em>
+        </strong>
+      </span>
+      <br />
+      <span className={classes.sourceContent}>
+        <span className={classes.sourceTitle}>Journal: </span>
+        <span data-testid={"paper-journal-" + index}>{paper.journal}</span>
+        <a
+          className={classes.link}
+          href={doi ? doi : ""}
+          target="_blank"
+          rel="noopener noreferrer">
+          {" "}
+          Pubmed
+        </a>
+      </span>
+    </li>
+  )
+})
   
 
   return (
@@ -169,7 +180,7 @@ const Papers = () => {
           <span className={classes.title}> LATEST PAPERS</span>
         </Grid>
       </div>
-      <ul className={classes.listBox}></ul>
+      <ul className={classes.listBox}>{text}</ul>
       <div className={classes.bottomLink}>
         {/* <FontAwesome name="plus" />
         <Link to="/papers" alt="more papers">

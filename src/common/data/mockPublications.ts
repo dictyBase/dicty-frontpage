@@ -11,8 +11,8 @@ const listOfPublications = {
           issue: '',
           volume: '',
           authors: {
-            initials: '',
-            last_name: 'Tanaka, Jahan, Kondo, Nakano & Yumura (2019)'
+            initials: [''],
+            last_name: ['Tanaka', 'Jahan', 'Kondo', 'Nakano & Yumura (2019)']
           }
         },
         {
@@ -26,8 +26,8 @@ const listOfPublications = {
             issue: '',
             volume: '',
             authors: {
-              initials: '',
-              last_name: 'Odell, Sikirzhytski, Tikhonenko, Cobani, Khodjakov & Koonce (2019)'
+              initials: [''],
+              last_name: ['Odell', 'Sikirzhytski', 'Tikhonenko', 'Cobani', 'Khodjakov & Koonce (2019)']
             }
         },
         {
@@ -41,8 +41,8 @@ const listOfPublications = {
             issue: '',
             volume: '',
             authors: {
-              initials: '',
-              last_name: 'Chen, Luck, Rabe, Dinh, Shaulsky, Nelson, Gershenzon, Dickschat, Kollner & Chen (2019)'
+              initials: [''],
+              last_name: ['Chen', 'Luck', 'Rabe', 'Dinh', 'Shaulsky', 'Nelson', 'Gershenzon', 'Dickschat', 'Kollner & Chen (2019)']
             }
         },
         {
@@ -56,8 +56,8 @@ const listOfPublications = {
             issue: '',
             volume: '',
             authors: {
-              initials: '',
-              last_name: 'Yamada & Schaap (2019)'
+              initials: [''],
+              last_name: ['Yamada & Schaap (2019)']
             }
         },
     ]
