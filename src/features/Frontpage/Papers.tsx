@@ -124,40 +124,39 @@ const Papers = () => {
     },
   });
 
-
-
  if (loading) {
    return <Loader />
  }
 
  if (error) {
+   console.log(data);
    console.log(error);
    return <GraphQLErrorPage error={error} />
  }
 
-  const text = (data?.listRecentPublications)?.map((paper, index) => (
-      <li className={classes.listItem} key={index}>
-        <span data-testid={"paper-author-"+index} className={classes.leadText}>{paper.authors.last_name}</span>
-        <span className={classes.mainContent}>
-          <strong>
-            <em data-testid={"paper-title-"+index}>{paper.title}</em>
-          </strong>
-        </span>
-        <br />
-        <span className={classes.sourceContent}>
-          <span className={classes.sourceTitle}>Journal: </span>
-          <span data-testid={"paper-journal-"+index}>{paper.journal}</span>
-          <a
-            className={classes.link}
-            href={paper.doi}
-            target="_blank"
-            rel="noopener noreferrer">
-            {" "}
-            Pubmed
-          </a>
-        </span>
-      </li>
-     ));
+  // const text = (data?.listRecentPublications)?.map((paper, index) => (
+  //     <li className={classes.listItem} key={index}>
+  //       <span data-testid={"paper-author-"+index} className={classes.leadText}>{paper.authors.last_name}</span>
+  //       <span className={classes.mainContent}>
+  //         <strong>
+  //           <em data-testid={"paper-title-"+index}>{paper.title}</em>
+  //         </strong>
+  //       </span>
+  //       <br />
+  //       <span className={classes.sourceContent}>
+  //         <span className={classes.sourceTitle}>Journal: </span>
+  //         <span data-testid={"paper-journal-"+index}>{paper.journal}</span>
+  //         <a
+  //           className={classes.link}
+  //           href={paper.doi}
+  //           target="_blank"
+  //           rel="noopener noreferrer">
+  //           {" "}
+  //           Pubmed
+  //         </a>
+  //       </span>
+  //     </li>
+  //    ));
   
 
   return (
@@ -170,7 +169,7 @@ const Papers = () => {
           <span className={classes.title}> LATEST PAPERS</span>
         </Grid>
       </div>
-      <ul className={classes.listBox}>{text}</ul>
+      <ul className={classes.listBox}></ul>
       <div className={classes.bottomLink}>
         {/* <FontAwesome name="plus" />
         <Link to="/papers" alt="more papers">
