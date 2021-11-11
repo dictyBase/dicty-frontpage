@@ -2,9 +2,9 @@ import React from "react"
 import { render, screen } from "@testing-library/react"
 import { ApolloProvider } from '@apollo/client'
 import { client } from './ApolloPapersClient'
-import TestRenderer from 'react-test-renderer';
-import { InMemoryCache } from "@apollo/client"
-import { BrowserRouter } from "react-router-dom"
+// import TestRenderer from 'react-test-renderer';
+// import { InMemoryCache } from "@apollo/client"
+// import { BrowserRouter } from "react-router-dom"
 import Papers from "./Papers"
 import { listOfPublications } from "common/data/mockPublications"
 import { ListRecentPublicationsDocument, useListRecentPublicationsQuery } from "dicty-graphql-schema"
@@ -20,6 +20,7 @@ describe("features/Frontpage/Papers", () => {
     </ApolloProvider>
     )
 
+    /* Check to see that the information displays correctly */
     const author = await screen.findByTestId('data-author-1')
     const title = await screen.findByTestId('paper-title-1')
     const journal = await screen.findByTestId('paper-journal-1')
@@ -27,6 +28,16 @@ describe("features/Frontpage/Papers", () => {
     expect(author).toHaveTextContent('Tanaka, Jahan, Kondo, Nakano & Yumura (2019)')
     expect(title).toHaveTextContent('Cytokinesis D is Mediated by Cortical Flow of Dividing Cells Instead of Chemotaxis.')
     expect(journal).toHaveTextContent('Cells 8')
+
+    const author2 = await screen.findByTestId('data-author-2')
+    const author3 = await screen.findByTestId('data-author-3')
+    const author4 = await screen.findByTestId('data-author-4')
+
+    /* Check to see that the rest of the Journals loaded in */
+    expect(author2).toBeInTheDocument();
+    expect(author3).toBeInTheDocument();
+    expect(author4).toBeInTheDocument();
+
   })
 })
 
