@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import GraphQLErrorPage from "common/components/errors/GraphQLErrorPage"
 import { useListRecentPublicationsQuery } from "dicty-graphql-schema"
 import Loader from "common/components/Loader"
-import { listOfPublications } from "common/data/mockPublications"
+// import { listOfPublications } from "common/data/mockPublications"
 
 
 const useStyles = makeStyles({
@@ -93,21 +93,21 @@ const useStyles = makeStyles({
   },
 })
 
-type Paper = {
-  id: string
-  doi: string
-  title: string
-  abstract: string
-  journal: string
-  pub_date: string
-  pages: string
-  issue: string
-  volume: string
-  authors: {
-    initials: string[]
-    last_name: string[]
-  }
-}
+// type Paper = {
+//   id: string
+//   doi: string
+//   title: string
+//   abstract: string
+//   journal: string
+//   pub_date: string
+//   pages: string
+//   issue: string
+//   volume: string
+//   authors: {
+//     initials: string[]
+//     last_name: string[]
+//   }
+// }
 
 // type DataResponse = {
 //   listRecentPublications: Paper[]
@@ -118,6 +118,7 @@ type Paper = {
 const Papers = () => {
   const classes = useStyles();
 
+  let text;
   let { loading, error, data } = useListRecentPublicationsQuery({
     variables: {
        limit: 4
@@ -134,40 +135,41 @@ const Papers = () => {
    return <GraphQLErrorPage error={error} />
  }
 
-
- const text = data?.listRecentPublications?.map((paper, index) => {
-  const authors = paper?.authors
-  const doi = paper?.doi
-  if (!authors) return <></>
-  const lastname = authors[0]?.last_name
-  return (
-    <li className={classes.listItem} key={index}>
-      <span
-        data-testid={"paper-author-" + index}
-        className={classes.leadText}>
-        {lastname ? lastname : ""}
-      </span>
-      <span className={classes.mainContent}>
-        <strong>
-          <em data-testid={"paper-title-" + index}>{paper.title}</em>
-        </strong>
-      </span>
-      <br />
-      <span className={classes.sourceContent}>
-        <span className={classes.sourceTitle}>Journal: </span>
-        <span data-testid={"paper-journal-" + index}>{paper.journal}</span>
-        <a
-          className={classes.link}
-          href={doi ? doi : ""}
-          target="_blank"
-          rel="noopener noreferrer">
-          {" "}
-          Pubmed
-        </a>
-      </span>
-    </li>
-  )
-})
+ if(data) {
+  text = data?.listRecentPublications?.map((paper, index) => {
+    const authors = paper?.authors
+    const doi = paper?.doi
+    if (!authors) return <></>
+    const lastname = authors[0]?.last_name
+    return (
+      <li className={classes.listItem} key={index}>
+        <span
+          data-testid={"paper-author-" + index}
+          className={classes.leadText}>
+          {lastname ? lastname : ""}
+        </span>
+        <span className={classes.mainContent}>
+          <strong>
+            <em data-testid={"paper-title-" + index}>{paper.title}</em>
+          </strong>
+        </span>
+        <br />
+        <span className={classes.sourceContent}>
+          <span className={classes.sourceTitle}>Journal: </span>
+          <span data-testid={"paper-journal-" + index}>{paper.journal}</span>
+          <a
+            className={classes.link}
+            href={doi ? doi : ""}
+            target="_blank"
+            rel="noopener noreferrer">
+            {" "}
+            Pubmed
+          </a>
+        </span>
+      </li>
+    )
+  })
+ }
   
 
   return (

@@ -10,98 +10,154 @@ import { listOfPublications } from "common/data/mockPublications"
 import { ListRecentPublicationsDocument, useListRecentPublicationsQuery } from "dicty-graphql-schema"
 import { renderHook } from "@testing-library/react-hooks" 
 import { MockedProvider } from "@apollo/client/testing"
+import { setupServer } from 'msw/node'
+import { graphql } from "msw"
 
+const server = setupServer(
+  // rest.post('/login', (req, res, ctx) => {
+  //   // Respond with a mocked user token that gets persisted
+  //   // in the `sessionStorage` by the `Login` component.
+  //   return res(ctx.json({ token: 'mocked_user_token' }))
+  // }),
+  graphql.query("ListRecentPublications", (req, res, ctx) => {
+    const { limit } = req.variables
 
-describe("features/Frontpage/Papers", () => {
-  it('should render publications', async () => {
+    console.log("ListRecentPublications is called")
+
+    if (limit === 4) {
+      return res(
+        ctx.data({
+          listRecentPublications: listOfPublications.listRecentPublications,
+        }),
+      )
+    }
+  }),
+)
+
+// Enable API mocking before tests.
+beforeAll(() => server.listen())
+
+// Reset any runtime request handlers we may add during the tests.
+afterEach(() => server.resetHandlers())
+
+// Disable API mocking after the tests are done.
+afterAll(() => server.close())
+
+test('allows user to log in', async () => {
     render(
-      <ApolloProvider client={client}>
-      <Papers />
-    </ApolloProvider>
+      // <ApolloProvider client={client}>
+        <Papers />
+      // </ApolloProvider>
     )
+  // Render components, perform requests, receive mocked responses.
+  const author = await screen.findByTestId('data-author-1')
+  const title = await screen.findByTestId('paper-title-1')
+  const journal = await screen.findByTestId('paper-journal-1')
 
-    /* Check to see that the information displays correctly */
-    const author = await screen.findByTestId('data-author-1')
-    const title = await screen.findByTestId('paper-title-1')
-    const journal = await screen.findByTestId('paper-journal-1')
+  expect(author).toHaveTextContent('Tanaka, Jahan, Kondo, Nakano & Yumura (2019)')
+  expect(title).toHaveTextContent('Cytokinesis D is Mediated by Cortical Flow of Dividing Cells Instead of Chemotaxis.')
+  expect(journal).toHaveTextContent('Cells 8')
 
-    expect(author).toHaveTextContent('Tanaka, Jahan, Kondo, Nakano & Yumura (2019)')
-    expect(title).toHaveTextContent('Cytokinesis D is Mediated by Cortical Flow of Dividing Cells Instead of Chemotaxis.')
-    expect(journal).toHaveTextContent('Cells 8')
+  const author2 = await screen.findByTestId('data-author-2')
+  const author3 = await screen.findByTestId('data-author-3')
+  const author4 = await screen.findByTestId('data-author-4')
 
-    const author2 = await screen.findByTestId('data-author-2')
-    const author3 = await screen.findByTestId('data-author-3')
-    const author4 = await screen.findByTestId('data-author-4')
-
-    /* Check to see that the rest of the Journals loaded in */
-    expect(author2).toBeInTheDocument();
-    expect(author3).toBeInTheDocument();
-    expect(author4).toBeInTheDocument();
-
-  })
+  /* Check to see that the rest of the Journals loaded in */
+  expect(author2).toBeInTheDocument();
+  expect(author3).toBeInTheDocument();
+  expect(author4).toBeInTheDocument();
 })
 
-describe("ListRecentPublicationsDocument Query", () => {
+// describe("features/Frontpage/Papers", () => {
+//   it('should render publications', async () => {
+//     render(
+//       <ApolloProvider client={client}>
+//         <Papers />
+//       </ApolloProvider>
+//     )
+
+//     /* Check to see that the information displays correctly */
+//     const author = await screen.findByTestId('data-author-1')
+//     const title = await screen.findByTestId('paper-title-1')
+//     const journal = await screen.findByTestId('paper-journal-1')
+
+//     expect(author).toHaveTextContent('Tanaka, Jahan, Kondo, Nakano & Yumura (2019)')
+//     expect(title).toHaveTextContent('Cytokinesis D is Mediated by Cortical Flow of Dividing Cells Instead of Chemotaxis.')
+//     expect(journal).toHaveTextContent('Cells 8')
+
+//     const author2 = await screen.findByTestId('data-author-2')
+//     const author3 = await screen.findByTestId('data-author-3')
+//     const author4 = await screen.findByTestId('data-author-4')
+
+//     /* Check to see that the rest of the Journals loaded in */
+//     expect(author2).toBeInTheDocument();
+//     expect(author3).toBeInTheDocument();
+//     expect(author4).toBeInTheDocument();
+
+//   })
+// })
+
+// describe("ListRecentPublicationsDocument Query", () => {
   
-  const mocks =  {
-    request: {
-        query: ListRecentPublicationsDocument,
-        variables: 4
-    },
-    result: {
-        data: {
-          listRecentPublications: listOfPublications.listRecentPublications
-        },
-    }
-  }
+//   const mocks =  {
+//     request: {
+//         query: ListRecentPublicationsDocument,
+//         variables: 4
+//     },
+//     result: {
+//         data: {
+//           listRecentPublications: listOfPublications.listRecentPublications
+//         },
+//     }
+//   }
   
-  const ListRecentPublicationsErrorMock = {
-      request: {
-        query: ListRecentPublicationsDocument,
-        variables: 4
-      },
-      error: new Error("GraphQL Query Failed")
-    }
+//   const ListRecentPublicationsErrorMock = {
+//       request: {
+//         query: ListRecentPublicationsDocument,
+//         variables: 4
+//       },
+//       error: new Error("GraphQL Query Failed")
+//     }
 
 
-  const getHookWrapper = (mocks:any) => {
-    const wrapper = ({ children }: any) => (
-      <MockedProvider mocks={mocks} addTypename={false}                defaultOptions={{
-        watchQuery: { fetchPolicy: 'no-cache' },
-        query: { fetchPolicy: 'no-cache' },
-    }}>
-        {children}
-      </MockedProvider>
-    );
-    const { result, waitForNextUpdate } = renderHook(() => useListRecentPublicationsQuery(), {
-    wrapper
-    });
-    // Test the initial state of the request
-    expect(result.current.loading).toBeTruthy();
-    expect(result.current.error).toBeUndefined();
-    expect(result.current.data?.listRecentPublications).toBeUndefined();
-    return { result, waitForNextUpdate };
-  }
+//   const getHookWrapper = (mocks:any) => {
+//     const wrapper = ({ children }: any) => (
+//       <MockedProvider mocks={mocks} addTypename={false}                defaultOptions={{
+//         watchQuery: { fetchPolicy: 'no-cache' },
+//         query: { fetchPolicy: 'no-cache' },
+//     }}>
+//         {children}
+//       </MockedProvider>
+//     );
+//     const { result, waitForNextUpdate } = renderHook(() => useListRecentPublicationsQuery(), {
+//     wrapper
+//     });
+//     // Test the initial state of the request
+//     expect(result.current.loading).toBeTruthy();
+//     expect(result.current.error).toBeUndefined();
+//     expect(result.current.data?.listRecentPublications).toBeUndefined();
+//     return { result, waitForNextUpdate };
+//   }
 
-  it("Renders fetched data", async () => {
-    const { result, waitForNextUpdate } = getHookWrapper([mocks]);
+//   it("Renders fetched data", async () => {
+//     const { result, waitForNextUpdate } = getHookWrapper([mocks]);
 
-    await waitForNextUpdate();
-    console.log(result.current);
+//     await waitForNextUpdate();
+//     console.log(result.current);
 
-    expect(result.current.loading).toBeFalsy();
-    expect(result.current.error).toBeUndefined();
-    // expect(result.current.data?.listRecentPublications).toEqual();
-  });
+//     expect(result.current.loading).toBeFalsy();
+//     expect(result.current.error).toBeUndefined();
+//     // expect(result.current.data?.listRecentPublications).toEqual();
+//   });
   
-  it("Handle Errors as expected", async () => {
-    const { result, waitForNextUpdate } = getHookWrapper([ListRecentPublicationsErrorMock]);
+//   it("Handle Errors as expected", async () => {
+//     const { result, waitForNextUpdate } = getHookWrapper([ListRecentPublicationsErrorMock]);
 
-    await waitForNextUpdate();
+//     await waitForNextUpdate();
 
-    expect(result.current.loading).toBeFalsy();
-    expect(result.current.error).toBeTruthy();
-    expect(result.current.data?.listRecentPublications).toBeUndefined();
-  });
+//     expect(result.current.loading).toBeFalsy();
+//     expect(result.current.error).toBeTruthy();
+//     expect(result.current.data?.listRecentPublications).toBeUndefined();
+//   });
 
-  })
+//   })
