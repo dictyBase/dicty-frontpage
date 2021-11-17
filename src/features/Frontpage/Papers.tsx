@@ -2,6 +2,11 @@ import React from "react"
 import { makeStyles } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import GraphQLErrorPage from "common/components/errors/GraphQLErrorPage"
+import { useListRecentPublicationsQuery } from "dicty-graphql-schema"
+import Loader from "common/components/Loader"
+// import { listOfPublications } from "common/data/mockPublications"
+
 
 const useStyles = makeStyles({
   container: {
@@ -88,45 +93,89 @@ const useStyles = makeStyles({
   },
 })
 
-type Paper = {
-  author: string
-  title: string
-  journal: string
-  link: string
-}
+// type Paper = {
+//   id: string
+//   doi: string
+//   title: string
+//   abstract: string
+//   journal: string
+//   pub_date: string
+//   pages: string
+//   issue: string
+//   volume: string
+//   authors: {
+//     initials: string[]
+//     last_name: string[]
+//   }
+// }
 
-type Props = {
-  papers: Paper[]
-}
+// type DataResponse = {
+//   listRecentPublications: Paper[]
+// }
 
 /** Widget that displays the latest Dicty papers */
 
-const Papers = ({ papers }: Props) => {
-  const classes = useStyles()
+const Papers = () => {
+  const classes = useStyles();
 
-  const text = papers.map((paper, index) => (
-    <li className={classes.listItem} key={index}>
-      <span className={classes.leadText}>{paper.author}</span>
-      <span className={classes.mainContent}>
-        <strong>
-          <em>{paper.title}</em>
-        </strong>
-      </span>
-      <br />
-      <span className={classes.sourceContent}>
-        <span className={classes.sourceTitle}>Journal: </span>
-        {paper.journal}
-        <a
-          className={classes.link}
-          href={paper.link}
-          target="_blank"
-          rel="noopener noreferrer">
-          {" "}
-          Pubmed
-        </a>
-      </span>
-    </li>
-  ))
+  let text;
+  let { loading, error, data } = useListRecentPublicationsQuery({
+    variables: {
+       limit: 4
+    },
+  });
+
+ if (loading) {
+   return <Loader />
+ }
+
+ if (error) {
+   console.log(data);
+   console.log(error);
+   return <GraphQLErrorPage error={error} />
+ }
+
+ if(data) {
+  text = data?.listRecentPublications?.map((paper, index) => {
+    const authors = paper?.authors
+    const doi = paper?.doi
+    let lastname;
+    if (!authors) return <></>
+    if (Array.isArray(authors[0]?.last_name)) {
+      lastname = (authors[0]?.last_name)?.join(", ")
+    } else {
+      lastname = authors[0]?.last_name
+    }
+    return (
+      <li className={classes.listItem} key={index}>
+        <span
+          data-testid={"paper-author-" + index}
+          className={classes.leadText}>
+          {lastname ? lastname : ""}
+        </span>
+        <span className={classes.mainContent}>
+          <strong>
+            <em data-testid={"paper-title-" + index}>{paper.title}</em>
+          </strong>
+        </span>
+        <br />
+        <span className={classes.sourceContent}>
+          <span className={classes.sourceTitle}>Journal: </span>
+          <span data-testid={"paper-journal-" + index}>{paper.journal}</span>
+          <a
+            className={classes.link}
+            href={doi ? doi : ""}
+            target="_blank"
+            rel="noopener noreferrer">
+            {" "}
+            Pubmed
+          </a>
+        </span>
+      </li>
+    )
+  })
+ }
+  
 
   return (
     <div className={classes.container}>

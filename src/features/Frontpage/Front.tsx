@@ -8,7 +8,6 @@ import Papers from "./Papers"
 import Popular from "./Popular"
 import Annotations from "./Annotations"
 import StockCenter from "./StockCenter"
-import papers from "common/data/papers"
 import annotations from "common/data/annotations"
 import stockcenter from "common/data/stockcenter"
 
@@ -48,7 +47,7 @@ const Front = () => {
           <Tweets />
         </Grid>
         <Grid item className={classes.topItem} xs={12} lg={6} xl={4}>
-          <Papers papers={papers.slice(0, 4)} />
+          <Papers/>
         </Grid>
         <Grid item className={classes.topItem} xs={12} sm={6} lg={3}>
           <Popular />
