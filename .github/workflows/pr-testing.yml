@@ -8,7 +8,7 @@ jobs:
       - name: set up node.js
         uses: actions/setup-node@v2.4.1
         with:
-          node-version: 14.16.1
+          node-version: 16
       - name: check out code
         uses: actions/checkout@v2
       - name: rename config file
@@ -17,7 +17,7 @@ jobs:
         run: yarn install
       - name: run eslint
         run: yarn lint
-      - name: run typescript build 
+      - name: run typescript build
         run: yarn tsc
       - name: unit tests
         run: yarn test-coverage
