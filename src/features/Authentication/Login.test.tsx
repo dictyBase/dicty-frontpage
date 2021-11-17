@@ -94,7 +94,7 @@ describe("features/Authentication/Login", () => {
 
   describe("generateErrorDisplayMessage function", () => {
     it("should return correct network error message", () => {
-      const error = {
+      const error:any = {
         message: "",
         networkError: {
           error: "test error",
@@ -121,7 +121,7 @@ describe("features/Authentication/Login", () => {
       expect(generateErrorDisplayMessage(error)).toEqual("Network Error")
     })
     it("should return appropriate error if user not found", () => {
-      const error = {
+      const error:any = {
         message: "",
         networkError: null,
         extraInfo: {},
@@ -149,7 +149,7 @@ describe("features/Authentication/Login", () => {
       )
     })
     it("should return generic error if not network or not found error", () => {
-      const error = {
+      const error:any = {
         message: "",
         networkError: null,
         extraInfo: {},
