@@ -1,0 +1,18 @@
+queue_rules:
+  - name: default
+    conditions:
+      - check-success=Unit tests
+      - check-success=patch
+      - check-success=project
+
+pull_request_rules:
+  - name: merge using the merge queue
+    conditions:
+      - base=develop
+      - check-success=Unit tests
+      - check-success=patch
+      - check-success=project
+    actions:
+      queue:
+        name: default
+        method: rebase
