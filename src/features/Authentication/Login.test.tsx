@@ -116,6 +116,7 @@ describe("features/Authentication/Login", () => {
             path: [""],
           },
         ],
+        clientErrors: []
       }
       expect(generateErrorDisplayMessage(error)).toEqual("Network Error")
     })
@@ -141,6 +142,7 @@ describe("features/Authentication/Login", () => {
             path: [""],
           },
         ],
+        clientErrors: []
       }
       expect(generateErrorDisplayMessage(error)).toContain(
         "Could not find user account",
@@ -165,6 +167,7 @@ describe("features/Authentication/Login", () => {
             path: [""],
           },
         ],
+        clientErrors: []
       }
       expect(generateErrorDisplayMessage(error)).toContain("Could not log in")
     })
