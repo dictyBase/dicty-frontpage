@@ -21,7 +21,7 @@
     "postinstall": "husky install"
   },
   "dependencies": {
-    "@apollo/client": "^3.4.16",
+    "@apollo/client": "^3.4.17",
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@fortawesome/react-fontawesome": "^0.1.16",
@@ -62,7 +62,7 @@
     "@semantic-release/github": "^7.2.3",
     "@semantic-release/npm": "^7.1.1",
     "@semantic-release/release-notes-generator": "^9.0.2",
-    "@testing-library/dom": "^8.11.0",
+    "@testing-library/dom": "^8.11.1",
     "@testing-library/jest-dom": "^5.15.0",
     "@testing-library/react": "^12.1.2",
     "@testing-library/react-hooks": "^7.0.2",
@@ -87,7 +87,7 @@
     "react-styleguidist": "^11.1.7",
     "react-test-renderer": "^16.13.1",
     "semantic-release": "^17.4.7",
-    "snyk": "^1.759.0",
+    "snyk": "^1.763.0",
     "source-map-explorer": "^2.5.2",
     "wait-for-expect": "^3.0.2"
   },

@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@apollo/client@^3.4.16":
-  version "3.4.16"
-  resolved "https://registry.yarnpkg.com/@apollo/client/-/client-3.4.16.tgz#67090d5655aa843fa64d26f1913315e384a5fa0f"
-  integrity sha512-iF4zEYwvebkri0BZQyv8zfavPfVEafsK0wkOofa6eC2yZu50J18uTutKtC174rjHZ2eyxZ8tV7NvAPKRT+OtZw==
+"@apollo/client@^3.4.17":
+  version "3.4.17"
+  resolved "https://registry.yarnpkg.com/@apollo/client/-/client-3.4.17.tgz#4972e19a49809e16d17c5adc67f45623a6dac135"
+  integrity sha512-MDt2rwMX1GqodiVEKJqmDmAz8xr0qJmq5PdWeIt0yDaT4GOkKYWZiWkyfhfv3raTk8PyJvbsNG9q2CqmUrlGfg==
   dependencies:
     "@graphql-typed-document-node/core" "^3.0.0"
     "@wry/context" "^0.6.0"
@@ -2220,10 +2220,10 @@
     lz-string "^1.4.4"
     pretty-format "^26.6.2"
 
-"@testing-library/dom@^8.0.0", "@testing-library/dom@^8.11.0":
-  version "8.11.0"
-  resolved "https://registry.yarnpkg.com/@testing-library/dom/-/dom-8.11.0.tgz#3679dfb4db58e0d2b95e4b0929eaf45237b60d94"
-  integrity sha512-8Ay4UDiMlB5YWy+ZvCeRyFFofs53ebxrWnOFvCoM1HpMAX4cHyuSrCuIM9l2lVuUWUt+Gr3loz/nCwdrnG6ShQ==
+"@testing-library/dom@^8.0.0", "@testing-library/dom@^8.11.1":
+  version "8.11.1"
+  resolved "https://registry.yarnpkg.com/@testing-library/dom/-/dom-8.11.1.tgz#03fa2684aa09ade589b460db46b4c7be9fc69753"
+  integrity sha512-3KQDyx9r0RKYailW2MiYrSSKEfH0GTkI51UGEvJenvcoDoeRYs0PZpi2SXqtnMClQvCqdtTTpOfFETDTVADpAg==
   dependencies:
     "@babel/code-frame" "^7.10.4"
     "@babel/runtime" "^7.12.5"
@@ -13634,10 +13634,10 @@ snapdragon@^0.8.1:
     source-map-resolve "^0.5.0"
     use "^3.1.0"
 
-snyk@^1.759.0:
-  version "1.759.0"
-  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.759.0.tgz#b6d2f9c82e9f4b582b718563b66f3f0cd813a6a4"
-  integrity sha512-E3RlhUeOBaKuJdj6ZscQZuy94wLw8OmrsQIQX71IfK0KssQVjTRguTeeTWitFYK4OjHAjILpAAftxAP4Bz00Zw==
+snyk@^1.763.0:
+  version "1.763.0"
+  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.763.0.tgz#cc727fd378f4457ec7271ac200efc07e78d604e5"
+  integrity sha512-nZbLVKzj3P8cPImwCkdC2m9OmghiCBmEWoXQRlDtNDnRZ/jiLZtBJcJEku8DZoJUA+P+7HJGu1TxvmKz5DLadQ==
 
 sockjs-client@^1.5.0:
   version "1.5.1"
