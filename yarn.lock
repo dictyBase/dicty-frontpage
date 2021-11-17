@@ -5536,7 +5536,7 @@ dicty-components-page-editor@dictybase/dicty-components-page-editor#3.1.2:
     slate-hyperscript "0.62.0"
     slate-react "0.65.2"
 
-dicty-graphql-schema@dictybase/dicty-graphql-schema#1.1.4:
+dicty-graphql-schema@dictyBase/dicty-graphql-schema#1.1.4:
   version "1.1.4"
   resolved "https://codeload.github.com/dictybase/dicty-graphql-schema/tar.gz/d1cbc589b2d6569936245bda4493c8f0f5132429"
 
