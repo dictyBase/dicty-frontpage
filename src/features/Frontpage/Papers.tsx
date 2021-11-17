@@ -139,8 +139,13 @@ const Papers = () => {
   text = data?.listRecentPublications?.map((paper, index) => {
     const authors = paper?.authors
     const doi = paper?.doi
+    let lastname;
     if (!authors) return <></>
-    const lastname = authors[0]?.last_name
+    if (Array.isArray(authors[0]?.last_name)) {
+      lastname = (authors[0]?.last_name)?.join(", ")
+    } else {
+      lastname = authors[0]?.last_name
+    }
     return (
       <li className={classes.listItem} key={index}>
         <span

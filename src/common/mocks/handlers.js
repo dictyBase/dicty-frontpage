@@ -1,6 +1,6 @@
 // src/mocks/handlers.js
 import { graphql } from "msw"
-import { listOfPublications } from "common/data/mockPublications"
+import { listRecentPublications } from "common/data/mockPublications"
 
 export const handlers = [
   // Handles a "GetUserInfo" query
@@ -12,7 +12,7 @@ export const handlers = [
     if (limit === 4) {
       return res(
         ctx.data({
-          listRecentPublications: listOfPublications.listRecentPublications,
+          listRecentPublications: listRecentPublications,
         }),
       )
     }
