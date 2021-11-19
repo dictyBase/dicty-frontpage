@@ -112,7 +112,7 @@ const Papers = () => {
  }
 
  if(data) {
-  text = data?.listRecentPublications?.map((paper, index) => {
+  text = data?.listRecentPublications?.map((paper:Publication, index:number) => {
     const authors = paper?.authors
     const doi = paper?.doi
     let lastname;
