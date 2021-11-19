@@ -5,8 +5,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import GraphQLErrorPage from "common/components/errors/GraphQLErrorPage"
 import { useListRecentPublicationsQuery } from "dicty-graphql-schema"
 import Loader from "common/components/Loader"
-// import { listOfPublications } from "common/data/mockPublications"
-
 
 const useStyles = makeStyles({
   container: {
@@ -93,26 +91,6 @@ const useStyles = makeStyles({
   },
 })
 
-// type Paper = {
-//   id: string
-//   doi: string
-//   title: string
-//   abstract: string
-//   journal: string
-//   pub_date: string
-//   pages: string
-//   issue: string
-//   volume: string
-//   authors: {
-//     initials: string[]
-//     last_name: string[]
-//   }
-// }
-
-// type DataResponse = {
-//   listRecentPublications: Paper[]
-// }
-
 /** Widget that displays the latest Dicty papers */
 
 const Papers = () => {
@@ -130,8 +108,6 @@ const Papers = () => {
  }
 
  if (error) {
-   console.log(data);
-   console.log(error);
    return <GraphQLErrorPage error={error} />
  }
 

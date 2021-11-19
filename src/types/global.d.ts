@@ -3,14 +3,12 @@
 // Definitions by: Sean Kim
 
 
- type Author = {
-    last_name: string
-    first_name: string
-    initials: string
-    rank: string
+interface Author {
+    last_name: string[]
+    initials: string[]
  }
 
- type Papers = {
+interface Papers {
         id: string,
         doi: string,
         title: string,

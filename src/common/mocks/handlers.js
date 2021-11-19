@@ -7,8 +7,6 @@ export const handlers = [
   graphql.query("ListRecentPublications", (req, res, ctx) => {
     const { limit } = req.variables
 
-    console.log("ListRecentPublications is called")
-
     if (limit === 4) {
       return res(
         ctx.data({
