@@ -1,11 +1,11 @@
-const listRecentPublications = [
+const listRecentPublications:Publication[] = [
   {
     id: '1',
     doi: '/publication/31108912',
     title: 'Cytokinesis D is Mediated by Cortical Flow of Dividing Cells Instead of Chemotaxis.',
     abstract: '',
     journal: 'Cells 8',
-    pub_date: '',
+    pub_date: new Date(),
     pages: '',
     issue: '',
     volume: '',
@@ -14,7 +14,8 @@ const listRecentPublications = [
       initials: [''],
       last_name: ['Tanaka', 'Jahan', 'Kondo', 'Nakano & Yumura (2019)']
         }   
-      ]
+      ],
+      __typename: "Publication"
   },
   {
       id: '2',
@@ -22,14 +23,15 @@ const listRecentPublications = [
       title: 'Force balances between interphase centrosomes, as revealed by laser ablation.',
       abstract: '',
       journal: 'Mol. Biol. Cell mbcE19010034',
-      pub_date: '',
+      pub_date: new Date(),
       pages: '',
       issue: '',
       volume: '',
       authors: [{
         initials: [''],
         last_name: ['Odell', 'Sikirzhytski', 'Tikhonenko', 'Cobani', 'Khodjakov & Koonce (2019)']
-      }]
+      }],
+      __typename: "Publication"
   },
   {
       id: '3',
@@ -37,14 +39,15 @@ const listRecentPublications = [
       title: 'A terpene synthase-cytochrome P450 cluster in Dictyostelium discoideum produces a novel trisnorsesquiterpene.',
       abstract: '',
       journal: 'Elife 8',
-      pub_date: '',
+      pub_date: new Date(),
       pages: '',
       issue: '',
       volume: '',
       authors: [{
         initials: [''],
         last_name: ['Chen', 'Luck', 'Rabe', 'Dinh', 'Shaulsky', 'Nelson', 'Gershenzon', 'Dickschat', 'Kollner & Chen (2019)']
-      }]
+      }],
+      __typename: "Publication"
   },
   {
       id: '4',
@@ -52,14 +55,15 @@ const listRecentPublications = [
       title: 'Cyclic AMP induction of Dictyostelium prespore gene expression requires autophagy.',
       abstract: '',
       journal: 'Dev. Biol.',
-      pub_date: '',
+      pub_date: new Date(),
       pages: '',
       issue: '',
       volume: '',
       authors: [{
         initials: [''],
         last_name: ['Yamada & Schaap (2019)']
-      }]
+      }],
+      __typename: "Publication"
   },
 ]
 

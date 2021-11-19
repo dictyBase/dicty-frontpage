@@ -8,7 +8,7 @@ interface Author {
     initials: string[]
  }
 
-interface Papers {
+interface Publication {
         id: string,
         doi: string,
         title: string,
@@ -18,7 +18,8 @@ interface Papers {
         pages: string,
         issue: string,
         volume: string,
-        authors: Author[]
+        authors: Author[],
+        __typename: string
       }
 
  declare namespace dictyFrontPage {
