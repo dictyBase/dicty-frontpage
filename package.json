@@ -70,7 +70,7 @@
     "@types/jest": "^27.0.2",
     "@types/jwt-decode": "^3.1.0",
     "@types/node": "^16.11.9",
-    "@types/react": "^17.0.34",
+    "@types/react": "^17.0.35",
     "@types/react-dom": "^17.0.11",
     "@types/react-fontawesome": "^1.6.4",
     "@types/react-helmet": "^6.1.4",
