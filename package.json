@@ -21,7 +21,7 @@
     "postinstall": "husky install"
   },
   "dependencies": {
-    "@apollo/client": "^3.4.17",
+    "@apollo/client": "^3.5.5",
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@fortawesome/react-fontawesome": "^0.1.16",
@@ -57,13 +57,13 @@
   "devDependencies": {
     "@material-ui/styles": "^4.11.4",
     "@semantic-release/changelog": "^6.0.1",
-    "@semantic-release/commit-analyzer": "^9.0.1",
+    "@semantic-release/commit-analyzer": "^9.0.2",
     "@semantic-release/git": "^10.0.1",
     "@semantic-release/github": "^8.0.2",
     "@semantic-release/npm": "^8.0.3",
     "@semantic-release/release-notes-generator": "^10.0.2",
     "@testing-library/dom": "^8.11.1",
-    "@testing-library/jest-dom": "^5.15.0",
+    "@testing-library/jest-dom": "^5.15.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/react-hooks": "^7.0.2",
     "@testing-library/user-event": "^13.5.0",
@@ -80,7 +80,7 @@
     "eslint-plugin-jest-dom": "^3.9.2",
     "eslint-plugin-prettier": "^4.0.0",
     "husky": "7.0.4",
-    "lint-staged": "^12.0.3",
+    "lint-staged": "^12.1.2",
     "msw": "^0.35.0",
     "prettier": "^2.4.1",
     "react-docgen-typescript": "^2.1.1",
