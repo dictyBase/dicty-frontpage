@@ -1,5 +1,5 @@
 import React from "react"
-import { useHistory, useLocation } from "react-router-dom"
+import { useNavigate, useLocation } from "react-router-dom"
 import { makeStyles, Theme } from "@material-ui/core/styles"
 import Container from "@material-ui/core/Container"
 import Box from "@material-ui/core/Box"
@@ -52,7 +52,7 @@ const EditInfoPage = ({ location }: Props) => {
       },
     },
   })
-  const history = useHistory()
+  const navigate = useNavigate()
   const { pathname } = useLocation()
 
   const prevURL = pathname.slice(0, -5)
@@ -70,11 +70,11 @@ const EditInfoPage = ({ location }: Props) => {
         },
       },
     })
-    setTimeout(() => history.push(prevURL), 1000)
+    setTimeout(() => navigate(prevURL), 1000)
   }
 
   const handleCancelClick = () => {
-    history.push(prevURL)
+    navigate(prevURL)
   }
 
   return (
