@@ -1,5 +1,5 @@
 import React from "react"
-import { useHistory } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import Box from "@material-ui/core/Box"
 import Typography from "@material-ui/core/Typography"
 import { makeStyles, Theme } from "@material-ui/core/styles"
@@ -41,7 +41,9 @@ type Props = {
  * This is the view component so an authorized user can add a new page.
  */
 
-const AddPage = ({ location }: Props) => {
+const AddPage = () => {
+  /* Instead of passing props, we need to use useParams hook */
+  const { location } = useParams();
   const slug = location.state.subname
     ? location.state.subname
     : location.state.name
@@ -50,7 +52,7 @@ const AddPage = ({ location }: Props) => {
     state: { token },
   } = useAuthStore()
   const { user, canEditPages, verifiedToken } = useAuthorization()
-  const history = useHistory()
+  const navigate = useNavigate()
   const classes = useStyles()
   const [createContent] = useCreateContentMutation({
     context: {
@@ -74,12 +76,12 @@ const AddPage = ({ location }: Props) => {
       },
     })
     setTimeout(() => {
-      history.push(prevURL)
+      navigate(prevURL)
     }, 800)
   }
 
   const handleCancelClick = () => {
-    history.push(prevURL)
+    navigate(prevURL)
   }
 
   return (
