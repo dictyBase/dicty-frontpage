@@ -1,5 +1,5 @@
 import React from "react"
-import { useHistory, useLocation } from "react-router-dom"
+import { useNavigate, useLocation } from "react-router-dom"
 import { PageEditor } from "dicty-components-page-editor"
 import { ThemeProvider } from "@material-ui/core/styles"
 import Box from "@material-ui/core/Box"
@@ -15,13 +15,12 @@ type Props = {
 /** Displays the info page data that was fetched from the InfoPage component */
 
 const InfoPageView = ({ data }: Props) => {
-  const history = useHistory()
+  const navigate = useNavigate()
   const location = useLocation()
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault()
-    history.push({
-      pathname: `${location.pathname}/edit`,
+    navigate(`${location.pathname}/edit`, {
       state: {
         data: data,
       },
