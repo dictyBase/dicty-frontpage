@@ -1,5 +1,5 @@
 import React from "react"
-import { useHistory } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import querystring from "querystring"
 import { useLoginMutation, User } from "dicty-graphql-schema"
 import { useAuthStore, ActionType } from "features/Authentication/AuthStore"
@@ -38,7 +38,7 @@ const getLoginInputVariables = (data: LoginEventData) => {
  */
 
 const OauthSignHandler = () => {
-  const history = useHistory()
+  const navigate = useNavigate()
   const { dispatch } = useAuthStore()
   const [login, { data }] = useLoginMutation()
 
@@ -49,7 +49,7 @@ const OauthSignHandler = () => {
       if (!event.data.provider) {
         return
       }
-      history.push("/load/auth")
+      navigate("/load/auth")
       try {
         const { data } = await login({
           variables: getLoginInputVariables(event.data),
@@ -62,7 +62,7 @@ const OauthSignHandler = () => {
             provider: data?.login?.identity.provider as string,
           },
         })
-        history.push("/")
+        navigate("/")
       } catch (error) {
         dispatch({
           type: ActionType.LOGIN_ERROR,
@@ -70,14 +70,14 @@ const OauthSignHandler = () => {
             error: error,
           },
         })
-        history.push("/login")
+        navigate("/login")
       }
     }
     window.addEventListener("message", onMessage, false)
     return () => {
       window.removeEventListener("message", onMessage)
     }
-  }, [data, dispatch, history, login])
+  }, [data, dispatch, navigate, login])
 
   return null
 }
