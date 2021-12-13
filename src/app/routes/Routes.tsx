@@ -1,5 +1,10 @@
 import React from "react"
-import { Route, Switch } from "react-router-dom"
+import {
+  Route,
+  Routes as ReactRoutes,
+  Redirect,
+  BrowserRouter,
+} from "react-router-dom"
 import Front from "features/Frontpage/Front"
 import DownloadsContainer from "features/Downloads/DownloadsContainer"
 import About from "features/About/About"
@@ -18,37 +23,27 @@ const Routes = () => {
   useGoogleAnalytics()
 
   return (
-    <Switch>
-      <Route exact path="/" component={Front} />
-      <Route exact path="/about" component={About} />
-      <Route exact path="/downloads" component={DownloadsContainer} />
+    <BrowserRouter>
+    <ReactRoutes>
+      <Route path="/" element={<Front />} />
+      <Route path="/about" element={<About/>} />
+      <Route path="/downloads" element={<DownloadsContainer/>} />
       {/* Authentication routes */}
-      <Route exact path="/login" component={Login} />
-      <Route exact path="/:provider/callback" component={OauthCallback} />
-      <Route exact path="/load/auth" component={AuthLoader} />
-      <PrivateRoute exact path="/logout" component={Logout} />
+      <Route path="/login" element={<Login/>} />
+      <Route path="/:provider/callback" element={<OauthCallback/>} />
+      <Route path="/load/auth" element={<AuthLoader/>} />
+      <PrivateRoute path="/logout" element={<Logout/>} />
       {/* Editable page routes */}
-      <Route exact path="/:section/:name" component={InfoPageContainer} />
-      <PrivateRoute
-        exact
-        path="/:section/:name/edit"
-        component={EditInfoPage}
-      />
-      <Route
-        exact
-        path="/:section/:name/:subname"
-        component={InfoPageContainer}
-      />
-      <PrivateRoute
-        exact
-        path="/:section/:name/:subname/edit"
-        component={EditInfoPage}
-      />
-      <PrivateRoute exact path="/addpage" component={AddPage} />
-      <Route exact path="/privacy-policy" component={InfoPageContainer} />
+      <Route path="/:section/:name" element={<InfoPageContainer/>} />
+      <PrivateRoute path="/:section/:name/edit" element={<EditInfoPage/>} />
+      <Route path="/:section/:name/:subname" element={<InfoPageContainer/>} />
+      <PrivateRoute path="/:section/:name/:subname/edit" element={<EditInfoPage/>} />
+      <PrivateRoute path="/addpage" element={<AddPage/>} />
+      <Route path="/privacy-policy" element={<InfoPageContainer/>} />
       {/* Page not found routes */}
-      <Route exact path="*" component={PageNotReady} />
-    </Switch>
+      <Route path="*" element={<PageNotReady/>} />
+      </ReactRoutes>
+    </BrowserRouter>
   )
 }
 
