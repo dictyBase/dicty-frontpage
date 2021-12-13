@@ -2,7 +2,6 @@ import React from "react"
 import {
   Route,
   Routes as ReactRoutes,
-  Redirect,
   BrowserRouter,
 } from "react-router-dom"
 import Front from "features/Frontpage/Front"
@@ -24,24 +23,40 @@ const Routes = () => {
 
   return (
     <BrowserRouter>
-    <ReactRoutes>
-      <Route path="/" element={<Front />} />
-      <Route path="/about" element={<About/>} />
-      <Route path="/downloads" element={<DownloadsContainer/>} />
-      {/* Authentication routes */}
-      <Route path="/login" element={<Login/>} />
-      <Route path="/:provider/callback" element={<OauthCallback/>} />
-      <Route path="/load/auth" element={<AuthLoader/>} />
-      <PrivateRoute path="/logout" element={<Logout/>} />
-      {/* Editable page routes */}
-      <Route path="/:section/:name" element={<InfoPageContainer/>} />
-      <PrivateRoute path="/:section/:name/edit" element={<EditInfoPage/>} />
-      <Route path="/:section/:name/:subname" element={<InfoPageContainer/>} />
-      <PrivateRoute path="/:section/:name/:subname/edit" element={<EditInfoPage/>} />
-      <PrivateRoute path="/addpage" element={<AddPage/>} />
-      <Route path="/privacy-policy" element={<InfoPageContainer/>} />
-      {/* Page not found routes */}
-      <Route path="*" element={<PageNotReady/>} />
+      <ReactRoutes>
+        <Route path="/" element={<Front />} />
+        <Route path="/about" element={<About/>} />
+        <Route path="/downloads" element={<DownloadsContainer/>} />
+        {/* Authentication routes */}
+        <Route path="/login" element={<Login/>} />
+        <Route path="/:provider/callback" element={<OauthCallback/>} />
+        <Route path="/load/auth" element={<AuthLoader/>} />
+        <Route path="/logout" element={
+          <PrivateRoute >
+            <Logout/>
+          </PrivateRoute>
+        } />
+        {/* Editable page routes */}
+        <Route path="/:section/:name" element={<InfoPageContainer/>} />
+        <Route path="/:section/:name/edit" element={
+          <PrivateRoute>
+            <EditInfoPage/>
+          </PrivateRoute>
+        } />
+        <Route path="/:section/:name/:subname" element={<InfoPageContainer/>} />
+        <Route path="/:section/:name/:subname/edit" element={          
+          <PrivateRoute>
+            <EditInfoPage/>
+          </PrivateRoute>
+        } />
+        <Route path="/addpage" element={
+          <PrivateRoute>
+            <AddPage/>
+          </PrivateRoute>    
+        } />
+        <Route path="/privacy-policy" element={<InfoPageContainer/>} />
+        {/* Page not found routes */}
+        <Route path="*" element={<PageNotReady/>} />
       </ReactRoutes>
     </BrowserRouter>
   )
