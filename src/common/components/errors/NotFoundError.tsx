@@ -49,14 +49,8 @@ const NotFoundError = ({ error }: Props) => {
               <br />
               <Link
                 className={classes.link}
-                to={{
-                  pathname: "/addpage",
-                  state: {
-                    name: name,
-                    subname: subname,
-                    url: location.pathname,
-                  },
-                }}>
+                to="/addpage"
+                state={{name: name, subname: subname, url: location.pathname}}>
                 <Button
                   className={classes.addPageButton}
                   size="small"
