@@ -1,5 +1,5 @@
 import React from "react"
-import { useNavigate, useLocation } from "react-router-dom"
+import { useNavigate, useLocation, useParams } from "react-router-dom"
 import { makeStyles, Theme } from "@material-ui/core/styles"
 import Container from "@material-ui/core/Container"
 import Box from "@material-ui/core/Box"
@@ -26,24 +26,22 @@ const useStyles = makeStyles((theme: Theme) => ({
 }))
 
 type Props = {
-  location: {
     state: {
       data: ContentBySlugQuery["contentBySlug"]
     }
-  }
 }
 
 /**
  * Allows editing of the info page components
  */
-const EditInfoPage = ({ location }: Props) => {
+const EditInfoPage = () => {
+  /* Instead of passing props, we need to use useParams hook */
   const classes = useStyles()
   const {
     state: { token },
   } = useAuthStore()
-  const {
-    state: { data },
-  } = location
+
+  const { data } = useParams();
   const { user } = useAuthorization()
   const [updateContent] = useUpdateContentMutation({
     context: {
