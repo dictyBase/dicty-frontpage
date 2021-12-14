@@ -1,5 +1,5 @@
 import React from "react"
-import { useNavigate, useParams } from "react-router-dom"
+import { useNavigate, useLocation } from "react-router-dom"
 import Box from "@material-ui/core/Box"
 import Typography from "@material-ui/core/Typography"
 import { makeStyles, Theme } from "@material-ui/core/styles"
@@ -43,8 +43,9 @@ type Props = {
 
 const AddPage = () => {
   /* Instead of passing props, we need to use useParams hook */
-  const { location } = useParams();
-  const slug = location.state.subname
+  let location = useLocation();
+  /* Not sure about this anymore, maybe we need to use useLocation here? */
+  const slug = location.state?.subname
     ? location.state.subname
     : location.state.name
 
