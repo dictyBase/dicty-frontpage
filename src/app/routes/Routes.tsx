@@ -22,7 +22,6 @@ const Routes = () => {
   useGoogleAnalytics()
 
   return (
-    <BrowserRouter>
       <ReactRoutes>
         <Route path="/" element={<Front />} />
         <Route path="/about" element={<About/>} />
@@ -58,7 +57,6 @@ const Routes = () => {
         {/* Page not found routes */}
         <Route path="*" element={<PageNotReady/>} />
       </ReactRoutes>
-    </BrowserRouter>
   )
 }
 
