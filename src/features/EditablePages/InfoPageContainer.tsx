@@ -1,5 +1,5 @@
 import React from "react"
-import { useParams, useLocation } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import { Location } from "history"
 import { Helmet } from "react-helmet"
 import Container from "@material-ui/core/Container"
@@ -39,13 +39,13 @@ const getSlug = (location: Location, params: Params) => {
  */
 
 const InfoPageContainer = () => {
-  const location = useLocation()
-  const params = useParams<Params>()
-  const slug = getSlug(location, params)
+  // const location = useLocation()
+  const { name } = useParams()
+  // const slug = getSlug(location, params)
 
   const { loading, error, data } = useContentBySlugQuery({
     variables: {
-      slug: `${NAMESPACE}-${slug}`,
+      slug: `${NAMESPACE}-${name}`,
     },
     fetchPolicy: "cache-and-network",
   })
@@ -54,7 +54,7 @@ const InfoPageContainer = () => {
     return <Loader />
   }
 
-  if (error || slug === undefined) {
+  if (error || name === undefined) {
     return <GraphQLErrorPage error={error} />
   }
 
@@ -64,7 +64,7 @@ const InfoPageContainer = () => {
   return (
     <React.Fragment>
       <Helmet>
-        <title>{pageTitleLookup(slug)} - dictyBase</title>
+        <title>{pageTitleLookup(name)} - dictyBase</title>
       </Helmet>
       <Container maxWidth="lg">
         <InfoPageView data={data?.contentBySlug} />

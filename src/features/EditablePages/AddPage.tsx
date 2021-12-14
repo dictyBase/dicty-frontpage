@@ -27,16 +27,6 @@ const useStyles = makeStyles((theme: Theme) => ({
 const error =
   "Your login token is expired. Please log out and then log back in to regain full user access."
 
-type Props = {
-  location: {
-    state: {
-      name: string
-      subname?: string
-      url: string
-    }
-  }
-}
-
 /**
  * This is the view component so an authorized user can add a new page.
  */

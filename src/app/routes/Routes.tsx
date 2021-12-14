@@ -2,7 +2,6 @@ import React from "react"
 import {
   Route,
   Routes as ReactRoutes,
-  BrowserRouter,
 } from "react-router-dom"
 import Front from "features/Frontpage/Front"
 import DownloadsContainer from "features/Downloads/DownloadsContainer"

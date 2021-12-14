@@ -8,7 +8,6 @@ import { useAuthStore } from "features/Authentication/AuthStore"
 import useAuthorization from "common/hooks/useAuthorization"
 import {
   useUpdateContentMutation,
-  ContentBySlugQuery,
 } from "dicty-graphql-schema"
 import { theme } from "app/layout/AppProviders"
 
@@ -25,12 +24,6 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }))
 
-type Props = {
-    state: {
-      data: ContentBySlugQuery["contentBySlug"]
-    }
-}
-
 /**
  * Allows editing of the info page components
  */
@@ -41,7 +34,8 @@ const EditInfoPage = () => {
     state: { token },
   } = useAuthStore()
 
-  const { data } = useParams();
+  let data = useParams();
+
   const { user } = useAuthorization()
   const [updateContent] = useUpdateContentMutation({
     context: {
@@ -51,6 +45,7 @@ const EditInfoPage = () => {
     },
   })
   const navigate = useNavigate()
+
   const { pathname } = useLocation()
 
   const prevURL = pathname.slice(0, -5)
