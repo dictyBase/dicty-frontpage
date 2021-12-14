@@ -5,7 +5,7 @@ import AppBar from "@material-ui/core/AppBar"
 import Tabs from "@material-ui/core/Tabs"
 import Tab from "@material-ui/core/Tab"
 import Typography from "@material-ui/core/Typography"
-import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles"
+import { MuiThemeProvider, createTheme } from "@material-ui/core/styles"
 import { Organism } from "dicty-graphql-schema"
 import Citations from "./Citations"
 import DownloadsTable from "./DownloadsTable"
@@ -13,7 +13,7 @@ import DownloadsHeader from "./DownloadsHeader"
 import { theme } from "app/layout/AppProviders"
 
 // create theme with our standard tab overrides
-const muiTheme = createMuiTheme({
+const muiTheme = createTheme({
   ...theme,
   overrides: {
     MuiTab: {

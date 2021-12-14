@@ -1,11 +1,11 @@
 import React from "react"
 import { ApolloProvider } from "@apollo/client"
 import { BrowserRouter } from "react-router-dom"
-import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles"
+import { MuiThemeProvider, createTheme } from "@material-ui/core/styles"
 import CircularProgress from "@material-ui/core/CircularProgress"
 import useCreateApolloClient from "common/hooks/useCreateApolloClient"
 
-const theme = createMuiTheme({
+const theme = createTheme({
   // use color tool for palette -- https://material.io/resources/color/
   palette: {
     primary: {
