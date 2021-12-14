@@ -1,7 +1,7 @@
 import React from "react"
 import { render, screen, act } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
-import { BrowserRouter, useHistory } from "react-router-dom"
+import { BrowserRouter, useNavigate } from "react-router-dom"
 import waitForExpect from "wait-for-expect"
 import EditInfoPage from "./EditInfoPage"
 import MockAuthProvider from "common/mocks/MockAuthProvider"
@@ -13,7 +13,7 @@ jest.mock("react-router-dom", () => {
   const originalModule = jest.requireActual("react-router-dom")
   return {
     ...originalModule,
-    useHistory: jest.fn(),
+    useNavigate: jest.fn(),
     useLocation: () => ({
       pathname: "/research/techniques/edit",
     }),
@@ -64,9 +64,7 @@ describe("features/EditablePages/EditInfoPage", () => {
 
   const MockComponent = ({ mocks }: any) => (
     <MockAuthProvider mocks={mocks} validToken>
-      <BrowserRouter>
-        <EditInfoPage {...props} />
-      </BrowserRouter>
+        <EditInfoPage />
     </MockAuthProvider>
   )
 
@@ -106,7 +104,7 @@ describe("features/EditablePages/EditInfoPage", () => {
           },
         },
       ]
-      ;(useHistory as jest.Mock).mockReturnValueOnce({
+      ;(useNavigate as jest.Mock).mockReturnValueOnce({
         push: mockHistoryPush,
       })
       render(<MockComponent mocks={mocks} />)
@@ -121,7 +119,7 @@ describe("features/EditablePages/EditInfoPage", () => {
     })
 
     it("should go back to previous URL on cancel", () => {
-      ;(useHistory as jest.Mock).mockReturnValueOnce({
+      ;(useNavigate as jest.Mock).mockReturnValueOnce({
         push: mockHistoryPush,
       })
       render(<MockComponent mocks={[]} />)

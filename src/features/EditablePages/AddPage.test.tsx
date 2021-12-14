@@ -1,7 +1,7 @@
 import React from "react"
 import { render, screen, act } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
-import { BrowserRouter, useHistory } from "react-router-dom"
+import { BrowserRouter, useNavigate } from "react-router-dom"
 import AddPage from "./AddPage"
 import waitForExpect from "wait-for-expect"
 import { CreateContentDocument } from "dicty-graphql-schema"
@@ -17,7 +17,7 @@ jest.mock("react-router-dom", () => {
     useParams: () => ({
       name: "shipping",
     }),
-    useHistory: jest.fn(),
+    useNavigate: jest.fn(),
   }
 })
 
@@ -37,6 +37,8 @@ const mockContent = [
   },
 ]
 
+/* Maybe I need to edit my mockContent like in InfoPageContainer */
+
 describe("features/EditablePages/AddPage", () => {
   const props = {
     location: {
@@ -49,11 +51,13 @@ describe("features/EditablePages/AddPage", () => {
 
   const MockComponent = ({ mocks }: any) => (
     <MockAuthProvider mocks={mocks} validToken>
-      <BrowserRouter>
-        <AddPage {...props} />
-      </BrowserRouter>
+        <AddPage/>
     </MockAuthProvider>
   )
+
+  afterEach(() => {
+    jest.clearAllMocks()
+  })
 
   describe("initial render", () => {
     it("displays correct route", () => {
@@ -94,7 +98,7 @@ describe("features/EditablePages/AddPage", () => {
           },
         },
       ]
-      ;(useHistory as jest.Mock).mockReturnValueOnce({
+      ;(useNavigate as jest.Mock).mockReturnValueOnce({
         push: mockHistoryPush,
       })
       render(<MockComponent mocks={mocks} />)
@@ -108,7 +112,7 @@ describe("features/EditablePages/AddPage", () => {
     })
 
     it("should go back to previous URL on cancel", () => {
-      ;(useHistory as jest.Mock).mockReturnValueOnce({
+      ;(useNavigate as jest.Mock).mockReturnValueOnce({
         push: mockHistoryPush,
       })
       render(<MockComponent mocks={[]} />)
