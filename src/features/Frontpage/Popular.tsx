@@ -115,7 +115,7 @@ const Popular = () => {
   )
 
   return (
-    <Grid container justify="center" className={classes.grid}>
+    <Grid container justifyContent="center" className={classes.grid}>
       <Grid item xs={12}>
         <div className={classes.header}>
           <div className={classes.innerHeader}>New features and pages</div>
