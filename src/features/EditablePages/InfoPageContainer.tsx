@@ -1,6 +1,5 @@
 import React from "react"
 import { useParams, useLocation } from "react-router-dom"
-import { Location } from "history"
 import { Helmet } from "react-helmet"
 import Container from "@material-ui/core/Container"
 import { useContentBySlugQuery } from "dicty-graphql-schema"
@@ -9,13 +8,6 @@ import GraphQLErrorPage from "common/components/errors/GraphQLErrorPage"
 import InfoPageView from "./InfoPageView"
 import { NAMESPACE } from "common/constants/namespace"
 import { pageTitleLookup } from "common/utils/pageTitleConversions"
-
-type Params = {
-  /** Name param in URL */
-  name: string | undefined
-  /** Subname param in URL */
-  subname: string | undefined
-}
 
 // getSlug will use the route's :subname or :name to fetch page content
 // unless the route is for the privacy policy

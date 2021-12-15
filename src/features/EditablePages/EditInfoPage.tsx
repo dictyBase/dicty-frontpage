@@ -1,5 +1,5 @@
 import React from "react"
-import { useNavigate, useLocation, useParams } from "react-router-dom"
+import { useNavigate, useLocation } from "react-router-dom"
 import { makeStyles, Theme } from "@material-ui/core/styles"
 import Container from "@material-ui/core/Container"
 import Box from "@material-ui/core/Box"
@@ -47,8 +47,6 @@ const EditInfoPage = ({ location }: Props) => {
     state: { data }
   } = location
 
-  let { name } = useParams();
-
   const { user } = useAuthorization()
   const [updateContent] = useUpdateContentMutation({
     context: {
@@ -60,11 +58,6 @@ const EditInfoPage = ({ location }: Props) => {
   const navigate = useNavigate()
 
   const { pathname } = useLocation()
-
-  // console.log(navigate);
-  // console.log(pathname);
-  // console.log(name);
-
   const prevURL = pathname.slice(0, -5)
 
   const handleSaveClick = (value: any) => {
