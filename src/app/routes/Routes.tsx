@@ -22,29 +22,31 @@ const Routes = () => {
 
   return (
       <ReactRoutes>
-        <Route path="/" element={<Front />} />
-        <Route path="/about" element={<About/>} />
-        <Route path="/downloads" element={<DownloadsContainer/>} />
-        {/* Authentication routes */}
-        <Route path="/login" element={<Login/>} />
-        <Route path="/:provider/callback" element={<OauthCallback/>} />
-        <Route path="/load/auth" element={<AuthLoader/>} />
-        <Route path="/logout" element={
-          <PrivateRoute component={Logout} />
-        } />
-        {/* Editable page routes */}
-        <Route path="/:section/:name" element={<InfoPageContainer/>} />
-        <Route path="/:section/:name/edit" element={
-          <PrivateRoute component={EditInfoPage}/>
-        } />
-        <Route path="/:section/:name/:subname" element={<InfoPageContainer/>} />
-        <Route path="/:section/:name/:subname/edit" element={          
-          <PrivateRoute component={EditInfoPage}/>
-        } />
-        <Route path="/addpage" element={
-          <PrivateRoute component={AddPage}/>  
-        } />
-        <Route path="/privacy-policy" element={<InfoPageContainer/>} />
+        <Route path="/">
+          <Route index element={<Front />} />
+          <Route path="about" element={<About/>} />
+          <Route path="downloads" element={<DownloadsContainer/>} />
+          {/* Authentication routes */}
+          <Route path="login" element={<Login/>} />
+          <Route path=":provider/callback" element={<OauthCallback/>} />
+          <Route path="load/auth" element={<AuthLoader/>} />
+          <Route path="logout" element={
+            <PrivateRoute component={Logout} />
+          } />
+          {/* Editable page routes */}
+          <Route path=":section/:name" element={<InfoPageContainer/>} />
+          <Route path=":section/:name/edit" element={
+            <PrivateRoute component={EditInfoPage}/>
+          } />
+          <Route path=":section/:name/:subname" element={<InfoPageContainer/>} />
+          <Route path=":section/:name/:subname/edit" element={          
+            <PrivateRoute component={EditInfoPage}/>
+          } />
+          <Route path="addpage" element={
+            <PrivateRoute component={AddPage}/>  
+          } />
+          <Route path="privacy-policy" element={<InfoPageContainer/>} />
+        </Route>
         {/* Page not found routes */}
         <Route path="*" element={<PageNotReady/>} />
       </ReactRoutes>
