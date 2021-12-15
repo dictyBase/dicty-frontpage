@@ -12,9 +12,7 @@ jest.mock("react-router-dom", () => {
 
   return {
     ...originalModule,
-    useHistory: () => ({
-      push: mockHistoryPush,
-    }),
+    useNavigate: (to: string) => mockHistoryPush
   }
 })
 
