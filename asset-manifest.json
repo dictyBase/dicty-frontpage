@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.js": "/build/main.e5dd01cf.js",
+    "main.js": "/build/main.b9aec044.js",
     "runtime-main.js": "/build/bundle.105de5e2.js",
-    "vendors~main.js": "/build/vendors~main.f102e170.js",
+    "vendors~main.js": "/build/vendors~main.e467713a.js",
     "index.html": "/index.html",
     "static/media/dicty-life-cycle.jpg": "/static/media/dicty-life-cycle.b60294fb.jpg",
     "static/media/dicty-slug.jpg": "/static/media/dicty-slug.260f5039.jpg",
@@ -56,7 +56,7 @@
   },
   "entrypoints": [
     "build/bundle.105de5e2.js",
-    "build/vendors~main.f102e170.js",
-    "build/main.e5dd01cf.js"
+    "build/vendors~main.e467713a.js",
+    "build/main.b9aec044.js"
   ]
 }
