@@ -113,7 +113,7 @@ describe("features/EditablePages/EditInfoPage", () => {
       // })
       await waitFor(() => {
           expect(mockHistoryPush).toHaveBeenCalledWith("/research/techniques") 
-      }, 1000)
+      })
     })
 
     it("should go back to previous URL on cancel", () => {
