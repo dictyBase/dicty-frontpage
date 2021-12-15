@@ -83,7 +83,7 @@ const DownloadsDisplay = ({ data }: Props) => {
           content="dictyBase Downloads - the central collection of downloadable material from dictyBase"
         />
       </Helmet>
-      <Grid container justify="center">
+      <Grid container justifyContent="center">
         <Grid item xs={8}>
           <DownloadsHeader />
           <AppBar position="static">

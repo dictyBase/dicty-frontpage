@@ -39,7 +39,7 @@ const Front = () => {
           content="dictyBase is a central resource for Dictyostelid genomics"
         />
       </Helmet>
-      <Grid container justify="center">
+      <Grid container justifyContent="center">
         <Grid item className={classes.topItem} sm={12} md={6} xl={5}>
           <Slideshow />
         </Grid>
