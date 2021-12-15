@@ -127,47 +127,47 @@ describe("features/EditablePages/InfoPageContainer", () => {
 
   describe("getSlug function", () => {
     it("should return privacy-policy slug", () => {
-      const location = {
+      const { pathname } = {
         pathname: "/privacy-policy",
       } as Location
-      const params = {
+      const {name, subname} = {
         name: undefined,
         subname: undefined,
-      }
-      expect(getSlug(location, params)).toEqual("privacy-policy")
+      } 
+      expect(getSlug(pathname, name, subname)).toEqual("privacy-policy")
     })
 
     it("should return privacy-policy slug when given extra backslash", () => {
-      const location = {
+      const { pathname } = {
         pathname: "/privacy-policy/",
       } as Location
-      const params = {
+      const {name, subname} = {
         name: undefined,
         subname: undefined,
       }
-      expect(getSlug(location, params)).toEqual("privacy-policy")
+      expect(getSlug(pathname, name, subname)).toEqual("privacy-policy")
     })
 
     it("should return subname", () => {
-      const location = {
+      const { pathname } = {
         pathname: "/the/maestro",
       } as Location
-      const params = {
+      const {name, subname} = {
         name: "the",
         subname: "maestro",
       }
-      expect(getSlug(location, params)).toEqual("maestro")
+      expect(getSlug(pathname, name, subname)).toEqual("maestro")
     })
 
     it("should return name", () => {
-      const location = {
+      const { pathname } = {
         pathname: "/jerry",
       } as Location
-      const params = {
+      const {name, subname} = {
         name: "jerry",
         subname: undefined,
       }
-      expect(getSlug(location, params)).toEqual("jerry")
+      expect(getSlug(pathname, name, subname)).toEqual("jerry")
     })
   })
 })
