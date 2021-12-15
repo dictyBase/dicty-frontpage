@@ -19,18 +19,12 @@ type Params = {
 
 // getSlug will use the route's :subname or :name to fetch page content
 // unless the route is for the privacy policy
-const getSlug = (location: Location, params: Readonly<Params>) => {
-  const { name, subname } = params
-  const { pathname } = location
-
+const getSlug = (pathname: string, name?: string, subname?: string) => {
   if (pathname === "/privacy-policy" || pathname === "/privacy-policy/") {
     return "privacy-policy"
   }
 
-  if (subname) {
-    return subname
-  }
-
+  if (subname) return subname
   return name
 }
 
@@ -39,10 +33,9 @@ const getSlug = (location: Location, params: Readonly<Params>) => {
  */
 
 const InfoPageContainer = () => {
-  const location = useLocation()
-  const params = useParams()
-  const slug = getSlug(location, params)
-
+  const { pathname } = useLocation()
+  const { name, subname } = useParams()
+  const slug = getSlug(pathname, name, subname)
 
   const { loading, error, data } = useContentBySlugQuery({
     variables: {
