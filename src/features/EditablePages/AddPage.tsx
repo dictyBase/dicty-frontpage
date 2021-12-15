@@ -1,5 +1,5 @@
 import React from "react"
-import { useNavigate, useLocation } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import Box from "@material-ui/core/Box"
 import Typography from "@material-ui/core/Typography"
 import { makeStyles, Theme } from "@material-ui/core/styles"
@@ -27,14 +27,21 @@ const useStyles = makeStyles((theme: Theme) => ({
 const error =
   "Your login token is expired. Please log out and then log back in to regain full user access."
 
+type Props = {
+  location: {
+    state: {
+      name: string
+      subname?: string
+      url: string
+    }
+  }
+}
+
 /**
  * This is the view component so an authorized user can add a new page.
  */
 
-const AddPage = () => {
-  /* Instead of passing props, we need to use useParams hook */
-  let location = useLocation();
-  /* Not sure about this anymore, maybe we need to use useLocation here? */
+const AddPage = ({ location }: Props) => {
   const slug = location.state?.subname
     ? location.state.subname
     : location.state.name

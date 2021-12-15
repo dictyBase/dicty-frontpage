@@ -1,7 +1,6 @@
 import React from "react"
 import { render, screen, act } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
-import { BrowserRouter, useNavigate } from "react-router-dom"
 import AddPage from "./AddPage"
 import waitForExpect from "wait-for-expect"
 import { CreateContentDocument } from "dicty-graphql-schema"
@@ -17,7 +16,7 @@ jest.mock("react-router-dom", () => {
     useParams: () => ({
       name: "shipping",
     }),
-    useNavigate: jest.fn(),
+    useNavigate: (to: string) => mockHistoryPush,
   }
 })
 
@@ -51,7 +50,7 @@ describe("features/EditablePages/AddPage", () => {
 
   const MockComponent = ({ mocks }: any) => (
     <MockAuthProvider mocks={mocks} validToken>
-        <AddPage/>
+        <AddPage {...props}/>
     </MockAuthProvider>
   )
 
@@ -98,23 +97,19 @@ describe("features/EditablePages/AddPage", () => {
           },
         },
       ]
-      ;(useNavigate as jest.Mock).mockReturnValueOnce({
-        push: mockHistoryPush,
-      })
-      render(<MockComponent mocks={mocks} />)
-      const saveButton = screen.getByRole("button", { name: "Save" })
-      act(() => {
-        userEvent.click(saveButton)
-      })
-      await waitForExpect(() => {
-        expect(mockHistoryPush).toHaveBeenCalledWith(props.location.state.url)
+      await act(async () => {
+        render(<MockComponent mocks={mocks} />)
+        const saveButton = screen.getByRole("button", { name: "Save" })
+        // act(() => {
+          userEvent.click(saveButton)
+        // })
+        await waitForExpect(() => {
+          expect(mockHistoryPush).toHaveBeenCalledWith(props.location.state.url)
+        })
       })
     })
 
     it("should go back to previous URL on cancel", () => {
-      ;(useNavigate as jest.Mock).mockReturnValueOnce({
-        push: mockHistoryPush,
-      })
       render(<MockComponent mocks={[]} />)
       const cancelButton = screen.getByText("Cancel")
       act(() => {
