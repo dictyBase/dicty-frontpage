@@ -1,5 +1,5 @@
 import React from "react"
-import { useParams } from "react-router-dom"
+import { useParams, useLocation } from "react-router-dom"
 import { Location } from "history"
 import { Helmet } from "react-helmet"
 import Container from "@material-ui/core/Container"
@@ -19,7 +19,7 @@ type Params = {
 
 // getSlug will use the route's :subname or :name to fetch page content
 // unless the route is for the privacy policy
-const getSlug = (location: Location, params: Params) => {
+const getSlug = (location: Location, params: Readonly<Params>) => {
   const { name, subname } = params
   const { pathname } = location
 
@@ -39,13 +39,14 @@ const getSlug = (location: Location, params: Params) => {
  */
 
 const InfoPageContainer = () => {
-  // const location = useLocation()
-  const { name } = useParams()
-  // const slug = getSlug(location, params)
+  const location = useLocation()
+  const params = useParams()
+  const slug = getSlug(location, params)
+
 
   const { loading, error, data } = useContentBySlugQuery({
     variables: {
-      slug: `${NAMESPACE}-${name}`,
+      slug: `${NAMESPACE}-${slug}`,
     },
     fetchPolicy: "cache-and-network",
   })
@@ -54,7 +55,7 @@ const InfoPageContainer = () => {
     return <Loader />
   }
 
-  if (error || name === undefined) {
+  if (error || slug === undefined) {
     return <GraphQLErrorPage error={error} />
   }
 
@@ -64,7 +65,7 @@ const InfoPageContainer = () => {
   return (
     <React.Fragment>
       <Helmet>
-        <title>{pageTitleLookup(name)} - dictyBase</title>
+        <title>{pageTitleLookup(slug)} - dictyBase</title>
       </Helmet>
       <Container maxWidth="lg">
         <InfoPageView data={data?.contentBySlug} />
