@@ -8,6 +8,7 @@ import { useAuthStore } from "features/Authentication/AuthStore"
 import useAuthorization from "common/hooks/useAuthorization"
 import {
   useUpdateContentMutation,
+  ContentBySlugQuery
 } from "dicty-graphql-schema"
 import { theme } from "app/layout/AppProviders"
 
@@ -24,17 +25,29 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }))
 
+type Props = {
+  location: {
+    state: {
+      data: ContentBySlugQuery["contentBySlug"]
+    }
+  }
+}
+
 /**
  * Allows editing of the info page components
  */
-const EditInfoPage = () => {
+const EditInfoPage = ({ location }: Props) => {
   /* Instead of passing props, we need to use useParams hook */
   const classes = useStyles()
   const {
     state: { token },
   } = useAuthStore()
 
-  let data = useParams();
+  const {
+    state: { data }
+  } = location
+
+  let { name } = useParams();
 
   const { user } = useAuthorization()
   const [updateContent] = useUpdateContentMutation({
@@ -47,6 +60,10 @@ const EditInfoPage = () => {
   const navigate = useNavigate()
 
   const { pathname } = useLocation()
+
+  // console.log(navigate);
+  // console.log(pathname);
+  // console.log(name);
 
   const prevURL = pathname.slice(0, -5)
 
