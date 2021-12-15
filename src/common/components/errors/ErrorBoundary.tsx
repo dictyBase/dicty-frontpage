@@ -60,7 +60,7 @@ class ErrorBoundary extends Component<Props, State> {
 
     if (hasError) {
       return (
-        <Grid className={classes.gridContainer} container justify="center">
+        <Grid className={classes.gridContainer} container justifyContent="center">
           <Grid item xs={6} className={classes.paper}>
             <div style={{ textAlign: "center" }}>
               <img src={sadDicty} alt="Sad Dicty Logo" />

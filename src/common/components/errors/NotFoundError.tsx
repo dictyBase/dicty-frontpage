@@ -31,7 +31,7 @@ const NotFoundError = ({ error }: Props) => {
   const classes = useStyles()
 
   return (
-    <Grid container className={classes.mainGrid} justify="center">
+    <Grid container className={classes.mainGrid} justifyContent="center">
       <Grid item xs={10} md={8}>
         <div className={classes.error400}>
           <img src={sadDicty} alt="Sad Dicty -- Page Not Found" />
