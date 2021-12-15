@@ -30,27 +30,19 @@ const Routes = () => {
         <Route path="/:provider/callback" element={<OauthCallback/>} />
         <Route path="/load/auth" element={<AuthLoader/>} />
         <Route path="/logout" element={
-          <PrivateRoute >
-            <Logout/>
-          </PrivateRoute>
+          <PrivateRoute component={Logout} />
         } />
         {/* Editable page routes */}
         <Route path="/:section/:name" element={<InfoPageContainer/>} />
         <Route path="/:section/:name/edit" element={
-          <PrivateRoute>
-            <EditInfoPage/>
-          </PrivateRoute>
+          <PrivateRoute component={EditInfoPage}/>
         } />
         <Route path="/:section/:name/:subname" element={<InfoPageContainer/>} />
         <Route path="/:section/:name/:subname/edit" element={          
-          <PrivateRoute>
-            <EditInfoPage/>
-          </PrivateRoute>
+          <PrivateRoute component={EditInfoPage}/>
         } />
         <Route path="/addpage" element={
-          <PrivateRoute>
-            <AddPage/>
-          </PrivateRoute>    
+          <PrivateRoute component={AddPage}/>  
         } />
         <Route path="/privacy-policy" element={<InfoPageContainer/>} />
         {/* Page not found routes */}
