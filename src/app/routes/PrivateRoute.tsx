@@ -6,7 +6,7 @@ import { useAuthStore } from "features/Authentication/AuthStore"
  * PrivateRoute redirects user from route if not authenticated.
  * This uses the same API as <Route/>
  */
-const PrivateRoute = ({ component }: {component: any}) => {
+const PrivateRoute = ({ component }: {component: React.ReactNode}) => {
   const {
     state: { isAuthenticated },
   } = useAuthStore()
