@@ -97,24 +97,18 @@ describe("features/EditablePages/AddPage", () => {
           },
         },
       ]
-      await act(async () => {
-        render(<MockComponent mocks={mocks} />)
-        const saveButton = screen.getByRole("button", { name: "Save" })
-        // act(() => {
-          userEvent.click(saveButton)
-        // })
-        await waitForExpect(() => {
-          expect(mockHistoryPush).toHaveBeenCalledWith(props.location.state.url)
-        })
+      render(<MockComponent mocks={mocks} />)
+      const saveButton = screen.getByRole("button", { name: "Save" })
+        userEvent.click(saveButton)
+      await waitForExpect(() => {
+        expect(mockHistoryPush).toHaveBeenCalledWith(props.location.state.url)
       })
     })
 
     it("should go back to previous URL on cancel", () => {
       render(<MockComponent mocks={[]} />)
       const cancelButton = screen.getByText("Cancel")
-      act(() => {
-        userEvent.click(cancelButton)
-      })
+      userEvent.click(cancelButton)
       expect(mockHistoryPush).toHaveBeenCalledWith(props.location.state.url)
     })
   })

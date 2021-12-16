@@ -142,11 +142,9 @@ describe("authentication/OauthSignHandler", () => {
         preventDefault: jest.fn(),
         stopPropagation: jest.fn(),
       })
-      await waitFor(() => {
-        expect(loginMutationCalled).toBeTruthy()
-      })
 
       await waitFor(() => {
+        expect(loginMutationCalled).toBeTruthy()
         expect(mockHistoryPush).toHaveBeenCalledWith("/load/auth")
         expect(mockHistoryPush).toHaveBeenCalledWith("/")
       })
