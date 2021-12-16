@@ -1,5 +1,5 @@
 import React from "react"
-import { useHistory, useLocation } from "react-router-dom"
+import { useNavigate, useLocation } from "react-router-dom"
 import { makeStyles, Theme } from "@material-ui/core/styles"
 import Container from "@material-ui/core/Container"
 import Box from "@material-ui/core/Box"
@@ -8,7 +8,7 @@ import { useAuthStore } from "features/Authentication/AuthStore"
 import useAuthorization from "common/hooks/useAuthorization"
 import {
   useUpdateContentMutation,
-  ContentBySlugQuery,
+  ContentBySlugQuery
 } from "dicty-graphql-schema"
 import { theme } from "app/layout/AppProviders"
 
@@ -37,13 +37,16 @@ type Props = {
  * Allows editing of the info page components
  */
 const EditInfoPage = ({ location }: Props) => {
+  /* Instead of passing props, we need to use useParams hook */
   const classes = useStyles()
   const {
     state: { token },
   } = useAuthStore()
+
   const {
-    state: { data },
+    state: { data }
   } = location
+
   const { user } = useAuthorization()
   const [updateContent] = useUpdateContentMutation({
     context: {
@@ -52,9 +55,9 @@ const EditInfoPage = ({ location }: Props) => {
       },
     },
   })
-  const history = useHistory()
-  const { pathname } = useLocation()
+  const navigate = useNavigate()
 
+  const { pathname } = useLocation()
   const prevURL = pathname.slice(0, -5)
 
   const handleSaveClick = (value: any) => {
@@ -70,11 +73,11 @@ const EditInfoPage = ({ location }: Props) => {
         },
       },
     })
-    setTimeout(() => history.push(prevURL), 1000)
+    setTimeout(() => navigate(prevURL), 1000)
   }
 
   const handleCancelClick = () => {
-    history.push(prevURL)
+    navigate(prevURL)
   }
 
   return (

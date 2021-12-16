@@ -1,6 +1,5 @@
 import React from "react"
 import { useParams, useLocation } from "react-router-dom"
-import { Location } from "history"
 import { Helmet } from "react-helmet"
 import Container from "@material-ui/core/Container"
 import { useContentBySlugQuery } from "dicty-graphql-schema"
@@ -10,27 +9,14 @@ import InfoPageView from "./InfoPageView"
 import { NAMESPACE } from "common/constants/namespace"
 import { pageTitleLookup } from "common/utils/pageTitleConversions"
 
-type Params = {
-  /** Name param in URL */
-  name: string | undefined
-  /** Subname param in URL */
-  subname: string | undefined
-}
-
 // getSlug will use the route's :subname or :name to fetch page content
 // unless the route is for the privacy policy
-const getSlug = (location: Location, params: Params) => {
-  const { name, subname } = params
-  const { pathname } = location
-
+const getSlug = (pathname: string, name?: string, subname?: string) => {
   if (pathname === "/privacy-policy" || pathname === "/privacy-policy/") {
     return "privacy-policy"
   }
 
-  if (subname) {
-    return subname
-  }
-
+  if (subname) return subname
   return name
 }
 
@@ -39,9 +25,9 @@ const getSlug = (location: Location, params: Params) => {
  */
 
 const InfoPageContainer = () => {
-  const location = useLocation()
-  const params = useParams<Params>()
-  const slug = getSlug(location, params)
+  const { pathname } = useLocation()
+  const { name, subname } = useParams()
+  const slug = getSlug(pathname, name, subname)
 
   const { loading, error, data } = useContentBySlugQuery({
     variables: {

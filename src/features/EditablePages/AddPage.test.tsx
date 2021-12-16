@@ -1,7 +1,6 @@
 import React from "react"
-import { render, screen, act } from "@testing-library/react"
+import { render, screen } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
-import { BrowserRouter, useHistory } from "react-router-dom"
 import AddPage from "./AddPage"
 import waitForExpect from "wait-for-expect"
 import { CreateContentDocument } from "dicty-graphql-schema"
@@ -17,7 +16,7 @@ jest.mock("react-router-dom", () => {
     useParams: () => ({
       name: "shipping",
     }),
-    useHistory: jest.fn(),
+    useNavigate: (to: string) => mockHistoryPush,
   }
 })
 
@@ -37,6 +36,8 @@ const mockContent = [
   },
 ]
 
+/* Maybe I need to edit my mockContent like in InfoPageContainer */
+
 describe("features/EditablePages/AddPage", () => {
   const props = {
     location: {
@@ -49,11 +50,13 @@ describe("features/EditablePages/AddPage", () => {
 
   const MockComponent = ({ mocks }: any) => (
     <MockAuthProvider mocks={mocks} validToken>
-      <BrowserRouter>
-        <AddPage {...props} />
-      </BrowserRouter>
+        <AddPage {...props}/>
     </MockAuthProvider>
   )
+
+  afterEach(() => {
+    jest.clearAllMocks()
+  })
 
   describe("initial render", () => {
     it("displays correct route", () => {
@@ -94,28 +97,18 @@ describe("features/EditablePages/AddPage", () => {
           },
         },
       ]
-      ;(useHistory as jest.Mock).mockReturnValueOnce({
-        push: mockHistoryPush,
-      })
       render(<MockComponent mocks={mocks} />)
       const saveButton = screen.getByRole("button", { name: "Save" })
-      act(() => {
         userEvent.click(saveButton)
-      })
       await waitForExpect(() => {
         expect(mockHistoryPush).toHaveBeenCalledWith(props.location.state.url)
       })
     })
 
     it("should go back to previous URL on cancel", () => {
-      ;(useHistory as jest.Mock).mockReturnValueOnce({
-        push: mockHistoryPush,
-      })
       render(<MockComponent mocks={[]} />)
       const cancelButton = screen.getByText("Cancel")
-      act(() => {
-        userEvent.click(cancelButton)
-      })
+      userEvent.click(cancelButton)
       expect(mockHistoryPush).toHaveBeenCalledWith(props.location.state.url)
     })
   })

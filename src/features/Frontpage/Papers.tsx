@@ -130,8 +130,6 @@ const Papers = () => {
  }
 
  if (error) {
-   console.log(data);
-   console.log(error);
    return <GraphQLErrorPage error={error} />
  }
 

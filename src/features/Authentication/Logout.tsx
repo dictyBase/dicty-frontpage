@@ -1,6 +1,6 @@
 import React from "react"
 import { useApolloClient } from "@apollo/client"
-import { Redirect } from "react-router-dom"
+import { Navigate } from "react-router-dom"
 import { useLogoutMutation } from "dicty-graphql-schema"
 import { useAuthStore, ActionType } from "features/Authentication/AuthStore"
 
@@ -29,7 +29,7 @@ const Logout = () => {
     client.resetStore()
   }, [dispatch, logout, client])
 
-  return <Redirect to="/" />
+  return <Navigate to="/" />
 }
 
 export default Logout

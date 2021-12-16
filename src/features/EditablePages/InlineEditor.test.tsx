@@ -1,5 +1,5 @@
 import React from "react"
-import { render, screen, act } from "@testing-library/react"
+import { render, screen } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
 import waitForExpect from "wait-for-expect"
 import InlineEditor from "./InlineEditor"
@@ -86,13 +86,9 @@ describe("EditablePages/InlineEditor", () => {
         </MockAuthProvider>,
       )
       const editButton = screen.getByText("Edit")
-      act(() => {
-        userEvent.click(editButton)
-      })
+      userEvent.click(editButton)
       const saveButtons = screen.getAllByText("Save")
-      act(() => {
-        userEvent.click(saveButtons[0])
-      })
+      userEvent.click(saveButtons[0])
       await waitForExpect(() => {
         expect(screen.getByText(/Test Content/)).toBeInTheDocument()
         expect(saveButtons[0]).not.toBeInTheDocument()

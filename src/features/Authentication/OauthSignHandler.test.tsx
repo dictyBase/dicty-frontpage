@@ -12,9 +12,7 @@ jest.mock("react-router-dom", () => {
 
   return {
     ...originalModule,
-    useHistory: () => ({
-      push: mockHistoryPush,
-    }),
+    useNavigate: (to: string) => mockHistoryPush
   }
 })
 
@@ -144,14 +142,12 @@ describe("authentication/OauthSignHandler", () => {
         preventDefault: jest.fn(),
         stopPropagation: jest.fn(),
       })
+
       await waitFor(() => {
         expect(loginMutationCalled).toBeTruthy()
       })
-
-      await waitFor(() => {
-        expect(mockHistoryPush).toHaveBeenCalledWith("/load/auth")
-        expect(mockHistoryPush).toHaveBeenCalledWith("/")
-      })
+      expect(mockHistoryPush).toHaveBeenCalledWith("/load/auth")
+      expect(mockHistoryPush).toHaveBeenCalledWith("/")
     })
   })
 })

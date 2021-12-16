@@ -1,8 +1,6 @@
 import React from "react"
-import { render, screen, act } from "@testing-library/react"
+import { render, screen, waitFor } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
-import { BrowserRouter, useHistory } from "react-router-dom"
-import waitForExpect from "wait-for-expect"
 import EditInfoPage from "./EditInfoPage"
 import MockAuthProvider from "common/mocks/MockAuthProvider"
 import { UpdateContentDocument } from "dicty-graphql-schema"
@@ -13,7 +11,7 @@ jest.mock("react-router-dom", () => {
   const originalModule = jest.requireActual("react-router-dom")
   return {
     ...originalModule,
-    useHistory: jest.fn(),
+    useNavigate: (to: string) => mockHistoryPush,
     useLocation: () => ({
       pathname: "/research/techniques/edit",
     }),
@@ -64,9 +62,7 @@ describe("features/EditablePages/EditInfoPage", () => {
 
   const MockComponent = ({ mocks }: any) => (
     <MockAuthProvider mocks={mocks} validToken>
-      <BrowserRouter>
         <EditInfoPage {...props} />
-      </BrowserRouter>
     </MockAuthProvider>
   )
 
@@ -106,29 +102,29 @@ describe("features/EditablePages/EditInfoPage", () => {
           },
         },
       ]
-      ;(useHistory as jest.Mock).mockReturnValueOnce({
-        push: mockHistoryPush,
-      })
+      // ;(useNavigate as jest.Mock).mockReturnValueOnce({
+      //   push: mockHistoryPush,
+      // })
       render(<MockComponent mocks={mocks} />)
       // there are two save buttons, one in toolbar and one at bottom
       const saveButtons = screen.getAllByText("Save")
-      act(() => {
-        userEvent.click(saveButtons[0])
-      })
-      await waitForExpect(() => {
-        expect(mockHistoryPush).toHaveBeenCalledWith("/research/techniques")
+      // act(() => {
+      userEvent.click(saveButtons[0])
+      // })
+      await waitFor(() => {
+          expect(mockHistoryPush).toHaveBeenCalledWith("/research/techniques") 
       })
     })
 
     it("should go back to previous URL on cancel", () => {
-      ;(useHistory as jest.Mock).mockReturnValueOnce({
-        push: mockHistoryPush,
-      })
+      // ;(useNavigate as jest.Mock).mockReturnValueOnce({
+      //   push: mockHistoryPush,
+      // })
       render(<MockComponent mocks={[]} />)
       const cancelButton = screen.getByText("Cancel")
-      act(() => {
+      // act(() => {
         userEvent.click(cancelButton)
-      })
+      // })
       expect(mockHistoryPush).toHaveBeenCalledWith("/research/techniques")
     })
   })

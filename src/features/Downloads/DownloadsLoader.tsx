@@ -8,7 +8,7 @@ import DownloadsHeader from "./DownloadsHeader"
  */
 
 const DownloadsLoader = () => (
-  <Grid container justify="center">
+  <Grid container justifyContent="center">
     <Grid item xs={8}>
       <DownloadsHeader />
       <SkeletonTheme baseColor="#d1d1d1">

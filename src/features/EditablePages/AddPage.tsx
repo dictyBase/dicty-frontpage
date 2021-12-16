@@ -1,5 +1,5 @@
 import React from "react"
-import { useHistory } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import Box from "@material-ui/core/Box"
 import Typography from "@material-ui/core/Typography"
 import { makeStyles, Theme } from "@material-ui/core/styles"
@@ -42,7 +42,7 @@ type Props = {
  */
 
 const AddPage = ({ location }: Props) => {
-  const slug = location.state.subname
+  const slug = location.state?.subname
     ? location.state.subname
     : location.state.name
 
@@ -50,7 +50,7 @@ const AddPage = ({ location }: Props) => {
     state: { token },
   } = useAuthStore()
   const { user, canEditPages, verifiedToken } = useAuthorization()
-  const history = useHistory()
+  const navigate = useNavigate()
   const classes = useStyles()
   const [createContent] = useCreateContentMutation({
     context: {
@@ -74,12 +74,12 @@ const AddPage = ({ location }: Props) => {
       },
     })
     setTimeout(() => {
-      history.push(prevURL)
+      navigate(prevURL)
     }, 800)
   }
 
   const handleCancelClick = () => {
-    history.push(prevURL)
+    navigate(prevURL)
   }
 
   return (

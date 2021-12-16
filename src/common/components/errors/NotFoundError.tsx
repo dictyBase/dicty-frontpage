@@ -31,7 +31,7 @@ const NotFoundError = ({ error }: Props) => {
   const classes = useStyles()
 
   return (
-    <Grid container className={classes.mainGrid} justify="center">
+    <Grid container className={classes.mainGrid} justifyContent="center">
       <Grid item xs={10} md={8}>
         <div className={classes.error400}>
           <img src={sadDicty} alt="Sad Dicty -- Page Not Found" />
@@ -49,14 +49,8 @@ const NotFoundError = ({ error }: Props) => {
               <br />
               <Link
                 className={classes.link}
-                to={{
-                  pathname: "/addpage",
-                  state: {
-                    name: name,
-                    subname: subname,
-                    url: location.pathname,
-                  },
-                }}>
+                to="/addpage"
+                state={{name: name, subname: subname, url: location.pathname}}>
                 <Button
                   className={classes.addPageButton}
                   size="small"
