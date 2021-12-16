@@ -145,9 +145,9 @@ describe("authentication/OauthSignHandler", () => {
 
       await waitFor(() => {
         expect(loginMutationCalled).toBeTruthy()
-        expect(mockHistoryPush).toHaveBeenCalledWith("/load/auth")
-        expect(mockHistoryPush).toHaveBeenCalledWith("/")
       })
+      expect(mockHistoryPush).toHaveBeenCalledWith("/load/auth")
+      expect(mockHistoryPush).toHaveBeenCalledWith("/")
     })
   })
 })
