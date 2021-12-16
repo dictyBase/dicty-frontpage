@@ -1,5 +1,5 @@
 import React from "react"
-import { render, screen, act } from "@testing-library/react"
+import { render, screen } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
 import waitForExpect from "wait-for-expect"
 import InlineEditor from "./InlineEditor"
