@@ -2,7 +2,7 @@ import React from "react"
 import { render, screen, waitFor } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
 import EditInfoPage from "./EditInfoPage"
-import MockAuthProvider from "common/mocks/MockAuthProvider"
+import MockAuthProvider from "mocks/MockAuthProvider"
 import { UpdateContentDocument } from "dicty-graphql-schema"
 
 const mockHistoryPush = jest.fn()
