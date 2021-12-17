@@ -2,7 +2,7 @@ import React from "react"
 import { render, waitFor } from "@testing-library/react"
 import { LoginDocument } from "dicty-graphql-schema"
 import OauthSignHandler from "./OauthSignHandler"
-import MockAuthProvider from "common/mocks/MockAuthProvider"
+import MockAuthProvider from "mocks/MockAuthProvider"
 import clientConfig from "common/utils/clientConfig"
 
 const mockHistoryPush = jest.fn()
