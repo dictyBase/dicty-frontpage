@@ -8,6 +8,19 @@ import AppProviders from "app/layout/AppProviders"
 import "common/utils/icons" // fontawesome library
 import "fontsource-roboto"
 
+
+const main = async() => {
+  if (process.env.NODE_ENV === "development") {
+
+    // Activate MSW
+    if(process.env.REACT_APP_MOCK_SERVER === "on") {
+      const { worker } = require("./mocks/browser.js")
+      await worker.start();
+    }
+  }
+}
+
+
 ReactDOM.render(
   <AuthProvider>
     <AppProviders>
@@ -17,3 +30,5 @@ ReactDOM.render(
   </AuthProvider>,
   document.getElementById("root"),
 )
+
+main()
