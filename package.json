@@ -43,7 +43,7 @@
     "jwt-decode": "^3.0.0",
     "localforage": "^1.10.0",
     "react": "^17.0.2",
-    "react-app-polyfill": "^2.0.0",
+    "react-app-polyfill": "^3.0.0",
     "react-dom": "^16.13.1",
     "react-ga": "^3.3.0",
     "react-helmet": "^6.1.0",
