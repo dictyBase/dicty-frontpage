@@ -5,7 +5,7 @@ import {
   // mockNotFoundError,
   mockOtherError,
   mockUnavailableError,
-} from "common/mocks/mockGraphQLError"
+} from "mocks/mockGraphQLError"
 
 const errorFormat = (error: any) => ({
   message: "Error!",
