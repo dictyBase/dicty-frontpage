@@ -2,7 +2,7 @@ import React from "react"
 import { render, screen } from "@testing-library/react"
 import InfoPageContainer, { getSlug } from "./InfoPageContainer"
 import { ContentBySlugDocument } from "dicty-graphql-schema"
-import MockAuthProvider from "common/mocks/MockAuthProvider"
+import MockAuthProvider from "mocks/MockAuthProvider"
 import { Location } from "history"
 
 window.getSelection = jest.fn()
