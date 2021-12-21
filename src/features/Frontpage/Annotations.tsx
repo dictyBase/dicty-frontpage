@@ -2,6 +2,9 @@ import React from "react"
 import { makeStyles } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { useListRecentPublicationsQuery } from "dicty-graphql-schema"
+import Loader from "common/components/Loader"
+import GraphQLErrorPage from "common/components/errors/GraphQLErrorPage"
 
 const useStyles = makeStyles({
   mainContainer: {
@@ -79,11 +82,41 @@ type Props = {
     papers: string[]
   }
 }
-
+ 
 /** Widget that displays the most recent annotations for genes and papers */
 
 const Annotations = ({ annotations }: Props) => {
   const classes = useStyles()
+
+  let paperList;
+  let { loading, error, data } = useListRecentPublicationsQuery({
+    variables: {
+      limit: 4
+    }
+  });
+
+  if (loading) {
+    return <Loader />
+  }
+ 
+  if (error) {
+    return <GraphQLErrorPage error={error} />
+  }
+  
+  if(data) {
+    paperList = data?.listRecentPublications?.map((paper, index) => {
+      const doi = paper?.doi
+      const doiString = (paper?.doi)?.split("/");
+      if(!doiString) return <></>
+      return (
+        <li className={classes.listItem} key={index}>
+          <a className={classes.link} href={doi ? doi : ""}>
+            {doiString[2]}
+          </a>
+        </li>
+      )
+     })
+  }
 
   const genelist = annotations.genes.map((gene, index) => (
     <li className={classes.listItem} key={index}>
@@ -93,13 +126,13 @@ const Annotations = ({ annotations }: Props) => {
     </li>
   ))
 
-  const paperlist = annotations.papers.map((paper, index) => (
-    <li className={classes.listItem} key={index}>
-      <a className={classes.link} href={`/publication/${paper}`}>
-        {paper}
-      </a>
-    </li>
-  ))
+  // const paperlist = annotations.papers.map((paper, index) => (
+  //   <li className={classes.listItem} key={index}>
+  //     <a className={classes.link} href={`/publication/${paper}`}>
+  //       {paper}
+  //     </a>
+  //   </li>
+  // ))
 
   return (
     <div className={classes.mainContainer}>
@@ -114,7 +147,7 @@ const Annotations = ({ annotations }: Props) => {
         </Grid>
         <Grid item className={classes.box} xs={6}>
           <span className={classes.title}>Papers</span>
-          <ul className={classes.listBox}>{paperlist}</ul>
+          <ul className={classes.listBox}>{paperList}</ul>
         </Grid>
         <Grid item xs={12}>
           <div className={classes.updateNotice}>updates coming soon</div>
