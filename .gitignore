@@ -24,6 +24,3 @@ clientConfig.js
 clientConfig.ts
 
 .vscode
-
-# MSW (Mock server)
-public/mockServiceWorker.js
