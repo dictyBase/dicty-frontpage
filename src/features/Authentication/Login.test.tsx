@@ -1,7 +1,7 @@
 import React from "react"
 import { render, screen } from "@testing-library/react"
 import Login, { createOauthURL, generateErrorDisplayMessage } from "./Login"
-import MockAuthProvider from "mocks/MockAuthProvider"
+import MockAuthProvider from "common/mocks/MockAuthProvider"
 import userEvent from "@testing-library/user-event"
 
 describe("features/Authentication/Login", () => {

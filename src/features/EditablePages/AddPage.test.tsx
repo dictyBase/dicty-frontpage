@@ -4,7 +4,7 @@ import userEvent from "@testing-library/user-event"
 import AddPage from "./AddPage"
 import waitForExpect from "wait-for-expect"
 import { CreateContentDocument } from "dicty-graphql-schema"
-import MockAuthProvider from "mocks/MockAuthProvider"
+import MockAuthProvider from "common/mocks/MockAuthProvider"
 
 const mockHistoryPush = jest.fn()
 
