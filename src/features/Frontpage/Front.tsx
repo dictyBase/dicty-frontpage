@@ -53,8 +53,8 @@ const Front = () => {
           <Popular />
         </Grid>
         <Grid item className={classes.topItem} xs={12} sm={6} lg={3}>
-          <StockCenter stockcenter={stockcenter} />
-          <Annotations annotations={annotations} />
+          <StockCenter />
+          <Annotations />
         </Grid>
       </Grid>
     </div>
