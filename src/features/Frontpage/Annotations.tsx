@@ -76,16 +76,9 @@ const useStyles = makeStyles({
   },
 })
 
-type Props = {
-  annotations: {
-    genes: string[]
-    papers: string[]
-  }
-}
- 
 /** Widget that displays the most recent annotations for genes and papers */
 
-const Annotations = ({ annotations }: Props) => {
+const Annotations = () => {
   const classes = useStyles()
 
   let paperList;
@@ -113,7 +106,7 @@ const Annotations = ({ annotations }: Props) => {
       return <GraphQLErrorPage error={geneError} />
   }
   
-  if(publicationData && geneData) {
+  if(publicationData) {
     paperList = publicationData?.listRecentPublications?.map((paper, index) => {
       const doi = paper?.doi
       const doiString = (paper?.doi)?.split("/");
@@ -126,17 +119,20 @@ const Annotations = ({ annotations }: Props) => {
         </li>
       )
     })
+  }
+
+  if(geneData) {
     geneList = geneData?.listRecentGenes?.map((gene, index) => {
       return (
         <li className={classes.listItem} key={index}>
-        <a className={classes.link} href={`/gene/${gene}`}>
-          {gene}
+        <a className={classes.link} href={`/gene/${gene.id}`}>
+          {gene.name}
         </a>
       </li>
       )
     })
   }
-  
+
   return (
     <div className={classes.mainContainer}>
       <div className={classes.header}>

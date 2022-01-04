@@ -102,16 +102,9 @@ const useStyles = makeStyles({
   },
 })
 
-type Props = {
-  stockcenter: {
-    strains: string[]
-    plasmids: string[]
-  }
-}
-
 /** Widget that displays the most recent plasmids and strains in the Stock Center */
 
-const StockCenter = ({ stockcenter }: Props) => {
+const StockCenter = () => {
   const classes = useStyles()
 
   let plasmidList;
@@ -139,18 +132,21 @@ const StockCenter = ({ stockcenter }: Props) => {
       return <GraphQLErrorPage error={strainError} />
   }
   
-  if(plasmidData && strainData) { 
+  if(plasmidData) { 
     plasmidList = plasmidData?.listRecentPlasmids?.map((plasmid, index) => {
       return (
         <li className={classes.listItem} key={index}>
-          {plasmid}
+          {plasmid.name}
         </li>
       )
     })
+  }
+
+  if(strainData) {
     strainList = strainData?.listRecentStrains?.map((strain, index) => {
       return (
         <li className={classes.listItem} key={index}>
-          {strain}
+          {strain.systematic_name}
         </li>
       )
     })
