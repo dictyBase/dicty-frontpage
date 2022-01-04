@@ -2,6 +2,9 @@ import React from "react"
 import { makeStyles } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { useListRecentPlasmidsQuery, useListRecentStrainsQuery } from "dicty-graphql-schema"
+import Loader from "common/components/Loader"
+import GraphQLErrorPage from "common/components/errors/GraphQLErrorPage"
 
 const useStyles = makeStyles({
   listItem: {
@@ -111,21 +114,47 @@ type Props = {
 const StockCenter = ({ stockcenter }: Props) => {
   const classes = useStyles()
 
-  const plasmidlist = stockcenter.plasmids.map(
-    (plasmid: string, index: number) => (
-      <li className={classes.listItem} key={index}>
-        {plasmid}
-      </li>
-    ),
-  )
+  let plasmidList;
+  const { data: plasmidData, loading: plasmidLoading, error: plasmidError } = useListRecentPlasmidsQuery({
+    variables: {
+      limit: 4
+    },
+  });
 
-  const strainlist = stockcenter.strains.map(
-    (strain: string, index: number) => (
-      <li className={classes.listItem} key={index}>
-        {strain}
-      </li>
-    ),
-  )
+  let strainList;
+  const { data: strainData, loading: strainLoading, error: strainError } = useListRecentStrainsQuery({
+    variables: {
+      limit: 4
+    },
+  });
+
+  if (plasmidLoading || strainLoading) {
+    return <Loader />
+  }
+ 
+  if (plasmidError || strainError) {
+    if(plasmidError)
+      return <GraphQLErrorPage error={plasmidError} />
+    if(strainError)
+      return <GraphQLErrorPage error={strainError} />
+  }
+  
+  if(plasmidData && strainData) { 
+    plasmidList = plasmidData?.listRecentPlasmids?.map((plasmid, index) => {
+      return (
+        <li className={classes.listItem} key={index}>
+          {plasmid}
+        </li>
+      )
+    })
+    strainList = strainData?.listRecentStrains?.map((strain, index) => {
+      return (
+        <li className={classes.listItem} key={index}>
+          {strain}
+        </li>
+      )
+    })
+  }
 
   return (
     <div className={classes.container}>
@@ -139,14 +168,14 @@ const StockCenter = ({ stockcenter }: Props) => {
       <Grid container>
         <Grid item xs={6} className={classes.plasmidBox}>
           <div className={classes.title}>PLASMIDS</div>
-          <ul className={classes.listBox}>{plasmidlist}</ul>
+          <ul className={classes.listBox}>{plasmidList}</ul>
           <div className={classes.plusSign}>
             <FontAwesomeIcon icon="plus" />
           </div>
         </Grid>
         <Grid item xs={6} className={classes.strainBox}>
           <div className={classes.title}>STRAINS</div>
-          <ul className={classes.listBox}>{strainlist}</ul>
+          <ul className={classes.listBox}>{strainList}</ul>
           <div className={classes.plusSign}>
             <FontAwesomeIcon icon="plus" />
           </div>
