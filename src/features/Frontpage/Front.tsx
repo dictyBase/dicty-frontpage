@@ -8,8 +8,6 @@ import Papers from "./Papers"
 import Popular from "./Popular"
 import Annotations from "./Annotations"
 import StockCenter from "./StockCenter"
-import annotations from "common/data/annotations"
-import stockcenter from "common/data/stockcenter"
 
 const useStyles = makeStyles((theme: Theme) => ({
   topItem: {
