@@ -18,7 +18,8 @@
     "semantic-release": "semantic-release",
     "analyze": "source-map-explorer 'build/static/js/*.js'",
     "snyk-protect": "snyk protect",
-    "postinstall": "husky install"
+    "postinstall": "husky install",
+    "start:mock": "REACT_APP_MOCK_SERVER=on react-scripts start"
   },
   "dependencies": {
     "@apollo/client": "^3.5.6",
