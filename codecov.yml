@@ -1,3 +1,0 @@
-ignore:
-  - "src/mocks/browser.js"
-  - "src/mocks/handlers.js"
