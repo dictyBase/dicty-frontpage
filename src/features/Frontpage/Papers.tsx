@@ -1,4 +1,4 @@
-import React from "react"
+import React, { ReactFragment } from "react"
 import { makeStyles } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -50,25 +50,6 @@ const useStyles = makeStyles({
       fontSize: "16px",
     },
   },
-  listItem: {
-    listStyle: "none",
-    marginBottom: "10px",
-  },
-  leadText: {
-    color: "#0b3861",
-    paddingRight: "10px",
-  },
-  mainContent: {
-    paddingRight: "10px",
-  },
-  sourceContent: {
-    color: "#0b3861",
-  },
-  sourceTitle: {
-    paddingTop: "7px",
-    fontWeight: "bold",
-    textAlign: "center",
-  },
   link: {
     textDecoration: "none",
     color: "#428bca",
@@ -89,11 +70,11 @@ const useStyles = makeStyles({
 })
 
 interface PaperContainerProps {
-  children: JSX.Element | JSX.Element[] | null
+  children: JSX.Element | JSX.Element[] | ReactFragment
 }
 
 /** Widget that displays the latest Dicty papers */
-const Papers = ({children}:PaperContainerProps) => {
+const Papers = ({children}:PaperContainerProps):JSX.Element => {
   const classes = useStyles();
 
   return (

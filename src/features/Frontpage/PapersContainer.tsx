@@ -42,12 +42,12 @@ const PapersContainer = () => {
 
     const classes = useStyles();
 
-    let text = null;
+    let text
     let { loading, error, data } = useListRecentPublicationsQuery({
         variables: {
-           limit: 4
+            limit: 4
         },
-      });
+    });
 
     if(data) {
         text = data?.listRecentPublications?.map((paper, index) => {
