@@ -8,8 +8,6 @@ import Papers from "./Papers"
 import Popular from "./Popular"
 import Annotations from "./Annotations"
 import StockCenter from "./StockCenter"
-import annotations from "common/data/annotations"
-import stockcenter from "common/data/stockcenter"
 
 const useStyles = makeStyles((theme: Theme) => ({
   topItem: {
@@ -53,8 +51,8 @@ const Front = () => {
           <Popular />
         </Grid>
         <Grid item className={classes.topItem} xs={12} sm={6} lg={3}>
-          <StockCenter stockcenter={stockcenter} />
-          <Annotations annotations={annotations} />
+          <StockCenter />
+          <Annotations />
         </Grid>
       </Grid>
     </div>

@@ -2,6 +2,9 @@ import React from "react"
 import { makeStyles } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { useListRecentPublicationsQuery, useListRecentGenesQuery } from "dicty-graphql-schema"
+import Loader from "common/components/Loader"
+import GraphQLErrorPage from "common/components/errors/GraphQLErrorPage"
 
 const useStyles = makeStyles({
   mainContainer: {
@@ -73,33 +76,62 @@ const useStyles = makeStyles({
   },
 })
 
-type Props = {
-  annotations: {
-    genes: string[]
-    papers: string[]
-  }
-}
-
 /** Widget that displays the most recent annotations for genes and papers */
 
-const Annotations = ({ annotations }: Props) => {
+const Annotations = () => {
   const classes = useStyles()
 
-  const genelist = annotations.genes.map((gene, index) => (
-    <li className={classes.listItem} key={index}>
-      <a className={classes.link} href={`/gene/${gene}`}>
-        {gene}
-      </a>
-    </li>
-  ))
+  let paperList;
+  let { data:publicationData, loading:publicationLoading, error:publicationError } = useListRecentPublicationsQuery({
+    variables: {
+      limit: 4
+    }
+  });
 
-  const paperlist = annotations.papers.map((paper, index) => (
-    <li className={classes.listItem} key={index}>
-      <a className={classes.link} href={`/publication/${paper}`}>
-        {paper}
-      </a>
-    </li>
-  ))
+  let geneList;
+  let { data:geneData, loading:geneLoading, error:geneError } = useListRecentGenesQuery({
+    variables: {
+      limit: 4
+    },
+  });
+
+  if (publicationLoading || geneLoading) {
+    return <Loader />
+  }
+ 
+  if (publicationError || geneError) {
+    if(publicationError)
+      return <GraphQLErrorPage error={publicationError} />
+    if(geneError)
+      return <GraphQLErrorPage error={geneError} />
+  }
+  
+  if(publicationData) {
+    paperList = publicationData?.listRecentPublications?.map((paper, index) => {
+      const doi = paper?.doi
+      const doiString = (paper?.doi)?.split("/");
+      if(!doiString) return <></>
+      return (
+        <li className={classes.listItem} key={index}>
+          <a className={classes.link} href={doi ? doi : ""}>
+            {doiString[2]}
+          </a>
+        </li>
+      )
+    })
+  }
+
+  if(geneData) {
+    geneList = geneData?.listRecentGenes?.map((gene, index) => {
+      return (
+        <li className={classes.listItem} key={index}>
+        <a className={classes.link} href={`/gene/${gene.id}`}>
+          {gene.name}
+        </a>
+      </li>
+      )
+    })
+  }
 
   return (
     <div className={classes.mainContainer}>
@@ -110,11 +142,11 @@ const Annotations = ({ annotations }: Props) => {
       <Grid container className={classes.innerContainer}>
         <Grid item className={classes.box} xs={6}>
           <span className={classes.title}>Genes</span>
-          <ul className={classes.listBox}>{genelist}</ul>
+          <ul className={classes.listBox}>{geneList}</ul>
         </Grid>
         <Grid item className={classes.box} xs={6}>
           <span className={classes.title}>Papers</span>
-          <ul className={classes.listBox}>{paperlist}</ul>
+          <ul className={classes.listBox}>{paperList}</ul>
         </Grid>
         <Grid item xs={12}>
           <div className={classes.updateNotice}>updates coming soon</div>

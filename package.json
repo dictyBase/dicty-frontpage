@@ -18,7 +18,8 @@
     "semantic-release": "semantic-release",
     "analyze": "source-map-explorer 'build/static/js/*.js'",
     "snyk-protect": "snyk protect",
-    "postinstall": "husky install"
+    "postinstall": "husky install",
+    "start:mock": "REACT_APP_MOCK_SERVER=on react-scripts start"
   },
   "dependencies": {
     "@apollo/client": "^3.5.6",
@@ -33,7 +34,7 @@
     "dicty-components-login": "dictybase/dicty-components-login#4.1.1",
     "dicty-components-navbar": "github:dictyBase/dicty-components-navbar#2.0.0",
     "dicty-components-page-editor": "dictybase/dicty-components-page-editor#3.1.2",
-    "dicty-graphql-schema": "dictybase/dicty-graphql-schema#1.4.0",
+    "dicty-graphql-schema": "dictyBase/dicty-graphql-schema",
     "dicty-hooks": "dictybase/dicty-hooks#3.0.0",
     "font-awesome": "^4.7.0",
     "fontsource-roboto": "^4.0.0",

@@ -40,6 +40,18 @@ login providers.
 
 After setting up the login providers, you can run `yarn install` and `yarn start` as usual.
 
+### Mock Server
+
+In case the GraphQL server is unavailable or does not have the queries implemented, you can use the mock server by running the command:
+
+```
+yarn start:mock
+```
+
+This command makes use of the `REACT_APP_MOCK_SERVER` environment variable while in development mode (`DEPLOY_ENV='development'`), which will activate the mock server that will intercept the requests made to the GraphQL server.
+
+To update the data used by the mock server, go to [`src/mocks/handlers.js`] and update the query and mock data accordingly.
+
 ## Backend Requirements
 
 This app requires the following services to be running:

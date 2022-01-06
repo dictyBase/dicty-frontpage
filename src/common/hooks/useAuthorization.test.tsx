@@ -3,7 +3,7 @@ import useAuthorization, {
   verifyPermissions,
 } from "./useAuthorization"
 import { renderHook } from "@testing-library/react-hooks"
-import MockAuthProvider, { MockSuperuser } from "common/mocks/MockAuthProvider"
+import MockAuthProvider, { MockSuperuser } from "mocks/MockAuthProvider"
 
 const mockJWT =
   "eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ1c2VyIiwiZXhwIjoxNTMyNzAxMTk5LCJqdGkiOiJiZDZ2bTN0M2Q3djAwMDlpdGNmZyIsImlhdCI6MTUzMTgzNzE5OSwiaXNzIjoiZGljdHlCYXNlIiwibmJmIjoxNTMxODM3MTk5LCJzdWIiOiJkaWN0eUJhc2UgbG9naW4gdG9rZW4ifQ" // 2018-07-27 expiration time
