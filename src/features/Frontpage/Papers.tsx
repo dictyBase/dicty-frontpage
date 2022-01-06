@@ -1,4 +1,4 @@
-import React from "react"
+import React, { ReactFragment } from "react"
 import { makeStyles } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -51,25 +51,6 @@ const useStyles = makeStyles({
     "@media (max-width: 768px)": {
       fontSize: "16px",
     },
-  },
-  listItem: {
-    listStyle: "none",
-    marginBottom: "10px",
-  },
-  leadText: {
-    color: "#0b3861",
-    paddingRight: "10px",
-  },
-  mainContent: {
-    paddingRight: "10px",
-  },
-  sourceContent: {
-    color: "#0b3861",
-  },
-  sourceTitle: {
-    paddingTop: "7px",
-    fontWeight: "bold",
-    textAlign: "center",
   },
   link: {
     textDecoration: "none",
