@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react"
-import Papers from "./Papers"
+import PapersContainer from './PapersContainer'
 import { useListRecentPublicationsQuery } from "dicty-graphql-schema"
 import { listRecentPublications } from "../../common/data/mockPublications"
 import { ApolloError } from "@apollo/client"
@@ -18,7 +18,7 @@ describe("feature/Frontpage/Papers Browser based", () => {
       error: false,
       data: { listRecentPublications: [...listRecentPublications] },
     })
-    render(<Papers />)
+    render(<PapersContainer />)
 
     expect(
       screen.getByText("Tanaka, Jahan, Kondo, Nakano & Yumura (2019)"),
@@ -35,7 +35,7 @@ describe("feature/Frontpage/Papers Browser based", () => {
     ;(useListRecentPublicationsQuery as jest.Mock).mockReturnValue({
       loading: true
     })
-    render(<Papers />)
+    render(<PapersContainer />)
     expect(screen.getByTestId("skeleton-loader")).toBeInTheDocument()
   })
 
@@ -43,6 +43,6 @@ describe("feature/Frontpage/Papers Browser based", () => {
     ;(useListRecentPublicationsQuery as jest.Mock).mockReturnValue({
       error: new ApolloError({})
     })
-    render(<Papers />)
+    render(<PapersContainer />)
   })
 })
