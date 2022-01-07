@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react"
-import StockCenter from "./StockCenter"
+import StockCenterContainer from "./StockCenter"
 import { useListRecentPlasmidsQuery, useListRecentStrainsQuery } from "dicty-graphql-schema"
 import { listRecentPlasmids } from "../../common/data/mockPlasmids"
 import { listRecentStrains } from "../../common/data/mockStrains"
@@ -49,7 +49,7 @@ describe("feature/Frontpage/StockCenter", () => {
             error: false,
             data: {listRecentStrains: [...listRecentStrains]},
         })
-        render(<StockCenter/>)
+        render(<StockCenterContainer/>)
 
         expect(screen.getByTestId("skeleton-loader")).toBeInTheDocument()
     })
@@ -63,7 +63,7 @@ describe("feature/Frontpage/StockCenter", () => {
         ;(useListRecentStrainsQuery as jest.Mock).mockReturnValue({
             loading: true
         })
-        render(<StockCenter/>)
+        render(<StockCenterContainer/>)
 
         expect(screen.getByTestId("skeleton-loader")).toBeInTheDocument()
     })
@@ -77,7 +77,7 @@ describe("feature/Frontpage/StockCenter", () => {
             error: false,
             data: { listRecentStrains: [...listRecentStrains] },
         })
-        render(<StockCenter/>)
+        render(<StockCenterContainer/>)
     })
 
     it("should render Apollo Error Component if genes failed to load", () => {
@@ -89,7 +89,7 @@ describe("feature/Frontpage/StockCenter", () => {
         ;(useListRecentStrainsQuery as jest.Mock).mockReturnValue({
             error: new ApolloError({})
         })
-        render(<StockCenter/>)
+        render(<StockCenterContainer/>)
       })
 
 })
