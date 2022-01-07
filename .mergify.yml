@@ -8,6 +8,7 @@ queue_rules:
 pull_request_rules:
   - name: merge using the merge queue
     conditions:
+      - author~=^dependabot
       - base=develop
       - check-success=Unit tests
       - check-success=codecov/patch
