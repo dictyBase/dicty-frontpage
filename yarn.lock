@@ -5067,8 +5067,9 @@ dicty-components-page-editor@dictybase/dicty-components-page-editor#3.1.2:
     slate-react "0.65.2"
 
 dicty-graphql-schema@dictyBase/dicty-graphql-schema:
-  version "1.6.0"
-  resolved "https://codeload.github.com/dictyBase/dicty-graphql-schema/tar.gz/d99db2b53691aa37b98edadb1dd91607e1730569"
+  version "1.8.0"
+  uid d4c5e29f106343c6507fdef395204e3294c749a6
+  resolved "https://codeload.github.com/dictyBase/dicty-graphql-schema/tar.gz/d4c5e29f106343c6507fdef395204e3294c749a6"
 
 dicty-hooks@dictybase/dicty-hooks#3.0.0:
   version "3.0.0"
@@ -6992,10 +6993,10 @@ ieee754@^1.1.13:
   resolved "https://registry.yarnpkg.com/ieee754/-/ieee754-1.2.1.tgz#8eb7a10a63fff25d15a57b001586d177d1b0d352"
   integrity sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==
 
-ignore-walk@^4.0.1:
-  version "4.0.1"
-  resolved "https://registry.npmjs.org/ignore-walk/-/ignore-walk-4.0.1.tgz#fc840e8346cf88a3a9380c5b17933cd8f4d39fa3"
-  integrity sha512-rzDQLaW4jQbh2YrOFlJdCtX8qgJTehFRYiUB2r1osqTeDzV/3+Jh8fz1oAPzUThf3iku8Ds4IDqawI5d8mUiQw==
+ignore-walk@^3.0.3:
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/ignore-walk/-/ignore-walk-3.0.4.tgz#c9a09f69b7c7b479a5d74ac1a3c0d4236d2a6335"
+  integrity sha512-PY6Ii8o1jMRA1z4F2hRkH/xN59ox43DavKvD3oDpfurRlOJyAHpifIwpbdv1n4jt4ov0jSpw3kQ4GhJnpBL6WQ==
   dependencies:
     minimatch "^3.0.4"
 
