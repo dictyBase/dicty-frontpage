@@ -2380,15 +2380,10 @@
   resolved "https://registry.yarnpkg.com/@types/minimist/-/minimist-1.2.2.tgz#ee771e2ba4b3dc5b372935d549fd9617bf345b8c"
   integrity sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==
 
-"@types/node@*":
-  version "17.0.2"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-17.0.2.tgz#a4c07d47ff737e8ee7e586fe636ff0e1ddff070a"
-  integrity sha512-JepeIUPFDARgIs0zD/SKPgFsJEAF0X5/qO80llx59gOxFTboS9Amv3S+QfB7lqBId5sFXJ99BN0J6zFRvL9dDA==
-
-"@types/node@^17.0.6":
-  version "17.0.6"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-17.0.6.tgz#cc1589c9ee853b389e67e8fb4384e0f250a139b9"
-  integrity sha512-+XBAjfZmmivILUzO0HwBJoYkAyyySSLg5KCGBDFLomJo0sV6szvVLAf4ANZZ0pfWzgEds5KmGLG9D5hfEqOhaA==
+"@types/node@*", "@types/node@^17.0.8":
+  version "17.0.8"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-17.0.8.tgz#50d680c8a8a78fe30abe6906453b21ad8ab0ad7b"
+  integrity sha512-YofkM6fGv4gDJq78g4j0mMuGMkZVxZDgtU0JRdx6FgiJDG+0fY0GKVolOV8WqVmEhLCXkQRjwDdKyPxJp/uucg==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.1"
@@ -5067,8 +5062,9 @@ dicty-components-page-editor@dictybase/dicty-components-page-editor#3.1.2:
     slate-react "0.65.2"
 
 dicty-graphql-schema@dictyBase/dicty-graphql-schema:
-  version "1.6.0"
-  resolved "https://codeload.github.com/dictyBase/dicty-graphql-schema/tar.gz/d99db2b53691aa37b98edadb1dd91607e1730569"
+  version "1.8.0"
+  uid d4c5e29f106343c6507fdef395204e3294c749a6
+  resolved "https://codeload.github.com/dictyBase/dicty-graphql-schema/tar.gz/d4c5e29f106343c6507fdef395204e3294c749a6"
 
 dicty-hooks@dictybase/dicty-hooks#3.0.0:
   version "3.0.0"
@@ -12527,10 +12523,10 @@ snapdragon@^0.8.1:
     source-map-resolve "^0.5.0"
     use "^3.1.0"
 
-snyk@^1.813.0:
-  version "1.813.0"
-  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.813.0.tgz#d0cea2241d92dced040bf677cd34cec405093b4a"
-  integrity sha512-zkDSNxlbB3E4LWh9YB21sGJDd3EcvxX069jWB5qWw8hDeeLMZwyCTwsuYkqeZI1djroT4n+nO9A2jiGoIGasjA==
+snyk@^1.819.0:
+  version "1.819.0"
+  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.819.0.tgz#6e08cf3d6f4dc41c33bb9534ef025d98299252cb"
+  integrity sha512-J4rmLwoRzxFFijAuyS9Bztfdd2nd/Lm6nDATPEAnFOm35rEPuiOu5gmzdnIxgg7Bf1UzIvZWICIndBcir9pzJQ==
 
 sockjs-client@^1.5.0:
   version "1.5.2"
