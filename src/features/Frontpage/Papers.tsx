@@ -1,7 +1,8 @@
-import React, { ReactFragment } from "react"
+import React from "react"
 import { makeStyles } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { ListRecentPublicationsQuery } from "dicty-graphql-schema"
 
 const useStyles = makeStyles({
   container: {
@@ -50,6 +51,25 @@ const useStyles = makeStyles({
       fontSize: "16px",
     },
   },
+  listItem: {
+    listStyle: "none",
+    marginBottom: "10px",
+  },
+  leadText: {
+    color: "#0b3861",
+    paddingRight: "10px",
+  },
+  mainContent: {
+    paddingRight: "10px",
+  },
+  sourceContent: {
+    color: "#0b3861",
+  },
+  sourceTitle: {
+    paddingTop: "7px",
+    fontWeight: "bold",
+    textAlign: "center",
+  },
   link: {
     textDecoration: "none",
     color: "#428bca",
@@ -70,12 +90,55 @@ const useStyles = makeStyles({
 })
 
 interface PaperContainerProps {
-  children: JSX.Element | JSX.Element[] | ReactFragment
+  data: ListRecentPublicationsQuery | undefined
 }
 
 /** Widget that displays the latest Dicty papers */
-const Papers = ({children}:PaperContainerProps):JSX.Element => {
+const Papers = ({data}:PaperContainerProps):JSX.Element => {
   const classes = useStyles();
+
+  let text;
+  if(data) {
+    text = data?.listRecentPublications?.map((paper, index) => {
+    const authors = paper?.authors
+    const doi = paper?.doi
+    let lastname;
+    if (!authors) return <></>
+    if (Array.isArray(authors[0]?.last_name)) {
+        lastname = (authors[0]?.last_name)?.join(", ")
+    } else {
+        lastname = authors[0]?.last_name
+    }
+
+    return (
+        <li className={classes.listItem} key={index}>
+        <span
+            data-testid={"paper-author-" + index}
+            className={classes.leadText}>
+            {lastname ? lastname : ""}
+        </span>
+        <span className={classes.mainContent}>
+        <strong>
+            <em data-testid={"paper-title-" + index}>{paper.title}</em>
+        </strong>
+        </span>
+        <br />
+        <span className={classes.sourceContent}>
+        <span className={classes.sourceTitle}>Journal: </span>
+        <span data-testid={"paper-journal-" + index}>{paper.journal}</span>
+        <a
+            className={classes.link}
+            href={doi ? doi : ""}
+            target="_blank"
+            rel="noopener noreferrer">
+            {" "}
+            Pubmed
+        </a>
+        </span>
+        </li>
+    )
+    })
+  }
 
   return (
     <div className={classes.container}>
@@ -87,7 +150,7 @@ const Papers = ({children}:PaperContainerProps):JSX.Element => {
           <span className={classes.title}> LATEST PAPERS</span>
         </Grid>
       </div>
-      <ul className={classes.listBox}>{children}</ul>
+      <ul className={classes.listBox}>{text}</ul>
       <div className={classes.bottomLink}>
         {/* <FontAwesome name="plus" />
         <Link to="/papers" alt="more papers">
