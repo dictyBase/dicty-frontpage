@@ -2,9 +2,7 @@ import React from "react"
 import { makeStyles } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { useListRecentPlasmidsQuery, useListRecentStrainsQuery } from "dicty-graphql-schema"
-import Loader from "common/components/Loader"
-import GraphQLErrorPage from "common/components/errors/GraphQLErrorPage"
+import { ListRecentPlasmidsQuery, ListRecentStrainsQuery,  } from 'dicty-graphql-schema';
 
 const useStyles = makeStyles({
   listItem: {
@@ -102,35 +100,17 @@ const useStyles = makeStyles({
   },
 })
 
-/** Widget that displays the most recent plasmids and strains in the Stock Center */
+interface StockCenterProps {
+  plasmidData: ListRecentPlasmidsQuery;
+  strainData: ListRecentStrainsQuery;
+}
 
-const StockCenter = () => {
+/** Widget that displays the most recent plasmids and strains in the Stock Center */
+const StockCenter = ({plasmidData, strainData}: StockCenterProps):JSX.Element => {
   const classes = useStyles()
 
   let plasmidList;
-  const { data: plasmidData, loading: plasmidLoading, error: plasmidError } = useListRecentPlasmidsQuery({
-    variables: {
-      limit: 4
-    },
-  });
-
   let strainList;
-  const { data: strainData, loading: strainLoading, error: strainError } = useListRecentStrainsQuery({
-    variables: {
-      limit: 4
-    },
-  });
-
-  if (plasmidLoading || strainLoading) {
-    return <Loader />
-  }
- 
-  if (plasmidError || strainError) {
-    if(plasmidError)
-      return <GraphQLErrorPage error={plasmidError} />
-    if(strainError)
-      return <GraphQLErrorPage error={strainError} />
-  }
   
   if(plasmidData) { 
     plasmidList = plasmidData?.listRecentPlasmids?.map((plasmid, index) => {
