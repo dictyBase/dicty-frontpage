@@ -6,7 +6,7 @@ import Slideshow from "./Slideshow"
 import Tweets from "./Tweets"
 import PapersContainer from './PapersContainer'
 import Popular from "./Popular"
-import Annotations from "./Annotations"
+import AnnotationsContainer from "./AnnotationsContainer"
 import StockCenter from "./StockCenter"
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -52,7 +52,7 @@ const Front = () => {
         </Grid>
         <Grid item className={classes.topItem} xs={12} sm={6} lg={3}>
           <StockCenter />
-          <Annotations />
+          <AnnotationsContainer />
         </Grid>
       </Grid>
     </div>
