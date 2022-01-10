@@ -1,4 +1,4 @@
-import React, { ReactFragment } from "react"
+import React from "react"
 import { makeStyles } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -109,6 +109,7 @@ const Papers = ({data}:PaperContainerProps):JSX.Element => {
     } else {
         lastname = authors[0]?.last_name
     }
+
     return (
         <li className={classes.listItem} key={index}>
         <span
@@ -137,7 +138,7 @@ const Papers = ({data}:PaperContainerProps):JSX.Element => {
         </li>
     )
     })
-}
+  }
 
   return (
     <div className={classes.container}>
