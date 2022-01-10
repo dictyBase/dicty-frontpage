@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react"
-import Annotations from "./Annotations"
+import AnnotationsContainer from "./AnnotationsContainer"
 import { useListRecentPublicationsQuery, useListRecentGenesQuery } from "dicty-graphql-schema"
 import { listRecentPublications } from '../../common/data/mockPublications'
 import { listRecentGenes } from "../../common/data/mockGenes"
@@ -27,7 +27,7 @@ describe("feature/Frontpage/Annotations", () => {
             error: false,
             data: { listRecentGenes: [...listRecentGenes] },
         })
-        render(<Annotations/>)
+        render(<AnnotationsContainer/>)
 
         /* Check if it renders Papers */
         expect(screen.getByText("31108912")).toBeInTheDocument()
@@ -49,7 +49,7 @@ describe("feature/Frontpage/Annotations", () => {
             error: false,
             data: { listRecentGenes: [...listRecentGenes] },
         })
-        render(<Annotations/>)
+        render(<AnnotationsContainer/>)
 
         expect(screen.getByTestId("skeleton-loader")).toBeInTheDocument()
     })
@@ -63,7 +63,7 @@ describe("feature/Frontpage/Annotations", () => {
         ;(useListRecentGenesQuery as jest.Mock).mockReturnValue({
             loading: true
         })
-        render(<Annotations/>)
+        render(<AnnotationsContainer/>)
         expect(screen.getByTestId("skeleton-loader")).toBeInTheDocument()
     })
 
@@ -76,7 +76,7 @@ describe("feature/Frontpage/Annotations", () => {
             error: false,
             data: { listRecentGenes: [...listRecentGenes] },
         })
-        render(<Annotations/>)
+        render(<AnnotationsContainer/>)
     })
 
     it("should render Apollo Error Component if genes failed to load", () => {
@@ -88,6 +88,6 @@ describe("feature/Frontpage/Annotations", () => {
         ;(useListRecentGenesQuery as jest.Mock).mockReturnValue({
             error: new ApolloError({})
         })
-        render(<Annotations/>)
+        render(<AnnotationsContainer/>)
       })
 })
