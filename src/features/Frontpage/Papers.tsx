@@ -115,6 +115,7 @@ const Papers = ({data}:PaperContainerProps):JSX.Element => {
     } else {
         lastname = authors[0]?.last_name
     }
+
     return (
         <li className={classes.listItem} key={index}>
         <span
@@ -143,7 +144,7 @@ const Papers = ({data}:PaperContainerProps):JSX.Element => {
         </li>
     )
     })
-}
+  }
 
   return (
     <div className={classes.container}>
