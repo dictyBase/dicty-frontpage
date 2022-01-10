@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react"
-import StockCenterContainer from "./StockCenter"
+import StockCenterContainer from "./StockCenterContainer"
 import { useListRecentPlasmidsQuery, useListRecentStrainsQuery } from "dicty-graphql-schema"
 import { listRecentPlasmids } from "../../common/data/mockPlasmids"
 import { listRecentStrains } from "../../common/data/mockStrains"
@@ -25,7 +25,7 @@ describe("feature/Frontpage/StockCenter", () => {
             error: false,
             data: {listRecentStrains: [...listRecentStrains]},
         })
-        render(<StockCenter/>)
+        render(<StockCenterContainer/>)
 
         /* Check if it renders Plasmids */
         expect(screen.getByText("pTgrR1/LacZ")).toBeInTheDocument()
