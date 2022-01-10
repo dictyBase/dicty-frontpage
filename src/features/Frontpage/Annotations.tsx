@@ -2,9 +2,7 @@ import React from "react"
 import { makeStyles } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { useListRecentPublicationsQuery, useListRecentGenesQuery } from "dicty-graphql-schema"
-import Loader from "common/components/Loader"
-import GraphQLErrorPage from "common/components/errors/GraphQLErrorPage"
+import { ListRecentPublicationsQuery, ListRecentGenesQuery } from "dicty-graphql-schema"
 
 const useStyles = makeStyles({
   mainContainer: {
@@ -76,35 +74,17 @@ const useStyles = makeStyles({
   },
 })
 
-/** Widget that displays the most recent annotations for genes and papers */
+interface AnnotationsProps {
+  publicationData: ListRecentPublicationsQuery;
+  geneData: ListRecentGenesQuery;
+}
 
-const Annotations = () => {
+/** Widget that displays the most recent annotations for genes and papers */
+const Annotations = ({publicationData, geneData}: AnnotationsProps) => {
   const classes = useStyles()
 
   let paperList;
-  let { data:publicationData, loading:publicationLoading, error:publicationError } = useListRecentPublicationsQuery({
-    variables: {
-      limit: 4
-    }
-  });
-
   let geneList;
-  let { data:geneData, loading:geneLoading, error:geneError } = useListRecentGenesQuery({
-    variables: {
-      limit: 4
-    },
-  });
-
-  if (publicationLoading || geneLoading) {
-    return <Loader />
-  }
- 
-  if (publicationError || geneError) {
-    if(publicationError)
-      return <GraphQLErrorPage error={publicationError} />
-    if(geneError)
-      return <GraphQLErrorPage error={geneError} />
-  }
   
   if(publicationData) {
     paperList = publicationData?.listRecentPublications?.map((paper, index) => {
