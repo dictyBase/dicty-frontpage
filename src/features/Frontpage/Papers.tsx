@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { ListRecentPublicationsQuery } from "dicty-graphql-schema"
+import PapersItem from "./PapersItem"
 
 const useStyles = makeStyles({
   container: {
@@ -51,25 +52,6 @@ const useStyles = makeStyles({
       fontSize: "16px",
     },
   },
-  listItem: {
-    listStyle: "none",
-    marginBottom: "10px",
-  },
-  leadText: {
-    color: "#0b3861",
-    paddingRight: "10px",
-  },
-  mainContent: {
-    paddingRight: "10px",
-  },
-  sourceContent: {
-    color: "#0b3861",
-  },
-  sourceTitle: {
-    paddingTop: "7px",
-    fontWeight: "bold",
-    textAlign: "center",
-  },
   link: {
     textDecoration: "none",
     color: "#428bca",
@@ -97,46 +79,6 @@ interface PaperContainerProps {
 const Papers = ({ data }: PaperContainerProps): JSX.Element => {
   const classes = useStyles()
 
-  let text
-  text = data?.listRecentPublications?.map((paper, index) => {
-    const authors = paper?.authors
-    const doi = paper?.doi
-    let lastname
-    if (!authors) return <></>
-    if (Array.isArray(authors[0]?.last_name)) {
-      lastname = authors[0]?.last_name?.join(", ")
-    } else {
-      lastname = authors[0]?.last_name
-    }
-
-    return (
-      <li className={classes.listItem} key={index}>
-        <span
-          className={classes.leadText}>
-          {lastname ? lastname : ""}
-        </span>
-        <span className={classes.mainContent}>
-          <strong>
-            <em>{paper.title}</em>
-          </strong>
-        </span>
-        <br />
-        <span className={classes.sourceContent}>
-          <span className={classes.sourceTitle}>Journal: </span>
-          <span>{paper.journal}</span>
-          <a
-            className={classes.link}
-            href={doi ? doi : ""}
-            target="_blank"
-            rel="noopener noreferrer">
-            {" "}
-            Pubmed
-          </a>
-        </span>
-      </li>
-    )
-  })
-
   return (
     <div className={classes.container}>
       <div className={classes.header}>
@@ -147,7 +89,9 @@ const Papers = ({ data }: PaperContainerProps): JSX.Element => {
           <span className={classes.title}>LATEST PAPERS</span>
         </Grid>
       </div>
-      <ul className={classes.listBox}>{text}</ul>
+      <ul className={classes.listBox}>
+        <PapersItem data={data} />
+      </ul>
       <div className={classes.bottomLink}>
         {/* <FontAwesome name="plus" />
         <Link to="/papers" alt="more papers">
