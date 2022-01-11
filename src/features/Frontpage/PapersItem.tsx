@@ -56,14 +56,14 @@ const PapersItem = ({ data }: PaperContainerProps) => {
         </span>
         <br />
         <span className={classes.sourceContent}>
-          <span className={classes.sourceTitle}>Journal: </span>
-          <span data-testid={"paper-journal-" + index}>{paper.journal}</span>
+          <span className={classes.sourceTitle}>Journal:{"\u00A0"}</span>
+          <span>{paper.journal}</span>
           <a
             className={classes.link}
             href={doi ? doi : ""}
             target="_blank"
             rel="noopener noreferrer">
-            {" "}
+            {"\u00A0"}
             Pubmed
           </a>
         </span>
