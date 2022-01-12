@@ -4,10 +4,10 @@ import Grid from "@material-ui/core/Grid"
 import { makeStyles, Theme } from "@material-ui/core/styles"
 import Slideshow from "./Slideshow"
 import Tweets from "./Tweets"
-import PapersContainer from './PapersContainer'
+import PapersContainer from "./PapersContainer"
 import Popular from "./Popular"
 import Annotations from "./Annotations"
-import StockCenterContainer from "./StockCenterContainer"
+import StockCenter from "./StockCenter"
 
 const useStyles = makeStyles((theme: Theme) => ({
   topItem: {
@@ -45,13 +45,13 @@ const Front = () => {
           <Tweets />
         </Grid>
         <Grid item className={classes.topItem} xs={12} lg={6} xl={4}>
-          <PapersContainer/>
+          <PapersContainer />
         </Grid>
         <Grid item className={classes.topItem} xs={12} sm={6} lg={3}>
           <Popular />
         </Grid>
         <Grid item className={classes.topItem} xs={12} sm={6} lg={3}>
-          <StockCenterContainer />
+          <StockCenter />
           <Annotations />
         </Grid>
       </Grid>
