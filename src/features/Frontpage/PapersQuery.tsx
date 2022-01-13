@@ -3,8 +3,13 @@ import GraphQLErrorPage from "common/components/errors/GraphQLErrorPage"
 import { useListRecentPublicationsQuery } from "dicty-graphql-schema"
 import Loader from "common/components/Loader"
 import AnnotationsItem from "./AnnotationsItem"
+import PapersItem from "./PapersItem"
 
-const AnnotationsPaperQuery = () => {
+interface PapersQueryProps {
+  parent: String
+}
+
+const PapersQuery = ({ parent }: PapersQueryProps) => {
   let { data, loading, error } = useListRecentPublicationsQuery({
     variables: {
       limit: 4,
@@ -15,9 +20,14 @@ const AnnotationsPaperQuery = () => {
     <>
       {loading ? <Loader /> : <></>}
       {error ? <GraphQLErrorPage error={error} /> : <></>}
-      {data ? <AnnotationsItem data={data} type={"publications"} /> : <></>}
+      {parent === "Annotations" && data ? (
+        <AnnotationsItem data={data} type={"publications"} />
+      ) : (
+        <></>
+      )}
+      {parent === "Papers" && data ? <PapersItem data={data} /> : <></>}
     </>
   )
 }
 
-export default AnnotationsPaperQuery
+export default PapersQuery
