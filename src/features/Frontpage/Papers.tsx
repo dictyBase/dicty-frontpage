@@ -52,6 +52,25 @@ const useStyles = makeStyles({
       fontSize: "16px",
     },
   },
+  listItem: {
+    listStyle: "none",
+    marginBottom: "10px",
+  },
+  leadText: {
+    color: "#0b3861",
+    paddingRight: "10px",
+  },
+  mainContent: {
+    paddingRight: "10px",
+  },
+  sourceContent: {
+    color: "#0b3861",
+  },
+  sourceTitle: {
+    paddingTop: "7px",
+    fontWeight: "bold",
+    textAlign: "center",
+  },
   link: {
     textDecoration: "none",
     color: "#428bca",
