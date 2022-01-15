@@ -85,10 +85,10 @@
     "msw": "^0.36.4",
     "prettier": "^2.5.1",
     "react-docgen-typescript": "^2.2.2",
-    "react-styleguidist": "^11.1.7",
+    "react-styleguidist": "^11.1.8",
     "react-test-renderer": "^17.0.2",
     "semantic-release": "^18.0.1",
-    "snyk": "^1.819.0",
+    "snyk": "^1.827.0",
     "source-map-explorer": "^2.5.2",
     "wait-for-expect": "^3.0.2"
   },

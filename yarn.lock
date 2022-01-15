@@ -7319,11 +7319,6 @@ is-descriptor@^1.0.0, is-descriptor@^1.0.2:
     is-data-descriptor "^1.0.0"
     kind-of "^6.0.2"
 
-is-directory@^0.3.1:
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/is-directory/-/is-directory-0.3.1.tgz#61339b6f2475fc772fd9c9d83f5c8575dc154ae1"
-  integrity sha1-YTObbyR1/Hcv2cnYP1yFddwVSuE=
-
 is-docker@^2.0.0, is-docker@^2.1.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/is-docker/-/is-docker-2.2.1.tgz#33eeabe23cfe86f14bde4408a02c0cfb853acdaa"
@@ -11412,10 +11407,10 @@ react-simple-code-editor@^0.10.0:
   resolved "https://registry.yarnpkg.com/react-simple-code-editor/-/react-simple-code-editor-0.10.0.tgz#73e7ac550a928069715482aeb33ccba36efe2373"
   integrity sha512-bL5W5mAxSW6+cLwqqVWY47Silqgy2DKDTR4hDBrLrUqC5BXc29YVx17l2IZk5v36VcDEq1Bszu2oHm1qBwKqBA==
 
-react-styleguidist@^11.1.7:
-  version "11.1.7"
-  resolved "https://registry.yarnpkg.com/react-styleguidist/-/react-styleguidist-11.1.7.tgz#09c490b9c4f35c09b19ef20f262d654b63de63f8"
-  integrity sha512-kiLXbRWoc7hzY9h8rAltYMkby7PIBEj0+nG2s6I/riCwpHPF7GvwM5U1tPCWiveCI8nqYSKAfWSErvUH8eVNDQ==
+react-styleguidist@^11.1.8:
+  version "11.1.8"
+  resolved "https://registry.yarnpkg.com/react-styleguidist/-/react-styleguidist-11.1.8.tgz#79fb07f7d9e7d148b20b4f9aa997fb65f631cd65"
+  integrity sha512-GdFX3z76SJ2aDxKLKNOBRKPimROTPhsmlavUtB6RALzlXs+y5EyuG0lwaxlvfBgjoS1AxoqmYiowcJL2BKpZxQ==
   dependencies:
     "@tippyjs/react" "4.1.0"
     "@vxna/mini-html-webpack-template" "^2.0.0"
@@ -11442,7 +11437,6 @@ react-styleguidist@^11.1.7:
     glob "^7.1.5"
     glogg "^1.0.2"
     hash-sum "^2.0.0"
-    is-directory "^0.3.1"
     javascript-stringify "^2.0.0"
     jss "^10.0.0"
     jss-plugin-camel-case "^10.0.0"
@@ -12481,10 +12475,10 @@ snapdragon@^0.8.1:
     source-map-resolve "^0.5.0"
     use "^3.1.0"
 
-snyk@^1.819.0:
-  version "1.819.0"
-  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.819.0.tgz#6e08cf3d6f4dc41c33bb9534ef025d98299252cb"
-  integrity sha512-J4rmLwoRzxFFijAuyS9Bztfdd2nd/Lm6nDATPEAnFOm35rEPuiOu5gmzdnIxgg7Bf1UzIvZWICIndBcir9pzJQ==
+snyk@^1.827.0:
+  version "1.827.0"
+  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.827.0.tgz#1ad7fd095414a2e7be6651379a6b0cf4eff44ea0"
+  integrity sha512-9mDSG2KeUUiHfMBfpf56QazDOEBjjKnsaoPuUgfCa5o4dDwV92r9LQLrurexQi1c/6P55oMa80Qji05TJy9IgA==
 
 sockjs-client@^1.5.0:
   version "1.5.2"
