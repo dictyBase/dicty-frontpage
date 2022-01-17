@@ -6,11 +6,12 @@
     "node": ">= 16.13.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "test-coverage": "react-scripts test --coverage",
-    "eject": "react-scripts eject",
+    "start": "next start",
+    "build": "next build",
+    "dev": "next dev",
+    "test": "next test",
+    "test-coverage": "next test --coverage",
+    "eject": "next eject",
     "lint": "eslint --ext .jsx,.js,.ts,.tsx src/",
     "tsc": "tsc",
     "styleguide": "FAST_REFRESH=false styleguidist server",
@@ -19,7 +20,7 @@
     "analyze": "source-map-explorer 'build/static/js/*.js'",
     "snyk-protect": "snyk protect",
     "postinstall": "husky install",
-    "start:mock": "REACT_APP_MOCK_SERVER=on react-scripts start"
+    "start:mock": "REACT_APP_MOCK_SERVER=on next start"
   },
   "dependencies": {
     "@apollo/client": "^3.5.7",
