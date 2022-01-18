@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react"
-import PapersContainer from './PapersContainer'
+import PapersContainer from "./PapersContainer"
 import { useListRecentPublicationsQuery } from "dicty-graphql-schema"
 import { listRecentPublications } from "../../common/data/mockPublications"
 import { ApolloError } from "@apollo/client"
@@ -33,7 +33,7 @@ describe("feature/Frontpage/Papers Browser based", () => {
 
   it("should render loading", () => {
     ;(useListRecentPublicationsQuery as jest.Mock).mockReturnValue({
-      loading: true
+      loading: true,
     })
     render(<PapersContainer />)
     expect(screen.getByTestId("skeleton-loader")).toBeInTheDocument()
@@ -41,7 +41,7 @@ describe("feature/Frontpage/Papers Browser based", () => {
 
   it("should render Apollo Error Component", () => {
     ;(useListRecentPublicationsQuery as jest.Mock).mockReturnValue({
-      error: new ApolloError({})
+      error: new ApolloError({}),
     })
     render(<PapersContainer />)
   })
