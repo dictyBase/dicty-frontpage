@@ -1,10 +1,10 @@
 import React from "react"
-import { Link } from "react-router-dom"
+import Link from "next/link"
 import { makeStyles } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
 import Button from "@material-ui/core/Button"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import sadDicty from "../../../public/sad-dicty.png"
+import sadDicty from "../../public/sad-dicty.png"
 import Image from "next/image"
 
 const useStyles = makeStyles({
@@ -49,7 +49,7 @@ const PageNotReady = () => {
             We are constantly adding content to our new website so check back
             soon!
           </p>
-          <Link to="/">
+          <Link href="/">
             <Button
               className={classes.button}
               size="small"
