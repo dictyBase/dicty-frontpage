@@ -1,4 +1,4 @@
-import clientConfig from "common/utils/clientConfig"
+import clientConfig from "./clientConfig"
 
 type Config = {
   name: string
@@ -22,6 +22,8 @@ type Auth = {
   orcid: Config
   [index: string]: any
 }
+
+const url = typeof window !== "undefined" ? window.location.origin: ""
 
 const oauthConfig: Auth = {
   google: {
