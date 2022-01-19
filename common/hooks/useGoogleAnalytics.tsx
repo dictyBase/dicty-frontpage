@@ -1,10 +1,10 @@
 import React from "react"
-import { useLocation } from "react-router-dom"
+import { useRouter } from "next/router"
 
 // useGoogleAnalytics is a hook to initialize GA tracking
 // currently using a universal analytics tag
 const useGoogleAnalytics = () => {
-  const location = useLocation()
+  const router = useRouter()
 
   React.useEffect(() => {
     const setGoogleAnalytics = async () => {
@@ -31,7 +31,7 @@ const useGoogleAnalytics = () => {
     if (process.env.NODE_ENV === "production") {
       setGoogleAnalytics()
     }
-  }, [location.pathname, location.search])
+  }, [router.pathname])
 }
 
 export default useGoogleAnalytics
