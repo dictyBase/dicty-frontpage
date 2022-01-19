@@ -27,3 +27,6 @@ clientConfig.ts
 
 # MSW (Mock server)
 public/mockServiceWorker.js
+
+# next
+.next
