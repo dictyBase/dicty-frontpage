@@ -224,7 +224,7 @@ const formatNavbarData = (json: NavbarItems) =>
     items: formatNavbarItems(item.attributes.items),
   }))
 
-const navbarURL = process.env.REACT_APP_NAVBAR_JSON
+const navbarURL = process.env.NEXT_PUBLIC_NAVBAR_JSON
 
 export type { NavbarItems }
 export { navbarItems, formatNavbarData, navbarURL }

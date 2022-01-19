@@ -11,7 +11,7 @@ describe("features/Authentication/OauthCallback", () => {
     postMessage: postMessageMock,
   }
   globalAny.close = closeMock
-  process.env.REACT_APP_BASENAME = "/publication"
+  process.env.NEXT_PUBLIC_BASENAME = "/publication"
   describe("initial render", () => {
     it("renders text notification", () => {
       render(

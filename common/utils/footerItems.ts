@@ -76,7 +76,7 @@ const footerLinks = {
   ],
 }
 
-const footerURL = process.env.REACT_APP_FOOTER_JSON
+const footerURL = process.env.NEXT_PUBLIC_FOOTER_JSON
 
 type FooterItems = {
   data: Array<{

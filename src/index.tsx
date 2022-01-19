@@ -8,13 +8,12 @@ import AppProviders from "app/layout/AppProviders"
 import "common/utils/icons" // fontawesome library
 import "fontsource-roboto"
 
-const main = async() => {
-  if(process.env.NODE_ENV === "development") {
-    
+const main = async () => {
+  if (process.env.NODE_ENV === "development") {
     // Activate MSW
-    if(process.env.REACT_APP_MOCK_SERVER === "on") {
+    if (process.env.NEXT_PUBLIC_MOCK_SERVER === "on") {
       const { worker } = require("./mocks/browser.js")
-      await worker.start();
+      await worker.start()
     }
   }
 }
@@ -27,7 +26,7 @@ export default function NextIndexWrapper() {
         <App />
       </AppProviders>
     </AuthProvider>
-  );
+  )
 }
 
-main();
+main()

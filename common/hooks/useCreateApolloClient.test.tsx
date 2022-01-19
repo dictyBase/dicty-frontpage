@@ -22,41 +22,44 @@ describe("getGraphQLServer function", () => {
   })
 
   it("should return expected URL for development environment", () => {
-    process.env.REACT_APP_GRAPHQL_SERVER = "https://ericgraphql.dictybase.dev"
-    process.env.REACT_APP_ALT_GRAPHQL_SERVER = "https://betagraphql.dictycr.org"
+    process.env.NEXT_PUBLIC_GRAPHQL_SERVER = "https://ericgraphql.dictybase.dev"
+    process.env.NEXT_PUBLIC_ALT_GRAPHQL_SERVER =
+      "https://betagraphql.dictycr.org"
     process.env.DEPLOY_ENV = "development"
     expect(
       getGraphQLServer(
-        process.env.REACT_APP_GRAPHQL_SERVER,
+        process.env.NEXT_PUBLIC_GRAPHQL_SERVER,
         process.env.DEPLOY_ENV,
         "https://eric.dictybase.dev",
       ),
-    ).toBe(process.env.REACT_APP_GRAPHQL_SERVER)
+    ).toBe(process.env.NEXT_PUBLIC_GRAPHQL_SERVER)
   })
 
   it("should return expected URL for staging environment with dictycr origin", () => {
-    process.env.REACT_APP_GRAPHQL_SERVER = "https://ericgraphql.dictybase.dev"
-    process.env.REACT_APP_ALT_GRAPHQL_SERVER = "https://betagraphql.dictycr.org"
+    process.env.NEXT_PUBLIC_GRAPHQL_SERVER = "https://ericgraphql.dictybase.dev"
+    process.env.NEXT_PUBLIC_ALT_GRAPHQL_SERVER =
+      "https://betagraphql.dictycr.org"
     process.env.DEPLOY_ENV = "staging"
     expect(
       getGraphQLServer(
-        process.env.REACT_APP_GRAPHQL_SERVER,
+        process.env.NEXT_PUBLIC_GRAPHQL_SERVER,
         process.env.DEPLOY_ENV,
         "https://dictycr.org",
       ),
-    ).toBe(process.env.REACT_APP_ALT_GRAPHQL_SERVER)
+    ).toBe(process.env.NEXT_PUBLIC_ALT_GRAPHQL_SERVER)
   })
 
   it("should return expected URL for staging environment with dictybase origin", () => {
-    process.env.REACT_APP_GRAPHQL_SERVER = "https://ericgraphql.dictybase.dev"
-    process.env.REACT_APP_ALT_GRAPHQL_SERVER = "https://betagraphql.dictycr.org"
+    process.env.NEXT_PUBLIC_GRAPHQL_SERVER = "https://ericgraphql.dictybase.dev"
+    process.env.NEXT_PUBLIC_ALT_GRAPHQL_SERVER =
+      "https://betagraphql.dictycr.org"
     process.env.DEPLOY_ENV = "staging"
     expect(
       getGraphQLServer(
-        process.env.REACT_APP_GRAPHQL_SERVER,
+        process.env.NEXT_PUBLIC_GRAPHQL_SERVER,
         process.env.DEPLOY_ENV,
         "https://dictybase.org",
       ),
-    ).toBe(process.env.REACT_APP_GRAPHQL_SERVER)
+    ).toBe(process.env.NEXT_PUBLIC_GRAPHQL_SERVER)
   })
 })
