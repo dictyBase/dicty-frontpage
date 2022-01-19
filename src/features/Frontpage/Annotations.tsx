@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import AnnotationsGeneQuery from "./AnnotationsGeneQuery"
-import AnnotationsPaperQuery from "./AnnotationsPaperQuery"
+import PapersQuery from "./PapersQuery"
 
 const useStyles = makeStyles({
   mainContainer: {
@@ -89,7 +89,7 @@ const Annotations = () => {
         <Grid item className={classes.box} xs={6}>
           <span className={classes.title}>Papers</span>
           <ul className={classes.listBox}>
-            <AnnotationsPaperQuery />
+            <PapersQuery parent={"Annotations"} />
           </ul>
         </Grid>
         <Grid item xs={12}>

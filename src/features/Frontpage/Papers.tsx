@@ -2,8 +2,7 @@ import React from "react"
 import { makeStyles } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { ListRecentPublicationsQuery } from "dicty-graphql-schema"
-import PapersItem from "./PapersItem"
+import PapersQuery from "./PapersQuery"
 
 const useStyles = makeStyles({
   container: {
@@ -52,25 +51,6 @@ const useStyles = makeStyles({
       fontSize: "16px",
     },
   },
-  listItem: {
-    listStyle: "none",
-    marginBottom: "10px",
-  },
-  leadText: {
-    color: "#0b3861",
-    paddingRight: "10px",
-  },
-  mainContent: {
-    paddingRight: "10px",
-  },
-  sourceContent: {
-    color: "#0b3861",
-  },
-  sourceTitle: {
-    paddingTop: "7px",
-    fontWeight: "bold",
-    textAlign: "center",
-  },
   link: {
     textDecoration: "none",
     color: "#428bca",
@@ -90,12 +70,8 @@ const useStyles = makeStyles({
   },
 })
 
-interface PaperContainerProps {
-  data: ListRecentPublicationsQuery | undefined
-}
-
 /** Widget that displays the latest Dicty papers */
-const Papers = ({ data }: PaperContainerProps): JSX.Element => {
+const Papers = () => {
   const classes = useStyles()
 
   return (
@@ -109,7 +85,7 @@ const Papers = ({ data }: PaperContainerProps): JSX.Element => {
         </Grid>
       </div>
       <ul className={classes.listBox}>
-        <PapersItem data={data} />
+        <PapersQuery parent={"Papers"} />
       </ul>
       <div className={classes.bottomLink}>
         {/* <FontAwesome name="plus" />
