@@ -1,7 +1,7 @@
 import React from "react"
-import GraphQLErrorPage from "common/components/errors/GraphQLErrorPage"
+import GraphQLErrorPage from "../../../common/components/errors/GraphQLErrorPage"
 import { useListRecentGenesQuery } from "dicty-graphql-schema"
-import Loader from "common/components/Loader"
+import Loader from "../../../common/components/Loader"
 import AnnotationsItem from "./AnnotationsItem"
 
 const AnnotationsGeneQuery = () => {

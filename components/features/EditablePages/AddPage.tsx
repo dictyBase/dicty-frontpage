@@ -5,11 +5,11 @@ import Typography from "@material-ui/core/Typography"
 import { makeStyles, Theme } from "@material-ui/core/styles"
 import { PageEditor } from "dicty-components-page-editor"
 import { useCreateContentMutation } from "dicty-graphql-schema"
-import ErrorNotification from "features/Authentication/ErrorNotification"
-import { useAuthStore } from "features/Authentication/AuthStore"
-import useAuthorization from "common/hooks/useAuthorization"
-import { NAMESPACE } from "common/constants/namespace"
-import { theme } from "app/layout/AppProviders"
+import ErrorNotification from "../Authentication/ErrorNotification"
+import { useAuthStore } from "../Authentication/AuthStore"
+import useAuthorization from "../../../common/hooks/useAuthorization"
+import { NAMESPACE } from "../../../common/constants/namespace"
+import { theme } from "../../layout/AppProviders"
 
 const useStyles = makeStyles((theme: Theme) => ({
   banner: {
