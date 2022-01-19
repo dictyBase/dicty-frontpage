@@ -1,7 +1,7 @@
 import jwtDecode from "jwt-decode"
 import { Role, Permission } from "dicty-graphql-schema"
-import { useAuthStore } from "features/Authentication/AuthStore"
-import { frontpagecontent, MAIN_RESOURCE } from "common/constants/resources"
+import { useAuthStore } from "../../components/features/Authentication/AuthStore"
+import { frontpagecontent, MAIN_RESOURCE } from "../constants/resources"
 
 const verifyToken = (token: string) => {
   if (token === "") {

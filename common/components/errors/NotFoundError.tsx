@@ -1,11 +1,11 @@
 import React from "react"
-import { Link, useLocation, useParams } from "react-router-dom"
+import Link from "next/link"
+import { useRouter } from "next/router"
 import Grid from "@material-ui/core/Grid"
 import Button from "@material-ui/core/Button"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import BackToHomepageButton from "common/components/BackToHomepageButton"
-import useAuthorization from "common/hooks/useAuthorization"
-import sadDicty from "../../../../public/sad-dicty.png"
+import BackToHomepageButton from "../BackToHomepageButton"
+import useAuthorization from "../../hooks/useAuthorization"
 import Image from "next/image"
 import useStyles from "./errorStyles"
 
@@ -26,8 +26,9 @@ type Params = {
  */
 
 const NotFoundError = ({ error }: Props) => {
-  const { name, subname } = useParams<Params>()
-  const location = useLocation()
+  const router = useRouter()
+  const location = router.pathname
+  const { name, subname } = router.query
   const { canEditPages, verifiedToken } = useAuthorization()
   const classes = useStyles()
 
@@ -35,7 +36,7 @@ const NotFoundError = ({ error }: Props) => {
     <Grid container className={classes.mainGrid} justifyContent="center">
       <Grid item xs={10} md={8}>
         <div className={classes.error400}>
-          <Image src={sadDicty} alt="Sad Dicty -- Page Not Found" />
+          <Image src="/sad-dicty.png" alt="Sad Dicty -- Page Not Found" />
           <h3>Page Not Found</h3>
           <p className={classes.paragraph}>
             Sorry! We can&apos;t find that page.
@@ -49,8 +50,9 @@ const NotFoundError = ({ error }: Props) => {
             <div>
               <br />
               <Link
-                className={classes.link}
-                to="/addpage"
+                /* TODO: Need to figure out how to add styling here */
+                // className={classes.link}
+                href="/addpage"
                 state={{
                   name: name,
                   subname: subname,
