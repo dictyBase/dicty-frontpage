@@ -19,14 +19,15 @@ const main = async() => {
   }
 }
 
-ReactDOM.render(
-  <AuthProvider>
-    <AppProviders>
-      <CssBaseline />
-      <App />
-    </AppProviders>
-  </AuthProvider>,
-  document.getElementById("root"),
-)
+export default function NextIndexWrapper() {
+  return (
+    <AuthProvider>
+      <AppProviders>
+        <CssBaseline />
+        <App />
+      </AppProviders>
+    </AuthProvider>
+  );
+}
 
 main();

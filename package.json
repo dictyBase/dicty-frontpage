@@ -6,11 +6,11 @@
     "node": ">= 16.13.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "test-coverage": "react-scripts test --coverage",
-    "eject": "react-scripts eject",
+    "start": "next dev",
+    "start-production": "next start",
+    "build": "next build",
+    "test": "jest test",
+    "test-coverage": "jest test --coverage",
     "lint": "eslint --ext .jsx,.js,.ts,.tsx src/",
     "tsc": "tsc",
     "styleguide": "FAST_REFRESH=false styleguidist server",
@@ -19,7 +19,7 @@
     "analyze": "source-map-explorer 'build/static/js/*.js'",
     "snyk-protect": "snyk protect",
     "postinstall": "husky install",
-    "start:mock": "REACT_APP_MOCK_SERVER=on react-scripts start"
+    "start:mock": "NEXT_PUBLIC_MOCK_SERVER=on next start"
   },
   "dependencies": {
     "@apollo/client": "^3.5.7",
@@ -51,7 +51,6 @@
     "react-loading-skeleton": "^3.0.2",
     "react-responsive-carousel": "^3.2.22",
     "react-router-dom": "^6.2.1",
-    "react-scripts": "^5.0.0",
     "twitter-fetcher": "^18.0.4",
     "typescript": "4.5.4"
   },
