@@ -1,16 +1,16 @@
 import React from "react"
-import { useNavigate, useLocation } from "react-router-dom"
+import { useRouter } from "next/router"
 import { makeStyles, Theme } from "@material-ui/core/styles"
 import Container from "@material-ui/core/Container"
 import Box from "@material-ui/core/Box"
 import { PageEditor } from "dicty-components-page-editor"
-import { useAuthStore } from "features/Authentication/AuthStore"
+import { useAuthStore } from "../Authentication/AuthStore"
 import useAuthorization from "common/hooks/useAuthorization"
 import {
   useUpdateContentMutation,
-  ContentBySlugQuery
+  ContentBySlugQuery,
 } from "dicty-graphql-schema"
-import { theme } from "app/layout/AppProviders"
+import { theme } from "../../layout/AppProviders"
 
 const useStyles = makeStyles((theme: Theme) => ({
   editor: {
@@ -44,7 +44,7 @@ const EditInfoPage = ({ location }: Props) => {
   } = useAuthStore()
 
   const {
-    state: { data }
+    state: { data },
   } = location
 
   const { user } = useAuthorization()
@@ -55,10 +55,9 @@ const EditInfoPage = ({ location }: Props) => {
       },
     },
   })
-  const navigate = useNavigate()
+  const router = useRouter()
 
-  const { pathname } = useLocation()
-  const prevURL = pathname.slice(0, -5)
+  const prevURL = router.pathname.slice(0, -5)
 
   const handleSaveClick = (value: any) => {
     if (data?.id === undefined) {
@@ -73,11 +72,11 @@ const EditInfoPage = ({ location }: Props) => {
         },
       },
     })
-    setTimeout(() => navigate(prevURL), 1000)
+    setTimeout(() => router.push(prevURL), 1000)
   }
 
   const handleCancelClick = () => {
-    navigate(prevURL)
+    router.push(prevURL)
   }
 
   return (
