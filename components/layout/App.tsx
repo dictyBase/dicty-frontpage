@@ -10,27 +10,26 @@ import {
   GetRefreshTokenQuery,
   User,
 } from "dicty-graphql-schema"
-import { useAuthStore, ActionType } from "features/Authentication/AuthStore"
-import ErrorBoundary from "common/components/errors/ErrorBoundary"
+import { useAuthStore, ActionType } from "../features/Authentication/AuthStore"
+import ErrorBoundary from "../../common/components/errors/ErrorBoundary"
 import {
   headerItems,
   loggedHeaderItems,
   HeaderLinks,
-} from "common/utils/headerItems"
+} from "../../common/utils/headerItems"
 import {
   footerLinks,
   footerURL,
   convertFooterData,
   FooterItems,
-} from "common/utils/footerItems"
+} from "../../common/utils/footerItems"
 import {
   navbarItems,
   NavbarItems,
   navbarURL,
   formatNavbarData,
-} from "common/utils/navbarItems"
-import { navTheme, headerTheme, footerTheme } from "common/utils/themes"
-import Routes from "app/routes/Routes"
+} from "../../common/utils/navbarItems"
+import { navTheme, headerTheme, footerTheme } from "../../common/utils/themes"
 
 const useStyles = makeStyles((theme: Theme) => ({
   main: {
@@ -90,7 +89,7 @@ const getTokenIntervalDelayInMS = (token: string) => {
  * App is responsible for the main layout of the entire application.
  */
 
-export const App = () => {
+export const App = ({ children }: { children: React.ReactNode }) => {
   const [skip, setSkip] = React.useState(false)
   const {
     state: { token, isAuthenticated },
@@ -139,9 +138,7 @@ export const App = () => {
       <Navbar items={formatNavbarData(navbar.data)} theme={navTheme} />
       <main className={classes.main}>
         <Container maxWidth="xl">
-          <ErrorBoundary>
-            <Routes />
-          </ErrorBoundary>
+          <ErrorBoundary>{children}</ErrorBoundary>
         </Container>
       </main>
       {footer.data?.data && (
