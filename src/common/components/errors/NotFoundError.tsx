@@ -5,7 +5,8 @@ import Button from "@material-ui/core/Button"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import BackToHomepageButton from "common/components/BackToHomepageButton"
 import useAuthorization from "common/hooks/useAuthorization"
-import sadDicty from "common/assets/sad-dicty.png"
+import sadDicty from "../../../../public/sad-dicty.png"
+import Image from "next/image"
 import useStyles from "./errorStyles"
 
 type Props = {
@@ -34,7 +35,7 @@ const NotFoundError = ({ error }: Props) => {
     <Grid container className={classes.mainGrid} justifyContent="center">
       <Grid item xs={10} md={8}>
         <div className={classes.error400}>
-          <img src={sadDicty} alt="Sad Dicty -- Page Not Found" />
+          <Image src={sadDicty} alt="Sad Dicty -- Page Not Found" />
           <h3>Page Not Found</h3>
           <p className={classes.paragraph}>
             Sorry! We can&apos;t find that page.
@@ -50,7 +51,11 @@ const NotFoundError = ({ error }: Props) => {
               <Link
                 className={classes.link}
                 to="/addpage"
-                state={{name: name, subname: subname, url: location.pathname}}>
+                state={{
+                  name: name,
+                  subname: subname,
+                  url: location.pathname,
+                }}>
                 <Button
                   className={classes.addPageButton}
                   size="small"

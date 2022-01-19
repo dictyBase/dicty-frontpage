@@ -2,9 +2,10 @@
 import React from "react"
 import { Carousel } from "react-responsive-carousel"
 import { makeStyles } from "@material-ui/core/styles"
-import lifeCycle from "common/assets/frontCarousel/dicty-life-cycle.jpg"
-import slug from "common/assets/frontCarousel/dicty-slug.jpg"
-import tubulin from "common/assets/frontCarousel/dicty-tubulin-centrosom.png"
+import lifeCycle from "../../../public/frontCarousel/dicty-life-cycle.jpg"
+import slug from "../../../public/frontCarousel/dicty-slug.jpg"
+import tubulin from "../../../public/frontCarousel/dicty-tubulin-centrosom.png"
+import Image from "next/image"
 
 const useStyles = makeStyles({
   container: {
@@ -78,7 +79,7 @@ const Slideshow = () => {
         infiniteLoop>
         {imageData.map((img, index: number) => (
           <div className={classes.imgWrapper} key={index}>
-            <img className={classes.imgSizer} src={img.src} alt={img.title} />
+            <Image className={classes.imgSizer} src={img.src} alt={img.title} />
             <p className={classes.legend}>
               <strong>{img.title}</strong> <br />
               {img.description}

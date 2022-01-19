@@ -2,7 +2,8 @@ import React from "react"
 import Grid from "@material-ui/core/Grid"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import ErrorMessage from "./ErrorMessage"
-import sadDicty from "common/assets/sad-dicty.png"
+import sadDicty from "../../../../public/sad-dicty.png"
+import Image from "next/image"
 import useStyles from "./errorStyles"
 
 /**
@@ -16,7 +17,7 @@ const OtherError = () => {
     <Grid container className={classes.mainGrid} justify="center">
       <Grid item xs={10} md={8}>
         <div className={classes.error400}>
-          <img src={sadDicty} alt="Sad Dicty -- HTTP Error" />
+          <Image src={sadDicty} alt="Sad Dicty -- HTTP Error" />
           <h1>
             <FontAwesomeIcon icon="exclamation-circle" /> Error
           </h1>
