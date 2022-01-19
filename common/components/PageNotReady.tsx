@@ -4,7 +4,6 @@ import { makeStyles } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
 import Button from "@material-ui/core/Button"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import sadDicty from "../../public/sad-dicty.png"
 import Image from "next/image"
 
 const useStyles = makeStyles({
@@ -40,7 +39,7 @@ const PageNotReady = () => {
     <Grid container className={classes.mainGrid} justifyContent="center">
       <Grid item xs={10} md={8}>
         <div className={classes.container}>
-          <Image alt="Sad Dicty Logo" src={sadDicty} />
+          <Image alt="Sad Dicty Logo" src="/sad-dicty.png" />
           <h1>
             <FontAwesomeIcon icon="wrench" /> Content Not Ready
           </h1>

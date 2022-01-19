@@ -1,7 +1,6 @@
 import React, { Component } from "react"
 import Grid from "@material-ui/core/Grid"
 import { withStyles, Theme } from "@material-ui/core/styles"
-import sadDicty from "../../../public/sad-dicty.png"
 import Image from "next/image"
 
 const styles = (theme: Theme) => ({
@@ -67,7 +66,7 @@ class ErrorBoundary extends Component<Props, State> {
           justifyContent="center">
           <Grid item xs={6} className={classes.paper}>
             <div style={{ textAlign: "center" }}>
-              <Image src={sadDicty} alt="Sad Dicty Logo" />
+              <Image src="/sad-dicty.png" alt="Sad Dicty Logo" />
               <h2>Sorry! There was an error loading this page.</h2>
               <p>Something went wrong behind the scenes.</p>
               <p>

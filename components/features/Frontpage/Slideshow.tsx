@@ -2,9 +2,6 @@
 import React from "react"
 import { Carousel } from "react-responsive-carousel"
 import { makeStyles } from "@material-ui/core/styles"
-import lifeCycle from "../../../public/frontCarousel/dicty-life-cycle.jpg"
-import slug from "../../../public/frontCarousel/dicty-slug.jpg"
-import tubulin from "../../../public/frontCarousel/dicty-tubulin-centrosom.png"
 import Image from "next/image"
 
 const useStyles = makeStyles({
@@ -43,19 +40,19 @@ const useStyles = makeStyles({
 
 const imageData = [
   {
-    src: lifeCycle,
+    src: "/frontCarousel/dicty-life-cycle.jpg",
     title: "Dicty Life Cycle",
     description: `Courtesy of M.J. Grimson & R.L. Blanton, Biological Sciences
             Electron Microscopy Laboratory, Texas Tech University`,
   },
   {
-    src: slug,
+    src: "/frontCarousel/dicty-slug.jpg",
     title: "D. discoideum slug",
     description:
       "Courtesy Dirk Dormann, MRC London Institute of Medical Sciences",
   },
   {
-    src: tubulin,
+    src: "/frontCarousel/dicty-tubulin-centrosom.png",
     title:
       "Triple stained and fixed Dictyostelium cells: apha-tubulin (green), centrosome (red, appears yellow due to colocalization with tubulin), nuclei (blue)",
     description: "Courtesy of Ralph Gräf, Potsdam University",
