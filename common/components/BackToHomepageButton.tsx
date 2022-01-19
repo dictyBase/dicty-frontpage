@@ -1,5 +1,5 @@
 import React from "react"
-import { Link } from "react-router-dom"
+import Link from "next/link"
 import { makeStyles } from "@material-ui/core/styles"
 import Button from "@material-ui/core/Button"
 
@@ -25,15 +25,15 @@ const BackToHomePageButton = () => {
   const classes = useStyles()
 
   return (
-    <Button
-      component={Link}
-      to="/"
-      className={classes.button}
-      size="small"
-      variant="contained"
-      color="primary">
-      Back to Homepage
-    </Button>
+    <Link href="/" passHref>
+      <Button
+        className={classes.button}
+        size="small"
+        variant="contained"
+        color="primary">
+        Back to Homepage
+      </Button>
+    </Link>
   )
 }
 
