@@ -1,5 +1,10 @@
 import React from "react"
-import { ApolloClient, InMemoryCache, createHttpLink } from "@apollo/client"
+import {
+  ApolloClient,
+  InMemoryCache,
+  createHttpLink,
+  ApolloLink,
+} from "@apollo/client"
 import { setContext } from "@apollo/client/link/context"
 import { CachePersistor, LocalStorageWrapper } from "apollo3-cache-persist"
 import localForage from "localforage"
@@ -19,7 +24,7 @@ const isMutation = (value: string) => {
 
 const getGraphQLServer = (url: string, deployEnv: string, origin: string) => {
   if (deployEnv === "staging" && origin === "https://dictycr.org") {
-    return process.env.REACT_APP_ALT_GRAPHQL_SERVER
+    return process.env.NEXT_PUBLIC_ALT_GRAPHQL_SERVER
   }
   return url
 }
@@ -36,21 +41,27 @@ const authLink = setContext((request, { headers }) => {
   }
 })
 
-const server = getGraphQLServer(
-  process.env.REACT_APP_GRAPHQL_SERVER,
-  process.env.DEPLOY_ENV,
-  window.location.origin,
-)
-
-const link = authLink.concat(
-  createHttpLink({
-    uri: `${server}/graphql`,
-    credentials: "include",
-  }),
-)
+const createApolloLink = (server: string): ApolloLink =>
+  authLink.concat(
+    createHttpLink({
+      uri: `${server}/graphql`,
+      credentials: "include",
+    }),
+  )
 
 const useCreateApolloClient = () => {
   const [cacheInitializing, setCacheInitializing] = React.useState(true)
+  const [link, setLink] = React.useState<ApolloLink>()
+
+  /* Set ApolloLink in useEffect. See: https://frontend-digest.com/why-is-window-not-defined-in-nextjs-44daf7b4604e */
+  React.useEffect(() => {
+    const server = getGraphQLServer(
+      process.env.NEXT_PUBLIC_GRAPHQL_SERVER,
+      process.env.DEPLOY_ENV,
+      window.location.origin,
+    )
+    setLink(createApolloLink(server))
+  }, [])
 
   React.useEffect(() => {
     const initializeCache = async () => {
