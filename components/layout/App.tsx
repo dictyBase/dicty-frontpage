@@ -10,7 +10,7 @@ import {
   GetRefreshTokenQuery,
   User,
 } from "dicty-graphql-schema"
-import { useAuthStore, ActionType } from "features/Authentication/AuthStore"
+import { useAuthStore, ActionType } from "../features/Authentication/AuthStore"
 import ErrorBoundary from "common/components/errors/ErrorBoundary"
 import {
   headerItems,
@@ -90,7 +90,7 @@ const getTokenIntervalDelayInMS = (token: string) => {
  * App is responsible for the main layout of the entire application.
  */
 
-export const App = () => {
+export const App = ({ children }: { children: React.ReactNode }) => {
   const [skip, setSkip] = React.useState(false)
   const {
     state: { token, isAuthenticated },
@@ -141,6 +141,7 @@ export const App = () => {
         <Container maxWidth="xl">
           <ErrorBoundary>
             <Routes />
+            {children} {/* Not sure what is happening here */}
           </ErrorBoundary>
         </Container>
       </main>

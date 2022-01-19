@@ -22,5 +22,5 @@
     "noFallthroughCasesInSwitch": true
   },
   "exclude": ["node_modules"],
-  "include": ["src", "pages/app", "pages/setupTests.js", "pages/mocks", "pages/features", "pages/common"]
+  "include": ["src", "pages/app", "components/layout", "pages/setupTests.js", "pages/mocks", "pages/features", "pages/common"]
 }
