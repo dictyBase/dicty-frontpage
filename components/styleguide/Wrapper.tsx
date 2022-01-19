@@ -1,8 +1,8 @@
 import React from "react"
 import { ApolloProvider } from "@apollo/client"
 import { BrowserRouter } from "react-router-dom"
-import { AuthProvider } from "features/Authentication/AuthStore"
-import useCreateApolloClient from "common/hooks/useCreateApolloClient"
+import { AuthProvider } from "../features/Authentication/AuthStore"
+import useCreateApolloClient from "../../common/hooks/useCreateApolloClient"
 
 /**
  * This is a wrapper component used for all styleguidist documentation.

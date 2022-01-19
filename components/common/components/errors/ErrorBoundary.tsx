@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import Grid from "@material-ui/core/Grid"
 import { withStyles, Theme } from "@material-ui/core/styles"
 import sadDicty from "common/assets/sad-dicty.png"
+/* Need to refactor this to use seperate image component */
 
 const styles = (theme: Theme) => ({
   gridContainer: {
@@ -60,7 +61,10 @@ class ErrorBoundary extends Component<Props, State> {
 
     if (hasError) {
       return (
-        <Grid className={classes.gridContainer} container justifyContent="center">
+        <Grid
+          className={classes.gridContainer}
+          container
+          justifyContent="center">
           <Grid item xs={6} className={classes.paper}>
             <div style={{ textAlign: "center" }}>
               <img src={sadDicty} alt="Sad Dicty Logo" />
