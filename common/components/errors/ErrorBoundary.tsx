@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import Grid from "@material-ui/core/Grid"
 import { withStyles, Theme } from "@material-ui/core/styles"
-import sadDicty from "../../../../public/sad-dicty.png"
+import sadDicty from "../../../public/sad-dicty.png"
 import Image from "next/image"
 
 const styles = (theme: Theme) => ({
