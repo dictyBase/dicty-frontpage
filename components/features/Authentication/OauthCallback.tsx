@@ -1,7 +1,7 @@
 import React, { useEffect } from "react"
-import { useLocation, useParams } from "react-router-dom"
 import Box from "@material-ui/core/Box"
 import Typography from "@material-ui/core/Typography"
+import { useRouter } from "next/router"
 
 type Params = {
   /** Provider from URL (google, orcid, etc) */
@@ -13,8 +13,8 @@ type Params = {
  */
 
 const OauthCallback = () => {
-  const { provider } = useParams<Params>()
-  const location = useLocation()
+  const { query, pathname } = useRouter()
+  const provider = query.id as string
 
   useEffect(() => {
     window.opener?.postMessage(
