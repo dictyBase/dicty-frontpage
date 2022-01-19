@@ -12,6 +12,7 @@ import OauthSignHandler from "./OauthSignHandler"
 import oauthConfig from "common/utils/oauthConfig"
 import ErrorNotification from "./ErrorNotification"
 import { useAuthStore } from "./AuthStore"
+import { useRouter } from "next/router"
 
 type Config = {
   name: string
@@ -80,6 +81,12 @@ const generateErrorDisplayMessage = (error: ApolloError) => {
  */
 
 const Login = () => {
+  /* I think that this might be the correct implementation based on my changes in PrivateRoute*/
+  // const router = useRouter()
+  // if (router.query.error) {
+  //   error = router.query.error
+  // }
+
   const {
     state: { error },
   } = useAuthStore()
