@@ -2,7 +2,7 @@
   "compilerOptions": {
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
-    "baseUrl": "src",
+    "baseUrl": "./",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
@@ -17,7 +17,7 @@
     "outDir": "build",
     "noUnusedLocals": false,
     "resolveJsonModule": true,
-    "rootDir": "src",
+    "rootDir": "./",
     "skipLibCheck": true,
     "strict": true,
     "target": "es5",
@@ -30,5 +30,5 @@
     "node_modules"
   ],
   "include": [
-    "src", "next-env.d.ts", "additional.d.ts", "mocks", "components/features"  ]
+    "next-env.d.ts", "additional.d.ts", "pages", "components", "common" ]
 }
