@@ -4,8 +4,11 @@ import Head from "next/head"
 import App from "../components/layout/App"
 import { AuthProvider } from "../components/features/Authentication/AuthStore"
 import AppProviders from "../components/layout/AppProviders"
+import useGoogleAnalytics from "common/hooks/useGoogleAnalytics"
 
 const FrontPageApp = ({ Component, pageProps }: AppProps) => {
+  useGoogleAnalytics()
+
   return (
     <AuthProvider>
       <AppProviders>
