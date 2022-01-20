@@ -1,5 +1,5 @@
 import React from "react"
-import { useParams, useLocation } from "react-router-dom"
+import { useRouter } from "next/router"
 import { Helmet } from "react-helmet"
 import Container from "@material-ui/core/Container"
 import { useContentBySlugQuery } from "dicty-graphql-schema"
@@ -11,7 +11,12 @@ import { pageTitleLookup } from "common/utils/pageTitleConversions"
 
 // getSlug will use the route's :subname or :name to fetch page content
 // unless the route is for the privacy policy
-const getSlug = (pathname: string, name?: string, subname?: string) => {
+// TODO: Next to fix it so that it doesnt have string[] or is able to handle it
+const getSlug = (
+  pathname: string,
+  name?: string | string[],
+  subname?: string | string[],
+) => {
   if (pathname === "/privacy-policy" || pathname === "/privacy-policy/") {
     return "privacy-policy"
   }
@@ -25,9 +30,9 @@ const getSlug = (pathname: string, name?: string, subname?: string) => {
  */
 
 const InfoPageContainer = () => {
-  const { pathname } = useLocation()
-  const { name, subname } = useParams()
-  const slug = getSlug(pathname, name, subname)
+  const router = useRouter()
+  const { name, subname } = router.query
+  const slug = getSlug(router.pathname, name, subname)
 
   const { loading, error, data } = useContentBySlugQuery({
     variables: {
@@ -46,7 +51,6 @@ const InfoPageContainer = () => {
 
   // @ts-ignore
   console.log(JSON.parse(data?.contentBySlug?.content))
-
   return (
     <React.Fragment>
       <Helmet>
