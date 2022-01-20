@@ -1,4 +1,4 @@
-// import "react-responsive-carousel/lib/styles/carousel.min.css"
+import "react-responsive-carousel/lib/styles/carousel.min.css"
 import React from "react"
 import { Carousel } from "react-responsive-carousel"
 import { makeStyles } from "@material-ui/core/styles"
@@ -76,7 +76,12 @@ const Slideshow = () => {
         infiniteLoop>
         {imageData.map((img, index: number) => (
           <div className={classes.imgWrapper} key={index}>
-            <Image className={classes.imgSizer} src={img.src} alt={img.title} />
+            <Image
+              className={classes.imgSizer}
+              src={img.src}
+              alt={img.title}
+              layout="fill"
+            />
             <p className={classes.legend}>
               <strong>{img.title}</strong> <br />
               {img.description}
