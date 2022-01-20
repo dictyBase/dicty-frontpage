@@ -1,7 +1,7 @@
 import React from "react"
 import Skeleton from "react-loading-skeleton"
 import { useContentBySlugQuery } from "dicty-graphql-schema"
-import InlineEditor from "features/EditablePages/InlineEditor"
+import InlineEditor from "../EditablePages/InlineEditor"
 import { NAMESPACE } from "common/constants/namespace"
 
 /**

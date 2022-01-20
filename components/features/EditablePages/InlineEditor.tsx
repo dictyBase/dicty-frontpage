@@ -8,9 +8,9 @@ import {
   useUpdateContentMutation,
   ContentBySlugQuery,
 } from "dicty-graphql-schema"
-import { useAuthStore } from "features/Authentication/AuthStore"
+import { useAuthStore } from "../Authentication/AuthStore"
 import useAuthorization from "common/hooks/useAuthorization"
-import { theme } from "app/layout/AppProviders"
+import { theme } from "../../layout/AppProviders"
 
 const useStyles = makeStyles((theme: Theme) => ({
   button: {
