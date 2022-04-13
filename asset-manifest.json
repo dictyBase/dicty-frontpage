@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.js": "/build/bundle.86686661.js",
+    "main.js": "/build/bundle.640b667c.js",
     "dicty-tubulin-centrosom.png": "/c5e55e028f2229fe2fff.png",
     "merriweather-all-400-normal.woff": "/5e7a0e6a9b864b89292d.woff",
     "montserrat-all-400-normal.woff": "/815a9e9ccfffa41179b2.woff",
@@ -71,6 +71,6 @@
     "index.html": "/index.html"
   },
   "entrypoints": [
-    "build/bundle.86686661.js"
+    "build/bundle.640b667c.js"
   ]
 }
