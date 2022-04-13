@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: check out code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: set up docker buildx
         uses: docker/setup-buildx-action@v1
       - name: cache docker layers
@@ -63,7 +63,7 @@ jobs:
     needs: build
     steps:
       - name: check out code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: download deployment artifact
         uses: actions/download-artifact@v2
         with:
