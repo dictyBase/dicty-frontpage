@@ -4922,9 +4922,10 @@ dezalgo@^1.0.0:
     asap "^2.0.0"
     wrappy "1"
 
-dicty-components-header-footer@dictybase/dicty-components-header-footer#11.0.0:
+dicty-components-header-footer@dictybase/dicty-components-header-footer#11.0.1:
   version "11.0.0"
-  resolved "https://codeload.github.com/dictybase/dicty-components-header-footer/tar.gz/db610823e5c88b1f231aeb9e6df225bd17e63472"
+  uid "5c7ddac694004331ff666a7843fae5fec98c5a2a"
+  resolved "https://codeload.github.com/dictybase/dicty-components-header-footer/tar.gz/5c7ddac694004331ff666a7843fae5fec98c5a2a"
 
 dicty-components-login@dictybase/dicty-components-login#4.1.1:
   version "4.1.1"
