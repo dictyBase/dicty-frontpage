@@ -6,13 +6,14 @@ import { useAuthStore } from "features/Authentication/AuthStore"
  * PrivateRoute redirects user from route if not authenticated.
  * This uses the same API as <Route/>
  */
-const PrivateRoute = ({ component }: {component: React.ReactNode}) => {
+const PrivateRoute = ({ children }: any) => {
+  /* Fix this later in the future */
   const {
     state: { isAuthenticated },
   } = useAuthStore()
 
-  if(isAuthenticated) {
-    return <>{component}</>
+  if (isAuthenticated) {
+    return <>{children}</>
   }
 
   /*
@@ -20,11 +21,12 @@ const PrivateRoute = ({ component }: {component: React.ReactNode}) => {
     https://gist.github.com/mjackson/d54b40a094277b7afdd6b81f51a0393f#route-composition-in-react-router-v6
   */
   return (
-    <Navigate 
+    <Navigate
       to={{
-        pathname: "/login"
-      }} 
-      state={ {error: "You must be logged in to view this page!" }}/>
+        pathname: "/login",
+      }}
+      state={{ error: "You must be logged in to view this page!" }}
+    />
   )
 }
 

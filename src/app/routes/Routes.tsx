@@ -1,8 +1,5 @@
 import React from "react"
-import {
-  Route,
-  Routes as ReactRoutes,
-} from "react-router-dom"
+import { Route, Routes as ReactRoutes } from "react-router-dom"
 import Front from "features/Frontpage/Front"
 import DownloadsContainer from "features/Downloads/DownloadsContainer"
 import About from "features/About/About"
@@ -21,35 +18,33 @@ const Routes = () => {
   useGoogleAnalytics()
 
   return (
-      <ReactRoutes>
-        <Route path="/">
-          <Route index element={<Front />} />
-          <Route path="about" element={<About/>} />
-          <Route path="downloads" element={<DownloadsContainer/>} />
-          {/* Authentication routes */}
-          <Route path="login" element={<Login/>} />
-          <Route path=":provider/callback" element={<OauthCallback/>} />
-          <Route path="load/auth" element={<AuthLoader/>} />
-          <Route path="logout" element={
-            <PrivateRoute component={Logout} />
-          } />
-          {/* Editable page routes */}
-          <Route path=":section/:name" element={<InfoPageContainer/>} />
-          <Route path=":section/:name/edit" element={
-            <PrivateRoute component={EditInfoPage}/>
-          } />
-          <Route path=":section/:name/:subname" element={<InfoPageContainer/>} />
-          <Route path=":section/:name/:subname/edit" element={          
-            <PrivateRoute component={EditInfoPage}/>
-          } />
-          <Route path="addpage" element={
-            <PrivateRoute component={AddPage}/>  
-          } />
-          <Route path="privacy-policy" element={<InfoPageContainer/>} />
-        </Route>
-        {/* Page not found routes */}
-        <Route path="*" element={<PageNotReady/>} />
-      </ReactRoutes>
+    <ReactRoutes>
+      <Route path="/">
+        <Route index element={<Front />} />
+        <Route path="about" element={<About />} />
+        <Route path="downloads" element={<DownloadsContainer />} />
+        {/* Authentication routes */}
+        <Route path="login" element={<Login />} />
+        <Route path=":provider/callback" element={<OauthCallback />} />
+        <Route path="load/auth" element={<AuthLoader />} />
+        <Route path="logout" element={<PrivateRoute children={Logout} />} />
+        {/* Editable page routes */}
+        <Route path=":section/:name" element={<InfoPageContainer />} />
+        <Route
+          path=":section/:name/edit"
+          element={<PrivateRoute children={EditInfoPage} />}
+        />
+        <Route path=":section/:name/:subname" element={<InfoPageContainer />} />
+        <Route
+          path=":section/:name/:subname/edit"
+          element={<PrivateRoute children={EditInfoPage} />}
+        />
+        <Route path="addpage" element={<PrivateRoute children={AddPage} />} />
+        <Route path="privacy-policy" element={<InfoPageContainer />} />
+      </Route>
+      {/* Page not found routes */}
+      <Route path="*" element={<PageNotReady />} />
+    </ReactRoutes>
   )
 }
 
