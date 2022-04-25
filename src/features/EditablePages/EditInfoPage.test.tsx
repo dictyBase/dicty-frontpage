@@ -4,7 +4,6 @@ import userEvent from "@testing-library/user-event"
 import EditInfoPage from "./EditInfoPage"
 import MockAuthProvider from "mocks/MockAuthProvider"
 import { UpdateContentDocument } from "dicty-graphql-schema"
-import { useNavigate } from "react-router-dom"
 
 const mockHistoryPush = jest.fn()
 // https://stackoverflow.com/questions/58117890/how-to-test-components-using-new-react-router-hooks
