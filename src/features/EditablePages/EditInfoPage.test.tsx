@@ -62,7 +62,7 @@ describe("features/EditablePages/EditInfoPage", () => {
 
   const MockComponent = ({ mocks }: any) => (
     <MockAuthProvider mocks={mocks} validToken>
-        <EditInfoPage {...props} />
+      <EditInfoPage {...props} />
     </MockAuthProvider>
   )
 
@@ -105,25 +105,23 @@ describe("features/EditablePages/EditInfoPage", () => {
       // ;(useNavigate as jest.Mock).mockReturnValueOnce({
       //   push: mockHistoryPush,
       // })
+      const user = userEvent.setup()
       render(<MockComponent mocks={mocks} />)
       // there are two save buttons, one in toolbar and one at bottom
       const saveButtons = screen.getAllByText("Save")
       // act(() => {
-      userEvent.click(saveButtons[0])
+      await user.click(saveButtons[0])
       // })
       await waitFor(() => {
-          expect(mockHistoryPush).toHaveBeenCalledWith("/research/techniques") 
+        expect(mockHistoryPush).toHaveBeenCalledWith("/research/techniques")
       })
     })
 
     it("should go back to previous URL on cancel", () => {
-      // ;(useNavigate as jest.Mock).mockReturnValueOnce({
-      //   push: mockHistoryPush,
-      // })
       render(<MockComponent mocks={[]} />)
       const cancelButton = screen.getByText("Cancel")
       // act(() => {
-        userEvent.click(cancelButton)
+      userEvent.click(cancelButton)
       // })
       expect(mockHistoryPush).toHaveBeenCalledWith("/research/techniques")
     })

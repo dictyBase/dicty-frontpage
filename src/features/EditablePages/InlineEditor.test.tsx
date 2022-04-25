@@ -80,15 +80,16 @@ describe("EditablePages/InlineEditor", () => {
           },
         },
       ]
+      const user = userEvent.setup()
       render(
         <MockAuthProvider mocks={mocks}>
           <InlineEditor {...props} />
         </MockAuthProvider>,
       )
       const editButton = screen.getByText("Edit")
-      userEvent.click(editButton)
+      await user.click(editButton)
       const saveButtons = screen.getAllByText("Save")
-      userEvent.click(saveButtons[0])
+      await user.click(saveButtons[0])
       await waitForExpect(() => {
         expect(screen.getByText(/Test Content/)).toBeInTheDocument()
         expect(saveButtons[0]).not.toBeInTheDocument()

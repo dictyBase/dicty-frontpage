@@ -32,14 +32,15 @@ describe("EditablePages/InfoPageViewToolbar", () => {
       const text = screen.getByTestId("info-page-toolbar")
       expect(text).toHaveTextContent("Art Vandelay edited")
     })
-    it("calls handleClick when edit icon clicked", () => {
+    it("calls handleClick when edit icon clicked", async () => {
       render(
         <MockAuthProvider mocks={[]}>
           <InfoPageViewToolbar {...props} />
         </MockAuthProvider>,
       )
+      const user = userEvent.setup()
       const btn = screen.getByRole("button")
-      userEvent.click(btn)
+      await user.click(btn)
       expect(mockHandleClick).toHaveBeenCalledTimes(1)
     })
   })
