@@ -4,6 +4,7 @@ import userEvent from "@testing-library/user-event"
 import EditInfoPage from "./EditInfoPage"
 import MockAuthProvider from "mocks/MockAuthProvider"
 import { UpdateContentDocument } from "dicty-graphql-schema"
+import { useNavigate } from "react-router-dom"
 
 const mockHistoryPush = jest.fn()
 // https://stackoverflow.com/questions/58117890/how-to-test-components-using-new-react-router-hooks
@@ -62,7 +63,7 @@ describe("features/EditablePages/EditInfoPage", () => {
 
   const MockComponent = ({ mocks }: any) => (
     <MockAuthProvider mocks={mocks} validToken>
-        <EditInfoPage {...props} />
+      <EditInfoPage {...props} />
     </MockAuthProvider>
   )
 
@@ -105,25 +106,23 @@ describe("features/EditablePages/EditInfoPage", () => {
       // ;(useNavigate as jest.Mock).mockReturnValueOnce({
       //   push: mockHistoryPush,
       // })
+      const user = userEvent.setup()
       render(<MockComponent mocks={mocks} />)
       // there are two save buttons, one in toolbar and one at bottom
       const saveButtons = screen.getAllByText("Save")
       // act(() => {
-      userEvent.click(saveButtons[0])
+      await user.click(saveButtons[0])
       // })
       await waitFor(() => {
-          expect(mockHistoryPush).toHaveBeenCalledWith("/research/techniques") 
+        expect(mockHistoryPush).toHaveBeenCalledWith("/research/techniques")
       })
     })
 
     it("should go back to previous URL on cancel", () => {
-      // ;(useNavigate as jest.Mock).mockReturnValueOnce({
-      //   push: mockHistoryPush,
-      // })
       render(<MockComponent mocks={[]} />)
       const cancelButton = screen.getByText("Cancel")
       // act(() => {
-        userEvent.click(cancelButton)
+      userEvent.click(cancelButton)
       // })
       expect(mockHistoryPush).toHaveBeenCalledWith("/research/techniques")
     })

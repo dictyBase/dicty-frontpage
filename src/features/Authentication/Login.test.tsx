@@ -31,7 +31,8 @@ describe("features/Authentication/Login", () => {
       expect(screen.getByText(/Sign in with LinkedIn/)).toBeInTheDocument()
     })
 
-    it("calls function on button click", () => {
+    it("calls function on button click", async () => {
+      const user = userEvent.setup()
       render(
         <MockAuthProvider mocks={[]}>
           <Login />
@@ -44,15 +45,15 @@ describe("features/Authentication/Login", () => {
       })
       // click orcid button
       expect(orcid).toBeInTheDocument()
-      userEvent.click(orcid)
+      await user.click(orcid)
       expect(openMock).toHaveBeenCalledTimes(1)
       // click google button
       expect(google).toBeInTheDocument()
-      userEvent.click(google)
+      await user.click(google)
       expect(openMock).toHaveBeenCalledTimes(2)
       // click linkedin button
       expect(linkedin).toBeInTheDocument()
-      userEvent.click(linkedin)
+      await user.click(linkedin)
       expect(openMock).toHaveBeenCalledTimes(3)
     })
   })
@@ -94,7 +95,7 @@ describe("features/Authentication/Login", () => {
 
   describe("generateErrorDisplayMessage function", () => {
     it("should return correct network error message", () => {
-      const error:any = {
+      const error: any = {
         message: "",
         networkError: {
           error: "test error",
@@ -116,12 +117,12 @@ describe("features/Authentication/Login", () => {
             path: [""],
           },
         ],
-        clientErrors: []
+        clientErrors: [],
       }
       expect(generateErrorDisplayMessage(error)).toEqual("Network Error")
     })
     it("should return appropriate error if user not found", () => {
-      const error:any = {
+      const error: any = {
         message: "",
         networkError: null,
         extraInfo: {},
@@ -142,14 +143,14 @@ describe("features/Authentication/Login", () => {
             path: [""],
           },
         ],
-        clientErrors: []
+        clientErrors: [],
       }
       expect(generateErrorDisplayMessage(error)).toContain(
         "Could not find user account",
       )
     })
     it("should return generic error if not network or not found error", () => {
-      const error:any = {
+      const error: any = {
         message: "",
         networkError: null,
         extraInfo: {},
@@ -167,7 +168,7 @@ describe("features/Authentication/Login", () => {
             path: [""],
           },
         ],
-        clientErrors: []
+        clientErrors: [],
       }
       expect(generateErrorDisplayMessage(error)).toContain("Could not log in")
     })

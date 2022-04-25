@@ -50,7 +50,7 @@ describe("features/EditablePages/AddPage", () => {
 
   const MockComponent = ({ mocks }: any) => (
     <MockAuthProvider mocks={mocks} validToken>
-        <AddPage {...props}/>
+      <AddPage {...props} />
     </MockAuthProvider>
   )
 
@@ -99,16 +99,17 @@ describe("features/EditablePages/AddPage", () => {
       ]
       render(<MockComponent mocks={mocks} />)
       const saveButton = screen.getByRole("button", { name: "Save" })
-        userEvent.click(saveButton)
+      userEvent.click(saveButton)
       await waitForExpect(() => {
         expect(mockHistoryPush).toHaveBeenCalledWith(props.location.state.url)
       })
     })
 
-    it("should go back to previous URL on cancel", () => {
+    it("should go back to previous URL on cancel", async () => {
+      const user = userEvent.setup()
       render(<MockComponent mocks={[]} />)
       const cancelButton = screen.getByText("Cancel")
-      userEvent.click(cancelButton)
+      await user.click(cancelButton)
       expect(mockHistoryPush).toHaveBeenCalledWith(props.location.state.url)
     })
   })
