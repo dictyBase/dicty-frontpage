@@ -113,4 +113,4 @@ const Tweets = () => {
   )
 }
 
-export default Tweets
+export { Tweets, dateFormatter }
