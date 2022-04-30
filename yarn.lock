@@ -5173,7 +5173,8 @@ dicty-components-page-editor@dictybase/dicty-components-page-editor#3.1.2:
 
 dicty-graphql-schema@dictyBase/dicty-graphql-schema:
   version "1.8.1"
-  resolved "https://codeload.github.com/dictyBase/dicty-graphql-schema/tar.gz/ef821f40db28e1309f40653e7ef4c4d7189f6e8b"
+  uid bd68148dbfbc88b9edbc91db3baad652d2da01ae
+  resolved "https://codeload.github.com/dictyBase/dicty-graphql-schema/tar.gz/bd68148dbfbc88b9edbc91db3baad652d2da01ae"
 
 dicty-hooks@dictybase/dicty-hooks#3.0.0:
   version "3.0.0"
