@@ -18,10 +18,10 @@
     jsonpointer "^5.0.0"
     leven "^3.1.0"
 
-"@apollo/client@^3.6.5":
-  version "3.6.5"
-  resolved "https://registry.yarnpkg.com/@apollo/client/-/client-3.6.5.tgz#6a7baaf05852187b0eac1c6064e721d47326d70c"
-  integrity sha512-xGAZzv1f5abyH45MSU5eOLyGQuP4Ps0OhP36pSCtt6pCICI3n4yDkdftFCPvqDVqVTuciX1kkyeJPfGodz5kwg==
+"@apollo/client@^3.6.6":
+  version "3.6.6"
+  resolved "https://registry.yarnpkg.com/@apollo/client/-/client-3.6.6.tgz#3fb1f5b11da9a64b51b5a86b62450bee034e7f41"
+  integrity sha512-AzNLN043wy0bDTTR9wzKYSu+I1IT2Ox3+vWckxgIt88Jfw5jHBvumf3lXE1JlgvbFCTiKS/Sa66AadQXWMVBRQ==
   dependencies:
     "@graphql-typed-document-node/core" "^3.1.1"
     "@wry/context" "^0.6.0"
@@ -4609,10 +4609,10 @@ core-js-pure@^3.20.2, core-js-pure@^3.8.1:
   resolved "https://registry.yarnpkg.com/core-js-pure/-/core-js-pure-3.22.2.tgz#c10bffdc3028d25c2aae505819a05543db61544f"
   integrity sha512-Lb+/XT4WC4PaCWWtZpNPaXmjiNDUe5CJuUtbkMrIM1kb1T/jJoAIp+bkVP/r5lHzMr+ZAAF8XHp7+my6Ol0ysQ==
 
-core-js@^3.19.2, core-js@^3.22.7, core-js@^3.6.4:
-  version "3.22.7"
-  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.22.7.tgz#8d6c37f630f6139b8732d10f2c114c3f1d00024f"
-  integrity sha512-Jt8SReuDKVNZnZEzyEQT5eK6T2RRCXkfTq7Lo09kpm+fHjgGewSbNjV+Wt4yZMhPDdzz2x1ulI5z/w4nxpBseg==
+core-js@^3.19.2, core-js@^3.22.8, core-js@^3.6.4:
+  version "3.22.8"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.22.8.tgz#23f860b1fe60797cc4f704d76c93fea8a2f60631"
+  integrity sha512-UoGQ/cfzGYIuiq6Z7vWL1HfkE9U9IZ4Ub+0XSiJTCzvbZzgPA69oDF2f+lgJ6dFFLEdjW5O6svvoKzXX23xFkA==
 
 core-util-is@~1.0.0:
   version "1.0.3"
@@ -12473,10 +12473,10 @@ snapdragon@^0.8.1:
     source-map-resolve "^0.5.0"
     use "^3.1.0"
 
-snyk@^1.940.0:
-  version "1.940.0"
-  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.940.0.tgz#a86ae6a3630e9fee32c7fbf9df33b2b343d00a3a"
-  integrity sha512-WdmsbdJq63Db5p4rC2HWW/qZaYjc8Kv1kEqYYBGApnAeSXMZxqjuqlHJP3DLFiNx/xXup9ruhQfeAXnpiGi0cw==
+snyk@^1.946.0:
+  version "1.946.0"
+  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.946.0.tgz#d95afad5321f5bb15499c8f3fef5be17e0fd39ef"
+  integrity sha512-3XE1rk5qF1DOb5t5bQlOFDyp4x1V7HjpppH+RDVIqq7is0Hf9NTHeOpeNALplJjVVyEIfAzqiJThKupWDx5ptg==
 
 sockjs-client@^1.5.0:
   version "1.6.0"
