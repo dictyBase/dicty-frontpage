@@ -46,7 +46,7 @@
     "react": "^17.0.2",
     "react-app-polyfill": "^3.0.0",
     "react-dom": "^16.13.1",
-    "react-ga": "^3.3.0",
+    "react-ga": "^3.3.1",
     "react-helmet": "^6.1.0",
     "react-loading-skeleton": "^3.1.0",
     "react-responsive-carousel": "^3.2.23",
