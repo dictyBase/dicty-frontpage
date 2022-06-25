@@ -29,7 +29,7 @@
     "@material-ui/core": "^4.12.4",
     "@material-ui/icons": "^4.11.3",
     "apollo3-cache-persist": "^0.14.0",
-    "core-js": "^3.23.1",
+    "core-js": "^3.23.2",
     "dicty-components-header-footer": "dictybase/dicty-components-header-footer#11.0.1",
     "dicty-components-login": "dictybase/dicty-components-login#4.1.1",
     "dicty-components-navbar": "github:dictyBase/dicty-components-navbar#2.0.0",
@@ -88,7 +88,7 @@
     "react-styleguidist": "^11.2.0",
     "react-test-renderer": "^17.0.2",
     "semantic-release": "^19.0.3",
-    "snyk": "^1.953.0",
+    "snyk": "^1.958.0",
     "source-map-explorer": "^2.5.2",
     "wait-for-expect": "^3.0.2"
   },
