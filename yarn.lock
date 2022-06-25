@@ -2163,10 +2163,10 @@
     "@svgr/plugin-svgo" "^5.5.0"
     loader-utils "^2.0.0"
 
-"@testing-library/dom@^8.0.0", "@testing-library/dom@^8.11.1", "@testing-library/dom@^8.13.0":
-  version "8.13.0"
-  resolved "https://registry.yarnpkg.com/@testing-library/dom/-/dom-8.13.0.tgz#bc00bdd64c7d8b40841e27a70211399ad3af46f5"
-  integrity sha512-9VHgfIatKNXQNaZTtLnalIy0jNZzY35a4S3oi08YAt9Hv1VsfZ/DfA45lM8D/UhtHBGJ4/lGwp0PZkVndRkoOQ==
+"@testing-library/dom@^8.0.0", "@testing-library/dom@^8.11.1", "@testing-library/dom@^8.14.0":
+  version "8.14.0"
+  resolved "https://registry.yarnpkg.com/@testing-library/dom/-/dom-8.14.0.tgz#c9830a21006d87b9ef6e1aae306cf49b0283e28e"
+  integrity sha512-m8FOdUo77iMTwVRCyzWcqxlEIk+GnopbrRI15a0EaLbpZSCinIVI4kSQzWhkShK83GogvEFJSsHF3Ws0z1vrqA==
   dependencies:
     "@babel/code-frame" "^7.10.4"
     "@babel/runtime" "^7.12.5"
@@ -4614,10 +4614,10 @@ core-js-pure@^3.20.2, core-js-pure@^3.8.1:
   resolved "https://registry.yarnpkg.com/core-js-pure/-/core-js-pure-3.22.2.tgz#c10bffdc3028d25c2aae505819a05543db61544f"
   integrity sha512-Lb+/XT4WC4PaCWWtZpNPaXmjiNDUe5CJuUtbkMrIM1kb1T/jJoAIp+bkVP/r5lHzMr+ZAAF8XHp7+my6Ol0ysQ==
 
-core-js@^3.19.2, core-js@^3.23.1, core-js@^3.6.4:
-  version "3.23.1"
-  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.23.1.tgz#9f9a9255115f62c512db56d567f636da32ca0b78"
-  integrity sha512-wfMYHWi1WQjpgZNC9kAlN4ut04TM9fUTdi7CqIoTVM7yaiOUQTklOzfb+oWH3r9edQcT3F887swuVmxrV+CC8w==
+core-js@^3.19.2, core-js@^3.23.2, core-js@^3.6.4:
+  version "3.23.2"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.23.2.tgz#e07a60ca8b14dd129cabdc3d2551baf5a01c76f0"
+  integrity sha512-ELJOWxNrJfOH/WK4VJ3Qd+fOqZuOuDNDJz0xG6Bt4mGg2eO/UT9CljCrbqDGovjLKUrGajEEBcoTOc0w+yBYeQ==
 
 core-util-is@~1.0.0:
   version "1.0.3"
@@ -9337,10 +9337,10 @@ ms@2.1.3, ms@^2.0.0, ms@^2.1.1, ms@^2.1.2:
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.1.3.tgz#574c8138ce1d2b5861f0b44579dbadd60c6615b2"
   integrity sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==
 
-msw@^0.42.1:
-  version "0.42.1"
-  resolved "https://registry.yarnpkg.com/msw/-/msw-0.42.1.tgz#2496d3e191754b68686e2530de459a2e102f85c4"
-  integrity sha512-LZZuz7VddL45gCBgfBWHyXj6a4W7OTJY0mZPoipJ3P/xwbuJwrtwB3IJrWlqBM8aink/eTKlRxwzmtIAwCj5yQ==
+msw@^0.42.3:
+  version "0.42.3"
+  resolved "https://registry.yarnpkg.com/msw/-/msw-0.42.3.tgz#150c475e2cb6d53c67503bd0e3f6251bfd075328"
+  integrity sha512-zrKBIGCDsNUCZLd3DLSeUtRruZ0riwJgORg9/bSDw3D0PTI8XUGAK3nC0LJA9g0rChGuKaWK/SwObA8wpFrz4g==
   dependencies:
     "@mswjs/cookies" "^0.2.0"
     "@mswjs/interceptors" "^0.16.3"
@@ -12521,10 +12521,10 @@ snapdragon@^0.8.1:
     source-map-resolve "^0.5.0"
     use "^3.1.0"
 
-snyk@^1.953.0:
-  version "1.953.0"
-  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.953.0.tgz#6f70f1bb1acb32f9a457f0ccdab63bc9563b50b2"
-  integrity sha512-H0nx9cdFPY16CvCrbBTtSq9Za0Hyw5+w3pYlV2MR61FlgcO8izvD4p8mzYZdqyxGTZKiLUR3pOKpYk3ewohMBQ==
+snyk@^1.958.0:
+  version "1.958.0"
+  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.958.0.tgz#74952203080d570267f83b1ef2344520eef2667c"
+  integrity sha512-TyZzIRlel6Lolm+tC2vvVH1Jkv9yHdbHn86bZ+7jaUzIKKL0SQRpUCdQHx1EENJks8AnnBse7SY3acGt2PG7XQ==
 
 sockjs-client@^1.5.0:
   version "1.6.0"
