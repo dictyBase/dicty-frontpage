@@ -85,7 +85,7 @@
     "msw": "^0.47.1",
     "prettier": "^2.7.1",
     "react-docgen-typescript": "^2.2.2",
-    "react-styleguidist": "^11.2.0",
+    "react-styleguidist": "^12.0.0",
     "react-test-renderer": "^17.0.2",
     "semantic-release": "^19.0.5",
     "snyk": "^1.1001.0",
