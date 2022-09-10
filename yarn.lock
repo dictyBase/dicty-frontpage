@@ -5234,9 +5234,9 @@ dicty-components-page-editor@dictybase/dicty-components-page-editor#3.1.2:
     slate-react "0.65.2"
 
 dicty-graphql-schema@dictyBase/dicty-graphql-schema:
-  version "1.8.1"
-  uid bd68148dbfbc88b9edbc91db3baad652d2da01ae
-  resolved "https://codeload.github.com/dictyBase/dicty-graphql-schema/tar.gz/bd68148dbfbc88b9edbc91db3baad652d2da01ae"
+  version "1.9.0"
+  uid "0a0bd6ef35f2beeea4b2f2d76b41e5498e53a6da"
+  resolved "https://codeload.github.com/dictyBase/dicty-graphql-schema/tar.gz/0a0bd6ef35f2beeea4b2f2d76b41e5498e53a6da"
 
 dicty-hooks@dictybase/dicty-hooks#3.0.0:
   version "3.0.0"
