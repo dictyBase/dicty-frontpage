@@ -2,15 +2,19 @@ import path from "path"
 import { defineConfig } from "vite"
 import react from "@vitejs/plugin-react"
 import checker from "vite-plugin-checker"
+import tsconfigPaths from "vite-tsconfig-paths"
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
   return {
-    plugins: [react(), checker({ overlay: false, typescript: true })],
+    plugins: [
+      tsconfigPaths(),
+      react(),
+      checker({ overlay: false, typescript: true }),
+    ],
     resolve: {
       alias: {
-        find: "common",
-        replacement: path.resolve(__dirname, "./src/common"),
+        "~": path.resolve(__dirname, "src"),
       },
     },
     server: {

@@ -20,7 +20,10 @@
     "noEmit": true,
     "downlevelIteration": true,
     "noFallthroughCasesInSwitch": true,
-    "useDefineForClassFields": true
+    "useDefineForClassFields": true,
+    "paths": {
+      "~/*": ["./*"]
+    }
   },
   "exclude": ["node_modules"],
   "include": ["src"]
