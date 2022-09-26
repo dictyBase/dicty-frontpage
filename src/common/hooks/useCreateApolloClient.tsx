@@ -19,7 +19,7 @@ const isMutation = (value: string) => {
 
 const getGraphQLServer = (url: string, deployEnv: string, origin: string) => {
   if (deployEnv === "staging" && origin === "https://dictycr.org") {
-    return process.env.REACT_APP_ALT_GRAPHQL_SERVER
+    return import.meta.env.VITE_APP_ALT_GRAPHQL_SERVER
   }
   return url
 }
@@ -37,8 +37,8 @@ const authLink = setContext((request, { headers }) => {
 })
 
 const server = getGraphQLServer(
-  process.env.REACT_APP_GRAPHQL_SERVER,
-  process.env.DEPLOY_ENV,
+  import.meta.env.VITE_APP_GRAPHQL_SERVER,
+  import.meta.env.DEPLOY_ENV,
   window.location.origin,
 )
 

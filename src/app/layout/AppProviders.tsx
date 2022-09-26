@@ -84,7 +84,7 @@ const AppProviders = ({ children }: { children: React.ReactNode }) => {
   return (
     <ApolloProvider client={client}>
       <MuiThemeProvider theme={theme}>
-        <BrowserRouter basename={process.env.REACT_APP_BASENAME}>
+        <BrowserRouter basename={import.meta.env.VITE_APP_BASENAME}>
           {children}
         </BrowserRouter>
       </MuiThemeProvider>
