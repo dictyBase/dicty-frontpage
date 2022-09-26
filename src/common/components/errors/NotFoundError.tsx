@@ -3,9 +3,9 @@ import { Link, useLocation, useParams } from "react-router-dom"
 import Grid from "@material-ui/core/Grid"
 import Button from "@material-ui/core/Button"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import BackToHomepageButton from "common/components/BackToHomepageButton"
-import useAuthorization from "common/hooks/useAuthorization"
-import sadDicty from "common/assets/sad-dicty.png"
+import BackToHomepageButton from "../../components/BackToHomepageButton"
+import useAuthorization from "../../hooks/useAuthorization"
+import sadDicty from "../../assets/sad-dicty.png"
 import useStyles from "./errorStyles"
 
 type Props = {
@@ -50,7 +50,11 @@ const NotFoundError = ({ error }: Props) => {
               <Link
                 className={classes.link}
                 to="/addpage"
-                state={{name: name, subname: subname, url: location.pathname}}>
+                state={{
+                  name: name,
+                  subname: subname,
+                  url: location.pathname,
+                }}>
                 <Button
                   className={classes.addPageButton}
                   size="small"
