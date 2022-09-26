@@ -22,7 +22,7 @@
     "noFallthroughCasesInSwitch": true,
     "useDefineForClassFields": true,
     "paths": {
-      "~/*": ["./*"]
+      "common/*": ["./common/*"]
     }
   },
   "exclude": ["node_modules"],
