@@ -22,6 +22,5 @@
     "noFallthroughCasesInSwitch": true,
     "useDefineForClassFields": true
   },
-  "exclude": ["node_modules"],
   "include": ["src"]
 }
