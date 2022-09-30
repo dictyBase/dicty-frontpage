@@ -80,12 +80,14 @@ const DownloadsTable = ({ data }: Properties) => {
                       className={classes.link}
                       href={row.url}
                       target="_blank"
-                      rel="noopener noreferrer">
+                      rel="noopener noreferrer"
+                    >
                       <Button
                         className={classes.button}
                         size="small"
                         variant="contained"
-                        color="default">
+                        color="default"
+                      >
                         Download
                       </Button>
                     </a>

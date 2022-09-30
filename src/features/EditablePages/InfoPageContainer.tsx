@@ -5,7 +5,7 @@ import Container from "@material-ui/core/Container"
 import { useContentBySlugQuery } from "dicty-graphql-schema"
 import Loader from "common/components/Loader"
 import GraphQLErrorPage from "common/components/errors/GraphQLErrorPage"
-import { NAMESPACE } from "common/constants/namespace"
+import NAMESPACE from "common/constants/namespace"
 import { pageTitleLookup } from "common/utils/pageTitleConversions"
 import InfoPageView from "./InfoPageView"
 

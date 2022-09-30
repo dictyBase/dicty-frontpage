@@ -58,25 +58,27 @@ const AuthContext = React.createContext({} as AuthStateContextProperties)
 
 const authReducer = (state: AuthState, action: Action) => {
   switch (action.type) {
-    case ActionType.LOGIN:
-      const { token } = action.payload
+    case ActionType.LOGIN: {
+      const { token, user, provider } = action.payload
       return {
         ...state,
         isAuthenticated: token !== "",
         token,
-        user: action.payload.user,
-        provider: action.payload.provider,
+        user,
+        provider,
         error: null,
       }
+    }
     case ActionType.LOGIN_ERROR: {
       return {
         ...state,
         error: action.payload.error,
       }
     }
-    case ActionType.LOGOUT:
+    case ActionType.LOGOUT: {
       return initialState
-    case ActionType.UPDATE_TOKEN:
+    }
+    case ActionType.UPDATE_TOKEN: {
       const newToken = action.payload.token
       return {
         ...state,
@@ -86,8 +88,10 @@ const authReducer = (state: AuthState, action: Action) => {
         provider: action.payload.provider,
         error: null,
       }
-    default:
+    }
+    default: {
       return state
+    }
   }
 }
 

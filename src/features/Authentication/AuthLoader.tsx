@@ -13,7 +13,8 @@ const AuthLoader = () => (
     flexDirection="column"
     justifyContent="center"
     mt={8}
-    mb={12}>
+    mb={12}
+  >
     <Typography variant="h1" align="center" gutterBottom>
       Logging in...
     </Typography>

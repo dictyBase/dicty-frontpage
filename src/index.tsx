@@ -7,11 +7,11 @@ import App from "app/layout/App"
 import AppProviders from "app/layout/AppProviders"
 import "common/utils/icons" // fontawesome library
 import "fontsource-roboto"
+import worker from "./mocks/browser"
 
 const main = async () => {
   // Activate MSW
   if (import.meta.env.REACT_APP_MOCK_SERVER === "on") {
-    const { worker } = require("./mocks/browser.js")
     await worker.start()
   }
 }

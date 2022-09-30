@@ -17,6 +17,7 @@ const handlers = [
         }),
       )
     }
+    return response(context.data({}))
   }),
 
   graphql.query("ListRecentGenes", (request, response, context) => {
@@ -29,6 +30,7 @@ const handlers = [
         }),
       )
     }
+    return response(context.data({}))
   }),
 
   graphql.query("ListRecentPlasmids", (request, response, context) => {
@@ -41,6 +43,7 @@ const handlers = [
         }),
       )
     }
+    return response(context.data({}))
   }),
 
   graphql.query("ListRecentStrains", (request, response, context) => {
@@ -53,6 +56,7 @@ const handlers = [
         }),
       )
     }
+    return response(context.data({}))
   }),
 ]
 

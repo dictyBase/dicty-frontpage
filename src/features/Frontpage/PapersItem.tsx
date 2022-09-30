@@ -38,9 +38,8 @@ const PapersItem = ({ data }: PaperContainerProperties) => {
   const text = data?.listRecentPublications?.map((paper, index) => {
     const authors = paper?.authors
     const doi = paper?.doi
-    let lastname
     if (!authors) return <></>
-    lastname = Array.isArray(authors[0]?.last_name)
+    const lastname = Array.isArray(authors[0]?.last_name)
       ? authors[0]?.last_name?.join(", ")
       : authors[0]?.last_name
 
@@ -60,7 +59,8 @@ const PapersItem = ({ data }: PaperContainerProperties) => {
             className={classes.link}
             href={doi || ""}
             target="_blank"
-            rel="noopener noreferrer">
+            rel="noopener noreferrer"
+          >
             {"\u00A0"}
             Pubmed
           </a>

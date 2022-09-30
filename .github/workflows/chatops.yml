@@ -6,7 +6,7 @@ jobs:
   dispatch:
     runs-on: ubuntu-latest
     if: |
-      github.actor == 'wildlifehexagon' || github.actor == 'cybersiddhu'  
+      github.actor == 'wildlifehexagon' || github.actor == 'cybersiddhu'
     steps:
       - name: Dispatch deploy slash command
         id: deploy

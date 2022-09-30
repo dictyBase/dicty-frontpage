@@ -89,7 +89,8 @@ const InlineEditor = ({ data }: Properties) => {
             className={classes.button}
             color="primary"
             onClick={() => setReadOnly(false)}
-            title="Edit">
+            title="Edit"
+          >
             <FontAwesomeIcon icon="pencil-alt" />
             &nbsp; Edit
           </Button>

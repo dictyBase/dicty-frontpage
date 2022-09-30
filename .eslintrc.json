@@ -19,27 +19,28 @@
       "files": ["*.ts", "*.tsx"]
     }
   ],
-  "ignorePatterns": ["src/generated/**"],
+  "ignorePatterns": ["src/generated/**", "public/mockServiceWorker.js"],
   "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
     "import/resolver": {
-      "node": {
-        //try typescript resolver
-        "extensions": [".js", ".jsx", ".ts", ".tsx"],
-        "moduleDirectory": ["src", "node_modules"]
+      "typescript": {
+        "alwaysTryTypes": true
       }
     }
   },
   "rules": {
+    "import/no-unresolved": "error",
     "quotes": ["off", "single"],
     "semi": ["error", "never"],
     "react/jsx-filename-extension": [
       "warn",
       {
-        "extensions": [".tsx", ".ts"] ///lookinto
+        "extensions": [".tsx", ".ts"]
       }
     ],
     "import/extensions": [
-      //this too
       "error",
       "ignorePackages",
       {
@@ -56,7 +57,7 @@
         "namedComponents": "arrow-function"
       }
     ],
-    "filenames/match-regex": "off", //what
+    "filenames/match-regex": "off",
     "unicorn/filename-case": [
       "error",
       {

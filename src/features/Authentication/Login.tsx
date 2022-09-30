@@ -68,8 +68,8 @@ const generateErrorDisplayMessage = (error: ApolloError) => {
     error.graphQLErrors[0].extensions &&
     error.graphQLErrors[0].extensions.code === "NotFound"
   ) {
-    message = `Could not find user account. 
-      
+    message = `Could not find user account.
+
       Please make sure you are a verified user and try again.`
   }
   return message

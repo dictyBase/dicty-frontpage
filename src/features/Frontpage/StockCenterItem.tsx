@@ -23,15 +23,15 @@ const PlasmidItem = ({ data, type }: PlasmidItemProperties) => {
   let text
 
   if (type === "Plasmid") {
-    text = data?.listRecentPlasmids?.map((plasmid, index) => (
-      <li className={classes.listItem} key={index}>
+    text = data?.listRecentPlasmids?.map((plasmid) => (
+      <li className={classes.listItem} key={plasmid.id}>
         {plasmid.name}
       </li>
     ))
   }
   if (type === "Strain") {
-    text = data?.listRecentStrains?.map((strain, index) => (
-      <li className={classes.listItem} key={index}>
+    text = data?.listRecentStrains?.map((strain) => (
+      <li className={classes.listItem} key={strain.id}>
         {strain.systematic_name}
       </li>
     ))

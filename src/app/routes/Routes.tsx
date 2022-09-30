@@ -1,4 +1,3 @@
-import React from "react"
 import { Route, Routes as ReactRoutes } from "react-router-dom"
 import Front from "features/Frontpage/Front"
 import DownloadsContainer from "features/Downloads/DownloadsContainer"
@@ -27,19 +26,41 @@ const Routes = () => {
         <Route path="login" element={<Login />} />
         <Route path=":provider/callback" element={<OauthCallback />} />
         <Route path="load/auth" element={<AuthLoader />} />
-        <Route path="logout" element={<PrivateRoute children={Logout} />} />
+        <Route
+          path="logout"
+          element={
+            <PrivateRoute>
+              <Logout />
+            </PrivateRoute>
+          }
+        />
         {/* Editable page routes */}
         <Route path=":section/:name" element={<InfoPageContainer />} />
         <Route
           path=":section/:name/edit"
-          element={<PrivateRoute children={EditInfoPage} />}
+          element={
+            <PrivateRoute>
+              <EditInfoPage />
+            </PrivateRoute>
+          }
         />
         <Route path=":section/:name/:subname" element={<InfoPageContainer />} />
         <Route
           path=":section/:name/:subname/edit"
-          element={<PrivateRoute children={EditInfoPage} />}
+          element={
+            <PrivateRoute>
+              <EditInfoPage />
+            </PrivateRoute>
+          }
         />
-        <Route path="addpage" element={<PrivateRoute children={AddPage} />} />
+        <Route
+          path="addpage"
+          element={
+            <PrivateRoute>
+              <AddPage />
+            </PrivateRoute>
+          }
+        />
         <Route path="privacy-policy" element={<InfoPageContainer />} />
       </Route>
       {/* Page not found routes */}

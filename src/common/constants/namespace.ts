@@ -1,1 +1,2 @@
-export const NAMESPACE = "dfp"
+const NAMESPACE = "dfp"
+export default NAMESPACE

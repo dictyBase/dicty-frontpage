@@ -22,6 +22,8 @@ const mockContent = [
   },
 ]
 
+const mockDate = "2020-01-01T17:50:12.427Z"
+
 describe("EditablePages/InlineEditor", () => {
   describe("initial render with editing permission and valid token", () => {
     const properties = {
@@ -29,13 +31,18 @@ describe("EditablePages/InlineEditor", () => {
         id: "99",
         name: "payment",
         slug: "dsc-payment",
-        updated_at: "2020-01-01T17:50:12.427Z",
+        // eslint-disable-next-line camelcase
+        updated_at: mockDate,
+        // eslint-disable-next-line camelcase
         updated_by: {
           id: "999",
+          // eslint-disable-next-line camelcase
           first_name: "Art",
+          // eslint-disable-next-line camelcase
           last_name: "Vandelay",
           email: "seven@vandelayindustries.com",
-          updated_at: "2020-01-01T17:50:12.427Z",
+          // eslint-disable-next-line camelcase
+          updated_at: mockDate,
           roles: [
             {
               role: "Latex Salesman",
@@ -48,7 +55,7 @@ describe("EditablePages/InlineEditor", () => {
     it("displays edit button for authorized user", () => {
       render(
         <MockAuthProvider mocks={[]}>
-          <InlineEditor {...properties} />
+          <InlineEditor data={properties.data} />
         </MockAuthProvider>,
       )
       const editButton = screen.getByRole("button")
@@ -62,6 +69,7 @@ describe("EditablePages/InlineEditor", () => {
             variables: {
               input: {
                 id: properties.data.id,
+                // eslint-disable-next-line camelcase
                 updated_by: properties.data.updated_by.id,
                 content: properties.data.content,
               },
@@ -71,6 +79,7 @@ describe("EditablePages/InlineEditor", () => {
             data: {
               updateContent: {
                 id: properties.data.id,
+                // eslint-disable-next-line camelcase
                 updated_by: {
                   id: properties.data.updated_by.id,
                 },
@@ -83,7 +92,7 @@ describe("EditablePages/InlineEditor", () => {
       const user = userEvent.setup()
       render(
         <MockAuthProvider mocks={mocks}>
-          <InlineEditor {...properties} />
+          <InlineEditor data={properties.data} />
         </MockAuthProvider>,
       )
       const editButton = screen.getByText("Edit")
@@ -103,13 +112,18 @@ describe("EditablePages/InlineEditor", () => {
         id: "99",
         name: "payment",
         slug: "dsc-payment",
-        updated_at: "2020-01-01T17:50:12.427Z",
+        // eslint-disable-next-line camelcase
+        updated_at: mockDate,
+        // eslint-disable-next-line camelcase
         updated_by: {
           id: "999",
+          // eslint-disable-next-line camelcase
           first_name: "Art",
+          // eslint-disable-next-line camelcase
           last_name: "Vandelay",
           email: "seven@vandelayindustries.com",
-          updated_at: "2020-01-01T17:50:12.427Z",
+          // eslint-disable-next-line camelcase
+          updated_at: mockDate,
           roles: [
             {
               role: "Latex Salesman",
@@ -122,7 +136,7 @@ describe("EditablePages/InlineEditor", () => {
     it("does not display edit button", () => {
       render(
         <MockAuthProvider mocks={[]} validToken={false}>
-          <InlineEditor {...properties} />
+          <InlineEditor data={properties.data} />
         </MockAuthProvider>,
       )
       const editButton = screen.queryByRole("button")

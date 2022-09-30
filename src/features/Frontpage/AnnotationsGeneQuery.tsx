@@ -13,9 +13,9 @@ const AnnotationsGeneQuery = () => {
 
   return (
     <>
-      {loading ? <Loader /> : <></>}
-      {error ? <GraphQLErrorPage error={error} /> : <></>}
-      {data ? <AnnotationsItem data={data} type="genes" /> : <></>}
+      {loading && <Loader />}
+      {error && <GraphQLErrorPage error={error} />}
+      {data && <AnnotationsItem data={data} type="genes" />}
     </>
   )
 }

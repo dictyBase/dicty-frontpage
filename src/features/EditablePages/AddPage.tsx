@@ -1,4 +1,3 @@
-import React from "react"
 import { useNavigate } from "react-router-dom"
 import Box from "@material-ui/core/Box"
 import Typography from "@material-ui/core/Typography"
@@ -8,7 +7,7 @@ import { useCreateContentMutation } from "dicty-graphql-schema"
 import ErrorNotification from "features/Authentication/ErrorNotification"
 import { useAuthStore } from "features/Authentication/AuthStore"
 import useAuthorization from "common/hooks/useAuthorization"
-import { NAMESPACE } from "common/constants/namespace"
+import NAMESPACE from "common/constants/namespace"
 import { theme } from "app/layout/AppProviders"
 
 const useStyles = makeStyles((theme: Theme) => ({

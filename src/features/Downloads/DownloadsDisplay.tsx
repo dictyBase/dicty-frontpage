@@ -87,7 +87,8 @@ const DownloadsDisplay = ({ data }: Properties) => {
               value={tabValue}
               onChange={handleChange}
               variant="scrollable"
-              scrollButtons="auto">
+              scrollButtons="auto"
+            >
               {generateTabs(data)}
             </Tabs>
           </AppBar>
