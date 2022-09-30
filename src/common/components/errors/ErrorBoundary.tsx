@@ -21,7 +21,7 @@ const styles = (theme: Theme) => ({
   },
 })
 
-type Props = {
+type Properties = {
   /** Material-UI styling */
   classes: {
     gridContainer: string
@@ -42,7 +42,7 @@ type State = {
  * https://reactjs.org/docs/error-boundaries.html
  */
 
-class ErrorBoundary extends Component<Props, State> {
+class ErrorBoundary extends Component<Properties, State> {
   state = { hasError: false }
 
   static getDerivedStateFromError(error: Error) {
