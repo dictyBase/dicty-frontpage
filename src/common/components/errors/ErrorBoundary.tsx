@@ -21,7 +21,7 @@ const styles = (theme: Theme) => ({
   },
 })
 
-type Props = {
+type Properties = {
   /** Material-UI styling */
   classes: {
     gridContainer: string
@@ -42,7 +42,7 @@ type State = {
  * https://reactjs.org/docs/error-boundaries.html
  */
 
-class ErrorBoundary extends Component<Props, State> {
+class ErrorBoundary extends Component<Properties, State> {
   state = { hasError: false }
 
   static getDerivedStateFromError(error: Error) {
@@ -60,7 +60,10 @@ class ErrorBoundary extends Component<Props, State> {
 
     if (hasError) {
       return (
-        <Grid className={classes.gridContainer} container justifyContent="center">
+        <Grid
+          className={classes.gridContainer}
+          container
+          justifyContent="center">
           <Grid item xs={6} className={classes.paper}>
             <div style={{ textAlign: "center" }}>
               <img src={sadDicty} alt="Sad Dicty Logo" />

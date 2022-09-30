@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }))
 
-type Props = {
+type Properties = {
   data: ContentBySlugQuery["contentBySlug"]
 }
 
@@ -32,7 +32,7 @@ type Props = {
  * Inline editor for all inline editable content
  */
 
-const InlineEditor = ({ data }: Props) => {
+const InlineEditor = ({ data }: Properties) => {
   const [readOnly, setReadOnly] = React.useState(true)
   const [value, setValue] = useState(data?.content)
   const {
@@ -49,7 +49,7 @@ const InlineEditor = ({ data }: Props) => {
   const classes = useStyles()
 
   const handleSaveClick = (value: any) => {
-    const valueStr = JSON.stringify(value)
+    const valueString = JSON.stringify(value)
     if (data?.id === undefined) {
       return
     }
@@ -58,11 +58,11 @@ const InlineEditor = ({ data }: Props) => {
         input: {
           id: data.id,
           updated_by: user.id,
-          content: valueStr,
+          content: valueString,
         },
       },
     })
-    setValue(valueStr)
+    setValue(valueString)
     setReadOnly(true)
   }
 

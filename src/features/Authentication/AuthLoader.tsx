@@ -7,17 +7,20 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
  * Loading screen during the login process
  */
 
-const AuthLoader = () => {
-  return (
-    <Box display="flex" flexDirection="column" justifyContent="center" mt={8} mb={12}>
-      <Typography variant="h1" align="center" gutterBottom>
-        Logging in...
-      </Typography>
-      <Box textAlign="center" mt={3}>
-        <FontAwesomeIcon icon="spinner" size="5x" pulse fixedWidth />
-      </Box>
+const AuthLoader = () => (
+  <Box
+    display="flex"
+    flexDirection="column"
+    justifyContent="center"
+    mt={8}
+    mb={12}>
+    <Typography variant="h1" align="center" gutterBottom>
+      Logging in...
+    </Typography>
+    <Box textAlign="center" mt={3}>
+      <FontAwesomeIcon icon="spinner" size="5x" pulse fixedWidth />
     </Box>
-  )
-}
+  </Box>
+)
 
 export default AuthLoader

@@ -1,9 +1,9 @@
 import React from "react"
 import { render, screen } from "@testing-library/react"
-import InfoPageContainer, { getSlug } from "./InfoPageContainer"
 import { ContentBySlugDocument } from "dicty-graphql-schema"
 import MockAuthProvider from "mocks/MockAuthProvider"
 import { Location } from "history"
+import InfoPageContainer, { getSlug } from "./InfoPageContainer"
 
 window.getSelection = jest.fn()
 const mockName = "payment"
@@ -32,6 +32,8 @@ const mockContent = [
   },
 ]
 
+const mockSlug = "dfp-payment"
+
 describe("features/EditablePages/InfoPageContainer", () => {
   const MockComponent = ({ mocks }: any) => (
     <MockAuthProvider mocks={mocks}>
@@ -45,7 +47,7 @@ describe("features/EditablePages/InfoPageContainer", () => {
         request: {
           query: ContentBySlugDocument,
           variables: {
-            slug: "dfp-payment",
+            slug: mockSlug,
           },
         },
         result: {
@@ -54,12 +56,16 @@ describe("features/EditablePages/InfoPageContainer", () => {
               id: 1,
               content: JSON.stringify(mockContent),
               name: mockName,
-              slug: "dfp-payment",
+              slug: mockSlug,
+              // eslint-disable-next-line camelcase
               updated_at: "2020-01-01T17:50:12.427Z",
+              // eslint-disable-next-line camelcase
               updated_by: {
                 id: 1,
                 email: "rusty@holzer.com",
+                // eslint-disable-next-line camelcase
                 first_name: "Rusty",
+                // eslint-disable-next-line camelcase
                 last_name: "Holzer",
                 roles: [
                   {
@@ -94,7 +100,7 @@ describe("features/EditablePages/InfoPageContainer", () => {
         request: {
           query: ContentBySlugDocument,
           variables: {
-            slug: "dfp-payment",
+            slug: mockSlug,
           },
         },
         result: {
@@ -120,8 +126,8 @@ describe("features/EditablePages/InfoPageContainer", () => {
       expect(screen.getByTestId("skeleton-loader")).toBeInTheDocument()
 
       // wait for error message to load...
-      const errorMsg = await screen.findByText(/Page Not Found/)
-      expect(errorMsg).toBeInTheDocument()
+      const errorMessage = await screen.findByText(/Page Not Found/)
+      expect(errorMessage).toBeInTheDocument()
     })
   })
 
@@ -130,10 +136,10 @@ describe("features/EditablePages/InfoPageContainer", () => {
       const { pathname } = {
         pathname: "/privacy-policy",
       } as Location
-      const {name, subname} = {
+      const { name, subname } = {
         name: undefined,
         subname: undefined,
-      } 
+      }
       expect(getSlug(pathname, name, subname)).toEqual("privacy-policy")
     })
 
@@ -141,7 +147,7 @@ describe("features/EditablePages/InfoPageContainer", () => {
       const { pathname } = {
         pathname: "/privacy-policy/",
       } as Location
-      const {name, subname} = {
+      const { name, subname } = {
         name: undefined,
         subname: undefined,
       }
@@ -152,7 +158,7 @@ describe("features/EditablePages/InfoPageContainer", () => {
       const { pathname } = {
         pathname: "/the/maestro",
       } as Location
-      const {name, subname} = {
+      const { name, subname } = {
         name: "the",
         subname: "maestro",
       }
@@ -163,7 +169,7 @@ describe("features/EditablePages/InfoPageContainer", () => {
       const { pathname } = {
         pathname: "/jerry",
       } as Location
-      const {name, subname} = {
+      const { name, subname } = {
         name: "jerry",
         subname: undefined,
       }

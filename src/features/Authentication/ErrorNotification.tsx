@@ -10,14 +10,14 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }))
 
-type Props = {
+type Properties = {
   /** The error message to display */
   error: string
 }
 
 /** Notification snackbar-style message if user hits some type of error */
 
-const ErrorNotification = ({ error }: Props) => {
+const ErrorNotification = ({ error }: Properties) => {
   const classes = useStyles()
 
   return (

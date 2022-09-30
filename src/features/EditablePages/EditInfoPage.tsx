@@ -8,7 +8,7 @@ import { useAuthStore } from "features/Authentication/AuthStore"
 import useAuthorization from "common/hooks/useAuthorization"
 import {
   useUpdateContentMutation,
-  ContentBySlugQuery
+  ContentBySlugQuery,
 } from "dicty-graphql-schema"
 import { theme } from "app/layout/AppProviders"
 
@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }))
 
-type Props = {
+type Properties = {
   location: {
     state: {
       data: ContentBySlugQuery["contentBySlug"]
@@ -36,7 +36,7 @@ type Props = {
 /**
  * Allows editing of the info page components
  */
-const EditInfoPage = ({ location }: Props) => {
+const EditInfoPage = ({ location }: Properties) => {
   /* Instead of passing props, we need to use useParams hook */
   const classes = useStyles()
   const {
@@ -44,7 +44,7 @@ const EditInfoPage = ({ location }: Props) => {
   } = useAuthStore()
 
   const {
-    state: { data }
+    state: { data },
   } = location
 
   const { user } = useAuthorization()
@@ -58,7 +58,7 @@ const EditInfoPage = ({ location }: Props) => {
   const navigate = useNavigate()
 
   const { pathname } = useLocation()
-  const prevURL = pathname.slice(0, -5)
+  const previousURL = pathname.slice(0, -5)
 
   const handleSaveClick = (value: any) => {
     if (data?.id === undefined) {
@@ -68,16 +68,17 @@ const EditInfoPage = ({ location }: Props) => {
       variables: {
         input: {
           id: data.id,
+          // eslint-disable-next-line camelcase
           updated_by: user.id,
           content: JSON.stringify(value),
         },
       },
     })
-    setTimeout(() => navigate(prevURL), 1000)
+    setTimeout(() => navigate(previousURL), 1000)
   }
 
   const handleCancelClick = () => {
-    navigate(prevURL)
+    navigate(previousURL)
   }
 
   return (

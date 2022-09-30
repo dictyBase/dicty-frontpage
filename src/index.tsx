@@ -23,7 +23,7 @@ ReactDOM.render(
       <App />
     </AppProviders>
   </AuthProvider>,
-  document.getElementById("root"),
+  document.querySelector("#root"),
 )
 
 main()

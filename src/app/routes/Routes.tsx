@@ -11,8 +11,8 @@ import OauthCallback from "features/Authentication/OauthCallback"
 import AuthLoader from "features/Authentication/AuthLoader"
 import Logout from "features/Authentication/Logout"
 import PageNotReady from "common/components/PageNotReady"
-import PrivateRoute from "./PrivateRoute"
 import useGoogleAnalytics from "common/hooks/useGoogleAnalytics"
+import PrivateRoute from "./PrivateRoute"
 
 const Routes = () => {
   useGoogleAnalytics()

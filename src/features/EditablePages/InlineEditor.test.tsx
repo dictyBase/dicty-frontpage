@@ -2,9 +2,9 @@ import React from "react"
 import { render, screen } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
 import waitForExpect from "wait-for-expect"
-import InlineEditor from "./InlineEditor"
 import { UpdateContentDocument } from "dicty-graphql-schema"
 import MockAuthProvider from "mocks/MockAuthProvider"
+import InlineEditor from "./InlineEditor"
 
 window.getSelection = jest.fn()
 
@@ -24,7 +24,7 @@ const mockContent = [
 
 describe("EditablePages/InlineEditor", () => {
   describe("initial render with editing permission and valid token", () => {
-    const props = {
+    const properties = {
       data: {
         id: "99",
         name: "payment",
@@ -48,7 +48,7 @@ describe("EditablePages/InlineEditor", () => {
     it("displays edit button for authorized user", () => {
       render(
         <MockAuthProvider mocks={[]}>
-          <InlineEditor {...props} />
+          <InlineEditor {...properties} />
         </MockAuthProvider>,
       )
       const editButton = screen.getByRole("button")
@@ -61,20 +61,20 @@ describe("EditablePages/InlineEditor", () => {
             query: UpdateContentDocument,
             variables: {
               input: {
-                id: props.data.id,
-                updated_by: props.data.updated_by.id,
-                content: props.data.content,
+                id: properties.data.id,
+                updated_by: properties.data.updated_by.id,
+                content: properties.data.content,
               },
             },
           },
           result: {
             data: {
               updateContent: {
-                id: props.data.id,
+                id: properties.data.id,
                 updated_by: {
-                  id: props.data.updated_by.id,
+                  id: properties.data.updated_by.id,
                 },
-                content: props.data.content,
+                content: properties.data.content,
               },
             },
           },
@@ -83,7 +83,7 @@ describe("EditablePages/InlineEditor", () => {
       const user = userEvent.setup()
       render(
         <MockAuthProvider mocks={mocks}>
-          <InlineEditor {...props} />
+          <InlineEditor {...properties} />
         </MockAuthProvider>,
       )
       const editButton = screen.getByText("Edit")
@@ -98,7 +98,7 @@ describe("EditablePages/InlineEditor", () => {
   })
 
   describe("initial render with no special permissions", () => {
-    const props = {
+    const properties = {
       data: {
         id: "99",
         name: "payment",
@@ -122,7 +122,7 @@ describe("EditablePages/InlineEditor", () => {
     it("does not display edit button", () => {
       render(
         <MockAuthProvider mocks={[]} validToken={false}>
-          <InlineEditor {...props} />
+          <InlineEditor {...properties} />
         </MockAuthProvider>,
       )
       const editButton = screen.queryByRole("button")

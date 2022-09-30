@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react"
 import { useListRecentStrainsQuery } from "dicty-graphql-schema"
-import { listRecentStrains } from "../../common/data/mockStrains"
 import { ApolloError } from "@apollo/client"
+import { listRecentStrains } from "../../common/data/mockStrains"
 import StockCenterStrainQuery from "./StockCenterStrainQuery"
 
 jest.mock("dicty-graphql-schema", () => {

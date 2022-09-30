@@ -1,9 +1,9 @@
+import { renderHook } from "@testing-library/react-hooks"
+import MockAuthProvider, { MockSuperuser } from "mocks/MockAuthProvider"
 import useAuthorization, {
   verifyToken,
   verifyPermissions,
 } from "./useAuthorization"
-import { renderHook } from "@testing-library/react-hooks"
-import MockAuthProvider, { MockSuperuser } from "mocks/MockAuthProvider"
 
 const mockJWT =
   "eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ1c2VyIiwiZXhwIjoxNTMyNzAxMTk5LCJqdGkiOiJiZDZ2bTN0M2Q3djAwMDlpdGNmZyIsImlhdCI6MTUzMTgzNzE5OSwiaXNzIjoiZGljdHlCYXNlIiwibmJmIjoxNTMxODM3MTk5LCJzdWIiOiJkaWN0eUJhc2UgbG9naW4gdG9rZW4ifQ" // 2018-07-27 expiration time
@@ -23,13 +23,13 @@ describe("hooks/useAuthorization", () => {
     it("should return true for valid token", () => {
       dateNowSpy = jest
         .spyOn(Date, "now")
-        .mockImplementation(() => 1487076708000) // 2017-02-14
+        .mockImplementation(() => 1_487_076_708_000) // 2017-02-14
       expect(verifyToken(mockJWT)).toBeTruthy()
     })
     it("should return false for expired token", () => {
       dateNowSpy = jest
         .spyOn(Date, "now")
-        .mockImplementation(() => 1932701199000) // 2031-03-31
+        .mockImplementation(() => 1_932_701_199_000) // 2031-03-31
       expect(verifyToken(mockJWT)).toBeFalsy()
     })
   })
@@ -104,16 +104,16 @@ describe("hooks/useAuthorization", () => {
             id: "1",
             role: "curator",
             description: "dicty curator",
-            created_at: 123456,
-            updated_at: 678900,
+            created_at: 123_456,
+            updated_at: 678_900,
             permissions: [
               {
                 id: "1",
                 permission: "write",
                 description: "a test permission",
                 resource: "dsccontent",
-                created_at: 123456,
-                updated_at: 678900,
+                created_at: 123_456,
+                updated_at: 678_900,
               },
             ],
           },
@@ -130,7 +130,7 @@ describe("hooks/useAuthorization", () => {
       it("should return user state", () => {
         expect(result.current.user).toBe(MockAdmin)
       })
-      xit("should authorize admin to edit pages", () => {
+      it.skip("should authorize admin to edit pages", () => {
         expect(result.current.canEditPages).toBeTruthy()
       })
     })

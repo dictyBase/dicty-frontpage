@@ -14,7 +14,7 @@ const useStyles = makeStyles({
   },
 })
 
-type Props = {
+type Properties = {
   citations: Array<Citation>
 }
 
@@ -22,7 +22,7 @@ type Props = {
  * Displays the citation above the downloads table.
  */
 
-const Citations = ({ citations }: Props) => {
+const Citations = ({ citations }: Properties) => {
   const classes = useStyles()
 
   return (

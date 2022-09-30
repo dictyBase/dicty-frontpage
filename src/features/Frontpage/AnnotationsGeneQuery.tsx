@@ -5,7 +5,7 @@ import Loader from "common/components/Loader"
 import AnnotationsItem from "./AnnotationsItem"
 
 const AnnotationsGeneQuery = () => {
-  let { data, loading, error } = useListRecentGenesQuery({
+  const { data, loading, error } = useListRecentGenesQuery({
     variables: {
       limit: 4,
     },
@@ -15,7 +15,7 @@ const AnnotationsGeneQuery = () => {
     <>
       {loading ? <Loader /> : <></>}
       {error ? <GraphQLErrorPage error={error} /> : <></>}
-      {data ? <AnnotationsItem data={data} type={"genes"} /> : <></>}
+      {data ? <AnnotationsItem data={data} type="genes" /> : <></>}
     </>
   )
 }

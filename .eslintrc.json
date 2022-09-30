@@ -1,0 +1,75 @@
+{
+  "extends": [
+    "react-app",
+    "plugin:jest/recommended",
+    "plugin:jest-dom/recommended",
+    "airbnb",
+    "airbnb/hooks",
+    "plugin:github/recommended",
+    "plugin:sonarjs/recommended",
+    "plugin:unicorn/recommended",
+    "plugin:compat/recommended",
+    "prettier"
+  ],
+  "env": {
+    "browser": true
+  },
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx"]
+    }
+  ],
+  "ignorePatterns": ["src/generated/**"],
+  "settings": {
+    "import/resolver": {
+      "node": {
+        //try typescript resolver
+        "extensions": [".js", ".jsx", ".ts", ".tsx"],
+        "moduleDirectory": ["src", "node_modules"]
+      }
+    }
+  },
+  "rules": {
+    "quotes": ["off", "single"],
+    "semi": ["error", "never"],
+    "react/jsx-filename-extension": [
+      "warn",
+      {
+        "extensions": [".tsx", ".ts"] ///lookinto
+      }
+    ],
+    "import/extensions": [
+      //this too
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
+    "react/react-in-jsx-scope": "off",
+    "react/function-component-definition": [
+      "warn",
+      {
+        "namedComponents": "arrow-function"
+      }
+    ],
+    "filenames/match-regex": "off", //what
+    "unicorn/filename-case": [
+      "error",
+      {
+        "cases": {
+          "camelCase": true,
+          "pascalCase": true,
+          "snakeCase": true
+        }
+      }
+    ],
+    "eslint-comments/no-use": [
+      "error",
+      { "allow": ["eslint-disable", "eslint-disable-next-line"] }
+    ]
+  }
+}

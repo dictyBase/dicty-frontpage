@@ -16,7 +16,7 @@ const StockCenterStrainQuery = () => {
     <>
       {loading ? <Loader /> : <></>}
       {error ? <GraphQLErrorPage error={error} /> : <></>}
-      {data ? <StockCenterItem data={data} type={"Strain"} /> : <></>}
+      {data ? <StockCenterItem data={data} type="Strain" /> : <></>}
     </>
   )
 }

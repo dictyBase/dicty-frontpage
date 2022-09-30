@@ -16,7 +16,7 @@ const StockCenterPlasmidQuery = () => {
     <>
       {loading ? <Loader /> : <></>}
       {error ? <GraphQLErrorPage error={error} /> : <></>}
-      {data ? <StockCenterItem data={data} type={"Plasmid"} /> : <></>}
+      {data ? <StockCenterItem data={data} type="Plasmid" /> : <></>}
     </>
   )
 }

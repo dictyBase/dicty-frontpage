@@ -8,17 +8,21 @@ import version from "dicty-graphql-schema/package.json"
 const SCHEMA_VERSION_KEY = "dictyfrontpage-apollo-schema-version"
 const DICTY_FRONTPAGE_CACHE_KEY = "dictyfrontpage-apollo-cache-persist"
 
-const mutationList = ["Logout", "CreateContent", "UpdateContent"]
+const mutationList = new Set(["Logout", "CreateContent", "UpdateContent"])
 
 const isMutation = (value: string) => {
-  if (mutationList.includes(value)) {
+  if (mutationList.has(value)) {
     return true
   }
   return false
 }
 
-const getGraphQLServer = (url: string, deployEnv: string, origin: string) => {
-  if (deployEnv === "staging" && origin === "https://dictycr.org") {
+const getGraphQLServer = (
+  url: string,
+  deployEnvironment: string,
+  origin: string,
+) => {
+  if (deployEnvironment === "staging" && origin === "https://dictycr.org") {
     return import.meta.env.VITE_APP_ALT_GRAPHQL_SERVER
   }
   return url

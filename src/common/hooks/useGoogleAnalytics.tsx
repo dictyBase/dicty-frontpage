@@ -11,9 +11,9 @@ const useGoogleAnalytics = () => {
       try {
         const module = await import("react-ga")
         const page = location.pathname + location.search
-        let ReactGA = module.default
-        ReactGA.initialize(process.env.REACT_APP_GA_TRACKING_ID)
-        ReactGA.set({ page: page, anonymizeIp: true })
+        const ReactGA = module.default
+        ReactGA.initialize(import.meta.env.REACT_APP_GA_TRACKING_ID)
+        ReactGA.set({ page, anonymizeIp: true })
         ReactGA.pageview(page)
 
         // also make sure to detect pageviews from bfcache
@@ -23,8 +23,8 @@ const useGoogleAnalytics = () => {
             ReactGA.pageview(page)
           }
         })
-      } catch (e) {
-        console.error("could not load react-ga module", JSON.stringify(e))
+      } catch (error) {
+        console.error("could not load react-ga module", JSON.stringify(error))
       }
     }
 

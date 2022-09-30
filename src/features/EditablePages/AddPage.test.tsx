@@ -1,10 +1,10 @@
 import React from "react"
 import { render, screen } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
-import AddPage from "./AddPage"
 import waitForExpect from "wait-for-expect"
 import { CreateContentDocument } from "dicty-graphql-schema"
 import MockAuthProvider from "mocks/MockAuthProvider"
+import AddPage from "./AddPage"
 
 const mockHistoryPush = jest.fn()
 
@@ -39,7 +39,7 @@ const mockContent = [
 /* Maybe I need to edit my mockContent like in InfoPageContainer */
 
 describe("features/EditablePages/AddPage", () => {
-  const props = {
+  const properties = {
     location: {
       state: {
         name: "shipping",
@@ -50,7 +50,7 @@ describe("features/EditablePages/AddPage", () => {
 
   const MockComponent = ({ mocks }: any) => (
     <MockAuthProvider mocks={mocks} validToken>
-      <AddPage {...props} />
+      <AddPage location={properties.location} />
     </MockAuthProvider>
   )
 
@@ -77,6 +77,7 @@ describe("features/EditablePages/AddPage", () => {
             variables: {
               input: {
                 name: "shipping",
+                //  eslint-disable-next-line camelcase
                 created_by: "999",
                 content: JSON.stringify(mockContent),
                 namespace: "dfp",
@@ -87,6 +88,7 @@ describe("features/EditablePages/AddPage", () => {
             data: {
               createContent: {
                 name: "shipping",
+                //  eslint-disable-next-line camelcase
                 created_by: {
                   id: "999",
                 },
@@ -101,7 +103,9 @@ describe("features/EditablePages/AddPage", () => {
       const saveButton = screen.getByRole("button", { name: "Save" })
       userEvent.click(saveButton)
       await waitForExpect(() => {
-        expect(mockHistoryPush).toHaveBeenCalledWith(props.location.state.url)
+        expect(mockHistoryPush).toHaveBeenCalledWith(
+          properties.location.state.url,
+        )
       })
     })
 
@@ -110,7 +114,9 @@ describe("features/EditablePages/AddPage", () => {
       render(<MockComponent mocks={[]} />)
       const cancelButton = screen.getByText("Cancel")
       await user.click(cancelButton)
-      expect(mockHistoryPush).toHaveBeenCalledWith(props.location.state.url)
+      expect(mockHistoryPush).toHaveBeenCalledWith(
+        properties.location.state.url,
+      )
     })
   })
 })

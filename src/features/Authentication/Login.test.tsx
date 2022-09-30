@@ -1,8 +1,8 @@
 import React from "react"
 import { render, screen } from "@testing-library/react"
-import Login, { createOauthURL, generateErrorDisplayMessage } from "./Login"
 import MockAuthProvider from "mocks/MockAuthProvider"
 import userEvent from "@testing-library/user-event"
+import Login, { createOauthURL, generateErrorDisplayMessage } from "./Login"
 
 describe("features/Authentication/Login", () => {
   const globalAny = global as any
@@ -77,7 +77,7 @@ describe("features/Authentication/Login", () => {
       )
     })
     it("should return expected URL without URL params", () => {
-      const configNoParams = {
+      const configNoParameters = {
         name: "Review",
         url: "/forrest/macneil",
         authorizationEndpoint: "https://testendpoint.com/auth",
@@ -87,7 +87,7 @@ describe("features/Authentication/Login", () => {
         scopeDelimiter: " ",
         popupOptions: { width: 1020, height: 633 },
       }
-      expect(createOauthURL(configNoParams)).toBe(
+      expect(createOauthURL(configNoParameters)).toBe(
         "https://testendpoint.com/auth?client_id=testID&scope=email&redirect_uri=https://localhost:3000/review/callback",
       )
     })

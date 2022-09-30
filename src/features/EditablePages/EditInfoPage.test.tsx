@@ -1,9 +1,9 @@
 import React from "react"
 import { render, screen, waitFor } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
-import EditInfoPage from "./EditInfoPage"
 import MockAuthProvider from "mocks/MockAuthProvider"
 import { UpdateContentDocument } from "dicty-graphql-schema"
+import EditInfoPage from "./EditInfoPage"
 
 const mockHistoryPush = jest.fn()
 // https://stackoverflow.com/questions/58117890/how-to-test-components-using-new-react-router-hooks
@@ -35,7 +35,7 @@ const mockContent = [
 ]
 
 describe("features/EditablePages/EditInfoPage", () => {
-  const props = {
+  const properties = {
     location: {
       state: {
         data: {
@@ -62,7 +62,7 @@ describe("features/EditablePages/EditInfoPage", () => {
 
   const MockComponent = ({ mocks }: any) => (
     <MockAuthProvider mocks={mocks} validToken>
-      <EditInfoPage {...props} />
+      <EditInfoPage {...properties} />
     </MockAuthProvider>
   )
 
@@ -83,20 +83,20 @@ describe("features/EditablePages/EditInfoPage", () => {
             query: UpdateContentDocument,
             variables: {
               input: {
-                id: props.location.state.data.id,
-                updated_by: props.location.state.data.updated_by.id,
-                content: props.location.state.data.content,
+                id: properties.location.state.data.id,
+                updated_by: properties.location.state.data.updated_by.id,
+                content: properties.location.state.data.content,
               },
             },
           },
           result: {
             data: {
               updateContent: {
-                id: props.location.state.data.id,
+                id: properties.location.state.data.id,
                 updated_by: {
-                  id: props.location.state.data.updated_by.id,
+                  id: properties.location.state.data.updated_by.id,
                 },
-                content: props.location.state.data.content,
+                content: properties.location.state.data.content,
               },
             },
           },

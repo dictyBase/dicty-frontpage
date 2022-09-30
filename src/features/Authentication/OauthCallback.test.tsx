@@ -1,7 +1,7 @@
 import React from "react"
 import { render, screen } from "@testing-library/react"
-import OauthCallback from "./OauthCallback"
 import { BrowserRouter } from "react-router-dom"
+import OauthCallback from "./OauthCallback"
 
 describe("features/Authentication/OauthCallback", () => {
   const globalAny = global as any
@@ -20,7 +20,7 @@ describe("features/Authentication/OauthCallback", () => {
         </BrowserRouter>,
       )
       expect(
-        screen.getByText(/Transferring to login system ......../),
+        screen.getByText(/Transfer{2}ing to login system .{8}/),
       ).toBeInTheDocument()
     })
   })

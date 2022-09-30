@@ -82,4 +82,4 @@ library.add(
   faWrench,
 )
 
-export default library
+export { library as default } from "@fortawesome/fontawesome-svg-core"

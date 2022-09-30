@@ -1,8 +1,8 @@
 import React from "react"
 import Grid from "@material-ui/core/Grid"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import ErrorMessage from "./ErrorMessage"
 import sadDicty from "common/assets/sad-dicty.png"
+import ErrorMessage from "./ErrorMessage"
 import useStyles from "./errorStyles"
 
 /**

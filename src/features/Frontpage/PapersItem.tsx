@@ -28,27 +28,25 @@ const useStyles = makeStyles({
   },
 })
 
-interface PaperContainerProps {
+interface PaperContainerProperties {
   data: ListRecentPublicationsQuery | undefined
 }
 
-const PapersItem = ({ data }: PaperContainerProps) => {
+const PapersItem = ({ data }: PaperContainerProperties) => {
   const classes = useStyles()
 
-  let text = data?.listRecentPublications?.map((paper, index) => {
+  const text = data?.listRecentPublications?.map((paper, index) => {
     const authors = paper?.authors
     const doi = paper?.doi
     let lastname
     if (!authors) return <></>
-    if (Array.isArray(authors[0]?.last_name)) {
-      lastname = authors[0]?.last_name?.join(", ")
-    } else {
-      lastname = authors[0]?.last_name
-    }
+    lastname = Array.isArray(authors[0]?.last_name)
+      ? authors[0]?.last_name?.join(", ")
+      : authors[0]?.last_name
 
     return (
       <li className={classes.listItem} key={index}>
-        <span className={classes.leadText}>{lastname ? lastname : ""}</span>
+        <span className={classes.leadText}>{lastname || ""}</span>
         <span className={classes.mainContent}>
           <strong>
             <em>{paper.title}</em>
@@ -60,7 +58,7 @@ const PapersItem = ({ data }: PaperContainerProps) => {
           <span>{paper.journal}</span>
           <a
             className={classes.link}
-            href={doi ? doi : ""}
+            href={doi || ""}
             target="_blank"
             rel="noopener noreferrer">
             {"\u00A0"}

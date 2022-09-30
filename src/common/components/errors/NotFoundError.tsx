@@ -3,17 +3,17 @@ import { Link, useLocation, useParams } from "react-router-dom"
 import Grid from "@material-ui/core/Grid"
 import Button from "@material-ui/core/Button"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import BackToHomepageButton from "../../components/BackToHomepageButton"
+import BackToHomepageButton from "../BackToHomepageButton"
 import useAuthorization from "../../hooks/useAuthorization"
 import sadDicty from "../../assets/sad-dicty.png"
 import useStyles from "./errorStyles"
 
-type Props = {
-  /** Error message to display*/
+type Properties = {
+  /** Error message to display */
   error: string
 }
 
-type Params = {
+type Parameters_ = {
   /** Name param in URL */
   name: string
   /** Subname param in URL */
@@ -24,8 +24,8 @@ type Params = {
  * UI display when an item was not found.
  */
 
-const NotFoundError = ({ error }: Props) => {
-  const { name, subname } = useParams<Params>()
+const NotFoundError = ({ error }: Properties) => {
+  const { name, subname } = useParams<Parameters_>()
   const location = useLocation()
   const { canEditPages, verifiedToken } = useAuthorization()
   const classes = useStyles()
@@ -51,8 +51,8 @@ const NotFoundError = ({ error }: Props) => {
                 className={classes.link}
                 to="/addpage"
                 state={{
-                  name: name,
-                  subname: subname,
+                  name,
+                  subname,
                   url: location.pathname,
                 }}>
                 <Button

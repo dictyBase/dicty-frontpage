@@ -5,9 +5,9 @@ import Container from "@material-ui/core/Container"
 import { useContentBySlugQuery } from "dicty-graphql-schema"
 import Loader from "common/components/Loader"
 import GraphQLErrorPage from "common/components/errors/GraphQLErrorPage"
-import InfoPageView from "./InfoPageView"
 import { NAMESPACE } from "common/constants/namespace"
 import { pageTitleLookup } from "common/utils/pageTitleConversions"
+import InfoPageView from "./InfoPageView"
 
 // getSlug will use the route's :subname or :name to fetch page content
 // unless the route is for the privacy policy
@@ -48,14 +48,14 @@ const InfoPageContainer = () => {
   console.log(JSON.parse(data?.contentBySlug?.content))
 
   return (
-    <React.Fragment>
+    <>
       <Helmet>
         <title>{pageTitleLookup(slug)} - dictyBase</title>
       </Helmet>
       <Container maxWidth="lg">
         <InfoPageView data={data?.contentBySlug} />
       </Container>
-    </React.Fragment>
+    </>
   )
 }
 

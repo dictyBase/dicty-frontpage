@@ -85,7 +85,7 @@ const Papers = () => {
         </Grid>
       </div>
       <ul className={classes.listBox}>
-        <PapersQuery parent={"Papers"} />
+        <PapersQuery parent="Papers" />
       </ul>
       <div className={classes.bottomLink}>
         {/* <FontAwesome name="plus" />

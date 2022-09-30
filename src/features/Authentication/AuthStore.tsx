@@ -49,20 +49,20 @@ type Action =
       payload: AuthPayload
     }
 
-type AuthStateContextProps = {
+type AuthStateContextProperties = {
   state: AuthState
   dispatch: React.Dispatch<Action>
 }
 
-const AuthContext = React.createContext({} as AuthStateContextProps)
+const AuthContext = React.createContext({} as AuthStateContextProperties)
 
 const authReducer = (state: AuthState, action: Action) => {
   switch (action.type) {
     case ActionType.LOGIN:
-      const token = action.payload.token
+      const { token } = action.payload
       return {
         ...state,
-        isAuthenticated: token !== "" ? true : false,
+        isAuthenticated: token !== "",
         token,
         user: action.payload.user,
         provider: action.payload.provider,

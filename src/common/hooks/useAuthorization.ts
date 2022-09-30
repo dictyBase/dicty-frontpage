@@ -23,14 +23,13 @@ const verifyPermissions = (
   perm: string,
   resource: string,
 ) => {
-  const allowedResources = [resource, MAIN_RESOURCE]
+  const allowedResources = new Set([resource, MAIN_RESOURCE])
   const validPerms = (item: Permission) =>
     item.permission === "admin" ||
-    (item.permission === perm &&
-      allowedResources.includes(item.resource as string))
+    (item.permission === perm && allowedResources.has(item.resource as string))
   const filteredPerms = permissions.filter(validPerms)
   // check if array is empty
-  if (!Array.isArray(filteredPerms) || !filteredPerms.length) {
+  if (!Array.isArray(filteredPerms) || filteredPerms.length === 0) {
     return false
   }
   // valid permission found, return true
@@ -51,10 +50,10 @@ const useAuthorization = () => {
       (item: Role) => item.permissions,
     )
     // need to flatten since permissions initially comes back as nested array
-    const permissions = (nestedPermissions?.concat.apply(
+    const permissions = nestedPermissions?.concat.apply(
       [],
       nestedPermissions,
-    ) as unknown) as Permission[]
+    ) as unknown as Permission[]
     canEditPages = verifyPermissions(permissions, "write", frontpagecontent)
 
     const roles = state?.user?.roles?.map((item: Role) => item.role)

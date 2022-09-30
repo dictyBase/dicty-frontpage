@@ -5,53 +5,55 @@ import { listRecentPlasmids } from "common/data/mockPlasmids"
 import { listRecentStrains } from "common/data/mockStrains"
 import { listRecentGenes } from "common/data/mockGenes"
 
-export const handlers = [
+const handlers = [
   // Handles a "GetUserInfo" query
-  graphql.query("ListRecentPublications", (req, res, ctx) => {
-    const { limit } = req.variables
+  graphql.query("ListRecentPublications", (request, response, context) => {
+    const { limit } = request.variables
 
     if (limit === 4) {
-      return res(
-        ctx.data({
-          listRecentPublications: listRecentPublications,
+      return response(
+        context.data({
+          listRecentPublications,
         }),
       )
     }
   }),
 
-  graphql.query("ListRecentGenes", (req, res, ctx) => {
-    const { limit } = req.variables
+  graphql.query("ListRecentGenes", (request, response, context) => {
+    const { limit } = request.variables
 
     if (limit === 4) {
-      return res(
-        ctx.data({
-          listRecentGenes: listRecentGenes,
+      return response(
+        context.data({
+          listRecentGenes,
         }),
       )
     }
   }),
 
-  graphql.query("ListRecentPlasmids", (req, res, ctx) => {
-    const { limit } = req.variables
+  graphql.query("ListRecentPlasmids", (request, response, context) => {
+    const { limit } = request.variables
 
     if (limit === 4) {
-      return res(
-        ctx.data({
-          listRecentPlasmids: listRecentPlasmids,
+      return response(
+        context.data({
+          listRecentPlasmids,
         }),
       )
     }
   }),
 
-  graphql.query("ListRecentStrains", (req, res, ctx) => {
-    const { limit } = req.variables
+  graphql.query("ListRecentStrains", (request, response, context) => {
+    const { limit } = request.variables
 
     if (limit === 4) {
-      return res(
-        ctx.data({
-          listRecentStrains: listRecentStrains,
+      return response(
+        context.data({
+          listRecentStrains,
         }),
       )
     }
   }),
 ]
+
+export default handlers
