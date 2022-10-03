@@ -44,9 +44,6 @@ const InfoPageContainer = () => {
     return <GraphQLErrorPage error={error} />
   }
 
-  // @ts-ignore
-  console.log(JSON.parse(data?.contentBySlug?.content))
-
   return (
     <>
       <Helmet>

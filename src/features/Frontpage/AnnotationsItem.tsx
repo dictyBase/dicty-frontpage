@@ -50,7 +50,7 @@ const Annotations = ({ data, type }: AnnotationsItemProperties) => {
     ))
   }
 
-  return <>{text}</>
+  return text
 }
 
 export default Annotations

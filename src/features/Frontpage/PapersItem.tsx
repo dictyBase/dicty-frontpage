@@ -67,7 +67,7 @@ const PapersItem = ({ data }: PaperContainerProperties) => {
       </li>
     )
   })
-  return <>{text}</>
+  return text
 }
 
 export default PapersItem

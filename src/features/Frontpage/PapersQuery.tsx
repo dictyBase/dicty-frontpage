@@ -18,12 +18,12 @@ const PapersQuery = ({ parent }: PapersQueryProperties) => {
 
   return (
     <>
-      {loading && <Loader />}
-      {error && <GraphQLErrorPage error={error} />}
-      {parent === "Annotations" && data && (
+      {loading ? <Loader /> : undefined}
+      {error ? <GraphQLErrorPage error={error} /> : undefined}
+      {parent === "Annotations" && data ? (
         <AnnotationsItem data={data} type="publications" />
-      )}
-      {parent === "Papers" && data && <PapersItem data={data} />}
+      ) : undefined}
+      {parent === "Papers" && data ? <PapersItem data={data} /> : undefined}
     </>
   )
 }

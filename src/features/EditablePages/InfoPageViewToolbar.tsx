@@ -9,7 +9,7 @@ import timeSince from "common/utils/timeSince"
 import { useAuthStore } from "features/Authentication/AuthStore"
 import useAuthorization from "common/hooks/useAuthorization"
 import { capitalizeFirstCharacter } from "common/utils/stringCapitalizations"
-import { UpdatedByUser } from "./types"
+import UpdatedByUser from "./types"
 
 const useStyles = makeStyles((theme: Theme) => ({
   content: {
