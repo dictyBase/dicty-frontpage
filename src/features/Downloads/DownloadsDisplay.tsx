@@ -41,21 +41,21 @@ type Properties = {
  * This displays the Dicty downloads page.
  */
 
+const generateTabs = (items: Array<Organism>) =>
+  items.map((item: Organism) => (
+    <Tab
+      value={item.taxon_id}
+      label={item.scientific_name}
+      key={item.taxon_id}
+    />
+  ))
+
 const DownloadsDisplay = ({ data }: Properties) => {
   const [tabValue, setTabValue] = React.useState("44689")
 
   const handleChange = (event: React.ChangeEvent<{}>, value: string) => {
     setTabValue(value)
   }
-
-  const generateTabs = (items: Array<Organism>) =>
-    items.map((item: Organism) => (
-      <Tab
-        value={item.taxon_id}
-        label={item.scientific_name}
-        key={item.taxon_id}
-      />
-    ))
 
   const generateTabContainers = (items: Array<Organism>) =>
     items.map((item: Organism) => {
@@ -87,8 +87,7 @@ const DownloadsDisplay = ({ data }: Properties) => {
               value={tabValue}
               onChange={handleChange}
               variant="scrollable"
-              scrollButtons="auto"
-            >
+              scrollButtons="auto">
               {generateTabs(data)}
             </Tabs>
           </AppBar>

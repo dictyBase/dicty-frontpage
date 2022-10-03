@@ -1,4 +1,3 @@
-import React from "react"
 import { Carousel } from "react-responsive-carousel"
 import { makeStyles } from "@material-ui/core/styles"
 import lifeCycle from "common/assets/frontCarousel/dicty-life-cycle.jpg"
@@ -75,8 +74,7 @@ const Slideshow = () => {
         showThumbs={false}
         autoPlay
         interval={5000}
-        infiniteLoop
-      >
+        infiniteLoop>
         {imageData.map((img, index: number) => (
           <div className={classes.imgWrapper} key={index}>
             <img className={classes.imgSizer} src={img.src} alt={img.title} />

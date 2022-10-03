@@ -31,8 +31,7 @@ const BackToHomePageButton = () => {
       className={classes.button}
       size="small"
       variant="contained"
-      color="primary"
-    >
+      color="primary">
       Back to Homepage
     </Button>
   )

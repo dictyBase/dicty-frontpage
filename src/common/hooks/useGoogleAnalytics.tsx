@@ -24,6 +24,7 @@ const useGoogleAnalytics = () => {
           }
         })
       } catch (error) {
+        // eslint-disable-next-line no-console
         console.error("could not load react-ga module", JSON.stringify(error))
       }
     }

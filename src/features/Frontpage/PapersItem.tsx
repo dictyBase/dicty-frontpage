@@ -59,8 +59,7 @@ const PapersItem = ({ data }: PaperContainerProperties) => {
             className={classes.link}
             href={doi || ""}
             target="_blank"
-            rel="noopener noreferrer"
-          >
+            rel="noopener noreferrer">
             {"\u00A0"}
             Pubmed
           </a>

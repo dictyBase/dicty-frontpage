@@ -10,12 +10,7 @@ const DICTY_FRONTPAGE_CACHE_KEY = "dictyfrontpage-apollo-cache-persist"
 
 const mutationList = new Set(["Logout", "CreateContent", "UpdateContent"])
 
-const isMutation = (value: string) => {
-  if (mutationList.has(value)) {
-    return true
-  }
-  return false
-}
+const isMutation = (value: string) => mutationList.has(value)
 
 const getGraphQLServer = (
   url: string,

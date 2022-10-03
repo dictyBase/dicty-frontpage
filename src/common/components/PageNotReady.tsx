@@ -53,8 +53,7 @@ const PageNotReady = () => {
               className={classes.button}
               size="small"
               variant="contained"
-              color="primary"
-            >
+              color="primary">
               Back to homepage
             </Button>
           </Link>

@@ -43,10 +43,14 @@ describe("features/EditablePages/EditInfoPage", () => {
           name: "payment",
           slug: "dsc-payment",
           content: JSON.stringify(mockContent),
+          // eslint-disable-next-line camelcase
           updated_at: "2020-01-01T17:50:12.427Z",
+          // eslint-disable-next-line camelcase
           updated_by: {
             id: "999",
+            // eslint-disable-next-line camelcase
             first_name: "Art",
+            // eslint-disable-next-line camelcase
             last_name: "Vandelay",
             email: "art@vandelayindustries.com",
             roles: [

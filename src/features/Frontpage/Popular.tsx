@@ -71,8 +71,7 @@ const Popular = () => {
             className={classes.button}
             size="small"
             variant="contained"
-            color="primary"
-          >
+            color="primary">
             dictyAccess
           </Button>
         </a>
@@ -80,14 +79,12 @@ const Popular = () => {
       <li className={classes.listItem}>
         <a
           className={classes.link}
-          href="http://dictybase.org/tools/jbrowse/?data=data/jbrowse/discoideum&loc=6:1..50011&tracks=reference,gene,transcript"
-        >
+          href="http://dictybase.org/tools/jbrowse/?data=data/jbrowse/discoideum&loc=6:1..50011&tracks=reference,gene,transcript">
           <Button
             className={classes.altButton}
             size="small"
             variant="contained"
-            color="primary"
-          >
+            color="primary">
             Genome Browser
           </Button>
         </a>
@@ -98,8 +95,7 @@ const Popular = () => {
             className={classes.button}
             size="small"
             variant="contained"
-            color="primary"
-          >
+            color="primary">
             Gene Page (in progress)
           </Button>
         </a>
@@ -110,8 +106,7 @@ const Popular = () => {
             className={classes.altButton}
             size="small"
             variant="contained"
-            color="primary"
-          >
+            color="primary">
             Dicty Stock Center
           </Button>
         </a>

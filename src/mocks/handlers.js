@@ -1,9 +1,9 @@
 // src/mocks/handlers.js
 import { graphql } from "msw"
-import { listRecentPublications } from "common/data/mockPublications"
-import { listRecentPlasmids } from "common/data/mockPlasmids"
-import { listRecentStrains } from "common/data/mockStrains"
-import { listRecentGenes } from "common/data/mockGenes"
+import listRecentPublications from "common/data/mockPublications"
+import listRecentPlasmids from "common/data/mockPlasmids"
+import listRecentStrains from "common/data/mockStrains"
+import listRecentGenes from "common/data/mockGenes"
 
 const handlers = [
   // Handles a "GetUserInfo" query

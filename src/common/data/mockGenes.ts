@@ -17,4 +17,4 @@ const listRecentGenes = [
   },
 ]
 
-export { listRecentGenes }
+export default listRecentGenes

@@ -26,12 +26,12 @@ const Annotations = ({ data, type }: AnnotationsItemProperties) => {
   let text
 
   if (type === "publications") {
-    text = data?.listRecentPublications?.map((paper, index) => {
+    text = data?.listRecentPublications?.map((paper) => {
       const doi = paper?.doi
       const doiString = paper?.doi?.split("/")
       if (!doiString) return <></>
       return (
-        <li className={classes.listItem} key={index}>
+        <li className={classes.listItem} key={paper.id}>
           <a className={classes.link} href={doi || ""}>
             {doiString[2]}
           </a>
@@ -41,8 +41,8 @@ const Annotations = ({ data, type }: AnnotationsItemProperties) => {
   }
 
   if (type === "genes") {
-    text = data?.listRecentGenes?.map((gene, index) => (
-      <li className={classes.listItem} key={index}>
+    text = data?.listRecentGenes?.map((gene) => (
+      <li className={classes.listItem} key={gene.id}>
         <a className={classes.link} href={`/gene/${gene.id}`}>
           {gene.name}
         </a>

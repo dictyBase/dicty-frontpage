@@ -54,14 +54,12 @@ const NotFoundError = ({ error }: Properties) => {
                   name,
                   subname,
                   url: location.pathname,
-                }}
-              >
+                }}>
                 <Button
                   className={classes.addPageButton}
                   size="small"
                   variant="contained"
-                  color="primary"
-                >
+                  color="primary">
                   <FontAwesomeIcon icon="plus" />
                   &nbsp; Add a page to this route
                 </Button>

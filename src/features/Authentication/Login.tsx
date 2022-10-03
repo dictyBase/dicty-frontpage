@@ -25,6 +25,14 @@ type Config = {
   optionalUrlParams?: Array<Array<string>>
 }
 
+const formatURLParameters = (parameters: Array<Array<string>>) => {
+  let url = ""
+  for (const element of parameters) {
+    url += `&${element[0]}=${element[1]}`
+  }
+  return url
+}
+
 const createOauthURL = (config: Config) => {
   let url = `${config.authorizationEndpoint}?client_id=${config.clientId}`
   url += `&scope=${config.scopes.join(config.scopeDelimiter)}`
@@ -35,14 +43,6 @@ const createOauthURL = (config: Config) => {
     url += formatURLParameters(config.optionalUrlParams)
   }
   url += `&redirect_uri=${config.redirectUrl}`
-  return url
-}
-
-const formatURLParameters = (parameters: Array<Array<string>>) => {
-  let url = ""
-  for (const element of parameters) {
-    url += `&${element[0]}=${element[1]}`
-  }
   return url
 }
 
@@ -100,19 +100,19 @@ const Login = () => {
         {error && <ErrorNotification error={message} />}
         <Box mb={2} fontWeight={900}>
           <OrcidButton
-            handleClick={(event: MouseEvent) => openOauthWindow("orcid")}
+            handleClick={() => openOauthWindow("orcid")}
             text="Sign in with ORCID"
           />
         </Box>
         <Box mb={2}>
           <GoogleButton
-            handleClick={(event: MouseEvent) => openOauthWindow("google")}
+            handleClick={() => openOauthWindow("google")}
             text="Sign in with Google"
           />
         </Box>
         <Box mb={9}>
           <LinkedInButton
-            handleClick={(event: MouseEvent) => openOauthWindow("linkedin")}
+            handleClick={() => openOauthWindow("linkedin")}
             text="Sign in with LinkedIn"
           />
         </Box>

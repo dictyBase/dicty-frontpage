@@ -126,6 +126,7 @@ export const App = () => {
         updateToken(dispatch, queryData.getRefreshToken)
       }
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.error(error)
     }
   }, [dispatch, refetch, token])

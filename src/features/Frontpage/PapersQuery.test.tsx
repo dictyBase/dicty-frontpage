@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react"
 import { useListRecentPublicationsQuery } from "dicty-graphql-schema"
 import { ApolloError } from "@apollo/client"
 import PapersQuery from "./PapersQuery"
-import { listRecentPublications } from "../../common/data/mockPublications"
+import listRecentPublications from "../../common/data/mockPublications"
 
 jest.mock("dicty-graphql-schema", () => {
   const useListRecentPublicationsQuery = jest.fn()

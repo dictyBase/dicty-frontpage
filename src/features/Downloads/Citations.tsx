@@ -40,8 +40,7 @@ const Citations = ({ citations }: Properties) => {
             href={`/publication/${citation.pubmed_id}`}
             target="_blank"
             rel="noopener noreferrer"
-            className={classes.link}
-          >
+            className={classes.link}>
             [Pubmed]
           </a>
         </p>

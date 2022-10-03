@@ -12,10 +12,7 @@ const verifyToken = (token: string) => {
   const currentTime = Date.now().valueOf() / 1000
   // check if current time is less than token expiration date
   // @ts-ignore
-  if (currentTime < decodedToken.exp) {
-    return true
-  }
-  return false
+  return currentTime < decodedToken.exp
 }
 
 const verifyPermissions = (
@@ -27,13 +24,10 @@ const verifyPermissions = (
   const validPerms = (item: Permission) =>
     item.permission === "admin" ||
     (item.permission === perm && allowedResources.has(item.resource as string))
-  const filteredPerms = permissions.filter(validPerms)
+
+  const filteredPerms = permissions.filter((element) => validPerms(element))
   // check if array is empty
-  if (!Array.isArray(filteredPerms) || filteredPerms.length === 0) {
-    return false
-  }
-  // valid permission found, return true
-  return true
+  return Array.isArray(filteredPerms) && filteredPerms.length > 0
 }
 
 /**

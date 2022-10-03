@@ -45,8 +45,4 @@ const GraphQLErrorPage = ({ error }: Properties) => {
   return <OtherError />
 }
 
-GraphQLErrorPage.defaultProps = {
-  error: {},
-}
-
 export default GraphQLErrorPage
