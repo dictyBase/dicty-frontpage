@@ -28,7 +28,11 @@ describe("EditablePages/InfoPageViewToolbar", () => {
     it("displays expected name", () => {
       render(
         <MockAuthProvider mocks={[]}>
-          <InfoPageViewToolbar {...properties} />
+          <InfoPageViewToolbar
+            lastUpdate={properties.lastUpdate}
+            user={properties.user}
+            handleClick={properties.handleClick}
+          />
         </MockAuthProvider>,
       )
       const text = screen.getByTestId("info-page-toolbar")
@@ -37,7 +41,11 @@ describe("EditablePages/InfoPageViewToolbar", () => {
     it("calls handleClick when edit icon clicked", async () => {
       render(
         <MockAuthProvider mocks={[]}>
-          <InfoPageViewToolbar {...properties} />
+          <InfoPageViewToolbar
+            lastUpdate={properties.lastUpdate}
+            user={properties.user}
+            handleClick={properties.handleClick}
+          />
         </MockAuthProvider>,
       )
       const user = userEvent.setup()
@@ -69,7 +77,11 @@ describe("EditablePages/InfoPageViewToolbar", () => {
     it("renders expected error message", () => {
       render(
         <MockAuthProvider mocks={[]} validToken={false}>
-          <InfoPageViewToolbar {...properties} />
+          <InfoPageViewToolbar
+            lastUpdate={properties.lastUpdate}
+            user={properties.user}
+            handleClick={properties.handleClick}
+          />
         </MockAuthProvider>,
       )
       expect(
@@ -81,7 +93,11 @@ describe("EditablePages/InfoPageViewToolbar", () => {
     it("does not render edit button", () => {
       render(
         <MockAuthProvider mocks={[]} validToken={false}>
-          <InfoPageViewToolbar {...properties} />
+          <InfoPageViewToolbar
+            lastUpdate={properties.lastUpdate}
+            user={properties.user}
+            handleClick={properties.handleClick}
+          />
         </MockAuthProvider>,
       )
       const editButton = screen.queryByRole("button")
