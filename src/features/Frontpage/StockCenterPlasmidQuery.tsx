@@ -14,9 +14,9 @@ const StockCenterPlasmidQuery = () => {
 
   return (
     <>
-      {loading ? <Loader /> : <></>}
-      {error ? <GraphQLErrorPage error={error} /> : <></>}
-      {data ? <StockCenterItem data={data} type="Plasmid" /> : <></>}
+      {loading ? <Loader /> : undefined}
+      {error ? <GraphQLErrorPage error={error} /> : undefined}
+      {data ? <StockCenterItem data={data} type="Plasmid" /> : undefined}
     </>
   )
 }
