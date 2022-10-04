@@ -41,6 +41,7 @@ const server = getGraphQLServer(
   window.location.origin,
 )
 
+// eslint-disable-next-line unicorn/prefer-spread
 const link = authLink.concat(
   createHttpLink({
     uri: `${server}/graphql`,
