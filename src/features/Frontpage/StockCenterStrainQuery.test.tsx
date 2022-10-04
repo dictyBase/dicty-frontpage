@@ -5,6 +5,7 @@ import listRecentStrains from "../../common/data/mockStrains"
 import StockCenterStrainQuery from "./StockCenterStrainQuery"
 
 jest.mock("dicty-graphql-schema", () => {
+  // eslint-disable-next-line no-shadow
   const useListRecentStrainsQuery = jest.fn()
   return { useListRecentStrainsQuery }
 })

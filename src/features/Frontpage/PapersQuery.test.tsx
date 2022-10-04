@@ -5,6 +5,7 @@ import PapersQuery from "./PapersQuery"
 import listRecentPublications from "../../common/data/mockPublications"
 
 jest.mock("dicty-graphql-schema", () => {
+  // eslint-disable-next-line no-shadow
   const useListRecentPublicationsQuery = jest.fn()
   return {
     useListRecentPublicationsQuery,
