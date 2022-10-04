@@ -66,7 +66,7 @@ describe("features/EditablePages/EditInfoPage", () => {
 
   const MockComponent = ({ mocks }: any) => (
     <MockAuthProvider mocks={mocks} validToken>
-      <EditInfoPage {...properties} />
+      <EditInfoPage location={properties.location} />
     </MockAuthProvider>
   )
 
