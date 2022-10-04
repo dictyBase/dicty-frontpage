@@ -4,7 +4,7 @@ import { PageEditor } from "dicty-components-page-editor"
 import { ThemeProvider } from "@material-ui/core/styles"
 import Box from "@material-ui/core/Box"
 import { ContentBySlugQuery } from "dicty-graphql-schema"
-import { theme } from "app/layout/AppProviders"
+import { appTheme } from "app/layout/AppProviders"
 import InfoPageViewToolbar from "./InfoPageViewToolbar"
 
 type Properties = {
