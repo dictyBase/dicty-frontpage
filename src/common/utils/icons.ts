@@ -82,5 +82,5 @@ library.add(
   faWrench,
 )
 
-// eslint-disable-next-line no-restricted-exports
-export { library as default } from "@fortawesome/fontawesome-svg-core"
+// eslint-disable-next-line unicorn/prefer-export-from
+export default library
