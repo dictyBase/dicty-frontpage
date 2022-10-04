@@ -76,7 +76,7 @@ const updateToken = (
 
 const getTokenIntervalDelayInMS = (token: string) => {
   if (token === "") {
-    return
+    return 0
   }
   const decodedToken = jwtDecode(token) as any
   const currentTime = new Date(Date.now())
@@ -90,7 +90,7 @@ const getTokenIntervalDelayInMS = (token: string) => {
  * App is responsible for the main layout of the entire application.
  */
 
-export const App = () => {
+const App = () => {
   const [skip, setSkip] = React.useState(false)
   const {
     state: { token, isAuthenticated },
@@ -122,8 +122,8 @@ export const App = () => {
     try {
       const response = await refetch({ token })
       if (response.data.getRefreshToken) {
-        const { data: queryData } = response
-        updateToken(dispatch, queryData.getRefreshToken)
+        const { data: rdata } = response
+        updateToken(dispatch, rdata.getRefreshToken)
       }
     } catch (error) {
       // eslint-disable-next-line no-console
@@ -155,5 +155,4 @@ export const App = () => {
   )
 }
 
-export { getTokenIntervalDelayInMS }
-export default App
+export { App, getTokenIntervalDelayInMS }

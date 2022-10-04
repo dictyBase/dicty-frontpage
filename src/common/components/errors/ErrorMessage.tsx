@@ -1,5 +1,3 @@
-import React from "react"
-
 /**
  * Displays the "contact us" message used on most error pages.
  */
