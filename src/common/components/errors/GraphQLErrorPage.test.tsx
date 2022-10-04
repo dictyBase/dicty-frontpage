@@ -1,19 +1,20 @@
-import React from "react"
+/* eslint-disable unicorn/filename-case */
 import { render, screen } from "@testing-library/react"
-import GraphQLErrorPage from "./GraphQLErrorPage"
 import {
   // mockNotFoundError,
   mockOtherError,
   mockUnavailableError,
 } from "mocks/mockGraphQLError"
+import GraphQLErrorPage from "./GraphQLErrorPage"
 
 const errorFormat = (error: any) => ({
   message: "Error!",
   graphQLErrors: [error],
+  // eslint-disable-next-line unicorn/no-null
   networkError: null,
   extraInfo: undefined,
   name: "",
-  clientErrors: []
+  clientErrors: [],
 })
 
 // jest.mock("react-router-dom", () => {
@@ -31,7 +32,7 @@ const errorFormat = (error: any) => ({
 //   }
 // })
 
-describe("common/components/errors/GraphQLErrorPage", () => {
+describe("common/components/errors/GraphQlErrorPage", () => {
   // it("should render not found error", () => {
   //   render(
   //     <GraphQLErrorPage error={errorFormat(mockNotFoundError.errors[0])} />,
@@ -44,8 +45,8 @@ describe("common/components/errors/GraphQLErrorPage", () => {
   it("should render other error", () => {
     render(<GraphQLErrorPage error={errorFormat(mockOtherError.errors[0])} />)
 
-    const errorMsg = screen.getByText(/Error/)
-    expect(errorMsg).toBeInTheDocument()
+    const errorMessage = screen.getByText(/Error/)
+    expect(errorMessage).toBeInTheDocument()
     expect(
       screen.getByRole("img", { name: "Sad Dicty -- HTTP Error" }),
     ).toBeInTheDocument()
@@ -56,7 +57,7 @@ describe("common/components/errors/GraphQLErrorPage", () => {
       <GraphQLErrorPage error={errorFormat(mockUnavailableError.errors[0])} />,
     )
 
-    const errorMsg = screen.getByText(/Sorry! There was a server error./)
-    expect(errorMsg).toBeInTheDocument()
+    const errorMessage = screen.getByText(/Sorry! There was a server error./)
+    expect(errorMessage).toBeInTheDocument()
   })
 })

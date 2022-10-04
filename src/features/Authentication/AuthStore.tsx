@@ -1,6 +1,7 @@
 import React from "react"
 import { User } from "dicty-graphql-schema"
 
+// eslint-disable-next-line no-shadow
 enum ActionType {
   LOGIN = "LOGIN",
   LOGIN_ERROR = "LOGIN_ERROR",
@@ -49,34 +50,36 @@ type Action =
       payload: AuthPayload
     }
 
-type AuthStateContextProps = {
+type AuthStateContextProperties = {
   state: AuthState
   dispatch: React.Dispatch<Action>
 }
 
-const AuthContext = React.createContext({} as AuthStateContextProps)
+const AuthContext = React.createContext({} as AuthStateContextProperties)
 
 const authReducer = (state: AuthState, action: Action) => {
   switch (action.type) {
-    case ActionType.LOGIN:
-      const token = action.payload.token
+    case ActionType.LOGIN: {
+      const { token, user, provider } = action.payload
       return {
         ...state,
-        isAuthenticated: token !== "" ? true : false,
+        isAuthenticated: token !== "",
         token,
-        user: action.payload.user,
-        provider: action.payload.provider,
+        user,
+        provider,
         error: null,
       }
+    }
     case ActionType.LOGIN_ERROR: {
       return {
         ...state,
         error: action.payload.error,
       }
     }
-    case ActionType.LOGOUT:
+    case ActionType.LOGOUT: {
       return initialState
-    case ActionType.UPDATE_TOKEN:
+    }
+    case ActionType.UPDATE_TOKEN: {
       const newToken = action.payload.token
       return {
         ...state,
@@ -86,8 +89,10 @@ const authReducer = (state: AuthState, action: Action) => {
         provider: action.payload.provider,
         error: null,
       }
-    default:
+    }
+    default: {
       return state
+    }
   }
 }
 

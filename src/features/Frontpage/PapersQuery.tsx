@@ -5,12 +5,12 @@ import Loader from "common/components/Loader"
 import AnnotationsItem from "./AnnotationsItem"
 import PapersItem from "./PapersItem"
 
-interface PapersQueryProps {
+interface PapersQueryProperties {
   parent: String
 }
 
-const PapersQuery = ({ parent }: PapersQueryProps) => {
-  let { data, loading, error } = useListRecentPublicationsQuery({
+const PapersQuery = ({ parent }: PapersQueryProperties) => {
+  const { data, loading, error } = useListRecentPublicationsQuery({
     variables: {
       limit: 4,
     },
@@ -18,14 +18,12 @@ const PapersQuery = ({ parent }: PapersQueryProps) => {
 
   return (
     <>
-      {loading ? <Loader /> : <></>}
-      {error ? <GraphQLErrorPage error={error} /> : <></>}
+      {loading ? <Loader /> : undefined}
+      {error ? <GraphQLErrorPage error={error} /> : undefined}
       {parent === "Annotations" && data ? (
-        <AnnotationsItem data={data} type={"publications"} />
-      ) : (
-        <></>
-      )}
-      {parent === "Papers" && data ? <PapersItem data={data} /> : <></>}
+        <AnnotationsItem data={data} type="publications" />
+      ) : undefined}
+      {parent === "Papers" && data ? <PapersItem data={data} /> : undefined}
     </>
   )
 }

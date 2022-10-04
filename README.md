@@ -6,12 +6,12 @@
 
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
-[![License](https://img.shields.io/badge/License-BSD%202--Clause-blue.svg)](LICENSE)  
+[![License](https://img.shields.io/badge/License-BSD%202--Clause-blue.svg)](LICENSE)
 ![GitHub tag](https://img.shields.io/github/v/tag/dictyBase/dicty-frontpage)
-![GitHub action](https://github.com/dictyBase/dicty-frontpage/workflows/Node%20CI%20Develop/badge.svg)  
+![GitHub action](https://github.com/dictyBase/dicty-frontpage/workflows/Node%20CI%20Develop/badge.svg)
 [![codecov](https://codecov.io/gh/dictyBase/dicty-frontpage/branch/develop/graph/badge.svg)](https://codecov.io/gh/dictyBase/dicty-frontpage)
-[![Maintainability](https://badgen.net/codeclimate/maintainability/dictyBase/dicty-frontpage)](https://codeclimate.com/github/dictyBase/dicty-frontpage)  
-![Last commit](https://badgen.net/github/last-commit/dictyBase/dicty-frontpage/develop)  
+[![Maintainability](https://badgen.net/codeclimate/maintainability/dictyBase/dicty-frontpage)](https://codeclimate.com/github/dictyBase/dicty-frontpage)
+![Last commit](https://badgen.net/github/last-commit/dictyBase/dicty-frontpage/develop)
 [![Funding](https://badgen.net/badge/Funding/Rex%20L%20Chisholm,dictyBase,DCR/yellow?list=|)](https://reporter.nih.gov/project-details/10024726)
 
 This is the repository for the new [dictyBase frontpage](https://dictycr.org).
@@ -84,14 +84,14 @@ This project follows the [all-contributors](https://github.com/all-contributors/
 
 ![Issues](https://badgen.net/github/issues/dictyBase/dicty-frontpage)
 ![Open Issues](https://badgen.net/github/open-issues/dictyBase/dicty-frontpage)
-![Closed Issues](https://badgen.net/github/closed-issues/dictyBase/dicty-frontpage)  
+![Closed Issues](https://badgen.net/github/closed-issues/dictyBase/dicty-frontpage)
 ![Total PRS](https://badgen.net/github/prs/dictyBase/dicty-frontpage)
 ![Open PRS](https://badgen.net/github/open-prs/dictyBase/dicty-frontpage)
 ![Closed PRS](https://badgen.net/github/closed-prs/dictyBase/dicty-frontpage)
-![Merged PRS](https://badgen.net/github/merged-prs/dictyBase/dicty-frontpage)  
+![Merged PRS](https://badgen.net/github/merged-prs/dictyBase/dicty-frontpage)
 ![Commits](https://badgen.net/github/commits/dictyBase/dicty-frontpage/develop)
 ![Branches](https://badgen.net/github/branches/dictyBase/dicty-frontpage)
-![Tags](https://badgen.net/github/tags/dictyBase/dicty-frontpage)  
+![Tags](https://badgen.net/github/tags/dictyBase/dicty-frontpage)
 ![GitHub repo size](https://img.shields.io/github/repo-size/dictyBase/dicty-frontpage?style=plastic)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/dictyBase/dicty-frontpage?style=plastic)
 [![Lines of Code](https://badgen.net/codeclimate/loc/dictyBase/dicty-frontpage)](https://codeclimate.com/github/dictyBase/dicty-frontpage/code)

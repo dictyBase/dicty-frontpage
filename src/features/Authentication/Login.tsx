@@ -25,24 +25,24 @@ type Config = {
   optionalUrlParams?: Array<Array<string>>
 }
 
+const formatURLParameters = (parameters: Array<Array<string>>) => {
+  let url = ""
+  for (const element of parameters) {
+    url += `&${element[0]}=${element[1]}`
+  }
+  return url
+}
+
 const createOauthURL = (config: Config) => {
   let url = `${config.authorizationEndpoint}?client_id=${config.clientId}`
   url += `&scope=${config.scopes.join(config.scopeDelimiter)}`
   if (config.requiredUrlParams) {
-    url += formatURLParams(config.requiredUrlParams)
+    url += formatURLParameters(config.requiredUrlParams)
   }
   if (config.optionalUrlParams) {
-    url += formatURLParams(config.optionalUrlParams)
+    url += formatURLParameters(config.optionalUrlParams)
   }
   url += `&redirect_uri=${config.redirectUrl}`
-  return url
-}
-
-const formatURLParams = (params: Array<Array<string>>) => {
-  let url = ""
-  params.forEach((element) => {
-    url += `&${element[0]}=${element[1]}`
-  })
   return url
 }
 
@@ -68,8 +68,8 @@ const generateErrorDisplayMessage = (error: ApolloError) => {
     error.graphQLErrors[0].extensions &&
     error.graphQLErrors[0].extensions.code === "NotFound"
   ) {
-    message = `Could not find user account. 
-      
+    message = `Could not find user account.
+
       Please make sure you are a verified user and try again.`
   }
   return message
@@ -100,19 +100,19 @@ const Login = () => {
         {error && <ErrorNotification error={message} />}
         <Box mb={2} fontWeight={900}>
           <OrcidButton
-            handleClick={(event: MouseEvent) => openOauthWindow("orcid")}
+            handleClick={() => openOauthWindow("orcid")}
             text="Sign in with ORCID"
           />
         </Box>
         <Box mb={2}>
           <GoogleButton
-            handleClick={(event: MouseEvent) => openOauthWindow("google")}
+            handleClick={() => openOauthWindow("google")}
             text="Sign in with Google"
           />
         </Box>
         <Box mb={9}>
           <LinkedInButton
-            handleClick={(event: MouseEvent) => openOauthWindow("linkedin")}
+            handleClick={() => openOauthWindow("linkedin")}
             text="Sign in with LinkedIn"
           />
         </Box>

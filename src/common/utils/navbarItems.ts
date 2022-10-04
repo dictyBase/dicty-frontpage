@@ -33,8 +33,7 @@ const navbarItems = {
         items: [
           {
             label: "Genome Browser",
-            link:
-              "http://dictybase.org/tools/jbrowse/?data=data/jbrowse/discoideum&loc=6:1..50011&tracks=reference,gene,transcript",
+            link: "http://dictybase.org/tools/jbrowse/?data=data/jbrowse/discoideum&loc=6:1..50011&tracks=reference,gene,transcript",
           },
           {
             label: "Dashboard",
@@ -141,8 +140,7 @@ const navbarItems = {
           },
           {
             label: "Standard Operating Procedures",
-            link:
-              "https://northwestern.box.com/s/p0f8m70whgiuib2u0wt8gtn497ncmq8i",
+            link: "https://northwestern.box.com/s/p0f8m70whgiuib2u0wt8gtn497ncmq8i",
           },
         ],
       },
@@ -224,7 +222,7 @@ const formatNavbarData = (json: NavbarItems) =>
     items: formatNavbarItems(item.attributes.items),
   }))
 
-const navbarURL = process.env.REACT_APP_NAVBAR_JSON
+const navbarURL = import.meta.env.VITE_APP_NAVBAR_JSON
 
 export type { NavbarItems }
 export { navbarItems, formatNavbarData, navbarURL }

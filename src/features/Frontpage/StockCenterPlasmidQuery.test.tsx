@@ -1,10 +1,11 @@
 import { render, screen } from "@testing-library/react"
 import { useListRecentPlasmidsQuery } from "dicty-graphql-schema"
-import { listRecentPlasmids } from "../../common/data/mockPlasmids"
 import { ApolloError } from "@apollo/client"
+import listRecentPlasmids from "../../common/data/mockPlasmids"
 import StockCenterPlasmidQuery from "./StockCenterPlasmidQuery"
 
 jest.mock("dicty-graphql-schema", () => {
+  // eslint-disable-next-line no-shadow
   const useListRecentPlasmidsQuery = jest.fn()
   return { useListRecentPlasmidsQuery }
 })

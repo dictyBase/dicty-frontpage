@@ -1,8 +1,11 @@
-type Organism = {
-  taxon_id: string
-  scientific_name: string
-  citations: Array<Citation>
-  downloads: Array<Download>
+type DownloadItem = {
+  title: string
+  url: string
+}
+
+type Download = {
+  title: string
+  items: Array<DownloadItem>
 }
 
 type Citation = {
@@ -12,14 +15,11 @@ type Citation = {
   journal: string
 }
 
-type Download = {
-  title: string
-  items: Array<DownloadItem>
-}
-
-type DownloadItem = {
-  title: string
-  url: string
+type Organism = {
+  taxon_id: string
+  scientific_name: string
+  citations: Array<Citation>
+  downloads: Array<Download>
 }
 
 type User = {

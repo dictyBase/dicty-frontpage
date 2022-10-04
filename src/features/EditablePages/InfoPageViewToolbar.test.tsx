@@ -1,17 +1,19 @@
 import React from "react"
 import { render, screen } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
-import InfoPageViewToolbar from "./InfoPageViewToolbar"
 import MockAuthProvider from "mocks/MockAuthProvider"
+import InfoPageViewToolbar from "./InfoPageViewToolbar"
 
 describe("EditablePages/InfoPageViewToolbar", () => {
   describe("user has editing permission and verified token", () => {
     const mockHandleClick = jest.fn()
-    const props = {
+    const properties = {
       lastUpdate: "2020-01-01T17:50:12.427Z",
       user: {
         id: "1234",
+        // eslint-disable-next-line camelcase
         first_name: "Art",
+        // eslint-disable-next-line camelcase
         last_name: "Vandelay",
         email: "art@vandelayindustries.com",
         roles: [
@@ -26,7 +28,11 @@ describe("EditablePages/InfoPageViewToolbar", () => {
     it("displays expected name", () => {
       render(
         <MockAuthProvider mocks={[]}>
-          <InfoPageViewToolbar {...props} />
+          <InfoPageViewToolbar
+            lastUpdate={properties.lastUpdate}
+            user={properties.user}
+            handleClick={properties.handleClick}
+          />
         </MockAuthProvider>,
       )
       const text = screen.getByTestId("info-page-toolbar")
@@ -35,22 +41,28 @@ describe("EditablePages/InfoPageViewToolbar", () => {
     it("calls handleClick when edit icon clicked", async () => {
       render(
         <MockAuthProvider mocks={[]}>
-          <InfoPageViewToolbar {...props} />
+          <InfoPageViewToolbar
+            lastUpdate={properties.lastUpdate}
+            user={properties.user}
+            handleClick={properties.handleClick}
+          />
         </MockAuthProvider>,
       )
       const user = userEvent.setup()
-      const btn = screen.getByRole("button")
-      await user.click(btn)
+      const button = screen.getByRole("button")
+      await user.click(button)
       expect(mockHandleClick).toHaveBeenCalledTimes(1)
     })
   })
 
   describe("user has editing permission and expired token", () => {
-    const props = {
+    const properties = {
       lastUpdate: "2020-01-01T17:50:12.427Z",
       user: {
         id: "1234",
+        // eslint-disable-next-line camelcase
         first_name: "Art",
+        // eslint-disable-next-line camelcase
         last_name: "Vandelay",
         email: "art@vandelayindustries.com",
         roles: [
@@ -65,7 +77,11 @@ describe("EditablePages/InfoPageViewToolbar", () => {
     it("renders expected error message", () => {
       render(
         <MockAuthProvider mocks={[]} validToken={false}>
-          <InfoPageViewToolbar {...props} />
+          <InfoPageViewToolbar
+            lastUpdate={properties.lastUpdate}
+            user={properties.user}
+            handleClick={properties.handleClick}
+          />
         </MockAuthProvider>,
       )
       expect(
@@ -77,7 +93,11 @@ describe("EditablePages/InfoPageViewToolbar", () => {
     it("does not render edit button", () => {
       render(
         <MockAuthProvider mocks={[]} validToken={false}>
-          <InfoPageViewToolbar {...props} />
+          <InfoPageViewToolbar
+            lastUpdate={properties.lastUpdate}
+            user={properties.user}
+            handleClick={properties.handleClick}
+          />
         </MockAuthProvider>,
       )
       const editButton = screen.queryByRole("button")

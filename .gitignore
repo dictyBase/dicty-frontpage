@@ -25,5 +25,7 @@ clientConfig.ts
 
 .vscode
 
+MIGRATION.md
+
 # MSW (Mock server)
 public/mockServiceWorker.js

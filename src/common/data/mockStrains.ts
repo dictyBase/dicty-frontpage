@@ -1,26 +1,32 @@
 const listRecentStrains = [
-    {
-        id:"1",
-        created_at:"123",
-        systematic_name:"Mad52"
-    },
-    {
-        id:"2",
-        created_at:"123",
-        systematic_name:"grlD-/[act15]:grlD"
-    },
-    {
-        id:"3",
-        created_at:"123",
-        systematic_name:"grlD-"
-    },
-    {
-        id:"4",
-        created_at:"123",
-        systematic_name:"ase1A-"
-    },
+  {
+    id: "1",
+    // eslint-disable-next-line camelcase
+    created_at: "123",
+    // eslint-disable-next-line camelcase
+    systematic_name: "Mad52",
+  },
+  {
+    id: "2",
+    // eslint-disable-next-line camelcase
+    created_at: "123",
+    // eslint-disable-next-line camelcase
+    systematic_name: "grlD-/[act15]:grlD",
+  },
+  {
+    id: "3",
+    // eslint-disable-next-line camelcase
+    created_at: "123",
+    // eslint-disable-next-line camelcase
+    systematic_name: "grlD-",
+  },
+  {
+    id: "4",
+    // eslint-disable-next-line camelcase
+    created_at: "123",
+    // eslint-disable-next-line camelcase
+    systematic_name: "ase1A-",
+  },
 ]
 
-export {
-    listRecentStrains
-}
+export default listRecentStrains

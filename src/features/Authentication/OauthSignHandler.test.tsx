@@ -1,9 +1,9 @@
 import React from "react"
 import { render, waitFor } from "@testing-library/react"
 import { LoginDocument } from "dicty-graphql-schema"
-import OauthSignHandler from "./OauthSignHandler"
 import MockAuthProvider from "mocks/MockAuthProvider"
 import clientConfig from "common/utils/clientConfig"
+import OauthSignHandler from "./OauthSignHandler"
 
 const mockHistoryPush = jest.fn()
 
@@ -12,7 +12,7 @@ jest.mock("react-router-dom", () => {
 
   return {
     ...originalModule,
-    useNavigate: (to: string) => mockHistoryPush
+    useNavigate: (to: string) => mockHistoryPush,
   }
 })
 
@@ -22,13 +22,13 @@ describe("authentication/OauthSignHandler", () => {
   const map = {
     message: (any: any) => {},
   }
-  globalAny.addEventListener = jest.fn((event, cb) => {
+  globalAny.addEventListener = jest.fn((event, callback) => {
     // @ts-ignore
-    map[event] = cb
+    map[event] = callback
   })
-  globalAny.removeEventListener = jest.fn((event, cb) => {
+  globalAny.removeEventListener = jest.fn((event, callback) => {
     // @ts-ignore
-    map[event] = cb
+    map[event] = callback
   })
 
   // variables used in both graphql mock and event data mock
@@ -37,7 +37,7 @@ describe("authentication/OauthSignHandler", () => {
 
   // graphql mocks, use variable to determine if mutation called
   let loginMutationCalled = false
-  const mocks = [
+  const loginMocks = [
     {
       request: {
         query: LoginDocument,
@@ -46,7 +46,7 @@ describe("authentication/OauthSignHandler", () => {
             client_id: clientConfig.google.clientId,
             redirect_url: redirectUrl,
             state: "state",
-            code: code,
+            code,
             scopes: "email",
             provider: "google",
           },
@@ -85,13 +85,11 @@ describe("authentication/OauthSignHandler", () => {
     },
   ]
 
-  const MockComponent = ({ mocks }: any) => {
-    return (
-      <MockAuthProvider mocks={mocks}>
-        <OauthSignHandler />
-      </MockAuthProvider>
-    )
-  }
+  const MockComponent = ({ mocks }: any) => (
+    <MockAuthProvider mocks={mocks}>
+      <OauthSignHandler />
+    </MockAuthProvider>
+  )
 
   beforeEach(() => {
     loginMutationCalled = false
@@ -99,18 +97,18 @@ describe("authentication/OauthSignHandler", () => {
 
   describe("initial render", () => {
     it("renders empty div", () => {
-      const { container } = render(<MockComponent mocks={mocks} />)
+      const { container } = render(<MockComponent mocks={loginMocks} />)
       expect(container).toBeEmptyDOMElement()
     })
   })
 
   describe("window behavior", () => {
     it("should add event listener on mount", () => {
-      render(<MockComponent mocks={mocks} />)
+      render(<MockComponent mocks={loginMocks} />)
       expect(globalAny.addEventListener).toHaveBeenCalled()
     })
     it("should remove event listener on unmount", () => {
-      const { unmount } = render(<MockComponent mocks={mocks} />)
+      const { unmount } = render(<MockComponent mocks={loginMocks} />)
       unmount()
       expect(globalAny.removeEventListener).toHaveBeenCalled()
     })
@@ -118,7 +116,7 @@ describe("authentication/OauthSignHandler", () => {
 
   describe("login mutation", () => {
     it("should return early if no provider included in event data", async () => {
-      render(<MockComponent mocks={mocks} />)
+      render(<MockComponent mocks={loginMocks} />)
       map.message({
         data: {
           query: `?code=${code}`,
@@ -132,7 +130,7 @@ describe("authentication/OauthSignHandler", () => {
       })
     })
     it("should call login mutation and redirect to urls", async () => {
-      render(<MockComponent mocks={mocks} />)
+      render(<MockComponent mocks={loginMocks} />)
       map.message({
         data: {
           provider: "google",

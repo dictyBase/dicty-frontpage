@@ -8,18 +8,17 @@ import version from "dicty-graphql-schema/package.json"
 const SCHEMA_VERSION_KEY = "dictyfrontpage-apollo-schema-version"
 const DICTY_FRONTPAGE_CACHE_KEY = "dictyfrontpage-apollo-cache-persist"
 
-const mutationList = ["Logout", "CreateContent", "UpdateContent"]
+const mutationList = new Set(["Logout", "CreateContent", "UpdateContent"])
 
-const isMutation = (value: string) => {
-  if (mutationList.includes(value)) {
-    return true
-  }
-  return false
-}
+const isMutation = (value: string) => mutationList.has(value)
 
-const getGraphQLServer = (url: string, deployEnv: string, origin: string) => {
-  if (deployEnv === "staging" && origin === "https://dictycr.org") {
-    return process.env.REACT_APP_ALT_GRAPHQL_SERVER
+const getGraphQLServer = (
+  url: string,
+  deployEnvironment: string,
+  origin: string,
+) => {
+  if (deployEnvironment === "staging" && origin === "https://dictycr.org") {
+    return import.meta.env.VITE_APP_ALT_GRAPHQL_SERVER
   }
   return url
 }
@@ -37,11 +36,12 @@ const authLink = setContext((request, { headers }) => {
 })
 
 const server = getGraphQLServer(
-  process.env.REACT_APP_GRAPHQL_SERVER,
-  process.env.DEPLOY_ENV,
+  import.meta.env.VITE_APP_GRAPHQL_SERVER,
+  import.meta.env.DEPLOY_ENV,
   window.location.origin,
 )
 
+// eslint-disable-next-line unicorn/prefer-spread
 const link = authLink.concat(
   createHttpLink({
     uri: `${server}/graphql`,

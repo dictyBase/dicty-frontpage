@@ -89,7 +89,7 @@ const Annotations = () => {
         <Grid item className={classes.box} xs={6}>
           <span className={classes.title}>Papers</span>
           <ul className={classes.listBox}>
-            <PapersQuery parent={"Annotations"} />
+            <PapersQuery parent="Annotations" />
           </ul>
         </Grid>
         <Grid item xs={12}>

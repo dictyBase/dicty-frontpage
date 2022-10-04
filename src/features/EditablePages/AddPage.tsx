@@ -1,4 +1,3 @@
-import React from "react"
 import { useNavigate } from "react-router-dom"
 import Box from "@material-ui/core/Box"
 import Typography from "@material-ui/core/Typography"
@@ -8,8 +7,8 @@ import { useCreateContentMutation } from "dicty-graphql-schema"
 import ErrorNotification from "features/Authentication/ErrorNotification"
 import { useAuthStore } from "features/Authentication/AuthStore"
 import useAuthorization from "common/hooks/useAuthorization"
-import { NAMESPACE } from "common/constants/namespace"
-import { theme } from "app/layout/AppProviders"
+import NAMESPACE from "common/constants/namespace"
+import { appTheme } from "app/layout/AppProviders"
 
 const useStyles = makeStyles((theme: Theme) => ({
   banner: {
@@ -27,7 +26,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 const error =
   "Your login token is expired. Please log out and then log back in to regain full user access."
 
-type Props = {
+type Properties = {
   location: {
     state: {
       name: string
@@ -41,10 +40,8 @@ type Props = {
  * This is the view component so an authorized user can add a new page.
  */
 
-const AddPage = ({ location }: Props) => {
-  const slug = location.state?.subname
-    ? location.state.subname
-    : location.state.name
+const AddPage = ({ location }: Properties) => {
+  const slug = location.state?.subname || location.state?.name
 
   const {
     state: { token },
@@ -60,13 +57,14 @@ const AddPage = ({ location }: Props) => {
     },
   })
 
-  const prevURL = location.state.url
+  const previousURL = location.state.url
 
   const handleSaveClick = (value: any) => {
     createContent({
       variables: {
         input: {
           name: slug,
+          // eslint-disable-next-line camelcase
           created_by: user.id,
           content: JSON.stringify(value),
           namespace: NAMESPACE,
@@ -74,16 +72,16 @@ const AddPage = ({ location }: Props) => {
       },
     })
     setTimeout(() => {
-      navigate(prevURL)
+      navigate(previousURL)
     }, 800)
   }
 
   const handleCancelClick = () => {
-    navigate(prevURL)
+    navigate(previousURL)
   }
 
   return (
-    <React.Fragment>
+    <>
       {canEditPages && !verifiedToken && <ErrorNotification error={error} />}
       <Box mb={2} className={classes.banner}>
         <Box mb={2}>
@@ -91,17 +89,17 @@ const AddPage = ({ location }: Props) => {
             Add Editable Page for Route:
           </Typography>
         </Box>
-        <Typography variant="h3">{prevURL}</Typography>
+        <Typography variant="h3">{previousURL}</Typography>
       </Box>
       <Box width="80%" m="auto">
         <PageEditor
           handleSave={handleSaveClick}
           handleCancel={handleCancelClick}
           readOnly={false}
-          theme={theme}
+          theme={appTheme}
         />
       </Box>
-    </React.Fragment>
+    </>
   )
 }
 

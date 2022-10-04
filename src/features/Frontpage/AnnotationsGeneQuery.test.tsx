@@ -1,10 +1,11 @@
 import { render, screen } from "@testing-library/react"
-import AnnotationsGeneQuery from "./AnnotationsGeneQuery"
 import { useListRecentGenesQuery } from "dicty-graphql-schema"
-import { listRecentGenes } from "../../common/data/mockGenes"
 import { ApolloError } from "@apollo/client"
+import AnnotationsGeneQuery from "./AnnotationsGeneQuery"
+import listRecentGenes from "../../common/data/mockGenes"
 
 jest.mock("dicty-graphql-schema", () => {
+  // eslint-disable-next-line no-shadow
   const useListRecentGenesQuery = jest.fn()
   return {
     useListRecentGenesQuery,

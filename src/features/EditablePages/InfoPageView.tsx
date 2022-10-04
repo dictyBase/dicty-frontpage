@@ -4,17 +4,17 @@ import { PageEditor } from "dicty-components-page-editor"
 import { ThemeProvider } from "@material-ui/core/styles"
 import Box from "@material-ui/core/Box"
 import { ContentBySlugQuery } from "dicty-graphql-schema"
+import { appTheme } from "app/layout/AppProviders"
 import InfoPageViewToolbar from "./InfoPageViewToolbar"
-import { theme } from "app/layout/AppProviders"
 
-type Props = {
+type Properties = {
   /** Page content object */
   data: ContentBySlugQuery["contentBySlug"]
 }
 
 /** Displays the info page data that was fetched from the InfoPage component */
 
-const InfoPageView = ({ data }: Props) => {
+const InfoPageView = ({ data }: Properties) => {
   const navigate = useNavigate()
   const location = useLocation()
 
@@ -22,7 +22,7 @@ const InfoPageView = ({ data }: Props) => {
     event.preventDefault()
     navigate(`${location.pathname}/edit`, {
       state: {
-        data: data,
+        data,
       },
     })
   }

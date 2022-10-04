@@ -1,10 +1,10 @@
-import React from "react"
+/* eslint-disable unicorn/filename-case */
+import { ApolloError } from "@apollo/client"
 import ServerError from "./ServerError"
 import NotFoundError from "./NotFoundError"
 import OtherError from "./OtherError"
-import { ApolloError } from "@apollo/client"
 
-type Props = {
+type Properties = {
   /** GraphQL error object */
   error: ApolloError
 }
@@ -14,7 +14,7 @@ type Props = {
  * Returns one of the other error components based on the error code.
  */
 
-const GraphQLErrorPage = ({ error }: Props) => {
+const GraphQLErrorPage = ({ error }: Properties) => {
   if (!error || !error.message) return null
 
   if (error.networkError) {
@@ -22,30 +22,27 @@ const GraphQLErrorPage = ({ error }: Props) => {
     return <ServerError />
   }
 
-  let errorCode, errorMsg
+  let errorCode
+  let errorMessage
 
   if (error.graphQLErrors && error.graphQLErrors[0].extensions) {
     errorCode = error.graphQLErrors[0].extensions.code
-    errorMsg = error.graphQLErrors[0].message
+    errorMessage = error.graphQLErrors[0].message
   }
 
   if (errorCode === "Unavailable") {
     return <ServerError />
   }
 
-  if (errorCode === "NotFound" && errorMsg) {
+  if (errorCode === "NotFound" && errorMessage) {
     return (
       <NotFoundError
-        error={errorMsg.charAt(0).toUpperCase() + errorMsg.slice(1)}
+        error={errorMessage.charAt(0).toUpperCase() + errorMessage.slice(1)}
       />
     )
   }
 
   return <OtherError />
-}
-
-GraphQLErrorPage.defaultProps = {
-  error: {},
 }
 
 export default GraphQLErrorPage

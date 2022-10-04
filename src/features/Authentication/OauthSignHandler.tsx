@@ -1,6 +1,6 @@
 import React from "react"
 import { useNavigate } from "react-router-dom"
-import querystring from "querystring"
+import querystring from "node:querystring"
 import { useLoginMutation, User } from "dicty-graphql-schema"
 import { useAuthStore, ActionType } from "features/Authentication/AuthStore"
 import oauthConfig from "common/utils/oauthConfig"
@@ -18,9 +18,11 @@ const getLoginInputVariables = (data: LoginEventData) => {
   const provider = (oauthConfig as any)[data.provider]
   const parsed = querystring.parse(data.query.replace("?", ""))
 
-  const variables = {
+  return {
     input: {
+      // eslint-disable-next-line camelcase
       client_id: provider.clientId,
+      // eslint-disable-next-line camelcase
       redirect_url: data.url,
       state: parsed?.state?.toString() || "state",
       code: parsed.code as string,
@@ -28,8 +30,6 @@ const getLoginInputVariables = (data: LoginEventData) => {
       provider: data.provider,
     },
   }
-
-  return variables
 }
 
 /**
@@ -51,15 +51,15 @@ const OauthSignHandler = () => {
       }
       navigate("/load/auth")
       try {
-        const { data } = await login({
+        const { data: loginData } = await login({
           variables: getLoginInputVariables(event.data),
         })
         dispatch({
           type: ActionType.LOGIN,
           payload: {
-            token: data?.login?.token as string,
-            user: data?.login?.user as User,
-            provider: data?.login?.identity.provider as string,
+            token: loginData?.login?.token as string,
+            user: loginData?.login?.user as User,
+            provider: loginData?.login?.identity.provider as string,
           },
         })
         navigate("/")
@@ -67,7 +67,7 @@ const OauthSignHandler = () => {
         dispatch({
           type: ActionType.LOGIN_ERROR,
           payload: {
-            error: error,
+            error,
           },
         })
         navigate("/login")

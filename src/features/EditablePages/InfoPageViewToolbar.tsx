@@ -9,7 +9,7 @@ import timeSince from "common/utils/timeSince"
 import { useAuthStore } from "features/Authentication/AuthStore"
 import useAuthorization from "common/hooks/useAuthorization"
 import { capitalizeFirstCharacter } from "common/utils/stringCapitalizations"
-import { UpdatedByUser } from "./types"
+import UpdatedByUser from "./types"
 
 const useStyles = makeStyles((theme: Theme) => ({
   content: {
@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 const error =
   "Your login token has expired. Please log out and then log back in to regain full user access."
 
-type Props = {
+type Properties = {
   /** Timestamp for when this content was last updated */
   lastUpdate: string
   /** User object for who last updated this content */
@@ -61,7 +61,7 @@ type Props = {
 
 /** Displays the info page data that was fetched from the InfoPageContainer component */
 
-const InfoPageViewToolbar = ({ handleClick, lastUpdate, user }: Props) => {
+const InfoPageViewToolbar = ({ handleClick, lastUpdate, user }: Properties) => {
   const classes = useStyles()
   const {
     state: { isAuthenticated },

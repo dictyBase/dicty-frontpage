@@ -1,10 +1,11 @@
 import { render, screen } from "@testing-library/react"
-import PapersQuery from "./PapersQuery"
 import { useListRecentPublicationsQuery } from "dicty-graphql-schema"
-import { listRecentPublications } from "../../common/data/mockPublications"
 import { ApolloError } from "@apollo/client"
+import PapersQuery from "./PapersQuery"
+import listRecentPublications from "../../common/data/mockPublications"
 
 jest.mock("dicty-graphql-schema", () => {
+  // eslint-disable-next-line no-shadow
   const useListRecentPublicationsQuery = jest.fn()
   return {
     useListRecentPublicationsQuery,
@@ -19,7 +20,7 @@ describe("feature/Frontpage/PaperQuery", () => {
       error: false,
       data: { listRecentPublications: [...listRecentPublications] },
     })
-    render(<PapersQuery parent={"Annotations"} />)
+    render(<PapersQuery parent="Annotations" />)
 
     /* Check if it renders Papers */
     expect(screen.getByText("31108912")).toBeInTheDocument()
@@ -31,7 +32,7 @@ describe("feature/Frontpage/PaperQuery", () => {
     ;(useListRecentPublicationsQuery as jest.Mock).mockReturnValue({
       loading: true,
     })
-    render(<PapersQuery parent={"Annotations"} />)
+    render(<PapersQuery parent="Annotations" />)
 
     expect(screen.getByTestId("skeleton-loader")).toBeInTheDocument()
   })
@@ -40,7 +41,7 @@ describe("feature/Frontpage/PaperQuery", () => {
     ;(useListRecentPublicationsQuery as jest.Mock).mockReturnValue({
       error: new ApolloError({}),
     })
-    render(<PapersQuery parent={"Annotations"} />)
+    render(<PapersQuery parent="Annotations" />)
   })
 })
 
@@ -53,7 +54,7 @@ describe("feature/Frontpage/Papers Browser based", () => {
       error: false,
       data: { listRecentPublications: [...listRecentPublications] },
     })
-    render(<PapersQuery parent={"Papers"} />)
+    render(<PapersQuery parent="Papers" />)
 
     expect(
       screen.getByText("Tanaka, Jahan, Kondo, Nakano & Yumura (2019)"),
@@ -70,7 +71,7 @@ describe("feature/Frontpage/Papers Browser based", () => {
     ;(useListRecentPublicationsQuery as jest.Mock).mockReturnValue({
       loading: true,
     })
-    render(<PapersQuery parent={"Papers"} />)
+    render(<PapersQuery parent="Papers" />)
 
     expect(screen.getByTestId("skeleton-loader")).toBeInTheDocument()
   })
@@ -79,6 +80,6 @@ describe("feature/Frontpage/Papers Browser based", () => {
     ;(useListRecentPublicationsQuery as jest.Mock).mockReturnValue({
       error: new ApolloError({}),
     })
-    render(<PapersQuery parent={"Papers"} />)
+    render(<PapersQuery parent="Papers" />)
   })
 })

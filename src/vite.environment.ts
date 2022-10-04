@@ -1,9 +1,9 @@
-/// <reference types="react-scripts" />
+/// <reference types="vite/client" />
 import "typescript"
 
 declare global {
   namespace NodeJS {
-    interface ProcessEnv {
+    interface ProcessEnvironment {
       NODE_ENV: "development" | "production"
       REACT_APP_BASENAME: string
       REACT_APP_GA_TRACKING_ID: string

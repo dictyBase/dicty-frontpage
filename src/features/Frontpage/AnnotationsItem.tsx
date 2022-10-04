@@ -14,25 +14,25 @@ const useStyles = makeStyles({
   },
 })
 
-interface AnnotationsItemProps {
+interface AnnotationsItemProperties {
   data: ListRecentPublicationsQuery & ListRecentGenesQuery
   type: String
 }
 
 /** Widget that displays the most recent annotations for genes and papers */
-const Annotations = ({ data, type }: AnnotationsItemProps) => {
+const Annotations = ({ data, type }: AnnotationsItemProperties) => {
   const classes = useStyles()
 
   let text
 
   if (type === "publications") {
-    text = data?.listRecentPublications?.map((paper, index) => {
+    text = data?.listRecentPublications?.map((paper) => {
       const doi = paper?.doi
       const doiString = paper?.doi?.split("/")
       if (!doiString) return <></>
       return (
-        <li className={classes.listItem} key={index}>
-          <a className={classes.link} href={doi ? doi : ""}>
+        <li className={classes.listItem} key={paper.id}>
+          <a className={classes.link} href={doi || ""}>
             {doiString[2]}
           </a>
         </li>
@@ -41,15 +41,13 @@ const Annotations = ({ data, type }: AnnotationsItemProps) => {
   }
 
   if (type === "genes") {
-    text = data?.listRecentGenes?.map((gene, index) => {
-      return (
-        <li className={classes.listItem} key={index}>
-          <a className={classes.link} href={`/gene/${gene.id}`}>
-            {gene.name}
-          </a>
-        </li>
-      )
-    })
+    text = data?.listRecentGenes?.map((gene) => (
+      <li className={classes.listItem} key={gene.id}>
+        <a className={classes.link} href={`/gene/${gene.id}`}>
+          {gene.name}
+        </a>
+      </li>
+    ))
   }
 
   return <>{text}</>

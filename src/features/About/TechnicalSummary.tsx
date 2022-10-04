@@ -2,7 +2,7 @@ import React from "react"
 import Skeleton from "react-loading-skeleton"
 import { useContentBySlugQuery } from "dicty-graphql-schema"
 import InlineEditor from "features/EditablePages/InlineEditor"
-import { NAMESPACE } from "common/constants/namespace"
+import NAMESPACE from "common/constants/namespace"
 
 /**
  * Displays the Technical Summary section of the About page.

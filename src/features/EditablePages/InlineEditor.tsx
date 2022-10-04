@@ -10,7 +10,7 @@ import {
 } from "dicty-graphql-schema"
 import { useAuthStore } from "features/Authentication/AuthStore"
 import useAuthorization from "common/hooks/useAuthorization"
-import { theme } from "app/layout/AppProviders"
+import { appTheme } from "app/layout/AppProviders"
 
 const useStyles = makeStyles((theme: Theme) => ({
   button: {
@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }))
 
-type Props = {
+type Properties = {
   data: ContentBySlugQuery["contentBySlug"]
 }
 
@@ -32,9 +32,9 @@ type Props = {
  * Inline editor for all inline editable content
  */
 
-const InlineEditor = ({ data }: Props) => {
+const InlineEditor = ({ data }: Properties) => {
   const [readOnly, setReadOnly] = React.useState(true)
-  const [value, setValue] = useState(data?.content)
+  const [content, setContent] = useState(data?.content)
   const {
     state: { token },
   } = useAuthStore()
@@ -49,7 +49,7 @@ const InlineEditor = ({ data }: Props) => {
   const classes = useStyles()
 
   const handleSaveClick = (value: any) => {
-    const valueStr = JSON.stringify(value)
+    const valueString = JSON.stringify(value)
     if (data?.id === undefined) {
       return
     }
@@ -57,12 +57,13 @@ const InlineEditor = ({ data }: Props) => {
       variables: {
         input: {
           id: data.id,
+          // eslint-disable-next-line camelcase
           updated_by: user.id,
-          content: valueStr,
+          content: valueString,
         },
       },
     })
-    setValue(valueStr)
+    setContent(valueString)
     setReadOnly(true)
   }
 
@@ -76,11 +77,11 @@ const InlineEditor = ({ data }: Props) => {
     <Box>
       <PageEditor
         key={readOnly.toString()}
-        pageContent={value}
+        pageContent={content}
         readOnly={readOnly}
         handleSave={handleSaveClick}
         handleCancel={handleCancelClick}
-        theme={theme}
+        theme={appTheme}
         inline
       />
       {validEditor && (

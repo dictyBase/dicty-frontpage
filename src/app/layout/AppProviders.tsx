@@ -5,7 +5,7 @@ import { MuiThemeProvider, createTheme } from "@material-ui/core/styles"
 import CircularProgress from "@material-ui/core/CircularProgress"
 import useCreateApolloClient from "common/hooks/useCreateApolloClient"
 
-const theme = createTheme({
+const appTheme = createTheme({
   // use color tool for palette -- https://material.io/resources/color/
   palette: {
     primary: {
@@ -83,8 +83,8 @@ const AppProviders = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <ApolloProvider client={client}>
-      <MuiThemeProvider theme={theme}>
-        <BrowserRouter basename={process.env.REACT_APP_BASENAME}>
+      <MuiThemeProvider theme={appTheme}>
+        <BrowserRouter basename={import.meta.env.VITE_APP_BASENAME}>
           {children}
         </BrowserRouter>
       </MuiThemeProvider>
@@ -92,5 +92,5 @@ const AppProviders = ({ children }: { children: React.ReactNode }) => {
   )
 }
 
-export { theme }
+export { appTheme }
 export default AppProviders

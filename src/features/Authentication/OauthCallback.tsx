@@ -3,7 +3,7 @@ import { useLocation, useParams } from "react-router-dom"
 import Box from "@material-ui/core/Box"
 import Typography from "@material-ui/core/Typography"
 
-type Params = {
+type Parameters_ = {
   /** Provider from URL (google, orcid, etc) */
   provider: string
 }
@@ -13,14 +13,14 @@ type Params = {
  */
 
 const OauthCallback = () => {
-  const { provider } = useParams<Params>()
+  const { provider } = useParams<Parameters_>()
   const location = useLocation()
 
   useEffect(() => {
     window.opener?.postMessage(
       {
         query: location.search,
-        provider: provider,
+        provider,
         url: `${window.location.origin}${location.pathname}`,
       },
       window.location.toString(),

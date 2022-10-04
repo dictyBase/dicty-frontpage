@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }))
 
-type Props = {
+type Properties = {
   data: Array<Download>
 }
 
@@ -49,9 +49,8 @@ type Props = {
  * Displays the table on the downloads page.
  */
 
-const DownloadsTable = ({ data }: Props) => {
+const DownloadsTable = ({ data }: Properties) => {
   const classes = useStyles()
-  console.log(data)
   return (
     <Paper className={classes.root}>
       <Table>

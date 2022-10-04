@@ -13,7 +13,7 @@ const PrivateRoute = ({ children }: any) => {
   } = useAuthStore()
 
   if (isAuthenticated) {
-    return <>{children}</>
+    return children
   }
 
   /*
