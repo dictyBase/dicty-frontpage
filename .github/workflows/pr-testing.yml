@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: set up node.js
-        uses: actions/setup-node@v3.4.1
+        uses: actions/setup-node@v3.5.0
         with:
           node-version: 16
       - name: check out code
@@ -24,6 +24,6 @@ jobs:
         env:
           CI: true
       - name: upload test coverage to codecov
-        uses: codecov/codecov-action@v3.1.0
+        uses: codecov/codecov-action@v3.1.1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}

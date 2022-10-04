@@ -20,14 +20,14 @@
     "snyk-protect": "snyk protect"
   },
   "dependencies": {
-    "@apollo/client": "^3.6.9",
+    "@apollo/client": "^3.7.0",
     "@fortawesome/fontawesome-svg-core": "^6.2.0",
     "@fortawesome/free-solid-svg-icons": "^6.2.0",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@material-ui/core": "^4.12.4",
     "@material-ui/icons": "^4.11.3",
     "apollo3-cache-persist": "^0.14.1",
-    "core-js": "^3.25.1",
+    "core-js": "^3.25.3",
     "dicty-components-header-footer": "dictybase/dicty-components-header-footer#11.0.1",
     "dicty-components-login": "dictybase/dicty-components-login#4.1.1",
     "dicty-components-navbar": "github:dictyBase/dicty-components-navbar#2.0.0",
@@ -48,9 +48,9 @@
     "react-helmet": "^6.1.0",
     "react-loading-skeleton": "^3.1.0",
     "react-responsive-carousel": "^3.2.23",
-    "react-router-dom": "^6.4.0",
+    "react-router-dom": "^6.4.1",
     "twitter-fetcher": "^18.0.4",
-    "typescript": "4.8.3"
+    "typescript": "4.8.4"
   },
   "devDependencies": {
     "@material-ui/styles": "^4.11.4",
@@ -62,7 +62,7 @@
     "@semantic-release/release-notes-generator": "^10.0.3",
     "@swc/core": "^1.3.3",
     "@swc/jest": "^0.2.22",
-    "@testing-library/dom": "^8.18.0",
+    "@testing-library/dom": "^8.18.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^12.1.5",
     "@testing-library/react-hooks": "^8.0.1",
@@ -70,7 +70,7 @@
     "@tsconfig/recommended": "^1.0.1",
     "@types/jest": "^27.5.1",
     "@types/jwt-decode": "^3.1.0",
-    "@types/node": "^18.7.18",
+    "@types/node": "^18.7.23",
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.3",
     "@types/react-fontawesome": "^1.6.4",
@@ -104,10 +104,10 @@
     "react-styleguidist": "^12.0.0",
     "react-test-renderer": "^17.0.2",
     "semantic-release": "^19.0.5",
-    "snyk": "^1.1006.0",
-    "source-map-explorer": "^2.5.2",
     "vite": "^3.1.3",
     "vite-tsconfig-paths": "^3.5.0",
+    "snyk": "^1.1019.0",
+    "source-map-explorer": "^2.5.3",
     "wait-for-expect": "^3.0.2"
   },
   "jest": {
