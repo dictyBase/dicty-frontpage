@@ -1,4 +1,4 @@
-const pageTitles = {
+const pageTitles: Record<string, string> = {
   // pages from navbar
   art: "dictyArt",
   citation: "Citing dictyBase and the Dictyostelium Genome Project",
@@ -81,16 +81,7 @@ const pageTitles = {
  * This is helpful for SEO purposes.
  */
 
-const pageTitleLookup = (title: string) => {
-  let name
-
-  if (title in pageTitles) {
-    // @ts-ignore
-    name = pageTitles[title]
-  } else {
-    name = "Information Page"
-  }
-  return name
-}
+const pageTitleLookup = (title: string) =>
+  title in pageTitles ? pageTitles[title] : "Information Page"
 
 export { pageTitles, pageTitleLookup }
