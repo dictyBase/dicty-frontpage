@@ -1,6 +1,7 @@
 import React from "react"
 import { User } from "dicty-graphql-schema"
 
+// eslint-disable-next-line no-shadow
 enum ActionType {
   LOGIN = "LOGIN",
   LOGIN_ERROR = "LOGIN_ERROR",
