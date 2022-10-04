@@ -10,7 +10,7 @@ import {
 } from "dicty-graphql-schema"
 import { useAuthStore } from "features/Authentication/AuthStore"
 import useAuthorization from "common/hooks/useAuthorization"
-import { theme } from "app/layout/AppProviders"
+import { appTheme } from "app/layout/AppProviders"
 
 const useStyles = makeStyles((theme: Theme) => ({
   button: {
@@ -34,7 +34,7 @@ type Properties = {
 
 const InlineEditor = ({ data }: Properties) => {
   const [readOnly, setReadOnly] = React.useState(true)
-  const [value, setValue] = useState(data?.content)
+  const [content, setContent] = useState(data?.content)
   const {
     state: { token },
   } = useAuthStore()
@@ -63,7 +63,7 @@ const InlineEditor = ({ data }: Properties) => {
         },
       },
     })
-    setValue(valueString)
+    setContent(valueString)
     setReadOnly(true)
   }
 
@@ -77,11 +77,11 @@ const InlineEditor = ({ data }: Properties) => {
     <Box>
       <PageEditor
         key={readOnly.toString()}
-        pageContent={value}
+        pageContent={content}
         readOnly={readOnly}
         handleSave={handleSaveClick}
         handleCancel={handleCancelClick}
-        theme={theme}
+        theme={appTheme}
         inline
       />
       {validEditor && (

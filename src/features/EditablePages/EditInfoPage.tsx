@@ -10,7 +10,7 @@ import {
   useUpdateContentMutation,
   ContentBySlugQuery,
 } from "dicty-graphql-schema"
-import { theme } from "app/layout/AppProviders"
+import { appTheme } from "app/layout/AppProviders"
 
 const useStyles = makeStyles((theme: Theme) => ({
   editor: {
@@ -89,7 +89,7 @@ const EditInfoPage = ({ location }: Properties) => {
           readOnly={false}
           handleSave={handleSaveClick}
           handleCancel={handleCancelClick}
-          theme={theme}
+          theme={appTheme}
         />
       </Box>
     </Container>

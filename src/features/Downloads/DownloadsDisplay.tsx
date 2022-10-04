@@ -7,14 +7,14 @@ import Tab from "@material-ui/core/Tab"
 import Typography from "@material-ui/core/Typography"
 import { MuiThemeProvider, createTheme } from "@material-ui/core/styles"
 import { Organism } from "dicty-graphql-schema"
-import { theme } from "app/layout/AppProviders"
+import { appTheme } from "app/layout/AppProviders"
 import Citations from "./Citations"
 import DownloadsTable from "./DownloadsTable"
 import DownloadsHeader from "./DownloadsHeader"
 
 // create theme with our standard tab overrides
 const muiTheme = createTheme({
-  ...theme,
+  ...appTheme,
   overrides: {
     MuiTab: {
       root: {
