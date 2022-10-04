@@ -8,7 +8,7 @@ import ErrorNotification from "features/Authentication/ErrorNotification"
 import { useAuthStore } from "features/Authentication/AuthStore"
 import useAuthorization from "common/hooks/useAuthorization"
 import NAMESPACE from "common/constants/namespace"
-import { theme } from "app/layout/AppProviders"
+import { appTheme } from "app/layout/AppProviders"
 
 const useStyles = makeStyles((theme: Theme) => ({
   banner: {
@@ -96,7 +96,7 @@ const AddPage = ({ location }: Properties) => {
           handleSave={handleSaveClick}
           handleCancel={handleCancelClick}
           readOnly={false}
-          theme={theme}
+          theme={appTheme}
         />
       </Box>
     </>

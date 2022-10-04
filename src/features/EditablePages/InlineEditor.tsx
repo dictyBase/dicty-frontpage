@@ -10,7 +10,7 @@ import {
 } from "dicty-graphql-schema"
 import { useAuthStore } from "features/Authentication/AuthStore"
 import useAuthorization from "common/hooks/useAuthorization"
-import { theme } from "app/layout/AppProviders"
+import { appTheme } from "app/layout/AppProviders"
 
 const useStyles = makeStyles((theme: Theme) => ({
   button: {
@@ -81,7 +81,7 @@ const InlineEditor = ({ data }: Properties) => {
         readOnly={readOnly}
         handleSave={handleSaveClick}
         handleCancel={handleCancelClick}
-        theme={theme}
+        theme={appTheme}
         inline
       />
       {validEditor && (
