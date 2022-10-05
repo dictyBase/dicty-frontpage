@@ -36,13 +36,13 @@ const InfoPageView = ({ data }: Properties) => {
           user={data.updated_by}
         />
       )}
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={appTheme}>
         <PageEditor
           pageContent={data?.content}
           handleSave={() => {}}
           handleCancel={() => {}}
           readOnly
-          theme={theme}
+          theme={appTheme}
         />
       </ThemeProvider>
     </Box>

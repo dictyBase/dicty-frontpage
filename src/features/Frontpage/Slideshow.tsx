@@ -75,8 +75,8 @@ const Slideshow = () => {
         autoPlay
         interval={5000}
         infiniteLoop>
-        {imageData.map((img, index: number) => (
-          <div className={classes.imgWrapper} key={index}>
+        {imageData.map((img) => (
+          <div className={classes.imgWrapper} key={img.src}>
             <img className={classes.imgSizer} src={img.src} alt={img.title} />
             <p className={classes.legend}>
               <strong>{img.title}</strong> <br />
