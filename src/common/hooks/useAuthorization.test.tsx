@@ -41,7 +41,9 @@ describe("hooks/useAuthorization", () => {
         permission: "write",
         resource: "dsccontent",
         description: "test permission",
+        // eslint-disable-next-line camelcase
         created_at: 123,
+        // eslint-disable-next-line camelcase
         updated_at: 456,
       },
     ]
@@ -51,7 +53,9 @@ describe("hooks/useAuthorization", () => {
         permission: "admin",
         resource: "dictybase",
         description: "test permission",
+        // eslint-disable-next-line camelcase
         created_at: 123,
+        // eslint-disable-next-line camelcase
         updated_at: 456,
       },
     ]
@@ -94,18 +98,25 @@ describe("hooks/useAuthorization", () => {
     describe("useAuthorization with non-superuser logged in", () => {
       const MockAdmin = {
         id: "999",
+        // eslint-disable-next-line camelcase
         first_name: "Art",
+        // eslint-disable-next-line camelcase
         last_name: "Vandelay",
         email: "george@vandelayindustries.com",
+        // eslint-disable-next-line camelcase
         is_active: true,
+        // eslint-disable-next-line camelcase
         created_at: "123456",
+        // eslint-disable-next-line camelcase
         updated_at: "123456",
         roles: [
           {
             id: "1",
             role: "curator",
             description: "dicty curator",
+            // eslint-disable-next-line camelcase
             created_at: 123_456,
+            // eslint-disable-next-line camelcase
             updated_at: 678_900,
             permissions: [
               {
@@ -113,7 +124,9 @@ describe("hooks/useAuthorization", () => {
                 permission: "write",
                 description: "a test permission",
                 resource: "dsccontent",
+                // eslint-disable-next-line camelcase
                 created_at: 123_456,
+                // eslint-disable-next-line camelcase
                 updated_at: 678_900,
               },
             ],
