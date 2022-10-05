@@ -88,6 +88,7 @@ describe("features/EditablePages/EditInfoPage", () => {
             variables: {
               input: {
                 id: properties.location.state.data.id,
+                // eslint-disable-next-line camelcase
                 updated_by: properties.location.state.data.updated_by.id,
                 content: properties.location.state.data.content,
               },
@@ -97,6 +98,7 @@ describe("features/EditablePages/EditInfoPage", () => {
             data: {
               updateContent: {
                 id: properties.location.state.data.id,
+                // eslint-disable-next-line camelcase
                 updated_by: {
                   id: properties.location.state.data.updated_by.id,
                 },

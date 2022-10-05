@@ -43,7 +43,9 @@ describe("authentication/OauthSignHandler", () => {
         query: LoginDocument,
         variables: {
           input: {
+            // eslint-disable-next-line camelcase
             client_id: clientConfig.google.clientId,
+            // eslint-disable-next-line camelcase
             redirect_url: redirectUrl,
             state: "state",
             code,
@@ -61,7 +63,9 @@ describe("authentication/OauthSignHandler", () => {
               user: {
                 id: "123",
                 email: "crazyjoe@davola.org",
+                // eslint-disable-next-line camelcase
                 first_name: "Joe",
+                // eslint-disable-next-line camelcase
                 last_name: "Davola",
                 roles: [
                   {
