@@ -1,4 +1,3 @@
-import React from "react"
 import { makeStyles } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -102,7 +101,7 @@ const useStyles = makeStyles({
 })
 
 /** Widget that displays the most recent plasmids and strains in the Stock Center */
-const StockCenter = (): JSX.Element => {
+const StockCenter = () => {
   const classes = useStyles()
 
   return (
