@@ -1,7 +1,4 @@
 import { render, screen } from "@testing-library/react"
-import lifeCycle from "common/assets/frontCarousel/dicty-life-cycle.jpg"
-import slug from "common/assets/frontCarousel/dicty-slug.jpg"
-import tubulin from "common/assets/frontCarousel/dicty-tubulin-centrosom.png"
 import Slideshow from "./Slideshow"
 
 describe("feature/Frontpage/Slideshow", () => {

@@ -82,6 +82,7 @@ describe("hooks/useAuthorization", () => {
       const { result } = renderHook(() => useAuthorization(), {
         wrapper,
       })
+      // eslint-disable-next-line sonarjs/no-duplicate-string
       it("should return user state", () => {
         expect(result.current.user).toBe(MockSuperuser)
       })

@@ -1,5 +1,8 @@
 import { isMutation, getGraphQLServer } from "./useCreateApolloClient"
 
+const GRAPHQL_SERVER_URL = "https://ericgraphql.dictybase.dev"
+const ALT_GRAPHQL_SERVER_URL = "https://betagraphql.dictycr.org"
+
 describe("isMutation function", () => {
   it("should return true for mutation", () => {
     expect(isMutation("Logout")).toBeTruthy()
@@ -22,8 +25,8 @@ describe("getGraphQLServer function", () => {
   })
 
   it("should return expected URL for development environment", () => {
-    process.env.REACT_APP_GRAPHQL_SERVER = "https://ericgraphql.dictybase.dev"
-    process.env.REACT_APP_ALT_GRAPHQL_SERVER = "https://betagraphql.dictycr.org"
+    process.env.REACT_APP_GRAPHQL_SERVER = GRAPHQL_SERVER_URL
+    process.env.REACT_APP_ALT_GRAPHQL_SERVER = ALT_GRAPHQL_SERVER_URL
     process.env.DEPLOY_ENV = "development"
     expect(
       getGraphQLServer(
@@ -35,8 +38,8 @@ describe("getGraphQLServer function", () => {
   })
 
   it("should return expected URL for staging environment with dictycr origin", () => {
-    process.env.REACT_APP_GRAPHQL_SERVER = "https://ericgraphql.dictybase.dev"
-    process.env.REACT_APP_ALT_GRAPHQL_SERVER = "https://betagraphql.dictycr.org"
+    process.env.REACT_APP_GRAPHQL_SERVER = GRAPHQL_SERVER_URL
+    process.env.REACT_APP_ALT_GRAPHQL_SERVER = ALT_GRAPHQL_SERVER_URL
     process.env.DEPLOY_ENV = "staging"
     expect(
       getGraphQLServer(
@@ -48,8 +51,8 @@ describe("getGraphQLServer function", () => {
   })
 
   it("should return expected URL for staging environment with dictybase origin", () => {
-    process.env.REACT_APP_GRAPHQL_SERVER = "https://ericgraphql.dictybase.dev"
-    process.env.REACT_APP_ALT_GRAPHQL_SERVER = "https://betagraphql.dictycr.org"
+    process.env.REACT_APP_GRAPHQL_SERVER = GRAPHQL_SERVER_URL
+    process.env.REACT_APP_ALT_GRAPHQL_SERVER = ALT_GRAPHQL_SERVER_URL
     process.env.DEPLOY_ENV = "staging"
     expect(
       getGraphQLServer(
