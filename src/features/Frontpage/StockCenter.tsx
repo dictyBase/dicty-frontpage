@@ -102,7 +102,7 @@ const useStyles = makeStyles({
 })
 
 /** Widget that displays the most recent plasmids and strains in the Stock Center */
-const StockCenter = (): JSX.Element => {
+const StockCenter = () => {
   const classes = useStyles()
 
   return (
