@@ -35,7 +35,7 @@ interface PaperContainerProperties {
 const PapersItem = ({ data }: PaperContainerProperties) => {
   const classes = useStyles()
 
-  const text = data?.listRecentPublications?.map((paper, index) => {
+  const text = data?.listRecentPublications?.map((paper) => {
     const authors = paper?.authors
     const doi = paper?.doi
     if (!authors) return <></>
@@ -44,7 +44,7 @@ const PapersItem = ({ data }: PaperContainerProperties) => {
       : authors[0]?.last_name
 
     return (
-      <li className={classes.listItem} key={index}>
+      <li className={classes.listItem} key={paper.id}>
         <span className={classes.leadText}>{lastname || ""}</span>
         <span className={classes.mainContent}>
           <strong>

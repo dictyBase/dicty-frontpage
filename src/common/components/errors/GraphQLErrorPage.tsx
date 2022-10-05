@@ -18,6 +18,7 @@ const GraphQLErrorPage = ({ error }: Properties) => {
   if (!error || !error.message) return null
 
   if (error.networkError) {
+    // eslint-disable-next-line no-console
     console.error(error.networkError)
     return <ServerError />
   }
