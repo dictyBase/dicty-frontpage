@@ -124,7 +124,7 @@ describe("features/Authentication/Login", () => {
     it("should return appropriate error if user not found", () => {
       const error: any = {
         message: "",
-        networkError: null,
+        networkError: undefined,
         extraInfo: {},
         name: "",
         graphQLErrors: [
@@ -152,7 +152,7 @@ describe("features/Authentication/Login", () => {
     it("should return generic error if not network or not found error", () => {
       const error: any = {
         message: "",
-        networkError: null,
+        networkError: undefined,
         extraInfo: {},
         name: "",
         graphQLErrors: [
