@@ -29,13 +29,13 @@ const LinkIcon = ({ link }: LinkIconProperties) => (
 
 const HeaderLinks = ({ items }: { items: LinkProperties[] }) => (
   <>
-    {items.map((link: LinkProperties, index: number) =>
+    {items.map((link: LinkProperties) =>
       link.isRouter ? (
-        <Link style={{ padding: "15px" }} key={index} to={link.url}>
+        <Link style={{ padding: "15px" }} key={link.url} to={link.url}>
           <LinkIcon link={link} />
         </Link>
       ) : (
-        <HeaderLink key={index} href={link.url}>
+        <HeaderLink key={link.url} href={link.url}>
           <LinkIcon link={link} />
         </HeaderLink>
       ),
