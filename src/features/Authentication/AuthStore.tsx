@@ -31,7 +31,7 @@ const initialState = {
   token: "",
   user: {} as User,
   provider: "",
-  error: null,
+  error: undefined,
 }
 
 type Action =
@@ -66,7 +66,7 @@ const authReducer = (state: AuthState, action: Action) => {
         token,
         user,
         provider,
-        error: null,
+        error: undefined,
       }
     }
     case ActionType.LOGIN_ERROR: {
@@ -86,7 +86,7 @@ const authReducer = (state: AuthState, action: Action) => {
         token: newToken,
         user: action.payload.user,
         provider: action.payload.provider,
-        error: null,
+        error: undefined,
       }
     }
     default: {
