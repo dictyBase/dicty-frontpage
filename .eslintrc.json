@@ -34,6 +34,7 @@
     "import/no-unresolved": "error",
     "quotes": ["off", "single"],
     "semi": ["error", "never"],
+    "no-unused-vars": "off",
     "react/jsx-filename-extension": [
       "warn",
       {
