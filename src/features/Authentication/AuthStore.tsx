@@ -101,10 +101,13 @@ const authReducer = (state: AuthState, action: Action) => {
 const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [state, dispatch] = React.useReducer(authReducer, initialState)
 
+  const contextValue = React.useMemo(
+    () => ({ state, dispatch }),
+    [state, dispatch],
+  )
+
   return (
-    <AuthContext.Provider value={{ state, dispatch }}>
-      {children}
-    </AuthContext.Provider>
+    <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>
   )
 }
 
