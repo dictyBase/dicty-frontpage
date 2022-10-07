@@ -1,6 +1,7 @@
 import React from "react"
 import { useListRecentStrainsQuery } from "dicty-graphql-schema"
 import Loader from "common/components/Loader"
+import Fallback from "common/components/Fallback"
 import GraphQLErrorPage from "common/components/errors/GraphQLErrorPage"
 import StockCenterItem from "./StockCenterItem"
 
@@ -12,13 +13,10 @@ const StockCenterStrainQuery = () => {
     },
   })
 
-  return (
-    <>
-      {loading ? <Loader /> : undefined}
-      {error ? <GraphQLErrorPage error={error} /> : undefined}
-      {data ? <StockCenterItem data={data} type="Strain" /> : undefined}
-    </>
-  )
+  if (loading) return <Loader />
+  if (error) return <GraphQLErrorPage error={error} />
+  if (data) return <StockCenterItem data={data} type="Strain" />
+  return <Fallback />
 }
 
 export default StockCenterStrainQuery

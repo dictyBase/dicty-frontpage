@@ -79,6 +79,7 @@ const OauthSignHandler = () => {
     }
   }, [data, dispatch, navigate, login])
 
+  // eslint-disable-next-line unicorn/no-null
   return null
 }
 

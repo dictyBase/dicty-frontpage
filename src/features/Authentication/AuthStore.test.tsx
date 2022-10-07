@@ -7,7 +7,7 @@ const initialState = {
   token: "",
   user: {} as User,
   provider: "",
-  error: null,
+  error: undefined,
 }
 
 const mockToken = "tiubakjdgnjka"
@@ -29,7 +29,7 @@ describe("authReducer", () => {
       token: mockToken,
       provider: mockProvider,
       user: MockSuperuser,
-      error: null,
+      error: undefined,
     })
   })
   it("should return error object when error on login", () => {
@@ -55,7 +55,7 @@ describe("authReducer", () => {
       token: "jwtxyz",
       user: MockSuperuser,
       provider: "google",
-      error: null,
+      error: undefined,
     }
     expect(
       authReducer(state, {
@@ -69,7 +69,7 @@ describe("authReducer", () => {
       token: mockToken,
       provider: mockProvider,
       user: MockSuperuser,
-      error: null,
+      error: undefined,
     }
     const newToken = "wthjiowvnfskjkdfsbnkjadb"
     expect(
@@ -86,7 +86,7 @@ describe("authReducer", () => {
       token: newToken,
       provider: mockProvider,
       user: MockSuperuser,
-      error: null,
+      error: undefined,
     })
   })
   it("should return state if not defined action type", () => {
@@ -95,7 +95,7 @@ describe("authReducer", () => {
       token: mockToken,
       provider: mockProvider,
       user: MockSuperuser,
-      error: null,
+      error: undefined,
     }
     expect(
       authReducer(state, {

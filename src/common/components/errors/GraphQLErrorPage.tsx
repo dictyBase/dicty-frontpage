@@ -3,6 +3,7 @@ import { ApolloError } from "@apollo/client"
 import ServerError from "./ServerError"
 import NotFoundError from "./NotFoundError"
 import OtherError from "./OtherError"
+import Fallback from "../Fallback"
 
 type Properties = {
   /** GraphQL error object */
@@ -15,7 +16,7 @@ type Properties = {
  */
 
 const GraphQLErrorPage = ({ error }: Properties) => {
-  if (!error || !error.message) return null
+  if (!error || !error.message) return <Fallback />
 
   if (error.networkError) {
     // eslint-disable-next-line no-console

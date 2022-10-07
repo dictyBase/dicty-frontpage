@@ -1,7 +1,8 @@
 import React from "react"
-import GraphQLErrorPage from "common/components/errors/GraphQLErrorPage"
 import { useListRecentPublicationsQuery } from "dicty-graphql-schema"
+import GraphQLErrorPage from "common/components/errors/GraphQLErrorPage"
 import Loader from "common/components/Loader"
+import Fallback from "common/components/Fallback"
 import AnnotationsItem from "./AnnotationsItem"
 import PapersItem from "./PapersItem"
 
@@ -16,16 +17,11 @@ const PapersQuery = ({ parent }: PapersQueryProperties) => {
     },
   })
 
-  return (
-    <>
-      {loading ? <Loader /> : undefined}
-      {error ? <GraphQLErrorPage error={error} /> : undefined}
-      {parent === "Annotations" && data ? (
-        <AnnotationsItem data={data} type="publications" />
-      ) : undefined}
-      {parent === "Papers" && data ? <PapersItem data={data} /> : undefined}
-    </>
-  )
+  if (loading) return <Loader />
+  if (error) return <GraphQLErrorPage error={error} />
+  if (parent === "Annotations" && data)
+    return <AnnotationsItem data={data} type="publications" />
+  return <Fallback />
 }
 
 export default PapersQuery
