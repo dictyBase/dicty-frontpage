@@ -1,6 +1,7 @@
 import React from "react"
 import { useListRecentPlasmidsQuery } from "dicty-graphql-schema"
 import Loader from "common/components/Loader"
+import Fallback from "common/components/Fallback"
 import GraphQLErrorPage from "common/components/errors/GraphQLErrorPage"
 import StockCenterItem from "./StockCenterItem"
 
@@ -12,13 +13,10 @@ const StockCenterPlasmidQuery = () => {
     },
   })
 
-  return (
-    <>
-      {loading ? <Loader /> : undefined}
-      {error ? <GraphQLErrorPage error={error} /> : undefined}
-      {data ? <StockCenterItem data={data} type="Plasmid" /> : undefined}
-    </>
-  )
+  if (loading) return <Loader />
+  if (error) return <GraphQLErrorPage error={error} />
+  if (data) return <StockCenterItem data={data} type="Plasmid" />
+  return <Fallback />
 }
 
 export default StockCenterPlasmidQuery
