@@ -35,6 +35,9 @@
     "quotes": ["off", "single"],
     "semi": ["error", "never"],
     "no-unused-vars": "off",
+    "no-shadow": "off",
+    "@typescript-eslint/no-unused-vars": "error",
+    "@typescript-eslint/no-shadow": "error",
     "react/jsx-filename-extension": [
       "warn",
       {
