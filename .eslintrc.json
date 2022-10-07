@@ -35,6 +35,7 @@
     "quotes": ["off", "single"],
     "semi": ["error", "never"],
     "no-unused-vars": "off",
+    "react/require-default-props": "off",
     "react/jsx-filename-extension": [
       "warn",
       {
