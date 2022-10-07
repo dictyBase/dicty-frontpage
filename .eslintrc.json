@@ -40,7 +40,21 @@
     "import/no-unresolved": "error",
     "quotes": ["off", "single"],
     "semi": ["error", "never"],
+    "no-shadow": "off",
     "no-unused-vars": "off",
+    "@typescript-eslint/no-shadow": [
+      "error",
+      {
+        "builtinGlobals": false,
+        "hoist": "functions",
+        "allow": [],
+        "ignoreOnInitialization": false
+      }
+    ],
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      { "args": "all", "ignoreRestSiblings": false }
+    ],
     "react/jsx-filename-extension": [
       "warn",
       {
