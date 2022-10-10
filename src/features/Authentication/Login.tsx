@@ -26,11 +26,10 @@ type Config = {
 }
 
 const formatURLParameters = (parameters: Array<Array<string>>) => {
-  let url = ""
-  for (const element of parameters) {
-    url += `&${element[0]}=${element[1]}`
-  }
-  return url
+  const flattenedParametersArray = parameters
+    .map((element) => `${element[0]}=${element[1]}`)
+    .join("&")
+  return `&${flattenedParametersArray}`
 }
 
 const createOauthURL = (config: Config) => {
