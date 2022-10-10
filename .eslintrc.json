@@ -17,6 +17,12 @@
   "overrides": [
     {
       "files": ["*.ts", "*.tsx"]
+    },
+    {
+      "files": ["*.test.ts", "*.test.tsx"],
+      "rules": {
+        "i18n-text/no-en": "off"
+      }
     }
   ],
   "ignorePatterns": ["src/generated/**", "public/mockServiceWorker.js"],
