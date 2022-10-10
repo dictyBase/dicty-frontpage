@@ -5,7 +5,7 @@ import AnnotationsGeneQuery from "./AnnotationsGeneQuery"
 import listRecentGenes from "../../common/data/mockGenes"
 
 jest.mock("dicty-graphql-schema", () => {
-  // eslint-disable-next-line no-shadow
+  // eslint-disable-next-line @typescript-eslint/no-shadow
   const useListRecentGenesQuery = jest.fn()
   return {
     useListRecentGenesQuery,

@@ -5,7 +5,7 @@ import listRecentPlasmids from "../../common/data/mockPlasmids"
 import StockCenterPlasmidQuery from "./StockCenterPlasmidQuery"
 
 jest.mock("dicty-graphql-schema", () => {
-  // eslint-disable-next-line no-shadow
+  // eslint-disable-next-line @typescript-eslint/no-shadow
   const useListRecentPlasmidsQuery = jest.fn()
   return { useListRecentPlasmidsQuery }
 })
