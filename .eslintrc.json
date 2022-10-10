@@ -65,6 +65,8 @@
       }
     ],
     "filenames/match-regex": "off",
+    "github/array-foreach": "off",
+    "unicorn/no-array-for-each": "off",
     "unicorn/filename-case": [
       "error",
       {
