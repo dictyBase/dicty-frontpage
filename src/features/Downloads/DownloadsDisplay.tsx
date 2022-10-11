@@ -57,18 +57,16 @@ const DownloadsDisplay = ({ data }: Properties) => {
     setTabValue(value)
   }
 
-  const generateTabContainers = (items: Array<Organism>) =>
-    items.map((item: Organism) => {
-      if (item.taxon_id === tabValue) {
-        return (
-          <Typography component="div" key={item.taxon_id}>
-            <Citations citations={item.citations} />
-            <DownloadsTable data={item.downloads} />
-          </Typography>
-        )
-      }
-      return null
-    })
+  const generateTabContainers = (items: Array<Organism>) => {
+    const filteredItems = items.filter((item) => item.taxon_id === tabValue)
+
+    return filteredItems.map((item: Organism) => (
+      <Typography component="div" key={item.taxon_id}>
+        <Citations citations={item.citations} />
+        <DownloadsTable data={item.downloads} />
+      </Typography>
+    ))
+  }
 
   return (
     <MuiThemeProvider theme={muiTheme}>
