@@ -12,7 +12,7 @@ jest.mock("react-router-dom", () => {
 
   return {
     ...originalModule,
-    useNavigate: (to: string) => mockHistoryPush,
+    useNavigate: () => mockHistoryPush,
   }
 })
 
@@ -20,7 +20,7 @@ describe("authentication/OauthSignHandler", () => {
   // set up mocks for window event listeners
   const globalAny = global as any
   const map = {
-    message: (any: any) => {},
+    message: () => {},
   }
   globalAny.addEventListener = jest.fn((event, callback) => {
     // @ts-ignore
