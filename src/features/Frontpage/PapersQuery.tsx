@@ -1,10 +1,8 @@
-import React from "react"
 import { useListRecentPublicationsQuery } from "dicty-graphql-schema"
 import GraphQLErrorPage from "common/components/errors/GraphQLErrorPage"
 import Loader from "common/components/Loader"
 import Fallback from "common/components/Fallback"
 import AnnotationsItem from "./AnnotationsItem"
-import PapersItem from "./PapersItem"
 
 interface PapersQueryProperties {
   parent: String

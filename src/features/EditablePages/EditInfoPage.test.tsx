@@ -11,7 +11,7 @@ jest.mock("react-router-dom", () => {
   const originalModule = jest.requireActual("react-router-dom")
   return {
     ...originalModule,
-    useNavigate: (to: string) => mockHistoryPush,
+    useNavigate: () => mockHistoryPush,
     useLocation: () => ({
       pathname: "/research/techniques/edit",
     }),

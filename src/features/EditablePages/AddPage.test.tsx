@@ -16,7 +16,7 @@ jest.mock("react-router-dom", () => {
     useParams: () => ({
       name: "shipping",
     }),
-    useNavigate: (to: string) => mockHistoryPush,
+    useNavigate: () => mockHistoryPush,
   }
 })
 

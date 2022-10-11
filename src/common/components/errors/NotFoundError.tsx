@@ -1,4 +1,3 @@
-import React from "react"
 import { Link, useLocation, useParams } from "react-router-dom"
 import Grid from "@material-ui/core/Grid"
 import Button from "@material-ui/core/Button"
@@ -24,6 +23,8 @@ type Parameters_ = {
  * UI display when an item was not found.
  */
 
+// While not currently used in the component, sometimes NotFoundError is invoked by other components that provide it an error prop, so the parameter will not be removed for now.
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const NotFoundError = ({ error }: Properties) => {
   const { name, subname } = useParams<Parameters_>()
   const location = useLocation()
