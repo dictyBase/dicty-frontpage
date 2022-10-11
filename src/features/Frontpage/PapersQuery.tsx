@@ -1,4 +1,3 @@
-import React from "react"
 import { useListRecentPublicationsQuery } from "dicty-graphql-schema"
 import GraphQLErrorPage from "common/components/errors/GraphQLErrorPage"
 import Loader from "common/components/Loader"
