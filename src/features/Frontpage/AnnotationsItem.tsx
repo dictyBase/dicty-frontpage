@@ -1,9 +1,9 @@
-import React from "react"
 import { makeStyles } from "@material-ui/core/styles"
 import {
   ListRecentPublicationsQuery,
   ListRecentGenesQuery,
 } from "dicty-graphql-schema"
+import Fallback from "common/components/Fallback"
 
 const useStyles = makeStyles({
   listItem: {
@@ -16,20 +16,23 @@ const useStyles = makeStyles({
 
 interface AnnotationsItemProperties {
   data: ListRecentPublicationsQuery & ListRecentGenesQuery
-  type: String
+  type: "publications" | "genes"
 }
 
 /** Widget that displays the most recent annotations for genes and papers */
 const Annotations = ({ data, type }: AnnotationsItemProperties) => {
   const classes = useStyles()
 
-  let text
-
   if (type === "publications") {
-    text = data?.listRecentPublications?.map((paper) => {
-      const doi = paper?.doi
-      const doiString = paper?.doi?.split("/")
-      if (!doiString) return <></>
+    const filteredPublications =
+      data?.listRecentPublications?.filter(
+        (paper) => paper.doi && typeof paper.doi === "string",
+      ) || []
+
+    return filteredPublications.map((paper) => {
+      // Due to the filtering conditions above, it can be assumed that each element of filteredPublications will have a "doi" property of type "string"
+      const doi = paper.doi as string
+      const doiString = doi.split("/")
       return (
         <li className={classes.listItem} key={paper.id}>
           <a className={classes.link} href={doi || ""}>
@@ -41,7 +44,7 @@ const Annotations = ({ data, type }: AnnotationsItemProperties) => {
   }
 
   if (type === "genes") {
-    text = data?.listRecentGenes?.map((gene) => (
+    return data?.listRecentGenes?.map((gene) => (
       <li className={classes.listItem} key={gene.id}>
         <a className={classes.link} href={`/gene/${gene.id}`}>
           {gene.name}
@@ -50,7 +53,7 @@ const Annotations = ({ data, type }: AnnotationsItemProperties) => {
     ))
   }
 
-  return <>{text}</>
+  return <Fallback />
 }
 
 export default Annotations
