@@ -2,6 +2,7 @@ import React from "react"
 import { ApolloProvider } from "@apollo/client"
 import { BrowserRouter } from "react-router-dom"
 import { MuiThemeProvider, createTheme } from "@material-ui/core/styles"
+import { getAppBasename } from "common/utils/environmentalVariables"
 import CircularProgress from "@material-ui/core/CircularProgress"
 import useCreateApolloClient from "common/hooks/useCreateApolloClient"
 
@@ -84,9 +85,7 @@ const AppProviders = ({ children }: { children: React.ReactNode }) => {
   return (
     <ApolloProvider client={client}>
       <MuiThemeProvider theme={appTheme}>
-        <BrowserRouter basename={import.meta.env.VITE_APP_BASENAME}>
-          {children}
-        </BrowserRouter>
+        <BrowserRouter basename={getAppBasename()}>{children}</BrowserRouter>
       </MuiThemeProvider>
     </ApolloProvider>
   )

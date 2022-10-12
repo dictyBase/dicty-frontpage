@@ -29,7 +29,7 @@ const Annotations = ({ data, type }: AnnotationsItemProperties) => {
         (paper) => paper.doi && typeof paper.doi === "string",
       ) || []
 
-    return filteredPublications.map((paper) => {
+    const recentPublications = filteredPublications.map((paper) => {
       // Due to the filtering conditions above, it can be assumed that each element of filteredPublications will have a "doi" property of type "string"
       const doi = paper.doi as string
       const doiString = doi.split("/")
@@ -41,16 +41,20 @@ const Annotations = ({ data, type }: AnnotationsItemProperties) => {
         </li>
       )
     })
+    // eslint-disable-next-line react/jsx-no-useless-fragment --- recentPublications may represent more than one child, and should therefore be wrapped in a JSX fragment
+    return <>{recentPublications}</>
   }
 
   if (type === "genes") {
-    return data?.listRecentGenes?.map((gene) => (
+    const recentGenes = data?.listRecentGenes?.map((gene) => (
       <li className={classes.listItem} key={gene.id}>
         <a className={classes.link} href={`/gene/${gene.id}`}>
           {gene.name}
         </a>
       </li>
     ))
+    // eslint-disable-next-line react/jsx-no-useless-fragment --- recentGenes may represent more than one child, and should therefore be wrapped in a JSX fragment
+    return <>{recentGenes}</>
   }
 
   return <Fallback />

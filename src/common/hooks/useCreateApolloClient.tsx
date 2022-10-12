@@ -2,6 +2,10 @@ import React from "react"
 import { ApolloClient, InMemoryCache, createHttpLink } from "@apollo/client"
 import { setContext } from "@apollo/client/link/context"
 import { CachePersistor, LocalForageWrapper } from "apollo3-cache-persist"
+import {
+  getAltGraphQLServer,
+  getDeployEnvironment,
+} from "common/utils/environmentalVariables"
 import localForage from "localforage"
 import version from "dicty-graphql-schema/package.json"
 
@@ -18,7 +22,7 @@ const getGraphQLServer = (
   origin: string,
 ) => {
   if (deployEnvironment === "staging" && origin === "https://dictycr.org") {
-    return import.meta.env.VITE_APP_ALT_GRAPHQL_SERVER
+    return getAltGraphQLServer()
   }
   return url
 }
@@ -36,8 +40,8 @@ const authLink = setContext((request, { headers }) => {
 })
 
 const server = getGraphQLServer(
-  import.meta.env.VITE_APP_GRAPHQL_SERVER,
-  import.meta.env.DEPLOY_ENV,
+  getAltGraphQLServer(),
+  getDeployEnvironment(),
   window.location.origin,
 )
 

@@ -1,3 +1,5 @@
+import { getNavBarJSON } from "./environmentalVariables"
+
 const navbarItems = {
   data: [
     {
@@ -222,7 +224,7 @@ const formatNavbarData = (json: NavbarItems) =>
     items: formatNavbarItems(item.attributes.items),
   }))
 
-const navbarURL = import.meta.env.VITE_APP_NAVBAR_JSON
+const navbarURL = getNavBarJSON()
 
 export type { NavbarItems }
 export { navbarItems, formatNavbarData, navbarURL }

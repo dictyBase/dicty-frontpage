@@ -1,3 +1,5 @@
+import { getFooterJSON } from "./environmentalVariables"
+
 const footerLinks = {
   data: [
     {
@@ -75,7 +77,7 @@ const footerLinks = {
   ],
 }
 
-const footerURL = import.meta.env.VITE_APP_FOOTER_JSON
+const footerURL = getFooterJSON()
 
 type FooterItems = {
   data: Array<{
