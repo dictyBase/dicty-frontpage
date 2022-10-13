@@ -4,18 +4,20 @@ import { ApolloError } from "@apollo/client"
 import AnnotationsGeneQuery from "./AnnotationsGeneQuery"
 import listRecentGenes from "../../common/data/mockGenes"
 
-jest.mock("dicty-graphql-schema", () => {
+vi.mock("dicty-graphql-schema", () => {
   // eslint-disable-next-line @typescript-eslint/no-shadow
-  const useListRecentGenesQuery = jest.fn()
+  const useListRecentGenesQuery = vi.fn()
   return {
     useListRecentGenesQuery,
   }
 })
 describe("feature/Frontpage/AnnotationsGeneQuery", () => {
-  beforeEach(() => jest.clearAllMocks())
+  beforeEach(() => {
+    vi.clearAllMocks()
+  })
 
   it("should render genes", () => {
-    ;(useListRecentGenesQuery as jest.Mock).mockReturnValue({
+    ;(useListRecentGenesQuery as vi.mocked).mockReturnValue({
       loading: false,
       error: false,
       data: { listRecentGenes: [...listRecentGenes] },
@@ -29,7 +31,7 @@ describe("feature/Frontpage/AnnotationsGeneQuery", () => {
   })
 
   it("should render loading if genes is loading", () => {
-    ;(useListRecentGenesQuery as jest.Mock).mockReturnValue({
+    ;(useListRecentGenesQuery as vi.mocked).mockReturnValue({
       loading: true,
     })
     render(<AnnotationsGeneQuery />)
@@ -37,7 +39,7 @@ describe("feature/Frontpage/AnnotationsGeneQuery", () => {
   })
 
   it("should render Apollo Error Component if genes failed to load", () => {
-    ;(useListRecentGenesQuery as jest.Mock).mockReturnValue({
+    ;(useListRecentGenesQuery as vi.mocked).mockReturnValue({
       error: new ApolloError({}),
     })
     render(<AnnotationsGeneQuery />)

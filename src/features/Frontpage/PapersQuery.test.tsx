@@ -4,18 +4,20 @@ import { ApolloError } from "@apollo/client"
 import PapersQuery from "./PapersQuery"
 import listRecentPublications from "../../common/data/mockPublications"
 
-jest.mock("dicty-graphql-schema", () => {
+vi.mock("dicty-graphql-schema", () => {
   // eslint-disable-next-line @typescript-eslint/no-shadow
-  const useListRecentPublicationsQuery = jest.fn()
+  const useListRecentPublicationsQuery = vi.fn()
   return {
     useListRecentPublicationsQuery,
   }
 })
 describe("feature/Frontpage/PaperQuery", () => {
-  beforeEach(() => jest.clearAllMocks())
+  beforeEach(() => {
+    vi.clearAllMocks()
+  })
 
   it("should render publications in Annotations", () => {
-    ;(useListRecentPublicationsQuery as jest.Mock).mockReturnValue({
+    ;(useListRecentPublicationsQuery as vi.mocked).mockReturnValue({
       loading: false,
       error: false,
       data: { listRecentPublications: [...listRecentPublications] },
@@ -29,7 +31,7 @@ describe("feature/Frontpage/PaperQuery", () => {
   })
 
   it("should render loading if publications is loading in Annotations", () => {
-    ;(useListRecentPublicationsQuery as jest.Mock).mockReturnValue({
+    ;(useListRecentPublicationsQuery as vi).mockReturnValue({
       loading: true,
     })
     render(<PapersQuery parent="Annotations" />)
@@ -38,7 +40,7 @@ describe("feature/Frontpage/PaperQuery", () => {
   })
 
   it("should render Apollo Error Component if publications failed to load in Annotations", () => {
-    ;(useListRecentPublicationsQuery as jest.Mock).mockReturnValue({
+    ;(useListRecentPublicationsQuery as vi).mockReturnValue({
       error: new ApolloError({}),
     })
     render(<PapersQuery parent="Annotations" />)
@@ -46,10 +48,12 @@ describe("feature/Frontpage/PaperQuery", () => {
 })
 
 describe("feature/Frontpage/Papers Browser based", () => {
-  beforeEach(() => jest.clearAllMocks())
+  beforeEach(() => {
+    vi.clearAllMocks()
+  })
 
   it("should render papers", () => {
-    ;(useListRecentPublicationsQuery as jest.Mock).mockReturnValue({
+    ;(useListRecentPublicationsQuery as vi.mocked).mockReturnValue({
       loading: false,
       error: false,
       data: { listRecentPublications: [...listRecentPublications] },
@@ -68,7 +72,7 @@ describe("feature/Frontpage/Papers Browser based", () => {
   })
 
   it("should render loading", () => {
-    ;(useListRecentPublicationsQuery as jest.Mock).mockReturnValue({
+    ;(useListRecentPublicationsQuery as vi.mocked).mockReturnValue({
       loading: true,
     })
     render(<PapersQuery parent="Papers" />)
@@ -77,7 +81,7 @@ describe("feature/Frontpage/Papers Browser based", () => {
   })
 
   it("should render Apollo Error Component", () => {
-    ;(useListRecentPublicationsQuery as jest.Mock).mockReturnValue({
+    ;(useListRecentPublicationsQuery as vi.mocked).mockReturnValue({
       error: new ApolloError({}),
     })
     render(<PapersQuery parent="Papers" />)

@@ -5,8 +5,8 @@ import OauthCallback from "./OauthCallback"
 
 describe("features/Authentication/OauthCallback", () => {
   const globalAny = global as any
-  const postMessageMock = jest.fn()
-  const closeMock = jest.fn()
+  const postMessageMock = vi.fn()
+  const closeMock = vi.fn()
   globalAny.opener = {
     postMessage: postMessageMock,
   }

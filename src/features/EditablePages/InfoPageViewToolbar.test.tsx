@@ -6,7 +6,7 @@ import InfoPageViewToolbar from "./InfoPageViewToolbar"
 
 describe("EditablePages/InfoPageViewToolbar", () => {
   describe("user has editing permission and verified token", () => {
-    const mockHandleClick = jest.fn()
+    const mockHandleClick = vi.fn()
     const properties = {
       lastUpdate: "2020-01-01T17:50:12.427Z",
       user: {
@@ -71,7 +71,7 @@ describe("EditablePages/InfoPageViewToolbar", () => {
           },
         ],
       },
-      handleClick: jest.fn(),
+      handleClick: vi.fn(),
     }
 
     it("renders expected error message", () => {

@@ -5,10 +5,10 @@ import MockAuthProvider from "mocks/MockAuthProvider"
 import clientConfig from "common/utils/clientConfig"
 import OauthSignHandler from "./OauthSignHandler"
 
-const mockHistoryPush = jest.fn()
+const mockHistoryPush = vi.fn()
 
-jest.mock("react-router-dom", () => {
-  const originalModule = jest.requireActual("react-router-dom")
+vi.mock("react-router-dom", () => {
+  const originalModule = vi.importActual("react-router-dom")
 
   return {
     ...originalModule,
@@ -22,11 +22,11 @@ describe("authentication/OauthSignHandler", () => {
   const map = {
     message: () => {},
   }
-  globalAny.addEventListener = jest.fn((event, callback) => {
+  globalAny.addEventListener = vi.fn((event, callback) => {
     // @ts-ignore
     map[event] = callback
   })
-  globalAny.removeEventListener = jest.fn((event, callback) => {
+  globalAny.removeEventListener = vi.fn((event, callback) => {
     // @ts-ignore
     map[event] = callback
   })
@@ -126,8 +126,8 @@ describe("authentication/OauthSignHandler", () => {
           query: `?code=${code}`,
           url: redirectUrl,
         },
-        preventDefault: jest.fn(),
-        stopPropagation: jest.fn(),
+        preventDefault: vi.fn(),
+        stopPropagation: vi.fn(),
       })
       await waitFor(() => {
         expect(loginMutationCalled).toBeFalsy()
@@ -141,8 +141,8 @@ describe("authentication/OauthSignHandler", () => {
           query: `?code=${code}`,
           url: redirectUrl,
         },
-        preventDefault: jest.fn(),
-        stopPropagation: jest.fn(),
+        preventDefault: vi.fn(),
+        stopPropagation: vi.fn(),
       })
 
       await waitFor(() => {
