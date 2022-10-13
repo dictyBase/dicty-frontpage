@@ -4,17 +4,19 @@ import { ApolloError } from "@apollo/client"
 import listRecentStrains from "../../common/data/mockStrains"
 import StockCenterStrainQuery from "./StockCenterStrainQuery"
 
-jest.mock("dicty-graphql-schema", () => {
+vi.mock("dicty-graphql-schema", () => {
   // eslint-disable-next-line @typescript-eslint/no-shadow
-  const useListRecentStrainsQuery = jest.fn()
+  const useListRecentStrainsQuery = vi.fn()
   return { useListRecentStrainsQuery }
 })
 
 describe("feature/Frontpage/StockCenterStrainQuery", () => {
-  beforeEach(() => jest.clearAllMocks())
+  beforeEach(() => {
+    vi.clearAllMocks()
+  })
 
   it("should render strains", () => {
-    ;(useListRecentStrainsQuery as jest.Mock).mockReturnValue({
+    ;(useListRecentStrainsQuery as vi.mocked).mockReturnValue({
       loading: false,
       error: false,
       data: { listRecentStrains: [...listRecentStrains] },
@@ -29,7 +31,7 @@ describe("feature/Frontpage/StockCenterStrainQuery", () => {
   })
 
   it("should render loading if strains is loading", () => {
-    ;(useListRecentStrainsQuery as jest.Mock).mockReturnValue({
+    ;(useListRecentStrainsQuery as vi.mocked).mockReturnValue({
       loading: true,
     })
     render(<StockCenterStrainQuery />)
@@ -38,7 +40,7 @@ describe("feature/Frontpage/StockCenterStrainQuery", () => {
   })
 
   it("should render Apollo Error Component if strains failed to load", () => {
-    ;(useListRecentStrainsQuery as jest.Mock).mockReturnValue({
+    ;(useListRecentStrainsQuery as vi.mocked).mockReturnValue({
       error: new ApolloError({}),
     })
     render(<StockCenterStrainQuery />)

@@ -6,7 +6,7 @@ import { UpdateContentDocument } from "dicty-graphql-schema"
 import MockAuthProvider from "mocks/MockAuthProvider"
 import InlineEditor from "./InlineEditor"
 
-window.getSelection = jest.fn()
+window.getSelection = vi.fn()
 
 const mockContent = [
   {

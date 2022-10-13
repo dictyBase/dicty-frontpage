@@ -4,17 +4,19 @@ import { ApolloError } from "@apollo/client"
 import listRecentPlasmids from "../../common/data/mockPlasmids"
 import StockCenterPlasmidQuery from "./StockCenterPlasmidQuery"
 
-jest.mock("dicty-graphql-schema", () => {
+vi.mock("dicty-graphql-schema", () => {
   // eslint-disable-next-line @typescript-eslint/no-shadow
-  const useListRecentPlasmidsQuery = jest.fn()
+  const useListRecentPlasmidsQuery = vi.fn()
   return { useListRecentPlasmidsQuery }
 })
 
 describe("feature/Frontpage/StockCenterPlasmidQuery", () => {
-  beforeEach(() => jest.clearAllMocks())
+  beforeEach(() => {
+    vi.clearAllMocks()
+  })
 
   it("should render plasmids", () => {
-    ;(useListRecentPlasmidsQuery as jest.Mock).mockReturnValue({
+    ;(useListRecentPlasmidsQuery as vi.mocked).mockReturnValue({
       loading: false,
       error: false,
       data: { listRecentPlasmids: [...listRecentPlasmids] },
@@ -29,7 +31,7 @@ describe("feature/Frontpage/StockCenterPlasmidQuery", () => {
   })
 
   it("should render loading if plasmids is loading", () => {
-    ;(useListRecentPlasmidsQuery as jest.Mock).mockReturnValue({
+    ;(useListRecentPlasmidsQuery as vi.mocked).mockReturnValue({
       loading: true,
     })
     render(<StockCenterPlasmidQuery />)
@@ -38,7 +40,7 @@ describe("feature/Frontpage/StockCenterPlasmidQuery", () => {
   })
 
   it("should render Apollo Error Component if plasmids failed to load", () => {
-    ;(useListRecentPlasmidsQuery as jest.Mock).mockReturnValue({
+    ;(useListRecentPlasmidsQuery as vi.mocked).mockReturnValue({
       error: new ApolloError({}),
     })
     render(<StockCenterPlasmidQuery />)

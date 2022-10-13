@@ -16,7 +16,7 @@ describe("getGraphQLServer function", () => {
   const OLD_ENV = process.env
 
   beforeEach(() => {
-    jest.resetModules() // clear the cache
+    vi.resetModules() // clear the cache
     process.env = { ...OLD_ENV } // make a copy
   })
 

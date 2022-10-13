@@ -6,7 +6,7 @@ import Login, { createOauthURL, generateErrorDisplayMessage } from "./Login"
 
 describe("features/Authentication/Login", () => {
   const globalAny = global as any
-  const openMock = jest.fn()
+  const openMock = vi.fn()
   globalAny.open = openMock
 
   describe("initial render", () => {
