@@ -21,13 +21,13 @@ describe("hooks/useAuthorization", () => {
       expect(verifyToken("")).toBeFalsy()
     })
     it("should return true for valid token", () => {
-      dateNowSpy = jest
+      dateNowSpy = vi
         .spyOn(Date, "now")
         .mockImplementation(() => 1_487_076_708_000) // 2017-02-14
       expect(verifyToken(mockJWT)).toBeTruthy()
     })
     it("should return false for expired token", () => {
-      dateNowSpy = jest
+      dateNowSpy = vi
         .spyOn(Date, "now")
         .mockImplementation(() => 1_932_701_199_000) // 2031-03-31
       expect(verifyToken(mockJWT)).toBeFalsy()
