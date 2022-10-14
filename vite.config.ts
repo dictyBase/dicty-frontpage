@@ -11,9 +11,15 @@ export default defineConfig({
   server: {
     port: 3000,
   },
+  resolve: {
+    mainFields: ["module"],
+  },
   test: {
     globals: true,
     environment: "jsdom",
     setupFiles: ["./src/setupTests.js"],
+    deps: {
+      inline: ["compute-scroll-into-view"],
+    },
   },
 })
