@@ -3,8 +3,8 @@ import { Tweets, dateFormatter } from "./Tweets"
 
 describe("feature/Frontpage/Tweets", () => {
   beforeAll(() => {
-    jest.useFakeTimers("modern")
-    jest.setSystemTime(new Date(2022, 3, 27))
+    vi.useFakeTimers("modern")
+    vi.setSystemTime(new Date(2022, 3, 27))
   })
 
   render(<Tweets />)
