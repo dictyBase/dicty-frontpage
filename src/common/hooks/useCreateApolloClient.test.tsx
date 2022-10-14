@@ -1,7 +1,7 @@
 import { isMutation, getGraphQLServer } from "./useCreateApolloClient"
 
-const GRAPHQL_SERVER_URL = "https://ericgraphql.dictybase.dev"
-const ALT_GRAPHQL_SERVER_URL = "https://betagraphql.dictycr.org"
+const GRAPHQL_SERVER_URL = import.meta.env.VITE_APP_GRAPHQL_SERVER
+const ALT_GRAPHQL_SERVER_URL = import.meta.env.VITE_APP_ALT_GRAPHQL_SERVER
 
 describe("isMutation function", () => {
   it("should return true for mutation", () => {
@@ -13,53 +13,28 @@ describe("isMutation function", () => {
 })
 
 describe("getGraphQLServer function", () => {
-  const OLD_ENV = process.env
-
-  beforeEach(() => {
-    vi.resetModules() // clear the cache
-    process.env = { ...OLD_ENV } // make a copy
-  })
-
-  afterAll(() => {
-    process.env = OLD_ENV // restore old env
-  })
-
   it("should return expected URL for development environment", () => {
-    process.env.REACT_APP_GRAPHQL_SERVER = GRAPHQL_SERVER_URL
-    process.env.REACT_APP_ALT_GRAPHQL_SERVER = ALT_GRAPHQL_SERVER_URL
-    process.env.DEPLOY_ENV = "development"
+    const DEPLOY_ENV = "development"
     expect(
       getGraphQLServer(
-        process.env.REACT_APP_GRAPHQL_SERVER,
-        process.env.DEPLOY_ENV,
+        GRAPHQL_SERVER_URL,
+        DEPLOY_ENV,
         "https://eric.dictybase.dev",
       ),
-    ).toBe(process.env.REACT_APP_GRAPHQL_SERVER)
+    ).toBe(GRAPHQL_SERVER_URL)
   })
 
   it("should return expected URL for staging environment with dictycr origin", () => {
-    process.env.REACT_APP_GRAPHQL_SERVER = GRAPHQL_SERVER_URL
-    process.env.REACT_APP_ALT_GRAPHQL_SERVER = ALT_GRAPHQL_SERVER_URL
-    process.env.DEPLOY_ENV = "staging"
+    const DEPLOY_ENV = "staging"
     expect(
-      getGraphQLServer(
-        process.env.REACT_APP_GRAPHQL_SERVER,
-        process.env.DEPLOY_ENV,
-        "https://dictycr.org",
-      ),
-    ).toBe(process.env.REACT_APP_ALT_GRAPHQL_SERVER)
+      getGraphQLServer(GRAPHQL_SERVER_URL, DEPLOY_ENV, "https://dictycr.org"),
+    ).toBe(ALT_GRAPHQL_SERVER_URL)
   })
 
   it("should return expected URL for staging environment with dictybase origin", () => {
-    process.env.REACT_APP_GRAPHQL_SERVER = GRAPHQL_SERVER_URL
-    process.env.REACT_APP_ALT_GRAPHQL_SERVER = ALT_GRAPHQL_SERVER_URL
-    process.env.DEPLOY_ENV = "staging"
+    const DEPLOY_ENV = "staging"
     expect(
-      getGraphQLServer(
-        process.env.REACT_APP_GRAPHQL_SERVER,
-        process.env.DEPLOY_ENV,
-        "https://dictybase.org",
-      ),
-    ).toBe(process.env.REACT_APP_GRAPHQL_SERVER)
+      getGraphQLServer(GRAPHQL_SERVER_URL, DEPLOY_ENV, "https://dictybase.org"),
+    ).toBe(GRAPHQL_SERVER_URL)
   })
 })
