@@ -5,10 +5,10 @@ import MockAuthProvider from "mocks/MockAuthProvider"
 import { UpdateContentDocument } from "dicty-graphql-schema"
 import EditInfoPage from "./EditInfoPage"
 
-const mockHistoryPush = jest.fn()
+const mockHistoryPush = vi.fn()
 // https://stackoverflow.com/questions/58117890/how-to-test-components-using-new-react-router-hooks
-jest.mock("react-router-dom", () => {
-  const originalModule = jest.requireActual("react-router-dom")
+vi.mock("react-router-dom", async () => {
+  const originalModule = await vi.importActual("react-router-dom")
   return {
     ...originalModule,
     useNavigate: () => mockHistoryPush,
@@ -18,7 +18,7 @@ jest.mock("react-router-dom", () => {
   }
 })
 
-window.getSelection = jest.fn()
+window.getSelection = vi.fn()
 
 const mockContent = [
   {

@@ -9,8 +9,8 @@ import AddPage from "./AddPage"
 const mockHistoryPush = vi.fn()
 
 // https://stackoverflow.com/questions/58117890/how-to-test-components-using-new-react-router-hooks
-vi.mock("react-router-dom", () => {
-  const originalModule = vi.importActual("react-router-dom")
+vi.mock("react-router-dom", async () => {
+  const originalModule = await vi.importActual("react-router-dom")
   return {
     ...originalModule,
     useParams: () => ({
