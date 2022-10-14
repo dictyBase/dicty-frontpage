@@ -2,18 +2,16 @@ import timeSince from "./timeSince"
 
 describe("common/utils/timeSince", () => {
   const currentDate = new Date("2020-01-02T11:01:58.135Z")
-  const globalAny = global as any
 
-  globalAny.Date = class extends Date {
-    constructor(date: any) {
-      if (date) {
-        // @ts-ignore
-        return super(date)
-      }
+  beforeAll(() => {
+    vi.useFakeTimers()
+    vi.setSystemTime(currentDate)
+  })
 
-      return currentDate
-    }
-  }
+  afterAll(() => {
+    vi.useRealTimers()
+  })
+
   it("should return years", () => {
     expect(timeSince("2018-01-01")).toEqual("2 years")
   })
