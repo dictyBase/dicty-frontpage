@@ -1,6 +1,8 @@
 import { render, screen } from "@testing-library/react"
 import { useListRecentPlasmidsQuery } from "dicty-graphql-schema"
 import { ApolloError } from "@apollo/client"
+import { vi } from "vitest"
+import type { Mock } from "vitest"
 import listRecentPlasmids from "../../common/data/mockPlasmids"
 import StockCenterPlasmidQuery from "./StockCenterPlasmidQuery"
 
@@ -16,7 +18,7 @@ describe("feature/Frontpage/StockCenterPlasmidQuery", () => {
   })
 
   it("should render plasmids", () => {
-    ;(useListRecentPlasmidsQuery as vi.mocked).mockReturnValue({
+    ;(useListRecentPlasmidsQuery as Mock).mockReturnValue({
       loading: false,
       error: false,
       data: { listRecentPlasmids: [...listRecentPlasmids] },
@@ -31,7 +33,7 @@ describe("feature/Frontpage/StockCenterPlasmidQuery", () => {
   })
 
   it("should render loading if plasmids is loading", () => {
-    ;(useListRecentPlasmidsQuery as vi.mocked).mockReturnValue({
+    ;(useListRecentPlasmidsQuery as Mock).mockReturnValue({
       loading: true,
     })
     render(<StockCenterPlasmidQuery />)
@@ -40,7 +42,7 @@ describe("feature/Frontpage/StockCenterPlasmidQuery", () => {
   })
 
   it("should render Apollo Error Component if plasmids failed to load", () => {
-    ;(useListRecentPlasmidsQuery as vi.mocked).mockReturnValue({
+    ;(useListRecentPlasmidsQuery as Mock).mockReturnValue({
       error: new ApolloError({}),
     })
     render(<StockCenterPlasmidQuery />)

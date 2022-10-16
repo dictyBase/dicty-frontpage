@@ -1,4 +1,6 @@
 import { render, screen } from "@testing-library/react"
+import { vi } from "vitest"
+import type { Mock } from "vitest"
 import { useListRecentPublicationsQuery } from "dicty-graphql-schema"
 import { ApolloError } from "@apollo/client"
 import PapersQuery from "./PapersQuery"
@@ -17,7 +19,7 @@ describe("feature/Frontpage/PaperQuery", () => {
   })
 
   it("should render publications in Annotations", () => {
-    ;(useListRecentPublicationsQuery as vi.mocked).mockReturnValue({
+    ;(useListRecentPublicationsQuery as Mock).mockReturnValue({
       loading: false,
       error: false,
       data: { listRecentPublications: [...listRecentPublications] },
@@ -53,7 +55,7 @@ describe("feature/Frontpage/Papers Browser based", () => {
   })
 
   it("should render papers", () => {
-    ;(useListRecentPublicationsQuery as vi.mocked).mockReturnValue({
+    ;(useListRecentPublicationsQuery as Mock).mockReturnValue({
       loading: false,
       error: false,
       data: { listRecentPublications: [...listRecentPublications] },
@@ -72,7 +74,7 @@ describe("feature/Frontpage/Papers Browser based", () => {
   })
 
   it("should render loading", () => {
-    ;(useListRecentPublicationsQuery as vi.mocked).mockReturnValue({
+    ;(useListRecentPublicationsQuery as Mock).mockReturnValue({
       loading: true,
     })
     render(<PapersQuery parent="Papers" />)
@@ -81,7 +83,7 @@ describe("feature/Frontpage/Papers Browser based", () => {
   })
 
   it("should render Apollo Error Component", () => {
-    ;(useListRecentPublicationsQuery as vi.mocked).mockReturnValue({
+    ;(useListRecentPublicationsQuery as Mock).mockReturnValue({
       error: new ApolloError({}),
     })
     render(<PapersQuery parent="Papers" />)
