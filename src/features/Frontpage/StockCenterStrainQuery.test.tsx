@@ -1,6 +1,8 @@
 import { render, screen } from "@testing-library/react"
 import { useListRecentStrainsQuery } from "dicty-graphql-schema"
 import { ApolloError } from "@apollo/client"
+import { vi } from "vitest"
+import type { Mock } from "vitest"
 import listRecentStrains from "../../common/data/mockStrains"
 import StockCenterStrainQuery from "./StockCenterStrainQuery"
 
@@ -16,7 +18,7 @@ describe("feature/Frontpage/StockCenterStrainQuery", () => {
   })
 
   it("should render strains", () => {
-    ;(useListRecentStrainsQuery as vi.mocked).mockReturnValue({
+    ;(useListRecentStrainsQuery as Mock).mockReturnValue({
       loading: false,
       error: false,
       data: { listRecentStrains: [...listRecentStrains] },
@@ -31,7 +33,7 @@ describe("feature/Frontpage/StockCenterStrainQuery", () => {
   })
 
   it("should render loading if strains is loading", () => {
-    ;(useListRecentStrainsQuery as vi.mocked).mockReturnValue({
+    ;(useListRecentStrainsQuery as Mock).mockReturnValue({
       loading: true,
     })
     render(<StockCenterStrainQuery />)
@@ -40,7 +42,7 @@ describe("feature/Frontpage/StockCenterStrainQuery", () => {
   })
 
   it("should render Apollo Error Component if strains failed to load", () => {
-    ;(useListRecentStrainsQuery as vi.mocked).mockReturnValue({
+    ;(useListRecentStrainsQuery as Mock).mockReturnValue({
       error: new ApolloError({}),
     })
     render(<StockCenterStrainQuery />)

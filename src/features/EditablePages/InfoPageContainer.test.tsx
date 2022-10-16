@@ -1,6 +1,7 @@
 import React from "react"
 import { render, screen } from "@testing-library/react"
 import { ContentBySlugDocument } from "dicty-graphql-schema"
+import { vi } from "vitest"
 import MockAuthProvider from "mocks/MockAuthProvider"
 import { Location } from "history"
 import InfoPageContainer, { getSlug } from "./InfoPageContainer"

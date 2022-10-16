@@ -1,5 +1,6 @@
 import React from "react"
 import { render, screen } from "@testing-library/react"
+import { vi } from "vitest"
 import MockAuthProvider from "mocks/MockAuthProvider"
 import userEvent from "@testing-library/user-event"
 import Login, { createOauthURL, generateErrorDisplayMessage } from "./Login"

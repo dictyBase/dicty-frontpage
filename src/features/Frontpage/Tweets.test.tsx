@@ -1,9 +1,10 @@
 import { render } from "@testing-library/react"
+import { vi } from "vitest"
 import { Tweets, dateFormatter } from "./Tweets"
 
 describe("feature/Frontpage/Tweets", () => {
   beforeAll(() => {
-    vi.useFakeTimers("modern")
+    vi.useFakeTimers()
     vi.setSystemTime(new Date(2022, 3, 27))
   })
 

@@ -1,6 +1,7 @@
 import React from "react"
 import { render, waitFor } from "@testing-library/react"
 import { LoginDocument } from "dicty-graphql-schema"
+import { vi } from "vitest"
 import MockAuthProvider from "mocks/MockAuthProvider"
 import clientConfig from "common/utils/clientConfig"
 import OauthSignHandler from "./OauthSignHandler"
@@ -8,7 +9,9 @@ import OauthSignHandler from "./OauthSignHandler"
 const mockHistoryPush = vi.fn()
 
 vi.mock("react-router-dom", async () => {
-  const originalModule = await vi.importActual("react-router-dom")
+  const originalModule = await vi.importActual<
+    typeof import("react-router-dom")
+  >("react-router-dom")
 
   return {
     ...originalModule,

@@ -1,6 +1,8 @@
 import { render, screen } from "@testing-library/react"
 import { useListRecentGenesQuery } from "dicty-graphql-schema"
 import { ApolloError } from "@apollo/client"
+import { vi } from "vitest"
+import type { Mock } from "vitest"
 import AnnotationsGeneQuery from "./AnnotationsGeneQuery"
 import listRecentGenes from "../../common/data/mockGenes"
 
@@ -17,7 +19,7 @@ describe("feature/Frontpage/AnnotationsGeneQuery", () => {
   })
 
   it("should render genes", () => {
-    ;(useListRecentGenesQuery as vi.mocked).mockReturnValue({
+    ;(useListRecentGenesQuery as Mock).mockReturnValue({
       loading: false,
       error: false,
       data: { listRecentGenes: [...listRecentGenes] },
@@ -31,7 +33,7 @@ describe("feature/Frontpage/AnnotationsGeneQuery", () => {
   })
 
   it("should render loading if genes is loading", () => {
-    ;(useListRecentGenesQuery as vi.mocked).mockReturnValue({
+    ;(useListRecentGenesQuery as Mock).mockReturnValue({
       loading: true,
     })
     render(<AnnotationsGeneQuery />)
@@ -39,7 +41,7 @@ describe("feature/Frontpage/AnnotationsGeneQuery", () => {
   })
 
   it("should render Apollo Error Component if genes failed to load", () => {
-    ;(useListRecentGenesQuery as vi.mocked).mockReturnValue({
+    ;(useListRecentGenesQuery as Mock).mockReturnValue({
       error: new ApolloError({}),
     })
     render(<AnnotationsGeneQuery />)
