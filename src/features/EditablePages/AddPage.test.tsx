@@ -4,8 +4,18 @@ import userEvent from "@testing-library/user-event"
 import waitForExpect from "wait-for-expect"
 import { CreateContentDocument } from "dicty-graphql-schema"
 import { vi } from "vitest"
+import type { Mock } from "vitest"
 import MockAuthProvider from "mocks/MockAuthProvider"
 import AddPage from "./AddPage"
+
+const properties = {
+  location: {
+    state: {
+      name: "shipping",
+      url: "/information/shipping",
+    },
+  },
+}
 
 const mockHistoryPush = vi.fn()
 
@@ -20,6 +30,7 @@ vi.mock("react-router-dom", async () => {
       name: "shipping",
     }),
     useNavigate: () => mockHistoryPush,
+    useLocation: () => properties.location,
   }
 })
 
@@ -42,18 +53,9 @@ const mockContent = [
 /* Maybe I need to edit my mockContent like in InfoPageContainer */
 
 describe("features/EditablePages/AddPage", () => {
-  const properties = {
-    location: {
-      state: {
-        name: "shipping",
-        url: "/information/shipping",
-      },
-    },
-  }
-
   const MockComponent = ({ mocks }: any) => (
     <MockAuthProvider mocks={mocks} validToken>
-      <AddPage location={properties.location} />
+      <AddPage />
     </MockAuthProvider>
   )
 
