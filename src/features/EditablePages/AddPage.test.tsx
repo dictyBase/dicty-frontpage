@@ -4,9 +4,22 @@ import userEvent from "@testing-library/user-event"
 import waitForExpect from "wait-for-expect"
 import { CreateContentDocument } from "dicty-graphql-schema"
 import { vi } from "vitest"
-import type { Mock } from "vitest"
 import MockAuthProvider from "mocks/MockAuthProvider"
 import AddPage from "./AddPage"
+
+const mockContent = [
+  {
+    type: "paragraph",
+    children: [
+      {
+        fontFamily: "inherit",
+        fontSize: "inherit",
+        fontColor: "inherit",
+        text: "",
+      },
+    ],
+  },
+]
 
 const properties = {
   location: {
@@ -35,20 +48,6 @@ vi.mock("react-router-dom", async () => {
 })
 
 window.getSelection = vi.fn()
-
-const mockContent = [
-  {
-    type: "paragraph",
-    children: [
-      {
-        fontFamily: "inherit",
-        fontSize: "inherit",
-        fontColor: "inherit",
-        text: "",
-      },
-    ],
-  },
-]
 
 /* Maybe I need to edit my mockContent like in InfoPageContainer */
 
