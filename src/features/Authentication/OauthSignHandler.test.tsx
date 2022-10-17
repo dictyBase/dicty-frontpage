@@ -124,6 +124,7 @@ describe("authentication/OauthSignHandler", () => {
   describe("login mutation", () => {
     it("should return early if no provider included in event data", async () => {
       render(<MockComponent mocks={loginMocks} />)
+      // @ts-ignore
       map.message({
         data: {
           query: `?code=${code}`,
@@ -138,6 +139,7 @@ describe("authentication/OauthSignHandler", () => {
     })
     it("should call login mutation and redirect to urls", async () => {
       render(<MockComponent mocks={loginMocks} />)
+      // @ts-ignore
       map.message({
         data: {
           provider: "google",
