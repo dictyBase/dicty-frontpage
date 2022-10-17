@@ -6,23 +6,6 @@ import MockAuthProvider from "mocks/MockAuthProvider"
 import { UpdateContentDocument } from "dicty-graphql-schema"
 import EditInfoPage from "./EditInfoPage"
 
-const mockHistoryPush = vi.fn()
-// https://stackoverflow.com/questions/58117890/how-to-test-components-using-new-react-router-hooks
-vi.mock("react-router-dom", async () => {
-  const originalModule = await vi.importActual<
-    typeof import("react-router-dom")
-  >("react-router-dom")
-  return {
-    ...originalModule,
-    useNavigate: () => mockHistoryPush,
-    useLocation: () => ({
-      pathname: "/research/techniques/edit",
-    }),
-  }
-})
-
-window.getSelection = vi.fn()
-
 const mockContent = [
   {
     type: "paragraph",
@@ -36,40 +19,55 @@ const mockContent = [
     ],
   },
 ]
-
-describe("features/EditablePages/EditInfoPage", () => {
-  const properties = {
-    location: {
-      state: {
-        data: {
-          id: "99",
-          name: "payment",
-          slug: "dsc-payment",
-          content: JSON.stringify(mockContent),
+const properties = {
+  location: {
+    pathname: "/research/techniques/edit",
+    state: {
+      data: {
+        id: "99",
+        name: "payment",
+        slug: "dsc-payment",
+        content: JSON.stringify(mockContent),
+        // eslint-disable-next-line camelcase
+        updated_at: "2020-01-01T17:50:12.427Z",
+        // eslint-disable-next-line camelcase
+        updated_by: {
+          id: "999",
           // eslint-disable-next-line camelcase
-          updated_at: "2020-01-01T17:50:12.427Z",
+          first_name: "Art",
           // eslint-disable-next-line camelcase
-          updated_by: {
-            id: "999",
-            // eslint-disable-next-line camelcase
-            first_name: "Art",
-            // eslint-disable-next-line camelcase
-            last_name: "Vandelay",
-            email: "art@vandelayindustries.com",
-            roles: [
-              {
-                role: "Latex Salesman",
-              },
-            ],
-          },
+          last_name: "Vandelay",
+          email: "art@vandelayindustries.com",
+          roles: [
+            {
+              role: "Latex Salesman",
+            },
+          ],
         },
       },
     },
-  }
+  },
+}
 
+const mockHistoryPush = vi.fn()
+// https://stackoverflow.com/questions/58117890/how-to-test-components-using-new-react-router-hooks
+vi.mock("react-router-dom", async () => {
+  const originalModule = await vi.importActual<
+    typeof import("react-router-dom")
+  >("react-router-dom")
+  return {
+    ...originalModule,
+    useNavigate: () => mockHistoryPush,
+    useLocation: () => properties.location,
+  }
+})
+
+window.getSelection = vi.fn()
+
+describe("features/EditablePages/EditInfoPage", () => {
   const MockComponent = ({ mocks }: any) => (
     <MockAuthProvider mocks={mocks} validToken>
-      <EditInfoPage location={properties.location} />
+      <EditInfoPage />
     </MockAuthProvider>
   )
 
