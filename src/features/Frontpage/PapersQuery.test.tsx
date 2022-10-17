@@ -33,7 +33,7 @@ describe("feature/Frontpage/PaperQuery", () => {
   })
 
   it("should render loading if publications is loading in Annotations", () => {
-    ;(useListRecentPublicationsQuery as vi).mockReturnValue({
+    ;(useListRecentPublicationsQuery as Mock).mockReturnValue({
       loading: true,
     })
     render(<PapersQuery parent="Annotations" />)
@@ -42,7 +42,7 @@ describe("feature/Frontpage/PaperQuery", () => {
   })
 
   it("should render Apollo Error Component if publications failed to load in Annotations", () => {
-    ;(useListRecentPublicationsQuery as vi).mockReturnValue({
+    ;(useListRecentPublicationsQuery as Mock).mockReturnValue({
       error: new ApolloError({}),
     })
     render(<PapersQuery parent="Annotations" />)
