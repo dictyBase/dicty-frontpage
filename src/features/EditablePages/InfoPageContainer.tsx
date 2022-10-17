@@ -7,6 +7,7 @@ import Loader from "common/components/Loader"
 import GraphQLErrorPage from "common/components/errors/GraphQLErrorPage"
 import NAMESPACE from "common/constants/namespace"
 import { pageTitleLookup } from "common/utils/pageTitleConversions"
+import Fallback from "common/components/Fallback"
 import InfoPageView from "./InfoPageView"
 
 // getSlug will use the route's :subname or :name to fetch page content
@@ -40,8 +41,12 @@ const InfoPageContainer = () => {
     return <Loader />
   }
 
-  if (error || slug === undefined) {
+  if (error) {
     return <GraphQLErrorPage error={error} />
+  }
+
+  if (slug === undefined) {
+    return <Fallback />
   }
 
   return (
