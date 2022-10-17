@@ -48,7 +48,6 @@ const useStyles = makeStyles((theme: Theme) => ({
 }))
 
 const error =
-  //  eslint-disable-next-line i18n-text/no-en
   "Your login token has expired. Please log out and then log back in to regain full user access."
 
 type Properties = {
