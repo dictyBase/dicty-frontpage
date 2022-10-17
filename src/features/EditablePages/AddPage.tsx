@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useLocation } from "react-router-dom"
 import Box from "@material-ui/core/Box"
 import Typography from "@material-ui/core/Typography"
 import { makeStyles, Theme } from "@material-ui/core/styles"
@@ -26,21 +26,12 @@ const useStyles = makeStyles((theme: Theme) => ({
 const error =
   "Your login token is expired. Please log out and then log back in to regain full user access."
 
-type Properties = {
-  location: {
-    state: {
-      name: string
-      subname?: string
-      url: string
-    }
-  }
-}
-
 /**
  * This is the view component so an authorized user can add a new page.
  */
 
-const AddPage = ({ location }: Properties) => {
+const AddPage = () => {
+  const location = useLocation()
   const slug = location.state?.subname || location.state?.name
 
   const {
