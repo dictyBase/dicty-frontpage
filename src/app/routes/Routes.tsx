@@ -36,14 +36,7 @@ const Routes = () => {
         />
         {/* Editable page routes */}
         <Route path=":section/:name" element={<InfoPageContainer />} />
-        <Route
-          path=":section/:name/edit"
-          element={
-            <PrivateRoute>
-              <EditInfoPage />
-            </PrivateRoute>
-          }
-        />
+        <Route path=":section/:name/edit" element={<EditInfoPage />} />
         <Route path=":section/:name/:subname" element={<InfoPageContainer />} />
         <Route
           path=":section/:name/:subname/edit"

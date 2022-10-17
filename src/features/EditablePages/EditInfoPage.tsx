@@ -6,10 +6,7 @@ import Box from "@material-ui/core/Box"
 import { PageEditor } from "dicty-components-page-editor"
 import { useAuthStore } from "features/Authentication/AuthStore"
 import useAuthorization from "common/hooks/useAuthorization"
-import {
-  useUpdateContentMutation,
-  ContentBySlugQuery,
-} from "dicty-graphql-schema"
+import { useUpdateContentMutation } from "dicty-graphql-schema"
 import { appTheme } from "app/layout/AppProviders"
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -25,19 +22,13 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }))
 
-type Properties = {
-  location: {
-    state: {
-      data: ContentBySlugQuery["contentBySlug"]
-    }
-  }
-}
-
 /**
  * Allows editing of the info page components
  */
-const EditInfoPage = ({ location }: Properties) => {
+const EditInfoPage = () => {
   /* Instead of passing props, we need to use useParams hook */
+  const location = useLocation()
+
   const classes = useStyles()
   const {
     state: { token },
@@ -57,7 +48,7 @@ const EditInfoPage = ({ location }: Properties) => {
   })
   const navigate = useNavigate()
 
-  const { pathname } = useLocation()
+  const { pathname } = location
   const previousURL = pathname.slice(0, -5)
 
   const handleSaveClick = (value: any) => {
