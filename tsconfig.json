@@ -3,8 +3,7 @@
   "display": "Vite React",
   "extends": "@tsconfig/vite-react/tsconfig.json",
   "compilerOptions": {
-    "baseUrl": "./src",
-    "types": ["vitest/globals"]
+    "baseUrl": "./src"
   },
   "include": ["src"]
 }

@@ -10,7 +10,9 @@ window.getSelection = vi.fn()
 const mockName = "payment"
 
 vi.mock("react-router-dom", async () => {
-  const originalModule = await vi.importActual("react-router-dom")
+  const originalModule = await vi.importActual<
+    typeof import("react-router-dom")
+  >("react-router-dom")
   return {
     ...originalModule,
     useParams: () => ({

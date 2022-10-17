@@ -57,10 +57,8 @@ const openOauthWindow = (name: string) => {
 }
 
 const generateErrorDisplayMessage = (error: ApolloError) => {
-  //  eslint-disable-next-line i18n-text/no-en
   let message = "Could not log in. Please contact us if the problem persists."
   if (error.networkError) {
-    //  eslint-disable-next-line i18n-text/no-en
     message = "Network Error"
   }
   if (
@@ -69,7 +67,6 @@ const generateErrorDisplayMessage = (error: ApolloError) => {
     error.graphQLErrors[0].extensions &&
     error.graphQLErrors[0].extensions.code === "NotFound"
   ) {
-    //  eslint-disable-next-line i18n-text/no-en
     message = `Could not find user account.
 
       Please make sure you are a verified user and try again.`

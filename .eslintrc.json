@@ -80,6 +80,7 @@
         }
       }
     ],
+    "i18n-text/no-en": "off",
     "eslint-comments/no-use": [
       "error",
       { "allow": ["eslint-disable", "eslint-disable-next-line"] }
