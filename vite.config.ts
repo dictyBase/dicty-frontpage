@@ -2,11 +2,12 @@
 /// <reference types="vite/client" />
 
 import react from "@vitejs/plugin-react"
-import { defineConfig } from "vite"
+import { defineConfig, mergeConfig } from "vite"
+import { defineConfig as defineVitestConfig } from "vitest/config"
 import tsconfigPaths from "vite-tsconfig-paths"
 
 // https://vitejs.dev/config/
-export default defineConfig({
+const viteConfig = defineConfig({
   plugins: [tsconfigPaths(), react()],
   server: {
     port: 3000,
@@ -14,6 +15,9 @@ export default defineConfig({
   resolve: {
     mainFields: ["module"],
   },
+})
+
+const vitestConfig = defineVitestConfig({
   test: {
     globals: true,
     environment: "jsdom",
@@ -23,3 +27,5 @@ export default defineConfig({
     },
   },
 })
+
+export default mergeConfig(viteConfig, vitestConfig)
