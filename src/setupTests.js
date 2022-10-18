@@ -1,4 +1,5 @@
 import "@testing-library/jest-dom"
+import "./common/utils/icons"
 import { cleanup } from "@testing-library/react"
 import createFetchMock from "vitest-fetch-mock"
 import { vi, afterEach } from "vitest"
@@ -15,7 +16,6 @@ Since we are not enabling Vitest globals (as of writing of this comment),
 doing it here after every test.  
 
 https://vitest.dev/guide/migration.html#migrating-from-jest
-
 
 */
 
