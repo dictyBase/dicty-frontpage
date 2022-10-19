@@ -10,7 +10,7 @@ import worker from "mocks/browser"
 
 const main = async () => {
   // Activate MSW
-  if (import.meta.env.REACT_APP_MOCK_SERVER === "on") {
+  if (import.meta.env.VITE_APP_MOCK_SERVER === "on") {
     await worker.start()
   }
 }
