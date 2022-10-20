@@ -51,7 +51,7 @@ const generateTabs = (items: Array<Organism>) =>
   ))
 
 const DownloadsDisplay = ({ data }: Properties) => {
-  const [tabValue, setTabValue] = React.useState("44689")
+  const [tabValue, setTabValue] = React.useState(data[0]?.taxon_id)
 
   const handleChange = (event: React.ChangeEvent<{}>, value: string) => {
     setTabValue(value)
