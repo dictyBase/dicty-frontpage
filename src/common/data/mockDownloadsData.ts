@@ -1,6 +1,14 @@
+// eslint-disable-next-line camelcase
+const taxon_id = "44689"
+
+// eslint-disable-next-line camelcase
+const scientific_name = "Dictyostelium discoideum"
+
 const citations = [
   {
     authors: "Eichinger et. al, 2005",
+    // eslint-disable-next-line camelcase
+    pubmed_id: "12345",
     title: "The genome of the social amoeba Dictyostelium discoideum.",
     journal: "Nature 435(7038): 43-57.",
     link: "https://www.ncbi.nlm.nih.gov/pubmed/15875012",
@@ -167,4 +175,5 @@ const downloads = [
   },
 ]
 
-export { citations, downloads }
+// eslint-disable-next-line camelcase
+export default [{ taxon_id, scientific_name, citations, downloads }]
