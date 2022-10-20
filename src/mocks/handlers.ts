@@ -1,13 +1,22 @@
 // src/mocks/handlers.js
-import { graphql } from "msw"
+import {
+  mockListRecentPublicationsQuery,
+  mockListRecentGenesQuery,
+  mockListRecentPlasmidsQuery,
+  mockListRecentStrainsQuery,
+  mockContentBySlugQuery,
+  mockListOrganismsQuery,
+} from "dicty-graphql-schema/introspection/mocks"
 import listRecentPublications from "common/data/mockPublications"
 import listRecentPlasmids from "common/data/mockPlasmids"
 import listRecentStrains from "common/data/mockStrains"
 import listRecentGenes from "common/data/mockGenes"
+import listOrganisms from "common/data/mockDownloadsData"
+import contentBySlug from "common/data/mockContentBySlug"
 
 const handlers = [
   // Handles a "GetUserInfo" query
-  graphql.query("ListRecentPublications", (request, response, context) => {
+  mockListRecentPublicationsQuery((request, response, context) => {
     const { limit } = request.variables
 
     if (limit === 4) {
@@ -20,7 +29,7 @@ const handlers = [
     return response(context.data({}))
   }),
 
-  graphql.query("ListRecentGenes", (request, response, context) => {
+  mockListRecentGenesQuery((request, response, context) => {
     const { limit } = request.variables
 
     if (limit === 4) {
@@ -33,7 +42,7 @@ const handlers = [
     return response(context.data({}))
   }),
 
-  graphql.query("ListRecentPlasmids", (request, response, context) => {
+  mockListRecentPlasmidsQuery((request, response, context) => {
     const { limit } = request.variables
 
     if (limit === 4) {
@@ -46,7 +55,7 @@ const handlers = [
     return response(context.data({}))
   }),
 
-  graphql.query("ListRecentStrains", (request, response, context) => {
+  mockListRecentStrainsQuery((request, response, context) => {
     const { limit } = request.variables
 
     if (limit === 4) {
@@ -57,6 +66,21 @@ const handlers = [
       )
     }
     return response(context.data({}))
+  }),
+
+  mockListOrganismsQuery((request, response, context) =>
+    response(context.data({ listOrganisms })),
+  ),
+
+  mockContentBySlugQuery((request, response, context) => {
+    const { slug } = request.variables
+
+    return response(
+      context.data({
+        contentBySlug,
+        ...slug,
+      }),
+    )
   }),
 ]
 

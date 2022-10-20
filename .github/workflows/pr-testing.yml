@@ -15,10 +15,6 @@ jobs:
         run: mv src/common/utils/clientConfig.sample.ts src/common/utils/clientConfig.ts
       - name: install
         run: yarn install
-      - name: run eslint
-        run: yarn lint
-      - name: run typescript build
-        run: yarn tsc
       - name: unit tests
         run: yarn test-coverage
         env:
