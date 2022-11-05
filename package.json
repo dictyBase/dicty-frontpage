@@ -107,7 +107,7 @@
     "semantic-release": "^19.0.5",
     "snyk": "^1.1035.0",
     "source-map-explorer": "^2.5.3",
-    "vite": "^3.1.8",
+    "vite": "^3.2.2",
     "vite-tsconfig-paths": "^3.5.1",
     "vitest": "^0.24.x",
     "vitest-fetch-mock": "^0.2.1",
