@@ -2904,6 +2904,13 @@
     "@types/history" "^4.7.11"
     "@types/react" "*"
 
+"@types/react-test-renderer@^18.0.0":
+  version "18.0.0"
+  resolved "https://registry.yarnpkg.com/@types/react-test-renderer/-/react-test-renderer-18.0.0.tgz#7b7f69ca98821ea5501b21ba24ea7b6139da2243"
+  integrity sha512-C7/5FBJ3g3sqUahguGi03O79b8afNeSD6T8/GU50oQrJCU0bVCCGQHaGKUbg2Ce8VQEEqTw8/HiS6lXHHdgkdQ==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-transition-group@^4.2.0":
   version "4.4.4"
   resolved "https://registry.yarnpkg.com/@types/react-transition-group/-/react-transition-group-4.4.4.tgz#acd4cceaa2be6b757db61ed7b432e103242d163e"
@@ -10092,17 +10099,18 @@ react-side-effect@^2.1.0:
   resolved "https://registry.yarnpkg.com/react-side-effect/-/react-side-effect-2.1.1.tgz#66c5701c3e7560ab4822a4ee2742dee215d72eb3"
   integrity sha512-2FoTQzRNTncBVtnzxFOk2mCpcfxQpenBMbk5kSVBg5UcPqV9fRbgY2zhb7GTWWOlpFmAxhClBDlIq8Rsubz1yQ==
 
-react-simple-code-editor@^0.10.0:
-  version "0.10.0"
-  resolved "https://registry.yarnpkg.com/react-simple-code-editor/-/react-simple-code-editor-0.10.0.tgz#73e7ac550a928069715482aeb33ccba36efe2373"
-  integrity sha512-bL5W5mAxSW6+cLwqqVWY47Silqgy2DKDTR4hDBrLrUqC5BXc29YVx17l2IZk5v36VcDEq1Bszu2oHm1qBwKqBA==
+react-simple-code-editor@^0.13.1:
+  version "0.13.1"
+  resolved "https://registry.yarnpkg.com/react-simple-code-editor/-/react-simple-code-editor-0.13.1.tgz#4514553fa132dcaffec33a6612c58f1613c52416"
+  integrity sha512-XYeVwRZwgyKtjNIYcAEgg2FaQcCZwhbarnkJIV20U2wkCU9q/CPFBo8nRXrK4GXUz3AvbqZFsZRrpUTkqqEYyQ==
 
-react-styleguidist@^12.0.0:
-  version "12.0.0"
-  resolved "https://registry.yarnpkg.com/react-styleguidist/-/react-styleguidist-12.0.0.tgz#259dfeaa8a3482aa72d2f7ab2257ecc57e20771d"
-  integrity sha512-eWnyJkAGqxKCnC/Z3ANzQNKrKgYlOAuleT/Zz9ecPYrvKBOOd8keZpm6eN2GZP9N54xt39Eb/aKExJ40syAQdA==
+react-styleguidist@^13.1.0:
+  version "13.1.0"
+  resolved "https://registry.yarnpkg.com/react-styleguidist/-/react-styleguidist-13.1.0.tgz#b41340796312c75217909af97660f5bfe5fd404d"
+  integrity sha512-dd96uk0QeAv8Zc1EijkuPGeeLtYYbAwCcBABsgFnnVrwin7LHurrjKCQjxFDDQs0xQwAKXkNQ5Sz+UvNEvUHfA==
   dependencies:
     "@tippyjs/react" "4.1.0"
+    "@types/react-test-renderer" "^18.0.0"
     "@vxna/mini-html-webpack-template" "^2.0.0"
     acorn "^6.4.1"
     acorn-jsx "^5.1.0"
@@ -10118,6 +10126,7 @@ react-styleguidist@^12.0.0:
     doctrine "^3.0.0"
     es6-object-assign "~1.1.0"
     es6-promise "^4.2.8"
+    escape-string-regexp "^1.0.5"
     escodegen "^1.12.0"
     estree-walker "~0.9.0"
     fastest-levenshtein "^1.0.9"
@@ -10127,6 +10136,7 @@ react-styleguidist@^12.0.0:
     glob "^7.1.5"
     glogg "^1.0.2"
     hash-sum "^2.0.0"
+    is-plain-obj "^1.1.0"
     javascript-stringify "^2.0.0"
     jss "^10.9.0"
     jss-plugin-camel-case "^10.9.0"
@@ -10153,7 +10163,7 @@ react-styleguidist@^12.0.0:
     react-docgen-displayname-handler "^3.0.0"
     react-group "^3.0.2"
     react-icons "^3.8.0"
-    react-simple-code-editor "^0.10.0"
+    react-simple-code-editor "^0.13.1"
     recast "~0.18.5"
     remark "^13.0.0"
     strip-html-comments "^1.0.0"
