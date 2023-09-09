@@ -10,7 +10,7 @@ jobs:
         with:
           node-version: 16
       - name: check out code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: rename config file
         run: mv src/common/utils/clientConfig.sample.ts src/common/utils/clientConfig.ts
       - name: install
