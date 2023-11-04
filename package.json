@@ -39,7 +39,7 @@
     "graphql": "^16.8.1",
     "graphql-tag": "^2.12.6",
     "history": "^4.10.1",
-    "jwt-decode": "^3.0.0",
+    "jwt-decode": "^4.0.0",
     "localforage": "^1.10.0",
     "react": "^17.0.2",
     "react-app-polyfill": "^3.0.0",
