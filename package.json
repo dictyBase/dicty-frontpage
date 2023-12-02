@@ -27,7 +27,7 @@
     "@material-ui/core": "^4.12.4",
     "@material-ui/icons": "^4.11.3",
     "apollo3-cache-persist": "^0.14.1",
-    "core-js": "^3.33.2",
+    "core-js": "^3.33.3",
     "dicty-components-header-footer": "dictybase/dicty-components-header-footer#11.0.1",
     "dicty-components-login": "dictybase/dicty-components-login#4.1.1",
     "dicty-components-navbar": "github:dictyBase/dicty-components-navbar#2.0.0",
