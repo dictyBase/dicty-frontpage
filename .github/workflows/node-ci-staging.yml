@@ -65,7 +65,7 @@ jobs:
       - name: check out code
         uses: actions/checkout@v4
       - name: download deployment artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: ${{ github.event.repository.name }}
       - name: download and setup path for github action binary
