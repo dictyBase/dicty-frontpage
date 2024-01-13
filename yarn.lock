@@ -2699,10 +2699,10 @@
   resolved "https://registry.yarnpkg.com/@tsconfig/recommended/-/recommended-1.0.3.tgz#742540ba9170897a44097e838bca411abf56ccd2"
   integrity sha512-+jby/Guq9H8O7NWgCv6X8VAiQE8Dr/nccsCtL74xyHKhu2Knu5EAKmOZj3nLCnLm1KooUzKY+5DsnGVqhM8/wQ==
 
-"@tsconfig/vite-react@^2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@tsconfig/vite-react/-/vite-react-2.0.1.tgz#6d1e28c33f529fa41335bfd620fc64c0e32e1237"
-  integrity sha512-Sxt6vfbhgEzV2TH/02wLEiM7RJVYGx1mn2INlzovXS6/Fnm7G+CyOHZUD5c5fOlQvH54LNhdGgfI/9fuK6+kuQ==
+"@tsconfig/vite-react@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@tsconfig/vite-react/-/vite-react-3.0.0.tgz#b8740fa780ddd1086179f50a26035abf1d41e3b6"
+  integrity sha512-haOFbphpavQ1+eyQjeqvlz7sRkQue/bS0GvFmraHml31Ufhv+7juUSc8PVe0In7sly+n+5zTLmzc287KciiGXg==
 
 "@types/aria-query@^5.0.1":
   version "5.0.1"
