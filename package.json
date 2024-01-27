@@ -109,7 +109,7 @@
     "source-map-explorer": "^2.5.3",
     "vite": "^3.2.8",
     "vite-tsconfig-paths": "^4.2.3",
-    "vitest": "^0.25.x",
+    "vitest": "^1.2.x",
     "vitest-fetch-mock": "^0.2.2",
     "wait-for-expect": "^3.0.2"
   },
