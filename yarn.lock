@@ -3579,10 +3579,10 @@ anymatch@^3.0.3, anymatch@~3.1.2:
     normalize-path "^3.0.0"
     picomatch "^2.0.4"
 
-apollo3-cache-persist@^0.14.1:
-  version "0.14.1"
-  resolved "https://registry.yarnpkg.com/apollo3-cache-persist/-/apollo3-cache-persist-0.14.1.tgz#8f4c016b4d413aa28f68429b37c8d12524b5983b"
-  integrity sha512-p/jNzN/MmSd0TmY7/ts0B3qi0SdQ3w9yNLQdKqB3GGb9xATUlAum2v4hSrTeWd/DZKK2Z7Xg5kFXTH6nNVnKSQ==
+apollo3-cache-persist@^0.15.0:
+  version "0.15.0"
+  resolved "https://registry.yarnpkg.com/apollo3-cache-persist/-/apollo3-cache-persist-0.15.0.tgz#aee23062bc811f3bc15369b850002f54195a6572"
+  integrity sha512-asxhPOHGddgXYvY4/Wa+XLODYpjci/kPB4zdy82D0tVGzVmvO4lqp3k06NtzHvd//gd9kCnTaG8iziwAcXZYjw==
 
 "aproba@^1.0.3 || ^2.0.0", aproba@^2.0.0:
   version "2.0.0"
