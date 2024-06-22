@@ -51,7 +51,7 @@ jobs:
           sha=$(git rev-parse --short HEAD)
           echo ::set-output name=id::${sha}
       - name: docker build and push (ericdev)
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           push: true
           tags: dictybase/dicty-frontpage:ericdev-develop-${{ steps.type.outputs.id }}
@@ -62,7 +62,7 @@ jobs:
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
       - name: docker build and push (devsidd)
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           push: true
           tags: dictybase/dicty-frontpage:devsidd-develop-${{ steps.type.outputs.id }}
