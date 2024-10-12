@@ -67,7 +67,7 @@
     "@testing-library/react": "^12.1.5",
     "@testing-library/react-hooks": "^8.0.1",
     "@testing-library/user-event": "^14.5.2",
-    "@tsconfig/recommended": "^1.0.3",
+    "@tsconfig/recommended": "^1.0.7",
     "@tsconfig/vite-react": "^3.0.2",
     "@types/jwt-decode": "^3.1.0",
     "@types/node": "^20.11.19",
