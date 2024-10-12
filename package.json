@@ -50,7 +50,7 @@
     "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.26.1",
     "twitter-fetcher": "^18.0.4",
-    "typescript": "5.3.3"
+    "typescript": "5.6.3"
   },
   "devDependencies": {
     "@material-ui/styles": "^4.11.4",
